@@ -1,0 +1,1997 @@
+{
+  "key": "core10",
+  "title": "Decentralized Identifiers (DIDs) v1.0, W3C Recommendation 19 July 2022",
+  "url": "https://www.w3.org/TR/2022/REC-did-core-20220719/",
+  "source": "sources/did-core-1.0-20220719.html",
+  "sha256": "5e44345740d9bfaa852d3b66c57e98c9beb6c5bf6083b0126dd5daac377b9993",
+  "extractor": "did-inspector-extract/1",
+  "statements": [
+    {
+      "id": "core10#conformance.1",
+      "section": "conformance",
+      "kind": "requirement",
+      "keywords": [
+        "MAY",
+        "MUST",
+        "MUST NOT",
+        "OPTIONAL",
+        "RECOMMENDED",
+        "REQUIRED",
+        "SHOULD",
+        "SHOULD NOT"
+      ],
+      "text": "The key words MAY, MUST, MUST NOT, OPTIONAL, RECOMMENDED, REQUIRED, SHOULD, and SHOULD NOT in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here."
+    },
+    {
+      "id": "core10#did-syntax.1",
+      "section": "did-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "All DIDs MUST conform to the DID Syntax ABNF Rules."
+    },
+    {
+      "id": "core10#did-url-syntax.1",
+      "section": "did-url-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "All DID URLs MUST conform to the DID URL Syntax ABNF Rules."
+    },
+    {
+      "id": "core10#did-parameters.1",
+      "section": "did-parameters",
+      "kind": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text": "Support for all DID Parameters is OPTIONAL."
+    },
+    {
+      "id": "core10#did-parameters.2",
+      "section": "did-parameters",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the associated value MUST be an ASCII string.",
+      "term": "service"
+    },
+    {
+      "id": "core10#did-parameters.3",
+      "section": "did-parameters",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the associated value MUST be an ASCII string and MUST use percent-encoding for certain characters as specified in RFC3986 Section 2.1.",
+      "term": "relativeRef"
+    },
+    {
+      "id": "core10#did-parameters.4",
+      "section": "did-parameters",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the associated value MUST be an ASCII string.",
+      "term": "versionId"
+    },
+    {
+      "id": "core10#did-parameters.5",
+      "section": "did-parameters",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the associated value MUST be an ASCII string which is a valid XML datetime value, as defined in section 3.3.7 of W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes [XMLSCHEMA11-2].",
+      "term": "versionTime"
+    },
+    {
+      "id": "core10#did-parameters.6",
+      "section": "did-parameters",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "This datetime value MUST be normalized to UTC 00:00:00 and without sub-second decimal precision.",
+      "term": "versionTime"
+    },
+    {
+      "id": "core10#did-parameters.7",
+      "section": "did-parameters",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the associated value MUST be an ASCII string.",
+      "term": "hl"
+    },
+    {
+      "id": "core10#did-parameters.8",
+      "section": "did-parameters",
+      "kind": "requirement",
+      "keywords": [
+        "RECOMMENDED"
+      ],
+      "text": "For maximum interoperability, it is RECOMMENDED that DID parameters use the DID Specification Registries mechanism [DID-SPEC-REGISTRIES], to avoid collision with other uses of the same DID parameter with different semantics."
+    },
+    {
+      "id": "core10#relative-did-urls.1",
+      "section": "relative-did-urls",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "Relative DID URLs MAY contain relative path components, query parameters, and fragment identifiers."
+    },
+    {
+      "id": "core10#relative-did-urls.2",
+      "section": "relative-did-urls",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "When resolving a relative DID URL reference, the algorithm specified in RFC3986 Section 5: Reference Resolution MUST be used."
+    },
+    {
+      "id": "core10#extensibility.1",
+      "section": "extensibility",
+      "kind": "requirement",
+      "keywords": [
+        "RECOMMENDED"
+      ],
+      "text": "For maximum interoperability, it is RECOMMENDED that extensions use the W3C DID Specification Registries mechanism [DID-SPEC-REGISTRIES]."
+    },
+    {
+      "id": "core10#extensibility.2",
+      "section": "extensibility",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "Representations MAY define other extensibility mechanisms, including ones that do not require the use of the DID Specification Registries."
+    },
+    {
+      "id": "core10#extensibility.3",
+      "section": "extensibility",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "Such extension mechanisms SHOULD support lossless conversion into any other conformant representation."
+    },
+    {
+      "id": "core10#extensibility.4",
+      "section": "extensibility",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "Extension mechanisms for a representation SHOULD define a mapping of all properties and representation syntax into the data model and its type system."
+    },
+    {
+      "id": "core10#did-subject.1",
+      "section": "did-subject",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value of id MUST be a string that conforms to the rules in 3.1 DID Syntax and MUST exist in the root map of the data model for the DID document.",
+      "term": "id"
+    },
+    {
+      "id": "core10#did-controller.1",
+      "section": "did-controller",
+      "kind": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text": "The controller property is OPTIONAL.",
+      "term": "controller"
+    },
+    {
+      "id": "core10#did-controller.2",
+      "section": "did-controller",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the value MUST be a string or a set of strings that conform to the rules in 3.1 DID Syntax.",
+      "term": "controller"
+    },
+    {
+      "id": "core10#did-controller.3",
+      "section": "did-controller",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "The corresponding DID document(s) SHOULD contain verification relationships that explicitly permit the use of certain verification methods for specific purposes.",
+      "term": "controller"
+    },
+    {
+      "id": "core10#did-controller.4",
+      "section": "did-controller",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "Any verification methods contained in the DID documents for those DIDs SHOULD be accepted as authoritative, such that proofs that satisfy those verification methods are to be considered equivalent to proofs provided by the DID subject."
+    },
+    {
+      "id": "core10#also-known-as.1",
+      "section": "also-known-as",
+      "kind": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text": "The alsoKnownAs property is OPTIONAL.",
+      "term": "alsoKnownAs"
+    },
+    {
+      "id": "core10#also-known-as.2",
+      "section": "also-known-as",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the value MUST be a set where each item in the set is a URI conforming to [RFC3986].",
+      "term": "alsoKnownAs"
+    },
+    {
+      "id": "core10#verification-methods.1",
+      "section": "verification-methods",
+      "kind": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text": "The verificationMethod property is OPTIONAL.",
+      "term": "verificationMethod"
+    },
+    {
+      "id": "core10#verification-methods.2",
+      "section": "verification-methods",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the value MUST be a set of verification methods, where each verification method is expressed using a map.",
+      "term": "verificationMethod"
+    },
+    {
+      "id": "core10#verification-methods.3",
+      "section": "verification-methods",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The verification method map MUST include the id, type, controller, and specific verification material properties that are determined by the value of type and are defined in 5.2.1 Verification Material.",
+      "term": "verificationMethod"
+    },
+    {
+      "id": "core10#verification-methods.4",
+      "section": "verification-methods",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "A verification method MAY include additional properties.",
+      "term": "verificationMethod"
+    },
+    {
+      "id": "core10#verification-methods.5",
+      "section": "verification-methods",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "Verification methods SHOULD be registered in the DID Specification Registries [DID-SPEC-REGISTRIES].",
+      "term": "verificationMethod"
+    },
+    {
+      "id": "core10#verification-methods.6",
+      "section": "verification-methods",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value of the id property for a verification method MUST be a string that conforms to the rules in Section 3.2 DID URL Syntax.",
+      "term": "id"
+    },
+    {
+      "id": "core10#verification-methods.7",
+      "section": "verification-methods",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value of the type property MUST be a string that references exactly one verification method type.",
+      "term": "type"
+    },
+    {
+      "id": "core10#verification-methods.8",
+      "section": "verification-methods",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "In order to maximize global interoperability, the verification method type SHOULD be registered in the DID Specification Registries [DID-SPEC-REGISTRIES].",
+      "term": "type"
+    },
+    {
+      "id": "core10#verification-methods.9",
+      "section": "verification-methods",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value of the controller property MUST be a string that conforms to the rules in 3.1 DID Syntax.",
+      "term": "controller"
+    },
+    {
+      "id": "core10#verification-material.1",
+      "section": "verification-material",
+      "kind": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text": "The publicKeyJwk property is OPTIONAL.",
+      "term": "publicKeyJwk"
+    },
+    {
+      "id": "core10#verification-material.2",
+      "section": "verification-material",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the value MUST be a map representing a JSON Web Key that conforms to [RFC7517].",
+      "term": "publicKeyJwk"
+    },
+    {
+      "id": "core10#verification-material.3",
+      "section": "verification-material",
+      "kind": "requirement",
+      "keywords": [
+        "MUST NOT"
+      ],
+      "text": "The map MUST NOT contain \"d\", or any other members of the private information class as described in Registration Template.",
+      "term": "publicKeyJwk"
+    },
+    {
+      "id": "core10#verification-material.4",
+      "section": "verification-material",
+      "kind": "requirement",
+      "keywords": [
+        "RECOMMENDED"
+      ],
+      "text": "It is RECOMMENDED that verification methods that use JWKs [RFC7517] to represent their public keys use the value of kid as their fragment identifier.",
+      "term": "publicKeyJwk"
+    },
+    {
+      "id": "core10#verification-material.5",
+      "section": "verification-material",
+      "kind": "requirement",
+      "keywords": [
+        "RECOMMENDED"
+      ],
+      "text": "It is RECOMMENDED that JWK kid values are set to the public key fingerprint [RFC7638].",
+      "term": "publicKeyJwk"
+    },
+    {
+      "id": "core10#verification-material.6",
+      "section": "verification-material",
+      "kind": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text": "The publicKeyMultibase property is OPTIONAL.",
+      "term": "publicKeyMultibase"
+    },
+    {
+      "id": "core10#verification-material.7",
+      "section": "verification-material",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the value MUST be a string representation of a [MULTIBASE] encoded public key.",
+      "term": "publicKeyMultibase"
+    },
+    {
+      "id": "core10#verification-material.8",
+      "section": "verification-material",
+      "kind": "requirement",
+      "keywords": [
+        "MUST NOT"
+      ],
+      "text": "A verification method MUST NOT contain multiple verification material properties for the same material."
+    },
+    {
+      "id": "core10#verification-relationships.1",
+      "section": "verification-relationships",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "A DID document MAY include any of these, or other properties, to express a specific verification relationship."
+    },
+    {
+      "id": "core10#verification-relationships.2",
+      "section": "verification-relationships",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "In order to maximize global interoperability, any such properties used SHOULD be registered in the DID Specification Registries [DID-SPEC-REGISTRIES]."
+    },
+    {
+      "id": "core10#authentication.1",
+      "section": "authentication",
+      "kind": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text": "The authentication property is OPTIONAL.",
+      "term": "authentication"
+    },
+    {
+      "id": "core10#authentication.2",
+      "section": "authentication",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the associated value MUST be a set of one or more verification methods.",
+      "term": "authentication"
+    },
+    {
+      "id": "core10#authentication.3",
+      "section": "authentication",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "Each verification method MAY be embedded or referenced.",
+      "term": "authentication"
+    },
+    {
+      "id": "core10#assertion.1",
+      "section": "assertion",
+      "kind": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text": "The assertionMethod property is OPTIONAL.",
+      "term": "assertionMethod"
+    },
+    {
+      "id": "core10#assertion.2",
+      "section": "assertion",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the associated value MUST be a set of one or more verification methods.",
+      "term": "assertionMethod"
+    },
+    {
+      "id": "core10#assertion.3",
+      "section": "assertion",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "Each verification method MAY be embedded or referenced.",
+      "term": "assertionMethod"
+    },
+    {
+      "id": "core10#key-agreement.1",
+      "section": "key-agreement",
+      "kind": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text": "The keyAgreement property is OPTIONAL.",
+      "term": "keyAgreement"
+    },
+    {
+      "id": "core10#key-agreement.2",
+      "section": "key-agreement",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the associated value MUST be a set of one or more verification methods.",
+      "term": "keyAgreement"
+    },
+    {
+      "id": "core10#key-agreement.3",
+      "section": "key-agreement",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "Each verification method MAY be embedded or referenced.",
+      "term": "keyAgreement"
+    },
+    {
+      "id": "core10#capability-invocation.1",
+      "section": "capability-invocation",
+      "kind": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text": "The capabilityInvocation property is OPTIONAL.",
+      "term": "capabilityInvocation"
+    },
+    {
+      "id": "core10#capability-invocation.2",
+      "section": "capability-invocation",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the associated value MUST be a set of one or more verification methods.",
+      "term": "capabilityInvocation"
+    },
+    {
+      "id": "core10#capability-invocation.3",
+      "section": "capability-invocation",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "Each verification method MAY be embedded or referenced.",
+      "term": "capabilityInvocation"
+    },
+    {
+      "id": "core10#capability-delegation.1",
+      "section": "capability-delegation",
+      "kind": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text": "The capabilityDelegation property is OPTIONAL.",
+      "term": "capabilityDelegation"
+    },
+    {
+      "id": "core10#capability-delegation.2",
+      "section": "capability-delegation",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the associated value MUST be a set of one or more verification methods.",
+      "term": "capabilityDelegation"
+    },
+    {
+      "id": "core10#capability-delegation.3",
+      "section": "capability-delegation",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "Each verification method MAY be embedded or referenced.",
+      "term": "capabilityDelegation"
+    },
+    {
+      "id": "core10#services.1",
+      "section": "services",
+      "kind": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text": "The service property is OPTIONAL.",
+      "term": "service"
+    },
+    {
+      "id": "core10#services.2",
+      "section": "services",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the associated value MUST be a set of services, where each service is described by a map.",
+      "term": "service"
+    },
+    {
+      "id": "core10#services.3",
+      "section": "services",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Each service map MUST contain id, type, and serviceEndpoint properties.",
+      "term": "service"
+    },
+    {
+      "id": "core10#services.4",
+      "section": "services",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "Each service extension MAY include additional properties and MAY further restrict the properties associated with the extension.",
+      "term": "service"
+    },
+    {
+      "id": "core10#services.5",
+      "section": "services",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value of the id property MUST be a URI conforming to [RFC3986].",
+      "term": "id"
+    },
+    {
+      "id": "core10#services.6",
+      "section": "services",
+      "kind": "requirement",
+      "keywords": [
+        "MUST NOT"
+      ],
+      "text": "A conforming producer MUST NOT produce multiple service entries with the same id.",
+      "term": "id"
+    },
+    {
+      "id": "core10#services.7",
+      "section": "services",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A conforming consumer MUST produce an error if it detects multiple service entries with the same id.",
+      "term": "id"
+    },
+    {
+      "id": "core10#services.8",
+      "section": "services",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value of the type property MUST be a string or a set of strings.",
+      "term": "type"
+    },
+    {
+      "id": "core10#services.9",
+      "section": "services",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "In order to maximize interoperability, the service type and its associated properties SHOULD be registered in the DID Specification Registries [DID-SPEC-REGISTRIES].",
+      "term": "type"
+    },
+    {
+      "id": "core10#services.10",
+      "section": "services",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value of the serviceEndpoint property MUST be a string, a map, or a set composed of one or more strings and/or maps.",
+      "term": "serviceEndpoint"
+    },
+    {
+      "id": "core10#services.11",
+      "section": "services",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "All string values MUST be valid URIs conforming to [RFC3986] and normalized according to the Normalization and Comparison rules in RFC3986 and to any normalization rules in its applicable URI scheme specification.",
+      "term": "serviceEndpoint"
+    },
+    {
+      "id": "core10#production-and-consumption.1",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A representation MUST define deterministic production and consumption rules for all data types specified in 4."
+    },
+    {
+      "id": "core10#production-and-consumption.2",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A representation MUST be uniquely associated with an IANA-registered Media Type."
+    },
+    {
+      "id": "core10#production-and-consumption.3",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A representation MUST define fragment processing rules for its Media Type that are conformant with the fragment processing rules defined in Fragment."
+    },
+    {
+      "id": "core10#production-and-consumption.4",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "A representation SHOULD use the lexical representation of data model data types."
+    },
+    {
+      "id": "core10#production-and-consumption.5",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "A representation MAY choose to serialize the data model data types using a different lexical serializations as long as the consumption process back into the data model is lossless."
+    },
+    {
+      "id": "core10#production-and-consumption.6",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "A representation MAY define representation-specific entries that are stored in a representation-specific entries map for use during the production and consumption process."
+    },
+    {
+      "id": "core10#production-and-consumption.7",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "In order to maximize interoperability, representation specification authors SHOULD register their representation in the DID Specification Registries [DID-SPEC-REGISTRIES]."
+    },
+    {
+      "id": "core10#production-and-consumption.8",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A conforming producer MUST take a DID document data model and a representation-specific entries map as input into the production process."
+    },
+    {
+      "id": "core10#production-and-consumption.9",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "The conforming producer MAY accept additional options as input into the production process."
+    },
+    {
+      "id": "core10#production-and-consumption.10",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A conforming producer MUST serialize all entries in the DID document data model, and the representation-specific entries map, that do not have explicit processing rules for the representation being produced using only the representation's data type processing rules and return the serialization after the production process completes."
+    },
+    {
+      "id": "core10#production-and-consumption.11",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A conforming producer MUST return the Media Type string associated with the representation after the production process completes."
+    },
+    {
+      "id": "core10#production-and-consumption.12",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST NOT"
+      ],
+      "text": "A conforming producer MUST NOT produce non-conforming DIDs or DID documents."
+    },
+    {
+      "id": "core10#production-and-consumption.13",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A conforming consumer MUST take a representation and Media Type string as input into the consumption process."
+    },
+    {
+      "id": "core10#production-and-consumption.14",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "A conforming consumer MAY accept additional options as input into the consumption process."
+    },
+    {
+      "id": "core10#production-and-consumption.15",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A conforming consumer MUST determine the representation of a DID document using the Media Type input string."
+    },
+    {
+      "id": "core10#production-and-consumption.16",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A conforming consumer MUST detect any representation-specific entry across all known representations and place the entry into a representation-specific entries map which is returned after the consumption process completes."
+    },
+    {
+      "id": "core10#production-and-consumption.17",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A conforming consumer MUST add all non-representation-specific entries that do not have explicit processing rules for the representation being consumed to the DID document data model using only the representation's data type processing rules and return the DID document data model after the consumption process completes."
+    },
+    {
+      "id": "core10#production-and-consumption.18",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A conforming consumer MUST produce errors when consuming non-conforming DIDs or DID documents."
+    },
+    {
+      "id": "core10#production.1",
+      "section": "production",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The DID document, DID document data structures, and representation-specific entries map MUST be serialized to the JSON representation according to the following production rules:"
+    },
+    {
+      "id": "core10#production.2",
+      "section": "production",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "All entries of a DID document MUST be included in the root JSON Object."
+    },
+    {
+      "id": "core10#production.3",
+      "section": "production",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "Entries MAY contain additional data substructures subject to the value representation rules in the list above."
+    },
+    {
+      "id": "core10#production.4",
+      "section": "production",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "When serializing a DID document, a conforming producer MUST specify a media type of application/did+json to downstream applications such as described in 7.1.2 DID Resolution Metadata."
+    },
+    {
+      "id": "core10#consumption.1",
+      "section": "consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The DID document and DID document data structures JSON representation MUST be deserialized into the data model according to the following consumption rules:"
+    },
+    {
+      "id": "core10#consumption.2",
+      "section": "consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If media type information is available to a conforming consumer and the media type value is application/did+json, then the data structure being consumed is a DID document, and the root element MUST be a JSON Object where all members of the object are entries of the DID document."
+    },
+    {
+      "id": "core10#consumption.3",
+      "section": "consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A conforming consumer for a JSON representation that is consuming a DID document with a root element that is not a JSON Object MUST report an error."
+    },
+    {
+      "id": "core10#production-0.1",
+      "section": "production-0",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The DID document, DID document data structures, and representation-specific entries map MUST be serialized to the JSON-LD representation according to the JSON representation production rules as defined in 6.2 JSON."
+    },
+    {
+      "id": "core10#production-0.2",
+      "section": "production-0",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "In addition to using the JSON representation production rules, JSON-LD production MUST include the representation-specific @context entry."
+    },
+    {
+      "id": "core10#production-0.3",
+      "section": "production-0",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The serialized value of @context MUST be the JSON String https://www.w3.org/ns/did/v1, or a JSON Array where the first item is the JSON String https://www.w3.org/ns/did/v1 and the subsequent items are serialized according to the JSON representation production rules."
+    },
+    {
+      "id": "core10#production-0.4",
+      "section": "production-0",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "In order to achieve interoperability across different representations, all JSON-LD Contexts and their terms SHOULD be registered in the DID Specification Registries [DID-SPEC-REGISTRIES]."
+    },
+    {
+      "id": "core10#production-0.5",
+      "section": "production-0",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD NOT"
+      ],
+      "text": "A conforming producer that generates a JSON-LD representation SHOULD NOT produce a DID document that contains terms not defined via the @context as conforming consumers are expected to remove unknown terms."
+    },
+    {
+      "id": "core10#production-0.6",
+      "section": "production-0",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "When serializing a JSON-LD representation of a DID document, a conforming producer MUST specify a media type of application/did+ld+json to downstream applications such as described in 7.1.2 DID Resolution Metadata."
+    },
+    {
+      "id": "core10#consumption-0.1",
+      "section": "consumption-0",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The DID document and any DID document data structures expressed by a JSON-LD representation MUST be deserialized into the data model according to the JSON representation consumption rules as defined in 6.2 JSON."
+    },
+    {
+      "id": "core10#consumption-0.2",
+      "section": "consumption-0",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "Conforming consumers that process a JSON-LD representation SHOULD drop all terms from a DID document that are not defined via the @context."
+    },
+    {
+      "id": "core10#resolution.1",
+      "section": "resolution",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "All conformant DID resolvers MUST implement the DID resolution functions for at least one DID method and MUST be able to return a DID document in at least one conformant representation."
+    },
+    {
+      "id": "core10#did-resolution.1",
+      "section": "did-resolution",
+      "kind": "requirement",
+      "keywords": [
+        "REQUIRED",
+        "MUST"
+      ],
+      "text": "This input is REQUIRED and the value MUST be a conformant DID as defined in 3.1 DID Syntax.",
+      "term": "did"
+    },
+    {
+      "id": "core10#did-resolution.2",
+      "section": "did-resolution",
+      "kind": "requirement",
+      "keywords": [
+        "REQUIRED",
+        "MAY"
+      ],
+      "text": "This input is REQUIRED, but the structure MAY be empty.",
+      "term": "resolutionOptions"
+    },
+    {
+      "id": "core10#did-resolution.3",
+      "section": "did-resolution",
+      "kind": "requirement",
+      "keywords": [
+        "REQUIRED",
+        "MUST NOT"
+      ],
+      "text": "This structure is REQUIRED, and in the case of an error in the resolution process, this MUST NOT be empty.",
+      "term": "didResolutionMetadata"
+    },
+    {
+      "id": "core10#did-resolution.4",
+      "section": "did-resolution",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If resolveRepresentation was called, this structure MUST contain a contentType property containing the Media Type of the representation found in the didDocumentStream.",
+      "term": "didResolutionMetadata"
+    },
+    {
+      "id": "core10#did-resolution.5",
+      "section": "did-resolution",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the resolution is not successful, this structure MUST contain an error property describing the error.",
+      "term": "didResolutionMetadata"
+    },
+    {
+      "id": "core10#did-resolution.6",
+      "section": "did-resolution",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the resolution is successful, and if the resolve function was called, this MUST be a DID document abstract data model (a map) as described in 4.",
+      "term": "didDocument"
+    },
+    {
+      "id": "core10#did-resolution.7",
+      "section": "did-resolution",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value of id in the resolved DID document MUST match the DID that was resolved.",
+      "term": "didDocument"
+    },
+    {
+      "id": "core10#did-resolution.8",
+      "section": "did-resolution",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the resolution is unsuccessful, this value MUST be empty.",
+      "term": "didDocument"
+    },
+    {
+      "id": "core10#did-resolution.9",
+      "section": "did-resolution",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the resolution is successful, and if the resolveRepresentation function was called, this MUST be a byte stream of the resolved DID document in one of the conformant representations.",
+      "term": "didDocumentStream"
+    },
+    {
+      "id": "core10#did-resolution.10",
+      "section": "did-resolution",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the resolution is unsuccessful, this value MUST be an empty stream.",
+      "term": "didDocumentStream"
+    },
+    {
+      "id": "core10#did-resolution.11",
+      "section": "did-resolution",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the resolution is successful, this MUST be a metadata structure.",
+      "term": "didDocumentMetadata"
+    },
+    {
+      "id": "core10#did-resolution.12",
+      "section": "did-resolution",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the resolution is unsuccessful, this output MUST be an empty metadata structure.",
+      "term": "didDocumentMetadata"
+    },
+    {
+      "id": "core10#did-resolution-options.1",
+      "section": "did-resolution-options",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The Media Type MUST be expressed as an ASCII string.",
+      "term": "accept"
+    },
+    {
+      "id": "core10#did-resolution-options.2",
+      "section": "did-resolution-options",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "The DID resolver implementation SHOULD use this value to determine the representation contained in the returned didDocumentStream if such a representation is supported and available.",
+      "term": "accept"
+    },
+    {
+      "id": "core10#did-resolution-options.3",
+      "section": "did-resolution-options",
+      "kind": "requirement",
+      "keywords": [
+        "OPTIONAL",
+        "MUST NOT"
+      ],
+      "text": "This property is OPTIONAL for the resolveRepresentation function and MUST NOT be used with the resolve function.",
+      "term": "accept"
+    },
+    {
+      "id": "core10#did-resolution-metadata.1",
+      "section": "did-resolution-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "REQUIRED"
+      ],
+      "text": "This property is REQUIRED if resolution is successful and if the resolveRepresentation function was called.",
+      "term": "contentType"
+    },
+    {
+      "id": "core10#did-resolution-metadata.2",
+      "section": "did-resolution-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST NOT"
+      ],
+      "text": "This property MUST NOT be present if the resolve function was called.",
+      "term": "contentType"
+    },
+    {
+      "id": "core10#did-resolution-metadata.3",
+      "section": "did-resolution-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value of this property MUST be an ASCII string that is the Media Type of the conformant representations.",
+      "term": "contentType"
+    },
+    {
+      "id": "core10#did-resolution-metadata.4",
+      "section": "did-resolution-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The caller of the resolveRepresentation function MUST use this value when determining how to parse and process the didDocumentStream returned by this function into the data model.",
+      "term": "contentType"
+    },
+    {
+      "id": "core10#did-resolution-metadata.5",
+      "section": "did-resolution-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "REQUIRED"
+      ],
+      "text": "This property is REQUIRED when there is an error in the resolution process.",
+      "term": "error"
+    },
+    {
+      "id": "core10#did-resolution-metadata.6",
+      "section": "did-resolution-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value of this property MUST be a single keyword ASCII string.",
+      "term": "error"
+    },
+    {
+      "id": "core10#did-resolution-metadata.7",
+      "section": "did-resolution-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "The possible property values of this field SHOULD be registered in the DID Specification Registries [DID-SPEC-REGISTRIES].",
+      "term": "error"
+    },
+    {
+      "id": "core10#did-document-metadata.1",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "The possible properties within this structure and their possible values SHOULD be registered in the DID Specification Registries [DID-SPEC-REGISTRIES]."
+    },
+    {
+      "id": "core10#did-document-metadata.2",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "DID document metadata SHOULD include a created property to indicate the timestamp of the Create operation.",
+      "term": "created"
+    },
+    {
+      "id": "core10#did-document-metadata.3",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value of the property MUST be a string formatted as an XML Datetime normalized to UTC 00:00:00 and without sub-second decimal precision.",
+      "term": "created"
+    },
+    {
+      "id": "core10#did-document-metadata.4",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "DID document metadata SHOULD include an updated property to indicate the timestamp of the last Update operation for the document version which was resolved.",
+      "term": "updated"
+    },
+    {
+      "id": "core10#did-document-metadata.5",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value of the property MUST follow the same formatting rules as the created property.",
+      "term": "updated"
+    },
+    {
+      "id": "core10#did-document-metadata.6",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If a DID has been deactivated, DID document metadata MUST include this property with the boolean value true.",
+      "term": "deactivated"
+    },
+    {
+      "id": "core10#did-document-metadata.7",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "OPTIONAL",
+        "MUST"
+      ],
+      "text": "If a DID has not been deactivated, this property is OPTIONAL, but if included, MUST have the boolean value false.",
+      "term": "deactivated"
+    },
+    {
+      "id": "core10#did-document-metadata.8",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "DID document metadata MAY include a nextUpdate property if the resolved document version is not the latest version of the document.",
+      "term": "nextUpdate"
+    },
+    {
+      "id": "core10#did-document-metadata.9",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value of the property MUST follow the same formatting rules as the created property.",
+      "term": "nextUpdate"
+    },
+    {
+      "id": "core10#did-document-metadata.10",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "DID document metadata SHOULD include a versionId property to indicate the version of the last Update operation for the document version which was resolved.",
+      "term": "versionId"
+    },
+    {
+      "id": "core10#did-document-metadata.11",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value of the property MUST be an ASCII string.",
+      "term": "versionId"
+    },
+    {
+      "id": "core10#did-document-metadata.12",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "DID document metadata MAY include a nextVersionId property if the resolved document version is not the latest version of the document.",
+      "term": "nextVersionId"
+    },
+    {
+      "id": "core10#did-document-metadata.13",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value of the property MUST be an ASCII string.",
+      "term": "nextVersionId"
+    },
+    {
+      "id": "core10#did-document-metadata.14",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "DID document metadata MAY include an equivalentId property.",
+      "term": "equivalentId"
+    },
+    {
+      "id": "core10#did-document-metadata.15",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the value MUST be a set where each item is a string that conforms to the rules in Section 3.1 DID Syntax.",
+      "term": "equivalentId"
+    },
+    {
+      "id": "core10#did-document-metadata.16",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Each equivalentId DID value MUST be produced by, and a form of, the same DID method as the id property value.",
+      "term": "equivalentId"
+    },
+    {
+      "id": "core10#did-document-metadata.17",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A conforming DID method specification MUST guarantee that each equivalentId value is logically equivalent to the id property value.",
+      "term": "equivalentId"
+    },
+    {
+      "id": "core10#did-document-metadata.18",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "equivalentId is a much stronger form of equivalence than alsoKnownAs because the equivalence MUST be guaranteed by the governing DID method. equivalentId represents a full graph merge because the same DID document describes both the equivalentId DID and the id property DID.",
+      "term": "equivalentId",
+      "informative": true,
+      "informative_reason": "class note"
+    },
+    {
+      "id": "core10#did-document-metadata.19",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "DID document metadata MAY include a canonicalId property.",
+      "term": "canonicalId"
+    },
+    {
+      "id": "core10#did-document-metadata.20",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the value MUST be a string that conforms to the rules in Section 3.1 DID Syntax.",
+      "term": "canonicalId"
+    },
+    {
+      "id": "core10#did-document-metadata.21",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A canonicalId value MUST be produced by, and a form of, the same DID method as the id property value.",
+      "term": "canonicalId"
+    },
+    {
+      "id": "core10#did-document-metadata.22",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A conforming DID method specification MUST guarantee that the canonicalId value is logically equivalent to the id property value.",
+      "term": "canonicalId"
+    },
+    {
+      "id": "core10#did-url-dereferencing.1",
+      "section": "did-url-dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "To dereference a DID fragment, the complete DID URL including the DID fragment MUST be used.",
+      "term": "didUrl"
+    },
+    {
+      "id": "core10#did-url-dereferencing.2",
+      "section": "did-url-dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "REQUIRED"
+      ],
+      "text": "This input is REQUIRED.",
+      "term": "didUrl"
+    },
+    {
+      "id": "core10#did-url-dereferencing.3",
+      "section": "did-url-dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "REQUIRED",
+        "MAY"
+      ],
+      "text": "This input is REQUIRED, but the structure MAY be empty.",
+      "term": "dereferencingOptions"
+    },
+    {
+      "id": "core10#did-url-dereferencing.4",
+      "section": "did-url-dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "REQUIRED",
+        "MUST NOT"
+      ],
+      "text": "This structure is REQUIRED, and in the case of an error in the dereferencing process, this MUST NOT be empty.",
+      "term": "dereferencingMetadata"
+    },
+    {
+      "id": "core10#did-url-dereferencing.5",
+      "section": "did-url-dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the dereferencing is not successful, this structure MUST contain an error property describing the error.",
+      "term": "dereferencingMetadata"
+    },
+    {
+      "id": "core10#did-url-dereferencing.6",
+      "section": "did-url-dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the dereferencing function was called and successful, this MUST contain a resource corresponding to the DID URL.",
+      "term": "contentStream"
+    },
+    {
+      "id": "core10#did-url-dereferencing.7",
+      "section": "did-url-dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "The contentStream MAY be a resource such as a DID document that is serializable in one of the conformant representations, a Verification Method, a service, or any other resource format that can be identified via a Media Type and obtained through the resolution process.",
+      "term": "contentStream"
+    },
+    {
+      "id": "core10#did-url-dereferencing.8",
+      "section": "did-url-dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the dereferencing is unsuccessful, this value MUST be empty.",
+      "term": "contentStream"
+    },
+    {
+      "id": "core10#did-url-dereferencing.9",
+      "section": "did-url-dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "MUST",
+        "MAY"
+      ],
+      "text": "If the dereferencing is successful, this MUST be a metadata structure, but the structure MAY be empty.",
+      "term": "contentMetadata"
+    },
+    {
+      "id": "core10#did-url-dereferencing.10",
+      "section": "did-url-dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the contentStream is a DID document, this MUST be a didDocumentMetadata structure as described in DID Resolution.",
+      "term": "contentMetadata"
+    },
+    {
+      "id": "core10#did-url-dereferencing.11",
+      "section": "did-url-dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the dereferencing is unsuccessful, this output MUST be an empty metadata structure.",
+      "term": "contentMetadata"
+    },
+    {
+      "id": "core10#did-url-dereferencing-options.1",
+      "section": "did-url-dereferencing-options",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "The possible properties within this structure and their possible values SHOULD be registered in the DID Specification Registries [DID-SPEC-REGISTRIES]."
+    },
+    {
+      "id": "core10#did-url-dereferencing-options.2",
+      "section": "did-url-dereferencing-options",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The Media Type MUST be expressed as an ASCII string.",
+      "term": "accept"
+    },
+    {
+      "id": "core10#did-url-dereferencing-options.3",
+      "section": "did-url-dereferencing-options",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "The DID URL dereferencing implementation SHOULD use this value to determine the contentType of the representation contained in the returned value if such a representation is supported and available.",
+      "term": "accept"
+    },
+    {
+      "id": "core10#did-url-dereferencing-metadata.1",
+      "section": "did-url-dereferencing-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "The Media Type of the returned contentStream SHOULD be expressed using this property if dereferencing is successful.",
+      "term": "contentType"
+    },
+    {
+      "id": "core10#did-url-dereferencing-metadata.2",
+      "section": "did-url-dereferencing-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The Media Type value MUST be expressed as an ASCII string.",
+      "term": "contentType"
+    },
+    {
+      "id": "core10#did-url-dereferencing-metadata.3",
+      "section": "did-url-dereferencing-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "REQUIRED"
+      ],
+      "text": "This property is REQUIRED when there is an error in the dereferencing process.",
+      "term": "error"
+    },
+    {
+      "id": "core10#did-url-dereferencing-metadata.4",
+      "section": "did-url-dereferencing-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value of this property MUST be a single keyword expressed as an ASCII string.",
+      "term": "error"
+    },
+    {
+      "id": "core10#did-url-dereferencing-metadata.5",
+      "section": "did-url-dereferencing-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "The possible property values of this field SHOULD be registered in the DID Specification Registries [DID-SPEC-REGISTRIES].",
+      "term": "error"
+    },
+    {
+      "id": "core10#metadata-structure.1",
+      "section": "metadata-structure",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The structure used to communicate this metadata MUST be a map of properties."
+    },
+    {
+      "id": "core10#metadata-structure.2",
+      "section": "metadata-structure",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Each property name MUST be a string."
+    },
+    {
+      "id": "core10#metadata-structure.3",
+      "section": "metadata-structure",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Each property value MUST be a string, map, list, set, boolean, or null."
+    },
+    {
+      "id": "core10#metadata-structure.4",
+      "section": "metadata-structure",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The values within any complex data structures such as maps and lists MUST be one of these data types as well."
+    },
+    {
+      "id": "core10#metadata-structure.5",
+      "section": "metadata-structure",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "All metadata property definitions registered in the DID Specification Registries [DID-SPEC-REGISTRIES] MUST define the value type, including any additional formats or restrictions to that value (for example, a string formatted as a date or as a decimal integer)."
+    },
+    {
+      "id": "core10#metadata-structure.6",
+      "section": "metadata-structure",
+      "kind": "requirement",
+      "keywords": [
+        "RECOMMENDED"
+      ],
+      "text": "It is RECOMMENDED that property definitions use strings for values."
+    },
+    {
+      "id": "core10#metadata-structure.7",
+      "section": "metadata-structure",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The entire metadata structure MUST be serializable according to the JSON serialization rules in the [INFRA] specification."
+    },
+    {
+      "id": "core10#metadata-structure.8",
+      "section": "metadata-structure",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "Implementations MAY serialize the metadata structure to other data formats."
+    },
+    {
+      "id": "core10#method-syntax.1",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A DID method specification MUST define exactly one method-specific DID scheme that is identified by exactly one method name as specified by the method-name rule in 3.1 DID Syntax."
+    },
+    {
+      "id": "core10#method-syntax.2",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The DID method specification MUST specify how to generate the method-specific-id component of a DID."
+    },
+    {
+      "id": "core10#method-syntax.3",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The DID method specification MUST define sensitivity and normalization of the value of the method-specific-id."
+    },
+    {
+      "id": "core10#method-syntax.4",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The method-specific-id value MUST be unique within a DID method."
+    },
+    {
+      "id": "core10#method-syntax.5",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Any DID generated by a DID method MUST be globally unique."
+    },
+    {
+      "id": "core10#method-syntax.6",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "To reduce the chances of method-name conflicts, a DID method specification SHOULD be registered in the DID Specification Registries [DID-SPEC-REGISTRIES]."
+    },
+    {
+      "id": "core10#method-syntax.7",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "A DID method MAY define multiple method-specific-id formats."
+    },
+    {
+      "id": "core10#method-syntax.8",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "The method-specific-id format MAY include colons."
+    },
+    {
+      "id": "core10#method-syntax.9",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The use of colons MUST comply syntactically with the method-specific-id ABNF rule."
+    },
+    {
+      "id": "core10#method-syntax.10",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "A DID method specification MAY specify ABNF rules for DID paths that are more restrictive than the generic rules in Path."
+    },
+    {
+      "id": "core10#method-syntax.11",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "A DID method specification MAY specify ABNF rules for DID queries that are more restrictive than the generic rules in this section."
+    },
+    {
+      "id": "core10#method-syntax.12",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "A DID method specification MAY specify ABNF rules for DID fragments that are more restrictive than the generic rules in this section."
+    },
+    {
+      "id": "core10#method-operations.1",
+      "section": "method-operations",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A DID method specification MUST define how authorization is performed to execute all operations, including any necessary cryptographic processes."
+    },
+    {
+      "id": "core10#method-operations.2",
+      "section": "method-operations",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A DID method specification MUST specify how a DID controller creates a DID and its associated DID document."
+    },
+    {
+      "id": "core10#method-operations.3",
+      "section": "method-operations",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A DID method specification MUST specify how a DID resolver uses a DID to resolve a DID document, including how the DID resolver can verify the authenticity of the response."
+    },
+    {
+      "id": "core10#method-operations.4",
+      "section": "method-operations",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A DID method specification MUST specify what constitutes an update to a DID document and how a DID controller can update a DID document or state that updates are not possible."
+    },
+    {
+      "id": "core10#method-operations.5",
+      "section": "method-operations",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The DID method specification MUST specify how a DID controller can deactivate a DID or state that deactivation is not possible."
+    },
+    {
+      "id": "core10#security-requirements.1",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A DID method specifications MUST follow all guidelines and normative language provided in RFC3552: Writing Security Considerations Sections for the DID operations defined in the DID method specification."
+    },
+    {
+      "id": "core10#security-requirements.2",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The Security Considerations section MUST document the following forms of attack for the DID operations defined in the DID method specification: eavesdropping, replay, message insertion, deletion, modification, denial of service, amplification, and man-in-the-middle."
+    },
+    {
+      "id": "core10#security-requirements.3",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "Other known forms of attack SHOULD also be documented."
+    },
+    {
+      "id": "core10#security-requirements.4",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The Security Considerations section MUST discuss residual risks, such as the risks from compromise in a related protocol, incorrect implementation, or cipher after threat mitigation was deployed."
+    },
+    {
+      "id": "core10#security-requirements.5",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The Security Considerations section MUST provide integrity protection and update authentication for all operations required by Section 8.2 Method Operations."
+    },
+    {
+      "id": "core10#security-requirements.6",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If authentication is involved, particularly user-host authentication, the security characteristics of the authentication method MUST be clearly documented."
+    },
+    {
+      "id": "core10#security-requirements.7",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The Security Considerations section MUST discuss the policy mechanism by which DIDs are proven to be uniquely assigned."
+    },
+    {
+      "id": "core10#security-requirements.8",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Method-specific endpoint authentication MUST be discussed."
+    },
+    {
+      "id": "core10#security-requirements.9",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Where DID methods make use of DLTs with varying network topology, sometimes offered as light node or thin client implementations to reduce required computing resources, the security assumptions of the topology available to implementations of the DID method MUST be discussed."
+    },
+    {
+      "id": "core10#security-requirements.10",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text": "If a protocol incorporates cryptographic protection mechanisms, the DID method specification MUST clearly indicate which portions of the data are protected and by what protections, and it SHOULD give an indication of the sorts of attacks to which the cryptographic protection is susceptible."
+    },
+    {
+      "id": "core10#security-requirements.11",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "Data which is to be held secret (keying material, random seeds, and so on) SHOULD be clearly labeled."
+    },
+    {
+      "id": "core10#security-requirements.12",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "DID method specifications SHOULD explain and specify the implementation of signatures on DID documents, if applicable."
+    },
+    {
+      "id": "core10#security-requirements.13",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "Where DID methods use peer-to-peer computing resources, such as with all known DLTs, the expected burdens of those resources SHOULD be discussed in relation to denial of service."
+    },
+    {
+      "id": "core10#security-requirements.14",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "DID methods that introduce new authentication service types, as described in 5.4 Services, SHOULD consider the security requirements of the supported authentication protocol."
+    },
+    {
+      "id": "core10#privacy-requirements.1",
+      "section": "privacy-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The DID method specification's Privacy Considerations section MUST discuss any subsection of Section 5 of [RFC6973] that could apply in a method-specific manner."
+    }
+  ]
+}
