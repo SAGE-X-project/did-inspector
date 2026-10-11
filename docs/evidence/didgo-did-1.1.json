@@ -1,0 +1,5520 @@
+{
+  "format": "did-inspector-report/1",
+  "inspector": {
+    "revision": "c9763b4f86a6ae0744840c5e0b193af3f333b397"
+  },
+  "subject": {
+    "name": "did-go",
+    "version": "v0.0.0-20261011184433-82160c9bc606",
+    "revision": "82160c9bc606"
+  },
+  "profile": "did-1.1",
+  "specs": [
+    {
+      "key": "did11-cr20260305",
+      "url": "https://www.w3.org/TR/2026/CR-did-1.1-20260305/",
+      "source": "sources/did-core-1.1-cr-20260305.html",
+      "sha256": "4a48022defe07d37d2decc3ec9027a932dc883b2ad164a5aeaf9256e530bd979"
+    },
+    {
+      "key": "cid10",
+      "url": "https://www.w3.org/TR/2025/REC-cid-1.0-20250515/",
+      "source": "sources/controlled-identifiers-1.0-20250515.html",
+      "sha256": "c5e9befba602b53de46669cf98067123d1901357a425f8bff621796b2ac4ac4a"
+    },
+    {
+      "key": "res10-crd20261001",
+      "url": "https://www.w3.org/TR/2026/CRD-did-resolution-1.0-20261001/",
+      "source": "sources/did-resolution-1.0-crd-20261001.html",
+      "sha256": "2b194843d37f5b7f01a4f5464f64d672dc4be43dafe5f2f49114c6070819586e"
+    }
+  ],
+  "started_at": "",
+  "finished_at": "",
+  "totals": {
+    "statements": 486,
+    "PASS": 241,
+    "FAIL": 0,
+    "NOT_SUPPORTED": 0,
+    "NOT_APPLICABLE": 3,
+    "ERROR": 0,
+    "NOT_RUN": 242
+  },
+  "statements": [
+    {
+      "id": "did11-cr20260305#conformance.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#did-syntax.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/syntax/did"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#did-url-syntax.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/syntax/did-url"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#relative-did-urls.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/relative-urls-kept"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#relative-did-urls.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/expand-relative-urls",
+        "did-1.1/dereferencing/fragment-relative-id"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#extensibility.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#extensibility.2",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#extensibility.3",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#extensibility.4",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#core-properties.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/service-endpoint/consumer",
+        "did-1.1/document/service-endpoint/producer",
+        "did-1.1/document/service-endpoint/validator"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#verification-methods.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/verification-method-id-did-url/consumer",
+        "did-1.1/document/verification-method-id-did-url/producer",
+        "did-1.1/document/verification-method-id-did-url/validator"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.2",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.3",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.4",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.5",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.6",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.7",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.8",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.9",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.10",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/representation/producer-serializes-entries"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.11",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/representation/producer-serializes-entries"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.12",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/subject-id/producer",
+        "did-1.1/document/controller/producer",
+        "did-1.1/document/also-known-as/producer",
+        "did-1.1/document/service-structure/producer",
+        "did-1.1/document/service-id/producer",
+        "did-1.1/document/service-type/producer",
+        "did-1.1/document/service-endpoint/producer",
+        "did-1.1/document/verification-method-structure/producer",
+        "did-1.1/document/verification-method-id-url/producer",
+        "did-1.1/document/verification-method-id-did-url/producer",
+        "did-1.1/document/verification-method-controller/producer",
+        "did-1.1/document/verification-method-type/producer",
+        "did-1.1/document/verification-method-expiry/producer",
+        "did-1.1/document/verification-material-single/producer",
+        "did-1.1/document/relationship-authentication/producer",
+        "did-1.1/document/relationship-assertionMethod/producer",
+        "did-1.1/document/relationship-keyAgreement/producer",
+        "did-1.1/document/relationship-capabilityInvocation/producer",
+        "did-1.1/document/relationship-capabilityDelegation/producer",
+        "did-1.1/document/multikey-multibase/producer",
+        "did-1.1/document/multikey-ed25519/producer",
+        "did-1.1/document/multikey-p256/producer",
+        "did-1.1/document/multikey-p384/producer",
+        "did-1.1/document/multikey-bls12-381/producer",
+        "did-1.1/document/multikey-sm2/producer",
+        "did-1.1/document/jwk-structure/producer",
+        "did-1.1/document/jwk-private-members/producer",
+        "did-1.1/document/jwk-crv/producer",
+        "did-1.1/document/json-ld-context/producer"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.13",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.14",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.15",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/media-type-decides/consumer",
+        "did-1.1/representation/consumer-representation-entries"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.16",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/representation/consumer-representation-entries"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.17",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/representation/consumer-keeps-entries",
+        "did-1.1/representation/consumer-representation-entries"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.18",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/subject-id/consumer",
+        "did-1.1/document/controller/consumer",
+        "did-1.1/document/also-known-as/consumer",
+        "did-1.1/document/service-structure/consumer",
+        "did-1.1/document/service-id/consumer",
+        "did-1.1/document/service-type/consumer",
+        "did-1.1/document/service-endpoint/consumer",
+        "did-1.1/document/verification-method-structure/consumer",
+        "did-1.1/document/verification-method-id-url/consumer",
+        "did-1.1/document/verification-method-id-did-url/consumer",
+        "did-1.1/document/verification-method-controller/consumer",
+        "did-1.1/document/verification-method-type/consumer",
+        "did-1.1/document/verification-method-expiry/consumer",
+        "did-1.1/document/verification-material-single/consumer",
+        "did-1.1/document/relationship-authentication/consumer",
+        "did-1.1/document/relationship-assertionMethod/consumer",
+        "did-1.1/document/relationship-keyAgreement/consumer",
+        "did-1.1/document/relationship-capabilityInvocation/consumer",
+        "did-1.1/document/relationship-capabilityDelegation/consumer",
+        "did-1.1/document/multikey-multibase/consumer",
+        "did-1.1/document/multikey-ed25519/consumer",
+        "did-1.1/document/multikey-p256/consumer",
+        "did-1.1/document/multikey-p384/consumer",
+        "did-1.1/document/multikey-bls12-381/consumer",
+        "did-1.1/document/multikey-sm2/consumer",
+        "did-1.1/document/jwk-structure/consumer",
+        "did-1.1/document/jwk-private-members/consumer",
+        "did-1.1/document/jwk-crv/consumer",
+        "did-1.1/document/json-ld-context/consumer",
+        "did-1.1/document/json-root/consumer"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#production.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/representation/producer-serializes-entries"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#production.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/representation/producer-serializes-entries"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#production.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/representation/producer-serializes-entries"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#production.4",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/representation/producer-serializes-entries"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#consumption.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/json-root/consumer",
+        "did-1.1/representation/consumer-keeps-entries"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#consumption.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/json-root/consumer",
+        "did-1.1/representation/consumer-keeps-entries"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#consumption.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/json-root/consumer"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/json-ld-context/consumer",
+        "did-1.1/document/json-ld-context/producer",
+        "did-1.1/document/json-ld-context/validator"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/representation/producer-json-ld"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/representation/producer-json-ld"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.4",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/json-ld-context/consumer",
+        "did-1.1/document/json-ld-context/producer",
+        "did-1.1/document/json-ld-context/validator",
+        "did-1.1/representation/producer-json-ld"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.5",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.6",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.7",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/representation/producer-json-ld"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.8",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#remote-resource-integrity.1",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#media-types.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.2",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.3",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.4",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.5",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.6",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.7",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.8",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.9",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/syntax/method-specific-id-colons"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.10",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.11",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.12",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#method-operations.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#method-operations.2",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#method-operations.3",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#method-operations.4",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#method-operations.5",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.2",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.3",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.4",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.5",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.6",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.7",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.8",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.9",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.10",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.11",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.12",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.13",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.14",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "did11-cr20260305#privacy-requirements.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#conformance.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#conformance.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/subject-id/consumer",
+        "did-1.1/document/controller/consumer",
+        "did-1.1/document/also-known-as/consumer",
+        "did-1.1/document/service-structure/consumer",
+        "did-1.1/document/service-id/consumer",
+        "did-1.1/document/service-type/consumer",
+        "did-1.1/document/service-endpoint/consumer",
+        "did-1.1/document/verification-method-structure/consumer",
+        "did-1.1/document/verification-method-id-url/consumer",
+        "did-1.1/document/verification-method-id-did-url/consumer",
+        "did-1.1/document/verification-method-controller/consumer",
+        "did-1.1/document/verification-method-type/consumer",
+        "did-1.1/document/verification-method-expiry/consumer",
+        "did-1.1/document/verification-material-single/consumer",
+        "did-1.1/document/relationship-authentication/consumer",
+        "did-1.1/document/relationship-assertionMethod/consumer",
+        "did-1.1/document/relationship-keyAgreement/consumer",
+        "did-1.1/document/relationship-capabilityInvocation/consumer",
+        "did-1.1/document/relationship-capabilityDelegation/consumer",
+        "did-1.1/document/multikey-multibase/consumer",
+        "did-1.1/document/multikey-ed25519/consumer",
+        "did-1.1/document/multikey-p256/consumer",
+        "did-1.1/document/multikey-p384/consumer",
+        "did-1.1/document/multikey-bls12-381/consumer",
+        "did-1.1/document/multikey-sm2/consumer",
+        "did-1.1/document/jwk-structure/consumer",
+        "did-1.1/document/jwk-private-members/consumer",
+        "did-1.1/document/jwk-crv/consumer",
+        "did-1.1/document/json-ld-context/consumer",
+        "did-1.1/document/json-root/consumer"
+      ]
+    },
+    {
+      "id": "cid10#data-model.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#subjects.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/subject-id/consumer",
+        "did-1.1/document/subject-id/producer",
+        "did-1.1/document/subject-id/validator"
+      ]
+    },
+    {
+      "id": "cid10#subjects.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/subject-id/consumer",
+        "did-1.1/document/subject-id/producer",
+        "did-1.1/document/subject-id/validator"
+      ]
+    },
+    {
+      "id": "cid10#subjects.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/current-version"
+      ]
+    },
+    {
+      "id": "cid10#subjects.4",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/id-mismatch"
+      ]
+    },
+    {
+      "id": "cid10#subjects.5",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/id-mismatch"
+      ]
+    },
+    {
+      "id": "cid10#controllers.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/controller/consumer",
+        "did-1.1/document/controller/producer",
+        "did-1.1/document/controller/validator"
+      ]
+    },
+    {
+      "id": "cid10#controllers.2",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#controllers.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/controller/consumer",
+        "did-1.1/document/controller/producer",
+        "did-1.1/document/controller/validator"
+      ]
+    },
+    {
+      "id": "cid10#controllers.4",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#also-known-as.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/also-known-as/consumer",
+        "did-1.1/document/also-known-as/producer",
+        "did-1.1/document/also-known-as/validator"
+      ]
+    },
+    {
+      "id": "cid10#also-known-as.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/also-known-as/consumer",
+        "did-1.1/document/also-known-as/producer",
+        "did-1.1/document/also-known-as/validator"
+      ]
+    },
+    {
+      "id": "cid10#services.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/service-structure/consumer",
+        "did-1.1/document/service-structure/producer",
+        "did-1.1/document/service-structure/validator"
+      ]
+    },
+    {
+      "id": "cid10#services.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/service-structure/consumer",
+        "did-1.1/document/service-structure/producer",
+        "did-1.1/document/service-structure/validator"
+      ]
+    },
+    {
+      "id": "cid10#services.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/service-structure/consumer",
+        "did-1.1/document/service-structure/producer",
+        "did-1.1/document/service-structure/validator"
+      ]
+    },
+    {
+      "id": "cid10#services.4",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/service-structure/consumer",
+        "did-1.1/document/service-structure/producer",
+        "did-1.1/document/service-structure/validator"
+      ]
+    },
+    {
+      "id": "cid10#services.5",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#services.6",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/service-id/consumer",
+        "did-1.1/document/service-id/producer",
+        "did-1.1/document/service-id/validator"
+      ]
+    },
+    {
+      "id": "cid10#services.7",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/service-id/consumer",
+        "did-1.1/document/service-id/producer",
+        "did-1.1/document/service-id/validator"
+      ]
+    },
+    {
+      "id": "cid10#services.8",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/service-structure/consumer",
+        "did-1.1/document/service-structure/producer",
+        "did-1.1/document/service-structure/validator"
+      ]
+    },
+    {
+      "id": "cid10#services.9",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/service-type/consumer",
+        "did-1.1/document/service-type/producer",
+        "did-1.1/document/service-type/validator"
+      ]
+    },
+    {
+      "id": "cid10#services.10",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#services.11",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/service-structure/consumer",
+        "did-1.1/document/service-structure/producer",
+        "did-1.1/document/service-structure/validator"
+      ]
+    },
+    {
+      "id": "cid10#services.12",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/service-endpoint/consumer",
+        "did-1.1/document/service-endpoint/producer",
+        "did-1.1/document/service-endpoint/validator"
+      ]
+    },
+    {
+      "id": "cid10#services.13",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/service-endpoint/consumer",
+        "did-1.1/document/service-endpoint/producer",
+        "did-1.1/document/service-endpoint/validator"
+      ]
+    },
+    {
+      "id": "cid10#verification-methods.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/verification-method-structure/consumer",
+        "did-1.1/document/verification-method-structure/producer",
+        "did-1.1/document/verification-method-structure/validator"
+      ]
+    },
+    {
+      "id": "cid10#verification-methods.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/verification-method-structure/consumer",
+        "did-1.1/document/verification-method-structure/producer",
+        "did-1.1/document/verification-method-structure/validator"
+      ]
+    },
+    {
+      "id": "cid10#verification-methods.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/verification-method-structure/consumer",
+        "did-1.1/document/verification-method-structure/producer",
+        "did-1.1/document/verification-method-structure/validator"
+      ]
+    },
+    {
+      "id": "cid10#verification-methods.4",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/verification-method-structure/consumer",
+        "did-1.1/document/verification-method-structure/producer",
+        "did-1.1/document/verification-method-structure/validator"
+      ]
+    },
+    {
+      "id": "cid10#verification-methods.5",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/verification-method-id-url/consumer",
+        "did-1.1/document/verification-method-id-url/producer",
+        "did-1.1/document/verification-method-id-url/validator"
+      ]
+    },
+    {
+      "id": "cid10#verification-methods.6",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/verification-method-type/consumer",
+        "did-1.1/document/verification-method-type/producer",
+        "did-1.1/document/verification-method-type/validator"
+      ]
+    },
+    {
+      "id": "cid10#verification-methods.7",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/verification-method-controller/consumer",
+        "did-1.1/document/verification-method-controller/producer",
+        "did-1.1/document/verification-method-controller/validator"
+      ]
+    },
+    {
+      "id": "cid10#verification-methods.8",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/verification-method-expiry/consumer",
+        "did-1.1/document/verification-method-expiry/producer",
+        "did-1.1/document/verification-method-expiry/validator"
+      ]
+    },
+    {
+      "id": "cid10#verification-methods.9",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/verification-method-expiry/consumer",
+        "did-1.1/document/verification-method-expiry/producer",
+        "did-1.1/document/verification-method-expiry/validator"
+      ]
+    },
+    {
+      "id": "cid10#verification-methods.10",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/verification-method-expiry/consumer",
+        "did-1.1/document/verification-method-expiry/producer",
+        "did-1.1/document/verification-method-expiry/validator"
+      ]
+    },
+    {
+      "id": "cid10#verification-methods.11",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/verification-method-expiry/consumer",
+        "did-1.1/document/verification-method-expiry/producer",
+        "did-1.1/document/verification-method-expiry/validator"
+      ]
+    },
+    {
+      "id": "cid10#verification-material.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/verification-material-single/consumer",
+        "did-1.1/document/verification-material-single/producer",
+        "did-1.1/document/verification-material-single/validator"
+      ]
+    },
+    {
+      "id": "cid10#verification-material.2",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#verification-material.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/representation/consumer-keeps-entries",
+        "did-1.1/representation/producer-serializes-entries"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#Multikey.2",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#Multikey.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/multikey-multibase/consumer",
+        "did-1.1/document/multikey-multibase/producer",
+        "did-1.1/document/multikey-multibase/validator"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.4",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#Multikey.5",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#Multikey.6",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/multikey-p256/consumer",
+        "did-1.1/document/multikey-p256/producer",
+        "did-1.1/document/multikey-p256/validator"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.7",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/multikey-p256/consumer",
+        "did-1.1/document/multikey-p256/producer",
+        "did-1.1/document/multikey-p256/validator"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.8",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/multikey-p384/consumer",
+        "did-1.1/document/multikey-p384/producer",
+        "did-1.1/document/multikey-p384/validator"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.9",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/multikey-ed25519/consumer",
+        "did-1.1/document/multikey-ed25519/producer",
+        "did-1.1/document/multikey-ed25519/validator"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.10",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/multikey-ed25519/consumer",
+        "did-1.1/document/multikey-ed25519/producer",
+        "did-1.1/document/multikey-ed25519/validator"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.11",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/multikey-bls12-381/consumer",
+        "did-1.1/document/multikey-bls12-381/producer",
+        "did-1.1/document/multikey-bls12-381/validator"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.12",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/multikey-bls12-381/consumer",
+        "did-1.1/document/multikey-bls12-381/producer",
+        "did-1.1/document/multikey-bls12-381/validator"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.13",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/multikey-sm2/consumer",
+        "did-1.1/document/multikey-sm2/producer",
+        "did-1.1/document/multikey-sm2/validator"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.14",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/multikey-sm2/consumer",
+        "did-1.1/document/multikey-sm2/producer",
+        "did-1.1/document/multikey-sm2/validator"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.15",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#Multikey.16",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#Multikey.17",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#Multikey.18",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#Multikey.19",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#Multikey.20",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#Multikey.21",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#Multikey.22",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#Multikey.23",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#Multikey.24",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#JsonWebKey.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#JsonWebKey.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/jwk-structure/consumer",
+        "did-1.1/document/jwk-structure/producer",
+        "did-1.1/document/jwk-structure/validator"
+      ]
+    },
+    {
+      "id": "cid10#JsonWebKey.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/jwk-structure/consumer",
+        "did-1.1/document/jwk-structure/producer",
+        "did-1.1/document/jwk-structure/validator"
+      ]
+    },
+    {
+      "id": "cid10#JsonWebKey.4",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/jwk-private-members/consumer",
+        "did-1.1/document/jwk-private-members/producer",
+        "did-1.1/document/jwk-private-members/validator"
+      ]
+    },
+    {
+      "id": "cid10#JsonWebKey.5",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#JsonWebKey.6",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#JsonWebKey.7",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#JsonWebKey.8",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/jwk-crv/consumer",
+        "did-1.1/document/jwk-crv/producer",
+        "did-1.1/document/jwk-crv/validator"
+      ]
+    },
+    {
+      "id": "cid10#JsonWebKey.9",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#JsonWebKey.10",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#JsonWebKey.11",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#JsonWebKey.12",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#JsonWebKey.13",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/jwk-private-members/consumer",
+        "did-1.1/document/jwk-private-members/producer",
+        "did-1.1/document/jwk-private-members/validator"
+      ]
+    },
+    {
+      "id": "cid10#verification-relationships.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/verification-relationship-extension/consumer",
+        "did-1.1/document/verification-relationship-extension/producer",
+        "did-1.1/document/verification-relationship-extension/validator"
+      ]
+    },
+    {
+      "id": "cid10#verification-relationships.2",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#authentication.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/relationship-authentication/consumer",
+        "did-1.1/document/relationship-authentication/producer",
+        "did-1.1/document/relationship-authentication/validator"
+      ]
+    },
+    {
+      "id": "cid10#authentication.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/relationship-authentication/consumer",
+        "did-1.1/document/relationship-authentication/producer",
+        "did-1.1/document/relationship-authentication/validator"
+      ]
+    },
+    {
+      "id": "cid10#authentication.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/relationship-authentication/consumer",
+        "did-1.1/document/relationship-authentication/producer",
+        "did-1.1/document/relationship-authentication/validator"
+      ]
+    },
+    {
+      "id": "cid10#assertion.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/relationship-assertionMethod/consumer",
+        "did-1.1/document/relationship-assertionMethod/producer",
+        "did-1.1/document/relationship-assertionMethod/validator"
+      ]
+    },
+    {
+      "id": "cid10#assertion.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/relationship-assertionMethod/consumer",
+        "did-1.1/document/relationship-assertionMethod/producer",
+        "did-1.1/document/relationship-assertionMethod/validator"
+      ]
+    },
+    {
+      "id": "cid10#assertion.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/relationship-assertionMethod/consumer",
+        "did-1.1/document/relationship-assertionMethod/producer",
+        "did-1.1/document/relationship-assertionMethod/validator"
+      ]
+    },
+    {
+      "id": "cid10#key-agreement.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/relationship-keyAgreement/consumer",
+        "did-1.1/document/relationship-keyAgreement/producer",
+        "did-1.1/document/relationship-keyAgreement/validator"
+      ]
+    },
+    {
+      "id": "cid10#key-agreement.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/relationship-keyAgreement/consumer",
+        "did-1.1/document/relationship-keyAgreement/producer",
+        "did-1.1/document/relationship-keyAgreement/validator"
+      ]
+    },
+    {
+      "id": "cid10#key-agreement.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/relationship-keyAgreement/consumer",
+        "did-1.1/document/relationship-keyAgreement/producer",
+        "did-1.1/document/relationship-keyAgreement/validator"
+      ]
+    },
+    {
+      "id": "cid10#capability-invocation.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/relationship-capabilityInvocation/consumer",
+        "did-1.1/document/relationship-capabilityInvocation/producer",
+        "did-1.1/document/relationship-capabilityInvocation/validator"
+      ]
+    },
+    {
+      "id": "cid10#capability-invocation.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/relationship-capabilityInvocation/consumer",
+        "did-1.1/document/relationship-capabilityInvocation/producer",
+        "did-1.1/document/relationship-capabilityInvocation/validator"
+      ]
+    },
+    {
+      "id": "cid10#capability-invocation.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/relationship-capabilityInvocation/consumer",
+        "did-1.1/document/relationship-capabilityInvocation/producer",
+        "did-1.1/document/relationship-capabilityInvocation/validator"
+      ]
+    },
+    {
+      "id": "cid10#capability-delegation.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/relationship-capabilityDelegation/consumer",
+        "did-1.1/document/relationship-capabilityDelegation/producer",
+        "did-1.1/document/relationship-capabilityDelegation/validator"
+      ]
+    },
+    {
+      "id": "cid10#capability-delegation.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/relationship-capabilityDelegation/consumer",
+        "did-1.1/document/relationship-capabilityDelegation/producer",
+        "did-1.1/document/relationship-capabilityDelegation/validator"
+      ]
+    },
+    {
+      "id": "cid10#capability-delegation.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/document/relationship-capabilityDelegation/consumer",
+        "did-1.1/document/relationship-capabilityDelegation/producer",
+        "did-1.1/document/relationship-capabilityDelegation/validator"
+      ]
+    },
+    {
+      "id": "cid10#multibase-0.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#multibase-0.2",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#multibase-0.3",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#multibase-0.4",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#multibase-0.5",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#multihash.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#multihash.2",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#multihash.3",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#algorithms.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-encode.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-encode.2",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-encode.3",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-encode.4",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-encode.5",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-encode.6",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-encode.7",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-encode.8",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-encode.9",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-encode.10",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-encode.11",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-encode.12",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-encode.13",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-encode.14",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-encode.15",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-encode.16",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-decode.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-decode.2",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-decode.3",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-decode.4",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-decode.5",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-decode.6",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-decode.7",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-decode.8",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-decode.9",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-decode.10",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-decode.11",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-decode.12",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-decode.13",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-decode.14",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-decode.15",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#base-decode.16",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.1",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.2",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.3",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.4",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.5",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.6",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.7",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.8",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.9",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.10",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.11",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.12",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#fragment-resolution.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/fragment-verification-method"
+      ]
+    },
+    {
+      "id": "cid10#fragment-resolution.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/fragment-verification-method"
+      ]
+    },
+    {
+      "id": "cid10#fragment-resolution.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/fragment-verification-method",
+        "did-1.1/dereferencing/fragment-relative-id"
+      ]
+    },
+    {
+      "id": "cid10#fragment-resolution.4",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/fragment-verification-method",
+        "did-1.1/dereferencing/fragment-relative-id",
+        "did-1.1/dereferencing/fragment-nested"
+      ]
+    },
+    {
+      "id": "cid10#fragment-resolution.5",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/fragment-verification-method",
+        "did-1.1/dereferencing/fragment-unknown"
+      ]
+    },
+    {
+      "id": "cid10#processing-errors.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#processing-errors.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/result-format",
+        "did-1.1/dereferencing/result-format"
+      ],
+      "findings": [
+        {
+          "case": "did-1.1/resolution/result-format",
+          "statement": "cid10#processing-errors.2",
+          "verdict": "NOT_APPLICABLE",
+          "detail": "no result of the scenarios concerned this statement"
+        }
+      ]
+    },
+    {
+      "id": "cid10#processing-errors.3",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#processing-errors.4",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#vocabulary.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#json-ld-context.1",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#context-injection.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "cid10#context-injection.2",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#conformance.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-parameters.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/syntax/did-parameter-values"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-parameters.2",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-parameters.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/invalid-option-version-time-fraction",
+        "did-1.1/resolution/invalid-option-version-time-offset",
+        "did-1.1/resolution/invalid-option-version-time-syntax",
+        "did-1.1/resolution/version-time"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-parameters.4",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#datetime.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/invalid-option-version-time-syntax",
+        "did-1.1/resolution/version-time"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#datetime.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/invalid-option-version-time-fraction",
+        "did-1.1/resolution/invalid-option-version-time-offset",
+        "did-1.1/resolution/version-time"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/found"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/invalid-did-method-case",
+        "did-1.1/resolution/invalid-did-url",
+        "did-1.1/resolution/invalid-did-percent"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/found"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving.4",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/invalid-did-method-case",
+        "did-1.1/resolution/invalid-did-url",
+        "did-1.1/resolution/invalid-did-percent",
+        "did-1.1/resolution/method-not-supported",
+        "did-1.1/resolution/option-not-supported",
+        "did-1.1/resolution/invalid-option-expand",
+        "did-1.1/resolution/invalid-option-version-time-fraction",
+        "did-1.1/resolution/invalid-option-version-time-offset",
+        "did-1.1/resolution/invalid-option-version-time-syntax",
+        "did-1.1/resolution/invalid-option-accept",
+        "did-1.1/resolution/not-found",
+        "did-1.1/resolution/internal-error"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving.5",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/invalid-did-method-case",
+        "did-1.1/resolution/invalid-did-url",
+        "did-1.1/resolution/invalid-did-percent",
+        "did-1.1/resolution/method-not-supported",
+        "did-1.1/resolution/option-not-supported",
+        "did-1.1/resolution/invalid-option-expand",
+        "did-1.1/resolution/invalid-option-version-time-fraction",
+        "did-1.1/resolution/invalid-option-version-time-offset",
+        "did-1.1/resolution/invalid-option-version-time-syntax",
+        "did-1.1/resolution/invalid-option-accept",
+        "did-1.1/resolution/not-found",
+        "did-1.1/resolution/internal-error"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving.6",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/found"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving.7",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/found",
+        "did-1.1/resolution/id-mismatch"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving.8",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/invalid-did-method-case",
+        "did-1.1/resolution/invalid-did-url",
+        "did-1.1/resolution/invalid-did-percent",
+        "did-1.1/resolution/method-not-supported",
+        "did-1.1/resolution/option-not-supported",
+        "did-1.1/resolution/invalid-option-expand",
+        "did-1.1/resolution/invalid-option-version-time-fraction",
+        "did-1.1/resolution/invalid-option-version-time-offset",
+        "did-1.1/resolution/invalid-option-version-time-syntax",
+        "did-1.1/resolution/invalid-option-accept",
+        "did-1.1/resolution/not-found",
+        "did-1.1/resolution/malformed-document",
+        "did-1.1/resolution/internal-error",
+        "did-1.1/resolution/result-format"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving.9",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/found"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving.10",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/invalid-did-method-case",
+        "did-1.1/resolution/invalid-did-url",
+        "did-1.1/resolution/invalid-did-percent",
+        "did-1.1/resolution/method-not-supported",
+        "did-1.1/resolution/option-not-supported",
+        "did-1.1/resolution/invalid-option-expand",
+        "did-1.1/resolution/invalid-option-version-time-fraction",
+        "did-1.1/resolution/invalid-option-version-time-offset",
+        "did-1.1/resolution/invalid-option-version-time-syntax",
+        "did-1.1/resolution/invalid-option-accept",
+        "did-1.1/resolution/not-found",
+        "did-1.1/resolution/internal-error",
+        "did-1.1/resolution/result-format"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-options.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-options.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/invalid-option-accept",
+        "did-1.1/resolution/option-accept"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-options.3",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-options.4",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/found"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.2",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/result-format"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.4",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.5",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.6",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.7",
+      "scope": "checked",
+      "verdict": "NOT_APPLICABLE",
+      "cases": [
+        "did-1.1/resolution/result-format"
+      ],
+      "findings": [
+        {
+          "case": "did-1.1/resolution/result-format",
+          "statement": "res10-crd20261001#did-resolution-metadata.7",
+          "verdict": "NOT_APPLICABLE",
+          "detail": "no result of the scenarios concerned this statement"
+        }
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.2",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/result-format",
+        "did-1.1/dereferencing/result-format"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.4",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.5",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/result-format",
+        "did-1.1/dereferencing/result-format"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.6",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/deactivated"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.7",
+      "scope": "checked",
+      "verdict": "NOT_APPLICABLE",
+      "cases": [
+        "did-1.1/resolution/result-format",
+        "did-1.1/dereferencing/result-format"
+      ],
+      "findings": [
+        {
+          "case": "did-1.1/resolution/result-format",
+          "statement": "res10-crd20261001#did-document-metadata.7",
+          "verdict": "NOT_APPLICABLE",
+          "detail": "no result of the scenarios concerned this statement"
+        },
+        {
+          "case": "did-1.1/dereferencing/result-format",
+          "statement": "res10-crd20261001#did-document-metadata.7",
+          "verdict": "NOT_APPLICABLE",
+          "detail": "no result of the scenarios concerned this statement"
+        }
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.8",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.9",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/result-format",
+        "did-1.1/dereferencing/result-format"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.10",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.11",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/result-format",
+        "did-1.1/dereferencing/result-format"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.12",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.13",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/result-format",
+        "did-1.1/dereferencing/result-format"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.14",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.15",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/equivalent-ids",
+        "did-1.1/resolution/result-format",
+        "did-1.1/dereferencing/result-format"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.16",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/result-format",
+        "did-1.1/dereferencing/result-format"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.17",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.18",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.19",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.20",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/equivalent-ids",
+        "did-1.1/resolution/result-format",
+        "did-1.1/dereferencing/result-format"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.21",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/result-format",
+        "did-1.1/dereferencing/result-format"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.22",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.23",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.24",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/equivalent-ids",
+        "did-1.1/resolution/result-format",
+        "did-1.1/dereferencing/result-format"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/invalid-did-method-case",
+        "did-1.1/resolution/invalid-did-url",
+        "did-1.1/resolution/invalid-did-percent"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/invalid-did-method-case",
+        "did-1.1/resolution/invalid-did-url",
+        "did-1.1/resolution/invalid-did-percent"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/invalid-did-method-case",
+        "did-1.1/resolution/invalid-did-url",
+        "did-1.1/resolution/invalid-did-percent"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.4",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/invalid-did-method-case",
+        "did-1.1/resolution/invalid-did-url",
+        "did-1.1/resolution/invalid-did-percent"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.5",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/method-not-supported"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.6",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/method-not-supported"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.7",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/method-not-supported"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.8",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/method-not-supported"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.9",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/option-not-supported"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.10",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/option-not-supported"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.11",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/option-not-supported"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.12",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/option-not-supported"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.13",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/invalid-option-expand",
+        "did-1.1/resolution/invalid-option-version-time-fraction",
+        "did-1.1/resolution/invalid-option-version-time-offset",
+        "did-1.1/resolution/invalid-option-version-time-syntax",
+        "did-1.1/resolution/invalid-option-accept"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.14",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/invalid-option-expand",
+        "did-1.1/resolution/invalid-option-version-time-fraction"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.15",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/invalid-option-expand"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.16",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/invalid-option-expand"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.17",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/found",
+        "did-1.1/resolution/not-found",
+        "did-1.1/resolution/version-id"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.18",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/not-found"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.19",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/not-found"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.20",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/not-found"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.21",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/not-found"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.22",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/deactivated"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.23",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/deactivated"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.24",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/deactivated"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.25",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/deactivated"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.26",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/found",
+        "did-1.1/resolution/malformed-document",
+        "did-1.1/resolution/wrong-media-type"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.27",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/expand-relative-urls"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.28",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/expand-relative-urls"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.29",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/expand-relative-urls"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.30",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/expand-relative-urls"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.31",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/expand-relative-urls"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.32",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/found"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.33",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/found"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.34",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/found"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.35",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/found"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.36",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/internal-error"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.37",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/internal-error"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.38",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/internal-error"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.39",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/internal-error"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/document"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.2",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/fragment-verification-method"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.4",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.5",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/document"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.6",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/invalid-did-url-space",
+        "did-1.1/dereferencing/invalid-did-url-fragment",
+        "did-1.1/dereferencing/not-found",
+        "did-1.1/dereferencing/representation-not-supported",
+        "did-1.1/dereferencing/path-not-dereferenceable"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.7",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/invalid-did-url-space",
+        "did-1.1/dereferencing/invalid-did-url-fragment",
+        "did-1.1/dereferencing/not-found",
+        "did-1.1/dereferencing/representation-not-supported",
+        "did-1.1/dereferencing/path-not-dereferenceable"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.8",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/document"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.9",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.10",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/invalid-did-url-space",
+        "did-1.1/dereferencing/invalid-did-url-fragment",
+        "did-1.1/dereferencing/not-found",
+        "did-1.1/dereferencing/representation-not-supported",
+        "did-1.1/dereferencing/path-not-dereferenceable",
+        "did-1.1/dereferencing/result-format"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.11",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/document"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.12",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/document",
+        "did-1.1/dereferencing/document-metadata"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.13",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/invalid-did-url-space",
+        "did-1.1/dereferencing/invalid-did-url-fragment",
+        "did-1.1/dereferencing/not-found",
+        "did-1.1/dereferencing/representation-not-supported",
+        "did-1.1/dereferencing/path-not-dereferenceable",
+        "did-1.1/dereferencing/result-format"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-options.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-options.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/invalid-accept"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-options.3",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-options.4",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/verification-relationship-not-ascii"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-options.5",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/verification-relationship-authorized",
+        "did-1.1/dereferencing/verification-relationship-unauthorized",
+        "did-1.1/dereferencing/verification-relationship-not-a-method"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-metadata.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-metadata.2",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-metadata.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/result-format"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-metadata.4",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/invalid-did-url-space",
+        "did-1.1/dereferencing/invalid-did-url-fragment",
+        "did-1.1/dereferencing/not-found",
+        "did-1.1/dereferencing/representation-not-supported",
+        "did-1.1/dereferencing/path-not-dereferenceable"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-metadata.5",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-metadata.6",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-metadata.7",
+      "scope": "checked",
+      "verdict": "NOT_APPLICABLE",
+      "cases": [
+        "did-1.1/dereferencing/result-format"
+      ],
+      "findings": [
+        {
+          "case": "did-1.1/dereferencing/result-format",
+          "statement": "res10-crd20261001#did-url-dereferencing-metadata.7",
+          "verdict": "NOT_APPLICABLE",
+          "detail": "no result of the scenarios concerned this statement"
+        }
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-url-content-metadata.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/invalid-did-url-space",
+        "did-1.1/dereferencing/invalid-did-url-fragment"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/invalid-did-url-space",
+        "did-1.1/dereferencing/invalid-did-url-fragment"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/invalid-did-url-space",
+        "did-1.1/dereferencing/invalid-did-url-fragment"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.4",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/invalid-did-url-space",
+        "did-1.1/dereferencing/invalid-did-url-fragment"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.5",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/document",
+        "did-1.1/dereferencing/not-found",
+        "did-1.1/dereferencing/version-parameter"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.6",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/not-found"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.7",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/not-found"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.8",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/not-found"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.9",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/not-found"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.10",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/document"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.11",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/fragment-verification-method"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.12",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/document"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.13",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/document"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.14",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/document"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.15",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/document"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.16",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/service-by-id"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.17",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/service-by-id"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.18",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/service-by-id"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.19",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/service-by-type"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.20",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/relative-ref-absolute-path"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.21",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/relative-ref-absolute-path"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.22",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/relative-ref-map-endpoint"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.23",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/relative-ref-absolute-path"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.24",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/relative-ref-set-endpoint"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.25",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/relative-ref-absolute-path",
+        "did-1.1/dereferencing/relative-ref-relative-path",
+        "did-1.1/dereferencing/service-endpoint-fragment"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.26",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/relative-ref-absolute-path",
+        "did-1.1/dereferencing/relative-ref-relative-path"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.27",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/relative-ref-absolute-path",
+        "did-1.1/dereferencing/relative-ref-relative-path"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.28",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/relative-ref-absolute-path",
+        "did-1.1/dereferencing/relative-ref-relative-path",
+        "did-1.1/dereferencing/service-endpoint-fragment"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.29",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/service-by-id",
+        "did-1.1/dereferencing/service-accept-did"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.30",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/service-by-id",
+        "did-1.1/dereferencing/service-by-type",
+        "did-1.1/dereferencing/service-accept-did"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.31",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/service-by-id"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.32",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/service-by-id"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.33",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/service-by-id",
+        "did-1.1/dereferencing/service-by-type"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.34",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/service-by-id"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.35",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/relative-ref-absolute-path"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.36",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/relative-ref-absolute-path"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.37",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/relative-ref-absolute-path"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.38",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/relative-ref-absolute-path"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.39",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/relative-ref-absolute-path"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.40",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/representation-not-supported"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.41",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/representation-not-supported"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.42",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/representation-not-supported"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.43",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/representation-not-supported"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.44",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/path-not-dereferenceable"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.45",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.46",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.47",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.48",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.49",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/path-not-dereferenceable"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.50",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/path-not-dereferenceable"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.51",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/path-not-dereferenceable"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.52",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/path-not-dereferenceable"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.1",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/verification-relationship-authorized"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/verification-relationship-authorized"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/verification-relationship-authorized"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.4",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/verification-relationship-not-a-method"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.5",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/verification-relationship-unauthorized"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.6",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/verification-relationship-authorized"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.7",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/service-endpoint-fragment"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.8",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/service-endpoint-has-fragment"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.9",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/service-endpoint-fragment"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.10",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/service-endpoint-fragment"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.11",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/dereferencing/fragment-verification-method"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#metadata-structure.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#metadata-structure.2",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#metadata-structure.3",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#metadata-structure.4",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#metadata-structure.5",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#method-architectures.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#method-architectures.2",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#method-architectures.3",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures.2",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures.3",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures-proxied.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures-proxied.2",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures-proxied.3",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#errors.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#errors.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/result-format",
+        "did-1.1/dereferencing/result-format"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#errors.3",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/result-format",
+        "did-1.1/dereferencing/result-format"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#errors.4",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#errors.5",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#errors.6",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#errors.7",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.1",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.2",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.3",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.4",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.5",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.6",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.7",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.8",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.9",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.10",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.11",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.12",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.13",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.14",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.15",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.16",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.17",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.18",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.19",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.20",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.21",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.22",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.23",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.24",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.25",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.26",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.27",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.28",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.29",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.30",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.31",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.32",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.33",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.34",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.35",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.36",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.37",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.38",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.39",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.40",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.41",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.42",
+      "scope": "pending",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#caching.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#caching.2",
+      "scope": "checked",
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/resolution/no-cache"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#versioning.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    },
+    {
+      "id": "res10-crd20261001#vdr-forks.1",
+      "scope": "not-checkable",
+      "verdict": "NOT_RUN"
+    }
+  ],
+  "cases": [
+    {
+      "id": "did-1.1/syntax/did",
+      "statements": [
+        "did11-cr20260305#did-syntax.1"
+      ],
+      "verdict": "PASS",
+      "observations": 12
+    },
+    {
+      "id": "did-1.1/syntax/method-specific-id-colons",
+      "statements": [
+        "did11-cr20260305#method-syntax.9"
+      ],
+      "verdict": "PASS",
+      "observations": 4
+    },
+    {
+      "id": "did-1.1/syntax/did-url",
+      "statements": [
+        "did11-cr20260305#did-url-syntax.1"
+      ],
+      "verdict": "PASS",
+      "observations": 10
+    },
+    {
+      "id": "did-1.1/syntax/did-parameter-values",
+      "statements": [
+        "res10-crd20261001#did-parameters.1"
+      ],
+      "verdict": "PASS",
+      "observations": 4
+    },
+    {
+      "id": "did-1.1/document/subject-id/consumer",
+      "statements": [
+        "cid10#subjects.1",
+        "cid10#subjects.2",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 14
+    },
+    {
+      "id": "did-1.1/document/subject-id/producer",
+      "statements": [
+        "cid10#subjects.1",
+        "cid10#subjects.2",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 11
+    },
+    {
+      "id": "did-1.1/document/subject-id/validator",
+      "statements": [
+        "cid10#subjects.1",
+        "cid10#subjects.2"
+      ],
+      "verdict": "PASS",
+      "observations": 8
+    },
+    {
+      "id": "did-1.1/document/controller/consumer",
+      "statements": [
+        "cid10#controllers.1",
+        "cid10#controllers.3",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 18
+    },
+    {
+      "id": "did-1.1/document/controller/producer",
+      "statements": [
+        "cid10#controllers.1",
+        "cid10#controllers.3",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 15
+    },
+    {
+      "id": "did-1.1/document/controller/validator",
+      "statements": [
+        "cid10#controllers.1",
+        "cid10#controllers.3"
+      ],
+      "verdict": "PASS",
+      "observations": 12
+    },
+    {
+      "id": "did-1.1/document/also-known-as/consumer",
+      "statements": [
+        "cid10#also-known-as.1",
+        "cid10#also-known-as.2",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 16
+    },
+    {
+      "id": "did-1.1/document/also-known-as/producer",
+      "statements": [
+        "cid10#also-known-as.1",
+        "cid10#also-known-as.2",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 13
+    },
+    {
+      "id": "did-1.1/document/also-known-as/validator",
+      "statements": [
+        "cid10#also-known-as.1",
+        "cid10#also-known-as.2"
+      ],
+      "verdict": "PASS",
+      "observations": 10
+    },
+    {
+      "id": "did-1.1/document/service-structure/consumer",
+      "statements": [
+        "cid10#services.1",
+        "cid10#services.2",
+        "cid10#services.3",
+        "cid10#services.4",
+        "cid10#services.8",
+        "cid10#services.11",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 50
+    },
+    {
+      "id": "did-1.1/document/service-structure/producer",
+      "statements": [
+        "cid10#services.1",
+        "cid10#services.2",
+        "cid10#services.3",
+        "cid10#services.4",
+        "cid10#services.8",
+        "cid10#services.11",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 46
+    },
+    {
+      "id": "did-1.1/document/service-structure/validator",
+      "statements": [
+        "cid10#services.1",
+        "cid10#services.2",
+        "cid10#services.3",
+        "cid10#services.4",
+        "cid10#services.8",
+        "cid10#services.11"
+      ],
+      "verdict": "PASS",
+      "observations": 42
+    },
+    {
+      "id": "did-1.1/document/service-id/consumer",
+      "statements": [
+        "cid10#services.6",
+        "cid10#services.7",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 14
+    },
+    {
+      "id": "did-1.1/document/service-id/producer",
+      "statements": [
+        "cid10#services.6",
+        "cid10#services.7",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 12
+    },
+    {
+      "id": "did-1.1/document/service-id/validator",
+      "statements": [
+        "cid10#services.6",
+        "cid10#services.7"
+      ],
+      "verdict": "PASS",
+      "observations": 10
+    },
+    {
+      "id": "did-1.1/document/service-type/consumer",
+      "statements": [
+        "cid10#services.9",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 8
+    },
+    {
+      "id": "did-1.1/document/service-type/producer",
+      "statements": [
+        "cid10#services.9",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 6
+    },
+    {
+      "id": "did-1.1/document/service-type/validator",
+      "statements": [
+        "cid10#services.9"
+      ],
+      "verdict": "PASS",
+      "observations": 4
+    },
+    {
+      "id": "did-1.1/document/service-endpoint/consumer",
+      "statements": [
+        "cid10#services.12",
+        "cid10#services.13",
+        "did11-cr20260305#core-properties.1",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 34
+    },
+    {
+      "id": "did-1.1/document/service-endpoint/producer",
+      "statements": [
+        "cid10#services.12",
+        "cid10#services.13",
+        "did11-cr20260305#core-properties.1",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 29
+    },
+    {
+      "id": "did-1.1/document/service-endpoint/validator",
+      "statements": [
+        "cid10#services.12",
+        "cid10#services.13",
+        "did11-cr20260305#core-properties.1"
+      ],
+      "verdict": "PASS",
+      "observations": 24
+    },
+    {
+      "id": "did-1.1/document/verification-method-structure/consumer",
+      "statements": [
+        "cid10#verification-methods.1",
+        "cid10#verification-methods.2",
+        "cid10#verification-methods.3",
+        "cid10#verification-methods.4",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 42
+    },
+    {
+      "id": "did-1.1/document/verification-method-structure/producer",
+      "statements": [
+        "cid10#verification-methods.1",
+        "cid10#verification-methods.2",
+        "cid10#verification-methods.3",
+        "cid10#verification-methods.4",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 37
+    },
+    {
+      "id": "did-1.1/document/verification-method-structure/validator",
+      "statements": [
+        "cid10#verification-methods.1",
+        "cid10#verification-methods.2",
+        "cid10#verification-methods.3",
+        "cid10#verification-methods.4"
+      ],
+      "verdict": "PASS",
+      "observations": 32
+    },
+    {
+      "id": "did-1.1/document/verification-method-id-url/consumer",
+      "statements": [
+        "cid10#verification-methods.5",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 7
+    },
+    {
+      "id": "did-1.1/document/verification-method-id-url/producer",
+      "statements": [
+        "cid10#verification-methods.5",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 5
+    },
+    {
+      "id": "did-1.1/document/verification-method-id-url/validator",
+      "statements": [
+        "cid10#verification-methods.5"
+      ],
+      "verdict": "PASS",
+      "observations": 3
+    },
+    {
+      "id": "did-1.1/document/verification-method-id-did-url/consumer",
+      "statements": [
+        "did11-cr20260305#verification-methods.1",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 11
+    },
+    {
+      "id": "did-1.1/document/verification-method-id-did-url/producer",
+      "statements": [
+        "did11-cr20260305#verification-methods.1",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 8
+    },
+    {
+      "id": "did-1.1/document/verification-method-id-did-url/validator",
+      "statements": [
+        "did11-cr20260305#verification-methods.1"
+      ],
+      "verdict": "PASS",
+      "observations": 5
+    },
+    {
+      "id": "did-1.1/document/verification-method-controller/consumer",
+      "statements": [
+        "cid10#verification-methods.7",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 7
+    },
+    {
+      "id": "did-1.1/document/verification-method-controller/producer",
+      "statements": [
+        "cid10#verification-methods.7",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 5
+    },
+    {
+      "id": "did-1.1/document/verification-method-controller/validator",
+      "statements": [
+        "cid10#verification-methods.7"
+      ],
+      "verdict": "PASS",
+      "observations": 3
+    },
+    {
+      "id": "did-1.1/document/verification-method-type/consumer",
+      "statements": [
+        "cid10#verification-methods.6",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 7
+    },
+    {
+      "id": "did-1.1/document/verification-method-type/producer",
+      "statements": [
+        "cid10#verification-methods.6",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 5
+    },
+    {
+      "id": "did-1.1/document/verification-method-type/validator",
+      "statements": [
+        "cid10#verification-methods.6"
+      ],
+      "verdict": "PASS",
+      "observations": 3
+    },
+    {
+      "id": "did-1.1/document/verification-method-expiry/consumer",
+      "statements": [
+        "cid10#verification-methods.8",
+        "cid10#verification-methods.9",
+        "cid10#verification-methods.10",
+        "cid10#verification-methods.11",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 36
+    },
+    {
+      "id": "did-1.1/document/verification-method-expiry/producer",
+      "statements": [
+        "cid10#verification-methods.8",
+        "cid10#verification-methods.9",
+        "cid10#verification-methods.10",
+        "cid10#verification-methods.11",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 32
+    },
+    {
+      "id": "did-1.1/document/verification-method-expiry/validator",
+      "statements": [
+        "cid10#verification-methods.8",
+        "cid10#verification-methods.9",
+        "cid10#verification-methods.10",
+        "cid10#verification-methods.11"
+      ],
+      "verdict": "PASS",
+      "observations": 28
+    },
+    {
+      "id": "did-1.1/document/verification-material-single/consumer",
+      "statements": [
+        "cid10#verification-material.1",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 4
+    },
+    {
+      "id": "did-1.1/document/verification-material-single/producer",
+      "statements": [
+        "cid10#verification-material.1",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 3
+    },
+    {
+      "id": "did-1.1/document/verification-material-single/validator",
+      "statements": [
+        "cid10#verification-material.1"
+      ],
+      "verdict": "PASS",
+      "observations": 2
+    },
+    {
+      "id": "did-1.1/document/relationship-authentication/consumer",
+      "statements": [
+        "cid10#authentication.1",
+        "cid10#authentication.2",
+        "cid10#authentication.3",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 24
+    },
+    {
+      "id": "did-1.1/document/relationship-authentication/producer",
+      "statements": [
+        "cid10#authentication.1",
+        "cid10#authentication.2",
+        "cid10#authentication.3",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 21
+    },
+    {
+      "id": "did-1.1/document/relationship-authentication/validator",
+      "statements": [
+        "cid10#authentication.1",
+        "cid10#authentication.2",
+        "cid10#authentication.3"
+      ],
+      "verdict": "PASS",
+      "observations": 18
+    },
+    {
+      "id": "did-1.1/document/relationship-assertionMethod/consumer",
+      "statements": [
+        "cid10#assertion.1",
+        "cid10#assertion.2",
+        "cid10#assertion.3",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 24
+    },
+    {
+      "id": "did-1.1/document/relationship-assertionMethod/producer",
+      "statements": [
+        "cid10#assertion.1",
+        "cid10#assertion.2",
+        "cid10#assertion.3",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 21
+    },
+    {
+      "id": "did-1.1/document/relationship-assertionMethod/validator",
+      "statements": [
+        "cid10#assertion.1",
+        "cid10#assertion.2",
+        "cid10#assertion.3"
+      ],
+      "verdict": "PASS",
+      "observations": 18
+    },
+    {
+      "id": "did-1.1/document/relationship-keyAgreement/consumer",
+      "statements": [
+        "cid10#key-agreement.1",
+        "cid10#key-agreement.2",
+        "cid10#key-agreement.3",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 24
+    },
+    {
+      "id": "did-1.1/document/relationship-keyAgreement/producer",
+      "statements": [
+        "cid10#key-agreement.1",
+        "cid10#key-agreement.2",
+        "cid10#key-agreement.3",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 21
+    },
+    {
+      "id": "did-1.1/document/relationship-keyAgreement/validator",
+      "statements": [
+        "cid10#key-agreement.1",
+        "cid10#key-agreement.2",
+        "cid10#key-agreement.3"
+      ],
+      "verdict": "PASS",
+      "observations": 18
+    },
+    {
+      "id": "did-1.1/document/relationship-capabilityInvocation/consumer",
+      "statements": [
+        "cid10#capability-invocation.1",
+        "cid10#capability-invocation.2",
+        "cid10#capability-invocation.3",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 24
+    },
+    {
+      "id": "did-1.1/document/relationship-capabilityInvocation/producer",
+      "statements": [
+        "cid10#capability-invocation.1",
+        "cid10#capability-invocation.2",
+        "cid10#capability-invocation.3",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 21
+    },
+    {
+      "id": "did-1.1/document/relationship-capabilityInvocation/validator",
+      "statements": [
+        "cid10#capability-invocation.1",
+        "cid10#capability-invocation.2",
+        "cid10#capability-invocation.3"
+      ],
+      "verdict": "PASS",
+      "observations": 18
+    },
+    {
+      "id": "did-1.1/document/relationship-capabilityDelegation/consumer",
+      "statements": [
+        "cid10#capability-delegation.1",
+        "cid10#capability-delegation.2",
+        "cid10#capability-delegation.3",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 24
+    },
+    {
+      "id": "did-1.1/document/relationship-capabilityDelegation/producer",
+      "statements": [
+        "cid10#capability-delegation.1",
+        "cid10#capability-delegation.2",
+        "cid10#capability-delegation.3",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 21
+    },
+    {
+      "id": "did-1.1/document/relationship-capabilityDelegation/validator",
+      "statements": [
+        "cid10#capability-delegation.1",
+        "cid10#capability-delegation.2",
+        "cid10#capability-delegation.3"
+      ],
+      "verdict": "PASS",
+      "observations": 18
+    },
+    {
+      "id": "did-1.1/document/verification-relationship-extension/consumer",
+      "statements": [
+        "cid10#verification-relationships.1"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
+      "id": "did-1.1/document/verification-relationship-extension/producer",
+      "statements": [
+        "cid10#verification-relationships.1"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
+      "id": "did-1.1/document/verification-relationship-extension/validator",
+      "statements": [
+        "cid10#verification-relationships.1"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
+      "id": "did-1.1/document/multikey-multibase/consumer",
+      "statements": [
+        "cid10#Multikey.3",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 7
+    },
+    {
+      "id": "did-1.1/document/multikey-multibase/producer",
+      "statements": [
+        "cid10#Multikey.3",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 5
+    },
+    {
+      "id": "did-1.1/document/multikey-multibase/validator",
+      "statements": [
+        "cid10#Multikey.3"
+      ],
+      "verdict": "PASS",
+      "observations": 3
+    },
+    {
+      "id": "did-1.1/document/multikey-ed25519/consumer",
+      "statements": [
+        "cid10#Multikey.9",
+        "cid10#Multikey.10",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 10
+    },
+    {
+      "id": "did-1.1/document/multikey-ed25519/producer",
+      "statements": [
+        "cid10#Multikey.9",
+        "cid10#Multikey.10",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 8
+    },
+    {
+      "id": "did-1.1/document/multikey-ed25519/validator",
+      "statements": [
+        "cid10#Multikey.9",
+        "cid10#Multikey.10"
+      ],
+      "verdict": "PASS",
+      "observations": 6
+    },
+    {
+      "id": "did-1.1/document/multikey-p256/consumer",
+      "statements": [
+        "cid10#Multikey.6",
+        "cid10#Multikey.7",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 10
+    },
+    {
+      "id": "did-1.1/document/multikey-p256/producer",
+      "statements": [
+        "cid10#Multikey.6",
+        "cid10#Multikey.7",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 8
+    },
+    {
+      "id": "did-1.1/document/multikey-p256/validator",
+      "statements": [
+        "cid10#Multikey.6",
+        "cid10#Multikey.7"
+      ],
+      "verdict": "PASS",
+      "observations": 6
+    },
+    {
+      "id": "did-1.1/document/multikey-p384/consumer",
+      "statements": [
+        "cid10#Multikey.8",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 4
+    },
+    {
+      "id": "did-1.1/document/multikey-p384/producer",
+      "statements": [
+        "cid10#Multikey.8",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 3
+    },
+    {
+      "id": "did-1.1/document/multikey-p384/validator",
+      "statements": [
+        "cid10#Multikey.8"
+      ],
+      "verdict": "PASS",
+      "observations": 2
+    },
+    {
+      "id": "did-1.1/document/multikey-bls12-381/consumer",
+      "statements": [
+        "cid10#Multikey.11",
+        "cid10#Multikey.12",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 10
+    },
+    {
+      "id": "did-1.1/document/multikey-bls12-381/producer",
+      "statements": [
+        "cid10#Multikey.11",
+        "cid10#Multikey.12",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 8
+    },
+    {
+      "id": "did-1.1/document/multikey-bls12-381/validator",
+      "statements": [
+        "cid10#Multikey.11",
+        "cid10#Multikey.12"
+      ],
+      "verdict": "PASS",
+      "observations": 6
+    },
+    {
+      "id": "did-1.1/document/multikey-sm2/consumer",
+      "statements": [
+        "cid10#Multikey.13",
+        "cid10#Multikey.14",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 10
+    },
+    {
+      "id": "did-1.1/document/multikey-sm2/producer",
+      "statements": [
+        "cid10#Multikey.13",
+        "cid10#Multikey.14",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 8
+    },
+    {
+      "id": "did-1.1/document/multikey-sm2/validator",
+      "statements": [
+        "cid10#Multikey.13",
+        "cid10#Multikey.14"
+      ],
+      "verdict": "PASS",
+      "observations": 6
+    },
+    {
+      "id": "did-1.1/document/jwk-structure/consumer",
+      "statements": [
+        "cid10#JsonWebKey.2",
+        "cid10#JsonWebKey.3",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 12
+    },
+    {
+      "id": "did-1.1/document/jwk-structure/producer",
+      "statements": [
+        "cid10#JsonWebKey.2",
+        "cid10#JsonWebKey.3",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 10
+    },
+    {
+      "id": "did-1.1/document/jwk-structure/validator",
+      "statements": [
+        "cid10#JsonWebKey.2",
+        "cid10#JsonWebKey.3"
+      ],
+      "verdict": "PASS",
+      "observations": 8
+    },
+    {
+      "id": "did-1.1/document/jwk-private-members/consumer",
+      "statements": [
+        "cid10#JsonWebKey.4",
+        "cid10#JsonWebKey.13",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 10
+    },
+    {
+      "id": "did-1.1/document/jwk-private-members/producer",
+      "statements": [
+        "cid10#JsonWebKey.4",
+        "cid10#JsonWebKey.13",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 8
+    },
+    {
+      "id": "did-1.1/document/jwk-private-members/validator",
+      "statements": [
+        "cid10#JsonWebKey.4",
+        "cid10#JsonWebKey.13"
+      ],
+      "verdict": "PASS",
+      "observations": 6
+    },
+    {
+      "id": "did-1.1/document/jwk-crv/consumer",
+      "statements": [
+        "cid10#JsonWebKey.8",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 4
+    },
+    {
+      "id": "did-1.1/document/jwk-crv/producer",
+      "statements": [
+        "cid10#JsonWebKey.8",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 3
+    },
+    {
+      "id": "did-1.1/document/jwk-crv/validator",
+      "statements": [
+        "cid10#JsonWebKey.8"
+      ],
+      "verdict": "PASS",
+      "observations": 2
+    },
+    {
+      "id": "did-1.1/document/json-ld-context/consumer",
+      "statements": [
+        "did11-cr20260305#json-ld-processors.1",
+        "did11-cr20260305#json-ld-processors.4",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 20
+    },
+    {
+      "id": "did-1.1/document/json-ld-context/producer",
+      "statements": [
+        "did11-cr20260305#json-ld-processors.1",
+        "did11-cr20260305#json-ld-processors.4",
+        "did11-cr20260305#production-and-consumption.12"
+      ],
+      "verdict": "PASS",
+      "observations": 17
+    },
+    {
+      "id": "did-1.1/document/json-ld-context/validator",
+      "statements": [
+        "did11-cr20260305#json-ld-processors.1",
+        "did11-cr20260305#json-ld-processors.4"
+      ],
+      "verdict": "PASS",
+      "observations": 14
+    },
+    {
+      "id": "did-1.1/document/json-root/consumer",
+      "statements": [
+        "did11-cr20260305#consumption.1",
+        "did11-cr20260305#consumption.2",
+        "did11-cr20260305#consumption.3",
+        "did11-cr20260305#production-and-consumption.18",
+        "cid10#conformance.2"
+      ],
+      "verdict": "PASS",
+      "observations": 23
+    },
+    {
+      "id": "did-1.1/document/media-type-decides/consumer",
+      "statements": [
+        "did11-cr20260305#production-and-consumption.15"
+      ],
+      "verdict": "PASS",
+      "observations": 2
+    },
+    {
+      "id": "did-1.1/representation/consumer-keeps-entries",
+      "statements": [
+        "did11-cr20260305#production-and-consumption.17",
+        "did11-cr20260305#consumption.1",
+        "did11-cr20260305#consumption.2",
+        "cid10#verification-material.3"
+      ],
+      "verdict": "PASS",
+      "observations": 4
+    },
+    {
+      "id": "did-1.1/representation/consumer-representation-entries",
+      "statements": [
+        "did11-cr20260305#production-and-consumption.16",
+        "did11-cr20260305#production-and-consumption.17",
+        "did11-cr20260305#production-and-consumption.15"
+      ],
+      "verdict": "PASS",
+      "observations": 3
+    },
+    {
+      "id": "did-1.1/representation/producer-serializes-entries",
+      "statements": [
+        "did11-cr20260305#production-and-consumption.10",
+        "did11-cr20260305#production.1",
+        "did11-cr20260305#production.2",
+        "did11-cr20260305#production.3",
+        "did11-cr20260305#production-and-consumption.11",
+        "did11-cr20260305#production.4",
+        "cid10#verification-material.3"
+      ],
+      "verdict": "PASS",
+      "observations": 7
+    },
+    {
+      "id": "did-1.1/representation/producer-json-ld",
+      "statements": [
+        "did11-cr20260305#json-ld-processors.2",
+        "did11-cr20260305#json-ld-processors.3",
+        "did11-cr20260305#json-ld-processors.4",
+        "did11-cr20260305#json-ld-processors.7"
+      ],
+      "verdict": "PASS",
+      "observations": 4
+    },
+    {
+      "id": "did-1.1/resolution/found",
+      "statements": [
+        "res10-crd20261001#resolving.1",
+        "res10-crd20261001#resolving.3",
+        "res10-crd20261001#did-resolution-options.4",
+        "res10-crd20261001#resolving-algorithm.17",
+        "res10-crd20261001#resolving-algorithm.32",
+        "res10-crd20261001#resolving-algorithm.33",
+        "res10-crd20261001#resolving.7",
+        "res10-crd20261001#resolving-algorithm.34",
+        "res10-crd20261001#resolving.6",
+        "res10-crd20261001#resolving-algorithm.26",
+        "res10-crd20261001#resolving.9",
+        "res10-crd20261001#resolving-algorithm.35"
+      ],
+      "verdict": "PASS",
+      "observations": 12
+    },
+    {
+      "id": "did-1.1/resolution/current-version",
+      "statements": [
+        "cid10#subjects.3"
+      ],
+      "verdict": "PASS",
+      "observations": 2
+    },
+    {
+      "id": "did-1.1/resolution/invalid-did-method-case",
+      "statements": [
+        "res10-crd20261001#resolving-algorithm.1",
+        "res10-crd20261001#resolving-algorithm.2",
+        "res10-crd20261001#resolving.2",
+        "res10-crd20261001#resolving.5",
+        "res10-crd20261001#resolving.4",
+        "res10-crd20261001#resolving-algorithm.3",
+        "res10-crd20261001#resolving.8",
+        "res10-crd20261001#resolving-algorithm.4",
+        "res10-crd20261001#resolving.10"
+      ],
+      "verdict": "PASS",
+      "observations": 9
+    },
+    {
+      "id": "did-1.1/resolution/invalid-did-url",
+      "statements": [
+        "res10-crd20261001#resolving-algorithm.1",
+        "res10-crd20261001#resolving-algorithm.2",
+        "res10-crd20261001#resolving.2",
+        "res10-crd20261001#resolving.5",
+        "res10-crd20261001#resolving.4",
+        "res10-crd20261001#resolving-algorithm.3",
+        "res10-crd20261001#resolving.8",
+        "res10-crd20261001#resolving-algorithm.4",
+        "res10-crd20261001#resolving.10"
+      ],
+      "verdict": "PASS",
+      "observations": 9
+    },
+    {
+      "id": "did-1.1/resolution/invalid-did-percent",
+      "statements": [
+        "res10-crd20261001#resolving-algorithm.1",
+        "res10-crd20261001#resolving-algorithm.2",
+        "res10-crd20261001#resolving.2",
+        "res10-crd20261001#resolving.5",
+        "res10-crd20261001#resolving.4",
+        "res10-crd20261001#resolving-algorithm.3",
+        "res10-crd20261001#resolving.8",
+        "res10-crd20261001#resolving-algorithm.4",
+        "res10-crd20261001#resolving.10"
+      ],
+      "verdict": "PASS",
+      "observations": 9
+    },
+    {
+      "id": "did-1.1/resolution/method-not-supported",
+      "statements": [
+        "res10-crd20261001#resolving-algorithm.5",
+        "res10-crd20261001#resolving-algorithm.6",
+        "res10-crd20261001#resolving.5",
+        "res10-crd20261001#resolving.4",
+        "res10-crd20261001#resolving-algorithm.7",
+        "res10-crd20261001#resolving.8",
+        "res10-crd20261001#resolving-algorithm.8",
+        "res10-crd20261001#resolving.10"
+      ],
+      "verdict": "PASS",
+      "observations": 8
+    },
+    {
+      "id": "did-1.1/resolution/option-not-supported",
+      "statements": [
+        "res10-crd20261001#resolving-algorithm.9",
+        "res10-crd20261001#resolving-algorithm.10",
+        "res10-crd20261001#resolving.5",
+        "res10-crd20261001#resolving.4",
+        "res10-crd20261001#resolving-algorithm.11",
+        "res10-crd20261001#resolving.8",
+        "res10-crd20261001#resolving-algorithm.12",
+        "res10-crd20261001#resolving.10"
+      ],
+      "verdict": "PASS",
+      "observations": 8
+    },
+    {
+      "id": "did-1.1/resolution/invalid-option-expand",
+      "statements": [
+        "res10-crd20261001#resolving-algorithm.13",
+        "res10-crd20261001#resolving-algorithm.14",
+        "res10-crd20261001#resolving.5",
+        "res10-crd20261001#resolving.4",
+        "res10-crd20261001#resolving-algorithm.15",
+        "res10-crd20261001#resolving.8",
+        "res10-crd20261001#resolving-algorithm.16",
+        "res10-crd20261001#resolving.10"
+      ],
+      "verdict": "PASS",
+      "observations": 8
+    },
+    {
+      "id": "did-1.1/resolution/invalid-option-version-time-fraction",
+      "statements": [
+        "res10-crd20261001#resolving-algorithm.13",
+        "res10-crd20261001#resolving-algorithm.14",
+        "res10-crd20261001#did-parameters.3",
+        "res10-crd20261001#datetime.2",
+        "res10-crd20261001#resolving.5",
+        "res10-crd20261001#resolving.4",
+        "res10-crd20261001#resolving.8",
+        "res10-crd20261001#resolving.10"
+      ],
+      "verdict": "PASS",
+      "observations": 8
+    },
+    {
+      "id": "did-1.1/resolution/invalid-option-version-time-offset",
+      "statements": [
+        "res10-crd20261001#resolving-algorithm.13",
+        "res10-crd20261001#did-parameters.3",
+        "res10-crd20261001#datetime.2",
+        "res10-crd20261001#resolving.5",
+        "res10-crd20261001#resolving.4",
+        "res10-crd20261001#resolving.8",
+        "res10-crd20261001#resolving.10"
+      ],
+      "verdict": "PASS",
+      "observations": 7
+    },
+    {
+      "id": "did-1.1/resolution/invalid-option-version-time-syntax",
+      "statements": [
+        "res10-crd20261001#resolving-algorithm.13",
+        "res10-crd20261001#did-parameters.3",
+        "res10-crd20261001#datetime.1",
+        "res10-crd20261001#resolving.5",
+        "res10-crd20261001#resolving.4",
+        "res10-crd20261001#resolving.8",
+        "res10-crd20261001#resolving.10"
+      ],
+      "verdict": "PASS",
+      "observations": 7
+    },
+    {
+      "id": "did-1.1/resolution/invalid-option-accept",
+      "statements": [
+        "res10-crd20261001#resolving-algorithm.13",
+        "res10-crd20261001#did-resolution-options.2",
+        "res10-crd20261001#resolving.5",
+        "res10-crd20261001#resolving.4",
+        "res10-crd20261001#resolving.8",
+        "res10-crd20261001#resolving.10"
+      ],
+      "verdict": "PASS",
+      "observations": 6
+    },
+    {
+      "id": "did-1.1/resolution/option-accept",
+      "statements": [
+        "res10-crd20261001#did-resolution-options.2"
+      ],
+      "verdict": "PASS",
+      "observations": 2
+    },
+    {
+      "id": "did-1.1/resolution/not-found",
+      "statements": [
+        "res10-crd20261001#resolving-algorithm.17",
+        "res10-crd20261001#resolving-algorithm.18",
+        "res10-crd20261001#resolving-algorithm.19",
+        "res10-crd20261001#resolving.5",
+        "res10-crd20261001#resolving.4",
+        "res10-crd20261001#resolving-algorithm.20",
+        "res10-crd20261001#resolving.8",
+        "res10-crd20261001#resolving-algorithm.21",
+        "res10-crd20261001#resolving.10"
+      ],
+      "verdict": "PASS",
+      "observations": 9
+    },
+    {
+      "id": "did-1.1/resolution/deactivated",
+      "statements": [
+        "res10-crd20261001#resolving-algorithm.22",
+        "res10-crd20261001#resolving-algorithm.24",
+        "res10-crd20261001#resolving-algorithm.25",
+        "res10-crd20261001#did-document-metadata.6",
+        "res10-crd20261001#resolving-algorithm.23"
+      ],
+      "verdict": "PASS",
+      "observations": 5
+    },
+    {
+      "id": "did-1.1/resolution/malformed-document",
+      "statements": [
+        "res10-crd20261001#resolving-algorithm.26",
+        "res10-crd20261001#resolving.8"
+      ],
+      "verdict": "PASS",
+      "observations": 3
+    },
+    {
+      "id": "did-1.1/resolution/wrong-media-type",
+      "statements": [
+        "res10-crd20261001#resolving-algorithm.26"
+      ],
+      "verdict": "PASS",
+      "observations": 2
+    },
+    {
+      "id": "did-1.1/resolution/id-mismatch",
+      "statements": [
+        "res10-crd20261001#resolving.7",
+        "cid10#subjects.4",
+        "cid10#subjects.5"
+      ],
+      "verdict": "PASS",
+      "observations": 6
+    },
+    {
+      "id": "did-1.1/resolution/internal-error",
+      "statements": [
+        "res10-crd20261001#resolving-algorithm.36",
+        "res10-crd20261001#resolving-algorithm.37",
+        "res10-crd20261001#resolving.5",
+        "res10-crd20261001#resolving.4",
+        "res10-crd20261001#resolving-algorithm.38",
+        "res10-crd20261001#resolving.8",
+        "res10-crd20261001#resolving-algorithm.39",
+        "res10-crd20261001#resolving.10"
+      ],
+      "verdict": "PASS",
+      "observations": 8
+    },
+    {
+      "id": "did-1.1/resolution/expand-relative-urls",
+      "statements": [
+        "res10-crd20261001#resolving-algorithm.27",
+        "res10-crd20261001#resolving-algorithm.28",
+        "res10-crd20261001#resolving-algorithm.29",
+        "res10-crd20261001#resolving-algorithm.30",
+        "res10-crd20261001#resolving-algorithm.31",
+        "did11-cr20260305#relative-did-urls.2"
+      ],
+      "verdict": "PASS",
+      "observations": 6
+    },
+    {
+      "id": "did-1.1/resolution/relative-urls-kept",
+      "statements": [
+        "did11-cr20260305#relative-did-urls.1"
+      ],
+      "verdict": "PASS",
+      "observations": 2
+    },
+    {
+      "id": "did-1.1/resolution/version-id",
+      "statements": [
+        "res10-crd20261001#resolving-algorithm.17"
+      ],
+      "verdict": "PASS",
+      "observations": 2
+    },
+    {
+      "id": "did-1.1/resolution/version-time",
+      "statements": [
+        "res10-crd20261001#did-parameters.3",
+        "res10-crd20261001#datetime.1",
+        "res10-crd20261001#datetime.2"
+      ],
+      "verdict": "PASS",
+      "observations": 4
+    },
+    {
+      "id": "did-1.1/resolution/equivalent-ids",
+      "statements": [
+        "res10-crd20261001#did-document-metadata.15",
+        "res10-crd20261001#did-document-metadata.20",
+        "res10-crd20261001#did-document-metadata.24"
+      ],
+      "verdict": "PASS",
+      "observations": 3
+    },
+    {
+      "id": "did-1.1/resolution/no-cache",
+      "statements": [
+        "res10-crd20261001#caching.2"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
+      "id": "did-1.1/resolution/result-format",
+      "statements": [
+        "res10-crd20261001#resolving.8",
+        "res10-crd20261001#resolving.10",
+        "res10-crd20261001#did-resolution-metadata.3",
+        "res10-crd20261001#did-resolution-metadata.7",
+        "res10-crd20261001#did-document-metadata.3",
+        "res10-crd20261001#did-document-metadata.5",
+        "res10-crd20261001#did-document-metadata.9",
+        "res10-crd20261001#did-document-metadata.11",
+        "res10-crd20261001#did-document-metadata.13",
+        "res10-crd20261001#did-document-metadata.15",
+        "res10-crd20261001#did-document-metadata.16",
+        "res10-crd20261001#did-document-metadata.20",
+        "res10-crd20261001#did-document-metadata.21",
+        "res10-crd20261001#did-document-metadata.24",
+        "res10-crd20261001#did-document-metadata.7",
+        "res10-crd20261001#errors.2",
+        "res10-crd20261001#errors.3",
+        "cid10#processing-errors.2"
+      ],
+      "verdict": "PASS",
+      "observations": 102
+    },
+    {
+      "id": "did-1.1/dereferencing/document",
+      "statements": [
+        "res10-crd20261001#dereferencing.1",
+        "res10-crd20261001#dereferencing.5",
+        "res10-crd20261001#dereferencing.8",
+        "res10-crd20261001#dereferencing-algorithm-resource.5",
+        "res10-crd20261001#dereferencing-algorithm-resource.10",
+        "res10-crd20261001#dereferencing-algorithm-resource.12",
+        "res10-crd20261001#dereferencing-algorithm-resource.13",
+        "res10-crd20261001#dereferencing-algorithm-resource.14",
+        "res10-crd20261001#dereferencing.11",
+        "res10-crd20261001#dereferencing.12",
+        "res10-crd20261001#dereferencing-algorithm-resource.15"
+      ],
+      "verdict": "PASS",
+      "observations": 11
+    },
+    {
+      "id": "did-1.1/dereferencing/document-metadata",
+      "statements": [
+        "res10-crd20261001#dereferencing.12"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
+      "id": "did-1.1/dereferencing/invalid-did-url-space",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-resource.1",
+        "res10-crd20261001#dereferencing-algorithm-resource.2",
+        "res10-crd20261001#dereferencing.7",
+        "res10-crd20261001#did-url-dereferencing-metadata.4",
+        "res10-crd20261001#dereferencing.6",
+        "res10-crd20261001#dereferencing-algorithm-resource.3",
+        "res10-crd20261001#dereferencing.10",
+        "res10-crd20261001#dereferencing-algorithm-resource.4",
+        "res10-crd20261001#dereferencing.13"
+      ],
+      "verdict": "PASS",
+      "observations": 9
+    },
+    {
+      "id": "did-1.1/dereferencing/invalid-did-url-fragment",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-resource.1",
+        "res10-crd20261001#dereferencing-algorithm-resource.2",
+        "res10-crd20261001#dereferencing.7",
+        "res10-crd20261001#did-url-dereferencing-metadata.4",
+        "res10-crd20261001#dereferencing.6",
+        "res10-crd20261001#dereferencing-algorithm-resource.3",
+        "res10-crd20261001#dereferencing.10",
+        "res10-crd20261001#dereferencing-algorithm-resource.4",
+        "res10-crd20261001#dereferencing.13"
+      ],
+      "verdict": "PASS",
+      "observations": 9
+    },
+    {
+      "id": "did-1.1/dereferencing/not-found",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-resource.5",
+        "res10-crd20261001#dereferencing-algorithm-resource.6",
+        "res10-crd20261001#dereferencing-algorithm-resource.7",
+        "res10-crd20261001#dereferencing.7",
+        "res10-crd20261001#did-url-dereferencing-metadata.4",
+        "res10-crd20261001#dereferencing.6",
+        "res10-crd20261001#dereferencing-algorithm-resource.8",
+        "res10-crd20261001#dereferencing.10",
+        "res10-crd20261001#dereferencing-algorithm-resource.9",
+        "res10-crd20261001#dereferencing.13"
+      ],
+      "verdict": "PASS",
+      "observations": 10
+    },
+    {
+      "id": "did-1.1/dereferencing/service-by-id",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-resource.16",
+        "res10-crd20261001#dereferencing-algorithm-resource.17",
+        "res10-crd20261001#dereferencing-algorithm-resource.18",
+        "res10-crd20261001#dereferencing-algorithm-resource.29",
+        "res10-crd20261001#dereferencing-algorithm-resource.30",
+        "res10-crd20261001#dereferencing-algorithm-resource.31",
+        "res10-crd20261001#dereferencing-algorithm-resource.33",
+        "res10-crd20261001#dereferencing-algorithm-resource.34",
+        "res10-crd20261001#dereferencing-algorithm-resource.32"
+      ],
+      "verdict": "PASS",
+      "observations": 9
+    },
+    {
+      "id": "did-1.1/dereferencing/service-by-type",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-resource.19",
+        "res10-crd20261001#dereferencing-algorithm-resource.30",
+        "res10-crd20261001#dereferencing-algorithm-resource.33"
+      ],
+      "verdict": "PASS",
+      "observations": 3
+    },
+    {
+      "id": "did-1.1/dereferencing/service-accept-did",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-resource.29",
+        "res10-crd20261001#dereferencing-algorithm-resource.30"
+      ],
+      "verdict": "PASS",
+      "observations": 2
+    },
+    {
+      "id": "did-1.1/dereferencing/relative-ref-absolute-path",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-resource.20",
+        "res10-crd20261001#dereferencing-algorithm-resource.21",
+        "res10-crd20261001#dereferencing-algorithm-resource.23",
+        "res10-crd20261001#dereferencing-algorithm-resource.25",
+        "res10-crd20261001#dereferencing-algorithm-resource.26",
+        "res10-crd20261001#dereferencing-algorithm-resource.27",
+        "res10-crd20261001#dereferencing-algorithm-resource.28",
+        "res10-crd20261001#dereferencing-algorithm-resource.35",
+        "res10-crd20261001#dereferencing-algorithm-resource.36",
+        "res10-crd20261001#dereferencing-algorithm-resource.38",
+        "res10-crd20261001#dereferencing-algorithm-resource.37",
+        "res10-crd20261001#dereferencing-algorithm-resource.39"
+      ],
+      "verdict": "PASS",
+      "observations": 12
+    },
+    {
+      "id": "did-1.1/dereferencing/relative-ref-relative-path",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-resource.25",
+        "res10-crd20261001#dereferencing-algorithm-resource.26",
+        "res10-crd20261001#dereferencing-algorithm-resource.27",
+        "res10-crd20261001#dereferencing-algorithm-resource.28"
+      ],
+      "verdict": "PASS",
+      "observations": 4
+    },
+    {
+      "id": "did-1.1/dereferencing/relative-ref-set-endpoint",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-resource.24"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
+      "id": "did-1.1/dereferencing/relative-ref-map-endpoint",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-resource.22"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
+      "id": "did-1.1/dereferencing/service-endpoint-fragment",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-fragment.7",
+        "res10-crd20261001#dereferencing-algorithm-fragment.9",
+        "res10-crd20261001#dereferencing-algorithm-fragment.10",
+        "res10-crd20261001#dereferencing-algorithm-resource.25",
+        "res10-crd20261001#dereferencing-algorithm-resource.28"
+      ],
+      "verdict": "PASS",
+      "observations": 5
+    },
+    {
+      "id": "did-1.1/dereferencing/service-endpoint-has-fragment",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-fragment.8"
+      ],
+      "verdict": "PASS",
+      "observations": 2
+    },
+    {
+      "id": "did-1.1/dereferencing/representation-not-supported",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-resource.40",
+        "res10-crd20261001#dereferencing-algorithm-resource.41",
+        "res10-crd20261001#dereferencing.7",
+        "res10-crd20261001#did-url-dereferencing-metadata.4",
+        "res10-crd20261001#dereferencing.6",
+        "res10-crd20261001#dereferencing-algorithm-resource.42",
+        "res10-crd20261001#dereferencing.10",
+        "res10-crd20261001#dereferencing-algorithm-resource.43",
+        "res10-crd20261001#dereferencing.13"
+      ],
+      "verdict": "PASS",
+      "observations": 9
+    },
+    {
+      "id": "did-1.1/dereferencing/path-not-dereferenceable",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-resource.44",
+        "res10-crd20261001#dereferencing-algorithm-resource.49",
+        "res10-crd20261001#dereferencing-algorithm-resource.50",
+        "res10-crd20261001#dereferencing.7",
+        "res10-crd20261001#did-url-dereferencing-metadata.4",
+        "res10-crd20261001#dereferencing.6",
+        "res10-crd20261001#dereferencing-algorithm-resource.51",
+        "res10-crd20261001#dereferencing.10",
+        "res10-crd20261001#dereferencing-algorithm-resource.52",
+        "res10-crd20261001#dereferencing.13"
+      ],
+      "verdict": "PASS",
+      "observations": 10
+    },
+    {
+      "id": "did-1.1/dereferencing/version-parameter",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-resource.5"
+      ],
+      "verdict": "PASS",
+      "observations": 2
+    },
+    {
+      "id": "did-1.1/dereferencing/fragment-verification-method",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-fragment.11",
+        "res10-crd20261001#dereferencing.3",
+        "res10-crd20261001#dereferencing-algorithm-resource.11",
+        "cid10#fragment-resolution.1",
+        "cid10#fragment-resolution.2",
+        "cid10#fragment-resolution.3",
+        "cid10#fragment-resolution.4",
+        "cid10#fragment-resolution.5"
+      ],
+      "verdict": "PASS",
+      "observations": 8
+    },
+    {
+      "id": "did-1.1/dereferencing/fragment-relative-id",
+      "statements": [
+        "cid10#fragment-resolution.3",
+        "cid10#fragment-resolution.4",
+        "did11-cr20260305#relative-did-urls.2"
+      ],
+      "verdict": "PASS",
+      "observations": 3
+    },
+    {
+      "id": "did-1.1/dereferencing/fragment-nested",
+      "statements": [
+        "cid10#fragment-resolution.4"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
+      "id": "did-1.1/dereferencing/fragment-unknown",
+      "statements": [
+        "cid10#fragment-resolution.5"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
+      "id": "did-1.1/dereferencing/verification-relationship-authorized",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-fragment.1",
+        "res10-crd20261001#dereferencing-algorithm-fragment.2",
+        "res10-crd20261001#dereferencing-algorithm-fragment.3",
+        "res10-crd20261001#dereferencing-algorithm-fragment.6",
+        "res10-crd20261001#did-url-dereferencing-options.5"
+      ],
+      "verdict": "PASS",
+      "observations": 5
+    },
+    {
+      "id": "did-1.1/dereferencing/verification-relationship-unauthorized",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-fragment.5",
+        "res10-crd20261001#did-url-dereferencing-options.5"
+      ],
+      "verdict": "PASS",
+      "observations": 3
+    },
+    {
+      "id": "did-1.1/dereferencing/verification-relationship-not-a-method",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-fragment.4",
+        "res10-crd20261001#did-url-dereferencing-options.5"
+      ],
+      "verdict": "PASS",
+      "observations": 3
+    },
+    {
+      "id": "did-1.1/dereferencing/verification-relationship-not-ascii",
+      "statements": [
+        "res10-crd20261001#did-url-dereferencing-options.4"
+      ],
+      "verdict": "PASS",
+      "observations": 2
+    },
+    {
+      "id": "did-1.1/dereferencing/invalid-accept",
+      "statements": [
+        "res10-crd20261001#did-url-dereferencing-options.2"
+      ],
+      "verdict": "PASS",
+      "observations": 2
+    },
+    {
+      "id": "did-1.1/dereferencing/result-format",
+      "statements": [
+        "res10-crd20261001#dereferencing.10",
+        "res10-crd20261001#dereferencing.13",
+        "res10-crd20261001#did-url-dereferencing-metadata.3",
+        "res10-crd20261001#did-url-dereferencing-metadata.7",
+        "res10-crd20261001#did-document-metadata.3",
+        "res10-crd20261001#did-document-metadata.5",
+        "res10-crd20261001#did-document-metadata.9",
+        "res10-crd20261001#did-document-metadata.11",
+        "res10-crd20261001#did-document-metadata.13",
+        "res10-crd20261001#did-document-metadata.15",
+        "res10-crd20261001#did-document-metadata.16",
+        "res10-crd20261001#did-document-metadata.20",
+        "res10-crd20261001#did-document-metadata.21",
+        "res10-crd20261001#did-document-metadata.24",
+        "res10-crd20261001#did-document-metadata.7",
+        "res10-crd20261001#errors.2",
+        "res10-crd20261001#errors.3",
+        "cid10#processing-errors.2"
+      ],
+      "verdict": "PASS",
+      "observations": 80
+    }
+  ],
+  "not_run": [
+    "did11-cr20260305#conformance.1",
+    "did11-cr20260305#extensibility.1",
+    "did11-cr20260305#extensibility.2",
+    "did11-cr20260305#extensibility.3",
+    "did11-cr20260305#extensibility.4",
+    "did11-cr20260305#production-and-consumption.1",
+    "did11-cr20260305#production-and-consumption.2",
+    "did11-cr20260305#production-and-consumption.3",
+    "did11-cr20260305#production-and-consumption.4",
+    "did11-cr20260305#production-and-consumption.5",
+    "did11-cr20260305#production-and-consumption.6",
+    "did11-cr20260305#production-and-consumption.7",
+    "did11-cr20260305#production-and-consumption.8",
+    "did11-cr20260305#production-and-consumption.9",
+    "did11-cr20260305#production-and-consumption.13",
+    "did11-cr20260305#production-and-consumption.14",
+    "did11-cr20260305#json-ld-processors.5",
+    "did11-cr20260305#json-ld-processors.6",
+    "did11-cr20260305#json-ld-processors.8",
+    "did11-cr20260305#remote-resource-integrity.1",
+    "did11-cr20260305#media-types.1",
+    "did11-cr20260305#method-syntax.1",
+    "did11-cr20260305#method-syntax.2",
+    "did11-cr20260305#method-syntax.3",
+    "did11-cr20260305#method-syntax.4",
+    "did11-cr20260305#method-syntax.5",
+    "did11-cr20260305#method-syntax.6",
+    "did11-cr20260305#method-syntax.7",
+    "did11-cr20260305#method-syntax.8",
+    "did11-cr20260305#method-syntax.10",
+    "did11-cr20260305#method-syntax.11",
+    "did11-cr20260305#method-syntax.12",
+    "did11-cr20260305#method-operations.1",
+    "did11-cr20260305#method-operations.2",
+    "did11-cr20260305#method-operations.3",
+    "did11-cr20260305#method-operations.4",
+    "did11-cr20260305#method-operations.5",
+    "did11-cr20260305#security-requirements.1",
+    "did11-cr20260305#security-requirements.2",
+    "did11-cr20260305#security-requirements.3",
+    "did11-cr20260305#security-requirements.4",
+    "did11-cr20260305#security-requirements.5",
+    "did11-cr20260305#security-requirements.6",
+    "did11-cr20260305#security-requirements.7",
+    "did11-cr20260305#security-requirements.8",
+    "did11-cr20260305#security-requirements.9",
+    "did11-cr20260305#security-requirements.10",
+    "did11-cr20260305#security-requirements.11",
+    "did11-cr20260305#security-requirements.12",
+    "did11-cr20260305#security-requirements.13",
+    "did11-cr20260305#security-requirements.14",
+    "did11-cr20260305#privacy-requirements.1",
+    "cid10#conformance.1",
+    "cid10#data-model.1",
+    "cid10#controllers.2",
+    "cid10#controllers.4",
+    "cid10#services.5",
+    "cid10#services.10",
+    "cid10#verification-material.2",
+    "cid10#Multikey.1",
+    "cid10#Multikey.2",
+    "cid10#Multikey.4",
+    "cid10#Multikey.5",
+    "cid10#Multikey.15",
+    "cid10#Multikey.16",
+    "cid10#Multikey.17",
+    "cid10#Multikey.18",
+    "cid10#Multikey.19",
+    "cid10#Multikey.20",
+    "cid10#Multikey.21",
+    "cid10#Multikey.22",
+    "cid10#Multikey.23",
+    "cid10#Multikey.24",
+    "cid10#JsonWebKey.1",
+    "cid10#JsonWebKey.5",
+    "cid10#JsonWebKey.6",
+    "cid10#JsonWebKey.7",
+    "cid10#JsonWebKey.9",
+    "cid10#JsonWebKey.10",
+    "cid10#JsonWebKey.11",
+    "cid10#JsonWebKey.12",
+    "cid10#verification-relationships.2",
+    "cid10#multibase-0.1",
+    "cid10#multibase-0.2",
+    "cid10#multibase-0.3",
+    "cid10#multibase-0.4",
+    "cid10#multibase-0.5",
+    "cid10#multihash.1",
+    "cid10#multihash.2",
+    "cid10#multihash.3",
+    "cid10#algorithms.1",
+    "cid10#base-encode.1",
+    "cid10#base-encode.2",
+    "cid10#base-encode.3",
+    "cid10#base-encode.4",
+    "cid10#base-encode.5",
+    "cid10#base-encode.6",
+    "cid10#base-encode.7",
+    "cid10#base-encode.8",
+    "cid10#base-encode.9",
+    "cid10#base-encode.10",
+    "cid10#base-encode.11",
+    "cid10#base-encode.12",
+    "cid10#base-encode.13",
+    "cid10#base-encode.14",
+    "cid10#base-encode.15",
+    "cid10#base-encode.16",
+    "cid10#base-decode.1",
+    "cid10#base-decode.2",
+    "cid10#base-decode.3",
+    "cid10#base-decode.4",
+    "cid10#base-decode.5",
+    "cid10#base-decode.6",
+    "cid10#base-decode.7",
+    "cid10#base-decode.8",
+    "cid10#base-decode.9",
+    "cid10#base-decode.10",
+    "cid10#base-decode.11",
+    "cid10#base-decode.12",
+    "cid10#base-decode.13",
+    "cid10#base-decode.14",
+    "cid10#base-decode.15",
+    "cid10#base-decode.16",
+    "cid10#retrieve-verification-method.1",
+    "cid10#retrieve-verification-method.2",
+    "cid10#retrieve-verification-method.3",
+    "cid10#retrieve-verification-method.4",
+    "cid10#retrieve-verification-method.5",
+    "cid10#retrieve-verification-method.6",
+    "cid10#retrieve-verification-method.7",
+    "cid10#retrieve-verification-method.8",
+    "cid10#retrieve-verification-method.9",
+    "cid10#retrieve-verification-method.10",
+    "cid10#retrieve-verification-method.11",
+    "cid10#retrieve-verification-method.12",
+    "cid10#processing-errors.1",
+    "cid10#processing-errors.3",
+    "cid10#processing-errors.4",
+    "cid10#vocabulary.1",
+    "cid10#json-ld-context.1",
+    "cid10#context-injection.1",
+    "cid10#context-injection.2",
+    "res10-crd20261001#conformance.1",
+    "res10-crd20261001#did-parameters.2",
+    "res10-crd20261001#did-parameters.4",
+    "res10-crd20261001#did-resolution-options.1",
+    "res10-crd20261001#did-resolution-options.3",
+    "res10-crd20261001#did-resolution-metadata.1",
+    "res10-crd20261001#did-resolution-metadata.2",
+    "res10-crd20261001#did-resolution-metadata.4",
+    "res10-crd20261001#did-resolution-metadata.5",
+    "res10-crd20261001#did-resolution-metadata.6",
+    "res10-crd20261001#did-document-metadata.1",
+    "res10-crd20261001#did-document-metadata.2",
+    "res10-crd20261001#did-document-metadata.4",
+    "res10-crd20261001#did-document-metadata.8",
+    "res10-crd20261001#did-document-metadata.10",
+    "res10-crd20261001#did-document-metadata.12",
+    "res10-crd20261001#did-document-metadata.14",
+    "res10-crd20261001#did-document-metadata.17",
+    "res10-crd20261001#did-document-metadata.18",
+    "res10-crd20261001#did-document-metadata.19",
+    "res10-crd20261001#did-document-metadata.22",
+    "res10-crd20261001#did-document-metadata.23",
+    "res10-crd20261001#dereferencing.2",
+    "res10-crd20261001#dereferencing.4",
+    "res10-crd20261001#dereferencing.9",
+    "res10-crd20261001#did-url-dereferencing-options.1",
+    "res10-crd20261001#did-url-dereferencing-options.3",
+    "res10-crd20261001#did-url-dereferencing-metadata.1",
+    "res10-crd20261001#did-url-dereferencing-metadata.2",
+    "res10-crd20261001#did-url-dereferencing-metadata.5",
+    "res10-crd20261001#did-url-dereferencing-metadata.6",
+    "res10-crd20261001#did-url-content-metadata.1",
+    "res10-crd20261001#dereferencing-algorithm-resource.45",
+    "res10-crd20261001#dereferencing-algorithm-resource.46",
+    "res10-crd20261001#dereferencing-algorithm-resource.47",
+    "res10-crd20261001#dereferencing-algorithm-resource.48",
+    "res10-crd20261001#metadata-structure.1",
+    "res10-crd20261001#metadata-structure.2",
+    "res10-crd20261001#metadata-structure.3",
+    "res10-crd20261001#metadata-structure.4",
+    "res10-crd20261001#metadata-structure.5",
+    "res10-crd20261001#method-architectures.1",
+    "res10-crd20261001#method-architectures.2",
+    "res10-crd20261001#method-architectures.3",
+    "res10-crd20261001#resolver-architectures.1",
+    "res10-crd20261001#resolver-architectures.2",
+    "res10-crd20261001#resolver-architectures.3",
+    "res10-crd20261001#resolver-architectures-proxied.1",
+    "res10-crd20261001#resolver-architectures-proxied.2",
+    "res10-crd20261001#resolver-architectures-proxied.3",
+    "res10-crd20261001#errors.1",
+    "res10-crd20261001#errors.4",
+    "res10-crd20261001#errors.5",
+    "res10-crd20261001#errors.6",
+    "res10-crd20261001#errors.7",
+    "res10-crd20261001#bindings-https.1",
+    "res10-crd20261001#bindings-https.2",
+    "res10-crd20261001#bindings-https.3",
+    "res10-crd20261001#bindings-https.4",
+    "res10-crd20261001#bindings-https.5",
+    "res10-crd20261001#bindings-https.6",
+    "res10-crd20261001#bindings-https.7",
+    "res10-crd20261001#bindings-https.8",
+    "res10-crd20261001#bindings-https.9",
+    "res10-crd20261001#bindings-https.10",
+    "res10-crd20261001#bindings-https.11",
+    "res10-crd20261001#bindings-https.12",
+    "res10-crd20261001#bindings-https.13",
+    "res10-crd20261001#bindings-https.14",
+    "res10-crd20261001#bindings-https.15",
+    "res10-crd20261001#bindings-https.16",
+    "res10-crd20261001#bindings-https.17",
+    "res10-crd20261001#bindings-https.18",
+    "res10-crd20261001#bindings-https.19",
+    "res10-crd20261001#bindings-https.20",
+    "res10-crd20261001#bindings-https.21",
+    "res10-crd20261001#bindings-https.22",
+    "res10-crd20261001#bindings-https.23",
+    "res10-crd20261001#bindings-https.24",
+    "res10-crd20261001#bindings-https.25",
+    "res10-crd20261001#bindings-https.26",
+    "res10-crd20261001#bindings-https.27",
+    "res10-crd20261001#bindings-https.28",
+    "res10-crd20261001#bindings-https.29",
+    "res10-crd20261001#bindings-https.30",
+    "res10-crd20261001#bindings-https.31",
+    "res10-crd20261001#bindings-https.32",
+    "res10-crd20261001#bindings-https.33",
+    "res10-crd20261001#bindings-https.34",
+    "res10-crd20261001#bindings-https.35",
+    "res10-crd20261001#bindings-https.36",
+    "res10-crd20261001#bindings-https.37",
+    "res10-crd20261001#bindings-https.38",
+    "res10-crd20261001#bindings-https.39",
+    "res10-crd20261001#bindings-https.40",
+    "res10-crd20261001#bindings-https.41",
+    "res10-crd20261001#bindings-https.42",
+    "res10-crd20261001#caching.1",
+    "res10-crd20261001#versioning.1",
+    "res10-crd20261001#vdr-forks.1"
+  ]
+}
