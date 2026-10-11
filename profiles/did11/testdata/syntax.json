@@ -1,0 +1,218 @@
+{
+  "groups": [
+    {
+      "case": "did",
+      "note": "DIDs against the did rule of DID 1.1 §3.1.",
+      "kind": "did",
+      "statements": [
+        "did11-cr20260305#did-syntax.1"
+      ],
+      "items": [
+        {
+          "input": "did:example:123456789abcdefghi",
+          "valid": true,
+          "method": "example",
+          "id": "123456789abcdefghi"
+        },
+        {
+          "input": "did:web:example.com",
+          "valid": true,
+          "method": "web",
+          "id": "example.com"
+        },
+        {
+          "input": "did:a1:B-._x",
+          "valid": true,
+          "method": "a1",
+          "id": "B-._x"
+        },
+        {
+          "input": "did:example:%20x%aF",
+          "valid": true,
+          "method": "example",
+          "id": "%20x%aF"
+        },
+        {
+          "input": "did:Example:123",
+          "valid": false,
+          "why": "method-char is lower-case letters and digits only"
+        },
+        {
+          "input": "did:ex_ample:123",
+          "valid": false,
+          "why": "\"_\" is not a method-char"
+        },
+        {
+          "input": "did::123",
+          "valid": false,
+          "why": "method-name needs at least one method-char"
+        },
+        {
+          "input": "did:example:",
+          "valid": false,
+          "why": "method-specific-id needs at least one idchar"
+        },
+        {
+          "input": "did:example:12%3",
+          "valid": false,
+          "why": "\"%\" must be followed by two HEXDIG"
+        },
+        {
+          "input": "did:example:a b",
+          "valid": false,
+          "why": "a space is not an idchar"
+        },
+        {
+          "input": "did:example:123#key-1",
+          "valid": false,
+          "why": "a fragment is not part of the did rule"
+        },
+        {
+          "input": "example:123",
+          "valid": false,
+          "why": "the did rule starts with \"did:\""
+        }
+      ]
+    },
+    {
+      "case": "method-specific-id-colons",
+      "note": "Colons in the method-specific-id (DID 1.1 §7.1).",
+      "kind": "did",
+      "statements": [
+        "did11-cr20260305#method-syntax.9"
+      ],
+      "items": [
+        {
+          "input": "did:example:a:b:c",
+          "valid": true,
+          "method": "example",
+          "id": "a:b:c"
+        },
+        {
+          "input": "did:example::a",
+          "valid": true,
+          "method": "example",
+          "id": ":a"
+        },
+        {
+          "input": "did:example:a:",
+          "valid": false,
+          "why": "the method-specific-id cannot end with \":\""
+        },
+        {
+          "input": "did:example:a::",
+          "valid": false,
+          "why": "the method-specific-id cannot end with \":\""
+        }
+      ]
+    },
+    {
+      "case": "did-url",
+      "note": "DID URLs against the did-url rule of DID 1.1 §3.2.",
+      "kind": "did-url",
+      "statements": [
+        "did11-cr20260305#did-url-syntax.1"
+      ],
+      "items": [
+        {
+          "input": "did:example:123456789abcdefghi/path/to?query=1#frag",
+          "valid": true,
+          "did": "did:example:123456789abcdefghi",
+          "path": "/path/to",
+          "query": "query=1",
+          "hasQuery": true,
+          "fragment": "frag",
+          "hasFragment": true
+        },
+        {
+          "input": "did:example:123456789abcdefghi#key-1",
+          "valid": true,
+          "did": "did:example:123456789abcdefghi",
+          "path": "",
+          "hasQuery": false,
+          "fragment": "key-1",
+          "hasFragment": true
+        },
+        {
+          "input": "did:example:123456789abcdefghi?",
+          "valid": true,
+          "did": "did:example:123456789abcdefghi",
+          "query": "",
+          "hasQuery": true,
+          "hasFragment": false
+        },
+        {
+          "input": "did:example:123456789abcdefghi/",
+          "valid": true,
+          "did": "did:example:123456789abcdefghi",
+          "path": "/",
+          "hasQuery": false,
+          "hasFragment": false
+        },
+        {
+          "input": "did:example:123456789abcdefghi?service=files&relativeRef=%2Fresume.pdf",
+          "valid": true,
+          "did": "did:example:123456789abcdefghi",
+          "query": "service=files&relativeRef=%2Fresume.pdf",
+          "hasQuery": true
+        },
+        {
+          "input": "did:example:123456789abcdefghi#a#b",
+          "valid": false,
+          "why": "\"#\" is not allowed in a fragment"
+        },
+        {
+          "input": "did:example:123456789abcdefghi/pa th",
+          "valid": false,
+          "why": "a space is not allowed in a path"
+        },
+        {
+          "input": "did:example:123456789abcdefghi?q=%zz",
+          "valid": false,
+          "why": "\"%\" must be followed by two HEXDIG"
+        },
+        {
+          "input": "did:example:123456789abcdefghi#frag^",
+          "valid": false,
+          "why": "\"^\" is not allowed in a fragment"
+        },
+        {
+          "input": "did:Example:123/x",
+          "valid": false,
+          "why": "the DID part does not match the did rule"
+        }
+      ]
+    },
+    {
+      "case": "did-parameter-values",
+      "note": "DID parameter values are ASCII strings (DID Resolution §3).",
+      "kind": "did-url",
+      "statements": [
+        "res10-crd20261001#did-parameters.1"
+      ],
+      "partial": "judged through the parser: a DID URL whose parameter value is not ASCII is rejected; the RFC 3987 mapping of other values is not judged",
+      "items": [
+        {
+          "input": "did:example:123456789abcdefghi?versionTime=2021-05-10T17:00:00Z",
+          "valid": true,
+          "query": "versionTime=2021-05-10T17:00:00Z"
+        },
+        {
+          "input": "did:example:123456789abcdefghi?service=fil%C3%A9s",
+          "valid": true,
+          "query": "service=fil%C3%A9s"
+        },
+        {
+          "input": "did:example:123456789abcdefghi?service=filés",
+          "valid": false,
+          "why": "a parameter value must be ASCII; RFC 3987 §3.1 percent-encodes the UTF-8 bytes"
+        },
+        {
+          "input": "did:example:123456789abcdefghi?service=files&relativeRef=/my resume.pdf",
+          "valid": false,
+          "why": "a space must be percent-encoded"
+        }
+      ]
+    }
+  ]
+}

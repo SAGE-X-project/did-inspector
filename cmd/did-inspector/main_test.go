@@ -105,8 +105,9 @@ func TestRunWritesReport(t *testing.T) {
 		}
 		total += len(d.Statements)
 	}
-	if rep.Totals.Statements != total || rep.Totals.Pass != 1 || rep.Totals.NotRun != total-1 {
-		t.Fatalf("totals = %+v (want %d statements)", rep.Totals, total)
+	tt := rep.Totals
+	if tt.Statements != total || tt.Pass+tt.Fail+tt.NotSupported+tt.NotApplicable+tt.Error+tt.NotRun != total || tt.Pass == 0 || tt.NotRun == total {
+		t.Fatalf("totals = %+v (want %d statements, some judged)", rep.Totals, total)
 	}
 	for _, s := range rep.Statements {
 		if s.Scope == "" {

@@ -1,0 +1,2806 @@
+{
+  "groups": [
+    {
+      "case": "subject-id",
+      "note": "The id of the document (CID §2.1.1).",
+      "judges": {
+        "consumer": [
+          "cid10#subjects.1",
+          "cid10#subjects.2"
+        ],
+        "producer": [
+          "cid10#subjects.1",
+          "cid10#subjects.2"
+        ],
+        "validator": [
+          "cid10#subjects.1",
+          "cid10#subjects.2"
+        ]
+      },
+      "valid": [
+        {
+          "name": "minimal",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi"
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "no-id",
+          "why": "a controlled identifier document must contain id in the topmost map",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1"
+          }
+        },
+        {
+          "name": "id-number",
+          "why": "id must be a string",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": 42
+          }
+        },
+        {
+          "name": "id-not-url",
+          "why": "id must conform to the URL Standard",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "not a url"
+          }
+        }
+      ]
+    },
+    {
+      "case": "controller",
+      "note": "The controller property (CID §2.1.2).",
+      "judges": {
+        "consumer": [
+          "cid10#controllers.1",
+          "cid10#controllers.3"
+        ],
+        "producer": [
+          "cid10#controllers.1",
+          "cid10#controllers.3"
+        ],
+        "validator": [
+          "cid10#controllers.1",
+          "cid10#controllers.3"
+        ]
+      },
+      "valid": [
+        {
+          "name": "absent",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi"
+          }
+        },
+        {
+          "name": "string",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "controller": "did:example:bcehfew7h32f32h7af3"
+          }
+        },
+        {
+          "name": "set",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "controller": [
+              "did:example:a",
+              "did:example:b"
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "number",
+          "why": "controller must be a string or a set of strings",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "controller": 42
+          }
+        },
+        {
+          "name": "number-in-set",
+          "why": "each controller must be a string",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "controller": [
+              42
+            ]
+          }
+        },
+        {
+          "name": "not-url",
+          "why": "each controller must conform to the URL Standard",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "controller": "not a url"
+          }
+        }
+      ]
+    },
+    {
+      "case": "also-known-as",
+      "note": "The alsoKnownAs property (CID §2.1.3).",
+      "judges": {
+        "consumer": [
+          "cid10#also-known-as.1",
+          "cid10#also-known-as.2"
+        ],
+        "producer": [
+          "cid10#also-known-as.1",
+          "cid10#also-known-as.2"
+        ],
+        "validator": [
+          "cid10#also-known-as.1",
+          "cid10#also-known-as.2"
+        ]
+      },
+      "valid": [
+        {
+          "name": "absent",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi"
+          }
+        },
+        {
+          "name": "uris",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "alsoKnownAs": [
+              "https://example.com/user",
+              "did:example:other"
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "string",
+          "why": "the value must be a set",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "alsoKnownAs": "https://example.com/user"
+          }
+        },
+        {
+          "name": "not-uri",
+          "why": "each item must be a URI",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "alsoKnownAs": [
+              "not a uri"
+            ]
+          }
+        },
+        {
+          "name": "repeated",
+          "why": "a set does not contain the same item twice",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "alsoKnownAs": [
+              "https://example.com/user",
+              "https://example.com/user"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "service-structure",
+      "note": "The service property and the members of a service map (CID §2.1.4).",
+      "partial": "a service without id is not used: cid10#services.3 requires id while cid10#services.5 makes it optional",
+      "judges": {
+        "consumer": [
+          "cid10#services.1",
+          "cid10#services.2",
+          "cid10#services.3",
+          "cid10#services.4",
+          "cid10#services.8",
+          "cid10#services.11"
+        ],
+        "producer": [
+          "cid10#services.1",
+          "cid10#services.2",
+          "cid10#services.3",
+          "cid10#services.4",
+          "cid10#services.8",
+          "cid10#services.11"
+        ],
+        "validator": [
+          "cid10#services.1",
+          "cid10#services.2",
+          "cid10#services.3",
+          "cid10#services.4",
+          "cid10#services.8",
+          "cid10#services.11"
+        ]
+      },
+      "valid": [
+        {
+          "name": "absent",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi"
+          }
+        },
+        {
+          "name": "one",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "service": [
+              {
+                "id": "#svc",
+                "type": "ExampleService",
+                "serviceEndpoint": "https://example.com/endpoint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "extension-property",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "service": [
+              {
+                "id": "#svc",
+                "type": "ExampleService",
+                "serviceEndpoint": "https://example.com/endpoint",
+                "extra": {
+                  "a": 1
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "map",
+          "why": "the value must be a set of service maps",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "service": {
+              "id": "#svc",
+              "type": "ExampleService",
+              "serviceEndpoint": "https://example.com/endpoint"
+            }
+          }
+        },
+        {
+          "name": "string-item",
+          "why": "each service is described by a map",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "service": [
+              "https://example.com/endpoint"
+            ]
+          }
+        },
+        {
+          "name": "no-type",
+          "why": "type is REQUIRED",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "service": [
+              {
+                "id": "#svc",
+                "serviceEndpoint": "https://example.com/endpoint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "no-endpoint",
+          "why": "serviceEndpoint is REQUIRED",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "service": [
+              {
+                "id": "#svc",
+                "type": "ExampleService"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "service-id",
+      "note": "The id of a service (CID §2.1.4).",
+      "judges": {
+        "consumer": [
+          "cid10#services.6",
+          "cid10#services.7"
+        ],
+        "producer": [
+          "cid10#services.6",
+          "cid10#services.7"
+        ],
+        "validator": [
+          "cid10#services.6",
+          "cid10#services.7"
+        ]
+      },
+      "valid": [
+        {
+          "name": "absolute",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "service": [
+              {
+                "id": "did:example:123456789abcdefghi#svc",
+                "type": "ExampleService",
+                "serviceEndpoint": "https://example.com/endpoint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "relative",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "service": [
+              {
+                "id": "#svc",
+                "type": "ExampleService",
+                "serviceEndpoint": "https://example.com/endpoint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "two",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "service": [
+              {
+                "id": "#a",
+                "type": "ExampleService",
+                "serviceEndpoint": "https://example.com/endpoint"
+              },
+              {
+                "id": "#b",
+                "type": "ExampleService",
+                "serviceEndpoint": "https://example.com/endpoint"
+              }
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "not-url",
+          "why": "id must be a URL",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "service": [
+              {
+                "id": "not a url",
+                "type": "ExampleService",
+                "serviceEndpoint": "https://example.com/endpoint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "duplicate",
+          "why": "two services with the same id",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "service": [
+              {
+                "id": "#svc",
+                "type": "ExampleService",
+                "serviceEndpoint": "https://example.com/endpoint"
+              },
+              {
+                "id": "#svc",
+                "type": "ExampleService",
+                "serviceEndpoint": "https://example.com/other"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "service-type",
+      "note": "The type of a service (CID §2.1.4).",
+      "judges": {
+        "consumer": [
+          "cid10#services.9"
+        ],
+        "producer": [
+          "cid10#services.9"
+        ],
+        "validator": [
+          "cid10#services.9"
+        ]
+      },
+      "valid": [
+        {
+          "name": "string",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "service": [
+              {
+                "id": "#svc",
+                "type": "A",
+                "serviceEndpoint": "https://example.com/endpoint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "set",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "service": [
+              {
+                "id": "#svc",
+                "type": [
+                  "A",
+                  "B"
+                ],
+                "serviceEndpoint": "https://example.com/endpoint"
+              }
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "number",
+          "why": "type must be a string or a set of strings",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "service": [
+              {
+                "id": "#svc",
+                "type": 42,
+                "serviceEndpoint": "https://example.com/endpoint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "number-in-set",
+          "why": "each type must be a string",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "service": [
+              {
+                "id": "#svc",
+                "type": [
+                  "A",
+                  1
+                ],
+                "serviceEndpoint": "https://example.com/endpoint"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "service-endpoint",
+      "note": "The serviceEndpoint of a service (CID §2.1.4, DID 1.1 §5).",
+      "judges": {
+        "consumer": [
+          "cid10#services.12",
+          "cid10#services.13",
+          "did11-cr20260305#core-properties.1"
+        ],
+        "producer": [
+          "cid10#services.12",
+          "cid10#services.13",
+          "did11-cr20260305#core-properties.1"
+        ],
+        "validator": [
+          "cid10#services.12",
+          "cid10#services.13",
+          "did11-cr20260305#core-properties.1"
+        ]
+      },
+      "valid": [
+        {
+          "name": "string",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "service": [
+              {
+                "id": "#svc",
+                "type": "ExampleService",
+                "serviceEndpoint": "https://example.com/messages/8377464"
+              }
+            ]
+          }
+        },
+        {
+          "name": "map",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "service": [
+              {
+                "id": "#svc",
+                "type": "ExampleService",
+                "serviceEndpoint": {
+                  "origins": [
+                    "https://example.com/"
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "set",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "service": [
+              {
+                "id": "#svc",
+                "type": "ExampleService",
+                "serviceEndpoint": [
+                  "https://a.example/",
+                  {
+                    "uri": "https://b.example/"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "number",
+          "why": "serviceEndpoint must be a string, a map or a set",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "service": [
+              {
+                "id": "#svc",
+                "type": "ExampleService",
+                "serviceEndpoint": 42
+              }
+            ]
+          }
+        },
+        {
+          "name": "empty-set",
+          "why": "a set of one or more strings and/or maps",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "service": [
+              {
+                "id": "#svc",
+                "type": "ExampleService",
+                "serviceEndpoint": []
+              }
+            ]
+          }
+        },
+        {
+          "name": "number-in-set",
+          "why": "items must be strings or maps",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "service": [
+              {
+                "id": "#svc",
+                "type": "ExampleService",
+                "serviceEndpoint": [
+                  "https://a.example/",
+                  42
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "not-url",
+          "why": "each string must be a valid URL",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "service": [
+              {
+                "id": "#svc",
+                "type": "ExampleService",
+                "serviceEndpoint": "not a url"
+              }
+            ]
+          }
+        },
+        {
+          "name": "space",
+          "why": "a space makes the URL invalid",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "service": [
+              {
+                "id": "#svc",
+                "type": "ExampleService",
+                "serviceEndpoint": "https://exa mple.com/"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "verification-method-structure",
+      "note": "The verificationMethod property and the members of a verification method (CID §2.2).",
+      "partial": "the verification material a type requires is not judged: for Multikey, cid10#Multikey.2 makes publicKeyMultibase optional",
+      "judges": {
+        "consumer": [
+          "cid10#verification-methods.1",
+          "cid10#verification-methods.2",
+          "cid10#verification-methods.3",
+          "cid10#verification-methods.4"
+        ],
+        "producer": [
+          "cid10#verification-methods.1",
+          "cid10#verification-methods.2",
+          "cid10#verification-methods.3",
+          "cid10#verification-methods.4"
+        ],
+        "validator": [
+          "cid10#verification-methods.1",
+          "cid10#verification-methods.2",
+          "cid10#verification-methods.3",
+          "cid10#verification-methods.4"
+        ]
+      },
+      "valid": [
+        {
+          "name": "absent",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi"
+          }
+        },
+        {
+          "name": "one",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        },
+        {
+          "name": "extension-property",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu",
+                "note": "additional"
+              }
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "map",
+          "why": "the value must be a set of maps",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": {
+              "id": "did:example:123456789abcdefghi#key-1",
+              "type": "Multikey",
+              "controller": "did:example:123456789abcdefghi",
+              "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+            }
+          }
+        },
+        {
+          "name": "string-item",
+          "why": "each verification method is a map",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              "did:example:123456789abcdefghi#key-1"
+            ]
+          }
+        },
+        {
+          "name": "no-id",
+          "why": "id is required",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        },
+        {
+          "name": "no-type",
+          "why": "type is required",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        },
+        {
+          "name": "no-controller",
+          "why": "controller is required",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "verification-method-id-url",
+      "note": "The id of a verification method is a URL (CID §2.2).",
+      "judges": {
+        "consumer": [
+          "cid10#verification-methods.5"
+        ],
+        "producer": [
+          "cid10#verification-methods.5"
+        ],
+        "validator": [
+          "cid10#verification-methods.5"
+        ]
+      },
+      "valid": [
+        {
+          "name": "absolute",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "number",
+          "why": "id must be a string",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": 42,
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        },
+        {
+          "name": "not-url",
+          "why": "id must conform to the URL syntax",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "not a url",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "verification-method-id-did-url",
+      "note": "DID 1.1 restricts the id of a verification method to DID URLs (DID 1.1 §5.2).",
+      "judges": {
+        "consumer": [
+          "did11-cr20260305#verification-methods.1"
+        ],
+        "producer": [
+          "did11-cr20260305#verification-methods.1"
+        ],
+        "validator": [
+          "did11-cr20260305#verification-methods.1"
+        ]
+      },
+      "valid": [
+        {
+          "name": "absolute",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        },
+        {
+          "name": "relative",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "https",
+          "why": "the id must conform to DID URL syntax or be a relative DID URL",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "https://example.com/keys/1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        },
+        {
+          "name": "controller-https",
+          "why": "the controller must conform to DID syntax",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "https://example.com/controller",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        },
+        {
+          "name": "controller-did-url",
+          "why": "the controller must be a DID, without a fragment",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi#x",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "verification-method-controller",
+      "note": "The controller of a verification method is a URL (CID §2.2).",
+      "judges": {
+        "consumer": [
+          "cid10#verification-methods.7"
+        ],
+        "producer": [
+          "cid10#verification-methods.7"
+        ],
+        "validator": [
+          "cid10#verification-methods.7"
+        ]
+      },
+      "valid": [
+        {
+          "name": "did",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "number",
+          "why": "controller must be a string",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": 42,
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        },
+        {
+          "name": "not-url",
+          "why": "controller must conform to the URL syntax",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "not a url",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "verification-method-type",
+      "note": "The type of a verification method (CID §2.2).",
+      "partial": "whether the string references a defined verification method type is not judged",
+      "judges": {
+        "consumer": [
+          "cid10#verification-methods.6"
+        ],
+        "producer": [
+          "cid10#verification-methods.6"
+        ],
+        "validator": [
+          "cid10#verification-methods.6"
+        ]
+      },
+      "valid": [
+        {
+          "name": "string",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "number",
+          "why": "type must be a string",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": 42,
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        },
+        {
+          "name": "set",
+          "why": "type references exactly one verification method type",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": [
+                  "Multikey",
+                  "JsonWebKey"
+                ],
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "verification-method-expiry",
+      "note": "The expires and revoked properties (CID §2.2).",
+      "judges": {
+        "consumer": [
+          "cid10#verification-methods.8",
+          "cid10#verification-methods.9",
+          "cid10#verification-methods.10",
+          "cid10#verification-methods.11"
+        ],
+        "producer": [
+          "cid10#verification-methods.8",
+          "cid10#verification-methods.9",
+          "cid10#verification-methods.10",
+          "cid10#verification-methods.11"
+        ],
+        "validator": [
+          "cid10#verification-methods.8",
+          "cid10#verification-methods.9",
+          "cid10#verification-methods.10",
+          "cid10#verification-methods.11"
+        ]
+      },
+      "valid": [
+        {
+          "name": "absent",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        },
+        {
+          "name": "utc",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu",
+                "expires": "2030-01-01T00:00:00Z",
+                "revoked": "2031-01-01T00:00:00Z"
+              }
+            ]
+          }
+        },
+        {
+          "name": "offset-and-fraction",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu",
+                "expires": "2030-01-01T00:00:00.5+01:00"
+              }
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "expires-no-zone",
+          "why": "a dateTimeStamp has a time zone",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu",
+                "expires": "2030-01-01T00:00:00"
+              }
+            ]
+          }
+        },
+        {
+          "name": "expires-date",
+          "why": "a dateTimeStamp has a time",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu",
+                "expires": "2030-01-01"
+              }
+            ]
+          }
+        },
+        {
+          "name": "revoked-number",
+          "why": "revoked must be a dateTimeStamp string",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu",
+                "revoked": 42
+              }
+            ]
+          }
+        },
+        {
+          "name": "revoked-no-zone",
+          "why": "a dateTimeStamp has a time zone",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu",
+                "revoked": "2030-01-01T00:00:00"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "verification-material-single",
+      "note": "One verification material property per material (CID §2.2.1).",
+      "judges": {
+        "consumer": [
+          "cid10#verification-material.1"
+        ],
+        "producer": [
+          "cid10#verification-material.1"
+        ],
+        "validator": [
+          "cid10#verification-material.1"
+        ]
+      },
+      "valid": [
+        {
+          "name": "multibase",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "multibase-and-jwk",
+          "why": "publicKeyMultibase and publicKeyJwk express the same material twice",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu",
+                "publicKeyJwk": {
+                  "kty": "OKP",
+                  "crv": "Ed25519",
+                  "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "relationship-authentication",
+      "note": "The authentication verification relationship (CID §2.3).",
+      "judges": {
+        "consumer": [
+          "cid10#authentication.1",
+          "cid10#authentication.2",
+          "cid10#authentication.3"
+        ],
+        "producer": [
+          "cid10#authentication.1",
+          "cid10#authentication.2",
+          "cid10#authentication.3"
+        ],
+        "validator": [
+          "cid10#authentication.1",
+          "cid10#authentication.2",
+          "cid10#authentication.3"
+        ]
+      },
+      "valid": [
+        {
+          "name": "absent",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        },
+        {
+          "name": "referenced-and-embedded",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "authentication": [
+              "did:example:123456789abcdefghi#key-1",
+              {
+                "id": "did:example:123456789abcdefghi#key-2",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        },
+        {
+          "name": "relative-reference",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "authentication": [
+              "#key-1"
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "string",
+          "why": "the value must be a set",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "authentication": "did:example:123456789abcdefghi#key-1"
+          }
+        },
+        {
+          "name": "empty",
+          "why": "a set of one or more verification methods",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "authentication": []
+          }
+        },
+        {
+          "name": "number-item",
+          "why": "each item is a verification method or a reference to one",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "authentication": [
+              42
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "relationship-assertionMethod",
+      "note": "The assertionMethod verification relationship (CID §2.3).",
+      "judges": {
+        "consumer": [
+          "cid10#assertion.1",
+          "cid10#assertion.2",
+          "cid10#assertion.3"
+        ],
+        "producer": [
+          "cid10#assertion.1",
+          "cid10#assertion.2",
+          "cid10#assertion.3"
+        ],
+        "validator": [
+          "cid10#assertion.1",
+          "cid10#assertion.2",
+          "cid10#assertion.3"
+        ]
+      },
+      "valid": [
+        {
+          "name": "absent",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        },
+        {
+          "name": "referenced-and-embedded",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "assertionMethod": [
+              "did:example:123456789abcdefghi#key-1",
+              {
+                "id": "did:example:123456789abcdefghi#key-2",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        },
+        {
+          "name": "relative-reference",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "assertionMethod": [
+              "#key-1"
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "string",
+          "why": "the value must be a set",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "assertionMethod": "did:example:123456789abcdefghi#key-1"
+          }
+        },
+        {
+          "name": "empty",
+          "why": "a set of one or more verification methods",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "assertionMethod": []
+          }
+        },
+        {
+          "name": "number-item",
+          "why": "each item is a verification method or a reference to one",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "assertionMethod": [
+              42
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "relationship-keyAgreement",
+      "note": "The keyAgreement verification relationship (CID §2.3).",
+      "judges": {
+        "consumer": [
+          "cid10#key-agreement.1",
+          "cid10#key-agreement.2",
+          "cid10#key-agreement.3"
+        ],
+        "producer": [
+          "cid10#key-agreement.1",
+          "cid10#key-agreement.2",
+          "cid10#key-agreement.3"
+        ],
+        "validator": [
+          "cid10#key-agreement.1",
+          "cid10#key-agreement.2",
+          "cid10#key-agreement.3"
+        ]
+      },
+      "valid": [
+        {
+          "name": "absent",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        },
+        {
+          "name": "referenced-and-embedded",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "keyAgreement": [
+              "did:example:123456789abcdefghi#key-1",
+              {
+                "id": "did:example:123456789abcdefghi#key-2",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        },
+        {
+          "name": "relative-reference",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "keyAgreement": [
+              "#key-1"
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "string",
+          "why": "the value must be a set",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "keyAgreement": "did:example:123456789abcdefghi#key-1"
+          }
+        },
+        {
+          "name": "empty",
+          "why": "a set of one or more verification methods",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "keyAgreement": []
+          }
+        },
+        {
+          "name": "number-item",
+          "why": "each item is a verification method or a reference to one",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "keyAgreement": [
+              42
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "relationship-capabilityInvocation",
+      "note": "The capabilityInvocation verification relationship (CID §2.3).",
+      "judges": {
+        "consumer": [
+          "cid10#capability-invocation.1",
+          "cid10#capability-invocation.2",
+          "cid10#capability-invocation.3"
+        ],
+        "producer": [
+          "cid10#capability-invocation.1",
+          "cid10#capability-invocation.2",
+          "cid10#capability-invocation.3"
+        ],
+        "validator": [
+          "cid10#capability-invocation.1",
+          "cid10#capability-invocation.2",
+          "cid10#capability-invocation.3"
+        ]
+      },
+      "valid": [
+        {
+          "name": "absent",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        },
+        {
+          "name": "referenced-and-embedded",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "capabilityInvocation": [
+              "did:example:123456789abcdefghi#key-1",
+              {
+                "id": "did:example:123456789abcdefghi#key-2",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        },
+        {
+          "name": "relative-reference",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "capabilityInvocation": [
+              "#key-1"
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "string",
+          "why": "the value must be a set",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "capabilityInvocation": "did:example:123456789abcdefghi#key-1"
+          }
+        },
+        {
+          "name": "empty",
+          "why": "a set of one or more verification methods",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "capabilityInvocation": []
+          }
+        },
+        {
+          "name": "number-item",
+          "why": "each item is a verification method or a reference to one",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "capabilityInvocation": [
+              42
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "relationship-capabilityDelegation",
+      "note": "The capabilityDelegation verification relationship (CID §2.3).",
+      "judges": {
+        "consumer": [
+          "cid10#capability-delegation.1",
+          "cid10#capability-delegation.2",
+          "cid10#capability-delegation.3"
+        ],
+        "producer": [
+          "cid10#capability-delegation.1",
+          "cid10#capability-delegation.2",
+          "cid10#capability-delegation.3"
+        ],
+        "validator": [
+          "cid10#capability-delegation.1",
+          "cid10#capability-delegation.2",
+          "cid10#capability-delegation.3"
+        ]
+      },
+      "valid": [
+        {
+          "name": "absent",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        },
+        {
+          "name": "referenced-and-embedded",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "capabilityDelegation": [
+              "did:example:123456789abcdefghi#key-1",
+              {
+                "id": "did:example:123456789abcdefghi#key-2",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        },
+        {
+          "name": "relative-reference",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "capabilityDelegation": [
+              "#key-1"
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "string",
+          "why": "the value must be a set",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "capabilityDelegation": "did:example:123456789abcdefghi#key-1"
+          }
+        },
+        {
+          "name": "empty",
+          "why": "a set of one or more verification methods",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "capabilityDelegation": []
+          }
+        },
+        {
+          "name": "number-item",
+          "why": "each item is a verification method or a reference to one",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "capabilityDelegation": [
+              42
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "verification-relationship-extension",
+      "note": "A document may express other verification relationships (CID §2.3).",
+      "judges": {
+        "consumer": [
+          "cid10#verification-relationships.1"
+        ],
+        "producer": [
+          "cid10#verification-relationships.1"
+        ],
+        "validator": [
+          "cid10#verification-relationships.1"
+        ]
+      },
+      "valid": [
+        {
+          "name": "custom-relationship",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "customRelationship": [
+              "did:example:123456789abcdefghi#key-1"
+            ]
+          }
+        }
+      ],
+      "invalid": []
+    },
+    {
+      "case": "multikey-multibase",
+      "note": "publicKeyMultibase is Multibase encoded (CID §2.2.2, §2.4).",
+      "judges": {
+        "consumer": [
+          "cid10#Multikey.3"
+        ],
+        "producer": [
+          "cid10#Multikey.3"
+        ],
+        "validator": [
+          "cid10#Multikey.3"
+        ]
+      },
+      "valid": [
+        {
+          "name": "base58btc",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "no-header",
+          "why": "a Multibase value starts with a header such as z",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ]
+          }
+        },
+        {
+          "name": "bad-alphabet",
+          "why": "0, O, I and l are not in the base-58-btc alphabet",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z0OIl"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "multikey-ed25519",
+      "note": "The Multikey encoding of a public key (CID §2.2.2).",
+      "judges": {
+        "consumer": [
+          "cid10#Multikey.9",
+          "cid10#Multikey.10"
+        ],
+        "producer": [
+          "cid10#Multikey.9",
+          "cid10#Multikey.10"
+        ],
+        "validator": [
+          "cid10#Multikey.9",
+          "cid10#Multikey.10"
+        ]
+      },
+      "valid": [
+        {
+          "name": "encoded",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6Mkef8AunHq44LfTfpb3S9GFtgESqsk8VkFKwpbB4Z3PvK5"
+              }
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "wrong-length",
+          "why": "the key data after the header has 32 bytes",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z2DQV1wBrZvCo1JbYRCgtJUhcYeSFTw6Ew6GUraSR2iF8ur"
+              }
+            ]
+          }
+        },
+        {
+          "name": "base64url",
+          "why": "the value must be base-58-btc with the z header",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "u7QEDChEYHyYtNDtCSVBXXmVsc3qBiI-WnaSrsrnAx87V3A"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "multikey-p256",
+      "note": "The Multikey encoding of a public key (CID §2.2.2).",
+      "judges": {
+        "consumer": [
+          "cid10#Multikey.6",
+          "cid10#Multikey.7"
+        ],
+        "producer": [
+          "cid10#Multikey.6",
+          "cid10#Multikey.7"
+        ],
+        "validator": [
+          "cid10#Multikey.6",
+          "cid10#Multikey.7"
+        ]
+      },
+      "valid": [
+        {
+          "name": "encoded",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "zDnaeR7GExFdLBAwn68cvjpvpVgYrtBV5gqxxTjnM37Lg7iLJ"
+              }
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "wrong-length",
+          "why": "the key data after the header has 33 bytes",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z3u1pu8mEapGUubsviVTidSMoZKvtdX1vdDTGjm8ZBSuVM6j"
+              }
+            ]
+          }
+        },
+        {
+          "name": "base64url",
+          "why": "the value must be base-58-btc with the z header",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "ugCQCChEYHyYtNDtCSVBXXmVsc3qBiI-WnaSrsrnAx87V3OM"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "multikey-p384",
+      "note": "The Multikey encoding of a public key (CID §2.2.2).",
+      "judges": {
+        "consumer": [
+          "cid10#Multikey.8"
+        ],
+        "producer": [
+          "cid10#Multikey.8"
+        ],
+        "validator": [
+          "cid10#Multikey.8"
+        ]
+      },
+      "valid": [
+        {
+          "name": "encoded",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z82LkvHCnbjGUgH9f4nKKAQAUxwbG2qsVT5aPmuN1xknNBEg6umNG6yYCGTKzT3KkfyiG8z"
+              }
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "wrong-length",
+          "why": "the key data after the header has 49 bytes",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z2bHiDXQWpHpuwfYsK5NpcfKv1SWWgqgXv2wh3vYx3fU3XsDwMZi4skAnbmUsAyiQVKHbh"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "multikey-bls12-381",
+      "note": "The Multikey encoding of a public key (CID §2.2.2).",
+      "judges": {
+        "consumer": [
+          "cid10#Multikey.11",
+          "cid10#Multikey.12"
+        ],
+        "producer": [
+          "cid10#Multikey.11",
+          "cid10#Multikey.12"
+        ],
+        "validator": [
+          "cid10#Multikey.11",
+          "cid10#Multikey.12"
+        ]
+      },
+      "valid": [
+        {
+          "name": "encoded",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "zUC6FtGtaCGMM3chRBqbW4cPZBTeUe8Dg3iFTutkkBMkntiATuUYWgJHAwSQLYRMgHjheS6jTHtLT255YjwZcKxsvx14hKi5AAbxf4VWSV1c42K9pYSaqtLBz2QV4cbGkbJvhmm"
+              }
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "wrong-length",
+          "why": "the key data after the header has 96 bytes",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z7AJxUvu1iyVdG6NPhX3NzTbZfcwi9s7x4nbYUPbqJJPcKWiZq944Z1k5yHdZ4wuiXXX43Wr3LEShnZBzwb7UwbQmrAXk7xXPvNy7MjFpv23WESQkPyzxwDxWETcp3B2kruzw6"
+              }
+            ]
+          }
+        },
+        {
+          "name": "base64url",
+          "why": "the value must be base-58-btc with the z header",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "u6wEDChEYHyYtNDtCSVBXXmVsc3qBiI-WnaSrsrnAx87V3OPq8fj_Bg0UGyIpMDc-RUxTWmFob3Z9hIuSmaCnrrW8w8rR2N_m7fT7AgkQFx4lLDM6QUhPVl1ka3J5gIeOlZw"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "multikey-sm2",
+      "note": "The Multikey encoding of a public key (CID §2.2.2).",
+      "judges": {
+        "consumer": [
+          "cid10#Multikey.13",
+          "cid10#Multikey.14"
+        ],
+        "producer": [
+          "cid10#Multikey.13",
+          "cid10#Multikey.14"
+        ],
+        "validator": [
+          "cid10#Multikey.13",
+          "cid10#Multikey.14"
+        ]
+      },
+      "valid": [
+        {
+          "name": "encoded",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "zEPJby4WfFzsh7XNZXKu51EXNNbQdDHGCpVHk9qe9pEuboemg"
+              }
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "wrong-length",
+          "why": "the key data after the header has 33 bytes",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z42t7Ze3eDThwQEE3PH4eA7gxbM2jBwSCHeg8xvcc5MpiRAT"
+              }
+            ]
+          }
+        },
+        {
+          "name": "base64url",
+          "why": "the value must be base-58-btc with the z header",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "uhiQCChEYHyYtNDtCSVBXXmVsc3qBiI-WnaSrsrnAx87V3OM"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "jwk-structure",
+      "note": "publicKeyJwk is a JSON Web Key (CID §2.2.3).",
+      "judges": {
+        "consumer": [
+          "cid10#JsonWebKey.2",
+          "cid10#JsonWebKey.3"
+        ],
+        "producer": [
+          "cid10#JsonWebKey.2",
+          "cid10#JsonWebKey.3"
+        ],
+        "validator": [
+          "cid10#JsonWebKey.2",
+          "cid10#JsonWebKey.3"
+        ]
+      },
+      "valid": [
+        {
+          "name": "okp",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-jwk",
+                "type": "JsonWebKey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyJwk": {
+                  "kty": "OKP",
+                  "crv": "Ed25519",
+                  "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "ec",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-jwk",
+                "type": "JsonWebKey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyJwk": {
+                  "kty": "EC",
+                  "crv": "P-256",
+                  "x": "f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU",
+                  "y": "x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "string",
+          "why": "the value must be a map",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-jwk",
+                "type": "JsonWebKey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyJwk": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ"
+              }
+            ]
+          }
+        },
+        {
+          "name": "no-kty",
+          "why": "RFC 7517 requires kty",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-jwk",
+                "type": "JsonWebKey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyJwk": {
+                  "crv": "Ed25519",
+                  "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "jwk-private-members",
+      "note": "publicKeyJwk carries no private key members (CID §2.2.3).",
+      "judges": {
+        "consumer": [
+          "cid10#JsonWebKey.4",
+          "cid10#JsonWebKey.13"
+        ],
+        "producer": [
+          "cid10#JsonWebKey.4",
+          "cid10#JsonWebKey.13"
+        ],
+        "validator": [
+          "cid10#JsonWebKey.4",
+          "cid10#JsonWebKey.13"
+        ]
+      },
+      "valid": [
+        {
+          "name": "public",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-jwk",
+                "type": "JsonWebKey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyJwk": {
+                  "kty": "EC",
+                  "crv": "P-256",
+                  "x": "f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU",
+                  "y": "x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "d",
+          "why": "d is a private member",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-jwk",
+                "type": "JsonWebKey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyJwk": {
+                  "kty": "EC",
+                  "crv": "P-256",
+                  "x": "f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU",
+                  "y": "x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0",
+                  "d": "jpsQnnGQmL-YBIffH1136cspYG6-0iY7X1fCE9-E9LI"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "k",
+          "why": "k is a private member of a symmetric key",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-jwk",
+                "type": "JsonWebKey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyJwk": {
+                  "kty": "oct",
+                  "k": "GawgguFyGrWKav7AX4VKUg"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "jwk-crv",
+      "note": "An elliptic curve JWK identifies its curve (CID §2.2.3, RFC 7518 §6.2.1.1).",
+      "judges": {
+        "consumer": [
+          "cid10#JsonWebKey.8"
+        ],
+        "producer": [
+          "cid10#JsonWebKey.8"
+        ],
+        "validator": [
+          "cid10#JsonWebKey.8"
+        ]
+      },
+      "valid": [
+        {
+          "name": "ec",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-jwk",
+                "type": "JsonWebKey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyJwk": {
+                  "kty": "EC",
+                  "crv": "P-256",
+                  "x": "f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU",
+                  "y": "x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "ec-no-crv",
+          "why": "crv is REQUIRED for an elliptic curve key",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-jwk",
+                "type": "JsonWebKey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyJwk": {
+                  "kty": "EC",
+                  "x": "f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU",
+                  "y": "x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "case": "json-ld-context",
+      "note": "The @context entry of a DID 1.1 document (DID 1.1 §6.2.3).",
+      "partial": "a document is judged under requireVersion 1.1; JSON-LD processing of the context is not observed",
+      "judges": {
+        "consumer": [
+          "did11-cr20260305#json-ld-processors.1",
+          "did11-cr20260305#json-ld-processors.4"
+        ],
+        "producer": [
+          "did11-cr20260305#json-ld-processors.1",
+          "did11-cr20260305#json-ld-processors.4"
+        ],
+        "validator": [
+          "did11-cr20260305#json-ld-processors.1",
+          "did11-cr20260305#json-ld-processors.4"
+        ]
+      },
+      "valid": [
+        {
+          "name": "no-context",
+          "document": {
+            "id": "did:example:123456789abcdefghi"
+          }
+        },
+        {
+          "name": "string",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi"
+          }
+        },
+        {
+          "name": "layered",
+          "document": {
+            "@context": [
+              "https://www.w3.org/ns/did/v1.1",
+              "https://did-method-extension.example/v1"
+            ],
+            "id": "did:example:123456789abcdefghi"
+          }
+        },
+        {
+          "name": "with-map",
+          "document": {
+            "@context": [
+              "https://www.w3.org/ns/did/v1.1",
+              {
+                "@vocab": "https://example.com/vocab#"
+              }
+            ],
+            "id": "did:example:123456789abcdefghi"
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "did-v1",
+          "why": "the context must be https://www.w3.org/ns/did/v1.1",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1",
+            "id": "did:example:123456789abcdefghi"
+          }
+        },
+        {
+          "name": "not-first",
+          "why": "https://www.w3.org/ns/did/v1.1 must be the first item",
+          "document": {
+            "@context": [
+              "https://did-method-extension.example/v1",
+              "https://www.w3.org/ns/did/v1.1"
+            ],
+            "id": "did:example:123456789abcdefghi"
+          }
+        },
+        {
+          "name": "number",
+          "why": "a JSON-LD context is a string, a map or a list of them",
+          "document": {
+            "@context": 42,
+            "id": "did:example:123456789abcdefghi"
+          }
+        }
+      ]
+    },
+    {
+      "case": "json-root",
+      "note": "The root of a consumed representation (DID 1.1 §6.2.2).",
+      "judges": {
+        "consumer": [
+          "did11-cr20260305#consumption.1",
+          "did11-cr20260305#consumption.2",
+          "did11-cr20260305#consumption.3"
+        ]
+      },
+      "valid": [
+        {
+          "name": "object",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi"
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "name": "array",
+          "why": "the root element must be a JSON Object",
+          "text": "[{\"id\":\"did:example:123456789abcdefghi\"}]"
+        },
+        {
+          "name": "string",
+          "why": "the root element must be a JSON Object",
+          "text": "\"did:example:123456789abcdefghi\""
+        },
+        {
+          "name": "null",
+          "why": "the root element must be a JSON Object",
+          "text": "null"
+        },
+        {
+          "name": "truncated",
+          "why": "the representation is not JSON",
+          "text": "{\"id\":\"did:example:123456789abcdefghi\""
+        }
+      ]
+    },
+    {
+      "case": "media-type-decides",
+      "note": "The consumer determines the representation from the media type (DID 1.1 §6.1).",
+      "partial": "an unknown or lower-precision JSON media type is not used: DID 1.1 §6.3.1 discourages errors for those",
+      "judges": {
+        "consumer": [
+          "did11-cr20260305#production-and-consumption.15"
+        ]
+      },
+      "skipGeneral": true,
+      "valid": [
+        {
+          "name": "application-did",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi"
+          },
+          "mediaType": "application/did"
+        }
+      ],
+      "invalid": [
+        {
+          "name": "image-png",
+          "why": "image/png is not the media type of a DID document representation",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:123456789abcdefghi"
+          },
+          "mediaType": "image/png"
+        }
+      ]
+    }
+  ]
+}

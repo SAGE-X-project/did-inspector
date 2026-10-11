@@ -1,0 +1,1016 @@
+{
+  "scenarios": [
+    {
+      "case": "found",
+      "note": "Resolving a DID of the fixture method (DID Resolution §4, §4.4; DID Resolution Example 11).",
+      "function": "resolve",
+      "input": "did:example:123456789abcdefghi",
+      "options": {},
+      "expect": [
+        {
+          "check": "success",
+          "statements": [
+            "res10-crd20261001#resolving.1",
+            "res10-crd20261001#resolving.3",
+            "res10-crd20261001#did-resolution-options.4",
+            "res10-crd20261001#resolving-algorithm.17",
+            "res10-crd20261001#resolving-algorithm.32"
+          ]
+        },
+        {
+          "check": "noError",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.33"
+          ]
+        },
+        {
+          "check": "documentId",
+          "value": "did:example:123456789abcdefghi",
+          "statements": [
+            "res10-crd20261001#resolving.7",
+            "res10-crd20261001#resolving-algorithm.34"
+          ]
+        },
+        {
+          "check": "documentEquals",
+          "value": {
+            "@context": [
+              "https://www.w3.org/ns/did/v1.1",
+              "https://didcomm.org/messaging/contexts/v2",
+              "https://identity.foundation/linked-vp/contexts/v1"
+            ],
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#keys-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "service": [
+              {
+                "id": "did:example:123456789abcdefghi#messages",
+                "type": "DIDCommMessaging",
+                "serviceEndpoint": "https://example.com/messages/8377464"
+              },
+              {
+                "id": "did:example:123456789abcdefghi#linkedvp",
+                "type": "LinkedVerifiablePresentation",
+                "serviceEndpoint": "https://example.com/verifiable-presentation.jsonld"
+              }
+            ]
+          },
+          "statements": [
+            "res10-crd20261001#resolving.6",
+            "res10-crd20261001#resolving-algorithm.26"
+          ],
+          "partial": "the document is compared with the stored conformant representation; other representations are not judged"
+        },
+        {
+          "check": "contentMetadataHas",
+          "value": {
+            "created": "2019-03-23T06:35:22Z",
+            "updated": "2023-08-10T13:40:06Z",
+            "versionId": "1"
+          },
+          "statements": [
+            "res10-crd20261001#resolving.9"
+          ]
+        },
+        {
+          "check": "contentTypeAnywhere",
+          "value": "application/did",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.35"
+          ],
+          "partial": "the media type is accepted in either metadata structure: §4.4 puts contentType in didDocumentMetadata, §4.2 in didResolutionMetadata"
+        }
+      ]
+    },
+    {
+      "case": "current-version",
+      "note": "Without a version option the current version is returned (CID §2.1.1).",
+      "function": "resolve",
+      "input": "did:example:versioned",
+      "options": {},
+      "expect": [
+        {
+          "check": "contentMetadataHas",
+          "value": {
+            "versionId": "3"
+          },
+          "statements": [
+            "cid10#subjects.3"
+          ]
+        },
+        {
+          "check": "documentEquals",
+          "value": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:versioned",
+            "service": [
+              {
+                "id": "did:example:versioned#v",
+                "type": "Version",
+                "serviceEndpoint": "https://example.com/v3"
+              }
+            ]
+          },
+          "statements": [
+            "cid10#subjects.3"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "invalid-did-method-case",
+      "note": "A DID whose method name has an upper-case letter (DID Resolution §4.4 step 1).",
+      "function": "resolve",
+      "input": "did:Example:123",
+      "options": {},
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "https://www.w3.org/ns/did#INVALID_DID",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.1",
+            "res10-crd20261001#resolving-algorithm.2",
+            "res10-crd20261001#resolving.2"
+          ]
+        },
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#resolving.5"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "res10-crd20261001#resolving.4"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.3",
+            "res10-crd20261001#resolving.8"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.4",
+            "res10-crd20261001#resolving.10"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "invalid-did-url",
+      "note": "A DID URL is not a DID (DID Resolution §4.4 step 1).",
+      "function": "resolve",
+      "input": "did:example:123456789abcdefghi#keys-1",
+      "options": {},
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "https://www.w3.org/ns/did#INVALID_DID",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.1",
+            "res10-crd20261001#resolving-algorithm.2",
+            "res10-crd20261001#resolving.2"
+          ]
+        },
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#resolving.5"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "res10-crd20261001#resolving.4"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.3",
+            "res10-crd20261001#resolving.8"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.4",
+            "res10-crd20261001#resolving.10"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "invalid-did-percent",
+      "note": "A DID with a broken percent-encoding (DID Resolution §4.4 step 1).",
+      "function": "resolve",
+      "input": "did:example:12%3",
+      "options": {},
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "https://www.w3.org/ns/did#INVALID_DID",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.1",
+            "res10-crd20261001#resolving-algorithm.2",
+            "res10-crd20261001#resolving.2"
+          ]
+        },
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#resolving.5"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "res10-crd20261001#resolving.4"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.3",
+            "res10-crd20261001#resolving.8"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.4",
+            "res10-crd20261001#resolving.10"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "method-not-supported",
+      "note": "A DID of a method the resolver does not support (DID Resolution §4.4 step 2).",
+      "function": "resolve",
+      "input": "did:inspectorunsupported:123",
+      "options": {},
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "https://www.w3.org/ns/did#METHOD_NOT_SUPPORTED",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.5",
+            "res10-crd20261001#resolving-algorithm.6"
+          ]
+        },
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#resolving.5"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "res10-crd20261001#resolving.4"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.7",
+            "res10-crd20261001#resolving.8"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.8",
+            "res10-crd20261001#resolving.10"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "option-not-supported",
+      "note": "A resolution option no resolver defines (DID Resolution §4.4 step 3).",
+      "function": "resolve",
+      "input": "did:example:123456789abcdefghi",
+      "options": {
+        "inspectorUnsupportedOption": "value"
+      },
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "https://www.w3.org/ns/did#FEATURE_NOT_SUPPORTED",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.9",
+            "res10-crd20261001#resolving-algorithm.10"
+          ]
+        },
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#resolving.5"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "res10-crd20261001#resolving.4"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.11",
+            "res10-crd20261001#resolving.8"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.12",
+            "res10-crd20261001#resolving.10"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "invalid-option-expand",
+      "note": "expandRelativeUrls must be a boolean (DID Resolution §4.1, §4.4 step 4).",
+      "function": "resolve",
+      "input": "did:example:123456789abcdefghi",
+      "options": {
+        "expandRelativeUrls": "yes"
+      },
+      "unsupportedIf": [
+        "https://www.w3.org/ns/did#FEATURE_NOT_SUPPORTED"
+      ],
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "https://www.w3.org/ns/did#INVALID_OPTIONS",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.13",
+            "res10-crd20261001#resolving-algorithm.14"
+          ]
+        },
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#resolving.5"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "res10-crd20261001#resolving.4"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.15",
+            "res10-crd20261001#resolving.8"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.16",
+            "res10-crd20261001#resolving.10"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "invalid-option-version-time-fraction",
+      "note": "A versionTime with sub-second precision (DID Resolution §3, §3.1).",
+      "function": "resolve",
+      "input": "did:example:versioned",
+      "options": {
+        "versionTime": "2021-05-10T17:00:00.123Z"
+      },
+      "unsupportedIf": [
+        "https://www.w3.org/ns/did#FEATURE_NOT_SUPPORTED"
+      ],
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "https://www.w3.org/ns/did#INVALID_OPTIONS",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.13",
+            "res10-crd20261001#resolving-algorithm.14",
+            "res10-crd20261001#did-parameters.3",
+            "res10-crd20261001#datetime.2"
+          ]
+        },
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#resolving.5"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "res10-crd20261001#resolving.4"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#resolving.8"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "res10-crd20261001#resolving.10"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "invalid-option-version-time-offset",
+      "note": "A versionTime not adjusted to UTC (DID Resolution §3.1).",
+      "function": "resolve",
+      "input": "did:example:versioned",
+      "options": {
+        "versionTime": "2021-05-10T19:00:00+02:00"
+      },
+      "unsupportedIf": [
+        "https://www.w3.org/ns/did#FEATURE_NOT_SUPPORTED"
+      ],
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "https://www.w3.org/ns/did#INVALID_OPTIONS",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.13",
+            "res10-crd20261001#did-parameters.3",
+            "res10-crd20261001#datetime.2"
+          ]
+        },
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#resolving.5"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "res10-crd20261001#resolving.4"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#resolving.8"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "res10-crd20261001#resolving.10"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "invalid-option-version-time-syntax",
+      "note": "A versionTime that is not an XML datetime (DID Resolution §3.1).",
+      "function": "resolve",
+      "input": "did:example:versioned",
+      "options": {
+        "versionTime": "2021-05-10 17:00:00"
+      },
+      "unsupportedIf": [
+        "https://www.w3.org/ns/did#FEATURE_NOT_SUPPORTED"
+      ],
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "https://www.w3.org/ns/did#INVALID_OPTIONS",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.13",
+            "res10-crd20261001#did-parameters.3",
+            "res10-crd20261001#datetime.1"
+          ]
+        },
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#resolving.5"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "res10-crd20261001#resolving.4"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#resolving.8"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "res10-crd20261001#resolving.10"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "invalid-option-accept",
+      "note": "accept must be an HTTP Accept header value (DID Resolution §4.1).",
+      "function": "resolve",
+      "input": "did:example:123456789abcdefghi",
+      "options": {
+        "accept": "not a media type"
+      },
+      "unsupportedIf": [
+        "https://www.w3.org/ns/did#FEATURE_NOT_SUPPORTED"
+      ],
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "https://www.w3.org/ns/did#INVALID_OPTIONS",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.13",
+            "res10-crd20261001#did-resolution-options.2"
+          ]
+        },
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#resolving.5"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "res10-crd20261001#resolving.4"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#resolving.8"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "res10-crd20261001#resolving.10"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "option-accept",
+      "note": "A valid accept option (DID Resolution §4.1).",
+      "function": "resolve",
+      "input": "did:example:123456789abcdefghi",
+      "options": {
+        "accept": "application/did, */*;q=0.1"
+      },
+      "unsupportedIf": [
+        "https://www.w3.org/ns/did#FEATURE_NOT_SUPPORTED"
+      ],
+      "expect": [
+        {
+          "check": "success",
+          "statements": [
+            "res10-crd20261001#did-resolution-options.2"
+          ]
+        },
+        {
+          "check": "documentId",
+          "value": "did:example:123456789abcdefghi",
+          "statements": [
+            "res10-crd20261001#did-resolution-options.2"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "not-found",
+      "note": "A DID of the fixture method that does not exist (DID Resolution §4.4 step 5).",
+      "function": "resolve",
+      "input": "did:example:doesnotexist",
+      "options": {},
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "https://www.w3.org/ns/did#NOT_FOUND",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.17",
+            "res10-crd20261001#resolving-algorithm.18",
+            "res10-crd20261001#resolving-algorithm.19"
+          ]
+        },
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#resolving.5"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "res10-crd20261001#resolving.4"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.20",
+            "res10-crd20261001#resolving.8"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.21",
+            "res10-crd20261001#resolving.10"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "deactivated",
+      "note": "A deactivated DID (DID Resolution §4.3, §4.4 step 5).",
+      "function": "resolve",
+      "input": "did:example:deactivated",
+      "options": {},
+      "expect": [
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.22",
+            "res10-crd20261001#resolving-algorithm.24"
+          ]
+        },
+        {
+          "check": "deactivated",
+          "value": true,
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.25",
+            "res10-crd20261001#did-document-metadata.6"
+          ]
+        },
+        {
+          "check": "noError",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.23"
+          ],
+          "partial": "deactivation is read as a result without an error: §4.4 shows didResolutionMetadata as «[ ... ]», not as an error object"
+        }
+      ]
+    },
+    {
+      "case": "malformed-document",
+      "note": "Stored bytes that are not a conformant representation (DID Resolution §4.4 step 6).",
+      "function": "resolve",
+      "input": "did:example:malformed",
+      "options": {},
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": [
+            "https://www.w3.org/ns/did#INVALID_DID_DOCUMENT",
+            "https://www.w3.org/ns/did#INTERNAL_ERROR"
+          ],
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.26"
+          ],
+          "partial": "either INVALID_DID_DOCUMENT (§11) or INTERNAL_ERROR (§4.4) is accepted"
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.26",
+            "res10-crd20261001#resolving.8"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "wrong-media-type",
+      "note": "Stored bytes under a media type that is not a DID document representation (DID Resolution §4.4 step 6).",
+      "function": "resolve",
+      "input": "did:example:wrongmediatype",
+      "options": {},
+      "expect": [
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.26"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.26"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "id-mismatch",
+      "note": "A stored document whose id is not the resolved DID (DID Resolution §4; CID §2.1.1).",
+      "function": "resolve",
+      "input": "did:example:mismatch",
+      "options": {},
+      "expect": [
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#resolving.7",
+            "cid10#subjects.4",
+            "cid10#subjects.5"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#resolving.7",
+            "cid10#subjects.4",
+            "cid10#subjects.5"
+          ],
+          "partial": "only the MUST is judged: the returned document is not presented as authoritative"
+        }
+      ]
+    },
+    {
+      "case": "internal-error",
+      "note": "The method fails unexpectedly (DID Resolution §4.4).",
+      "function": "resolve",
+      "input": "did:example:failing",
+      "options": {},
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "https://www.w3.org/ns/did#INTERNAL_ERROR",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.36",
+            "res10-crd20261001#resolving-algorithm.37"
+          ]
+        },
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#resolving.5"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "res10-crd20261001#resolving.4"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.38",
+            "res10-crd20261001#resolving.8"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.39",
+            "res10-crd20261001#resolving.10"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "expand-relative-urls",
+      "note": "expandRelativeUrls true expands relative DID URLs (DID Resolution §4.4 step 7; DID 1.1 §3.2.1).",
+      "function": "resolve",
+      "input": "did:example:relative",
+      "options": {
+        "expandRelativeUrls": true
+      },
+      "unsupportedIf": [
+        "https://www.w3.org/ns/did#FEATURE_NOT_SUPPORTED"
+      ],
+      "expect": [
+        {
+          "check": "documentEquals",
+          "value": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:relative",
+            "verificationMethod": [
+              {
+                "id": "did:example:relative#key-1",
+                "type": "Multikey",
+                "controller": "did:example:relative",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "authentication": [
+              "did:example:relative#key-1"
+            ],
+            "assertionMethod": [
+              {
+                "id": "did:example:relative#key-2",
+                "type": "Multikey",
+                "controller": "did:example:relative",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "service": [
+              {
+                "id": "did:example:relative#svc",
+                "type": "ExampleService",
+                "serviceEndpoint": "https://example.com/svc"
+              }
+            ]
+          },
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.27",
+            "res10-crd20261001#resolving-algorithm.28",
+            "res10-crd20261001#resolving-algorithm.29",
+            "res10-crd20261001#resolving-algorithm.30",
+            "res10-crd20261001#resolving-algorithm.31",
+            "did11-cr20260305#relative-did-urls.2"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "relative-urls-kept",
+      "note": "Relative DID URLs are valid in a resolved document (DID 1.1 §3.2.1).",
+      "function": "resolve",
+      "input": "did:example:relative",
+      "options": {},
+      "expect": [
+        {
+          "check": "success",
+          "statements": [
+            "did11-cr20260305#relative-did-urls.1"
+          ]
+        },
+        {
+          "check": "documentId",
+          "value": "did:example:relative",
+          "statements": [
+            "did11-cr20260305#relative-did-urls.1"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "version-id",
+      "note": "The versionId option selects a version (DID Resolution §4.1).",
+      "function": "resolve",
+      "input": "did:example:versioned",
+      "options": {
+        "versionId": "1"
+      },
+      "unsupportedIf": [
+        "https://www.w3.org/ns/did#FEATURE_NOT_SUPPORTED"
+      ],
+      "expect": [
+        {
+          "check": "contentMetadataHas",
+          "value": {
+            "versionId": "1",
+            "nextVersionId": "2"
+          },
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.17"
+          ]
+        },
+        {
+          "check": "documentEquals",
+          "value": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:versioned",
+            "service": [
+              {
+                "id": "did:example:versioned#v",
+                "type": "Version",
+                "serviceEndpoint": "https://example.com/v1"
+              }
+            ]
+          },
+          "statements": [
+            "res10-crd20261001#resolving-algorithm.17"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "version-time",
+      "note": "The versionTime option selects the version current at that time (DID Resolution §3, §4.1).",
+      "function": "resolve",
+      "input": "did:example:versioned",
+      "options": {
+        "versionTime": "2021-02-15T00:00:00Z"
+      },
+      "unsupportedIf": [
+        "https://www.w3.org/ns/did#FEATURE_NOT_SUPPORTED"
+      ],
+      "expect": [
+        {
+          "check": "contentMetadataHas",
+          "value": {
+            "versionId": "2"
+          },
+          "statements": [
+            "res10-crd20261001#did-parameters.3",
+            "res10-crd20261001#datetime.1",
+            "res10-crd20261001#datetime.2"
+          ]
+        },
+        {
+          "check": "documentEquals",
+          "value": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:versioned",
+            "service": [
+              {
+                "id": "did:example:versioned#v",
+                "type": "Version",
+                "serviceEndpoint": "https://example.com/v2"
+              }
+            ]
+          },
+          "statements": [
+            "res10-crd20261001#did-parameters.3"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "equivalent-ids",
+      "note": "Metadata with equivalentId, canonicalId and proof (DID Resolution §4.3).",
+      "function": "resolve",
+      "input": "did:example:equivalent",
+      "options": {},
+      "expect": [
+        {
+          "check": "contentMetadataHas",
+          "value": {
+            "equivalentId": [
+              "did:example:EQUIVALENT"
+            ],
+            "canonicalId": "did:example:equivalent",
+            "proof": [
+              {
+                "type": "DataIntegrityProof",
+                "cryptosuite": "eddsa-jcs-2022",
+                "proofPurpose": "assertionMethod",
+                "verificationMethod": "did:example:equivalent#key-1",
+                "proofValue": "z58DAdFfa9SkqZMVPxAQpic7ndSayn1PzZs6ZjWp1CktyGesjuTSwRdoWhAfGFCF5bppETSTojQCrfFPP2oumHKtz"
+              }
+            ]
+          },
+          "statements": [
+            "res10-crd20261001#did-document-metadata.15",
+            "res10-crd20261001#did-document-metadata.20",
+            "res10-crd20261001#did-document-metadata.24"
+          ],
+          "partial": "the stored metadata must reach the caller; its format is judged by the output invariants"
+        }
+      ]
+    },
+    {
+      "case": "no-cache",
+      "note": "noCache true: resolve without the cache, or refuse with FEATURE_NOT_SUPPORTED (DID Resolution §13.2).",
+      "function": "resolve",
+      "input": "did:example:123456789abcdefghi",
+      "options": {
+        "noCache": true
+      },
+      "expect": [
+        {
+          "check": "successOrErrorCode",
+          "value": [
+            "https://www.w3.org/ns/did#FEATURE_NOT_SUPPORTED"
+          ],
+          "statements": [
+            "res10-crd20261001#caching.2"
+          ],
+          "partial": "the detail of the error is not judged"
+        }
+      ]
+    }
+  ]
+}

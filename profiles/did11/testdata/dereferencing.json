@@ -1,0 +1,825 @@
+{
+  "scenarios": [
+    {
+      "case": "document",
+      "note": "A DID URL without path, query or fragment dereferences to the DID document (DID Resolution §5.4.1).",
+      "function": "dereference",
+      "input": "did:example:123456789abcdefghi",
+      "options": {},
+      "expect": [
+        {
+          "check": "success",
+          "statements": [
+            "res10-crd20261001#dereferencing.1",
+            "res10-crd20261001#dereferencing.5",
+            "res10-crd20261001#dereferencing.8",
+            "res10-crd20261001#dereferencing-algorithm-resource.5",
+            "res10-crd20261001#dereferencing-algorithm-resource.10",
+            "res10-crd20261001#dereferencing-algorithm-resource.12"
+          ]
+        },
+        {
+          "check": "noError",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.13"
+          ]
+        },
+        {
+          "check": "documentEquals",
+          "value": {
+            "@context": [
+              "https://www.w3.org/ns/did/v1.1",
+              "https://didcomm.org/messaging/contexts/v2",
+              "https://identity.foundation/linked-vp/contexts/v1"
+            ],
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#keys-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "service": [
+              {
+                "id": "did:example:123456789abcdefghi#messages",
+                "type": "DIDCommMessaging",
+                "serviceEndpoint": "https://example.com/messages/8377464"
+              },
+              {
+                "id": "did:example:123456789abcdefghi#linkedvp",
+                "type": "LinkedVerifiablePresentation",
+                "serviceEndpoint": "https://example.com/verifiable-presentation.jsonld"
+              }
+            ]
+          },
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.14"
+          ]
+        },
+        {
+          "check": "contentMetadataHas",
+          "value": {
+            "created": "2019-03-23T06:35:22Z",
+            "updated": "2023-08-10T13:40:06Z",
+            "versionId": "1"
+          },
+          "statements": [
+            "res10-crd20261001#dereferencing.11",
+            "res10-crd20261001#dereferencing.12",
+            "res10-crd20261001#dereferencing-algorithm-resource.15"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "document-metadata",
+      "note": "The content metadata of a DID document is its DID document metadata (DID Resolution §5).",
+      "function": "dereference",
+      "input": "did:example:equivalent",
+      "options": {},
+      "expect": [
+        {
+          "check": "contentMetadataHas",
+          "value": {
+            "equivalentId": [
+              "did:example:EQUIVALENT"
+            ],
+            "canonicalId": "did:example:equivalent",
+            "proof": [
+              {
+                "type": "DataIntegrityProof",
+                "cryptosuite": "eddsa-jcs-2022",
+                "proofPurpose": "assertionMethod",
+                "verificationMethod": "did:example:equivalent#key-1",
+                "proofValue": "z58DAdFfa9SkqZMVPxAQpic7ndSayn1PzZs6ZjWp1CktyGesjuTSwRdoWhAfGFCF5bppETSTojQCrfFPP2oumHKtz"
+              }
+            ]
+          },
+          "statements": [
+            "res10-crd20261001#dereferencing.12"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "invalid-did-url-space",
+      "note": "A DID URL with a space in its path (DID Resolution §5.4.1 step 1).",
+      "function": "dereference",
+      "input": "did:example:123456789abcdefghi/pa th",
+      "options": {},
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "https://www.w3.org/ns/did#INVALID_DID_URL",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.1",
+            "res10-crd20261001#dereferencing-algorithm-resource.2"
+          ]
+        },
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#dereferencing.7",
+            "res10-crd20261001#did-url-dereferencing-metadata.4"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "res10-crd20261001#dereferencing.6"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.3",
+            "res10-crd20261001#dereferencing.10"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.4",
+            "res10-crd20261001#dereferencing.13"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "invalid-did-url-fragment",
+      "note": "A DID URL with two fragments (DID Resolution §5.4.1 step 1).",
+      "function": "dereference",
+      "input": "did:example:123456789abcdefghi#a#b",
+      "options": {},
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "https://www.w3.org/ns/did#INVALID_DID_URL",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.1",
+            "res10-crd20261001#dereferencing-algorithm-resource.2"
+          ]
+        },
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#dereferencing.7",
+            "res10-crd20261001#did-url-dereferencing-metadata.4"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "res10-crd20261001#dereferencing.6"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.3",
+            "res10-crd20261001#dereferencing.10"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.4",
+            "res10-crd20261001#dereferencing.13"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "not-found",
+      "note": "A DID URL whose DID does not exist (DID Resolution §5.4.1 step 2).",
+      "function": "dereference",
+      "input": "did:example:doesnotexist",
+      "options": {},
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "https://www.w3.org/ns/did#NOT_FOUND",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.5",
+            "res10-crd20261001#dereferencing-algorithm-resource.6",
+            "res10-crd20261001#dereferencing-algorithm-resource.7"
+          ]
+        },
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#dereferencing.7",
+            "res10-crd20261001#did-url-dereferencing-metadata.4"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "res10-crd20261001#dereferencing.6"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.8",
+            "res10-crd20261001#dereferencing.10"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.9",
+            "res10-crd20261001#dereferencing.13"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "service-by-id",
+      "note": "The service parameter selects a service whose id is a relative reference (DID Resolution §5.4.1).",
+      "function": "dereference",
+      "input": "did:example:services?service=files",
+      "options": {},
+      "expect": [
+        {
+          "check": "serviceIds",
+          "value": [
+            "did:example:services#files"
+          ],
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.16",
+            "res10-crd20261001#dereferencing-algorithm-resource.17",
+            "res10-crd20261001#dereferencing-algorithm-resource.18",
+            "res10-crd20261001#dereferencing-algorithm-resource.29",
+            "res10-crd20261001#dereferencing-algorithm-resource.30",
+            "res10-crd20261001#dereferencing-algorithm-resource.31",
+            "res10-crd20261001#dereferencing-algorithm-resource.33"
+          ],
+          "partial": "the parameter value is matched as the fragment of a DID URL, as the examples of §5.5.2 show; RFC 3986 alone would resolve \"files\" against the DID to did:files"
+        },
+        {
+          "check": "contentMetadataHas",
+          "value": {
+            "created": "2019-03-23T06:35:22Z"
+          },
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.34"
+          ]
+        },
+        {
+          "check": "noError",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.32"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "service-by-type",
+      "note": "The serviceType parameter selects services by type (DID Resolution §5.4.1).",
+      "function": "dereference",
+      "input": "did:example:services?serviceType=LinkedDomains",
+      "options": {},
+      "expect": [
+        {
+          "check": "serviceIds",
+          "value": [
+            "did:example:services#hub",
+            "did:example:services#linked"
+          ],
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.19",
+            "res10-crd20261001#dereferencing-algorithm-resource.30",
+            "res10-crd20261001#dereferencing-algorithm-resource.33"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "service-accept-did",
+      "note": "An accept option with the DID document media type returns the document with the selected services (DID Resolution §5.4.1).",
+      "function": "dereference",
+      "input": "did:example:services?service=linked",
+      "options": {
+        "accept": "application/did"
+      },
+      "expect": [
+        {
+          "check": "serviceIds",
+          "value": [
+            "did:example:services#linked"
+          ],
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.29",
+            "res10-crd20261001#dereferencing-algorithm-resource.30"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "relative-ref-absolute-path",
+      "note": "relativeRef resolved against a string endpoint by RFC 3986 §5 (DID Resolution §5.4.1).",
+      "function": "dereference",
+      "input": "did:example:services?service=files&relativeRef=%2Fresume.pdf",
+      "options": {
+        "accept": "text/uri-list"
+      },
+      "expect": [
+        {
+          "check": "uriList",
+          "value": [
+            "https://files.example.com/resume.pdf"
+          ],
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.20",
+            "res10-crd20261001#dereferencing-algorithm-resource.21",
+            "res10-crd20261001#dereferencing-algorithm-resource.23",
+            "res10-crd20261001#dereferencing-algorithm-resource.25",
+            "res10-crd20261001#dereferencing-algorithm-resource.26",
+            "res10-crd20261001#dereferencing-algorithm-resource.27",
+            "res10-crd20261001#dereferencing-algorithm-resource.28",
+            "res10-crd20261001#dereferencing-algorithm-resource.35",
+            "res10-crd20261001#dereferencing-algorithm-resource.36",
+            "res10-crd20261001#dereferencing-algorithm-resource.38"
+          ]
+        },
+        {
+          "check": "contentTypeAnywhere",
+          "value": "text/uri-list",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.37",
+            "res10-crd20261001#dereferencing-algorithm-resource.39"
+          ],
+          "partial": "text/uri-list is accepted in contentMetadata (§5.4.1) or dereferencingMetadata (§12.1)"
+        }
+      ]
+    },
+    {
+      "case": "relative-ref-relative-path",
+      "note": "A relative-path relativeRef keeps the endpoint path (RFC 3986 §5.2.3).",
+      "function": "dereference",
+      "input": "did:example:services?service=files&relativeRef=resume.pdf",
+      "options": {
+        "accept": "text/uri-list"
+      },
+      "expect": [
+        {
+          "check": "uriList",
+          "value": [
+            "https://files.example.com/storage/resume.pdf"
+          ],
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.25",
+            "res10-crd20261001#dereferencing-algorithm-resource.26",
+            "res10-crd20261001#dereferencing-algorithm-resource.27",
+            "res10-crd20261001#dereferencing-algorithm-resource.28"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "relative-ref-set-endpoint",
+      "note": "Only the strings of a set endpoint are selected (DID Resolution §5.4.1).",
+      "function": "dereference",
+      "input": "did:example:services?service=agent&relativeRef=inbox",
+      "options": {
+        "accept": "text/uri-list"
+      },
+      "expect": [
+        {
+          "check": "uriList",
+          "value": [
+            "https://agent.example.com/inbox",
+            "https://agent2.example.com/inbox"
+          ],
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.24"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "relative-ref-map-endpoint",
+      "note": "A map endpoint is skipped (DID Resolution §5.4.1).",
+      "function": "dereference",
+      "input": "did:example:services?service=hub&relativeRef=inbox",
+      "options": {
+        "accept": "text/uri-list"
+      },
+      "expect": [
+        {
+          "check": "uriList",
+          "value": [],
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.22"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "service-endpoint-fragment",
+      "note": "The DID fragment is appended to the selected endpoint (DID Resolution §5.4.2; Example 13 with RFC 3986 resolution).",
+      "function": "dereference",
+      "input": "did:example:123456789abcdefghi?service=messages&relativeRef=%2Fsome%2Fpath%3Fquery#frag",
+      "options": {
+        "accept": "text/uri-list"
+      },
+      "expect": [
+        {
+          "check": "uriList",
+          "value": [
+            "https://example.com/some/path?query#frag"
+          ],
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-fragment.7",
+            "res10-crd20261001#dereferencing-algorithm-fragment.9",
+            "res10-crd20261001#dereferencing-algorithm-fragment.10",
+            "res10-crd20261001#dereferencing-algorithm-resource.25",
+            "res10-crd20261001#dereferencing-algorithm-resource.28"
+          ],
+          "partial": "Example 14 shows https://example.com/messages/8377464/some/path?query#frag, which RFC 3986 §5.2 does not give for an absolute-path reference; the algorithm is followed"
+        }
+      ]
+    },
+    {
+      "case": "service-endpoint-has-fragment",
+      "note": "An endpoint that has a fragment cannot inherit the DID fragment (DID Resolution §5.4.2).",
+      "function": "dereference",
+      "input": "did:example:services?service=frag#y",
+      "options": {
+        "accept": "text/uri-list"
+      },
+      "expect": [
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-fragment.8"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-fragment.8"
+          ],
+          "partial": "without relativeRef the selected endpoint URLs are read as the endpoint strings; with relativeRef, RFC 3986 resolution would drop the endpoint fragment first"
+        }
+      ]
+    },
+    {
+      "case": "representation-not-supported",
+      "note": "An accept option that is neither a DID document media type nor text/uri-list (DID Resolution §5.4.1).",
+      "function": "dereference",
+      "input": "did:example:services?service=files",
+      "options": {
+        "accept": "image/png"
+      },
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "https://www.w3.org/ns/did#REPRESENTATION_NOT_SUPPORTED",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.40",
+            "res10-crd20261001#dereferencing-algorithm-resource.41"
+          ]
+        },
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#dereferencing.7",
+            "res10-crd20261001#did-url-dereferencing-metadata.4"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "res10-crd20261001#dereferencing.6"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.42",
+            "res10-crd20261001#dereferencing.10"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.43",
+            "res10-crd20261001#dereferencing.13"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "path-not-dereferenceable",
+      "note": "A DID path that neither the algorithm nor the fixture method defines (DID Resolution §5.4.1).",
+      "function": "dereference",
+      "input": "did:example:123456789abcdefghi/custom/path",
+      "options": {},
+      "notApplicableIfSuccess": true,
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "https://www.w3.org/ns/did#NOT_FOUND",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.44",
+            "res10-crd20261001#dereferencing-algorithm-resource.49",
+            "res10-crd20261001#dereferencing-algorithm-resource.50"
+          ]
+        },
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#dereferencing.7",
+            "res10-crd20261001#did-url-dereferencing-metadata.4"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "res10-crd20261001#dereferencing.6"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.51",
+            "res10-crd20261001#dereferencing.10"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.52",
+            "res10-crd20261001#dereferencing.13"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "version-parameter",
+      "note": "DID parameters are passed as resolution options (DID Resolution §5.4.1 step 2).",
+      "function": "dereference",
+      "input": "did:example:versioned?versionId=1",
+      "options": {},
+      "unsupportedIf": [
+        "https://www.w3.org/ns/did#FEATURE_NOT_SUPPORTED"
+      ],
+      "expect": [
+        {
+          "check": "contentMetadataHas",
+          "value": {
+            "versionId": "1"
+          },
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.5"
+          ]
+        },
+        {
+          "check": "documentEquals",
+          "value": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:versioned",
+            "service": [
+              {
+                "id": "did:example:versioned#v",
+                "type": "Version",
+                "serviceEndpoint": "https://example.com/v1"
+              }
+            ]
+          },
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-resource.5"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "fragment-verification-method",
+      "note": "A DID fragment dereferences to the verification method (DID Resolution §5.4.2, §5.5.1; CID §3.4).",
+      "function": "dereference",
+      "input": "did:example:123456789abcdefghi#keys-1",
+      "options": {},
+      "expect": [
+        {
+          "check": "resourceEquals",
+          "value": {
+            "id": "did:example:123456789abcdefghi#keys-1",
+            "type": "Multikey",
+            "controller": "did:example:123456789abcdefghi",
+            "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+          },
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-fragment.11",
+            "res10-crd20261001#dereferencing.3",
+            "res10-crd20261001#dereferencing-algorithm-resource.11",
+            "cid10#fragment-resolution.1",
+            "cid10#fragment-resolution.2",
+            "cid10#fragment-resolution.3",
+            "cid10#fragment-resolution.4",
+            "cid10#fragment-resolution.5"
+          ],
+          "partial": "the resource is compared ignoring @context, which Example 12 adds"
+        }
+      ]
+    },
+    {
+      "case": "fragment-relative-id",
+      "note": "A DID fragment matches a relative id (CID §3.4; DID 1.1 §3.2.1).",
+      "function": "dereference",
+      "input": "did:example:relative#key-1",
+      "options": {},
+      "expect": [
+        {
+          "check": "resourceEquals",
+          "value": {
+            "id": "#key-1",
+            "type": "Multikey",
+            "controller": "did:example:relative",
+            "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+          },
+          "statements": [
+            "cid10#fragment-resolution.3",
+            "cid10#fragment-resolution.4",
+            "did11-cr20260305#relative-did-urls.2"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "fragment-nested",
+      "note": "A DID fragment matches a map nested in a verification relationship (CID §3.4).",
+      "function": "dereference",
+      "input": "did:example:relationships#key-3",
+      "options": {},
+      "expect": [
+        {
+          "check": "resourceEquals",
+          "value": {
+            "id": "did:example:relationships#key-3",
+            "type": "Multikey",
+            "controller": "did:example:relationships",
+            "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+          },
+          "statements": [
+            "cid10#fragment-resolution.4"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "fragment-unknown",
+      "note": "A DID fragment that matches nothing returns no resource (CID §3.4).",
+      "function": "dereference",
+      "input": "did:example:123456789abcdefghi#nothing",
+      "options": {},
+      "expect": [
+        {
+          "check": "noContent",
+          "statements": [
+            "cid10#fragment-resolution.5"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "verification-relationship-authorized",
+      "note": "verificationRelationship names a relationship that authorizes the method (DID Resolution §5.1, §5.4.2).",
+      "function": "dereference",
+      "input": "did:example:relationships#key-1",
+      "options": {
+        "verificationRelationship": "authentication"
+      },
+      "unsupportedIf": [
+        "https://www.w3.org/ns/did#FEATURE_NOT_SUPPORTED"
+      ],
+      "expect": [
+        {
+          "check": "resourceEquals",
+          "value": {
+            "id": "did:example:relationships#key-1",
+            "type": "Multikey",
+            "controller": "did:example:relationships",
+            "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+          },
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-fragment.1",
+            "res10-crd20261001#dereferencing-algorithm-fragment.2",
+            "res10-crd20261001#dereferencing-algorithm-fragment.3",
+            "res10-crd20261001#dereferencing-algorithm-fragment.6",
+            "res10-crd20261001#did-url-dereferencing-options.5"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "verification-relationship-unauthorized",
+      "note": "verificationRelationship names a relationship that does not authorize the method (DID Resolution §5.1, §5.4.2).",
+      "function": "dereference",
+      "input": "did:example:relationships#key-2",
+      "options": {
+        "verificationRelationship": "authentication"
+      },
+      "unsupportedIf": [
+        "https://www.w3.org/ns/did#FEATURE_NOT_SUPPORTED"
+      ],
+      "expect": [
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-fragment.5",
+            "res10-crd20261001#did-url-dereferencing-options.5"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-fragment.5"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "verification-relationship-not-a-method",
+      "note": "verificationRelationship with a DID URL that is not a verification method (DID Resolution §5.1, §5.4.2).",
+      "function": "dereference",
+      "input": "did:example:relationships#svc",
+      "options": {
+        "verificationRelationship": "authentication"
+      },
+      "unsupportedIf": [
+        "https://www.w3.org/ns/did#FEATURE_NOT_SUPPORTED"
+      ],
+      "expect": [
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-fragment.4",
+            "res10-crd20261001#did-url-dereferencing-options.5"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#dereferencing-algorithm-fragment.4"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "verification-relationship-not-ascii",
+      "note": "verificationRelationship must be an ASCII string (DID Resolution §5.1).",
+      "function": "dereference",
+      "input": "did:example:relationships#key-1",
+      "options": {
+        "verificationRelationship": "authentificación"
+      },
+      "unsupportedIf": [
+        "https://www.w3.org/ns/did#FEATURE_NOT_SUPPORTED"
+      ],
+      "expect": [
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#did-url-dereferencing-options.4"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#did-url-dereferencing-options.4"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "invalid-accept",
+      "note": "accept must be an HTTP Accept header value (DID Resolution §5.1).",
+      "function": "dereference",
+      "input": "did:example:123456789abcdefghi",
+      "options": {
+        "accept": "not a media type"
+      },
+      "unsupportedIf": [
+        "https://www.w3.org/ns/did#FEATURE_NOT_SUPPORTED"
+      ],
+      "expect": [
+        {
+          "check": "errorPresent",
+          "statements": [
+            "res10-crd20261001#did-url-dereferencing-options.2"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "res10-crd20261001#did-url-dereferencing-options.2"
+          ]
+        }
+      ]
+    }
+  ]
+}

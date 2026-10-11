@@ -68,6 +68,12 @@ Each statement carries the inspector's own scope decision:
   statement addressed to specification authors), with a reason;
 - `pending`: in scope but without a case yet; reported as `NOT_RUN`.
 
+A statement that only recommends (SHOULD, RECOMMENDED) is `not-checkable`: a
+subject may deviate from a recommendation with valid reason, and the verdict
+set has no level for an unmet recommendation. A statement a case judges only
+partly is `checked`, and its reason says which part remains unjudged; the
+case says so in each observation's detail.
+
 ## 5. Subjects and adapters
 
 The core defines a subject as a set of capabilities. An adapter implements the
@@ -87,6 +93,7 @@ type DocumentValidator interface { Validate(doc DocumentJSON, version string) ([
 type Resolver interface       { Resolve(ctx context.Context, did string, opts map[string]any) (ResolutionResult, error) }
 type Dereferencer interface   { Dereference(ctx context.Context, didURL string, opts map[string]any) (DereferenceResult, error) }
 type V10Functions interface   { Resolve10(...); ResolveRepresentation10(...); Dereference10(...) }
+type FixtureMethod interface  { LoadFixtureRegistry(r *fixtures.Registry) error }
 ```
 
 `DocumentJSON` is the inspector's neutral form of a document: an ordered JSON
@@ -101,6 +108,80 @@ Adapters:
   DID Resolution HTTPS binding, so non-Go implementations can be inspected.
 - Test resolvers that serve fixed fixtures (a `did:example` registry under the
   inspector's control) so that resolution cases do not depend on any network.
+
+### 5.1 The fixture registry (addition)
+
+Resolution and dereferencing cases need a resolver to run against, and the
+inspector must not resolve anything itself. Each profile therefore ships a
+fixture registry (`profiles/<profile>/testdata/registry.json`): the verifiable
+data registry of a fixture DID method named `example`, under the inspector's
+control. The format and its reader are in package `fixtures`, which uses the
+standard library only and imports nothing of the inspector, so that adapters in
+other modules can use it.
+
+```json
+{
+  "format": "did-inspector-fixture-registry/1",
+  "method": "example",
+  "entries": {
+    "did:example:123": {
+      "deactivated": false,
+      "fail": "",
+      "versions": [
+        {"versionId": "1", "validFrom": "2021-01-01T00:00:00Z",
+         "mediaType": "application/did",
+         "document": {"id": "did:example:123"},
+         "documentMetadata": {"created": "2021-01-01T00:00:00Z"}}
+      ]
+    }
+  }
+}
+```
+
+- A DID of the method that has no entry does not exist (not found).
+- `versions` are oldest first; the last one is the current version. Each has
+  the stored bytes, either `document` (JSON, kept byte for byte) or `text`
+  (anything else, for example malformed bytes), the `mediaType` the method
+  stores them under (which may deliberately be wrong), and the DID document
+  metadata the method reports. Stored metadata never carries `deactivated`.
+- `deactivated: true` means the method reports the DID deactivated; the
+  driver still returns the last version, flagged.
+- `fail` makes the driver fail with that message instead of returning a
+  record: an unexpected failure of the method's Read operation.
+- `fixtures.UnsupportedMethod` (`inspectorunsupported`) names a method no
+  subject may support; cases use it for METHOD_NOT_SUPPORTED.
+
+The contract for subjects and adapters:
+
+1. A subject that supports resolution cases implements `core.FixtureMethod`
+   and declares the capability `fixture-method`. Every resolution and
+   dereferencing case calls `LoadFixtureRegistry` with its profile's registry
+   before it resolves; a later call replaces the registry. A subject without
+   the capability gets `NOT_SUPPORTED` for those cases; a failing load gives
+   `ERROR`.
+2. After the call, the subject resolves DIDs of method `example` from the
+   registry only: the adapter wires the registry into the subject as the
+   method driver of `example`, through whatever driver or method plug-in
+   interface the subject has. The driver's lookup is `Registry.Read`, so all
+   adapters read the registry the same way:
+   - the request carries the DID and the `versionId` and `versionTime` the
+     resolver received as resolution options or DID parameters; without them
+     the current version is returned; `versionTime` selects the most recent
+     version whose `validFrom` is at or before it;
+   - it returns the stored bytes, media type, metadata and deactivated flag,
+     or `ErrNotFound`, `ErrVersionNotFound`, `ErrInvalidVersionTime`,
+     `ErrMethodNotSupported` or an `*InjectedError`.
+3. The driver does nothing else. Consuming the bytes under the media type,
+   checking the document and its id, applying options such as
+   `expandRelativeUrls`, building the resolution result and its metadata,
+   and every step of DID URL dereferencing are the subject's own work, and
+   that is what the cases judge. An adapter maps the driver's errors and flags
+   to whatever its subject's driver interface expects (for example a not-found
+   error, or deactivation inside the method's metadata) and does not build
+   resolution results itself.
+
+The cases' expected results are written separately, from the specification
+text, in `testdata/resolution.json` and `testdata/dereferencing.json`.
 
 ## 6. Cases
 

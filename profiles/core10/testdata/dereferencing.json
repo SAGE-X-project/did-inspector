@@ -1,0 +1,172 @@
+{
+  "scenarios": [
+    {
+      "case": "document",
+      "note": "A DID dereferences to the DID document and its metadata (DID Core 1.0 §7.2).",
+      "function": "dereference10",
+      "input": "did:example:123456789abcdefghi",
+      "options": {},
+      "expect": [
+        {
+          "check": "success",
+          "statements": [
+            "core10#did-url-dereferencing.3",
+            "core10#did-url-dereferencing.6",
+            "core10#did-url-dereferencing.9"
+          ]
+        },
+        {
+          "check": "documentId",
+          "value": "did:example:123456789abcdefghi",
+          "statements": [
+            "core10#did-url-dereferencing.6"
+          ]
+        },
+        {
+          "check": "contentMetadataHas",
+          "value": {
+            "created": "2019-03-23T06:35:22Z",
+            "updated": "2023-08-10T13:40:06Z",
+            "versionId": "1"
+          },
+          "statements": [
+            "core10#did-url-dereferencing.9",
+            "core10#did-url-dereferencing.10"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "fragment",
+      "note": "The complete DID URL with a fragment dereferences to the verification method (DID Core 1.0 §7.2).",
+      "function": "dereference10",
+      "input": "did:example:123456789abcdefghi#key-1",
+      "options": {},
+      "expect": [
+        {
+          "check": "resourceEquals",
+          "value": {
+            "id": "did:example:123456789abcdefghi#key-1",
+            "type": "JsonWebKey2020",
+            "controller": "did:example:123456789abcdefghi",
+            "publicKeyJwk": {
+              "kty": "OKP",
+              "crv": "Ed25519",
+              "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ"
+            }
+          },
+          "statements": [
+            "core10#did-url-dereferencing.1",
+            "core10#did-url-dereferencing.6"
+          ],
+          "partial": "the fragment is resolved against the DID document; the representation of the returned resource is compared ignoring @context"
+        }
+      ]
+    },
+    {
+      "case": "invalid-did-url",
+      "note": "An invalid DID URL gives the error invalidDidUrl (DID Core 1.0 §7.2.2).",
+      "function": "dereference10",
+      "input": "did:example:123456789abcdefghi/pa th",
+      "options": {},
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "invalidDidUrl",
+          "statements": [
+            "core10#did-url-dereferencing.5",
+            "core10#did-url-dereferencing-metadata.3"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "core10#did-url-dereferencing.4"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "core10#did-url-dereferencing.8"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "core10#did-url-dereferencing.11"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "not-found",
+      "note": "A DID URL whose DID does not exist gives the error notFound (DID Core 1.0 §7.2.2).",
+      "function": "dereference10",
+      "input": "did:example:doesnotexist",
+      "options": {},
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "notFound",
+          "statements": [
+            "core10#did-url-dereferencing.5",
+            "core10#did-url-dereferencing-metadata.3"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "core10#did-url-dereferencing.4"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "core10#did-url-dereferencing.8"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "core10#did-url-dereferencing.11"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "fragment-not-found",
+      "note": "A fragment that matches nothing gives the error notFound (DID Core 1.0 §7.2.2).",
+      "function": "dereference10",
+      "input": "did:example:123456789abcdefghi#nothing",
+      "options": {},
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "notFound",
+          "statements": [
+            "core10#did-url-dereferencing.5",
+            "core10#did-url-dereferencing-metadata.3"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "core10#did-url-dereferencing.4"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "core10#did-url-dereferencing.8"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "core10#did-url-dereferencing.11"
+          ]
+        }
+      ]
+    }
+  ]
+}
