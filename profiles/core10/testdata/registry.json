@@ -1,0 +1,178 @@
+{
+  "format": "did-inspector-fixture-registry/1",
+  "method": "example",
+  "entries": {
+    "did:example:123456789abcdefghi": {
+      "versions": [
+        {
+          "versionId": "1",
+          "validFrom": "2019-03-23T06:35:22Z",
+          "mediaType": "application/did+ld+json",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "JsonWebKey2020",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyJwk": {
+                  "kty": "OKP",
+                  "crv": "Ed25519",
+                  "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ"
+                }
+              }
+            ],
+            "authentication": [
+              "did:example:123456789abcdefghi#key-1"
+            ],
+            "service": [
+              {
+                "id": "did:example:123456789abcdefghi#vcs",
+                "type": "VerifiableCredentialService",
+                "serviceEndpoint": "https://example.com/vc/"
+              }
+            ]
+          },
+          "documentMetadata": {
+            "created": "2019-03-23T06:35:22Z",
+            "updated": "2023-08-10T13:40:06Z",
+            "versionId": "1"
+          }
+        }
+      ]
+    },
+    "did:example:json": {
+      "versions": [
+        {
+          "versionId": "1",
+          "validFrom": "2019-03-23T06:35:22Z",
+          "mediaType": "application/did+json",
+          "document": {
+            "id": "did:example:json",
+            "verificationMethod": [
+              {
+                "id": "did:example:json#key-1",
+                "type": "JsonWebKey2020",
+                "controller": "did:example:json",
+                "publicKeyJwk": {
+                  "kty": "OKP",
+                  "crv": "Ed25519",
+                  "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ"
+                }
+              }
+            ]
+          },
+          "documentMetadata": {
+            "created": "2019-03-23T06:35:22Z"
+          }
+        }
+      ]
+    },
+    "did:example:versioned": {
+      "versions": [
+        {
+          "versionId": "1",
+          "validFrom": "2021-01-01T00:00:00Z",
+          "mediaType": "application/did+ld+json",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1",
+            "id": "did:example:versioned"
+          },
+          "documentMetadata": {
+            "created": "2021-01-01T00:00:00Z",
+            "versionId": "1",
+            "nextUpdate": "2021-02-01T00:00:00Z",
+            "nextVersionId": "2"
+          }
+        },
+        {
+          "versionId": "2",
+          "validFrom": "2021-02-01T00:00:00Z",
+          "mediaType": "application/did+ld+json",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1",
+            "id": "did:example:versioned",
+            "alsoKnownAs": [
+              "https://example.com/v2"
+            ]
+          },
+          "documentMetadata": {
+            "created": "2021-01-01T00:00:00Z",
+            "updated": "2021-02-01T00:00:00Z",
+            "versionId": "2"
+          }
+        }
+      ]
+    },
+    "did:example:deactivated": {
+      "deactivated": true,
+      "versions": [
+        {
+          "versionId": "1",
+          "validFrom": "2019-03-23T06:35:22Z",
+          "mediaType": "application/did+ld+json",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1",
+            "id": "did:example:deactivated"
+          },
+          "documentMetadata": {
+            "created": "2019-03-23T06:35:22Z"
+          }
+        }
+      ]
+    },
+    "did:example:malformed": {
+      "versions": [
+        {
+          "versionId": "1",
+          "validFrom": "2019-03-23T06:35:22Z",
+          "mediaType": "application/did+ld+json",
+          "text": "{\"@context\":\"https://www.w3.org/ns/did/v1\",\"id\":\"did:example:malformed\",",
+          "documentMetadata": {
+            "created": "2019-03-23T06:35:22Z"
+          }
+        }
+      ]
+    },
+    "did:example:mismatch": {
+      "versions": [
+        {
+          "versionId": "1",
+          "validFrom": "2019-03-23T06:35:22Z",
+          "mediaType": "application/did+ld+json",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1",
+            "id": "did:example:other"
+          },
+          "documentMetadata": {
+            "created": "2019-03-23T06:35:22Z"
+          }
+        }
+      ]
+    },
+    "did:example:failing": {
+      "fail": "the verifiable data registry is unreachable"
+    },
+    "did:example:equivalent": {
+      "versions": [
+        {
+          "versionId": "1",
+          "validFrom": "2019-03-23T06:35:22Z",
+          "mediaType": "application/did+ld+json",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1",
+            "id": "did:example:equivalent"
+          },
+          "documentMetadata": {
+            "created": "2019-03-23T06:35:22Z",
+            "equivalentId": [
+              "did:example:EQUIVALENT"
+            ],
+            "canonicalId": "did:example:equivalent"
+          }
+        }
+      ]
+    }
+  }
+}

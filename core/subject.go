@@ -11,6 +11,8 @@ import (
 	"context"
 	"fmt"
 	"slices"
+
+	"github.com/sage-x-project/did-inspector/fixtures"
 )
 
 // SubjectInfo identifies the implementation under inspection.
@@ -41,11 +43,12 @@ const (
 	CapResolver          Capability = "resolver"
 	CapDereferencer      Capability = "dereferencer"
 	CapV10Functions      Capability = "v10-functions"
+	CapFixtureMethod     Capability = "fixture-method"
 )
 
 var allCapabilities = []Capability{
 	CapDIDParser, CapDocumentProducer, CapDocumentConsumer, CapDocumentValidator,
-	CapResolver, CapDereferencer, CapV10Functions,
+	CapResolver, CapDereferencer, CapV10Functions, CapFixtureMethod,
 }
 
 // Capabilities returns every known capability in a fixed order.
@@ -101,6 +104,15 @@ type V10Functions interface {
 	Dereference10(ctx context.Context, didURL string, opts map[string]any) (DereferenceResult, error)
 }
 
+// FixtureMethod wires a fixture registry into the subject as the driver of
+// the DID method "example" (fixtures.Method). After a successful call the
+// subject resolves DIDs of that method from the registry only, through
+// fixtures.Registry.Read; a later call replaces the registry. Resolution
+// and dereferencing cases load their profile's registry before they resolve.
+type FixtureMethod interface {
+	LoadFixtureRegistry(r *fixtures.Registry) error
+}
+
 // Implements reports whether s implements the interface of capability c.
 func Implements(s Subject, c Capability) bool {
 	var ok bool
@@ -119,6 +131,8 @@ func Implements(s Subject, c Capability) bool {
 		_, ok = s.(Dereferencer)
 	case CapV10Functions:
 		_, ok = s.(V10Functions)
+	case CapFixtureMethod:
+		_, ok = s.(FixtureMethod)
 	}
 	return ok
 }

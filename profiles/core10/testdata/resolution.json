@@ -1,0 +1,469 @@
+{
+  "scenarios": [
+    {
+      "case": "resolve-found",
+      "note": "resolve returns the DID document in its abstract form (DID Core 1.0 §7.1).",
+      "function": "resolve10",
+      "input": "did:example:123456789abcdefghi",
+      "options": {},
+      "expect": [
+        {
+          "check": "success",
+          "statements": [
+            "core10#did-resolution.2",
+            "core10#did-resolution.6"
+          ]
+        },
+        {
+          "check": "noError",
+          "statements": [
+            "core10#did-resolution.6"
+          ]
+        },
+        {
+          "check": "documentId",
+          "value": "did:example:123456789abcdefghi",
+          "statements": [
+            "core10#did-resolution.7"
+          ]
+        },
+        {
+          "check": "documentEquals",
+          "value": {
+            "@context": "https://www.w3.org/ns/did/v1",
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#key-1",
+                "type": "JsonWebKey2020",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyJwk": {
+                  "kty": "OKP",
+                  "crv": "Ed25519",
+                  "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ"
+                }
+              }
+            ],
+            "authentication": [
+              "did:example:123456789abcdefghi#key-1"
+            ],
+            "service": [
+              {
+                "id": "did:example:123456789abcdefghi#vcs",
+                "type": "VerifiableCredentialService",
+                "serviceEndpoint": "https://example.com/vc/"
+              }
+            ]
+          },
+          "statements": [
+            "core10#did-resolution.6"
+          ],
+          "partial": "the abstract document is compared with the stored representation, ignoring @context"
+        },
+        {
+          "check": "contentMetadataHas",
+          "value": {
+            "created": "2019-03-23T06:35:22Z",
+            "updated": "2023-08-10T13:40:06Z",
+            "versionId": "1"
+          },
+          "statements": [
+            "core10#did-resolution.11"
+          ]
+        },
+        {
+          "check": "contentTypeAbsent",
+          "statements": [
+            "core10#did-resolution-metadata.2"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "representation-found",
+      "note": "resolveRepresentation returns a byte stream and its media type (DID Core 1.0 §7.1).",
+      "function": "resolveRepresentation10",
+      "input": "did:example:123456789abcdefghi",
+      "options": {},
+      "expect": [
+        {
+          "check": "success",
+          "statements": [
+            "core10#resolution.1",
+            "core10#did-resolution.2"
+          ]
+        },
+        {
+          "check": "streamIsJSONObject",
+          "statements": [
+            "core10#did-resolution.9",
+            "core10#resolution.1"
+          ]
+        },
+        {
+          "check": "contentType",
+          "value": [
+            "application/did+json",
+            "application/did+ld+json"
+          ],
+          "statements": [
+            "core10#did-resolution.4",
+            "core10#did-resolution-metadata.1",
+            "core10#did-resolution-metadata.3"
+          ]
+        },
+        {
+          "check": "documentId",
+          "value": "did:example:123456789abcdefghi",
+          "statements": [
+            "core10#did-resolution.7"
+          ]
+        },
+        {
+          "check": "contentMetadataHas",
+          "value": {
+            "created": "2019-03-23T06:35:22Z",
+            "updated": "2023-08-10T13:40:06Z",
+            "versionId": "1"
+          },
+          "statements": [
+            "core10#did-resolution.11"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "representation-json",
+      "note": "resolveRepresentation of a DID stored as application/did+json (DID Core 1.0 §7.1).",
+      "function": "resolveRepresentation10",
+      "input": "did:example:json",
+      "options": {},
+      "expect": [
+        {
+          "check": "streamIsJSONObject",
+          "statements": [
+            "core10#did-resolution.9"
+          ]
+        },
+        {
+          "check": "contentType",
+          "value": [
+            "application/did+json",
+            "application/did+ld+json"
+          ],
+          "statements": [
+            "core10#did-resolution.4",
+            "core10#did-resolution-metadata.1"
+          ]
+        },
+        {
+          "check": "documentId",
+          "value": "did:example:json",
+          "statements": [
+            "core10#did-resolution.7"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "resolve-invalid-did",
+      "note": "An invalid DID gives the error invalidDid (DID Core 1.0 §7.1.2).",
+      "function": "resolve10",
+      "input": "did:Example:123",
+      "options": {},
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "invalidDid",
+          "statements": [
+            "core10#did-resolution.5",
+            "core10#did-resolution-metadata.5",
+            "core10#did-resolution.1"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "core10#did-resolution.3"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "core10#did-resolution.8"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "core10#did-resolution.12"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "representation-invalid-did",
+      "note": "An invalid DID gives the error invalidDid (DID Core 1.0 §7.1.2).",
+      "function": "resolveRepresentation10",
+      "input": "did:example:123456789abcdefghi#key-1",
+      "options": {},
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "invalidDid",
+          "statements": [
+            "core10#did-resolution.5",
+            "core10#did-resolution-metadata.5",
+            "core10#did-resolution.1"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "core10#did-resolution.3"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "core10#did-resolution.10"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "core10#did-resolution.12"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "resolve-not-found",
+      "note": "A DID that does not exist gives the error notFound (DID Core 1.0 §7.1.2).",
+      "function": "resolve10",
+      "input": "did:example:doesnotexist",
+      "options": {},
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "notFound",
+          "statements": [
+            "core10#did-resolution.5",
+            "core10#did-resolution-metadata.5"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "core10#did-resolution.3"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "core10#did-resolution.8"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "core10#did-resolution.12"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "representation-not-found",
+      "note": "A DID that does not exist gives the error notFound (DID Core 1.0 §7.1.2).",
+      "function": "resolveRepresentation10",
+      "input": "did:example:doesnotexist",
+      "options": {},
+      "expect": [
+        {
+          "check": "errorCode",
+          "value": "notFound",
+          "statements": [
+            "core10#did-resolution.5",
+            "core10#did-resolution-metadata.5"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "core10#did-resolution.3"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "core10#did-resolution.10"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "core10#did-resolution.12"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "resolve-deactivated",
+      "note": "A deactivated DID has deactivated true in its metadata (DID Core 1.0 §7.1.3).",
+      "function": "resolve10",
+      "input": "did:example:deactivated",
+      "options": {},
+      "expect": [
+        {
+          "check": "deactivated",
+          "value": true,
+          "statements": [
+            "core10#did-document-metadata.6"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "representation-deactivated",
+      "note": "A deactivated DID has deactivated true in its metadata (DID Core 1.0 §7.1.3).",
+      "function": "resolveRepresentation10",
+      "input": "did:example:deactivated",
+      "options": {},
+      "expect": [
+        {
+          "check": "deactivated",
+          "value": true,
+          "statements": [
+            "core10#did-document-metadata.6"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "resolve-id-mismatch",
+      "note": "A stored document whose id is not the resolved DID (DID Core 1.0 §7.1).",
+      "function": "resolve10",
+      "input": "did:example:mismatch",
+      "options": {},
+      "expect": [
+        {
+          "check": "errorPresent",
+          "statements": [
+            "core10#did-resolution.7"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "core10#did-resolution.7"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "representation-malformed",
+      "note": "Stored bytes that are not a conformant representation (DID Core 1.0 §7.1).",
+      "function": "resolveRepresentation10",
+      "input": "did:example:malformed",
+      "options": {},
+      "expect": [
+        {
+          "check": "errorPresent",
+          "statements": [
+            "core10#did-resolution.9"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "core10#did-resolution.9",
+            "core10#did-resolution.10"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "resolve-failing",
+      "note": "An unexpected failure of the method is an error (DID Core 1.0 §7.1).",
+      "function": "resolve10",
+      "input": "did:example:failing",
+      "options": {},
+      "expect": [
+        {
+          "check": "errorPresent",
+          "statements": [
+            "core10#did-resolution.5",
+            "core10#did-resolution-metadata.5"
+          ]
+        },
+        {
+          "check": "metadataNotEmpty",
+          "statements": [
+            "core10#did-resolution.3"
+          ]
+        },
+        {
+          "check": "noContent",
+          "statements": [
+            "core10#did-resolution.8"
+          ]
+        },
+        {
+          "check": "contentMetadataEmpty",
+          "statements": [
+            "core10#did-resolution.12"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "resolve-equivalent-ids",
+      "note": "Metadata with equivalentId and canonicalId reaches the caller (DID Core 1.0 §7.1.3).",
+      "function": "resolve10",
+      "input": "did:example:equivalent",
+      "options": {},
+      "expect": [
+        {
+          "check": "contentMetadataHas",
+          "value": {
+            "equivalentId": [
+              "did:example:EQUIVALENT"
+            ],
+            "canonicalId": "did:example:equivalent"
+          },
+          "statements": [
+            "core10#did-document-metadata.15",
+            "core10#did-document-metadata.20"
+          ],
+          "partial": "the stored metadata must reach the caller; its format is judged by the output invariants"
+        }
+      ]
+    },
+    {
+      "case": "resolve-versioned",
+      "note": "The metadata of the current version (DID Core 1.0 §7.1.3).",
+      "function": "resolve10",
+      "input": "did:example:versioned",
+      "options": {},
+      "expect": [
+        {
+          "check": "contentMetadataHas",
+          "value": {
+            "versionId": "2"
+          },
+          "statements": [
+            "core10#did-document-metadata.11"
+          ]
+        }
+      ]
+    }
+  ],
+  "probes": [
+    {
+      "note": "versionId as a DID parameter may select an earlier version, whose metadata has nextUpdate and nextVersionId (DID Core 1.0 §3.2.1, §7.1.3); support of DID parameters is OPTIONAL, so only the format of what comes back is judged.",
+      "function": "dereference10",
+      "input": "did:example:versioned?versionId=1",
+      "options": {}
+    }
+  ]
+}

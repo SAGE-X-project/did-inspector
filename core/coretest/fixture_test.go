@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/sage-x-project/did-inspector/core"
+	"github.com/sage-x-project/did-inspector/fixtures"
 )
 
 var ctx = context.Background()
@@ -157,5 +158,16 @@ func TestResolveAndDereference(t *testing.T) {
 	}
 	if _, err := f.With(core.CapV10Functions, Fails).Resolve10(ctx, ExampleDID, nil); err == nil {
 		t.Fatal("failing Resolve10 succeeded")
+	}
+}
+
+func TestLoadFixtureRegistry(t *testing.T) {
+	f := New()
+	reg := &fixtures.Registry{Format: fixtures.Format, Method: fixtures.Method}
+	if err := f.LoadFixtureRegistry(reg); err != nil || f.Registry != reg {
+		t.Fatalf("LoadFixtureRegistry = %v, registry %p", err, f.Registry)
+	}
+	if err := f.With(core.CapFixtureMethod, Fails).LoadFixtureRegistry(reg); !errors.Is(err, ErrFixture) {
+		t.Fatalf("failing LoadFixtureRegistry err = %v", err)
 	}
 }

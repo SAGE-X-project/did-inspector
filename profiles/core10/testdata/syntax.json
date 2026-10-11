@@ -1,0 +1,264 @@
+{
+  "groups": [
+    {
+      "case": "did",
+      "note": "DIDs against the did rule of DID Core 1.0 §3.1.",
+      "kind": "did",
+      "statements": [
+        "core10#did-syntax.1"
+      ],
+      "items": [
+        {
+          "input": "did:example:123456789abcdefghi",
+          "valid": true,
+          "method": "example",
+          "id": "123456789abcdefghi"
+        },
+        {
+          "input": "did:web:example.com",
+          "valid": true,
+          "method": "web",
+          "id": "example.com"
+        },
+        {
+          "input": "did:a1:B-._x",
+          "valid": true,
+          "method": "a1",
+          "id": "B-._x"
+        },
+        {
+          "input": "did:example:%20x%aF",
+          "valid": true,
+          "method": "example",
+          "id": "%20x%aF"
+        },
+        {
+          "input": "did:Example:123",
+          "valid": false,
+          "why": "method-char is lower-case letters and digits only"
+        },
+        {
+          "input": "did:ex_ample:123",
+          "valid": false,
+          "why": "\"_\" is not a method-char"
+        },
+        {
+          "input": "did::123",
+          "valid": false,
+          "why": "method-name needs at least one method-char"
+        },
+        {
+          "input": "did:example:",
+          "valid": false,
+          "why": "method-specific-id needs at least one idchar"
+        },
+        {
+          "input": "did:example:12%3",
+          "valid": false,
+          "why": "\"%\" must be followed by two HEXDIG"
+        },
+        {
+          "input": "did:example:a b",
+          "valid": false,
+          "why": "a space is not an idchar"
+        },
+        {
+          "input": "did:example:123#key-1",
+          "valid": false,
+          "why": "a fragment is not part of the did rule"
+        },
+        {
+          "input": "example:123",
+          "valid": false,
+          "why": "the did rule starts with \"did:\""
+        }
+      ]
+    },
+    {
+      "case": "method-specific-id-colons",
+      "note": "Colons in the method-specific-id (DID Core 1.0 §8.1).",
+      "kind": "did",
+      "statements": [
+        "core10#method-syntax.9"
+      ],
+      "items": [
+        {
+          "input": "did:example:a:b:c",
+          "valid": true,
+          "method": "example",
+          "id": "a:b:c"
+        },
+        {
+          "input": "did:example::a",
+          "valid": true,
+          "method": "example",
+          "id": ":a"
+        },
+        {
+          "input": "did:example:a:",
+          "valid": false,
+          "why": "the method-specific-id cannot end with \":\""
+        },
+        {
+          "input": "did:example:a::",
+          "valid": false,
+          "why": "the method-specific-id cannot end with \":\""
+        }
+      ]
+    },
+    {
+      "case": "did-url",
+      "note": "DID URLs against the did-url rule of DID Core 1.0 §3.2.",
+      "kind": "did-url",
+      "statements": [
+        "core10#did-url-syntax.1"
+      ],
+      "items": [
+        {
+          "input": "did:example:123456789abcdefghi/path/to?query=1#frag",
+          "valid": true,
+          "did": "did:example:123456789abcdefghi",
+          "path": "/path/to",
+          "query": "query=1",
+          "hasQuery": true,
+          "fragment": "frag",
+          "hasFragment": true
+        },
+        {
+          "input": "did:example:123456789abcdefghi#key-1",
+          "valid": true,
+          "did": "did:example:123456789abcdefghi",
+          "path": "",
+          "hasQuery": false,
+          "fragment": "key-1",
+          "hasFragment": true
+        },
+        {
+          "input": "did:example:123456789abcdefghi?",
+          "valid": true,
+          "did": "did:example:123456789abcdefghi",
+          "query": "",
+          "hasQuery": true,
+          "hasFragment": false
+        },
+        {
+          "input": "did:example:123456789abcdefghi/",
+          "valid": true,
+          "did": "did:example:123456789abcdefghi",
+          "path": "/",
+          "hasQuery": false,
+          "hasFragment": false
+        },
+        {
+          "input": "did:example:123456789abcdefghi#a#b",
+          "valid": false,
+          "why": "\"#\" is not allowed in a fragment"
+        },
+        {
+          "input": "did:example:123456789abcdefghi/pa th",
+          "valid": false,
+          "why": "a space is not allowed in a path"
+        },
+        {
+          "input": "did:example:123456789abcdefghi?q=%zz",
+          "valid": false,
+          "why": "\"%\" must be followed by two HEXDIG"
+        },
+        {
+          "input": "did:example:123456789abcdefghi#frag^",
+          "valid": false,
+          "why": "\"^\" is not allowed in a fragment"
+        },
+        {
+          "input": "did:Example:123/x",
+          "valid": false,
+          "why": "the DID part does not match the did rule"
+        }
+      ]
+    },
+    {
+      "case": "param-service",
+      "note": "The value of the service DID parameter (DID Core 1.0 §3.2.1).",
+      "kind": "did-url",
+      "statements": [
+        "core10#did-parameters.2"
+      ],
+      "partial": "judged through the parser: a DID URL whose parameter value is not ASCII is rejected",
+      "items": [
+        {
+          "input": "did:example:123456789abcdefghi?service=agent",
+          "valid": true,
+          "query": "service=agent"
+        },
+        {
+          "input": "did:example:123456789abcdefghi?service=agént",
+          "valid": false,
+          "why": "the value must be an ASCII string"
+        }
+      ]
+    },
+    {
+      "case": "param-relative-ref",
+      "note": "The value of the relativeRef DID parameter (DID Core 1.0 §3.2.1).",
+      "kind": "did-url",
+      "statements": [
+        "core10#did-parameters.3"
+      ],
+      "partial": "judged through the parser: characters RFC 3986 does not allow in a query must be percent-encoded; characters it allows are not judged",
+      "items": [
+        {
+          "input": "did:example:123456789abcdefghi?relativeRef=%2Fresume.pdf",
+          "valid": true,
+          "query": "relativeRef=%2Fresume.pdf"
+        },
+        {
+          "input": "did:example:123456789abcdefghi?relativeRef=/my resume.pdf",
+          "valid": false,
+          "why": "a space must be percent-encoded (RFC 3986 §2.1)"
+        }
+      ]
+    },
+    {
+      "case": "param-version-id",
+      "note": "The value of the versionId DID parameter (DID Core 1.0 §3.2.1).",
+      "kind": "did-url",
+      "statements": [
+        "core10#did-parameters.4"
+      ],
+      "partial": "judged through the parser: a DID URL whose parameter value is not ASCII is rejected",
+      "items": [
+        {
+          "input": "did:example:123456789abcdefghi?versionId=1",
+          "valid": true,
+          "query": "versionId=1"
+        },
+        {
+          "input": "did:example:123456789abcdefghi?versionId=vé",
+          "valid": false,
+          "why": "the value must be an ASCII string"
+        }
+      ]
+    },
+    {
+      "case": "param-hl",
+      "note": "The value of the hl DID parameter (DID Core 1.0 §3.2.1).",
+      "kind": "did-url",
+      "statements": [
+        "core10#did-parameters.7"
+      ],
+      "partial": "judged through the parser: a DID URL whose parameter value is not ASCII is rejected",
+      "items": [
+        {
+          "input": "did:example:123456789abcdefghi?hl=zQmWvQxTqbG2Z9HPJgG57jjwR154cKhbtJenbyYTWkjgF3e",
+          "valid": true,
+          "query": "hl=zQmWvQxTqbG2Z9HPJgG57jjwR154cKhbtJenbyYTWkjgF3e"
+        },
+        {
+          "input": "did:example:123456789abcdefghi?hl=zé",
+          "valid": false,
+          "why": "the value must be an ASCII string"
+        }
+      ]
+    }
+  ]
+}

@@ -14,6 +14,7 @@ import (
 	"strings"
 
 	"github.com/sage-x-project/did-inspector/core"
+	"github.com/sage-x-project/did-inspector/fixtures"
 )
 
 // Behavior selects how the fixture behaves for one capability.
@@ -44,6 +45,8 @@ type Fixture struct {
 	Unsupported map[core.Capability]bool
 	// Behavior per capability; a missing entry means Correct.
 	Behavior map[core.Capability]Behavior
+	// Registry is the fixture registry last loaded.
+	Registry *fixtures.Registry
 }
 
 // New returns a fixture that supports every capability and behaves
@@ -270,6 +273,16 @@ func (f *Fixture) Dereference10(_ context.Context, didURL string, _ map[string]a
 	return f.dereference(core.CapV10Functions, didURL)
 }
 
+// LoadFixtureRegistry implements core.FixtureMethod. The fixture keeps
+// resolving its one DID; it only records the registry.
+func (f *Fixture) LoadFixtureRegistry(r *fixtures.Registry) error {
+	if _, err := f.enter(core.CapFixtureMethod); err != nil {
+		return err
+	}
+	f.Registry = r
+	return nil
+}
+
 // Bare is a subject that implements no capability interface. With
 // DeclareAll it nevertheless declares every capability supported, which
 // models an adapter bug.
@@ -293,4 +306,5 @@ var (
 	_ core.Resolver          = (*Fixture)(nil)
 	_ core.Dereferencer      = (*Fixture)(nil)
 	_ core.V10Functions      = (*Fixture)(nil)
+	_ core.FixtureMethod     = (*Fixture)(nil)
 )

@@ -19,7 +19,9 @@ type Observation struct {
 	// did. Both are set for FAIL.
 	Expected string `json:"expected,omitempty"`
 	Observed string `json:"observed,omitempty"`
-	// Detail explains NOT_SUPPORTED, NOT_APPLICABLE and ERROR verdicts.
+	// Detail explains NOT_SUPPORTED, NOT_APPLICABLE and ERROR verdicts; on
+	// PASS and FAIL it says which part of the statement the case does not
+	// judge, when it judges the statement only partly.
 	Detail string `json:"detail,omitempty"`
 }
 

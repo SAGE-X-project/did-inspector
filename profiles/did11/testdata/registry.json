@@ -1,0 +1,361 @@
+{
+  "format": "did-inspector-fixture-registry/1",
+  "method": "example",
+  "entries": {
+    "did:example:123456789abcdefghi": {
+      "versions": [
+        {
+          "versionId": "1",
+          "validFrom": "2019-03-23T06:35:22Z",
+          "mediaType": "application/did",
+          "document": {
+            "@context": [
+              "https://www.w3.org/ns/did/v1.1",
+              "https://didcomm.org/messaging/contexts/v2",
+              "https://identity.foundation/linked-vp/contexts/v1"
+            ],
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#keys-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "service": [
+              {
+                "id": "did:example:123456789abcdefghi#messages",
+                "type": "DIDCommMessaging",
+                "serviceEndpoint": "https://example.com/messages/8377464"
+              },
+              {
+                "id": "did:example:123456789abcdefghi#linkedvp",
+                "type": "LinkedVerifiablePresentation",
+                "serviceEndpoint": "https://example.com/verifiable-presentation.jsonld"
+              }
+            ]
+          },
+          "documentMetadata": {
+            "created": "2019-03-23T06:35:22Z",
+            "updated": "2023-08-10T13:40:06Z",
+            "versionId": "1"
+          }
+        }
+      ]
+    },
+    "did:example:services": {
+      "versions": [
+        {
+          "versionId": "1",
+          "validFrom": "2019-03-23T06:35:22Z",
+          "mediaType": "application/did",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:services",
+            "service": [
+              {
+                "id": "#files",
+                "type": "FileService",
+                "serviceEndpoint": "https://files.example.com/storage/"
+              },
+              {
+                "id": "did:example:services#agent",
+                "type": [
+                  "DIDCommMessaging",
+                  "Agent"
+                ],
+                "serviceEndpoint": [
+                  "https://agent.example.com/a",
+                  {
+                    "uri": "https://agent.example.com/map"
+                  },
+                  "https://agent2.example.com/b"
+                ]
+              },
+              {
+                "id": "did:example:services#hub",
+                "type": "LinkedDomains",
+                "serviceEndpoint": {
+                  "origins": [
+                    "https://hub.example.com/"
+                  ]
+                }
+              },
+              {
+                "id": "did:example:services#frag",
+                "type": "FragmentService",
+                "serviceEndpoint": "https://frag.example.com/page#top"
+              },
+              {
+                "id": "did:example:services#linked",
+                "type": "LinkedDomains",
+                "serviceEndpoint": "https://linked.example.com/"
+              }
+            ]
+          },
+          "documentMetadata": {
+            "created": "2019-03-23T06:35:22Z"
+          }
+        }
+      ]
+    },
+    "did:example:versioned": {
+      "versions": [
+        {
+          "versionId": "1",
+          "validFrom": "2021-01-01T00:00:00Z",
+          "mediaType": "application/did",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:versioned",
+            "service": [
+              {
+                "id": "did:example:versioned#v",
+                "type": "Version",
+                "serviceEndpoint": "https://example.com/v1"
+              }
+            ]
+          },
+          "documentMetadata": {
+            "created": "2021-01-01T00:00:00Z",
+            "versionId": "1",
+            "nextUpdate": "2021-02-01T00:00:00Z",
+            "nextVersionId": "2"
+          }
+        },
+        {
+          "versionId": "2",
+          "validFrom": "2021-02-01T00:00:00Z",
+          "mediaType": "application/did",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:versioned",
+            "service": [
+              {
+                "id": "did:example:versioned#v",
+                "type": "Version",
+                "serviceEndpoint": "https://example.com/v2"
+              }
+            ]
+          },
+          "documentMetadata": {
+            "created": "2021-01-01T00:00:00Z",
+            "updated": "2021-02-01T00:00:00Z",
+            "versionId": "2",
+            "nextUpdate": "2021-03-01T00:00:00Z",
+            "nextVersionId": "3"
+          }
+        },
+        {
+          "versionId": "3",
+          "validFrom": "2021-03-01T00:00:00Z",
+          "mediaType": "application/did",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:versioned",
+            "service": [
+              {
+                "id": "did:example:versioned#v",
+                "type": "Version",
+                "serviceEndpoint": "https://example.com/v3"
+              }
+            ]
+          },
+          "documentMetadata": {
+            "created": "2021-01-01T00:00:00Z",
+            "updated": "2021-03-01T00:00:00Z",
+            "versionId": "3"
+          }
+        }
+      ]
+    },
+    "did:example:deactivated": {
+      "deactivated": true,
+      "versions": [
+        {
+          "versionId": "1",
+          "validFrom": "2019-03-23T06:35:22Z",
+          "mediaType": "application/did",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:deactivated"
+          },
+          "documentMetadata": {
+            "created": "2019-03-23T06:35:22Z"
+          }
+        }
+      ]
+    },
+    "did:example:malformed": {
+      "versions": [
+        {
+          "versionId": "1",
+          "validFrom": "2019-03-23T06:35:22Z",
+          "mediaType": "application/did",
+          "text": "{\"@context\":\"https://www.w3.org/ns/did/v1.1\",\"id\":\"did:example:malformed\",",
+          "documentMetadata": {
+            "created": "2019-03-23T06:35:22Z"
+          }
+        }
+      ]
+    },
+    "did:example:wrongmediatype": {
+      "versions": [
+        {
+          "versionId": "1",
+          "validFrom": "2019-03-23T06:35:22Z",
+          "mediaType": "image/png",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:wrongmediatype"
+          },
+          "documentMetadata": {
+            "created": "2019-03-23T06:35:22Z"
+          }
+        }
+      ]
+    },
+    "did:example:mismatch": {
+      "versions": [
+        {
+          "versionId": "1",
+          "validFrom": "2019-03-23T06:35:22Z",
+          "mediaType": "application/did",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:other"
+          },
+          "documentMetadata": {
+            "created": "2019-03-23T06:35:22Z"
+          }
+        }
+      ]
+    },
+    "did:example:failing": {
+      "fail": "the verifiable data registry is unreachable"
+    },
+    "did:example:relative": {
+      "versions": [
+        {
+          "versionId": "1",
+          "validFrom": "2019-03-23T06:35:22Z",
+          "mediaType": "application/did",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:relative",
+            "verificationMethod": [
+              {
+                "id": "#key-1",
+                "type": "Multikey",
+                "controller": "did:example:relative",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "authentication": [
+              "#key-1"
+            ],
+            "assertionMethod": [
+              {
+                "id": "#key-2",
+                "type": "Multikey",
+                "controller": "did:example:relative",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "service": [
+              {
+                "id": "#svc",
+                "type": "ExampleService",
+                "serviceEndpoint": "https://example.com/svc"
+              }
+            ]
+          },
+          "documentMetadata": {
+            "created": "2019-03-23T06:35:22Z"
+          }
+        }
+      ]
+    },
+    "did:example:relationships": {
+      "versions": [
+        {
+          "versionId": "1",
+          "validFrom": "2019-03-23T06:35:22Z",
+          "mediaType": "application/did",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:relationships",
+            "verificationMethod": [
+              {
+                "id": "did:example:relationships#key-1",
+                "type": "Multikey",
+                "controller": "did:example:relationships",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              },
+              {
+                "id": "did:example:relationships#key-2",
+                "type": "Multikey",
+                "controller": "did:example:relationships",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "authentication": [
+              "did:example:relationships#key-1"
+            ],
+            "assertionMethod": [
+              "did:example:relationships#key-2"
+            ],
+            "capabilityInvocation": [
+              {
+                "id": "did:example:relationships#key-3",
+                "type": "Multikey",
+                "controller": "did:example:relationships",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "service": [
+              {
+                "id": "did:example:relationships#svc",
+                "type": "ExampleService",
+                "serviceEndpoint": "https://example.com/svc"
+              }
+            ]
+          },
+          "documentMetadata": {
+            "created": "2019-03-23T06:35:22Z"
+          }
+        }
+      ]
+    },
+    "did:example:equivalent": {
+      "versions": [
+        {
+          "versionId": "1",
+          "validFrom": "2019-03-23T06:35:22Z",
+          "mediaType": "application/did",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:equivalent"
+          },
+          "documentMetadata": {
+            "created": "2019-03-23T06:35:22Z",
+            "equivalentId": [
+              "did:example:EQUIVALENT"
+            ],
+            "canonicalId": "did:example:equivalent",
+            "proof": [
+              {
+                "type": "DataIntegrityProof",
+                "cryptosuite": "eddsa-jcs-2022",
+                "proofPurpose": "assertionMethod",
+                "verificationMethod": "did:example:equivalent#key-1",
+                "proofValue": "z58DAdFfa9SkqZMVPxAQpic7ndSayn1PzZs6ZjWp1CktyGesjuTSwRdoWhAfGFCF5bppETSTojQCrfFPP2oumHKtz"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

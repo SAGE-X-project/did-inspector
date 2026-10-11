@@ -42,7 +42,8 @@ func TestRegisterErrors(t *testing.T) {
 
 // TestBuiltinProfilesMatchStatements checks that every spec key of a
 // built-in profile is pinned, every statement a case names was extracted,
-// and every statement scoped "checked" is named by a case.
+// every statement scoped "checked" is named by a case, and every statement
+// a case names is scoped "checked".
 func TestBuiltinProfilesMatchStatements(t *testing.T) {
 	known := map[string]bool{}
 	docs, err := statements.LoadAll()
@@ -77,6 +78,11 @@ func TestBuiltinProfilesMatchStatements(t *testing.T) {
 	for id, d := range scope {
 		if d.Scope == statements.ScopeChecked && !named[id] {
 			t.Errorf("%s is scoped checked but no case names it", id)
+		}
+	}
+	for id := range named {
+		if scope[id].Scope != statements.ScopeChecked {
+			t.Errorf("%s is named by a case but scoped %q", id, scope[id].Scope)
 		}
 	}
 }
