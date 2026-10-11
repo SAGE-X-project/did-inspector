@@ -24,18 +24,28 @@ const (
 // directory.
 const ScopeFile = "scope.json"
 
-// Decision is the inspector's scope decision for one statement.
+// Decision is the inspector's scope decision for one statement. Level is
+// the statement's RFC 2119 level (extract.LevelOf); the generator derives it
+// from the statement's keywords and rewrites it on every run, so it is never
+// decided by hand.
 type Decision struct {
 	Scope  string `json:"scope"`
+	Level  string `json:"level"`
 	Reason string `json:"reason"`
 }
 
-// Validate reports whether the decision has a known scope and a reason.
+// Validate reports whether the decision has a known scope and level and a
+// reason.
 func (d Decision) Validate() error {
 	switch d.Scope {
 	case ScopeChecked, ScopeNotCheckable, ScopePending:
 	default:
 		return fmt.Errorf("unknown scope %q", d.Scope)
+	}
+	switch d.Level {
+	case extract.LevelRequirement, extract.LevelRecommendation:
+	default:
+		return fmt.Errorf("unknown level %q", d.Level)
 	}
 	if strings.TrimSpace(d.Reason) == "" {
 		return errors.New("missing reason")
@@ -61,6 +71,7 @@ const (
 	reasonShapePermission = "a permission on data content; observable as a conforming consumer or validator accepting such data; no case yet"
 	reasonStep            = "an algorithm step; observable through the result of the algorithm; no case yet"
 	reasonRequirement     = "a requirement on implementations or the data they produce or accept; no case yet"
+	reasonRecommendation  = "a recommendation on implementations or the data they produce or accept; no case yet"
 )
 
 // methodSpecSections hold statements addressed to DID method specifications.
@@ -94,32 +105,42 @@ var permissionKeywords = []string{"MAY", "OPTIONAL", "NOT REQUIRED"}
 // statement: not-checkable for informative statements, statements addressed
 // to specification authors, method specifications, registries,
 // representation or extension specifications, and permissions with no
-// observable effect; pending for everything else.
+// observable effect; pending for everything else, recommendations included.
+// The decision carries the statement's level.
 func InitialDecision(st extract.Statement) Decision {
+	d := initialScope(st)
+	d.Level = extract.LevelOf(st.Keywords)
+	return d
+}
+
+func initialScope(st extract.Statement) Decision {
 	if st.Informative {
-		return Decision{ScopeNotCheckable, fmt.Sprintf(reasonInformative, st.InformativeReason)}
+		return Decision{Scope: ScopeNotCheckable, Reason: fmt.Sprintf(reasonInformative, st.InformativeReason)}
 	}
 	if keywordBoilerplate.MatchString(st.Text) {
-		return Decision{ScopeNotCheckable, reasonKeywordBoiler}
+		return Decision{Scope: ScopeNotCheckable, Reason: reasonKeywordBoiler}
 	}
 	if methodSpecSections[st.Section] {
-		return Decision{ScopeNotCheckable, reasonMethodSpec}
+		return Decision{Scope: ScopeNotCheckable, Reason: reasonMethodSpec}
 	}
 	for _, r := range authorRules {
 		if r.re.MatchString(st.Text) {
-			return Decision{ScopeNotCheckable, r.reason}
+			return Decision{Scope: ScopeNotCheckable, Reason: r.reason}
 		}
 	}
 	if isPermission(st.Keywords) {
 		if behaviorPermission.MatchString(st.Text) {
-			return Decision{ScopeNotCheckable, reasonPermission}
+			return Decision{Scope: ScopeNotCheckable, Reason: reasonPermission}
 		}
-		return Decision{ScopePending, reasonShapePermission}
+		return Decision{Scope: ScopePending, Reason: reasonShapePermission}
 	}
 	if st.Kind == extract.KindStep {
-		return Decision{ScopePending, reasonStep}
+		return Decision{Scope: ScopePending, Reason: reasonStep}
 	}
-	return Decision{ScopePending, reasonRequirement}
+	if extract.LevelOf(st.Keywords) == extract.LevelRecommendation {
+		return Decision{Scope: ScopePending, Reason: reasonRecommendation}
+	}
+	return Decision{Scope: ScopePending, Reason: reasonRequirement}
 }
 
 func isPermission(kws []string) bool {
@@ -144,8 +165,9 @@ func (e *StaleScopeError) Error() string {
 }
 
 // MergeScope keeps every existing decision for a statement that still
-// exists, adds the initial decision for each new statement, and returns the
-// entries in statement order. Existing decisions for statements that no
+// exists, adds the initial decision for each new statement, sets every
+// decision's level from its statement's keywords, and returns the entries
+// in statement order. Existing decisions for statements that no
 // longer exist are an error unless prune is set, in which case they are
 // dropped.
 func MergeScope(docs []Document, existing map[string]Decision, prune bool) ([]ScopeEntry, error) {
@@ -158,6 +180,7 @@ func MergeScope(docs []Document, existing map[string]Decision, prune bool) ([]Sc
 			if !ok {
 				dec = InitialDecision(st)
 			}
+			dec.Level = extract.LevelOf(st.Keywords)
 			out = append(out, ScopeEntry{ID: st.ID, Decision: dec})
 		}
 	}

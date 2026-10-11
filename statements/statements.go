@@ -44,6 +44,17 @@ const (
 	ScopePending      = gen.ScopePending
 )
 
+// Statement levels.
+const (
+	LevelRequirement    = extract.LevelRequirement
+	LevelRecommendation = extract.LevelRecommendation
+)
+
+// Levels returns the statement levels in report order.
+func Levels() []string {
+	return []string{LevelRequirement, LevelRecommendation}
+}
+
 // Spec keys of the pinned publications.
 const (
 	KeyCore10 = gen.KeyCore10
@@ -87,9 +98,12 @@ func Scope() (map[string]Decision, error) {
 	return gen.DecodeScope(data)
 }
 
-// Counts is the number of statements of one spec key per scope.
+// Counts is the number of statements of one spec key, or of one level of
+// one spec key, per scope.
 type Counts struct {
-	Key          string `json:"key"`
+	Key string `json:"key"`
+	// Level is empty for the statements of every level.
+	Level        string `json:"level,omitempty"`
 	Total        int    `json:"total"`
 	Checked      int    `json:"checked"`
 	NotCheckable int    `json:"not_checkable"`
@@ -101,6 +115,18 @@ type Counts struct {
 // statements in each scope. Undecided counts statements without a decision,
 // which a consistent tree never has.
 func CountByScope() ([]Counts, error) {
+	return count([]string{""}, func(Statement) string { return "" })
+}
+
+// CountByLevel returns, per spec key in source order and per level in the
+// order of Levels, the number of statements in each scope.
+func CountByLevel() ([]Counts, error) {
+	return count(Levels(), func(st Statement) string { return extract.LevelOf(st.Keywords) })
+}
+
+// count tallies the statements of each spec key into one row per entry of
+// rows; rowOf names the row of a statement.
+func count(rows []string, rowOf func(Statement) string) ([]Counts, error) {
 	docs, err := LoadAll()
 	if err != nil {
 		return nil, err
@@ -111,22 +137,34 @@ func CountByScope() ([]Counts, error) {
 	}
 	var out []Counts
 	for _, d := range docs {
-		c := Counts{Key: d.Key, Total: len(d.Statements)}
+		byRow := make(map[string]*Counts, len(rows))
+		for _, l := range rows {
+			out = append(out, Counts{Key: d.Key, Level: l})
+		}
+		for i := len(out) - len(rows); i < len(out); i++ {
+			byRow[out[i].Level] = &out[i]
+		}
 		for _, st := range d.Statements {
-			switch scope[st.ID].Scope {
-			case ScopeChecked:
-				c.Checked++
-			case ScopeNotCheckable:
-				c.NotCheckable++
-			case ScopePending:
-				c.Pending++
-			default:
-				c.Undecided++
+			if c, ok := byRow[rowOf(st)]; ok {
+				c.add(scope[st.ID].Scope)
 			}
 		}
-		out = append(out, c)
 	}
 	return out, nil
+}
+
+func (c *Counts) add(scope string) {
+	c.Total++
+	switch scope {
+	case ScopeChecked:
+		c.Checked++
+	case ScopeNotCheckable:
+		c.NotCheckable++
+	case ScopePending:
+		c.Pending++
+	default:
+		c.Undecided++
+	}
 }
 
 func decodeDocument(name string) (Document, error) {

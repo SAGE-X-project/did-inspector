@@ -1,12 +1,12 @@
 {
-  "format": "did-inspector-report/1",
+  "format": "did-inspector-report/2",
   "inspector": {
-    "revision": "c9763b4f86a6ae0744840c5e0b193af3f333b397"
+    "revision": "4d53bda2089a9c27571e328ef0b9c96fc66a884c"
   },
   "subject": {
     "name": "did-go",
-    "version": "v0.0.0-20261011184433-82160c9bc606",
-    "revision": "82160c9bc606"
+    "version": "v0.0.0-20261011195048-c31184bda393",
+    "revision": "c31184bda393"
   },
   "profile": "did-core-1.0",
   "specs": [
@@ -21,22 +21,44 @@
   "finished_at": "",
   "totals": {
     "statements": 206,
-    "PASS": 112,
-    "FAIL": 0,
+    "PASS": 119,
+    "FAIL": 1,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 1,
     "ERROR": 0,
-    "NOT_RUN": 93
+    "NOT_RUN": 85
+  },
+  "totals_by_level": {
+    "requirement": {
+      "statements": 172,
+      "PASS": 112,
+      "FAIL": 0,
+      "NOT_SUPPORTED": 0,
+      "NOT_APPLICABLE": 1,
+      "ERROR": 0,
+      "NOT_RUN": 59
+    },
+    "recommendation": {
+      "statements": 34,
+      "PASS": 7,
+      "FAIL": 1,
+      "NOT_SUPPORTED": 0,
+      "NOT_APPLICABLE": 0,
+      "ERROR": 0,
+      "NOT_RUN": 26
+    }
   },
   "statements": [
     {
       "id": "core10#conformance.1",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#did-syntax.1",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/syntax/did"
@@ -45,6 +67,7 @@
     {
       "id": "core10#did-url-syntax.1",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/syntax/did-url"
@@ -53,11 +76,13 @@
     {
       "id": "core10#did-parameters.1",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#did-parameters.2",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/syntax/param-service"
@@ -66,6 +91,7 @@
     {
       "id": "core10#did-parameters.3",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/syntax/param-relative-ref"
@@ -74,6 +100,7 @@
     {
       "id": "core10#did-parameters.4",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/syntax/param-version-id"
@@ -82,16 +109,19 @@
     {
       "id": "core10#did-parameters.5",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#did-parameters.6",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#did-parameters.7",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/syntax/param-hl"
@@ -100,11 +130,13 @@
     {
       "id": "core10#did-parameters.8",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#relative-did-urls.1",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/relative-did-url/consumer",
@@ -115,31 +147,37 @@
     {
       "id": "core10#relative-did-urls.2",
       "scope": "pending",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#extensibility.1",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#extensibility.2",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#extensibility.3",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#extensibility.4",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#did-subject.1",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/did-subject/consumer",
@@ -150,6 +188,7 @@
     {
       "id": "core10#did-controller.1",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/controller/consumer",
@@ -160,6 +199,7 @@
     {
       "id": "core10#did-controller.2",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/controller/consumer",
@@ -170,16 +210,19 @@
     {
       "id": "core10#did-controller.3",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#did-controller.4",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#also-known-as.1",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/also-known-as/consumer",
@@ -190,6 +233,7 @@
     {
       "id": "core10#also-known-as.2",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/also-known-as/consumer",
@@ -200,6 +244,7 @@
     {
       "id": "core10#verification-methods.1",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/verification-method-structure/consumer",
@@ -210,6 +255,7 @@
     {
       "id": "core10#verification-methods.2",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/verification-method-structure/consumer",
@@ -220,6 +266,7 @@
     {
       "id": "core10#verification-methods.3",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/verification-method-structure/consumer",
@@ -230,6 +277,7 @@
     {
       "id": "core10#verification-methods.4",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/verification-method-structure/consumer",
@@ -240,11 +288,13 @@
     {
       "id": "core10#verification-methods.5",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#verification-methods.6",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/verification-method-id/consumer",
@@ -255,6 +305,7 @@
     {
       "id": "core10#verification-methods.7",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/verification-method-type/consumer",
@@ -265,11 +316,13 @@
     {
       "id": "core10#verification-methods.8",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#verification-methods.9",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/verification-method-controller/consumer",
@@ -280,6 +333,7 @@
     {
       "id": "core10#verification-material.1",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/public-key-jwk/consumer",
@@ -290,6 +344,7 @@
     {
       "id": "core10#verification-material.2",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/public-key-jwk/consumer",
@@ -300,6 +355,7 @@
     {
       "id": "core10#verification-material.3",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/public-key-jwk-private/consumer",
@@ -310,16 +366,19 @@
     {
       "id": "core10#verification-material.4",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#verification-material.5",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#verification-material.6",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/public-key-multibase/consumer",
@@ -330,6 +389,7 @@
     {
       "id": "core10#verification-material.7",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/public-key-multibase/consumer",
@@ -340,6 +400,7 @@
     {
       "id": "core10#verification-material.8",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/verification-material-single/consumer",
@@ -350,6 +411,7 @@
     {
       "id": "core10#verification-relationships.1",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/verification-relationship-extension/consumer",
@@ -360,11 +422,13 @@
     {
       "id": "core10#verification-relationships.2",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#authentication.1",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/relationship-authentication/consumer",
@@ -375,6 +439,7 @@
     {
       "id": "core10#authentication.2",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/relationship-authentication/consumer",
@@ -385,6 +450,7 @@
     {
       "id": "core10#authentication.3",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/relationship-authentication/consumer",
@@ -395,6 +461,7 @@
     {
       "id": "core10#assertion.1",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/relationship-assertionMethod/consumer",
@@ -405,6 +472,7 @@
     {
       "id": "core10#assertion.2",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/relationship-assertionMethod/consumer",
@@ -415,6 +483,7 @@
     {
       "id": "core10#assertion.3",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/relationship-assertionMethod/consumer",
@@ -425,6 +494,7 @@
     {
       "id": "core10#key-agreement.1",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/relationship-keyAgreement/consumer",
@@ -435,6 +505,7 @@
     {
       "id": "core10#key-agreement.2",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/relationship-keyAgreement/consumer",
@@ -445,6 +516,7 @@
     {
       "id": "core10#key-agreement.3",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/relationship-keyAgreement/consumer",
@@ -455,6 +527,7 @@
     {
       "id": "core10#capability-invocation.1",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/relationship-capabilityInvocation/consumer",
@@ -465,6 +538,7 @@
     {
       "id": "core10#capability-invocation.2",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/relationship-capabilityInvocation/consumer",
@@ -475,6 +549,7 @@
     {
       "id": "core10#capability-invocation.3",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/relationship-capabilityInvocation/consumer",
@@ -485,6 +560,7 @@
     {
       "id": "core10#capability-delegation.1",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/relationship-capabilityDelegation/consumer",
@@ -495,6 +571,7 @@
     {
       "id": "core10#capability-delegation.2",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/relationship-capabilityDelegation/consumer",
@@ -505,6 +582,7 @@
     {
       "id": "core10#capability-delegation.3",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/relationship-capabilityDelegation/consumer",
@@ -515,6 +593,7 @@
     {
       "id": "core10#services.1",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/service-structure/consumer",
@@ -525,6 +604,7 @@
     {
       "id": "core10#services.2",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/service-structure/consumer",
@@ -535,6 +615,7 @@
     {
       "id": "core10#services.3",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/service-structure/consumer",
@@ -545,6 +626,7 @@
     {
       "id": "core10#services.4",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/service-structure/consumer",
@@ -555,6 +637,7 @@
     {
       "id": "core10#services.5",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/service-id/consumer",
@@ -565,6 +648,7 @@
     {
       "id": "core10#services.6",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/service-id-unique/producer"
@@ -573,6 +657,7 @@
     {
       "id": "core10#services.7",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/service-id-unique/consumer"
@@ -581,6 +666,7 @@
     {
       "id": "core10#services.8",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/service-type/consumer",
@@ -591,11 +677,13 @@
     {
       "id": "core10#services.9",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#services.10",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/service-endpoint-type/consumer",
@@ -606,6 +694,7 @@
     {
       "id": "core10#services.11",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/service-endpoint-uri/consumer",
@@ -616,51 +705,61 @@
     {
       "id": "core10#production-and-consumption.1",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#production-and-consumption.2",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#production-and-consumption.3",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#production-and-consumption.4",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#production-and-consumption.5",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#production-and-consumption.6",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#production-and-consumption.7",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#production-and-consumption.8",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#production-and-consumption.9",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#production-and-consumption.10",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/representation/producer-serializes-entries"
@@ -669,6 +768,7 @@
     {
       "id": "core10#production-and-consumption.11",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/representation/producer-serializes-entries"
@@ -677,6 +777,7 @@
     {
       "id": "core10#production-and-consumption.12",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/did-subject/producer",
@@ -707,16 +808,19 @@
     {
       "id": "core10#production-and-consumption.13",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#production-and-consumption.14",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#production-and-consumption.15",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/media-type-decides/consumer",
@@ -726,6 +830,7 @@
     {
       "id": "core10#production-and-consumption.16",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/representation/consumer-representation-entries"
@@ -734,6 +839,7 @@
     {
       "id": "core10#production-and-consumption.17",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/representation/consumer-keeps-entries",
@@ -743,6 +849,7 @@
     {
       "id": "core10#production-and-consumption.18",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/did-subject/consumer",
@@ -775,6 +882,7 @@
     {
       "id": "core10#production.1",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/representation/producer-serializes-entries"
@@ -783,6 +891,7 @@
     {
       "id": "core10#production.2",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/representation/producer-serializes-entries"
@@ -791,6 +900,7 @@
     {
       "id": "core10#production.3",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/representation/producer-serializes-entries"
@@ -799,6 +909,7 @@
     {
       "id": "core10#production.4",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/representation/producer-serializes-entries"
@@ -807,6 +918,7 @@
     {
       "id": "core10#consumption.1",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/json-root/consumer",
@@ -816,6 +928,7 @@
     {
       "id": "core10#consumption.2",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/json-root/consumer",
@@ -825,6 +938,7 @@
     {
       "id": "core10#consumption.3",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/json-root/consumer"
@@ -833,6 +947,7 @@
     {
       "id": "core10#production-0.1",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/representation/producer-json-ld"
@@ -841,6 +956,7 @@
     {
       "id": "core10#production-0.2",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/json-ld-context-required/consumer",
@@ -850,6 +966,7 @@
     {
       "id": "core10#production-0.3",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/document/json-ld-context-value/consumer",
@@ -861,21 +978,38 @@
     {
       "id": "core10#production-0.4",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#production-0.5",
-      "scope": "not-checkable",
-      "verdict": "NOT_RUN"
+      "scope": "checked",
+      "level": "recommendation",
+      "verdict": "FAIL",
+      "cases": [
+        "did-core-1.0/representation/producer-undefined-terms"
+      ],
+      "findings": [
+        {
+          "case": "did-core-1.0/representation/producer-undefined-terms",
+          "statement": "core10#production-0.5",
+          "verdict": "FAIL",
+          "input": "JSON-LD document with @context https://www.w3.org/ns/did/v1 and the undefined term inspectorUndefinedTerm",
+          "expected": "no member inspectorUndefinedTerm in the produced representation, or no production",
+          "observed": "produced {\"@context\":\"https://www.w3.org/ns/did/v1\",\"id\":\"did:example:123456789abcdefghi\",\"inspectorUndefinedTerm\":\"a value no context defines\"}"
+        }
+      ]
     },
     {
       "id": "core10#production-0.6",
       "scope": "pending",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#consumption-0.1",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/representation/consumer-representation-entries"
@@ -883,12 +1017,17 @@
     },
     {
       "id": "core10#consumption-0.2",
-      "scope": "not-checkable",
-      "verdict": "NOT_RUN"
+      "scope": "checked",
+      "level": "recommendation",
+      "verdict": "PASS",
+      "cases": [
+        "did-core-1.0/representation/consumer-undefined-terms"
+      ]
     },
     {
       "id": "core10#resolution.1",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/representation-found"
@@ -897,6 +1036,7 @@
     {
       "id": "core10#did-resolution.1",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/resolve-invalid-did",
@@ -906,6 +1046,7 @@
     {
       "id": "core10#did-resolution.2",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/resolve-found",
@@ -915,6 +1056,7 @@
     {
       "id": "core10#did-resolution.3",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/resolve-invalid-did",
@@ -927,6 +1069,7 @@
     {
       "id": "core10#did-resolution.4",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/representation-found",
@@ -936,6 +1079,7 @@
     {
       "id": "core10#did-resolution.5",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/resolve-invalid-did",
@@ -948,6 +1092,7 @@
     {
       "id": "core10#did-resolution.6",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/resolve-found"
@@ -956,6 +1101,7 @@
     {
       "id": "core10#did-resolution.7",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/resolve-found",
@@ -967,6 +1113,7 @@
     {
       "id": "core10#did-resolution.8",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/resolve-invalid-did",
@@ -978,6 +1125,7 @@
     {
       "id": "core10#did-resolution.9",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/representation-found",
@@ -988,6 +1136,7 @@
     {
       "id": "core10#did-resolution.10",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/representation-invalid-did",
@@ -999,6 +1148,7 @@
     {
       "id": "core10#did-resolution.11",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/resolve-found",
@@ -1008,6 +1158,7 @@
     {
       "id": "core10#did-resolution.12",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/resolve-invalid-did",
@@ -1021,21 +1172,28 @@
     {
       "id": "core10#did-resolution-options.1",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#did-resolution-options.2",
-      "scope": "not-checkable",
-      "verdict": "NOT_RUN"
+      "scope": "checked",
+      "level": "recommendation",
+      "verdict": "PASS",
+      "cases": [
+        "did-core-1.0/resolution/representation-accept-json"
+      ]
     },
     {
       "id": "core10#did-resolution-options.3",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#did-resolution-metadata.1",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/representation-found",
@@ -1046,6 +1204,7 @@
     {
       "id": "core10#did-resolution-metadata.2",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/resolve-found",
@@ -1055,6 +1214,7 @@
     {
       "id": "core10#did-resolution-metadata.3",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/representation-found",
@@ -1064,11 +1224,13 @@
     {
       "id": "core10#did-resolution-metadata.4",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#did-resolution-metadata.5",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/resolve-invalid-did",
@@ -1081,6 +1243,7 @@
     {
       "id": "core10#did-resolution-metadata.6",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/result-format"
@@ -1089,21 +1252,28 @@
     {
       "id": "core10#did-resolution-metadata.7",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#did-document-metadata.1",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#did-document-metadata.2",
-      "scope": "not-checkable",
-      "verdict": "NOT_RUN"
+      "scope": "checked",
+      "level": "recommendation",
+      "verdict": "PASS",
+      "cases": [
+        "did-core-1.0/resolution/metadata-recommended"
+      ]
     },
     {
       "id": "core10#did-document-metadata.3",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/result-format",
@@ -1112,12 +1282,17 @@
     },
     {
       "id": "core10#did-document-metadata.4",
-      "scope": "not-checkable",
-      "verdict": "NOT_RUN"
+      "scope": "checked",
+      "level": "recommendation",
+      "verdict": "PASS",
+      "cases": [
+        "did-core-1.0/resolution/metadata-recommended"
+      ]
     },
     {
       "id": "core10#did-document-metadata.5",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/result-format",
@@ -1127,6 +1302,7 @@
     {
       "id": "core10#did-document-metadata.6",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/resolve-deactivated",
@@ -1136,6 +1312,7 @@
     {
       "id": "core10#did-document-metadata.7",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "NOT_APPLICABLE",
       "cases": [
         "did-core-1.0/resolution/result-format",
@@ -1159,11 +1336,13 @@
     {
       "id": "core10#did-document-metadata.8",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#did-document-metadata.9",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/result-format",
@@ -1180,12 +1359,17 @@
     },
     {
       "id": "core10#did-document-metadata.10",
-      "scope": "not-checkable",
-      "verdict": "NOT_RUN"
+      "scope": "checked",
+      "level": "recommendation",
+      "verdict": "PASS",
+      "cases": [
+        "did-core-1.0/resolution/metadata-recommended"
+      ]
     },
     {
       "id": "core10#did-document-metadata.11",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/resolve-versioned",
@@ -1196,11 +1380,13 @@
     {
       "id": "core10#did-document-metadata.12",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#did-document-metadata.13",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/result-format",
@@ -1218,11 +1404,13 @@
     {
       "id": "core10#did-document-metadata.14",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#did-document-metadata.15",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/resolve-equivalent-ids",
@@ -1241,6 +1429,7 @@
     {
       "id": "core10#did-document-metadata.16",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/result-format",
@@ -1258,21 +1447,25 @@
     {
       "id": "core10#did-document-metadata.17",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#did-document-metadata.18",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#did-document-metadata.19",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#did-document-metadata.20",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/resolve-equivalent-ids",
@@ -1291,6 +1484,7 @@
     {
       "id": "core10#did-document-metadata.21",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/result-format",
@@ -1308,11 +1502,13 @@
     {
       "id": "core10#did-document-metadata.22",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#did-url-dereferencing.1",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/dereferencing/fragment"
@@ -1321,11 +1517,13 @@
     {
       "id": "core10#did-url-dereferencing.2",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#did-url-dereferencing.3",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/dereferencing/document"
@@ -1334,6 +1532,7 @@
     {
       "id": "core10#did-url-dereferencing.4",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/dereferencing/invalid-did-url",
@@ -1344,6 +1543,7 @@
     {
       "id": "core10#did-url-dereferencing.5",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/dereferencing/invalid-did-url",
@@ -1354,6 +1554,7 @@
     {
       "id": "core10#did-url-dereferencing.6",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/dereferencing/document",
@@ -1363,11 +1564,13 @@
     {
       "id": "core10#did-url-dereferencing.7",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#did-url-dereferencing.8",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/dereferencing/invalid-did-url",
@@ -1379,6 +1582,7 @@
     {
       "id": "core10#did-url-dereferencing.9",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/dereferencing/document"
@@ -1387,6 +1591,7 @@
     {
       "id": "core10#did-url-dereferencing.10",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/dereferencing/document"
@@ -1395,6 +1600,7 @@
     {
       "id": "core10#did-url-dereferencing.11",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/dereferencing/invalid-did-url",
@@ -1406,26 +1612,37 @@
     {
       "id": "core10#did-url-dereferencing-options.1",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#did-url-dereferencing-options.2",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#did-url-dereferencing-options.3",
-      "scope": "not-checkable",
-      "verdict": "NOT_RUN"
+      "scope": "checked",
+      "level": "recommendation",
+      "verdict": "PASS",
+      "cases": [
+        "did-core-1.0/dereferencing/accept-representation"
+      ]
     },
     {
       "id": "core10#did-url-dereferencing-metadata.1",
-      "scope": "not-checkable",
-      "verdict": "NOT_RUN"
+      "scope": "checked",
+      "level": "recommendation",
+      "verdict": "PASS",
+      "cases": [
+        "did-core-1.0/dereferencing/result-format"
+      ]
     },
     {
       "id": "core10#did-url-dereferencing-metadata.2",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/dereferencing/result-format"
@@ -1434,6 +1651,7 @@
     {
       "id": "core10#did-url-dereferencing-metadata.3",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/dereferencing/invalid-did-url",
@@ -1444,6 +1662,7 @@
     {
       "id": "core10#did-url-dereferencing-metadata.4",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/dereferencing/result-format"
@@ -1452,21 +1671,25 @@
     {
       "id": "core10#did-url-dereferencing-metadata.5",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#metadata-structure.1",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#metadata-structure.2",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#metadata-structure.3",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/result-format",
@@ -1476,6 +1699,7 @@
     {
       "id": "core10#metadata-structure.4",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/resolution/result-format",
@@ -1485,66 +1709,79 @@
     {
       "id": "core10#metadata-structure.5",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#metadata-structure.6",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#metadata-structure.7",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#metadata-structure.8",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#method-syntax.1",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#method-syntax.2",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#method-syntax.3",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#method-syntax.4",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#method-syntax.5",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#method-syntax.6",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#method-syntax.7",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#method-syntax.8",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#method-syntax.9",
       "scope": "checked",
+      "level": "requirement",
       "verdict": "PASS",
       "cases": [
         "did-core-1.0/syntax/method-specific-id-colons"
@@ -1553,116 +1790,139 @@
     {
       "id": "core10#method-syntax.10",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#method-syntax.11",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#method-syntax.12",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#method-operations.1",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#method-operations.2",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#method-operations.3",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#method-operations.4",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#method-operations.5",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#security-requirements.1",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#security-requirements.2",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#security-requirements.3",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#security-requirements.4",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#security-requirements.5",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#security-requirements.6",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#security-requirements.7",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#security-requirements.8",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#security-requirements.9",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#security-requirements.10",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#security-requirements.11",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#security-requirements.12",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#security-requirements.13",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#security-requirements.14",
       "scope": "not-checkable",
+      "level": "recommendation",
       "verdict": "NOT_RUN"
     },
     {
       "id": "core10#privacy-requirements.1",
       "scope": "not-checkable",
+      "level": "requirement",
       "verdict": "NOT_RUN"
     }
   ],
@@ -2494,6 +2754,22 @@
       "observations": 3
     },
     {
+      "id": "did-core-1.0/representation/producer-undefined-terms",
+      "statements": [
+        "core10#production-0.5"
+      ],
+      "verdict": "FAIL",
+      "observations": 1
+    },
+    {
+      "id": "did-core-1.0/representation/consumer-undefined-terms",
+      "statements": [
+        "core10#consumption-0.2"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
       "id": "did-core-1.0/resolution/resolve-found",
       "statements": [
         "core10#did-resolution.2",
@@ -2644,6 +2920,24 @@
       "observations": 1
     },
     {
+      "id": "did-core-1.0/resolution/metadata-recommended",
+      "statements": [
+        "core10#did-document-metadata.2",
+        "core10#did-document-metadata.4",
+        "core10#did-document-metadata.10"
+      ],
+      "verdict": "PASS",
+      "observations": 3
+    },
+    {
+      "id": "did-core-1.0/resolution/representation-accept-json",
+      "statements": [
+        "core10#did-resolution-options.2"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
       "id": "did-core-1.0/resolution/result-format",
       "statements": [
         "core10#did-resolution.8",
@@ -2667,7 +2961,7 @@
         "core10#metadata-structure.4"
       ],
       "verdict": "PASS",
-      "observations": 86
+      "observations": 99
     },
     {
       "id": "did-core-1.0/dereferencing/document",
@@ -2726,12 +3020,21 @@
       "observations": 5
     },
     {
+      "id": "did-core-1.0/dereferencing/accept-representation",
+      "statements": [
+        "core10#did-url-dereferencing-options.3"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
       "id": "did-core-1.0/dereferencing/result-format",
       "statements": [
         "core10#did-url-dereferencing.8",
         "core10#did-url-dereferencing.11",
         "core10#did-url-dereferencing-metadata.2",
         "core10#did-url-dereferencing-metadata.4",
+        "core10#did-url-dereferencing-metadata.1",
         "core10#did-document-metadata.3",
         "core10#did-document-metadata.5",
         "core10#did-document-metadata.9",
@@ -2746,7 +3049,7 @@
         "core10#metadata-structure.4"
       ],
       "verdict": "PASS",
-      "observations": 31
+      "observations": 40
     }
   ],
   "not_run": [
@@ -2780,19 +3083,13 @@
     "core10#production-and-consumption.13",
     "core10#production-and-consumption.14",
     "core10#production-0.4",
-    "core10#production-0.5",
     "core10#production-0.6",
-    "core10#consumption-0.2",
     "core10#did-resolution-options.1",
-    "core10#did-resolution-options.2",
     "core10#did-resolution-options.3",
     "core10#did-resolution-metadata.4",
     "core10#did-resolution-metadata.7",
     "core10#did-document-metadata.1",
-    "core10#did-document-metadata.2",
-    "core10#did-document-metadata.4",
     "core10#did-document-metadata.8",
-    "core10#did-document-metadata.10",
     "core10#did-document-metadata.12",
     "core10#did-document-metadata.14",
     "core10#did-document-metadata.17",
@@ -2803,8 +3100,6 @@
     "core10#did-url-dereferencing.7",
     "core10#did-url-dereferencing-options.1",
     "core10#did-url-dereferencing-options.2",
-    "core10#did-url-dereferencing-options.3",
-    "core10#did-url-dereferencing-metadata.1",
     "core10#did-url-dereferencing-metadata.5",
     "core10#metadata-structure.1",
     "core10#metadata-structure.2",

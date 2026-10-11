@@ -194,7 +194,9 @@ func TestStatements(t *testing.T) {
 		t.Fatal(err)
 	}
 	lines := strings.Split(strings.TrimSpace(out.String()), "\n")
-	if len(lines) != len(counts)+2 || !strings.Contains(lines[0], "not-checkable") || !strings.Contains(lines[len(lines)-1], "all") {
+	rows := len(statements.Levels()) + 1
+	if len(lines) != 1+rows*(len(counts)+1) || !strings.Contains(lines[0], "not-checkable") || !strings.Contains(lines[0], "level") ||
+		!strings.HasPrefix(strings.TrimSpace(lines[len(lines)-1]), "all") || !strings.Contains(lines[len(lines)-1], "recommendation") {
 		t.Fatalf("output:\n%s", out.String())
 	}
 	if !strings.Contains(out.String(), "core10") {

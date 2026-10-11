@@ -35,8 +35,19 @@ func (m *mock) errResult(did, name string) core.ResolutionResult {
 			t = nsDID + name
 		}
 	}
+	members := []core.Member{core.M("type", core.String(t))}
+	if !m.on("error-no-title") {
+		members = append(members, core.M("title", core.String(name)))
+	}
+	if !m.on("error-no-detail") {
+		members = append(members, core.M("detail", core.String("the mock could not complete the request: "+name)))
+	}
+	e := core.Object(members...)
+	if m.on("error-string") {
+		e = core.String(t)
+	}
 	res := core.ResolutionResult{
-		ResolutionMetadata: core.NewDocument(core.M("error", core.Object(core.M("type", core.String(t)), core.M("title", core.String(name))))),
+		ResolutionMetadata: core.NewDocument(core.M("error", e)),
 		DocumentMetadata:   core.NewDocument(),
 	}
 	if m.on("error-empty-metadata") {
@@ -140,7 +151,11 @@ func (m *mock) Resolve(_ context.Context, did string, opts map[string]any) (core
 	if b, _ := opts["expandRelativeUrls"].(bool); b && !m.on("no-expand") {
 		doc = expand(did, doc)
 	}
-	return m.success(did, doc, meta), nil
+	res := m.success(did, doc, meta)
+	if _, asked := opts["accept"]; asked && m.on("accept-ignored") {
+		res.ResolutionMetadata = core.NewDocument(core.M("contentType", core.String("application/did+ld+json")))
+	}
+	return res, nil
 }
 
 func (m *mock) deactivated(did string, meta core.DocumentJSON) core.ResolutionResult {

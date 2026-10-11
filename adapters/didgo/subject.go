@@ -45,6 +45,8 @@ type Subject struct {
 	// mu guards players, which LoadFixtureRegistry replaces.
 	mu      sync.RWMutex
 	players *players
+
+	binding *binding
 }
 
 // New returns the subject. Before LoadFixtureRegistry is called, the
@@ -54,6 +56,7 @@ func New() *Subject {
 		info:     describe(readBuildInfo),
 		consumer: consumer.New(),
 		producer: producer.New(),
+		binding:  &binding{},
 	}
 	p, err := newPlayers(nil, s.consumer, s.producer)
 	if err != nil {
@@ -75,6 +78,7 @@ var (
 	_ core.Dereferencer      = (*Subject)(nil)
 	_ core.V10Functions      = (*Subject)(nil)
 	_ core.FixtureMethod     = (*Subject)(nil)
+	_ core.HTTPBinding       = (*Subject)(nil)
 )
 
 // Describe returns did-go's module version and revision from the build
@@ -91,9 +95,10 @@ func (s *Subject) Describe() core.SubjectInfo {
 //     resolution/compat. The DID Resolution v1.0 resolver and dereferencer
 //     are not DID Core 1.0 functions, so the profile does not get them.
 //   - did-1.1: parsing, production, consumption and validation for DID 1.1
-//     (spec.V11), and the resolver and dereferencer of DID Resolution v1.0.
-//     resolution/compat is the DID Core 1.0 path, so the profile does not
-//     get it.
+//     (spec.V11), the resolver and dereferencer of DID Resolution v1.0, and
+//     the HTTP(S) binding of DID Resolution v1.0 §12.1 (resolution/universal,
+//     see binding.go). resolution/compat is the DID Core 1.0 path, so the
+//     profile does not get it.
 //
 // Both profiles get the fixture method, which every resolution case needs.
 var support = map[string][]core.Capability{
@@ -103,7 +108,7 @@ var support = map[string][]core.Capability{
 	},
 	did11.Name: {
 		core.CapDIDParser, core.CapDocumentProducer, core.CapDocumentConsumer,
-		core.CapDocumentValidator, core.CapResolver, core.CapDereferencer, core.CapFixtureMethod,
+		core.CapDocumentValidator, core.CapResolver, core.CapDereferencer, core.CapFixtureMethod, core.CapHTTPBinding,
 	},
 }
 

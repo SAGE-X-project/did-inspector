@@ -7,6 +7,7 @@ import (
 	"github.com/sage-x-project/did-inspector/checks"
 	"github.com/sage-x-project/did-inspector/core"
 	"github.com/sage-x-project/did-inspector/fixtures"
+	"github.com/sage-x-project/did-inspector/profiles/internal/kit"
 )
 
 // mock is a test subject that behaves as DID 1.1, CID 1.0 and DID
@@ -138,6 +139,7 @@ func (m *mock) Consume(data []byte, mediaType, requireVersion string, _ bool) (c
 		case m.on("consumer-changes-keys") && mem.Name == "verificationMethod":
 			model.Members = append(model.Members, core.M(mem.Name, core.Array()))
 		case m.on("consumer-loses-entries") && mem.Name != "id" && mem.Name != "@context":
+		case mem.Name == kit.UndefinedTerm && hasContext(doc) && !m.on("consumer-keeps-undefined"):
 		default:
 			model.Members = append(model.Members, mem)
 		}
@@ -158,6 +160,7 @@ func (m *mock) Produce(doc core.DocumentJSON, _ string) ([]byte, string, error) 
 		switch {
 		case m.on("producer-drops-entries") && (strings.HasPrefix(mem.Name, "ext") || mem.Name == "authentication"):
 		case m.on("producer-drops-context") && mem.Name == "@context":
+		case mem.Name == kit.UndefinedTerm && hasContext(doc) && !m.on("producer-keeps-undefined"):
 		case m.on("producer-changes-keys") && mem.Name == "verificationMethod":
 			out.Members = append(out.Members, core.M(mem.Name, core.Array()))
 		case m.on("producer-reorders-context") && mem.Name == "@context" && mem.Value.Kind == core.KindArray:
@@ -177,6 +180,12 @@ func (m *mock) Produce(doc core.DocumentJSON, _ string) ([]byte, string, error) 
 		mt = "application/did+ld+json"
 	}
 	return data, mt, nil
+}
+
+// hasContext reports whether a document is processed as JSON-LD.
+func hasContext(doc core.DocumentJSON) bool {
+	_, ok := doc.Get("@context")
+	return ok
 }
 
 func (m *mock) Validate(doc core.DocumentJSON, _ string) ([]core.Finding, error) {

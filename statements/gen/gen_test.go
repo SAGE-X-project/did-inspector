@@ -168,6 +168,7 @@ func TestInitialDecision(t *testing.T) {
 		{extract.Statement{Kind: extract.KindStep, Text: "Return the result."}, ScopePending, "algorithm step"},
 		{extract.Statement{Kind: extract.KindRequirement, Text: "The value MUST be a string.", Keywords: []string{"MUST"}}, ScopePending, "requirement"},
 		{extract.Statement{Kind: extract.KindRequirement, Text: "This input is REQUIRED, but the structure MAY be empty.", Keywords: []string{"REQUIRED", "MAY"}}, ScopePending, "requirement"},
+		{extract.Statement{Kind: extract.KindRequirement, Text: "The metadata SHOULD include created.", Keywords: []string{"SHOULD"}}, ScopePending, "recommendation"},
 	}
 	for _, c := range cases {
 		d := InitialDecision(c.st)
@@ -177,17 +178,24 @@ func TestInitialDecision(t *testing.T) {
 		if err := d.Validate(); err != nil {
 			t.Errorf("invalid decision %+v: %v", d, err)
 		}
+		if d.Level != extract.LevelOf(c.st.Keywords) {
+			t.Errorf("InitialDecision(%q) level %s", c.st.Text, d.Level)
+		}
 	}
 }
 
 func TestDecisionValidate(t *testing.T) {
-	if err := (Decision{Scope: "maybe", Reason: "r"}).Validate(); err == nil {
+	req := extract.LevelRequirement
+	if err := (Decision{Scope: "maybe", Level: req, Reason: "r"}).Validate(); err == nil {
 		t.Error("unknown scope accepted")
 	}
-	if err := (Decision{Scope: ScopePending, Reason: " "}).Validate(); err == nil {
+	if err := (Decision{Scope: ScopePending, Level: "optional", Reason: "r"}).Validate(); err == nil {
+		t.Error("unknown level accepted")
+	}
+	if err := (Decision{Scope: ScopePending, Level: req, Reason: " "}).Validate(); err == nil {
 		t.Error("blank reason accepted")
 	}
-	if err := (Decision{Scope: ScopeChecked, Reason: "case x"}).Validate(); err != nil {
+	if err := (Decision{Scope: ScopeChecked, Level: extract.LevelRecommendation, Reason: "case x"}).Validate(); err != nil {
 		t.Error(err)
 	}
 }
@@ -197,12 +205,13 @@ func TestMergeScope(t *testing.T) {
 		{ID: "k#a.1", Kind: extract.KindRequirement, Text: "X MUST y.", Keywords: []string{"MUST"}},
 		{ID: "k#a.2", Kind: extract.KindStep, Text: "Do."},
 	}}}
-	kept := Decision{Scope: ScopeChecked, Reason: "case c"}
-	entries, err := MergeScope(docs, map[string]Decision{"k#a.1": kept}, false)
+	kept := Decision{Scope: ScopeChecked, Level: extract.LevelRequirement, Reason: "case c"}
+	// A hand-written level is replaced by the level of the statement.
+	entries, err := MergeScope(docs, map[string]Decision{"k#a.1": {Scope: ScopeChecked, Level: extract.LevelRecommendation, Reason: "case c"}}, false)
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(entries) != 2 || entries[0].Decision != kept || entries[1].Decision.Scope != ScopePending {
+	if len(entries) != 2 || entries[0].Decision != kept || entries[1].Decision.Scope != ScopePending || entries[1].Decision.Level != extract.LevelRequirement {
 		t.Fatalf("entries = %+v", entries)
 	}
 	stale := map[string]Decision{"k#gone.2": kept, "k#gone.1": kept}
@@ -219,14 +228,14 @@ func TestMergeScope(t *testing.T) {
 
 func TestEncodeDecodeScope(t *testing.T) {
 	entries := []ScopeEntry{
-		{ID: "k#a.2", Decision: Decision{ScopePending, "r <2>"}},
-		{ID: "k#a.10", Decision: Decision{ScopeNotCheckable, "r1"}},
+		{ID: "k#a.2", Decision: Decision{ScopePending, extract.LevelRequirement, "r <2>"}},
+		{ID: "k#a.10", Decision: Decision{ScopeNotCheckable, extract.LevelRecommendation, "r1"}},
 	}
 	data, err := EncodeScope(entries)
 	if err != nil {
 		t.Fatal(err)
 	}
-	want := "{\n  \"k#a.2\": {\"scope\":\"pending\",\"reason\":\"r <2>\"},\n  \"k#a.10\": {\"scope\":\"not-checkable\",\"reason\":\"r1\"}\n}\n"
+	want := "{\n  \"k#a.2\": {\"scope\":\"pending\",\"level\":\"requirement\",\"reason\":\"r <2>\"},\n  \"k#a.10\": {\"scope\":\"not-checkable\",\"level\":\"recommendation\",\"reason\":\"r1\"}\n}\n"
 	if string(data) != want {
 		t.Fatalf("got %q", data)
 	}
@@ -234,7 +243,7 @@ func TestEncodeDecodeScope(t *testing.T) {
 	if err != nil || len(m) != 2 || m["k#a.10"].Scope != ScopeNotCheckable {
 		t.Fatalf("decode = %v %v", m, err)
 	}
-	if _, err := EncodeScope([]ScopeEntry{{ID: "x", Decision: Decision{Scope: "bad", Reason: "r"}}}); err == nil {
+	if _, err := EncodeScope([]ScopeEntry{{ID: "x", Decision: Decision{Scope: "bad", Level: extract.LevelRequirement, Reason: "r"}}}); err == nil {
 		t.Fatal("invalid decision encoded")
 	}
 	if _, err := DecodeScope([]byte("[")); err == nil {

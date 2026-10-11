@@ -1011,6 +1011,58 @@
           "partial": "the detail of the error is not judged"
         }
       ]
+    },
+    {
+      "case": "metadata-recommended",
+      "note": "DID document metadata SHOULD include created, updated and versionId (DID Resolution §4.3); the fixture method reports all three for this DID.",
+      "function": "resolve",
+      "input": "did:example:123456789abcdefghi",
+      "options": {},
+      "expect": [
+        {
+          "check": "contentMetadataMember",
+          "value": "created",
+          "statements": [
+            "res10-crd20261001#did-document-metadata.2"
+          ],
+          "partial": "judged on a DID whose method reports the property"
+        },
+        {
+          "check": "contentMetadataMember",
+          "value": "updated",
+          "statements": [
+            "res10-crd20261001#did-document-metadata.4"
+          ],
+          "partial": "judged on a DID whose method reports the property"
+        },
+        {
+          "check": "contentMetadataMember",
+          "value": "versionId",
+          "statements": [
+            "res10-crd20261001#did-document-metadata.10"
+          ],
+          "partial": "judged on a DID whose method reports the property"
+        }
+      ]
+    },
+    {
+      "case": "accept-representation",
+      "note": "The resolver SHOULD use the accept option to determine the representation of the returned didDocument (DID Resolution §4.1).",
+      "function": "resolve",
+      "input": "did:example:123456789abcdefghi",
+      "options": {
+        "accept": "application/did"
+      },
+      "expect": [
+        {
+          "check": "contentType",
+          "value": "application/did",
+          "statements": [
+            "res10-crd20261001#did-resolution-options.3"
+          ],
+          "partial": "judged with application/did, the representation the fixture method stores"
+        }
+      ]
     }
   ]
 }

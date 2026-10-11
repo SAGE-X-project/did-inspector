@@ -77,13 +77,17 @@ jobs:
           name: didgo-reports
           path: ${{ runner.temp }}/reports/
           if-no-files-found: error
-      - name: No statement is FAIL or ERROR
+      - name: No requirement-level statement is FAIL or ERROR
+        # The gate counts requirement-level statements only. Recommendation
+        # failures (SHOULD, RECOMMENDED) are printed but do not fail it.
         run: |
           bad=0
           for f in "$RUNNER_TEMP"/reports/didgo-*.json; do
-            n=$(jq '.totals.FAIL + .totals.ERROR' "$f")
-            echo "$f: $n statement(s) FAIL or ERROR"
-            jq -r '.statements[] | select(.verdict == "FAIL" or .verdict == "ERROR") | "  \(.verdict) \(.id)"' "$f"
+            n=$(jq '.totals_by_level.requirement.FAIL + .totals_by_level.requirement.ERROR' "$f")
+            r=$(jq '.totals_by_level.recommendation.FAIL + .totals_by_level.recommendation.ERROR' "$f")
+            echo "$f: $n requirement-level and $r recommendation-level statement(s) FAIL or ERROR"
+            jq -r '.statements[] | select((.verdict == "FAIL" or .verdict == "ERROR") and .level != "recommendation") | "  \(.verdict) \(.id)"' "$f"
+            jq -r '.statements[] | select((.verdict == "FAIL" or .verdict == "ERROR") and .level == "recommendation") | "  recommendation \(.verdict) \(.id)"' "$f"
             if [ "$n" -ne 0 ]; then bad=1; fi
           done
           exit "$bad"

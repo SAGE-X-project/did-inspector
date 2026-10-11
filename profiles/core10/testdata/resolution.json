@@ -459,6 +459,58 @@
           ]
         }
       ]
+    },
+    {
+      "case": "metadata-recommended",
+      "note": "DID document metadata SHOULD include created, updated and versionId (DID Core 1.0 §7.1.3); the fixture method reports all three for this DID.",
+      "function": "resolve10",
+      "input": "did:example:123456789abcdefghi",
+      "options": {},
+      "expect": [
+        {
+          "check": "contentMetadataMember",
+          "value": "created",
+          "statements": [
+            "core10#did-document-metadata.2"
+          ],
+          "partial": "judged on a DID whose method reports the property"
+        },
+        {
+          "check": "contentMetadataMember",
+          "value": "updated",
+          "statements": [
+            "core10#did-document-metadata.4"
+          ],
+          "partial": "judged on a DID whose method reports the property"
+        },
+        {
+          "check": "contentMetadataMember",
+          "value": "versionId",
+          "statements": [
+            "core10#did-document-metadata.10"
+          ],
+          "partial": "judged on a DID whose method reports the property"
+        }
+      ]
+    },
+    {
+      "case": "representation-accept-json",
+      "note": "The resolver SHOULD use the accept option to determine the representation in the returned didDocumentStream (DID Core 1.0 §7.1.1).",
+      "function": "resolveRepresentation10",
+      "input": "did:example:123456789abcdefghi",
+      "options": {
+        "accept": "application/did+json"
+      },
+      "expect": [
+        {
+          "check": "contentType",
+          "value": "application/did+json",
+          "statements": [
+            "core10#did-resolution-options.2"
+          ],
+          "partial": "judged with application/did+json for a DID stored as application/did+ld+json; both are representations of DID Core 1.0"
+        }
+      ]
     }
   ],
   "probes": [

@@ -61,18 +61,35 @@ section, text and the SHA-256 of the source file. A test fails when a
 statement's source hash does not match the pinned hash, so a silently changed
 publication cannot pass.
 
-Each statement carries the inspector's own scope decision:
+Each statement carries a level, derived from its RFC 2119 keywords by the
+extractor and repeated in the scope file:
+
+- `recommendation`: the statement only recommends (SHOULD, SHOULD NOT,
+  RECOMMENDED, NOT RECOMMENDED). RFC 2119 §3 and §4 let an implementation
+  deviate from it when it has a valid reason;
+- `requirement`: every other statement, that is an absolute requirement or
+  prohibition (MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT), a permission
+  (MAY, OPTIONAL), or an algorithm step. A statement that both requires and
+  recommends ("an error MUST be raised and SHOULD convey ...") is a
+  requirement, because its requirement part decides conformance.
+
+Each statement also carries the inspector's own scope decision:
 
 - `checked`: there is at least one case;
 - `not-checkable`: no black-box observation can decide it (for example a
   statement addressed to specification authors), with a reason;
 - `pending`: in scope but without a case yet; reported as `NOT_RUN`.
 
-A statement that only recommends (SHOULD, RECOMMENDED) is `not-checkable`: a
-subject may deviate from a recommendation with valid reason, and the verdict
-set has no level for an unmet recommendation. A statement a case judges only
-partly is `checked`, and its reason says which part remains unjudged; the
-case says so in each observation's detail.
+The scope decision does not depend on the level. A recommendation whose
+following or not following an implementation shows (for example "DID
+document metadata SHOULD include a created property") is `checked` or
+`pending` like a requirement, and its case reports PASS or FAIL in the same
+way; the report keeps the two levels apart (§7). A recommendation is
+`not-checkable` only for the reasons a requirement would be, for example
+when it is addressed to the author of a document's content rather than to
+the implementation that produces, consumes or resolves it. A statement a
+case judges only partly is `checked`, and its reason says which part remains
+unjudged; the case says so in each observation's detail.
 
 ## 5. Subjects and adapters
 
@@ -94,6 +111,7 @@ type Resolver interface       { Resolve(ctx context.Context, did string, opts ma
 type Dereferencer interface   { Dereference(ctx context.Context, didURL string, opts map[string]any) (DereferenceResult, error) }
 type V10Functions interface   { Resolve10(...); ResolveRepresentation10(...); Dereference10(...) }
 type FixtureMethod interface  { LoadFixtureRegistry(r *fixtures.Registry) error }
+type HTTPBinding interface    { Endpoint() string; Exchange(ctx context.Context, req HTTPRequest) (HTTPExchange, error) }
 ```
 
 `DocumentJSON` is the inspector's neutral form of a document: an ordered JSON
@@ -101,11 +119,36 @@ object, so that the inspector, not the subject, interprets the content. Results
 carry the raw bytes and media types the subject produced, so the inspector can
 check them itself.
 
+`HTTPBinding` (capability `http-binding`) is the raw HTTP exchange of the
+HTTP(S) binding of DID Resolution §12.1. The case builds the request itself
+(`checks.BindingRequest`: the method, the target appended to the DID
+resolver HTTP(S) endpoint with the input percent-encoded when options travel
+as query parameters, the Accept header, and a JSON body for POST), and the
+subject returns what came back: the request sent, whether the response
+arrived over TLS, the status code, the response headers and the body.
+Redirects are not followed, so a 303 reaches the case as sent. The binding
+cases judge the status code table, 410 for a deactivated DID, 303 with
+Location and an empty body, Content-Type equal to the contentType metadata
+property, the application/did-resolution and
+application/did-url-dereferencing bodies and RFC 9457 problem details from
+these bytes, without trusting any parsing of the response, the subject's or
+an adapter's.
+
 Adapters:
 
 - `adapters/didgo` (separate module): wraps did-go's public packages only.
-- `adapters/https` (in the core module): reaches any resolver that exposes the
-  DID Resolution HTTPS binding, so non-Go implementations can be inspected.
+  For the `did-1.1` profile it also serves did-go's HTTP(S) binding
+  (`resolution/universal`'s Handler over did-go's resolver and dereferencer,
+  with the fixture registry as method `example`) from an `httptest` TLS
+  server inside the adapter, and exposes it through `adapters/https`.
+- `adapters/https` (in the core module, standard library only): reaches any
+  resolver that exposes the HTTP(S) binding, so non-Go implementations can be
+  inspected. It implements `HTTPBinding`, and `Resolver` and `Dereferencer`
+  through the GET version of the binding, translating each response form the
+  binding defines (a complete result, a problem details error, the document
+  or content alone, a 303) into the neutral result types and refusing any
+  other response. It has `FixtureMethod` only when the operator gives it a
+  loader that wires the registry into the remote resolver.
 - Test resolvers that serve fixed fixtures (a `did:example` registry under the
   inspector's control) so that resolution cases do not depend on any network.
 
@@ -208,18 +251,42 @@ Verdicts per observation: `PASS`, `FAIL` (with expected and observed values),
 statement's verdict is the worst of its observations, with `FAIL` > `ERROR` >
 `NOT_SUPPORTED` > `PASS`; a statement with no observation is `NOT_RUN`.
 
+The verdicts mean the same at both levels. A recommendation case gives PASS
+when the subject follows the recommendation and FAIL, with expected and
+observed values, when it does not; the FAIL records an unmet recommendation,
+which the report shows apart from requirement failures (§7). A case judges
+statements of one level or of both; each observation belongs to its
+statement and therefore to its statement's level.
+
+Each profile has cases for the observable recommendations, written like any
+other case and discriminated by the mock subjects in the same way: the
+metadata properties a resolver SHOULD include, the accept option it SHOULD
+follow, the contentType a dereferencer SHOULD express, the RFC 9457 form,
+title and detail of errors, and the undefined JSON-LD terms a producer SHOULD
+NOT produce and a consumer SHOULD drop.
+
 ## 7. Report
 
 `did-inspector run --profile did-1.1 --subject didgo --out report.json` writes:
 
 - subject name, version and revision; inspector revision; profile; the spec
   keys with the SHA-256 of each pinned source; the run time;
-- per statement: verdict, the cases that judged it, and for failures the
-  expected and observed values;
-- totals per verdict and the list of `NOT_RUN` statements.
+- per statement: level, scope, verdict, the cases that judged it, and for
+  failures the expected and observed values;
+- totals per verdict, the same totals per level (`totals_by_level`), and the
+  list of `NOT_RUN` statements.
 
-A text summary is printed. The report is evidence for that run only; it is not
-a certification.
+A text summary is printed: the totals overall and per level, the gate, and the
+findings, requirement-level first and recommendation-level after them.
+
+The conformance gate fails when a requirement-level statement is FAIL or
+ERROR, and only then. A recommendation-level FAIL or ERROR is printed and
+counted in its level's totals but does not fail the gate, because an
+implementation may deviate from a recommendation with valid reason. A
+statement a case judged that the profile does not have counts as a
+requirement. CI applies the gate to the reports of both profiles.
+
+The report is evidence for that run only; it is not a certification.
 
 ## 8. Layout
 
@@ -233,7 +300,7 @@ did-inspector/
 │   └── did11/              DID 1.1 + CID 1.0 + DID Resolution cases and fixtures
 ├── checks/                 the inspector's own spec checks (ABNF, JSON rules, media types, metadata)
 ├── report/                 report model, JSON and text output
-├── adapters/https/         HTTPS binding subject
+├── adapters/https/         HTTP(S) binding subject (standard library only)
 └── adapters/didgo/         separate module wrapping did-go
 ```
 
@@ -249,7 +316,9 @@ the subject's outputs. It is deliberately not shared with did-go.
 3. `profiles/did11` and `profiles/core10` cases, statement by statement.
 4. `adapters/didgo`; CI that runs both profiles against a pinned did-go
    revision and stores the reports as artifacts.
-5. `adapters/https` and its fixture resolver.
+5. `adapters/https`, the `http-binding` capability and the binding cases,
+   run against did-go's binding through the did-go adapter.
+6. Statement levels and cases for the observable recommendations.
 
 ## 10. Limits
 

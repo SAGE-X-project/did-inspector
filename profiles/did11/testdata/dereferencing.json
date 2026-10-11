@@ -820,6 +820,25 @@
           ]
         }
       ]
+    },
+    {
+      "case": "accept-representation",
+      "note": "The dereferencer SHOULD use the accept option to determine the contentType of the returned content (DID Resolution §5.1).",
+      "function": "dereference",
+      "input": "did:example:123456789abcdefghi",
+      "options": {
+        "accept": "application/did"
+      },
+      "expect": [
+        {
+          "check": "contentTypeAnywhere",
+          "value": "application/did",
+          "statements": [
+            "res10-crd20261001#did-url-dereferencing-options.3"
+          ],
+          "partial": "judged with application/did; the media type is accepted in either metadata structure"
+        }
+      ]
     }
   ]
 }

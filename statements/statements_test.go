@@ -8,6 +8,7 @@ import (
 	"testing"
 	"testing/fstest"
 
+	"github.com/sage-x-project/did-inspector/statements/extract"
 	"github.com/sage-x-project/did-inspector/statements/gen"
 )
 
@@ -102,6 +103,9 @@ func TestScopeCoversEveryStatement(t *testing.T) {
 			if err := dec.Validate(); err != nil {
 				t.Errorf("%s: %v", st.ID, err)
 			}
+			if dec.Level != st.Level || st.Level != extract.LevelOf(st.Keywords) {
+				t.Errorf("%s: scope level %q, statement level %q", st.ID, dec.Level, st.Level)
+			}
 			if st.Informative && dec.Scope != ScopeNotCheckable {
 				t.Errorf("%s is informative but scoped %s", st.ID, dec.Scope)
 			}
@@ -154,6 +158,30 @@ func TestCountByScope(t *testing.T) {
 		}
 		if c.Checked+c.NotCheckable+c.Pending != c.Total {
 			t.Errorf("%s: counts do not add up: %+v", c.Key, c)
+		}
+	}
+}
+
+func TestCountByLevel(t *testing.T) {
+	all, err := CountByScope()
+	if err != nil {
+		t.Fatal(err)
+	}
+	rows, err := CountByLevel()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(rows) != len(all)*len(Levels()) {
+		t.Fatalf("got %d rows", len(rows))
+	}
+	for i, a := range all {
+		req, rec := rows[2*i], rows[2*i+1]
+		if req.Key != a.Key || rec.Key != a.Key || req.Level != LevelRequirement || rec.Level != LevelRecommendation {
+			t.Fatalf("rows %+v %+v for %s", req, rec, a.Key)
+		}
+		if req.Total+rec.Total != a.Total || req.Checked+rec.Checked != a.Checked || req.Pending+rec.Pending != a.Pending ||
+			req.NotCheckable+rec.NotCheckable != a.NotCheckable {
+			t.Errorf("%s: level rows %+v %+v do not add up to %+v", a.Key, req, rec, a)
 		}
 	}
 }

@@ -8,8 +8,10 @@
 // (documents.json), production and consumption of the JSON representation
 // (representation.go), DID resolution (resolution.json) and DID URL
 // dereferencing (dereferencing.json) against the fixture method "example"
-// (registry.json), and the format rules every resolution and dereferencing
-// result must satisfy (invariants.go). The fixtures are in testdata/ and are
+// (registry.json), the format rules every resolution and dereferencing
+// result must satisfy (invariants.go), the HTTP(S) binding of DID
+// Resolution §12.1 (binding.json, binding.go), and the observable
+// recommendations (recommendations.go). The fixtures are in testdata/ and are
 // written from the specification text.
 package did11
 
@@ -43,6 +45,7 @@ type Fixtures struct {
 	Registry      *fixtures.Registry
 	Resolution    kit.ScenarioFile
 	Dereferencing kit.ScenarioFile
+	Binding       kit.BindingFile
 }
 
 // LoadFixtures decodes the embedded fixture files.
@@ -52,6 +55,7 @@ func LoadFixtures() Fixtures {
 	kit.MustDecode("documents.json", read("documents.json"), &f.Documents)
 	kit.MustDecode("resolution.json", read("resolution.json"), &f.Resolution)
 	kit.MustDecode("dereferencing.json", read("dereferencing.json"), &f.Dereferencing)
+	kit.MustDecode("binding.json", read("binding.json"), &f.Binding)
 	f.Registry = kit.MustRegistry("registry.json", read("registry.json"))
 	return f
 }
@@ -79,10 +83,13 @@ func cases(f Fixtures) []core.Case {
 	out = append(out, kit.SyntaxCases(Name, f.Syntax)...)
 	out = append(out, kit.DocCases(docConfig, f.Documents)...)
 	out = append(out, representationCases()...)
+	out = append(out, undefinedTermCases()...)
 	out = append(out, kit.ScenarioCases(Name, "resolution", f.Registry, f.Resolution)...)
 	out = append(out, kit.InvariantCase(Name+"/resolution/result-format", Name, f.Registry, resolutionInvariants(f.Registry), f.Resolution))
 	out = append(out, kit.ScenarioCases(Name, "dereferencing", f.Registry, f.Dereferencing)...)
 	out = append(out, kit.InvariantCase(Name+"/dereferencing/result-format", Name, f.Registry, dereferencingInvariants(f.Registry), f.Dereferencing))
+	out = append(out, kit.BindingCases(Name, f.Registry, f.Binding)...)
+	out = append(out, kit.BindingInvariantCase(Name+"/binding/response-format", Name, f.Registry, bindingInvariants(), f.Binding))
 	return out
 }
 

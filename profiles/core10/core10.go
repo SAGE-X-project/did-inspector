@@ -7,7 +7,8 @@
 // representations (representation.go), the resolve, resolveRepresentation
 // and dereference functions of §7 against the fixture method "example"
 // (registry.json, resolution.json, dereferencing.json), and the format rules
-// every result of those functions must satisfy (invariants.go). Errors are
+// every result of those functions must satisfy (invariants.go), and the
+// observable recommendations (recommendations.go). Errors are
 // the keyword strings of DID Core 1.0 (invalidDid, notFound, ...), not the
 // error objects of DID Resolution. The fixtures are in testdata/ and are
 // written from the specification text.
@@ -84,6 +85,7 @@ func cases(f Fixtures) []core.Case {
 	out = append(out, kit.SyntaxCases(Name, f.Syntax)...)
 	out = append(out, kit.DocCases(docConfig, f.Documents)...)
 	out = append(out, representationCases()...)
+	out = append(out, undefinedTermCases()...)
 	out = append(out, kit.ScenarioCases(Name, "resolution", f.Registry, f.Resolution)...)
 	out = append(out, kit.InvariantCase(Name+"/resolution/result-format", Name, f.Registry, resolutionInvariants(f.Registry), f.Resolution))
 	out = append(out, kit.ScenarioCases(Name, "dereferencing", f.Registry, f.Dereferencing)...)

@@ -9,8 +9,8 @@
 //
 // list prints the profiles and their cases; run runs one profile against one
 // subject, writes the JSON report to --out and prints a text summary;
-// statements prints the number of extracted statements per spec key and
-// scope. The only built-in subject is "fixture", a configurable test
+// statements prints the number of extracted statements per spec key, level
+// and scope. The only built-in subject is "fixture", a configurable test
 // subject; real implementations are reached through adapters.
 package main
 
@@ -206,21 +206,42 @@ func cmdRun(args []string, e env) error {
 }
 
 func cmdStatements(e env) error {
-	counts, err := statements.CountByScope()
+	all, err := statements.CountByScope()
 	if err != nil {
 		return err
 	}
-	var b strings.Builder
-	b.WriteString("spec key\ttotal\tchecked\tnot-checkable\tpending\t\n")
-	var sum statements.Counts
-	for _, c := range counts {
-		fmt.Fprintf(&b, "%s\t%d\t%d\t%d\t%d\t\n", c.Key, c.Total, c.Checked, c.NotCheckable, c.Pending)
-		sum.Total += c.Total
-		sum.Checked += c.Checked
-		sum.NotCheckable += c.NotCheckable
-		sum.Pending += c.Pending
+	byLevel, err := statements.CountByLevel()
+	if err != nil {
+		return err
 	}
-	fmt.Fprintf(&b, "all\t%d\t%d\t%d\t%d\t\n", sum.Total, sum.Checked, sum.NotCheckable, sum.Pending)
+	levels := statements.Levels()
+	var b strings.Builder
+	b.WriteString("spec key\tlevel\ttotal\tchecked\tnot-checkable\tpending\t\n")
+	write := func(key, level string, c statements.Counts) {
+		fmt.Fprintf(&b, "%s\t%s\t%d\t%d\t%d\t%d\t\n", key, level, c.Total, c.Checked, c.NotCheckable, c.Pending)
+	}
+	sums := make([]statements.Counts, len(levels)+1)
+	for i, c := range all {
+		rows := append([]statements.Counts{c}, byLevel[i*len(levels):(i+1)*len(levels)]...)
+		for j, row := range rows {
+			level := row.Level
+			if j == 0 {
+				level = "all"
+			}
+			write(c.Key, level, row)
+			sums[j].Total += row.Total
+			sums[j].Checked += row.Checked
+			sums[j].NotCheckable += row.NotCheckable
+			sums[j].Pending += row.Pending
+		}
+	}
+	for j, sum := range sums {
+		level := "all"
+		if j > 0 {
+			level = levels[j-1]
+		}
+		write("all", level, sum)
+	}
 	tw := tabwriter.NewWriter(e.stdout, 0, 0, 2, ' ', tabwriter.AlignRight)
 	if _, err := io.WriteString(tw, b.String()); err != nil {
 		return err

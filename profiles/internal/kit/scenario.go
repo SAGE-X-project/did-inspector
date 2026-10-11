@@ -91,26 +91,27 @@ type CheckFunc func(o Outcome, value json.RawMessage) (ok bool, expected, observ
 
 // Checks are the expectation checks scenarios can name.
 var Checks = map[string]CheckFunc{
-	"success":              checkSuccess,
-	"successOrErrorCode":   checkSuccessOrErrorCode,
-	"resourceEquals":       checkResourceEquals,
-	"noError":              checkNoError,
-	"errorPresent":         checkErrorPresent,
-	"errorCode":            checkErrorCode,
-	"metadataNotEmpty":     checkMetadataNotEmpty,
-	"noContent":            checkNoContent,
-	"contentMetadataEmpty": checkContentMetadataEmpty,
-	"documentId":           checkDocumentID,
-	"documentHas":          checkDocumentHas,
-	"documentEquals":       checkDocumentEquals,
-	"serviceIds":           checkServiceIDs,
-	"deactivated":          checkDeactivated,
-	"contentMetadataHas":   checkContentMetadataHas,
-	"contentType":          checkContentType,
-	"contentTypeAbsent":    checkContentTypeAbsent,
-	"contentTypeAnywhere":  checkContentTypeAnywhere,
-	"uriList":              checkURIList,
-	"streamIsJSONObject":   checkStreamIsJSONObject,
+	"success":               checkSuccess,
+	"successOrErrorCode":    checkSuccessOrErrorCode,
+	"resourceEquals":        checkResourceEquals,
+	"noError":               checkNoError,
+	"errorPresent":          checkErrorPresent,
+	"errorCode":             checkErrorCode,
+	"metadataNotEmpty":      checkMetadataNotEmpty,
+	"noContent":             checkNoContent,
+	"contentMetadataEmpty":  checkContentMetadataEmpty,
+	"documentId":            checkDocumentID,
+	"documentHas":           checkDocumentHas,
+	"documentEquals":        checkDocumentEquals,
+	"serviceIds":            checkServiceIDs,
+	"deactivated":           checkDeactivated,
+	"contentMetadataHas":    checkContentMetadataHas,
+	"contentMetadataMember": checkContentMetadataMember,
+	"contentType":           checkContentType,
+	"contentTypeAbsent":     checkContentTypeAbsent,
+	"contentTypeAnywhere":   checkContentTypeAnywhere,
+	"uriList":               checkURIList,
+	"streamIsJSONObject":    checkStreamIsJSONObject,
 }
 
 // ScenarioCases returns one case per scenario. Every scenario resolves DIDs
@@ -351,6 +352,14 @@ func checkContentMetadataHas(o Outcome, v json.RawMessage) (bool, string, string
 	want := objectValue(v)
 	ok, name := checks.ContainsJSON(o.ContentMetadata, want)
 	return ok, "content metadata with " + checks.Compact(want.Value()), fmt.Sprintf("member %q missing or different in %s", name, checks.Compact(o.ContentMetadata.Value()))
+}
+
+// checkContentMetadataMember: the content metadata has the named property,
+// whatever its value.
+func checkContentMetadataMember(o Outcome, v json.RawMessage) (bool, string, string) {
+	name := stringsValue(v)[0]
+	_, ok := o.ContentMetadata.Get(name)
+	return ok, "content metadata with a " + name + " property", "content metadata " + checks.Compact(o.ContentMetadata.Value())
 }
 
 func checkContentType(o Outcome, v json.RawMessage) (bool, string, string) {

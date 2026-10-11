@@ -247,3 +247,16 @@ func TestCheckDatetimeInvalid(t *testing.T) {
 		t.Errorf("+14:00 = %v", err)
 	}
 }
+
+func TestPercentEncode(t *testing.T) {
+	for in, want := range map[string]string{
+		"did:example:1234":                    "did%3Aexample%3A1234",
+		"did:example:1234?service=files&a=/b": "did%3Aexample%3A1234%3Fservice%3Dfiles%26a%3D%2Fb",
+		"did:example:12%3#k-1._~":             "did%3Aexample%3A12%253%23k-1._~",
+		"é":                                   "%C3%A9",
+	} {
+		if got := PercentEncode(in); got != want {
+			t.Errorf("PercentEncode(%q) = %q, want %q", in, got, want)
+		}
+	}
+}

@@ -11,6 +11,7 @@ package coretest
 import (
 	"context"
 	"errors"
+	"net/http"
 	"strings"
 
 	"github.com/sage-x-project/did-inspector/core"
@@ -283,6 +284,35 @@ func (f *Fixture) LoadFixtureRegistry(r *fixtures.Registry) error {
 	return nil
 }
 
+// Endpoint is the DID resolver HTTP(S) endpoint the fixture reports.
+const Endpoint = "https://fixture.invalid/1.0/identifiers/"
+
+// Endpoint implements core.HTTPBinding.
+func (f *Fixture) Endpoint() string { return Endpoint }
+
+// Exchange implements core.HTTPBinding without a network: a GET or POST of
+// ExampleDID is answered with 200 and the fixture document as
+// application/did, anything else with 404. Under Wrong every answer is 500.
+func (f *Fixture) Exchange(_ context.Context, req core.HTTPRequest) (core.HTTPExchange, error) {
+	wrong, err := f.enter(core.CapHTTPBinding)
+	if err != nil {
+		return core.HTTPExchange{}, err
+	}
+	ex := core.HTTPExchange{
+		Method: req.Method, URL: Endpoint + req.Target, RequestHeader: req.Header.Clone(), RequestBody: req.Body,
+		TLS: true, Status: http.StatusNotFound, Header: http.Header{},
+	}
+	switch {
+	case wrong:
+		ex.Status = http.StatusInternalServerError
+	case req.Target == ExampleDID:
+		ex.Status = http.StatusOK
+		ex.Header.Set("Content-Type", "application/did")
+		ex.Body = []byte(`{"id":"` + ExampleDID + `"}`)
+	}
+	return ex, nil
+}
+
 // Bare is a subject that implements no capability interface. With
 // DeclareAll it nevertheless declares every capability supported, which
 // models an adapter bug.
@@ -307,4 +337,5 @@ var (
 	_ core.Dereferencer      = (*Fixture)(nil)
 	_ core.V10Functions      = (*Fixture)(nil)
 	_ core.FixtureMethod     = (*Fixture)(nil)
+	_ core.HTTPBinding       = (*Fixture)(nil)
 )

@@ -2,25 +2,53 @@ package didgo
 
 import (
 	"context"
+	"slices"
 	"testing"
 
 	"github.com/sage-x-project/did-inspector/core"
 	"github.com/sage-x-project/did-inspector/profiles"
+	"github.com/sage-x-project/did-inspector/report"
 )
 
-// TestProfiles runs every built-in profile against did-go and reports
-// each statement that is FAIL or ERROR. It is the same run as the
-// committed evidence reports and the CI job.
+// knownNonconformances are the requirement-level statements did-go fails
+// at the pinned revision. It is empty: the HTTPS binding nonconformance
+// found earlier (bindings-https.11, .34, .39, .40, .42) was fixed in did-go
+// d7c44d9. The test fails when the set changes, so that a new failure is
+// noticed.
+var knownNonconformances = map[string][]string{}
+
+// TestProfiles runs every built-in profile against did-go, as the
+// committed evidence reports and the CI job do. A requirement-level FAIL
+// or ERROR fails the test unless it is a known nonconformance;
+// recommendation-level failures are logged, as the report prints them
+// without failing the gate.
 func TestProfiles(t *testing.T) {
 	for _, p := range profiles.Builtin() {
 		t.Run(p.Name, func(t *testing.T) {
-			res, err := core.Runner{}.Run(context.Background(), p, New())
+			s := New()
+			t.Cleanup(func() { _ = s.Close() })
+			res, err := core.Runner{}.Run(context.Background(), p, s)
 			if err != nil {
 				t.Fatal(err)
 			}
-			for id, v := range res.StatementVerdicts() {
-				if v == core.Fail || v == core.Error {
-					t.Errorf("%s: %s", id, v)
+			in, err := report.InputFor(p, res, "test")
+			if err != nil {
+				t.Fatal(err)
+			}
+			rep := report.Build(in)
+			var gate []string
+			for _, st := range rep.GateFailures() {
+				gate = append(gate, st.ID)
+			}
+			slices.Sort(gate)
+			want := slices.Clone(knownNonconformances[p.Name])
+			slices.Sort(want)
+			if !slices.Equal(gate, want) {
+				t.Errorf("requirement-level FAIL or ERROR: %v, known: %v", gate, want)
+			}
+			for _, st := range rep.Statements {
+				if st.IsRecommendation() && (st.Verdict == core.Fail || st.Verdict == core.Error) {
+					t.Logf("recommendation %s: %s", st.ID, st.Verdict)
 				}
 			}
 		})

@@ -124,17 +124,35 @@ func (m *mock) Resolve10(_ context.Context, did string, _ map[string]any) (core.
 	return core.ResolutionResult{ResolutionMetadata: meta, Document: &doc, DocumentMetadata: m.metadata(did, rec)}, nil
 }
 
-func (m *mock) ResolveRepresentation10(_ context.Context, did string, _ map[string]any) (core.ResolutionResult, error) {
-	rec, _, code := m.read(did, "")
+func (m *mock) ResolveRepresentation10(_ context.Context, did string, opts map[string]any) (core.ResolutionResult, error) {
+	rec, doc, code := m.read(did, "")
 	if code != "" {
 		return m.errResult(did, code), nil
 	}
+	data, mt := m.represent(rec, doc, opts)
 	return core.ResolutionResult{
-		ResolutionMetadata: m.contentType(rec.MediaType),
+		ResolutionMetadata: m.contentType(mt),
 		DocumentMetadata:   m.metadata(did, rec),
-		Raw:                rec.Bytes,
-		MediaType:          rec.MediaType,
+		Raw:                data,
+		MediaType:          mt,
 	}, nil
+}
+
+// represent returns the stored representation, or the JSON representation
+// (the document without @context) when the accept option asks for it and
+// the fault accept-ignored is off.
+func (m *mock) represent(rec fixtures.Record, doc core.DocumentJSON, opts map[string]any) ([]byte, string) {
+	if a, _ := opts["accept"].(string); a != MediaTypeJSON || rec.MediaType == MediaTypeJSON || m.on("accept-ignored") {
+		return rec.Bytes, rec.MediaType
+	}
+	var out core.DocumentJSON
+	for _, mem := range doc.Members {
+		if mem.Name != "@context" {
+			out.Members = append(out.Members, mem)
+		}
+	}
+	data, _ := out.MarshalJSON()
+	return data, MediaTypeJSON
 }
 
 func (m *mock) contentType(mt string) core.DocumentJSON {
@@ -154,7 +172,7 @@ func (m *mock) derefError(didURL, code string) core.DereferenceResult {
 	return core.DereferenceResult{DereferencingMetadata: r.ResolutionMetadata, Content: r.Raw, ContentMetadata: r.DocumentMetadata}
 }
 
-func (m *mock) Dereference10(_ context.Context, didURL string, _ map[string]any) (core.DereferenceResult, error) {
+func (m *mock) Dereference10(_ context.Context, didURL string, opts map[string]any) (core.DereferenceResult, error) {
 	u, err := checks.ParseDIDURL(didURL)
 	if err != nil {
 		if m.on("deref-invalid-accepted") {
@@ -178,9 +196,14 @@ func (m *mock) Dereference10(_ context.Context, didURL string, _ map[string]any)
 		}
 		return m.derefError(didURL, "notFound"), nil
 	}
+	data, mt := m.represent(rec, doc, opts)
+	md := m.contentType(mt)
+	if m.on("deref-no-content-type") {
+		md = core.NewDocument()
+	}
 	return core.DereferenceResult{
-		DereferencingMetadata: m.contentType(rec.MediaType),
-		Content:               rec.Bytes, MediaType: rec.MediaType,
+		DereferencingMetadata: md,
+		Content:               data, MediaType: mt,
 		ContentMetadata: m.metadata(u.DID.DID, rec),
 	}, nil
 }

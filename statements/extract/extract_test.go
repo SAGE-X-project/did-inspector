@@ -30,9 +30,9 @@ func TestExtractRequirements(t *testing.T) {
 </body></html>`
 	got := mustExtract(t, src)
 	want := []Statement{
-		{ID: "k#a.1", Section: "a", Kind: KindRequirement, Keywords: []string{"MUST"}, Text: "A value MUST be a string, e.g. a DID."},
-		{ID: "k#a.2", Section: "a", Kind: KindRequirement, Keywords: []string{"MAY"}, Text: "Another MAY appear & more."},
-		{ID: "k#_.1", Section: "_", Kind: KindRequirement, Keywords: []string{"SHOULD"}, Text: "Outside SHOULD be numbered."},
+		{ID: "k#a.1", Section: "a", Kind: KindRequirement, Keywords: []string{"MUST"}, Level: LevelRequirement, Text: "A value MUST be a string, e.g. a DID."},
+		{ID: "k#a.2", Section: "a", Kind: KindRequirement, Keywords: []string{"MAY"}, Level: LevelRequirement, Text: "Another MAY appear & more."},
+		{ID: "k#_.1", Section: "_", Kind: KindRequirement, Keywords: []string{"SHOULD"}, Level: LevelRecommendation, Text: "Outside SHOULD be numbered."},
 	}
 	if !reflect.DeepEqual(got, want) {
 		t.Fatalf("got %#v\nwant %#v", got, want)
@@ -280,5 +280,27 @@ func TestCollapseSpace(t *testing.T) {
 	}
 	if !strings.Contains(nonNormativeSentence, "non-normative") {
 		t.Fatal("unexpected marker sentence")
+	}
+}
+
+func TestLevelOf(t *testing.T) {
+	for _, tc := range []struct {
+		kws  []string
+		want string
+	}{
+		{nil, LevelRequirement},
+		{[]string{"MUST"}, LevelRequirement},
+		{[]string{"MAY"}, LevelRequirement},
+		{[]string{"SHOULD"}, LevelRecommendation},
+		{[]string{"SHOULD NOT"}, LevelRecommendation},
+		{[]string{"RECOMMENDED"}, LevelRecommendation},
+		{[]string{"NOT RECOMMENDED"}, LevelRecommendation},
+		{[]string{"OPTIONAL", "SHOULD"}, LevelRecommendation},
+		{[]string{"MUST", "SHOULD"}, LevelRequirement},
+		{[]string{"SHOULD", "SHALL NOT"}, LevelRequirement},
+	} {
+		if got := LevelOf(tc.kws); got != tc.want {
+			t.Errorf("LevelOf(%q) = %s, want %s", tc.kws, got, tc.want)
+		}
 	}
 }

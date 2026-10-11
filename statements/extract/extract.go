@@ -28,17 +28,55 @@ const (
 	KindStep        = "step"
 )
 
+// Statement levels.
+const (
+	// LevelRequirement: the statement states an absolute requirement or
+	// prohibition (MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT), a
+	// permission (MAY, OPTIONAL), or an algorithm step.
+	LevelRequirement = "requirement"
+	// LevelRecommendation: the statement only recommends (SHOULD, SHOULD
+	// NOT, RECOMMENDED, NOT RECOMMENDED). RFC 2119 §3 and §4 let an
+	// implementation deviate from it when it has a valid reason.
+	LevelRecommendation = "recommendation"
+)
+
+var (
+	requirementKeywords    = []string{"MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT"}
+	recommendationKeywords = []string{"SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED"}
+)
+
+// LevelOf returns the level of a statement with the given RFC 2119
+// keywords: recommendation when it has a recommendation keyword and no
+// keyword of an absolute requirement or prohibition, requirement otherwise.
+// A statement that both requires and recommends ("MUST be raised and SHOULD
+// convey ...") is a requirement: its requirement part decides conformance.
+func LevelOf(keywords []string) string {
+	recommends := false
+	for _, k := range keywords {
+		if slices.Contains(requirementKeywords, k) {
+			return LevelRequirement
+		}
+		recommends = recommends || slices.Contains(recommendationKeywords, k)
+	}
+	if recommends {
+		return LevelRecommendation
+	}
+	return LevelRequirement
+}
+
 // Statement is one statement extracted from a publication.
 type Statement struct {
-	ID                string   `json:"id"`
-	Section           string   `json:"section"`
-	Kind              string   `json:"kind"`
-	Keywords          []string `json:"keywords,omitempty"`
-	Text              string   `json:"text"`
-	Term              string   `json:"term,omitempty"`
-	Parent            string   `json:"parent,omitempty"`
-	Informative       bool     `json:"informative,omitempty"`
-	InformativeReason string   `json:"informative_reason,omitempty"`
+	ID       string   `json:"id"`
+	Section  string   `json:"section"`
+	Kind     string   `json:"kind"`
+	Keywords []string `json:"keywords,omitempty"`
+	// Level is the RFC 2119 level of the statement (LevelOf).
+	Level             string `json:"level"`
+	Text              string `json:"text"`
+	Term              string `json:"term,omitempty"`
+	Parent            string `json:"parent,omitempty"`
+	Informative       bool   `json:"informative,omitempty"`
+	InformativeReason string `json:"informative_reason,omitempty"`
 }
 
 // noSection is the section name used for content outside any section with
@@ -402,6 +440,7 @@ func (e *extractor) finish() []Statement {
 		p.stmt.Section = p.blk.section
 		p.stmt.ID = fmt.Sprintf("%s#%s.%d", e.key, p.blk.section, counts[p.blk.section])
 		p.stmt.Term = p.blk.term
+		p.stmt.Level = LevelOf(p.stmt.Keywords)
 		reason := informativeReason(p.blk)
 		p.stmt.Informative = reason != ""
 		p.stmt.InformativeReason = reason

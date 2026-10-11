@@ -14,10 +14,13 @@ import (
 	"time"
 
 	"github.com/sage-x-project/did-inspector/core"
+	"github.com/sage-x-project/did-inspector/statements"
 )
 
 // Format identifies the report format and its version.
-const Format = "did-inspector-report/1"
+//
+// Version 2 adds each statement's level and the totals per level.
+const Format = "did-inspector-report/2"
 
 // Spec is one pinned publication of the profile.
 type Spec struct {
@@ -27,10 +30,12 @@ type Spec struct {
 	SHA256 string `json:"sha256"`
 }
 
-// StatementRef is one statement of the profile with its scope decision.
+// StatementRef is one statement of the profile with its scope decision and
+// its level (statements.LevelRequirement or statements.LevelRecommendation).
 type StatementRef struct {
 	ID    string
 	Scope string
+	Level string
 }
 
 // Input is everything a report is built from.
@@ -58,7 +63,10 @@ type Statement struct {
 	ID string `json:"id"`
 	// Scope is the inspector's scope decision; empty for a statement that is
 	// not among the profile's statements.
-	Scope   string       `json:"scope,omitempty"`
+	Scope string `json:"scope,omitempty"`
+	// Level is the statement's RFC 2119 level; empty for a statement that
+	// is not among the profile's statements, which counts as a requirement.
+	Level   string       `json:"level,omitempty"`
 	Verdict core.Verdict `json:"verdict"`
 	// Cases are the ids of the cases that judged the statement.
 	Cases []string `json:"cases,omitempty"`
@@ -119,6 +127,31 @@ func (t Totals) Count(v core.Verdict) int {
 	return 0
 }
 
+// LevelTotals counts statements per verdict for each level. A
+// recommendation that is not met is a FAIL of its own level: it is reported,
+// but it does not make the subject non-conforming (RFC 2119 §3, §4).
+type LevelTotals struct {
+	Requirement    Totals `json:"requirement"`
+	Recommendation Totals `json:"recommendation"`
+}
+
+// For returns the totals of one level; any level other than
+// recommendation is a requirement.
+func (l LevelTotals) For(level string) Totals {
+	if level == statements.LevelRecommendation {
+		return l.Recommendation
+	}
+	return l.Requirement
+}
+
+func (l *LevelTotals) add(level string, v core.Verdict) {
+	if level == statements.LevelRecommendation {
+		l.Recommendation.add(v)
+		return
+	}
+	l.Requirement.add(v)
+}
+
 // Case summarizes one case of the run.
 type Case struct {
 	ID           string       `json:"id"`
@@ -137,9 +170,11 @@ type Report struct {
 	StartedAt  string           `json:"started_at"`
 	FinishedAt string           `json:"finished_at"`
 	Totals     Totals           `json:"totals"`
-	Statements []Statement      `json:"statements"`
-	Cases      []Case           `json:"cases"`
-	NotRun     []string         `json:"not_run"`
+	// TotalsByLevel splits Totals by statement level.
+	TotalsByLevel LevelTotals `json:"totals_by_level"`
+	Statements    []Statement `json:"statements"`
+	Cases         []Case      `json:"cases"`
+	NotRun        []string    `json:"not_run"`
 }
 
 func formatTime(t time.Time) string {
@@ -186,7 +221,7 @@ func Build(in Input) Report {
 	known := map[string]bool{}
 	for _, ref := range in.Statements {
 		known[ref.ID] = true
-		r.addStatement(ref.ID, ref.Scope, false, obsBy[ref.ID], casesBy[ref.ID])
+		r.addStatement(StatementRef{ID: ref.ID, Scope: ref.Scope, Level: ref.Level}, false, obsBy[ref.ID], casesBy[ref.ID])
 	}
 	var unknown []string
 	for id := range obsBy {
@@ -196,12 +231,12 @@ func Build(in Input) Report {
 	}
 	slices.Sort(unknown)
 	for _, id := range unknown {
-		r.addStatement(id, "", true, obsBy[id], casesBy[id])
+		r.addStatement(StatementRef{ID: id}, true, obsBy[id], casesBy[id])
 	}
 	return r
 }
 
-func (r *Report) addStatement(id, scope string, unknown bool, obs []Observation, cases []string) {
+func (r *Report) addStatement(ref StatementRef, unknown bool, obs []Observation, cases []string) {
 	vs := make([]core.Verdict, len(obs))
 	var findings []Observation
 	for i, o := range obs {
@@ -212,12 +247,32 @@ func (r *Report) addStatement(id, scope string, unknown bool, obs []Observation,
 	}
 	v := core.Aggregate(vs)
 	r.Statements = append(r.Statements, Statement{
-		ID: id, Scope: scope, Verdict: v, Cases: cases, Findings: findings, Unknown: unknown,
+		ID: ref.ID, Scope: ref.Scope, Level: ref.Level, Verdict: v, Cases: cases, Findings: findings, Unknown: unknown,
 	})
 	r.Totals.add(v)
+	r.TotalsByLevel.add(ref.Level, v)
 	if v == core.NotRun {
-		r.NotRun = append(r.NotRun, id)
+		r.NotRun = append(r.NotRun, ref.ID)
 	}
+}
+
+// IsRecommendation reports whether the statement only recommends.
+func (s Statement) IsRecommendation() bool {
+	return s.Level == statements.LevelRecommendation
+}
+
+// GateFailures returns the statements that fail the conformance gate: every
+// requirement-level statement whose verdict is FAIL or ERROR. A statement
+// without a level counts as a requirement. Recommendation-level FAIL and
+// ERROR verdicts are reported but never fail the gate.
+func (r Report) GateFailures() []Statement {
+	var out []Statement
+	for _, s := range r.Statements {
+		if !s.IsRecommendation() && (s.Verdict == core.Fail || s.Verdict == core.Error) {
+			out = append(out, s)
+		}
+	}
+	return out
 }
 
 // MarshalIndent renders the report as indented JSON with a trailing
