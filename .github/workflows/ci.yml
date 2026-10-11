@@ -37,3 +37,53 @@ jobs:
             /coverage:/ { for (i = 1; i <= NF; i++) if ($i == "coverage:") { v = $(i+1); sub(/%$/, "", v); if (v+0 < 90) { print "below 90%: " $0; bad = 1 } } }
             /no test files/ { print "no tests: " $0; bad = 1 }
             END { exit bad }'
+
+  adapter-didgo:
+    # The did-go adapter is a separate module (adapters/didgo); the core
+    # job above never builds it. This job tests it and runs both profiles
+    # against the did-go revision its go.mod pins.
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: adapters/didgo
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e
+        with:
+          go-version-file: adapters/didgo/go.mod
+          cache-dependency-path: adapters/didgo/go.sum
+      - name: Format and vet
+        run: |
+          test -z "$(gofmt -l .)"
+          go vet ./...
+      - name: Lint
+        run: go run github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.13.2 run ./...
+      - name: Test with coverage
+        run: |
+          go test -race -coverprofile="$RUNNER_TEMP/adapter-cover.out" ./...
+          go tool cover -func="$RUNNER_TEMP/adapter-cover.out" | awk '/^total:/ { sub(/%$/, "", $3); found=1; if ($3+0 < 90) exit 1 } END { if (!found) exit 1 }'
+      - name: Run both profiles against did-go
+        run: |
+          mkdir -p "$RUNNER_TEMP/reports"
+          go build -o "$RUNNER_TEMP/did-inspector-didgo" ./cmd/did-inspector-didgo
+          for p in did-core-1.0 did-1.1; do
+            "$RUNNER_TEMP/did-inspector-didgo" --profile "$p" --deterministic --inspector-revision "$GITHUB_SHA" --out "$RUNNER_TEMP/reports/didgo-$p.json"
+          done
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: didgo-reports
+          path: ${{ runner.temp }}/reports/
+          if-no-files-found: error
+      - name: No statement is FAIL or ERROR
+        run: |
+          bad=0
+          for f in "$RUNNER_TEMP"/reports/didgo-*.json; do
+            n=$(jq '.totals.FAIL + .totals.ERROR' "$f")
+            echo "$f: $n statement(s) FAIL or ERROR"
+            jq -r '.statements[] | select(.verdict == "FAIL" or .verdict == "ERROR") | "  \(.verdict) \(.id)"' "$f"
+            if [ "$n" -ne 0 ]; then bad=1; fi
+          done
+          exit "$bad"

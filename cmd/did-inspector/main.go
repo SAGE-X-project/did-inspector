@@ -188,7 +188,7 @@ func cmdRun(args []string, e env) error {
 	if err != nil {
 		return err
 	}
-	in, err := reportInput(p, res, e.revision)
+	in, err := report.InputFor(p, res, e.revision)
 	if err != nil {
 		return err
 	}
@@ -203,27 +203,6 @@ func cmdRun(args []string, e env) error {
 		}
 	}
 	return rep.WriteText(e.stdout)
-}
-
-// reportInput gathers the pinned sources and the statements of the
-// profile's spec keys with their scope decisions.
-func reportInput(p core.Profile, res core.RunResult, revision string) (report.Input, error) {
-	scope, err := statements.Scope()
-	if err != nil {
-		return report.Input{}, err
-	}
-	in := report.Input{Result: res, InspectorRevision: revision}
-	for _, key := range p.SpecKeys {
-		doc, err := statements.Load(key)
-		if err != nil {
-			return report.Input{}, err
-		}
-		in.Specs = append(in.Specs, report.Spec{Key: doc.Key, URL: doc.URL, Source: doc.Source, SHA256: doc.SHA256})
-		for _, st := range doc.Statements {
-			in.Statements = append(in.Statements, report.StatementRef{ID: st.ID, Scope: scope[st.ID].Scope})
-		}
-	}
-	return in, nil
 }
 
 func cmdStatements(e env) error {

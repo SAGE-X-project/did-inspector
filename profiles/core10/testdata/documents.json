@@ -209,6 +209,7 @@
     {
       "case": "verification-method-structure",
       "note": "The verificationMethod property and the members of a verification method (DID Core 1.0 §5.2).",
+      "partial": "the verification material a type requires is not judged: the fixtures use JsonWebKey2020 and Ed25519VerificationKey2020, types that DID Core 1.0 does not define, so the pinned text does not determine their material properties",
       "judges": {
         "consumer": [
           "core10#verification-methods.1",
@@ -375,21 +376,6 @@
                   "crv": "Ed25519",
                   "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ"
                 }
-              }
-            ]
-          }
-        },
-        {
-          "name": "no-material",
-          "why": "the verification material of the type is required",
-          "document": {
-            "@context": "https://www.w3.org/ns/did/v1",
-            "id": "did:example:123456789abcdefghi",
-            "verificationMethod": [
-              {
-                "id": "did:example:123456789abcdefghi#key-1",
-                "type": "JsonWebKey2020",
-                "controller": "did:example:123456789abcdefghi"
               }
             ]
           }
@@ -657,7 +643,7 @@
     },
     {
       "case": "public-key-jwk",
-      "note": "publicKeyJwk is a JSON Web Key (DID Core 1.0 §5.2.1).",
+      "note": "publicKeyJwk is a JSON Web Key (DID Core 1.0 §5.2.1). The documents have no @context, so they are consumed as application/did+json: the DID Core 1.0 context (https://www.w3.org/ns/did/v1) defines no publicKeyJwk or publicKeyMultibase term, and a JSON-LD consumer \"SHOULD drop all terms from a DID document that are not defined via the @context\" (§6.3.2), which would remove the very entries the group judges.",
       "judges": {
         "consumer": [
           "core10#verification-material.1",
@@ -676,7 +662,6 @@
         {
           "name": "okp",
           "document": {
-            "@context": "https://www.w3.org/ns/did/v1",
             "id": "did:example:123456789abcdefghi",
             "verificationMethod": [
               {
@@ -695,7 +680,6 @@
         {
           "name": "ec",
           "document": {
-            "@context": "https://www.w3.org/ns/did/v1",
             "id": "did:example:123456789abcdefghi",
             "verificationMethod": [
               {
@@ -718,7 +702,6 @@
           "name": "string",
           "why": "the value must be a map",
           "document": {
-            "@context": "https://www.w3.org/ns/did/v1",
             "id": "did:example:123456789abcdefghi",
             "verificationMethod": [
               {
@@ -734,7 +717,6 @@
           "name": "no-kty",
           "why": "RFC 7517 requires kty",
           "document": {
-            "@context": "https://www.w3.org/ns/did/v1",
             "id": "did:example:123456789abcdefghi",
             "verificationMethod": [
               {
@@ -753,7 +735,7 @@
     },
     {
       "case": "public-key-jwk-private",
-      "note": "publicKeyJwk carries no private members (DID Core 1.0 §5.2.1).",
+      "note": "publicKeyJwk carries no private members (DID Core 1.0 §5.2.1). The documents have no @context, so they are consumed as application/did+json: the DID Core 1.0 context (https://www.w3.org/ns/did/v1) defines no publicKeyJwk or publicKeyMultibase term, and a JSON-LD consumer \"SHOULD drop all terms from a DID document that are not defined via the @context\" (§6.3.2), which would remove the very entries the group judges.",
       "judges": {
         "consumer": [
           "core10#verification-material.3"
@@ -769,7 +751,6 @@
         {
           "name": "public",
           "document": {
-            "@context": "https://www.w3.org/ns/did/v1",
             "id": "did:example:123456789abcdefghi",
             "verificationMethod": [
               {
@@ -792,7 +773,6 @@
           "name": "d",
           "why": "d is a private member",
           "document": {
-            "@context": "https://www.w3.org/ns/did/v1",
             "id": "did:example:123456789abcdefghi",
             "verificationMethod": [
               {
@@ -814,7 +794,6 @@
           "name": "k",
           "why": "k is a private member of a symmetric key",
           "document": {
-            "@context": "https://www.w3.org/ns/did/v1",
             "id": "did:example:123456789abcdefghi",
             "verificationMethod": [
               {
@@ -833,7 +812,7 @@
     },
     {
       "case": "public-key-multibase",
-      "note": "publicKeyMultibase is a Multibase encoded key (DID Core 1.0 §5.2.1).",
+      "note": "publicKeyMultibase is a Multibase encoded key (DID Core 1.0 §5.2.1). The documents have no @context, so they are consumed as application/did+json: the DID Core 1.0 context (https://www.w3.org/ns/did/v1) defines no publicKeyJwk or publicKeyMultibase term, and a JSON-LD consumer \"SHOULD drop all terms from a DID document that are not defined via the @context\" (§6.3.2), which would remove the very entries the group judges.",
       "judges": {
         "consumer": [
           "core10#verification-material.6",
@@ -852,7 +831,6 @@
         {
           "name": "base58btc",
           "document": {
-            "@context": "https://www.w3.org/ns/did/v1",
             "id": "did:example:123456789abcdefghi",
             "verificationMethod": [
               {
@@ -870,7 +848,6 @@
           "name": "no-header",
           "why": "a Multibase value starts with a header",
           "document": {
-            "@context": "https://www.w3.org/ns/did/v1",
             "id": "did:example:123456789abcdefghi",
             "verificationMethod": [
               {
@@ -886,7 +863,6 @@
           "name": "bad-alphabet",
           "why": "0, O, I and l are not in the base-58-btc alphabet",
           "document": {
-            "@context": "https://www.w3.org/ns/did/v1",
             "id": "did:example:123456789abcdefghi",
             "verificationMethod": [
               {
@@ -902,7 +878,6 @@
           "name": "number",
           "why": "the value must be a string",
           "document": {
-            "@context": "https://www.w3.org/ns/did/v1",
             "id": "did:example:123456789abcdefghi",
             "verificationMethod": [
               {
@@ -918,7 +893,7 @@
     },
     {
       "case": "verification-material-single",
-      "note": "One verification material property per material (DID Core 1.0 §5.2.1).",
+      "note": "One verification material property per material (DID Core 1.0 §5.2.1). The documents have no @context, so they are consumed as application/did+json: the DID Core 1.0 context (https://www.w3.org/ns/did/v1) defines no publicKeyJwk or publicKeyMultibase term, and a JSON-LD consumer \"SHOULD drop all terms from a DID document that are not defined via the @context\" (§6.3.2), which would remove the very entries the group judges.",
       "judges": {
         "consumer": [
           "core10#verification-material.8"
@@ -934,7 +909,6 @@
         {
           "name": "jwk",
           "document": {
-            "@context": "https://www.w3.org/ns/did/v1",
             "id": "did:example:123456789abcdefghi",
             "verificationMethod": [
               {
@@ -956,7 +930,6 @@
           "name": "jwk-and-multibase",
           "why": "publicKeyJwk and publicKeyMultibase express the same material twice",
           "document": {
-            "@context": "https://www.w3.org/ns/did/v1",
             "id": "did:example:123456789abcdefghi",
             "verificationMethod": [
               {
