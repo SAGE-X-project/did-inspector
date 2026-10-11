@@ -43,16 +43,13 @@ func TestRunWritesReport(t *testing.T) {
 		if rep.Profile != p || rep.Subject.Name != didgo.Name || rep.Inspector.Revision != "abc" || rep.StartedAt == "" {
 			t.Errorf("%s: report header %+v", p, rep)
 		}
-		// The exact set of did-go's nonconformances is checked by the
-		// adapter's TestProfiles; here only their kind: no ERROR, so every
-		// requirement-level failure is a FAIL with observed values.
+		// did-go must pass the gate at the pinned revision: no
+		// requirement-level statement may be FAIL or ERROR.
 		if rep.Totals.Error != 0 {
 			t.Errorf("%s: %d ERROR", p, rep.Totals.Error)
 		}
 		for _, st := range rep.GateFailures() {
-			if st.Verdict != core.Fail || len(st.Findings) == 0 {
-				t.Errorf("%s: %s %s", p, st.ID, st.Verdict)
-			}
+			t.Errorf("%s: %s %s", p, st.ID, st.Verdict)
 		}
 		if !strings.Contains(out.String(), "gate:") {
 			t.Errorf("%s: summary without gate line", p)
