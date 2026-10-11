@@ -11,11 +11,21 @@ import (
 )
 
 // knownNonconformances are the requirement-level statements did-go fails
-// at the pinned revision. It is empty: the HTTPS binding nonconformance
-// found earlier (bindings-https.11, .34, .39, .40, .42) was fixed in did-go
-// d7c44d9. The test fails when the set changes, so that a new failure is
-// noticed.
-var knownNonconformances = map[string][]string{}
+// at the pinned revision (the HTTPS binding nonconformance found earlier,
+// bindings-https.11, .34, .39, .40, .42, was fixed in did-go d7c44d9):
+//
+//   - core10#relative-did-urls.2: did.ParseReference refuses the empty
+//     reference, which RFC 3986 §5.4.1 resolves to the base;
+//   - cid10#Multikey.5: a secretKeyMultibase of "" is not a Multibase
+//     value (CID 1.0 §2.4: "The value starts with a single character
+//     header"), but vm.Method holds it as an absent property and
+//     vm.Method.Validate reports nothing.
+//
+// The test fails when the set changes, so that a new failure is noticed.
+var knownNonconformances = map[string][]string{
+	"did-core-1.0": {"core10#relative-did-urls.2"},
+	"did-1.1":      {"cid10#Multikey.5"},
+}
 
 // TestProfiles runs every built-in profile against did-go, as the
 // committed evidence reports and the CI job do. A requirement-level FAIL

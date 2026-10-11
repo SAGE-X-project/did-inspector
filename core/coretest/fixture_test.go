@@ -192,3 +192,74 @@ func TestExchange(t *testing.T) {
 		t.Fatalf("failing Exchange err = %v", err)
 	}
 }
+
+func TestRetrieveVerificationMethod(t *testing.T) {
+	f := New()
+	r, err := f.RetrieveVerificationMethod(ctx, ExampleMethodID, "authentication", nil)
+	if err != nil || r.Error != nil || r.VerificationMethod == nil {
+		t.Fatalf("Retrieve = %+v %v", r, err)
+	}
+	if id, _ := r.VerificationMethod.Get("id"); id.Str != ExampleMethodID {
+		t.Fatalf("id = %v", id)
+	}
+	if r, _ := f.RetrieveVerificationMethod(ctx, ExampleDID+"#other", "authentication", nil); r.Error == nil || r.VerificationMethod != nil {
+		t.Fatalf("unknown method = %+v", r)
+	}
+	if r, _ := f.With(core.CapVerificationMethodRetriever, Wrong).RetrieveVerificationMethod(ctx, ExampleMethodID, "", nil); r.VerificationMethod == nil {
+		t.Fatal("wrong retrieval returned nothing")
+	} else if id, _ := r.VerificationMethod.Get("id"); id.Str == ExampleMethodID {
+		t.Fatal("wrong retrieval returned the right id")
+	}
+	if _, err := f.With(core.CapVerificationMethodRetriever, Fails).RetrieveVerificationMethod(ctx, ExampleMethodID, "", nil); !errors.Is(err, ErrFixture) {
+		t.Fatalf("failing Retrieve err = %v", err)
+	}
+}
+
+func TestValidateVerificationMethod(t *testing.T) {
+	f := New()
+	typed := core.NewDocument(core.M("type", core.String("Multikey")))
+	if got, err := f.ValidateVerificationMethod(typed, "1.1"); err != nil || len(got) != 0 {
+		t.Fatalf("typed = %v %v", got, err)
+	}
+	if got, _ := f.ValidateVerificationMethod(core.NewDocument(), "1.1"); len(got) != 1 || got[0].Path != "/type" {
+		t.Fatalf("untyped = %v", got)
+	}
+	if got, _ := f.With(core.CapVerificationMethodValidator, Wrong).ValidateVerificationMethod(core.NewDocument(), "1.1"); len(got) != 0 {
+		t.Fatalf("wrong = %v", got)
+	}
+	if _, err := f.With(core.CapVerificationMethodValidator, Fails).ValidateVerificationMethod(typed, "1.1"); !errors.Is(err, ErrFixture) {
+		t.Fatalf("failing err = %v", err)
+	}
+}
+
+func TestResolveDIDURLReference(t *testing.T) {
+	f := New()
+	for ref, want := range map[string]string{"#k": ExampleDID + "#k", "/p": ExampleDID + "/p", "did:x:y": "did:x:y"} {
+		if got, err := f.ResolveDIDURLReference(ExampleDID, ref); err != nil || got != want {
+			t.Errorf("%q = %q %v", ref, got, err)
+		}
+	}
+	if _, err := f.ResolveDIDURLReference(ExampleDID, "p"); err == nil {
+		t.Error("relative path accepted")
+	}
+	if got, _ := f.With(core.CapDIDURLReferenceResolver, Wrong).ResolveDIDURLReference(ExampleDID, "#k"); got != "#k" {
+		t.Errorf("wrong = %q", got)
+	}
+	if _, err := f.With(core.CapDIDURLReferenceResolver, Fails).ResolveDIDURLReference(ExampleDID, "#k"); !errors.Is(err, ErrFixture) {
+		t.Fatalf("failing err = %v", err)
+	}
+}
+
+func TestProduceRepresentation(t *testing.T) {
+	f := New()
+	doc := core.NewDocument(core.M("id", core.String(ExampleDID)))
+	if _, mt, err := f.ProduceRepresentation(doc, "1.0", "application/did+ld+json"); err != nil || mt != "application/did+ld+json" {
+		t.Fatalf("produce = %q %v", mt, err)
+	}
+	if _, mt, _ := f.With(core.CapRepresentationProducer, Wrong).ProduceRepresentation(doc, "1.0", "application/did+ld+json"); mt != "application/json" {
+		t.Fatalf("wrong = %q", mt)
+	}
+	if _, _, err := f.With(core.CapRepresentationProducer, Fails).ProduceRepresentation(doc, "1.0", "x"); !errors.Is(err, ErrFixture) {
+		t.Fatalf("failing err = %v", err)
+	}
+}

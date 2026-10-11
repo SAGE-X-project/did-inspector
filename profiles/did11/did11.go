@@ -10,9 +10,11 @@
 // dereferencing (dereferencing.json) against the fixture method "example"
 // (registry.json), the format rules every resolution and dereferencing
 // result must satisfy (invariants.go), the HTTP(S) binding of DID
-// Resolution §12.1 (binding.json, binding.go), and the observable
-// recommendations (recommendations.go). The fixtures are in testdata/ and are
-// written from the specification text.
+// Resolution §12.1 (binding.json, binding.go), the Retrieve Verification
+// Method algorithm of CID 1.0 §3.3 (retrieval.json), the secret key
+// encodings of standalone verification methods (secretkeys.go), and the
+// observable recommendations (recommendations.go). The fixtures are in
+// testdata/ and are written from the specification text.
 package did11
 
 import (
@@ -46,6 +48,7 @@ type Fixtures struct {
 	Resolution    kit.ScenarioFile
 	Dereferencing kit.ScenarioFile
 	Binding       kit.BindingFile
+	Retrieval     kit.RetrievalFile
 }
 
 // LoadFixtures decodes the embedded fixture files.
@@ -56,6 +59,7 @@ func LoadFixtures() Fixtures {
 	kit.MustDecode("resolution.json", read("resolution.json"), &f.Resolution)
 	kit.MustDecode("dereferencing.json", read("dereferencing.json"), &f.Dereferencing)
 	kit.MustDecode("binding.json", read("binding.json"), &f.Binding)
+	kit.MustDecode("retrieval.json", read("retrieval.json"), &f.Retrieval)
 	f.Registry = kit.MustRegistry("registry.json", read("registry.json"))
 	return f
 }
@@ -90,6 +94,8 @@ func cases(f Fixtures) []core.Case {
 	out = append(out, kit.InvariantCase(Name+"/dereferencing/result-format", Name, f.Registry, dereferencingInvariants(f.Registry), f.Dereferencing))
 	out = append(out, kit.BindingCases(Name, f.Registry, f.Binding)...)
 	out = append(out, kit.BindingInvariantCase(Name+"/binding/response-format", Name, f.Registry, bindingInvariants(), f.Binding))
+	out = append(out, kit.RetrievalCases(Name, f.Registry, f.Retrieval)...)
+	out = append(out, kit.VMValidatorCases(Name, Version, secretKeyGroups())...)
 	return out
 }
 

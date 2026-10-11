@@ -45,11 +45,18 @@ const (
 	CapV10Functions      Capability = "v10-functions"
 	CapFixtureMethod     Capability = "fixture-method"
 	CapHTTPBinding       Capability = "http-binding"
+
+	CapVerificationMethodRetriever Capability = "verification-method-retriever"
+	CapVerificationMethodValidator Capability = "verification-method-validator"
+	CapDIDURLReferenceResolver     Capability = "did-url-reference-resolver"
+	CapRepresentationProducer      Capability = "representation-producer"
 )
 
 var allCapabilities = []Capability{
 	CapDIDParser, CapDocumentProducer, CapDocumentConsumer, CapDocumentValidator,
 	CapResolver, CapDereferencer, CapV10Functions, CapFixtureMethod, CapHTTPBinding,
+	CapVerificationMethodRetriever, CapVerificationMethodValidator, CapDIDURLReferenceResolver,
+	CapRepresentationProducer,
 }
 
 // Capabilities returns every known capability in a fixed order.
@@ -114,6 +121,38 @@ type FixtureMethod interface {
 	LoadFixtureRegistry(r *fixtures.Registry) error
 }
 
+// VerificationMethodRetriever runs the Retrieve Verification Method
+// algorithm of Controlled Identifiers 1.0 §3.3 for a verification method
+// identifier, a verification relationship (for example "authentication")
+// and dereferencing options. The result carries the verification method
+// the subject returned or the error it raised; the Go error is for a call
+// the adapter could not make at all.
+type VerificationMethodRetriever interface {
+	RetrieveVerificationMethod(ctx context.Context, vmIdentifier, verificationRelationship string, opts map[string]any) (RetrievalResult, error)
+}
+
+// VerificationMethodValidator checks one verification method on its own,
+// outside any published document, against a DID version and reports what
+// it found.
+type VerificationMethodValidator interface {
+	ValidateVerificationMethod(vm DocumentJSON, version string) ([]Finding, error)
+}
+
+// DIDURLReferenceResolver resolves a DID URL reference, relative or
+// absolute, against a base DID and returns the absolute DID URL. An error
+// means the subject refused the reference.
+type DIDURLReferenceResolver interface {
+	ResolveDIDURLReference(base, ref string) (string, error)
+}
+
+// RepresentationProducer serializes a DID document under a DID version in
+// the representation the requested media type names (for example
+// "application/did+ld+json") and returns the bytes and the media type it
+// specified for them.
+type RepresentationProducer interface {
+	ProduceRepresentation(doc DocumentJSON, version, mediaType string) (data []byte, producedMediaType string, err error)
+}
+
 // Implements reports whether s implements the interface of capability c.
 func Implements(s Subject, c Capability) bool {
 	var ok bool
@@ -136,6 +175,14 @@ func Implements(s Subject, c Capability) bool {
 		_, ok = s.(FixtureMethod)
 	case CapHTTPBinding:
 		_, ok = s.(HTTPBinding)
+	case CapVerificationMethodRetriever:
+		_, ok = s.(VerificationMethodRetriever)
+	case CapVerificationMethodValidator:
+		_, ok = s.(VerificationMethodValidator)
+	case CapDIDURLReferenceResolver:
+		_, ok = s.(DIDURLReferenceResolver)
+	case CapRepresentationProducer:
+		_, ok = s.(RepresentationProducer)
 	}
 	return ok
 }

@@ -44,13 +44,13 @@ func TestRunWritesReport(t *testing.T) {
 			t.Errorf("%s: report header %+v", p, rep)
 		}
 		// The exact set of did-go's nonconformances is checked by the
-		// adapter's TestProfiles; here only their kind: no ERROR, and
-		// requirement-level failures only in the HTTP(S) binding.
+		// adapter's TestProfiles; here only their kind: no ERROR, so every
+		// requirement-level failure is a FAIL with observed values.
 		if rep.Totals.Error != 0 {
 			t.Errorf("%s: %d ERROR", p, rep.Totals.Error)
 		}
 		for _, st := range rep.GateFailures() {
-			if !strings.HasPrefix(st.ID, "res10-crd20261001#bindings-https.") {
+			if st.Verdict != core.Fail || len(st.Findings) == 0 {
 				t.Errorf("%s: %s %s", p, st.ID, st.Verdict)
 			}
 		}

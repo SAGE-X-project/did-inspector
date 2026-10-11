@@ -1,0 +1,281 @@
+{
+  "scenarios": [
+    {
+      "case": "authentication-by-reference",
+      "note": "key-1 of did:example:relationships is referenced from authentication; the algorithm returns it (CID 1.0 §3.3).",
+      "vmIdentifier": "did:example:relationships#key-1",
+      "relationship": "authentication",
+      "options": {},
+      "expect": [
+        {
+          "check": "returnsMethod",
+          "value": {
+            "id": "did:example:relationships#key-1",
+            "type": "Multikey",
+            "controller": "did:example:relationships",
+            "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+          },
+          "statements": [
+            "cid10#retrieve-verification-method.2",
+            "cid10#retrieve-verification-method.3",
+            "cid10#retrieve-verification-method.4",
+            "cid10#retrieve-verification-method.7",
+            "cid10#retrieve-verification-method.12"
+          ],
+          "partial": "step 4 is judged by retrieving from the document that the DID URL without its fragment identifies; the use of the supplied options is not judged"
+        },
+        {
+          "check": "returnsMethod",
+          "value": {
+            "id": "did:example:relationships#key-1",
+            "type": "Multikey",
+            "controller": "did:example:relationships",
+            "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+          },
+          "statements": [
+            "cid10#retrieve-verification-method.11"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "assertion-by-reference",
+      "note": "key-2 of did:example:relationships is referenced from assertionMethod only.",
+      "vmIdentifier": "did:example:relationships#key-2",
+      "relationship": "assertionMethod",
+      "options": {},
+      "expect": [
+        {
+          "check": "returnsMethod",
+          "value": {
+            "id": "did:example:relationships#key-2",
+            "type": "Multikey",
+            "controller": "did:example:relationships",
+            "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+          },
+          "statements": [
+            "cid10#retrieve-verification-method.11",
+            "cid10#retrieve-verification-method.12"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "embedded-by-value",
+      "note": "key-3 of did:example:relationships is embedded in capabilityInvocation: the fragment dereferences to the embedded map, which is associated by value (CID 1.0 §3.3, §3.4).",
+      "vmIdentifier": "did:example:relationships#key-3",
+      "relationship": "capabilityInvocation",
+      "options": {},
+      "expect": [
+        {
+          "check": "returnsMethod",
+          "value": {
+            "id": "did:example:relationships#key-3",
+            "type": "Multikey",
+            "controller": "did:example:relationships",
+            "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+          },
+          "statements": [
+            "cid10#retrieve-verification-method.7",
+            "cid10#retrieve-verification-method.11",
+            "cid10#retrieve-verification-method.12"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "relative-identifier",
+      "note": "key-1 of did:example:relative has the relative id #key-1, whose absolute URL value is the vmIdentifier.",
+      "vmIdentifier": "did:example:relative#key-1",
+      "relationship": "authentication",
+      "options": {},
+      "expect": [
+        {
+          "check": "returnsIdentified",
+          "statements": [
+            "cid10#retrieve-verification-method.7",
+            "cid10#retrieve-verification-method.9",
+            "cid10#retrieve-verification-method.12"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "not-a-url",
+      "note": "A string with spaces is not a valid URL.",
+      "vmIdentifier": "not a valid url",
+      "relationship": "authentication",
+      "options": {},
+      "expect": [
+        {
+          "check": "raisesError",
+          "value": "INVALID_VERIFICATION_METHOD_URL",
+          "statements": [
+            "cid10#retrieve-verification-method.1"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "relative-reference",
+      "note": "A fragment-only reference is not a URL on its own: it has no scheme.",
+      "vmIdentifier": "#key-1",
+      "relationship": "authentication",
+      "options": {},
+      "expect": [
+        {
+          "check": "raisesError",
+          "value": "INVALID_VERIFICATION_METHOD_URL",
+          "statements": [
+            "cid10#retrieve-verification-method.1"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "document-not-conforming",
+      "note": "The controller document has two services with the same id, which CID 1.0 §2.1.4 forbids (\"A conforming document MUST NOT include multiple service entries with the same id\").",
+      "vmIdentifier": "did:example:rvm-duplicate-services#key-1",
+      "relationship": "authentication",
+      "options": {},
+      "expect": [
+        {
+          "check": "raisesError",
+          "value": "INVALID_CONTROLLED_IDENTIFIER_DOCUMENT",
+          "statements": [
+            "cid10#retrieve-verification-method.5"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "document-malformed",
+      "note": "The stored bytes of did:example:malformed are not a JSON document, so no conforming controller document is obtained.",
+      "vmIdentifier": "did:example:malformed#key-1",
+      "relationship": "authentication",
+      "options": {},
+      "expect": [
+        {
+          "check": "raisesError",
+          "value": "INVALID_CONTROLLED_IDENTIFIER_DOCUMENT",
+          "statements": [
+            "cid10#retrieve-verification-method.5"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "document-id-mismatch",
+      "note": "The document stored for did:example:mismatch has the id did:example:other.",
+      "vmIdentifier": "did:example:mismatch#key-1",
+      "relationship": "authentication",
+      "options": {},
+      "expect": [
+        {
+          "check": "raisesError",
+          "value": "INVALID_CONTROLLED_IDENTIFIER_DOCUMENT_ID",
+          "statements": [
+            "cid10#retrieve-verification-method.6"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "fragment-not-a-method",
+      "note": "The fragment identifies a service, which is not a verification method.",
+      "vmIdentifier": "did:example:relationships#svc",
+      "relationship": "authentication",
+      "options": {},
+      "expect": [
+        {
+          "check": "raisesError",
+          "value": "INVALID_VERIFICATION_METHOD",
+          "statements": [
+            "cid10#retrieve-verification-method.8"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "fragment-missing",
+      "note": "No map of the document has the fragment as id, so verificationMethod is not a verification method.",
+      "vmIdentifier": "did:example:relationships#key-404",
+      "relationship": "authentication",
+      "options": {},
+      "expect": [
+        {
+          "check": "raisesError",
+          "value": "INVALID_VERIFICATION_METHOD",
+          "statements": [
+            "cid10#retrieve-verification-method.8"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "method-id-not-identifier",
+      "note": "The only map with the fragment's value as id has the id \"key-1\", whose absolute URL value (RFC 3986 §5.2 against the DID) is did:example:rvm-bare-id/key-1, not the vmIdentifier.",
+      "vmIdentifier": "did:example:rvm-bare-id#key-1",
+      "relationship": "authentication",
+      "options": {},
+      "expect": [
+        {
+          "check": "raisesError",
+          "value": "INVALID_VERIFICATION_METHOD",
+          "statements": [
+            "cid10#retrieve-verification-method.9"
+          ],
+          "partial": "under DID 1.1 fragment dereferencing no conforming document lets a fragment reach a method with another id, so the case uses an id that equals the bare fragment; an error raised at step 5 or step 8 for the same input also satisfies the statement"
+        }
+      ]
+    },
+    {
+      "case": "controller-mismatch",
+      "note": "key-1 of did:example:rvm-foreign-controller names did:example:attacker as its controller.",
+      "vmIdentifier": "did:example:rvm-foreign-controller#key-1",
+      "relationship": "authentication",
+      "options": {},
+      "expect": [
+        {
+          "check": "raisesError",
+          "value": "INVALID_VERIFICATION_METHOD",
+          "statements": [
+            "cid10#retrieve-verification-method.10"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "wrong-relationship-reference",
+      "note": "key-2 of did:example:relationships is referenced from assertionMethod, not authentication.",
+      "vmIdentifier": "did:example:relationships#key-2",
+      "relationship": "authentication",
+      "options": {},
+      "expect": [
+        {
+          "check": "raisesError",
+          "value": "INVALID_RELATIONSHIP_FOR_VERIFICATION_METHOD",
+          "statements": [
+            "cid10#retrieve-verification-method.11"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "wrong-relationship-embedded",
+      "note": "key-3 of did:example:relationships is embedded in capabilityInvocation, not authentication.",
+      "vmIdentifier": "did:example:relationships#key-3",
+      "relationship": "authentication",
+      "options": {},
+      "expect": [
+        {
+          "check": "raisesError",
+          "value": "INVALID_RELATIONSHIP_FOR_VERIFICATION_METHOD",
+          "statements": [
+            "cid10#retrieve-verification-method.11"
+          ]
+        }
+      ]
+    }
+  ]
+}

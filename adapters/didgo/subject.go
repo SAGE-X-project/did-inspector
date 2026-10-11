@@ -79,6 +79,11 @@ var (
 	_ core.V10Functions      = (*Subject)(nil)
 	_ core.FixtureMethod     = (*Subject)(nil)
 	_ core.HTTPBinding       = (*Subject)(nil)
+
+	_ core.VerificationMethodRetriever = (*Subject)(nil)
+	_ core.VerificationMethodValidator = (*Subject)(nil)
+	_ core.DIDURLReferenceResolver     = (*Subject)(nil)
+	_ core.RepresentationProducer      = (*Subject)(nil)
 )
 
 // Describe returns did-go's module version and revision from the build
@@ -89,26 +94,32 @@ func (s *Subject) Describe() core.SubjectInfo {
 
 // support declares, per profile, what did-go implements:
 //
-//   - did-core-1.0: DID and DID URL parsing, production and consumption of
-//     the DID Core 1.0 representations (spec.V10), validation against DID
+//   - did-core-1.0: DID and DID URL parsing, the resolution of relative DID
+//     URL references (did.DIDURL.Resolve), production and consumption of
+//     the DID Core 1.0 representations (spec.V10), with the representation
+//     chosen by the caller (ProduceOptions.JSONLD), validation against DID
 //     Core 1.0, and the abstract functions of DID Core 1.0 §7 through
 //     resolution/compat. The DID Resolution v1.0 resolver and dereferencer
 //     are not DID Core 1.0 functions, so the profile does not get them.
 //   - did-1.1: parsing, production, consumption and validation for DID 1.1
 //     (spec.V11), the resolver and dereferencer of DID Resolution v1.0, and
 //     the HTTP(S) binding of DID Resolution v1.0 §12.1 (resolution/universal,
-//     see binding.go). resolution/compat is the DID Core 1.0 path, so the
-//     profile does not get it.
+//     see binding.go), Retrieve Verification Method of CID 1.0 §3.3
+//     (relyingparty), and the validation of standalone verification
+//     methods (vm.Method.Validate). resolution/compat is the DID Core 1.0
+//     path, so the profile does not get it.
 //
 // Both profiles get the fixture method, which every resolution case needs.
 var support = map[string][]core.Capability{
 	core10.Name: {
 		core.CapDIDParser, core.CapDocumentProducer, core.CapDocumentConsumer,
 		core.CapDocumentValidator, core.CapV10Functions, core.CapFixtureMethod,
+		core.CapDIDURLReferenceResolver, core.CapRepresentationProducer,
 	},
 	did11.Name: {
 		core.CapDIDParser, core.CapDocumentProducer, core.CapDocumentConsumer,
 		core.CapDocumentValidator, core.CapResolver, core.CapDereferencer, core.CapFixtureMethod, core.CapHTTPBinding,
+		core.CapVerificationMethodRetriever, core.CapVerificationMethodValidator,
 	},
 }
 

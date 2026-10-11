@@ -39,7 +39,7 @@ var ldDoc = kit.MustDocument(`{
 }`)
 
 func representationCases() []core.Case {
-	return []core.Case{consumerJSONCase(), consumerJSONLDCase(), producerJSONCase(), producerJSONLDCase()}
+	return []core.Case{consumerJSONCase(), consumerJSONLDCase(), producerJSONCase(), producerJSONLDCase(), producerRequestedJSONLDCase()}
 }
 
 func mustBytes(doc core.DocumentJSON) []byte {
@@ -174,6 +174,26 @@ func producerJSONLDCase() core.Case {
 				}},
 				{Statements: sts[2:], Check: func() (bool, string, string) {
 					return kit.ContextFirst(ctx, contextURL), "@context starting with " + contextURL, "@context " + checks.Compact(ctx)
+				}},
+			})
+		},
+	}
+}
+
+// producerRequestedJSONLDCase asks the producer for the JSON-LD
+// representation of a document with @context, so that the representation
+// is not the producer's choice, and checks the media type it specifies
+// (§6.3.1).
+func producerRequestedJSONLDCase() core.Case {
+	sts := []string{k("production-0.6")}
+	return core.Case{
+		ID: Name + "/representation/producer-requested-json-ld", Profile: Name, Statements: sts,
+		Needs: []core.Capability{core.CapRepresentationProducer},
+		Run: func(_ context.Context, s core.Subject) []core.Observation {
+			_, mt, err := s.(core.RepresentationProducer).ProduceRepresentation(ldDoc, Version, MediaTypeJSONLD)
+			return kit.RunRules("document with a layered @context, "+MediaTypeJSONLD+" requested", err, []kit.Rule{
+				{Statements: sts, Check: func() (bool, string, string) {
+					return checks.MediaTypeEssence(mt) == MediaTypeJSONLD, "media type " + MediaTypeJSONLD, fmt.Sprintf("media type %q", mt)
 				}},
 			})
 		},

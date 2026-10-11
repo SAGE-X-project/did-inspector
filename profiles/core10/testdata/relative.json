@@ -1,0 +1,65 @@
+{
+  "base": "did:example:123456789abcdefghi",
+  "items": [
+    {
+      "ref": "#key-1",
+      "expected": "did:example:123456789abcdefghi#key-1",
+      "why": "DID Core 1.0 §3.2.2 Example 9: \"the relative DID URL value will be transformed to an absolute DID URL value of did:example:123456789abcdefghi#key-1\"; RFC 3986 §5.2.2: an empty path with no query keeps the base path and query and takes the fragment."
+    },
+    {
+      "ref": "?service=agent",
+      "expected": "did:example:123456789abcdefghi?service=agent",
+      "why": "RFC 3986 §5.2.2: an empty path with a query keeps the base path and takes the query."
+    },
+    {
+      "ref": "?service=agent&relativeRef=%2Fx#frag",
+      "expected": "did:example:123456789abcdefghi?service=agent&relativeRef=%2Fx#frag",
+      "why": "RFC 3986 §5.2.2: query and fragment of the reference."
+    },
+    {
+      "ref": "/path/to/resource",
+      "expected": "did:example:123456789abcdefghi/path/to/resource",
+      "why": "RFC 3986 §5.2.2: a path starting with \"/\" replaces the base path; the authority is method-name:method-specific-id (DID Core 1.0 §3.2.2)."
+    },
+    {
+      "ref": "path/to/resource",
+      "expected": "did:example:123456789abcdefghi/path/to/resource",
+      "why": "RFC 3986 §5.2.3: \"If the base URI has a defined authority component and an empty path, then return a string consisting of \\\"/\\\" concatenated with the reference's path\"."
+    },
+    {
+      "ref": "/a/b/../c/./d",
+      "expected": "did:example:123456789abcdefghi/a/c/d",
+      "why": "RFC 3986 §5.2.4 removes the dot segments."
+    },
+    {
+      "ref": "./key",
+      "expected": "did:example:123456789abcdefghi/key",
+      "why": "RFC 3986 §5.2.3 and §5.2.4: merged to \"/./key\", then \"/key\"."
+    },
+    {
+      "ref": "../x",
+      "expected": "did:example:123456789abcdefghi/x",
+      "why": "RFC 3986 §5.2.3 and §5.2.4: merged to \"/../x\", then \"/x\"."
+    },
+    {
+      "ref": "/p?q=1#f",
+      "expected": "did:example:123456789abcdefghi/p?q=1#f",
+      "why": "RFC 3986 §5.2.2: path, query and fragment of the reference."
+    },
+    {
+      "ref": "",
+      "expected": "did:example:123456789abcdefghi",
+      "why": "RFC 3986 §5.4.1: the empty reference resolves to the base (\"\\\"\\\" = \\\"http://a/b/c/d;p?q\\\"\"); the base DID has no fragment."
+    },
+    {
+      "ref": "did:example:other#key-2",
+      "expected": "did:example:other#key-2",
+      "why": "RFC 3986 §5.2.2: a reference with a scheme is the target, so an absolute DID URL is not changed."
+    },
+    {
+      "ref": "did:example:other/a/../b",
+      "expected": "did:example:other/b",
+      "why": "RFC 3986 §5.2.2: the dot segments of an absolute reference are removed."
+    }
+  ]
+}

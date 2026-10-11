@@ -2,7 +2,8 @@
 // Recommendation 19 July 2022), including the resolution functions of its §7.
 //
 // The cases are grouped by specification area: DID and DID URL syntax with
-// the DID parameters (syntax.json), the data model of DID documents
+// the DID parameters (syntax.json), the resolution of relative DID URL
+// references (relative.json), the data model of DID documents
 // (documents.json), production and consumption of the JSON and JSON-LD
 // representations (representation.go), the resolve, resolveRepresentation
 // and dereference functions of §7 against the fixture method "example"
@@ -49,6 +50,7 @@ type Fixtures struct {
 	Registry      *fixtures.Registry
 	Resolution    kit.ScenarioFile
 	Dereferencing kit.ScenarioFile
+	Relative      RelativeFile
 }
 
 // LoadFixtures decodes the embedded fixture files.
@@ -58,6 +60,7 @@ func LoadFixtures() Fixtures {
 	kit.MustDecode("documents.json", read("documents.json"), &f.Documents)
 	kit.MustDecode("resolution.json", read("resolution.json"), &f.Resolution)
 	kit.MustDecode("dereferencing.json", read("dereferencing.json"), &f.Dereferencing)
+	kit.MustDecode("relative.json", read("relative.json"), &f.Relative)
 	f.Registry = kit.MustRegistry("registry.json", read("registry.json"))
 	return f
 }
@@ -83,6 +86,7 @@ func Profile() core.Profile {
 func cases(f Fixtures) []core.Case {
 	var out []core.Case
 	out = append(out, kit.SyntaxCases(Name, f.Syntax)...)
+	out = append(out, relativeCase(f.Relative))
 	out = append(out, kit.DocCases(docConfig, f.Documents)...)
 	out = append(out, representationCases()...)
 	out = append(out, undefinedTermCases()...)
