@@ -91,6 +91,31 @@ the implementation that produces, consumes or resolves it. A statement a
 case judges only partly is `checked`, and its reason says which part remains
 unjudged; the case says so in each observation's detail.
 
+Two kinds of statement are `not-checkable` although they address an
+implementation:
+
+- a statement that conflicts with another statement of the same
+  specification, so that the text alone does not decide what a subject
+  must do. Its reason names the other statement and quotes both, for
+  example cid10#services.5 ("The id property is OPTIONAL.") against
+  cid10#services.3 ("Each service map MUST contain id, type, and
+  serviceEndpoint properties."), and cid10#Multikey.2 against
+  cid10#verification-methods.3. The statements on the other side stay
+  `checked`, with the conflicting part left unjudged;
+- a statement about a subject's network retrievals, such as treating the
+  DID 1.1 base context or the CID context as already retrieved
+  (did11-cr20260305#remote-resource-integrity.1, cid10#json-ld-context.1).
+  No capability exposes what the subject fetches, and a subject that uses a
+  cached copy of the identical context gives the same results as one that
+  fetches it, so no observation tells them apart.
+
+A statement that only a standalone input can judge is `checked` through a
+capability that takes that input. The secret key encodings of CID 1.0
+§2.2.2 and §2.2.3 are an example: cid10#JsonWebKey.12 forbids secret keys
+in data that may be revealed, which a published controlled identifier
+document is, so the cases give the subject verification methods on their
+own (`verification-method-validator`, §5) instead of documents.
+
 ## 5. Subjects and adapters
 
 The core defines a subject as a set of capabilities. An adapter implements the
@@ -112,7 +137,45 @@ type Dereferencer interface   { Dereference(ctx context.Context, didURL string, 
 type V10Functions interface   { Resolve10(...); ResolveRepresentation10(...); Dereference10(...) }
 type FixtureMethod interface  { LoadFixtureRegistry(r *fixtures.Registry) error }
 type HTTPBinding interface    { Endpoint() string; Exchange(ctx context.Context, req HTTPRequest) (HTTPExchange, error) }
+type VerificationMethodRetriever interface { RetrieveVerificationMethod(ctx context.Context, vmIdentifier, verificationRelationship string, opts map[string]any) (RetrievalResult, error) }
+type VerificationMethodValidator interface { ValidateVerificationMethod(vm DocumentJSON, version string) ([]Finding, error) }
+type DIDURLReferenceResolver interface     { ResolveDIDURLReference(base, ref string) (string, error) }
+type RepresentationProducer interface      { ProduceRepresentation(doc DocumentJSON, version, mediaType string) (data []byte, producedMediaType string, err error) }
 ```
+
+Capabilities are only ever added. An operation that no capability covers
+gets a new optional capability, and the interfaces adapters already
+implement do not change; a subject without the new capability gets
+`NOT_SUPPORTED` for the cases that need it. The last four capabilities
+were added this way:
+
+- `verification-method-retriever` runs Retrieve Verification Method (CID
+  1.0 §3.3) for a verification method identifier, a verification
+  relationship and dereferencing options. `RetrievalResult` holds the
+  verification method the subject returned or the error it raised, with
+  the error type it conveyed; the Go error is only for a call the adapter
+  could not make, which gives `ERROR`. The `did-1.1` cases
+  (`testdata/retrieval.json`) use DID URLs of the fixture method, so they
+  also need `fixture-method`. A case that expects an error judges that an
+  error is raised and no method returned, which is the requirement part of
+  "an error MUST be raised and SHOULD convey an error type of ..."; the
+  conveyed type is reported in the observation's detail and not judged.
+- `verification-method-validator` checks one verification method outside
+  any document. A vector is judged only by the findings about the property
+  under test: a finding whose path is that property's JSON Pointer, lies
+  below it, or is the whole method (""). The `did-1.1` vectors for the
+  secret key tables are computed in the profile from key material the
+  standard library derives (crypto/ed25519, crypto/ecdh) and encoded with
+  the inspector's own Multibase implementation (`checks.MultibaseEncode`,
+  CID 1.0 §2.4 and §3.1).
+- `did-url-reference-resolver` resolves a DID URL reference against a base
+  DID. The `did-core-1.0` case (`testdata/relative.json`) takes its
+  expected results from RFC 3986 §5 with the decomposition of DID Core 1.0
+  §3.2.2 (scheme `did`, authority method-name:method-specific-id), and a
+  test cross-checks them with `checks.ResolveDIDReference`.
+- `representation-producer` serializes a document in the representation a
+  media type names, so that a case can ask for JSON-LD rather than depend
+  on the representation the producer would choose (core10#production-0.6).
 
 `DocumentJSON` is the inspector's neutral form of a document: an ordered JSON
 object, so that the inspector, not the subject, interprets the content. Results
@@ -137,6 +200,12 @@ an adapter's.
 Adapters:
 
 - `adapters/didgo` (separate module): wraps did-go's public packages only.
+  The newer capabilities use did-go's `relyingparty` (over did-go's
+  dereferencer and the fixture method) for Retrieve Verification Method,
+  `vm.Method.Validate` for standalone verification methods (did-go's
+  consumer reads the method's JSON into a `vm.Method`, inside a wrapping
+  document), `did.DIDURL.Resolve` for relative references, and the
+  producer with `ProduceOptions.JSONLD` set for the requested media type.
   For the `did-1.1` profile it also serves did-go's HTTP(S) binding
   (`resolution/universal`'s Handler over did-go's resolver and dereferencer,
   with the fixture registry as method `example`) from an `httptest` TLS
@@ -319,6 +388,10 @@ the subject's outputs. It is deliberately not shared with did-go.
 5. `adapters/https`, the `http-binding` capability and the binding cases,
    run against did-go's binding through the did-go adapter.
 6. Statement levels and cases for the observable recommendations.
+7. Optional capabilities for operations the first capabilities do not
+   reach (CID 1.0 §3.3 retrieval, standalone verification methods,
+   relative DID URL references, a requested representation), with their
+   cases, so that no statement stays `pending`.
 
 ## 10. Limits
 

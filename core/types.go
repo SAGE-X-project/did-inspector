@@ -69,3 +69,23 @@ type DereferenceResult struct {
 	MediaType             string       `json:"media_type,omitempty"`
 	ContentMetadata       DocumentJSON `json:"content_metadata"`
 }
+
+// RetrievalResult is the result of Retrieve Verification Method (CID 1.0
+// §3.3) as a subject produced it: the verification method it returned, or
+// the error it raised.
+type RetrievalResult struct {
+	// VerificationMethod is nil when the subject returned no method.
+	VerificationMethod *DocumentJSON `json:"verification_method,omitempty"`
+	// Error is nil when the subject raised no error.
+	Error *ProcessingError `json:"error,omitempty"`
+}
+
+// ProcessingError is an error a subject raised in an algorithm, with the
+// error type it conveyed (a URL such as
+// "https://w3id.org/security#INVALID_VERIFICATION_METHOD", or empty when it
+// conveyed none).
+type ProcessingError struct {
+	Type   string `json:"type,omitempty"`
+	Title  string `json:"title,omitempty"`
+	Detail string `json:"detail,omitempty"`
+}

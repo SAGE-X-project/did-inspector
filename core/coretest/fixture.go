@@ -313,6 +313,79 @@ func (f *Fixture) Exchange(_ context.Context, req core.HTTPRequest) (core.HTTPEx
 	return ex, nil
 }
 
+// ExampleMethodID is the one verification method the fixture retrieves.
+const ExampleMethodID = ExampleDID + "#key-1"
+
+// RetrieveVerificationMethod implements core.VerificationMethodRetriever:
+// it returns a method for ExampleMethodID and raises an
+// INVALID_VERIFICATION_METHOD error for anything else. Under Wrong the
+// method's id is wrong.
+func (f *Fixture) RetrieveVerificationMethod(_ context.Context, vmIdentifier, _ string, _ map[string]any) (core.RetrievalResult, error) {
+	wrong, err := f.enter(core.CapVerificationMethodRetriever)
+	if err != nil {
+		return core.RetrievalResult{}, err
+	}
+	if vmIdentifier != ExampleMethodID {
+		return core.RetrievalResult{Error: &core.ProcessingError{Type: "https://w3id.org/security#INVALID_VERIFICATION_METHOD"}}, nil
+	}
+	id := vmIdentifier
+	if wrong {
+		id += "-wrong"
+	}
+	m := core.NewDocument(core.M("id", core.String(id)), core.M("type", core.String("Multikey")), core.M("controller", core.String(ExampleDID)))
+	return core.RetrievalResult{VerificationMethod: &m}, nil
+}
+
+// ValidateVerificationMethod implements core.VerificationMethodValidator:
+// it reports a missing type.
+func (f *Fixture) ValidateVerificationMethod(vm core.DocumentJSON, _ string) ([]core.Finding, error) {
+	wrong, err := f.enter(core.CapVerificationMethodValidator)
+	if err != nil {
+		return nil, err
+	}
+	if _, ok := vm.Get("type"); ok || wrong {
+		return nil, nil
+	}
+	return []core.Finding{{Code: "missing-type", Path: "/type", Message: "the verification method has no type"}}, nil
+}
+
+// ResolveDIDURLReference implements core.DIDURLReferenceResolver for
+// absolute references and references that start with "/", "?" or "#",
+// which it appends to the base. Under Wrong it returns the reference.
+func (f *Fixture) ResolveDIDURLReference(base, ref string) (string, error) {
+	wrong, err := f.enter(core.CapDIDURLReferenceResolver)
+	if err != nil {
+		return "", err
+	}
+	switch {
+	case wrong:
+		return ref, nil
+	case strings.HasPrefix(ref, "did:"):
+		return ref, nil
+	case ref != "" && strings.ContainsRune("/?#", rune(ref[0])):
+		return base + ref, nil
+	}
+	return "", errors.New("coretest: unsupported reference")
+}
+
+// ProduceRepresentation implements core.RepresentationProducer: it returns
+// the document as JSON under the requested media type, or
+// "application/json" under Wrong.
+func (f *Fixture) ProduceRepresentation(doc core.DocumentJSON, _, mediaType string) ([]byte, string, error) {
+	wrong, err := f.enter(core.CapRepresentationProducer)
+	if err != nil {
+		return nil, "", err
+	}
+	data, err := doc.MarshalJSON()
+	if err != nil {
+		return nil, "", err
+	}
+	if wrong {
+		return data, "application/json", nil
+	}
+	return data, mediaType, nil
+}
+
 // Bare is a subject that implements no capability interface. With
 // DeclareAll it nevertheless declares every capability supported, which
 // models an adapter bug.
@@ -338,4 +411,9 @@ var (
 	_ core.V10Functions      = (*Fixture)(nil)
 	_ core.FixtureMethod     = (*Fixture)(nil)
 	_ core.HTTPBinding       = (*Fixture)(nil)
+
+	_ core.VerificationMethodRetriever = (*Fixture)(nil)
+	_ core.VerificationMethodValidator = (*Fixture)(nil)
+	_ core.DIDURLReferenceResolver     = (*Fixture)(nil)
+	_ core.RepresentationProducer      = (*Fixture)(nil)
 )

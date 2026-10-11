@@ -11,10 +11,11 @@ import (
 )
 
 // knownNonconformances are the requirement-level statements did-go fails
-// at the pinned revision. It is empty: the HTTPS binding nonconformance
-// found earlier (bindings-https.11, .34, .39, .40, .42) was fixed in did-go
-// d7c44d9. The test fails when the set changes, so that a new failure is
-// noticed.
+// at the pinned revision. It is empty: the nonconformances found earlier
+// (bindings-https.11, .34, .39, .40, .42, fixed in did-go d7c44d9;
+// core10#relative-did-urls.2 and cid10#Multikey.5, fixed in did-go
+// bfaee58) are fixed. The test fails when the set changes, so that a new
+// failure is noticed.
 var knownNonconformances = map[string][]string{}
 
 // TestProfiles runs every built-in profile against did-go, as the

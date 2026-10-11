@@ -356,6 +356,99 @@
           }
         }
       ]
+    },
+    "did:example:rvm-duplicate-services": {
+      "versions": [
+        {
+          "versionId": "1",
+          "validFrom": "2019-03-23T06:35:22Z",
+          "mediaType": "application/did",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:rvm-duplicate-services",
+            "verificationMethod": [
+              {
+                "id": "did:example:rvm-duplicate-services#key-1",
+                "type": "Multikey",
+                "controller": "did:example:rvm-duplicate-services",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "authentication": [
+              "did:example:rvm-duplicate-services#key-1"
+            ],
+            "service": [
+              {
+                "id": "did:example:rvm-duplicate-services#svc",
+                "type": "ExampleService",
+                "serviceEndpoint": "https://example.com/a"
+              },
+              {
+                "id": "did:example:rvm-duplicate-services#svc",
+                "type": "ExampleService",
+                "serviceEndpoint": "https://example.com/b"
+              }
+            ]
+          },
+          "documentMetadata": {
+            "created": "2019-03-23T06:35:22Z"
+          }
+        }
+      ]
+    },
+    "did:example:rvm-foreign-controller": {
+      "versions": [
+        {
+          "versionId": "1",
+          "validFrom": "2019-03-23T06:35:22Z",
+          "mediaType": "application/did",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:rvm-foreign-controller",
+            "verificationMethod": [
+              {
+                "id": "did:example:rvm-foreign-controller#key-1",
+                "type": "Multikey",
+                "controller": "did:example:attacker",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "authentication": [
+              "did:example:rvm-foreign-controller#key-1"
+            ]
+          },
+          "documentMetadata": {
+            "created": "2019-03-23T06:35:22Z"
+          }
+        }
+      ]
+    },
+    "did:example:rvm-bare-id": {
+      "versions": [
+        {
+          "versionId": "1",
+          "validFrom": "2019-03-23T06:35:22Z",
+          "mediaType": "application/did",
+          "document": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:rvm-bare-id",
+            "verificationMethod": [
+              {
+                "id": "key-1",
+                "type": "Multikey",
+                "controller": "did:example:rvm-bare-id",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "authentication": [
+              "key-1"
+            ]
+          },
+          "documentMetadata": {
+            "created": "2019-03-23T06:35:22Z"
+          }
+        }
+      ]
     }
   }
 }

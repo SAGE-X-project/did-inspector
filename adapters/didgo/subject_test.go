@@ -18,9 +18,11 @@ func TestSupports(t *testing.T) {
 		}
 	}
 	want := map[string][]core.Capability{
-		core10.Name: {core.CapDIDParser, core.CapDocumentProducer, core.CapDocumentConsumer, core.CapDocumentValidator, core.CapV10Functions, core.CapFixtureMethod},
-		did11.Name:  {core.CapDIDParser, core.CapDocumentProducer, core.CapDocumentConsumer, core.CapDocumentValidator, core.CapResolver, core.CapDereferencer, core.CapFixtureMethod, core.CapHTTPBinding},
-		"did-9.9":   nil,
+		core10.Name: {core.CapDIDParser, core.CapDocumentProducer, core.CapDocumentConsumer, core.CapDocumentValidator, core.CapV10Functions, core.CapFixtureMethod,
+			core.CapDIDURLReferenceResolver, core.CapRepresentationProducer},
+		did11.Name: {core.CapDIDParser, core.CapDocumentProducer, core.CapDocumentConsumer, core.CapDocumentValidator, core.CapResolver, core.CapDereferencer, core.CapFixtureMethod, core.CapHTTPBinding,
+			core.CapVerificationMethodRetriever, core.CapVerificationMethodValidator},
+		"did-9.9": nil,
 	}
 	for p, caps := range want {
 		if got := Capabilities(p); !slices.Equal(got, caps) {

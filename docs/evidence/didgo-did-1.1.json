@@ -1,12 +1,12 @@
 {
   "format": "did-inspector-report/2",
   "inspector": {
-    "revision": "4d53bda2089a9c27571e328ef0b9c96fc66a884c"
+    "revision": "e5698046bf413222a5b5c7455460e0937de21a7b"
   },
   "subject": {
     "name": "did-go",
-    "version": "v0.0.0-20261011195048-c31184bda393",
-    "revision": "c31184bda393"
+    "version": "v0.0.0-20261011210535-bfaee58170b4",
+    "revision": "bfaee58170b4"
   },
   "profile": "did-1.1",
   "specs": [
@@ -33,22 +33,22 @@
   "finished_at": "",
   "totals": {
     "statements": 486,
-    "PASS": 296,
+    "PASS": 321,
     "FAIL": 1,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 3,
     "ERROR": 0,
-    "NOT_RUN": 186
+    "NOT_RUN": 161
   },
   "totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 282,
+      "PASS": 307,
       "FAIL": 0,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 3,
       "ERROR": 0,
-      "NOT_RUN": 151
+      "NOT_RUN": 126
     },
     "recommendation": {
       "statements": 50,
@@ -489,7 +489,7 @@
     },
     {
       "id": "did11-cr20260305#remote-resource-integrity.1",
-      "scope": "pending",
+      "scope": "not-checkable",
       "level": "requirement",
       "verdict": "NOT_RUN"
     },
@@ -895,7 +895,7 @@
     },
     {
       "id": "cid10#services.5",
-      "scope": "pending",
+      "scope": "not-checkable",
       "level": "requirement",
       "verdict": "NOT_RUN"
     },
@@ -1138,7 +1138,7 @@
     },
     {
       "id": "cid10#Multikey.2",
-      "scope": "pending",
+      "scope": "not-checkable",
       "level": "requirement",
       "verdict": "NOT_RUN"
     },
@@ -1155,15 +1155,21 @@
     },
     {
       "id": "cid10#Multikey.4",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/verification-method/multikey-secret-multibase"
+      ]
     },
     {
       "id": "cid10#Multikey.5",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/verification-method/multikey-secret-multibase"
+      ]
     },
     {
       "id": "cid10#Multikey.6",
@@ -1266,57 +1272,84 @@
     },
     {
       "id": "cid10#Multikey.15",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/verification-method/multikey-secret-p-256"
+      ]
     },
     {
       "id": "cid10#Multikey.16",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/verification-method/multikey-secret-p-256"
+      ]
     },
     {
       "id": "cid10#Multikey.17",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/verification-method/multikey-secret-p-384"
+      ]
     },
     {
       "id": "cid10#Multikey.18",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/verification-method/multikey-secret-ed25519"
+      ]
     },
     {
       "id": "cid10#Multikey.19",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/verification-method/multikey-secret-ed25519"
+      ]
     },
     {
       "id": "cid10#Multikey.20",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/verification-method/multikey-secret-bls12-381-g2"
+      ]
     },
     {
       "id": "cid10#Multikey.21",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/verification-method/multikey-secret-bls12-381-g2"
+      ]
     },
     {
       "id": "cid10#Multikey.22",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/verification-method/multikey-secret-sm2"
+      ]
     },
     {
       "id": "cid10#Multikey.23",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/verification-method/multikey-secret-sm2"
+      ]
     },
     {
       "id": "cid10#Multikey.24",
@@ -1400,15 +1433,21 @@
     },
     {
       "id": "cid10#JsonWebKey.10",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/verification-method/jwk-secret"
+      ]
     },
     {
       "id": "cid10#JsonWebKey.11",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/verification-method/jwk-secret"
+      ]
     },
     {
       "id": "cid10#JsonWebKey.12",
@@ -1857,75 +1896,124 @@
     },
     {
       "id": "cid10#retrieve-verification-method.1",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/retrieve-verification-method/not-a-url",
+        "did-1.1/retrieve-verification-method/relative-reference"
+      ]
     },
     {
       "id": "cid10#retrieve-verification-method.2",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/retrieve-verification-method/authentication-by-reference"
+      ]
     },
     {
       "id": "cid10#retrieve-verification-method.3",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/retrieve-verification-method/authentication-by-reference"
+      ]
     },
     {
       "id": "cid10#retrieve-verification-method.4",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/retrieve-verification-method/authentication-by-reference"
+      ]
     },
     {
       "id": "cid10#retrieve-verification-method.5",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/retrieve-verification-method/document-not-conforming",
+        "did-1.1/retrieve-verification-method/document-malformed"
+      ]
     },
     {
       "id": "cid10#retrieve-verification-method.6",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/retrieve-verification-method/document-id-mismatch"
+      ]
     },
     {
       "id": "cid10#retrieve-verification-method.7",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/retrieve-verification-method/authentication-by-reference",
+        "did-1.1/retrieve-verification-method/embedded-by-value",
+        "did-1.1/retrieve-verification-method/relative-identifier"
+      ]
     },
     {
       "id": "cid10#retrieve-verification-method.8",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/retrieve-verification-method/fragment-not-a-method",
+        "did-1.1/retrieve-verification-method/fragment-missing"
+      ]
     },
     {
       "id": "cid10#retrieve-verification-method.9",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/retrieve-verification-method/relative-identifier",
+        "did-1.1/retrieve-verification-method/method-id-not-identifier"
+      ]
     },
     {
       "id": "cid10#retrieve-verification-method.10",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/retrieve-verification-method/controller-mismatch"
+      ]
     },
     {
       "id": "cid10#retrieve-verification-method.11",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/retrieve-verification-method/authentication-by-reference",
+        "did-1.1/retrieve-verification-method/assertion-by-reference",
+        "did-1.1/retrieve-verification-method/embedded-by-value",
+        "did-1.1/retrieve-verification-method/wrong-relationship-reference",
+        "did-1.1/retrieve-verification-method/wrong-relationship-embedded"
+      ]
     },
     {
       "id": "cid10#retrieve-verification-method.12",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-1.1/retrieve-verification-method/authentication-by-reference",
+        "did-1.1/retrieve-verification-method/assertion-by-reference",
+        "did-1.1/retrieve-verification-method/embedded-by-value",
+        "did-1.1/retrieve-verification-method/relative-identifier"
+      ]
     },
     {
       "id": "cid10#fragment-resolution.1",
@@ -2047,7 +2135,7 @@
     },
     {
       "id": "cid10#json-ld-context.1",
-      "scope": "pending",
+      "scope": "not-checkable",
       "level": "requirement",
       "verdict": "NOT_RUN"
     },
@@ -6208,6 +6296,198 @@
       ],
       "verdict": "PASS",
       "observations": 59
+    },
+    {
+      "id": "did-1.1/retrieve-verification-method/authentication-by-reference",
+      "statements": [
+        "cid10#retrieve-verification-method.2",
+        "cid10#retrieve-verification-method.3",
+        "cid10#retrieve-verification-method.4",
+        "cid10#retrieve-verification-method.7",
+        "cid10#retrieve-verification-method.12",
+        "cid10#retrieve-verification-method.11"
+      ],
+      "verdict": "PASS",
+      "observations": 6
+    },
+    {
+      "id": "did-1.1/retrieve-verification-method/assertion-by-reference",
+      "statements": [
+        "cid10#retrieve-verification-method.11",
+        "cid10#retrieve-verification-method.12"
+      ],
+      "verdict": "PASS",
+      "observations": 2
+    },
+    {
+      "id": "did-1.1/retrieve-verification-method/embedded-by-value",
+      "statements": [
+        "cid10#retrieve-verification-method.7",
+        "cid10#retrieve-verification-method.11",
+        "cid10#retrieve-verification-method.12"
+      ],
+      "verdict": "PASS",
+      "observations": 3
+    },
+    {
+      "id": "did-1.1/retrieve-verification-method/relative-identifier",
+      "statements": [
+        "cid10#retrieve-verification-method.7",
+        "cid10#retrieve-verification-method.9",
+        "cid10#retrieve-verification-method.12"
+      ],
+      "verdict": "PASS",
+      "observations": 3
+    },
+    {
+      "id": "did-1.1/retrieve-verification-method/not-a-url",
+      "statements": [
+        "cid10#retrieve-verification-method.1"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
+      "id": "did-1.1/retrieve-verification-method/relative-reference",
+      "statements": [
+        "cid10#retrieve-verification-method.1"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
+      "id": "did-1.1/retrieve-verification-method/document-not-conforming",
+      "statements": [
+        "cid10#retrieve-verification-method.5"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
+      "id": "did-1.1/retrieve-verification-method/document-malformed",
+      "statements": [
+        "cid10#retrieve-verification-method.5"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
+      "id": "did-1.1/retrieve-verification-method/document-id-mismatch",
+      "statements": [
+        "cid10#retrieve-verification-method.6"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
+      "id": "did-1.1/retrieve-verification-method/fragment-not-a-method",
+      "statements": [
+        "cid10#retrieve-verification-method.8"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
+      "id": "did-1.1/retrieve-verification-method/fragment-missing",
+      "statements": [
+        "cid10#retrieve-verification-method.8"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
+      "id": "did-1.1/retrieve-verification-method/method-id-not-identifier",
+      "statements": [
+        "cid10#retrieve-verification-method.9"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
+      "id": "did-1.1/retrieve-verification-method/controller-mismatch",
+      "statements": [
+        "cid10#retrieve-verification-method.10"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
+      "id": "did-1.1/retrieve-verification-method/wrong-relationship-reference",
+      "statements": [
+        "cid10#retrieve-verification-method.11"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
+      "id": "did-1.1/retrieve-verification-method/wrong-relationship-embedded",
+      "statements": [
+        "cid10#retrieve-verification-method.11"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
+      "id": "did-1.1/verification-method/multikey-secret-multibase",
+      "statements": [
+        "cid10#Multikey.4",
+        "cid10#Multikey.5"
+      ],
+      "verdict": "PASS",
+      "observations": 7
+    },
+    {
+      "id": "did-1.1/verification-method/multikey-secret-p-256",
+      "statements": [
+        "cid10#Multikey.15",
+        "cid10#Multikey.16"
+      ],
+      "verdict": "PASS",
+      "observations": 5
+    },
+    {
+      "id": "did-1.1/verification-method/multikey-secret-p-384",
+      "statements": [
+        "cid10#Multikey.17"
+      ],
+      "verdict": "PASS",
+      "observations": 3
+    },
+    {
+      "id": "did-1.1/verification-method/multikey-secret-ed25519",
+      "statements": [
+        "cid10#Multikey.18",
+        "cid10#Multikey.19"
+      ],
+      "verdict": "PASS",
+      "observations": 5
+    },
+    {
+      "id": "did-1.1/verification-method/multikey-secret-bls12-381-g2",
+      "statements": [
+        "cid10#Multikey.20",
+        "cid10#Multikey.21"
+      ],
+      "verdict": "PASS",
+      "observations": 5
+    },
+    {
+      "id": "did-1.1/verification-method/multikey-secret-sm2",
+      "statements": [
+        "cid10#Multikey.22",
+        "cid10#Multikey.23"
+      ],
+      "verdict": "PASS",
+      "observations": 5
+    },
+    {
+      "id": "did-1.1/verification-method/jwk-secret",
+      "statements": [
+        "cid10#JsonWebKey.10",
+        "cid10#JsonWebKey.11"
+      ],
+      "verdict": "PASS",
+      "observations": 8
     }
   ],
   "not_run": [
@@ -6270,25 +6550,12 @@
     "cid10#verification-material.2",
     "cid10#Multikey.1",
     "cid10#Multikey.2",
-    "cid10#Multikey.4",
-    "cid10#Multikey.5",
-    "cid10#Multikey.15",
-    "cid10#Multikey.16",
-    "cid10#Multikey.17",
-    "cid10#Multikey.18",
-    "cid10#Multikey.19",
-    "cid10#Multikey.20",
-    "cid10#Multikey.21",
-    "cid10#Multikey.22",
-    "cid10#Multikey.23",
     "cid10#Multikey.24",
     "cid10#JsonWebKey.1",
     "cid10#JsonWebKey.5",
     "cid10#JsonWebKey.6",
     "cid10#JsonWebKey.7",
     "cid10#JsonWebKey.9",
-    "cid10#JsonWebKey.10",
-    "cid10#JsonWebKey.11",
     "cid10#JsonWebKey.12",
     "cid10#verification-relationships.2",
     "cid10#multibase-0.1",
@@ -6332,18 +6599,6 @@
     "cid10#base-decode.14",
     "cid10#base-decode.15",
     "cid10#base-decode.16",
-    "cid10#retrieve-verification-method.1",
-    "cid10#retrieve-verification-method.2",
-    "cid10#retrieve-verification-method.3",
-    "cid10#retrieve-verification-method.4",
-    "cid10#retrieve-verification-method.5",
-    "cid10#retrieve-verification-method.6",
-    "cid10#retrieve-verification-method.7",
-    "cid10#retrieve-verification-method.8",
-    "cid10#retrieve-verification-method.9",
-    "cid10#retrieve-verification-method.10",
-    "cid10#retrieve-verification-method.11",
-    "cid10#retrieve-verification-method.12",
     "cid10#vocabulary.1",
     "cid10#json-ld-context.1",
     "cid10#context-injection.1",

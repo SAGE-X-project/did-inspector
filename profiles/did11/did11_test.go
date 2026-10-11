@@ -56,6 +56,12 @@ func TestFixtureFiles(t *testing.T) {
 	if err := kit.ValidateBinding(f.Binding); err != nil {
 		t.Error(err)
 	}
+	if err := kit.ValidateRetrievals(f.Retrieval); err != nil {
+		t.Error(err)
+	}
+	if err := kit.ValidateVMGroups(secretKeyGroups()); err != nil {
+		t.Error(err)
+	}
 }
 
 // TestSyntaxFixturesAgreeWithChecks cross-checks the syntax fixtures with
@@ -121,6 +127,8 @@ var faults = []string{
 	"binding-no-303", "binding-location-wrong", "binding-303-body",
 	"error-string", "error-no-title", "error-no-detail", "accept-ignored", "deref-no-content-type",
 	"producer-keeps-undefined", "consumer-keeps-undefined",
+	"rvm-raise-all", "rvm-never-raise", "rvm-skip-controller", "rvm-skip-relationship",
+	"vm-validator-noisy", "vm-validator-silent",
 }
 
 func failingCases(res core.RunResult) []string {
@@ -218,6 +226,16 @@ func TestUnsupportedAndBrokenSubjects(t *testing.T) {
 			}
 			if o.Verdict != want {
 				t.Fatalf("%s: %s when no exchange gets a response", c.Case, o.Verdict)
+			}
+		}
+	}
+	for _, c := range run(t, newMock("rvm-fails", "vm-validator-fails")).Cases {
+		if !strings.Contains(c.Case, "/retrieve-verification-method/") && !strings.Contains(c.Case, "/verification-method/") {
+			continue
+		}
+		for _, o := range c.Observations {
+			if o.Verdict != core.Error {
+				t.Fatalf("%s: %s when the call fails", c.Case, o.Verdict)
 			}
 		}
 	}

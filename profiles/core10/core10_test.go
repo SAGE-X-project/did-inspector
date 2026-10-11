@@ -53,6 +53,24 @@ func TestFixtureFiles(t *testing.T) {
 	if err := kit.ValidateScenarios(f.Dereferencing); err != nil {
 		t.Error(err)
 	}
+	if f.Relative.Base == "" || len(f.Relative.Items) == 0 {
+		t.Error("relative.json has no base or no items")
+	}
+}
+
+// TestRelativeFixturesAgreeWithChecks cross-checks the expected
+// resolutions with the inspector's own RFC 3986 implementation.
+func TestRelativeFixturesAgreeWithChecks(t *testing.T) {
+	f := LoadFixtures().Relative
+	for _, it := range f.Items {
+		got, err := checks.ResolveDIDReference(f.Base, it.Ref)
+		if err != nil || got != it.Expected {
+			t.Errorf("%q: checks gives %q %v, fixture %q", it.Ref, got, err, it.Expected)
+		}
+		if it.Why == "" {
+			t.Errorf("%q has no why", it.Ref)
+		}
+	}
 }
 
 // TestSyntaxFixturesAgreeWithChecks cross-checks the syntax fixtures with
@@ -110,6 +128,7 @@ var faults = []string{
 	"metadata-malformed-ids", "deactivated-no-flag", "deactivated-flag-on-active", "metadata-number", "metadata-nested-number",
 	"deref-invalid-accepted", "fragment-whole-document",
 	"accept-ignored", "deref-no-content-type", "producer-keeps-undefined", "consumer-keeps-undefined",
+	"reference-refused", "reference-appended", "representation-refused", "representation-json-ld-as-json",
 }
 
 func failingCases(res core.RunResult) []string {

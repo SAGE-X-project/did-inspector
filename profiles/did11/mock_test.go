@@ -23,12 +23,13 @@ type mock struct {
 	faults map[string]bool
 	reg    *fixtures.Registry
 	valid  map[string]bool
+	vmKey  map[string]vmAnswer
 }
 
 var errMock = errors.New("mock: rejected")
 
 func newMock(faults ...string) *mock {
-	m := &mock{faults: map[string]bool{}, valid: answerKey()}
+	m := &mock{faults: map[string]bool{}, valid: answerKey(), vmKey: vmAnswerKey()}
 	for _, f := range faults {
 		m.faults[f] = true
 	}
