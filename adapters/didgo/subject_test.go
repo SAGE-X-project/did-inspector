@@ -19,7 +19,7 @@ func TestSupports(t *testing.T) {
 	}
 	want := map[string][]core.Capability{
 		core10.Name: {core.CapDIDParser, core.CapDocumentProducer, core.CapDocumentConsumer, core.CapDocumentValidator, core.CapV10Functions, core.CapFixtureMethod},
-		did11.Name:  {core.CapDIDParser, core.CapDocumentProducer, core.CapDocumentConsumer, core.CapDocumentValidator, core.CapResolver, core.CapDereferencer, core.CapFixtureMethod},
+		did11.Name:  {core.CapDIDParser, core.CapDocumentProducer, core.CapDocumentConsumer, core.CapDocumentValidator, core.CapResolver, core.CapDereferencer, core.CapFixtureMethod, core.CapHTTPBinding},
 		"did-9.9":   nil,
 	}
 	for p, caps := range want {

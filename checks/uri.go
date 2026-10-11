@@ -88,3 +88,21 @@ func isPathAbemptyChar(c byte) bool {
 func isQueryOrFragmentChar(c byte) bool {
 	return isPChar(c) || c == '/' || c == '?'
 }
+
+// PercentEncode percent-encodes every octet of s that is not unreserved
+// (RFC 3986 §2.1, §2.3), with uppercase hexadecimal digits. The HTTP(S)
+// binding of DID Resolution §12.1 URL-encodes the input DID this way when it
+// sends options as query parameters.
+func PercentEncode(s string) string {
+	const hex = "0123456789ABCDEF"
+	out := make([]byte, 0, len(s))
+	for i := 0; i < len(s); i++ {
+		c := s[i]
+		if isUnreserved(c) {
+			out = append(out, c)
+			continue
+		}
+		out = append(out, '%', hex[c>>4], hex[c&0x0f])
+	}
+	return string(out)
+}

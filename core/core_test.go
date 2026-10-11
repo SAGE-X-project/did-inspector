@@ -54,7 +54,7 @@ func TestVerdictPredicates(t *testing.T) {
 
 func TestCapabilities(t *testing.T) {
 	caps := core.Capabilities()
-	if len(caps) != 8 {
+	if len(caps) != 9 {
 		t.Fatalf("got %d capabilities", len(caps))
 	}
 	caps[0] = "mutated"

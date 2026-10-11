@@ -53,6 +53,9 @@ func TestFixtureFiles(t *testing.T) {
 	if err := kit.ValidateScenarios(f.Dereferencing); err != nil {
 		t.Error(err)
 	}
+	if err := kit.ValidateBinding(f.Binding); err != nil {
+		t.Error(err)
+	}
 }
 
 // TestSyntaxFixturesAgreeWithChecks cross-checks the syntax fixtures with
@@ -113,6 +116,11 @@ var faults = []string{
 	"fragment-shallow", "vr-ignored", "vr-reject-all", "content-type-not-ascii", "service-ignore-selection",
 	"accept-any-representation", "uri-list-include-maps", "relative-ref-append", "fragment-not-inherited", "fragment-overrides",
 	"no-uri-list-content-type",
+	"binding-plain-http", "binding-no-decode", "binding-post-ignored", "binding-ignore-query", "binding-status-wrong",
+	"binding-no-410", "binding-problem-plain", "binding-result-shape", "binding-content-type-wrong", "binding-body-wrapped",
+	"binding-no-303", "binding-location-wrong", "binding-303-body",
+	"error-string", "error-no-title", "error-no-detail", "accept-ignored", "deref-no-content-type",
+	"producer-keeps-undefined", "consumer-keeps-undefined",
 }
 
 func failingCases(res core.RunResult) []string {
@@ -196,6 +204,20 @@ func TestUnsupportedAndBrokenSubjects(t *testing.T) {
 		for _, o := range c.Observations {
 			if o.Verdict != core.Error {
 				t.Fatalf("%s: %s when the registry cannot be loaded", c.Case, o.Verdict)
+			}
+		}
+	}
+	for _, c := range run(t, newMock("binding-exchange-fails")).Cases {
+		if !strings.Contains(c.Case, "/binding/") {
+			continue
+		}
+		for _, o := range c.Observations {
+			want := core.Error
+			if strings.HasSuffix(c.Case, "/response-format") {
+				want = core.NotApplicable
+			}
+			if o.Verdict != want {
+				t.Fatalf("%s: %s when no exchange gets a response", c.Case, o.Verdict)
 			}
 		}
 	}

@@ -4,7 +4,7 @@
   "url": "https://www.w3.org/TR/2025/REC-cid-1.0-20250515/",
   "source": "sources/controlled-identifiers-1.0-20250515.html",
   "sha256": "c5e9befba602b53de46669cf98067123d1901357a425f8bff621796b2ac4ac4a",
-  "extractor": "did-inspector-extract/1",
+  "extractor": "did-inspector-extract/2",
   "statements": [
     {
       "id": "cid10#conformance.1",
@@ -19,6 +19,7 @@
         "REQUIRED",
         "SHOULD"
       ],
+      "level": "requirement",
       "text": "The key words MAY, MUST, MUST NOT, OPTIONAL, RECOMMENDED, REQUIRED, and SHOULD in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here."
     },
     {
@@ -28,6 +29,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "Conforming processors MUST produce errors when non-conforming documents are consumed."
     },
     {
@@ -37,6 +39,7 @@
       "keywords": [
         "SHOULD"
       ],
+      "level": "recommendation",
       "text": "The controlled identifier document SHOULD contain verification relationships that explicitly permit the use of certain verification methods for specific purposes."
     },
     {
@@ -46,6 +49,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The value of id property MUST be a string that conforms to the rules in the URL Standard.",
       "term": "id"
     },
@@ -56,6 +60,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "A controlled identifier document MUST contain an id value in the topmost map."
     },
     {
@@ -65,6 +70,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "Dereferencing the canonical URL MUST return the current authoritative controlled identifier document."
     },
     {
@@ -75,6 +81,7 @@
         "MUST",
         "SHOULD"
       ],
+      "level": "requirement",
       "text": "The returned document's base identifier MUST be the same as the canonical URL; if it is anything else, then the returned document is not an authoritative controlled identifier document and the identifier SHOULD be treated as invalid."
     },
     {
@@ -84,6 +91,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "Every controlled identifier document is stored and retrieved according to the canonical URL of the document, which MUST also be the base identifier of the document."
     },
     {
@@ -93,6 +101,7 @@
       "keywords": [
         "OPTIONAL"
       ],
+      "level": "requirement",
       "text": "The controller property is OPTIONAL.",
       "term": "controller"
     },
@@ -103,6 +112,7 @@
       "keywords": [
         "SHOULD"
       ],
+      "level": "recommendation",
       "text": "If it is possible to represent the legitimate controllers of the document as URLs, the document SHOULD list URLs identifying those controllers.",
       "term": "controller"
     },
@@ -113,6 +123,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "If present, its value MUST be a string or a set of strings, each of which conforms to the rules in the URL Standard.",
       "term": "controller"
     },
@@ -123,6 +134,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "Each entry in the controller property MUST identify an entity capable of updating the canonical version of the controlled identifier document.",
       "term": "controller"
     },
@@ -133,6 +145,7 @@
       "keywords": [
         "OPTIONAL"
       ],
+      "level": "requirement",
       "text": "The alsoKnownAs property is OPTIONAL.",
       "term": "alsoKnownAs"
     },
@@ -143,6 +156,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "If present, its value MUST be a set where each item in the set is a URI conforming to [RFC3986].",
       "term": "alsoKnownAs"
     },
@@ -153,6 +167,7 @@
       "keywords": [
         "OPTIONAL"
       ],
+      "level": "requirement",
       "text": "The service property is OPTIONAL.",
       "term": "service"
     },
@@ -163,6 +178,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "If present, the associated value MUST be a set of services, where each service is described by a map.",
       "term": "service"
     },
@@ -173,6 +189,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "Each service map MUST contain id, type, and serviceEndpoint properties.",
       "term": "service"
     },
@@ -183,6 +200,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "Each service extension MAY include additional properties and MAY further restrict the properties associated with the extension.",
       "term": "service"
     },
@@ -193,6 +211,7 @@
       "keywords": [
         "OPTIONAL"
       ],
+      "level": "requirement",
       "text": "The id property is OPTIONAL.",
       "term": "id"
     },
@@ -203,6 +222,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "If present, its value MUST be a URL conforming to URL Standard.",
       "term": "id"
     },
@@ -213,6 +233,7 @@
       "keywords": [
         "MUST NOT"
       ],
+      "level": "requirement",
       "text": "A conforming document MUST NOT include multiple service entries with the same id.",
       "term": "id"
     },
@@ -223,6 +244,7 @@
       "keywords": [
         "REQUIRED"
       ],
+      "level": "requirement",
       "text": "The type property is REQUIRED.",
       "term": "type"
     },
@@ -233,6 +255,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "Its value MUST be a string or a set of strings.",
       "term": "type"
     },
@@ -243,6 +266,7 @@
       "keywords": [
         "SHOULD"
       ],
+      "level": "recommendation",
       "text": "To maximize interoperability, the service type and its associated properties SHOULD be registered in the Verifiable Credential Extensions.",
       "term": "type"
     },
@@ -253,6 +277,7 @@
       "keywords": [
         "REQUIRED"
       ],
+      "level": "requirement",
       "text": "The serviceEndpoint property is REQUIRED.",
       "term": "serviceEndpoint"
     },
@@ -263,6 +288,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The value of the serviceEndpoint property MUST be a single string, a single map, or a set composed of one or more strings and/or maps.",
       "term": "serviceEndpoint"
     },
@@ -273,6 +299,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "Each string value MUST be a valid URL conforming to URL Standard.",
       "term": "serviceEndpoint"
     },
@@ -283,6 +310,7 @@
       "keywords": [
         "OPTIONAL"
       ],
+      "level": "requirement",
       "text": "The verificationMethod property is OPTIONAL.",
       "term": "verificationMethod"
     },
@@ -293,6 +321,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "If present, the value MUST be a set of verification methods, where each verification method is expressed using a map.",
       "term": "verificationMethod"
     },
@@ -303,6 +332,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The verification method map MUST include the id, type, controller, and specific verification material properties that are determined by the value of type and are defined in 2.2.1 Verification Material.",
       "term": "verificationMethod"
     },
@@ -313,6 +343,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "A verification method MAY include additional properties.",
       "term": "verificationMethod"
     },
@@ -323,6 +354,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The value of the id property for a verification method MUST be a string that conforms to the [URL] syntax.",
       "term": "id"
     },
@@ -333,6 +365,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The value of the type property MUST be a string that references exactly one verification method type.",
       "term": "type"
     },
@@ -343,6 +376,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The value of the controller property MUST be a string that conforms to the [URL] syntax.",
       "term": "controller"
     },
@@ -353,6 +387,7 @@
       "keywords": [
         "OPTIONAL"
       ],
+      "level": "requirement",
       "text": "The expires property is OPTIONAL.",
       "term": "expires"
     },
@@ -364,6 +399,7 @@
         "MUST",
         "SHOULD"
       ],
+      "level": "requirement",
       "text": "If provided, it MUST be an [XMLSCHEMA11-2] dateTimeStamp string specifying when the verification method SHOULD cease to be used.",
       "term": "expires"
     },
@@ -374,6 +410,7 @@
       "keywords": [
         "OPTIONAL"
       ],
+      "level": "requirement",
       "text": "The revoked property is OPTIONAL.",
       "term": "revoked"
     },
@@ -385,6 +422,7 @@
         "MUST",
         "MUST NOT"
       ],
+      "level": "requirement",
       "text": "If present, it MUST be an [XMLSCHEMA11-2] dateTimeStamp string specifying when the verification method MUST NOT be used.",
       "term": "revoked"
     },
@@ -395,6 +433,7 @@
       "keywords": [
         "MUST NOT"
       ],
+      "level": "requirement",
       "text": "A verification method MUST NOT contain multiple verification material properties for the same material."
     },
     {
@@ -404,6 +443,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "Implementations MAY convert keys between formats as desired for operational purposes or to interface with cryptographic libraries."
     },
     {
@@ -413,6 +453,7 @@
       "keywords": [
         "MUST NOT"
       ],
+      "level": "requirement",
       "text": "As an internal implementation detail, such conversion MUST NOT affect the external representation of key material."
     },
     {
@@ -422,6 +463,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The value of the type property MUST be a string that is set to Multikey.",
       "term": "type"
     },
@@ -432,6 +474,7 @@
       "keywords": [
         "OPTIONAL"
       ],
+      "level": "requirement",
       "text": "The publicKeyMultibase property is OPTIONAL.",
       "term": "publicKeyMultibase"
     },
@@ -442,6 +485,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "If present, its value MUST be a Multibase encoded value as described in Section 2.4 Multibase.",
       "term": "publicKeyMultibase"
     },
@@ -452,6 +496,7 @@
       "keywords": [
         "OPTIONAL"
       ],
+      "level": "requirement",
       "text": "The secretKeyMultibase property is OPTIONAL.",
       "term": "secretKeyMultibase"
     },
@@ -462,6 +507,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "If present, its value MUST be a Multibase encoded value as described in Section 2.4 Multibase.",
       "term": "secretKeyMultibase"
     },
@@ -472,6 +518,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The Multikey encoding of a P-256 public key MUST start with the two-byte prefix 0x8024 (the varint expression of 0x1200) followed by the 33-byte compressed public key data.",
       "term": "ECDSA 256-bit public key"
     },
@@ -482,6 +529,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The resulting 35-byte value MUST then be encoded using the base-58-btc alphabet, according to Section 2.4 Multibase, and then prepended with the base-58-btc Multibase header (z).",
       "term": "ECDSA 256-bit public key"
     },
@@ -492,6 +540,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The encoding of a P-384 public key MUST start with the two-byte prefix 0x8124 (the varint expression of 0x1201) followed by the 49-byte compressed public key data.",
       "term": "ECDSA 384-bit public key"
     },
@@ -502,6 +551,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The encoding of an Ed25519 public key MUST start with the two-byte prefix 0xed01 (the varint expression of 0xed), followed by the 32-byte public key data.",
       "term": "Ed25519 256-bit public key"
     },
@@ -512,6 +562,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The resulting 34-byte value MUST then be encoded using the base-58-btc alphabet, according to Section 2.4 Multibase, and then prepended with the base-58-btc Multibase header (z).",
       "term": "Ed25519 256-bit public key"
     },
@@ -522,6 +573,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The encoding of an BLS12-381 public key in the G2 group MUST start with the two-byte prefix 0xeb01 (the varint expression of 0xeb), followed by the 96-byte compressed public key data.",
       "term": "BLS12-381 381-bit public key"
     },
@@ -532,6 +584,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The resulting 98-byte value MUST then be encoded using the base-58-btc alphabet, according to Section 2.4 Multibase, and then prepended with the base-58-btc Multibase header (z).",
       "term": "BLS12-381 381-bit public key"
     },
@@ -542,6 +595,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The encoding of an SM2 public key MUST start with the two-byte prefix 0x8624 (the varint expression of 0x1206) followed by the 33-byte compressed public key data.",
       "term": "SM2 256-bit public key"
     },
@@ -552,6 +606,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The resulting 35-byte value MUST then be encoded using the base-58-btc alphabet, according to Section 2.4 Multibase, and then prepended with the base-58-btc Multibase header (z).",
       "term": "SM2 256-bit public key"
     },
@@ -562,6 +617,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The Multikey encoding of a P-256 secret key MUST start with the two-byte prefix 0x8626 (the varint expression of 0x1306) followed by the 32-byte secret key data.",
       "term": "ECDSA 256-bit secret key"
     },
@@ -572,6 +628,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The resulting 34-byte value MUST then be encoded using the base-58-btc alphabet, according to Section 2.4 Multibase, and then prepended with the base-58-btc Multibase header (z).",
       "term": "ECDSA 256-bit secret key"
     },
@@ -582,6 +639,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The encoding of a P-384 secret key MUST start with the two-byte prefix 0x8726 (the varint expression of 0x1307) followed by the 48-byte secret key data.",
       "term": "ECDSA 384-bit secret key"
     },
@@ -592,6 +650,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The encoding of an Ed25519 secret key MUST start with the two-byte prefix 0x8026 (the varint expression of 0x1300), followed by the 32-byte secret key data.",
       "term": "Ed25519 256-bit secret key"
     },
@@ -602,6 +661,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The resulting 34-byte value MUST then be encoded using the base-58-btc alphabet, according to Section 2.4 Multibase, and then prepended with the base-58-btc Multibase header (z).",
       "term": "Ed25519 256-bit secret key"
     },
@@ -612,6 +672,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The encoding of an BLS12-381 secret key in the G2 group MUST start with the two-byte prefix 0x8030 (the varint expression of 0x130a), followed by the 96-byte compressed public key data.",
       "term": "BLS12-381 381-bit secret key"
     },
@@ -622,6 +683,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The resulting 98-byte value MUST then be encoded using the base-58-btc alphabet, according to Section 2.4 Multibase, and then prepended with the base-58-btc Multibase header (z).",
       "term": "BLS12-381 381-bit secret key"
     },
@@ -632,6 +694,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The encoding of an SM2 secret key MUST start with the two-byte prefix 0x9026 (the varint expression of 0x1310) followed by the 32-byte secret key data.",
       "term": "SM2 256-bit secret key"
     },
@@ -642,6 +705,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The resulting 34-byte value MUST then be encoded using the base-58-btc alphabet, according to Section 2.4 Multibase, and then prepended with the base-58-btc Multibase header (z).",
       "term": "SM2 256-bit secret key"
     },
@@ -653,6 +717,7 @@
         "MAY",
         "MUST NOT"
       ],
+      "level": "requirement",
       "text": "When defining values for use with publicKeyMultibase and secretKeyMultibase, specification authors MAY define additional header values for other key types in other specifications and MUST NOT define alternate encodings for key types already defined by this specification."
     },
     {
@@ -662,6 +727,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The value of the type property MUST be a string that is set to JsonWebKey.",
       "term": "type"
     },
@@ -672,6 +738,7 @@
       "keywords": [
         "OPTIONAL"
       ],
+      "level": "requirement",
       "text": "The publicKeyJwk property is OPTIONAL.",
       "term": "publicKeyJwk"
     },
@@ -682,6 +749,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "If present, its value MUST be a map representing a JSON Web Key that conforms to [RFC7517].",
       "term": "publicKeyJwk"
     },
@@ -692,6 +760,7 @@
       "keywords": [
         "MUST NOT"
       ],
+      "level": "requirement",
       "text": "The map MUST NOT include any members of the private information class, such as d, as described in the JWK Registration Template.",
       "term": "publicKeyJwk"
     },
@@ -702,6 +771,7 @@
       "keywords": [
         "RECOMMENDED"
       ],
+      "level": "recommendation",
       "text": "It is RECOMMENDED that verification methods that use JWKs [RFC7517] to represent their public keys use the value of kid as their fragment identifier.",
       "term": "publicKeyJwk"
     },
@@ -712,6 +782,7 @@
       "keywords": [
         "RECOMMENDED"
       ],
+      "level": "recommendation",
       "text": "It is RECOMMENDED that JWK kid values are set to the JWK Thumbprint [RFC7638] using the SHA-256 (SHA2-256) hash function of the public key.",
       "term": "publicKeyJwk"
     },
@@ -723,6 +794,7 @@
         "OPTIONAL",
         "SHOULD"
       ],
+      "level": "recommendation",
       "text": "As specified in Section 4.4 of the JWK specification, the OPTIONAL alg property identifies the algorithm intended for use with the public key, and SHOULD be included to prevent security issues that can arise when using the same key with multiple algorithms.",
       "term": "publicKeyJwk"
     },
@@ -733,6 +805,7 @@
       "keywords": [
         "REQUIRED"
       ],
+      "level": "requirement",
       "text": "As specified in Section 6.2.1.1 of the JWA specification, describing a key using an elliptic curve, the REQUIRED crv property is used to identify the particular curve type of the public key.",
       "term": "publicKeyJwk"
     },
@@ -744,6 +817,7 @@
         "OPTIONAL",
         "SHOULD"
       ],
+      "level": "recommendation",
       "text": "As specified in Section 4.1.4 of the JWS specification, the OPTIONAL kid property is a hint used to help discover the key; if present, the kid value SHOULD match, or be included in, the id property of the encapsulating JsonWebKey object, as part of the path, query, or fragment of the URL.",
       "term": "publicKeyJwk"
     },
@@ -754,6 +828,7 @@
       "keywords": [
         "OPTIONAL"
       ],
+      "level": "requirement",
       "text": "The secretKeyJwk property is OPTIONAL.",
       "term": "secretKeyJwk"
     },
@@ -764,6 +839,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "If present, its value MUST be a map representing a JSON Web Key that conforms to [RFC7517].",
       "term": "secretKeyJwk"
     },
@@ -774,6 +850,7 @@
       "keywords": [
         "MUST NOT"
       ],
+      "level": "requirement",
       "text": "It MUST NOT be used if the data structure containing it is public or may be revealed to parties other than the legitimate holders of the secret key.",
       "term": "secretKeyJwk"
     },
@@ -784,6 +861,7 @@
       "keywords": [
         "MUST NOT"
       ],
+      "level": "requirement",
       "text": "The publicKeyJwk property MUST NOT contain any property marked as \"Private\" or \"Secret\" in any registry contained in the JOSE Registries [JOSE-REGISTRIES], including \"d\"."
     },
     {
@@ -793,6 +871,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "A controlled identifier document MAY include any of these, or other properties, to express a specific verification relationship."
     },
     {
@@ -802,6 +881,7 @@
       "keywords": [
         "SHOULD"
       ],
+      "level": "recommendation",
       "text": "To maximize interoperability, any such properties used SHOULD be registered in the list of DID Document Property Extensions."
     },
     {
@@ -811,6 +891,7 @@
       "keywords": [
         "OPTIONAL"
       ],
+      "level": "requirement",
       "text": "The authentication property is OPTIONAL.",
       "term": "authentication"
     },
@@ -821,6 +902,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "If present, its value MUST be a set of one or more verification methods.",
       "term": "authentication"
     },
@@ -831,6 +913,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "Each verification method MAY be embedded or referenced.",
       "term": "authentication"
     },
@@ -841,6 +924,7 @@
       "keywords": [
         "OPTIONAL"
       ],
+      "level": "requirement",
       "text": "The assertionMethod property is OPTIONAL.",
       "term": "assertionMethod"
     },
@@ -851,6 +935,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "If present, its associated value MUST be a set of one or more verification methods.",
       "term": "assertionMethod"
     },
@@ -861,6 +946,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "Each verification method MAY be embedded or referenced.",
       "term": "assertionMethod"
     },
@@ -871,6 +957,7 @@
       "keywords": [
         "OPTIONAL"
       ],
+      "level": "requirement",
       "text": "The keyAgreement property is OPTIONAL.",
       "term": "keyAgreement"
     },
@@ -881,6 +968,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "If present, the associated value MUST be a set of one or more verification methods.",
       "term": "keyAgreement"
     },
@@ -891,6 +979,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "Each verification method MAY be embedded or referenced.",
       "term": "keyAgreement"
     },
@@ -901,6 +990,7 @@
       "keywords": [
         "OPTIONAL"
       ],
+      "level": "requirement",
       "text": "The capabilityInvocation property is OPTIONAL.",
       "term": "capabilityInvocation"
     },
@@ -911,6 +1001,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "If present, the associated value MUST be a set of one or more verification methods.",
       "term": "capabilityInvocation"
     },
@@ -921,6 +1012,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "Each verification method MAY be embedded or referenced.",
       "term": "capabilityInvocation"
     },
@@ -931,6 +1023,7 @@
       "keywords": [
         "OPTIONAL"
       ],
+      "level": "requirement",
       "text": "The capabilityDelegation property is OPTIONAL.",
       "term": "capabilityDelegation"
     },
@@ -941,6 +1034,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "If present, the associated value MUST be a set of one or more verification methods.",
       "term": "capabilityDelegation"
     },
@@ -951,6 +1045,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "Each verification method MAY be embedded or referenced.",
       "term": "capabilityDelegation"
     },
@@ -961,6 +1056,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "Other Multibase encoding values MAY be used, but interoperability is not guaranteed between implementations using such values."
     },
     {
@@ -970,6 +1066,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "To base-encode a binary value into a Multibase string, an implementation MUST apply the algorithm in Section 3.1 Base Encode to the binary value, with the desired base encoding and alphabet from the table above, ensuring to prepend the associated Multibase header from the table above to the result."
     },
     {
@@ -979,6 +1076,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "Any algorithm with equivalent output MAY be used."
     },
     {
@@ -988,6 +1086,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "To base-decode a Multibase string, an implementation MUST apply the algorithm in Section 3.2 Base Decode to the string following the first character (Multibase header), with the alphabet associated with the Multibase header."
     },
     {
@@ -997,6 +1096,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "Any algorithm with equivalent output MAY be used."
     },
     {
@@ -1006,6 +1106,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "Other Multihash encoding values MAY be used, but interoperability is not guaranteed between implementations."
     },
     {
@@ -1015,6 +1116,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "To encode to a Multihash value, an implementation MUST concatenate the associated Multihash header (encoded as a varint), the cryptographic digest length in bytes (encoded as a varint), and the cryptographic digest value, in that order."
     },
     {
@@ -1024,6 +1126,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "To decode a Multihash value, an implementation MUST 1) remove the prepended Multihash header value, which identifies the type of cryptographic hashing algorithm, 2) remove the cryptographic digest length in bytes, and 3) extract the raw cryptographic digest value which MUST match the expected output length associated with the Multihash header as well as the output length provided in the Multihash value itself."
     },
     {
@@ -1033,6 +1136,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "Alternatives to the algorithms provided in this section MAY be used as long as the outputs of the alternative algorithm remain the same."
     },
     {
@@ -1042,36 +1146,42 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "All mathematical operations MUST be performed using integer arithmetic."
     },
     {
       "id": "cid10#base-encode.2",
       "section": "base-encode",
       "kind": "step",
+      "level": "requirement",
       "text": "Initialize the following variables; zeroes to 0, length to 0, begin to 0, and end to the length of bytes."
     },
     {
       "id": "cid10#base-encode.3",
       "section": "base-encode",
       "kind": "step",
+      "level": "requirement",
       "text": "Set begin and zeroes to the number of leading 0 byte values in bytes."
     },
     {
       "id": "cid10#base-encode.4",
       "section": "base-encode",
       "kind": "step",
+      "level": "requirement",
       "text": "Set baseValue to an empty byte array that is the size of the final base-expanded value. Calculate the final size of baseValue by dividing log(256) by log(targetBase) and then multiplying the length of bytes minus the leading zeroes. Add 1 to the value of size."
     },
     {
       "id": "cid10#base-encode.5",
       "section": "base-encode",
       "kind": "step",
+      "level": "requirement",
       "text": "Process each byte in bytes as byte starting at offset begin:"
     },
     {
       "id": "cid10#base-encode.6",
       "section": "base-encode",
       "kind": "step",
+      "level": "requirement",
       "text": "Set the carry value to byte.",
       "parent": "cid10#base-encode.5"
     },
@@ -1079,6 +1189,7 @@
       "id": "cid10#base-encode.7",
       "section": "base-encode",
       "kind": "step",
+      "level": "requirement",
       "text": "Perform base-expansion by starting at the end of the baseValue array. Initialize an iterator i to 0. Set basePosition to size minus 1. Perform the following loop as long as carry does not equal 0 or i is less than length, and basePosition does not equal -1.",
       "parent": "cid10#base-encode.5"
     },
@@ -1086,6 +1197,7 @@
       "id": "cid10#base-encode.8",
       "section": "base-encode",
       "kind": "step",
+      "level": "requirement",
       "text": "Multiply the value in baseValue[basePosition] by 256 and add it to carry.",
       "parent": "cid10#base-encode.7"
     },
@@ -1093,6 +1205,7 @@
       "id": "cid10#base-encode.9",
       "section": "base-encode",
       "kind": "step",
+      "level": "requirement",
       "text": "Set the value at baseValue[basePosition] to the remainder after dividing carry by targetBase.",
       "parent": "cid10#base-encode.7"
     },
@@ -1100,6 +1213,7 @@
       "id": "cid10#base-encode.10",
       "section": "base-encode",
       "kind": "step",
+      "level": "requirement",
       "text": "Set the value of carry to carry divided by targetBase ensuring that integer division is used to perform the division.",
       "parent": "cid10#base-encode.7"
     },
@@ -1107,6 +1221,7 @@
       "id": "cid10#base-encode.11",
       "section": "base-encode",
       "kind": "step",
+      "level": "requirement",
       "text": "Decrement basePosition by 1 and increment i by 1.",
       "parent": "cid10#base-encode.7"
     },
@@ -1114,6 +1229,7 @@
       "id": "cid10#base-encode.12",
       "section": "base-encode",
       "kind": "step",
+      "level": "requirement",
       "text": "Set length to i and increment begin by 1.",
       "parent": "cid10#base-encode.5"
     },
@@ -1121,24 +1237,28 @@
       "id": "cid10#base-encode.13",
       "section": "base-encode",
       "kind": "step",
+      "level": "requirement",
       "text": "Set the baseEncodingPosition to size minus length. While the baseEncodingPosition does not equal size and the baseValue[baseEncodingPosition] does not equal 0, increment baseEncodingPosition. This step skips the leading zeros in the base-encoded result."
     },
     {
       "id": "cid10#base-encode.14",
       "section": "base-encode",
       "kind": "step",
+      "level": "requirement",
       "text": "Initialize the baseEncoding by repeating the first entry in the baseAlphabet by the value of zeroes (the number of leading zeroes in bytes)."
     },
     {
       "id": "cid10#base-encode.15",
       "section": "base-encode",
       "kind": "step",
+      "level": "requirement",
       "text": "Convert the rest of the baseValue to the base-encoding. While the baseEncodingPosition is less than size, increment the baseEncodingPosition: Set baseEncodedValue to baseValue[baseEncodingPosition]. Append baseAlphabet[baseEncodedValue] to baseEncoding."
     },
     {
       "id": "cid10#base-encode.16",
       "section": "base-encode",
       "kind": "step",
+      "level": "requirement",
       "text": "Return baseEncoding as the base-encoded value."
     },
     {
@@ -1148,42 +1268,49 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "All mathematical operations MUST be performed using integer arithmetic."
     },
     {
       "id": "cid10#base-decode.2",
       "section": "base-decode",
       "kind": "step",
+      "level": "requirement",
       "text": "Initialize a baseMap mapping by associating each character in baseAlphabet to its integer position in the baseAlphabet string."
     },
     {
       "id": "cid10#base-decode.3",
       "section": "base-decode",
       "kind": "step",
+      "level": "requirement",
       "text": "Initialize the following variables; sourceOffset to 0, zeroes to 0, and decodedLength to 0."
     },
     {
       "id": "cid10#base-decode.4",
       "section": "base-decode",
       "kind": "step",
+      "level": "requirement",
       "text": "Set zeroes and sourceOffset to the number of leading baseAlphabet[0] values in sourceEncoding."
     },
     {
       "id": "cid10#base-decode.5",
       "section": "base-decode",
       "kind": "step",
+      "level": "requirement",
       "text": "Set decodedBytes to an empty byte array that is the size of the final base-converted value. Calculate the size of decodedBytes by dividing log(sourceBase) by log(256) and then multiplying by the length of sourceEncoding minus the leading zeroes. Add 1 to the value of size."
     },
     {
       "id": "cid10#base-decode.6",
       "section": "base-decode",
       "kind": "step",
+      "level": "requirement",
       "text": "Process each character in sourceEncoding as character starting at offset sourceOffset:"
     },
     {
       "id": "cid10#base-decode.7",
       "section": "base-decode",
       "kind": "step",
+      "level": "requirement",
       "text": "Set the carry value to the integer value in the baseMap that is associated with character.",
       "parent": "cid10#base-decode.6"
     },
@@ -1191,6 +1318,7 @@
       "id": "cid10#base-decode.8",
       "section": "base-decode",
       "kind": "step",
+      "level": "requirement",
       "text": "Perform base-decoding by starting at the end of the decodedBytes array. Initialize an iterator i to 0. Set byteOffset to decodedSize minus 1. Perform the following loop as long as, carry does not equal 0 or i is less than decodedLength, and byteOffset does not equal -1:",
       "parent": "cid10#base-decode.6"
     },
@@ -1198,6 +1326,7 @@
       "id": "cid10#base-decode.9",
       "section": "base-decode",
       "kind": "step",
+      "level": "requirement",
       "text": "Add the result of multiplying sourceBase by decodedBytes[byteOffset] to carry.",
       "parent": "cid10#base-decode.8"
     },
@@ -1205,6 +1334,7 @@
       "id": "cid10#base-decode.10",
       "section": "base-decode",
       "kind": "step",
+      "level": "requirement",
       "text": "Set decodedBytes[byteOffset] to the remainder of dividing carry by 256.",
       "parent": "cid10#base-decode.8"
     },
@@ -1212,6 +1342,7 @@
       "id": "cid10#base-decode.11",
       "section": "base-decode",
       "kind": "step",
+      "level": "requirement",
       "text": "Set carry to carry divided by 256, ensuring that integer division is used to perform the division.",
       "parent": "cid10#base-decode.8"
     },
@@ -1219,6 +1350,7 @@
       "id": "cid10#base-decode.12",
       "section": "base-decode",
       "kind": "step",
+      "level": "requirement",
       "text": "Decrement byteOffset by 1 and increment i by 1.",
       "parent": "cid10#base-decode.8"
     },
@@ -1226,6 +1358,7 @@
       "id": "cid10#base-decode.13",
       "section": "base-decode",
       "kind": "step",
+      "level": "requirement",
       "text": "Set decodedLength to i and increment sourceOffset by 1.",
       "parent": "cid10#base-decode.6"
     },
@@ -1233,18 +1366,21 @@
       "id": "cid10#base-decode.14",
       "section": "base-decode",
       "kind": "step",
+      "level": "requirement",
       "text": "Set the decodedOffset to decodedSize minus decodedLength. While the decodedOffset does not equal the decodedSize and decodedBytes[decodedOffset] equals 0, increment decodedOffset by 1. This step skips the leading zeros in the final base-decoded byte array."
     },
     {
       "id": "cid10#base-decode.15",
       "section": "base-decode",
       "kind": "step",
+      "level": "requirement",
       "text": "Set the size of the finalBytes array to zeroes plus, decodedSize minus decodedOffset. Initialize the first zeroes bytes in finalBytes to 0."
     },
     {
       "id": "cid10#base-decode.16",
       "section": "base-decode",
       "kind": "step",
+      "level": "requirement",
       "text": "Starting at an offset equal to the number of zeroes in finalBytes plus 1, copy all bytes in decodedBytes, up to decodedSize, starting at offset decodedOffset to finalBytes."
     },
     {
@@ -1255,24 +1391,28 @@
         "MUST",
         "SHOULD"
       ],
+      "level": "requirement",
       "text": "If vmIdentifier is not a valid URL, an error MUST be raised and SHOULD convey an error type of INVALID_VERIFICATION_METHOD_URL."
     },
     {
       "id": "cid10#retrieve-verification-method.2",
       "section": "retrieve-verification-method",
       "kind": "step",
+      "level": "requirement",
       "text": "Let controllerDocumentUrl be the result of parsing vmIdentifier according to the rules of the URL scheme and extracting the primary resource identifier (without the fragment identifier)."
     },
     {
       "id": "cid10#retrieve-verification-method.3",
       "section": "retrieve-verification-method",
       "kind": "step",
+      "level": "requirement",
       "text": "Let vmFragment be the result of parsing vmIdentifier according to the rules of the URL scheme and extracting the secondary resource identifier (the fragment identifier)."
     },
     {
       "id": "cid10#retrieve-verification-method.4",
       "section": "retrieve-verification-method",
       "kind": "step",
+      "level": "requirement",
       "text": "Let controllerDocument be the result of dereferencing controllerDocumentUrl, according to the rules of the URL scheme and using the supplied options."
     },
     {
@@ -1283,6 +1423,7 @@
         "MUST",
         "SHOULD"
       ],
+      "level": "requirement",
       "text": "If controllerDocument is not a conforming controlled identifier document, an error MUST be raised and SHOULD convey an error type of INVALID_CONTROLLED_IDENTIFIER_DOCUMENT."
     },
     {
@@ -1293,12 +1434,14 @@
         "MUST",
         "SHOULD"
       ],
+      "level": "requirement",
       "text": "If controllerDocument.id does not match the controllerDocumentUrl, an error MUST be raised and SHOULD convey an error type of INVALID_CONTROLLED_IDENTIFIER_DOCUMENT_ID."
     },
     {
       "id": "cid10#retrieve-verification-method.7",
       "section": "retrieve-verification-method",
       "kind": "step",
+      "level": "requirement",
       "text": "Let verificationMethod be the result of dereferencing the vmFragment from the controllerDocument according to the rules of the media type of the controllerDocument."
     },
     {
@@ -1309,6 +1452,7 @@
         "MUST",
         "SHOULD"
       ],
+      "level": "requirement",
       "text": "If verificationMethod is not a conforming verification method, an error MUST be raised and SHOULD convey an error type of INVALID_VERIFICATION_METHOD."
     },
     {
@@ -1319,6 +1463,7 @@
         "MUST",
         "SHOULD"
       ],
+      "level": "requirement",
       "text": "If the absolute URL value of verificationMethod.id does not equal vmIdentifier, an error MUST be raised and SHOULD convey an error type of INVALID_VERIFICATION_METHOD."
     },
     {
@@ -1329,6 +1474,7 @@
         "MUST",
         "SHOULD"
       ],
+      "level": "requirement",
       "text": "If the absolute URL value of verificationMethod.controller does not equal controllerDocumentUrl, an error MUST be raised and SHOULD convey an error type of INVALID_VERIFICATION_METHOD."
     },
     {
@@ -1339,42 +1485,49 @@
         "MUST",
         "SHOULD"
       ],
+      "level": "requirement",
       "text": "If verificationMethod is not associated, either by reference (URL) or by value (object), with the verification relationship array in the controllerDocument identified by verificationRelationship, an error MUST be raised and SHOULD convey an error type of INVALID_RELATIONSHIP_FOR_VERIFICATION_METHOD."
     },
     {
       "id": "cid10#retrieve-verification-method.12",
       "section": "retrieve-verification-method",
       "kind": "step",
+      "level": "requirement",
       "text": "Return verificationMethod as the verification method."
     },
     {
       "id": "cid10#fragment-resolution.1",
       "section": "fragment-resolution",
       "kind": "step",
+      "level": "requirement",
       "text": "Let documentFragment be null."
     },
     {
       "id": "cid10#fragment-resolution.2",
       "section": "fragment-resolution",
       "kind": "step",
+      "level": "requirement",
       "text": "Let canonicalDocumentUrl be the value of document.id."
     },
     {
       "id": "cid10#fragment-resolution.3",
       "section": "fragment-resolution",
       "kind": "step",
+      "level": "requirement",
       "text": "Let fullyQualifiedFragment be the value of canonicalDocumentUrl with fragmentIdentifier appended to it."
     },
     {
       "id": "cid10#fragment-resolution.4",
       "section": "fragment-resolution",
       "kind": "step",
+      "level": "requirement",
       "text": "Recursively process every map in document checking to see if it has an id value that is equal to fullyQualifiedFragment or fragmentIdentifier. If a match is found, set documentFragment to the matched map and stop recursively processing."
     },
     {
       "id": "cid10#fragment-resolution.5",
       "section": "fragment-resolution",
       "kind": "step",
+      "level": "requirement",
       "text": "Return documentFragment."
     },
     {
@@ -1384,6 +1537,7 @@
       "keywords": [
         "SHOULD"
       ],
+      "level": "recommendation",
       "text": "When exposing these errors through an HTTP interface, implementers SHOULD use [RFC9457] to encode the error data structure."
     },
     {
@@ -1393,6 +1547,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The type value of the error object MUST be a URL that starts with the value https://w3id.org/security# and ends with the value in the section listed below."
     },
     {
@@ -1402,6 +1557,7 @@
       "keywords": [
         "SHOULD"
       ],
+      "level": "recommendation",
       "text": "The title value SHOULD provide a short but specific human-readable string for the error."
     },
     {
@@ -1411,6 +1567,7 @@
       "keywords": [
         "SHOULD"
       ],
+      "level": "recommendation",
       "text": "The detail value SHOULD provide a longer human-readable string for the error."
     },
     {
@@ -1420,6 +1577,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "Implementations that use RDF processing and rely on this specification MUST use these URLs."
     },
     {
@@ -1429,6 +1587,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "Implementations that perform JSON-LD processing MUST treat the following JSON-LD context URL as already resolved, where the resolved document matches the corresponding hash value below:"
     },
     {
@@ -1438,6 +1597,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "When an application is processing a controlled identifier document, if an @context property is not provided in the document or the terms used in the document are not mapped by existing values in the @context property, implementations MUST inject or append an @context property with a value of https://www.w3.org/ns/cid/v1 or one or more contexts with at least the same declarations, such as the Decentralized Identifier v1.1 context (https://www.w3.org/ns/did/v1)."
     },
     {
@@ -1447,6 +1607,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "Implementations that do not intend to use JSON-LD MAY choose to not include an @context declaration at the top-level of the document."
     }
   ]

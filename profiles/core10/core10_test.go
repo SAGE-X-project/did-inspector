@@ -109,6 +109,7 @@ var faults = []string{
 	"content-type-not-ascii", "drop-metadata", "metadata-fraction", "metadata-non-ascii", "metadata-other-method",
 	"metadata-malformed-ids", "deactivated-no-flag", "deactivated-flag-on-active", "metadata-number", "metadata-nested-number",
 	"deref-invalid-accepted", "fragment-whole-document",
+	"accept-ignored", "deref-no-content-type", "producer-keeps-undefined", "consumer-keeps-undefined",
 }
 
 func failingCases(res core.RunResult) []string {

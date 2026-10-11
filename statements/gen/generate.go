@@ -14,7 +14,7 @@ import (
 
 // ExtractorVersion names the extraction method recorded in every statement
 // file. Change it when a change to the extractor changes its output.
-const ExtractorVersion = "did-inspector-extract/1"
+const ExtractorVersion = "did-inspector-extract/2"
 
 // SourcesDir is the directory, relative to the statements directory, that
 // holds the pinned publications.

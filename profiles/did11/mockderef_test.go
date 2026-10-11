@@ -65,7 +65,11 @@ func (m *mock) Dereference(ctx context.Context, didURL string, opts map[string]a
 	case u.HasFragment && !m.on("fragment-whole-document"):
 		return m.fragment(didURL, u, doc, opts), nil
 	}
-	return m.content(doc, meta), nil
+	out := m.content(doc, meta)
+	if _, asked := opts["accept"]; asked && m.on("accept-ignored") {
+		out.DereferencingMetadata = core.NewDocument(core.M("contentType", core.String("application/did+ld+json")))
+	}
+	return out, nil
 }
 
 func (m *mock) content(doc, meta core.DocumentJSON) core.DereferenceResult {
@@ -74,10 +78,11 @@ func (m *mock) content(doc, meta core.DocumentJSON) core.DereferenceResult {
 	if m.on("content-type-not-ascii") {
 		mt = "application/dïd"
 	}
-	return core.DereferenceResult{
-		DereferencingMetadata: core.NewDocument(core.M("contentType", core.String(mt))),
-		Content:               data, MediaType: MediaType, ContentMetadata: meta,
+	md := core.NewDocument(core.M("contentType", core.String(mt)))
+	if m.on("deref-no-content-type") {
+		md = core.NewDocument()
 	}
+	return core.DereferenceResult{DereferencingMetadata: md, Content: data, MediaType: MediaType, ContentMetadata: meta}
 }
 
 // fragment dereferences a DID fragment from the resolved document (DID

@@ -44,11 +44,12 @@ const (
 	CapDereferencer      Capability = "dereferencer"
 	CapV10Functions      Capability = "v10-functions"
 	CapFixtureMethod     Capability = "fixture-method"
+	CapHTTPBinding       Capability = "http-binding"
 )
 
 var allCapabilities = []Capability{
 	CapDIDParser, CapDocumentProducer, CapDocumentConsumer, CapDocumentValidator,
-	CapResolver, CapDereferencer, CapV10Functions, CapFixtureMethod,
+	CapResolver, CapDereferencer, CapV10Functions, CapFixtureMethod, CapHTTPBinding,
 }
 
 // Capabilities returns every known capability in a fixed order.
@@ -133,6 +134,8 @@ func Implements(s Subject, c Capability) bool {
 		_, ok = s.(V10Functions)
 	case CapFixtureMethod:
 		_, ok = s.(FixtureMethod)
+	case CapHTTPBinding:
+		_, ok = s.(HTTPBinding)
 	}
 	return ok
 }

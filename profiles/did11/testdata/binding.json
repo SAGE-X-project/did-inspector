@@ -1,0 +1,628 @@
+{
+  "exchanges": [
+    {
+      "case": "resolve-get",
+      "note": "GET request for the complete DID resolution result (DID Resolution §12.1, Examples 24, 30, 31).",
+      "function": "resolve",
+      "input": "did:example:123456789abcdefghi",
+      "expect": [
+        {
+          "check": "status",
+          "value": 200,
+          "statements": [
+            "res10-crd20261001#bindings-https.1",
+            "res10-crd20261001#bindings-https.4",
+            "res10-crd20261001#bindings-https.5",
+            "res10-crd20261001#bindings-https.6",
+            "res10-crd20261001#bindings-https.17"
+          ],
+          "partial": "the GET version is judged; implementing the POST version is a permission. judged from the resolver side: a request built by this step is answered with the result of the function; the client's part of the step is not judged"
+        },
+        {
+          "check": "status",
+          "value": 200,
+          "statements": [
+            "res10-crd20261001#bindings-https.28",
+            "res10-crd20261001#bindings-https.29"
+          ]
+        },
+        {
+          "check": "resolutionResult",
+          "statements": [
+            "res10-crd20261001#bindings-https.7",
+            "res10-crd20261001#bindings-https.25",
+            "res10-crd20261001#bindings-https.26",
+            "res10-crd20261001#bindings-https.27"
+          ],
+          "partial": "the result is judged by its members (Example 31): didDocument, didResolutionMetadata and didDocumentMetadata"
+        },
+        {
+          "check": "resultContent",
+          "value": {
+            "@context": [
+              "https://www.w3.org/ns/did/v1.1",
+              "https://didcomm.org/messaging/contexts/v2",
+              "https://identity.foundation/linked-vp/contexts/v1"
+            ],
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#keys-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "service": [
+              {
+                "id": "did:example:123456789abcdefghi#messages",
+                "type": "DIDCommMessaging",
+                "serviceEndpoint": "https://example.com/messages/8377464"
+              },
+              {
+                "id": "did:example:123456789abcdefghi#linkedvp",
+                "type": "LinkedVerifiablePresentation",
+                "serviceEndpoint": "https://example.com/verifiable-presentation.jsonld"
+              }
+            ]
+          },
+          "statements": [
+            "res10-crd20261001#bindings-https.27"
+          ],
+          "partial": "the didDocument is compared with the stored document, ignoring @context"
+        },
+        {
+          "check": "resultMetadataHas",
+          "value": {
+            "created": "2019-03-23T06:35:22Z",
+            "updated": "2023-08-10T13:40:06Z",
+            "versionId": "1"
+          },
+          "statements": [
+            "res10-crd20261001#bindings-https.27"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "resolve-representation",
+      "note": "GET request for the didDocument alone in the representation the accept option names (DID Resolution §12.1, Examples 32, 33).",
+      "function": "resolve",
+      "input": "did:example:123456789abcdefghi",
+      "accept": "application/did",
+      "compare": true,
+      "expect": [
+        {
+          "check": "status",
+          "value": 200,
+          "statements": [
+            "res10-crd20261001#bindings-https.29"
+          ]
+        },
+        {
+          "check": "contentType",
+          "value": "application/did",
+          "statements": [
+            "res10-crd20261001#bindings-https.8"
+          ],
+          "partial": "judged from the resolver side: a request built by this step is answered with the result of the function; the client's part of the step is not judged"
+        },
+        {
+          "check": "contentTypeOfResult",
+          "statements": [
+            "res10-crd20261001#bindings-https.30"
+          ],
+          "partial": "compared with the contentType of the complete result of the same call"
+        },
+        {
+          "check": "bodyDocument",
+          "value": {
+            "@context": [
+              "https://www.w3.org/ns/did/v1.1",
+              "https://didcomm.org/messaging/contexts/v2",
+              "https://identity.foundation/linked-vp/contexts/v1"
+            ],
+            "id": "did:example:123456789abcdefghi",
+            "verificationMethod": [
+              {
+                "id": "did:example:123456789abcdefghi#keys-1",
+                "type": "Multikey",
+                "controller": "did:example:123456789abcdefghi",
+                "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+              }
+            ],
+            "service": [
+              {
+                "id": "did:example:123456789abcdefghi#messages",
+                "type": "DIDCommMessaging",
+                "serviceEndpoint": "https://example.com/messages/8377464"
+              },
+              {
+                "id": "did:example:123456789abcdefghi#linkedvp",
+                "type": "LinkedVerifiablePresentation",
+                "serviceEndpoint": "https://example.com/verifiable-presentation.jsonld"
+              }
+            ]
+          },
+          "statements": [
+            "res10-crd20261001#bindings-https.8",
+            "res10-crd20261001#bindings-https.31"
+          ],
+          "partial": "the body is compared with the stored document, ignoring @context"
+        },
+        {
+          "check": "bodyMatchesResult",
+          "statements": [
+            "res10-crd20261001#bindings-https.31"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "resolve-get-options",
+      "note": "GET request with a resolution option: the DID is URL-encoded and the option is a query parameter (DID Resolution §12.1, Example 26).",
+      "function": "resolve",
+      "input": "did:example:versioned",
+      "options": {
+        "versionId": "1"
+      },
+      "expect": [
+        {
+          "check": "status",
+          "value": 200,
+          "statements": [
+            "res10-crd20261001#bindings-https.13",
+            "res10-crd20261001#bindings-https.14",
+            "res10-crd20261001#bindings-https.17"
+          ],
+          "partial": "judged from the resolver side: a request built by this step is answered with the result of the function; the client's part of the step is not judged"
+        },
+        {
+          "check": "resultMetadataHas",
+          "value": {
+            "versionId": "1"
+          },
+          "statements": [
+            "res10-crd20261001#bindings-https.15",
+            "res10-crd20261001#bindings-https.16"
+          ],
+          "partial": "the URL-encoding is the client's duty; judged from the resolver side: the URL-encoded DID is decoded and the query parameter is applied"
+        },
+        {
+          "check": "resultContent",
+          "value": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:versioned",
+            "service": [
+              {
+                "id": "did:example:versioned#v",
+                "type": "Version",
+                "serviceEndpoint": "https://example.com/v1"
+              }
+            ]
+          },
+          "statements": [
+            "res10-crd20261001#bindings-https.15",
+            "res10-crd20261001#bindings-https.16"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "resolve-post",
+      "note": "POST request with a resolution option in a JSON body (DID Resolution §12.1, Example 28). The POST version is optional; a resolver that answers 405 or 501 declines it.",
+      "function": "resolve",
+      "method": "POST",
+      "input": "did:example:versioned",
+      "options": {
+        "versionId": "1"
+      },
+      "unsupportedIfStatus": [
+        405,
+        501
+      ],
+      "expect": [
+        {
+          "check": "status",
+          "value": 200,
+          "statements": [
+            "res10-crd20261001#bindings-https.18",
+            "res10-crd20261001#bindings-https.19",
+            "res10-crd20261001#bindings-https.21"
+          ],
+          "partial": "judged from the resolver side: a request built by this step is answered with the result of the function; the client's part of the step is not judged"
+        },
+        {
+          "check": "resolutionResult",
+          "statements": [
+            "res10-crd20261001#bindings-https.18",
+            "res10-crd20261001#bindings-https.21"
+          ]
+        },
+        {
+          "check": "resultMetadataHas",
+          "value": {
+            "versionId": "1"
+          },
+          "statements": [
+            "res10-crd20261001#bindings-https.20"
+          ],
+          "partial": "judged from the resolver side: a request built by this step is answered with the result of the function; the client's part of the step is not judged"
+        },
+        {
+          "check": "resultContent",
+          "value": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:versioned",
+            "service": [
+              {
+                "id": "did:example:versioned#v",
+                "type": "Version",
+                "serviceEndpoint": "https://example.com/v1"
+              }
+            ]
+          },
+          "statements": [
+            "res10-crd20261001#bindings-https.20"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "dereference-get",
+      "note": "GET request for the complete DID URL dereferencing result (DID Resolution §12.1, Examples 34, 35).",
+      "function": "dereference",
+      "input": "did:example:versioned?versionId=1",
+      "expect": [
+        {
+          "check": "status",
+          "value": 200,
+          "statements": [
+            "res10-crd20261001#bindings-https.9",
+            "res10-crd20261001#bindings-https.10"
+          ],
+          "partial": "judged from the resolver side: a request built by this step is answered with the result of the function; the client's part of the step is not judged"
+        },
+        {
+          "check": "dereferencingResult",
+          "statements": [
+            "res10-crd20261001#bindings-https.11",
+            "res10-crd20261001#bindings-https.32",
+            "res10-crd20261001#bindings-https.33",
+            "res10-crd20261001#bindings-https.34"
+          ],
+          "partial": "the result is judged by its members; the specification's examples name the content and metadata members differently (content or contentStream, dereferencingMetadata or didUrlDereferencingMetadata), and each name is accepted"
+        },
+        {
+          "check": "resultContent",
+          "value": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:versioned",
+            "service": [
+              {
+                "id": "did:example:versioned#v",
+                "type": "Version",
+                "serviceEndpoint": "https://example.com/v1"
+              }
+            ]
+          },
+          "statements": [
+            "res10-crd20261001#bindings-https.34"
+          ],
+          "partial": "the content is compared with the stored document of version 1, ignoring @context"
+        },
+        {
+          "check": "resultMetadataHas",
+          "value": {
+            "versionId": "1"
+          },
+          "statements": [
+            "res10-crd20261001#bindings-https.34"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "dereference-representation",
+      "note": "GET request for the contentStream alone in the representation the accept option names (DID Resolution §12.1, Examples 36, 37).",
+      "function": "dereference",
+      "input": "did:example:versioned?versionId=1",
+      "accept": "application/did",
+      "compare": true,
+      "expect": [
+        {
+          "check": "status",
+          "value": 200,
+          "statements": [
+            "res10-crd20261001#bindings-https.39",
+            "res10-crd20261001#bindings-https.40"
+          ]
+        },
+        {
+          "check": "contentType",
+          "value": "application/did",
+          "statements": [
+            "res10-crd20261001#bindings-https.12"
+          ],
+          "partial": "judged from the resolver side: a request built by this step is answered with the result of the function; the client's part of the step is not judged"
+        },
+        {
+          "check": "contentTypeOfResult",
+          "statements": [
+            "res10-crd20261001#bindings-https.41"
+          ],
+          "partial": "compared with the contentType of the complete result of the same call"
+        },
+        {
+          "check": "bodyDocument",
+          "value": {
+            "@context": "https://www.w3.org/ns/did/v1.1",
+            "id": "did:example:versioned",
+            "service": [
+              {
+                "id": "did:example:versioned#v",
+                "type": "Version",
+                "serviceEndpoint": "https://example.com/v1"
+              }
+            ]
+          },
+          "statements": [
+            "res10-crd20261001#bindings-https.12",
+            "res10-crd20261001#bindings-https.42"
+          ],
+          "partial": "the body is compared with the stored document of version 1, ignoring @context"
+        },
+        {
+          "check": "bodyMatchesResult",
+          "statements": [
+            "res10-crd20261001#bindings-https.42"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "dereference-fragment",
+      "note": "GET request for the complete result of a DID URL with a fragment. A fragment cannot travel in a request target, so the DID URL is sent percent-encoded (DID Resolution §12.1, RFC 3986 §2.1).",
+      "function": "dereference",
+      "input": "did:example:relationships#key-1",
+      "expect": [
+        {
+          "check": "status",
+          "value": 200,
+          "statements": [
+            "res10-crd20261001#bindings-https.39",
+            "res10-crd20261001#bindings-https.40"
+          ],
+          "partial": "judged on a request for the complete result, which Example 35 answers with 200"
+        },
+        {
+          "check": "dereferencingResult",
+          "statements": [
+            "res10-crd20261001#bindings-https.11",
+            "res10-crd20261001#bindings-https.34"
+          ],
+          "partial": "judged on a verification method dereferenced by its fragment"
+        },
+        {
+          "check": "resultContent",
+          "value": {
+            "id": "did:example:relationships#key-1",
+            "type": "Multikey",
+            "controller": "did:example:relationships",
+            "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+          },
+          "statements": [
+            "res10-crd20261001#bindings-https.34"
+          ],
+          "partial": "judged on a verification method dereferenced by its fragment; the content is compared ignoring @context, which Example 12 adds"
+        }
+      ]
+    },
+    {
+      "case": "dereference-fragment-representation",
+      "note": "GET request for the contentStream alone of a DID URL with a fragment, sent percent-encoded (DID Resolution §12.1).",
+      "function": "dereference",
+      "input": "did:example:relationships#key-1",
+      "accept": "application/did",
+      "expect": [
+        {
+          "check": "status",
+          "value": 200,
+          "statements": [
+            "res10-crd20261001#bindings-https.40"
+          ]
+        },
+        {
+          "check": "bodyDocument",
+          "value": {
+            "id": "did:example:relationships#key-1",
+            "type": "Multikey",
+            "controller": "did:example:relationships",
+            "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+          },
+          "statements": [
+            "res10-crd20261001#bindings-https.42"
+          ],
+          "partial": "judged on a verification method dereferenced by its fragment, compared ignoring @context"
+        }
+      ]
+    },
+    {
+      "case": "service-redirect",
+      "note": "A selected service endpoint asked for as text/uri-list is answered with a redirect (DID Resolution §12.1).",
+      "function": "dereference",
+      "input": "did:example:services?service=files",
+      "accept": "text/uri-list",
+      "expect": [
+        {
+          "check": "status",
+          "value": 303,
+          "statements": [
+            "res10-crd20261001#bindings-https.35",
+            "res10-crd20261001#bindings-https.36"
+          ]
+        },
+        {
+          "check": "location",
+          "value": "https://files.example.com/storage/",
+          "statements": [
+            "res10-crd20261001#bindings-https.37"
+          ]
+        },
+        {
+          "check": "emptyBody",
+          "statements": [
+            "res10-crd20261001#bindings-https.38"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "deactivated-result",
+      "note": "The complete result for a deactivated DID (DID Resolution §12.1).",
+      "function": "resolve",
+      "input": "did:example:deactivated",
+      "expect": [
+        {
+          "check": "status",
+          "value": 410,
+          "statements": [
+            "res10-crd20261001#bindings-https.23",
+            "res10-crd20261001#bindings-https.24"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "deactivated-representation",
+      "note": "The didDocument alone asked for a deactivated DID (DID Resolution §12.1).",
+      "function": "resolve",
+      "input": "did:example:deactivated",
+      "accept": "application/did",
+      "expect": [
+        {
+          "check": "status",
+          "value": 410,
+          "statements": [
+            "res10-crd20261001#bindings-https.23",
+            "res10-crd20261001#bindings-https.24"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "problem-details",
+      "note": "An error answered to a request for the didDocument alone (DID Resolution §11, §12.1).",
+      "function": "resolve",
+      "input": "did:example:doesnotexist",
+      "accept": "application/did",
+      "expect": [
+        {
+          "check": "problemDetails",
+          "statements": [
+            "res10-crd20261001#errors.1"
+          ],
+          "partial": "judged on an error response of the binding: the error is an RFC 9457 problem details object; the error property of complete results is judged by the result-format cases"
+        }
+      ]
+    },
+    {
+      "case": "problem-details-cid",
+      "note": "A CID processing error answered to a request for the contentStream alone (CID §3.5, DID Resolution §12.1).",
+      "function": "dereference",
+      "input": "did:example:relationships#key-2",
+      "accept": "application/did",
+      "options": {
+        "verificationRelationship": "authentication"
+      },
+      "expect": [
+        {
+          "check": "problemDetails",
+          "statements": [
+            "cid10#processing-errors.1"
+          ],
+          "partial": "judged on the error of a verificationRelationship that does not authorize the method"
+        }
+      ]
+    }
+  ],
+  "probes": [
+    {
+      "note": "INVALID_DID",
+      "function": "resolve",
+      "input": "did:Example:123"
+    },
+    {
+      "note": "NOT_FOUND",
+      "function": "resolve",
+      "input": "did:example:doesnotexist"
+    },
+    {
+      "note": "METHOD_NOT_SUPPORTED",
+      "function": "resolve",
+      "input": "did:inspectorunsupported:123"
+    },
+    {
+      "note": "INVALID_OPTIONS",
+      "function": "resolve",
+      "input": "did:example:versioned",
+      "options": {
+        "versionTime": "2021-05-10 17:00:00"
+      }
+    },
+    {
+      "note": "INVALID_DID_DOCUMENT",
+      "function": "resolve",
+      "input": "did:example:malformed"
+    },
+    {
+      "note": "INTERNAL_ERROR",
+      "function": "resolve",
+      "input": "did:example:failing"
+    },
+    {
+      "note": "FEATURE_NOT_SUPPORTED or an extension option",
+      "function": "resolve",
+      "input": "did:example:123456789abcdefghi",
+      "options": {
+        "inspectorUnsupportedOption": "value"
+      }
+    },
+    {
+      "note": "noCache",
+      "function": "resolve",
+      "input": "did:example:123456789abcdefghi",
+      "options": {
+        "noCache": true
+      }
+    },
+    {
+      "note": "INVALID_DID_URL",
+      "function": "dereference",
+      "input": "did:example:123456789abcdefghi#a#b"
+    },
+    {
+      "note": "REPRESENTATION_NOT_SUPPORTED",
+      "function": "dereference",
+      "input": "did:example:services?service=files",
+      "accept": "image/png"
+    },
+    {
+      "note": "NOT_FOUND as problem details",
+      "function": "dereference",
+      "input": "did:example:doesnotexist",
+      "accept": "application/did"
+    },
+    {
+      "note": "INVALID_DID as problem details",
+      "function": "resolve",
+      "input": "did:Example:123",
+      "accept": "application/did"
+    },
+    {
+      "note": "deactivated, dereferenced",
+      "function": "dereference",
+      "input": "did:example:deactivated"
+    }
+  ]
+}

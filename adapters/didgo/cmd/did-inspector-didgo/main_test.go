@@ -43,8 +43,19 @@ func TestRunWritesReport(t *testing.T) {
 		if rep.Profile != p || rep.Subject.Name != didgo.Name || rep.Inspector.Revision != "abc" || rep.StartedAt == "" {
 			t.Errorf("%s: report header %+v", p, rep)
 		}
-		if rep.Totals.Fail != 0 || rep.Totals.Error != 0 {
-			t.Errorf("%s: %d FAIL, %d ERROR", p, rep.Totals.Fail, rep.Totals.Error)
+		// The exact set of did-go's nonconformances is checked by the
+		// adapter's TestProfiles; here only their kind: no ERROR, and
+		// requirement-level failures only in the HTTP(S) binding.
+		if rep.Totals.Error != 0 {
+			t.Errorf("%s: %d ERROR", p, rep.Totals.Error)
+		}
+		for _, st := range rep.GateFailures() {
+			if !strings.HasPrefix(st.ID, "res10-crd20261001#bindings-https.") {
+				t.Errorf("%s: %s %s", p, st.ID, st.Verdict)
+			}
+		}
+		if !strings.Contains(out.String(), "gate:") {
+			t.Errorf("%s: summary without gate line", p)
 		}
 		if !strings.Contains(out.String(), "profile:   "+p) {
 			t.Errorf("%s: summary %q", p, out.String())

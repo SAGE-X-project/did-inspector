@@ -171,3 +171,24 @@ func TestLoadFixtureRegistry(t *testing.T) {
 		t.Fatalf("failing LoadFixtureRegistry err = %v", err)
 	}
 }
+
+func TestExchange(t *testing.T) {
+	ctx := context.Background()
+	f := New()
+	if f.Endpoint() != Endpoint {
+		t.Fatalf("endpoint %q", f.Endpoint())
+	}
+	ex, err := f.Exchange(ctx, core.HTTPRequest{Method: "GET", Target: ExampleDID})
+	if err != nil || ex.Status != 200 || !ex.TLS || ex.Header.Get("Content-Type") != "application/did" || ex.URL != Endpoint+ExampleDID {
+		t.Fatalf("Exchange = %+v %v", ex, err)
+	}
+	if ex, _ := f.Exchange(ctx, core.HTTPRequest{Method: "GET", Target: "did:example:none"}); ex.Status != 404 {
+		t.Fatalf("not found = %+v", ex)
+	}
+	if ex, _ := f.With(core.CapHTTPBinding, Wrong).Exchange(ctx, core.HTTPRequest{Target: ExampleDID}); ex.Status != 500 {
+		t.Fatalf("wrong = %+v", ex)
+	}
+	if _, err := f.With(core.CapHTTPBinding, Fails).Exchange(ctx, core.HTTPRequest{}); !errors.Is(err, ErrFixture) {
+		t.Fatalf("failing Exchange err = %v", err)
+	}
+}

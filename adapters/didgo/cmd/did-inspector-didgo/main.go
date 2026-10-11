@@ -95,7 +95,11 @@ func runProfile(args []string, e env) error {
 	if *deterministic {
 		runner.Now = func() time.Time { return time.Time{} }
 	}
-	res, err := runner.Run(context.Background(), p, e.subject())
+	subject := e.subject()
+	if c, ok := subject.(io.Closer); ok {
+		defer func() { _ = c.Close() }()
+	}
+	res, err := runner.Run(context.Background(), p, subject)
 	if err != nil {
 		return err
 	}

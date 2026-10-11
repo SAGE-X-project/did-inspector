@@ -46,6 +46,7 @@ func dereferencingInvariants(reg *fixtures.Registry) []kit.Invariant {
 		failed(k("did-url-dereferencing.11"), "", "an empty contentMetadata", func(o kit.Outcome) bool { return o.ContentMetadata.Len() == 0 }),
 		kit.MemberRule(k("did-url-dereferencing-metadata.2"), "", kit.PickMetadata, "contentType", "an ASCII string", kit.IsASCIIString),
 		keywordRule(k("did-url-dereferencing-metadata.4"), true),
+		dereferencedContentType(),
 	}, append(documentMetadataInvariants(reg), metadataStructureInvariants()...)...)
 }
 

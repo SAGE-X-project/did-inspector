@@ -46,7 +46,7 @@ func resolutionInvariants(reg *fixtures.Registry) []kit.Invariant {
 				return kit.IsASCIIString(v) && slices.Contains(representationMediaTypes, checks.MediaTypeEssence(v.Str))
 			}),
 		kit.MemberRule(r("did-resolution-metadata.7"), "", kit.PickMetadata, "proof", "a set of maps", isProofSet),
-	}, append(documentMetadataInvariants(reg), errorInvariants()...)...)
+	}, slices.Concat(documentMetadataInvariants(reg), errorInvariants(), errorRecommendations())...)
 }
 
 // dereferencingInvariants are the rules every result of dereference must
@@ -59,7 +59,8 @@ func dereferencingInvariants(reg *fixtures.Registry) []kit.Invariant {
 			return kit.IsASCIIString(v) && checks.IsMediaType(v.Str)
 		}),
 		kit.MemberRule(r("did-url-dereferencing-metadata.7"), "", kit.PickMetadata, "proof", "a set of maps", isProofSet),
-	}, append(documentMetadataInvariants(reg), errorInvariants()...)...)
+		dereferencedContentType(),
+	}, slices.Concat(documentMetadataInvariants(reg), errorInvariants(), errorRecommendations())...)
 }
 
 func isProofSet(v core.Value) bool { return kit.IsSetOf(v, kit.IsMap) }

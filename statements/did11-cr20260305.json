@@ -4,7 +4,7 @@
   "url": "https://www.w3.org/TR/2026/CR-did-1.1-20260305/",
   "source": "sources/did-core-1.1-cr-20260305.html",
   "sha256": "4a48022defe07d37d2decc3ec9027a932dc883b2ad164a5aeaf9256e530bd979",
-  "extractor": "did-inspector-extract/1",
+  "extractor": "did-inspector-extract/2",
   "statements": [
     {
       "id": "did11-cr20260305#conformance.1",
@@ -18,6 +18,7 @@
         "SHOULD",
         "SHOULD NOT"
       ],
+      "level": "requirement",
       "text": "The key words MAY, MUST, MUST NOT, RECOMMENDED, SHOULD, and SHOULD NOT in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here."
     },
     {
@@ -27,6 +28,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "All DIDs MUST conform to the DID Syntax ABNF Rules."
     },
     {
@@ -36,6 +38,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "All DID URLs MUST conform to the DID URL Syntax ABNF Rules."
     },
     {
@@ -45,6 +48,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "Relative DID URLs MAY contain relative path components, query parameters, and fragment identifiers."
     },
     {
@@ -54,6 +58,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "When resolving a relative DID URL reference, the algorithm specified in RFC3986 Section 5: Reference Resolution MUST be used."
     },
     {
@@ -63,6 +68,7 @@
       "keywords": [
         "RECOMMENDED"
       ],
+      "level": "recommendation",
       "text": "For maximum interoperability, it is RECOMMENDED that extensions use the repository of Decentralized Identifier Extensions."
     },
     {
@@ -72,6 +78,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "Representations MAY define other extensibility mechanisms, including ones that do not require the use of the Decentralized Identifier Extensions repository."
     },
     {
@@ -81,6 +88,7 @@
       "keywords": [
         "SHOULD"
       ],
+      "level": "recommendation",
       "text": "Such extension mechanisms SHOULD support lossless conversion into any other conformant representation."
     },
     {
@@ -90,6 +98,7 @@
       "keywords": [
         "SHOULD"
       ],
+      "level": "recommendation",
       "text": "Extension mechanisms for a representation SHOULD define a mapping of all properties and representation syntax into the DID document data model and its type system."
     },
     {
@@ -99,6 +108,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "Each string value MUST be a valid URL conforming to URL Standard.",
       "term": "serviceEndpoint"
     },
@@ -109,6 +119,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "A DID document can express verification methods, as defined in Section 2.2: Verification Methods of Controlled Identifiers v1.0 with the added restrictions that (a) the id value MUST conform to Section 3.2 DID URL Syntax or Section 3.2.1 Relative DID URLs and (b) the controller value MUST conform to Section 3.1 DID Syntax."
     },
     {
@@ -118,6 +129,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "A representation MUST define deterministic production and consumption rules for all data types specified in 4."
     },
     {
@@ -127,6 +139,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "A representation MUST be uniquely associated with an IANA-registered Media Type."
     },
     {
@@ -136,6 +149,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "A representation MUST define fragment processing rules for its Media Type that are conformant with the fragment processing rules defined in Fragment."
     },
     {
@@ -145,6 +159,7 @@
       "keywords": [
         "SHOULD"
       ],
+      "level": "recommendation",
       "text": "A representation SHOULD use the lexical representation of data model data types."
     },
     {
@@ -154,6 +169,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "A representation MAY choose to serialize the data model data types using a different lexical serializations as long as the consumption process back into the data model is lossless."
     },
     {
@@ -163,6 +179,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "A representation MAY define representation-specific entries that are stored in a representation-specific entries map for use during the production and consumption process."
     },
     {
@@ -172,6 +189,7 @@
       "keywords": [
         "SHOULD"
       ],
+      "level": "recommendation",
       "text": "In order to maximize interoperability, representation specification authors SHOULD register their representation in the repository of DID Extensions [DID-EXTENSIONS]."
     },
     {
@@ -181,6 +199,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "A conforming producer MUST take a DID document data model and a representation-specific entries map as input into the production process."
     },
     {
@@ -190,6 +209,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "The conforming producer MAY accept additional options as input into the production process."
     },
     {
@@ -199,6 +219,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "A conforming producer MUST serialize all entries in the DID document data model, and the representation-specific entries map, that do not have explicit processing rules for the representation being produced using only the representation's data type processing rules and return the serialization after the production process completes."
     },
     {
@@ -208,6 +229,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "A conforming producer MUST return the Media Type string associated with the representation after the production process completes."
     },
     {
@@ -217,6 +239,7 @@
       "keywords": [
         "MUST NOT"
       ],
+      "level": "requirement",
       "text": "A conforming producer MUST NOT produce non-conforming DIDs or DID documents."
     },
     {
@@ -226,6 +249,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "A conforming consumer MUST take a representation and Media Type string as input into the consumption process."
     },
     {
@@ -235,6 +259,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "A conforming consumer MAY accept additional options as input into the consumption process."
     },
     {
@@ -244,6 +269,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "A conforming consumer MUST determine the representation of a DID document using the Media Type input string."
     },
     {
@@ -253,6 +279,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "A conforming consumer MUST detect any representation-specific entry across all known representations and place the entry into a representation-specific entries map which is returned after the consumption process completes."
     },
     {
@@ -262,6 +289,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "A conforming consumer MUST add all non-representation-specific entries that do not have explicit processing rules for the representation being consumed to the DID document data model using only the representation's data type processing rules and return the DID document data model after the consumption process completes."
     },
     {
@@ -271,6 +299,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "A conforming consumer MUST produce errors when consuming non-conforming DIDs or DID documents."
     },
     {
@@ -280,6 +309,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The DID document, DID document data structures, and representation-specific entries map MUST be serialized to the JSON representation according to the following production rules:"
     },
     {
@@ -289,6 +319,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "All entries of a DID document MUST be included in the root JSON Object."
     },
     {
@@ -298,6 +329,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "Entries MAY contain additional data substructures subject to the value representation rules in the list above."
     },
     {
@@ -307,6 +339,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "When serializing a DID document, a conforming producer MUST specify a media type of application/did to downstream applications."
     },
     {
@@ -316,6 +349,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The DID document and DID document data structures JSON representation MUST be deserialized into the data model according to the following consumption rules:"
     },
     {
@@ -325,6 +359,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "If media type information is available to a conforming consumer and the media type value is application/did, then the data structure being consumed is a DID document, and the root element MUST be a JSON Object where all members of the object are entries of the DID document."
     },
     {
@@ -334,6 +369,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "A conforming consumer for a JSON representation that is consuming a DID document with a root element that is not a JSON Object MUST report an error."
     },
     {
@@ -343,6 +379,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "For JSON-LD processing to occur, a @context property MUST be specified according to the rules specified in the JSON-LD 1.1 specification."
     },
     {
@@ -352,6 +389,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The DID document, DID document data structures, and representation-specific entries map MUST be serialized to the JSON representation according to the JSON representation production rules as defined in 6.2 JSON."
     },
     {
@@ -361,6 +399,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "In addition to using the JSON representation production rules, production MUST include the @context entry."
     },
     {
@@ -370,6 +409,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The serialized value of @context MUST be the JSON String https://www.w3.org/ns/did/v1.1, or a JSON Array where the first item is the JSON String https://www.w3.org/ns/did/v1.1 and the subsequent items are serialized according to the JSON production rules."
     },
     {
@@ -379,6 +419,7 @@
       "keywords": [
         "SHOULD"
       ],
+      "level": "recommendation",
       "text": "To achieve interoperability across different representations, all JSON-LD Contexts and their terms SHOULD be registered in the repository of Decentralized Identifier Extensions."
     },
     {
@@ -388,6 +429,7 @@
       "keywords": [
         "SHOULD NOT"
       ],
+      "level": "recommendation",
       "text": "A conforming producer that generates a JSON-LD representation SHOULD NOT produce a DID document that contains terms not defined via the @context as conforming consumers are expected to remove unknown terms."
     },
     {
@@ -397,6 +439,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "When serializing a JSON-LD representation of a DID document, a conforming producer MUST specify a media type of application/did to downstream applications."
     },
     {
@@ -406,6 +449,7 @@
       "keywords": [
         "SHOULD"
       ],
+      "level": "recommendation",
       "text": "Conforming consumers that process a JSON-LD representation SHOULD drop all terms from a DID document that are not defined via the @context."
     },
     {
@@ -415,6 +459,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "Implementations MUST treat the base context value, located at https://www.w3.org/ns/did/v1.1, as already retrieved; the following value is the hexadecimal encoded SHA2-256 digest value of the base context file: ea216ecc1cb02cd39b693dba2250141e270ba0bf95890be107dd9a9e8e43de85."
     },
     {
@@ -424,6 +469,7 @@
       "keywords": [
         "SHOULD"
       ],
+      "level": "recommendation",
       "text": "Syntaxes used to express the data model in this specification SHOULD be identified by a media type, and conventions outlined in this section SHOULD be followed when defining or using media types with DID documents."
     },
     {
@@ -433,6 +479,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "A DID method specification MUST define exactly one method-specific DID scheme that is identified by exactly one method name as specified by the method-name rule in 3.1 DID Syntax."
     },
     {
@@ -442,6 +489,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The DID method specification MUST specify how to generate the method-specific-id component of a DID."
     },
     {
@@ -451,6 +499,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The DID method specification MUST define sensitivity and normalization of the value of the method-specific-id."
     },
     {
@@ -460,6 +509,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The method-specific-id value MUST be unique within a DID method."
     },
     {
@@ -469,6 +519,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "Any DID generated by a DID method MUST be globally unique."
     },
     {
@@ -478,6 +529,7 @@
       "keywords": [
         "SHOULD"
       ],
+      "level": "recommendation",
       "text": "To reduce the chances of method-name conflicts, a DID method specification SHOULD be registered in the repository of DID Extensions [DID-EXTENSIONS]."
     },
     {
@@ -487,6 +539,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "A DID method MAY define multiple method-specific-id formats."
     },
     {
@@ -496,6 +549,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "The method-specific-id format MAY include colons."
     },
     {
@@ -505,6 +559,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The use of colons MUST comply syntactically with the method-specific-id ABNF rule."
     },
     {
@@ -514,6 +569,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "A DID method specification MAY specify ABNF rules for DID paths that are more restrictive than the generic rules in Path."
     },
     {
@@ -523,6 +579,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "A DID method specification MAY specify ABNF rules for DID queries that are more restrictive than the generic rules in this section."
     },
     {
@@ -532,6 +589,7 @@
       "keywords": [
         "MAY"
       ],
+      "level": "requirement",
       "text": "A DID method specification MAY specify ABNF rules for DID fragments that are more restrictive than the generic rules in this section."
     },
     {
@@ -541,6 +599,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "A DID method specification MUST define how authorization is performed to execute all operations, including any necessary cryptographic processes."
     },
     {
@@ -550,6 +609,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "A DID method specification MUST specify how a DID controller creates a DID and its associated DID document."
     },
     {
@@ -559,6 +619,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "A DID method specification MUST specify how a DID resolver uses a DID to resolve a DID document, including how the DID resolver can verify the authenticity of the response."
     },
     {
@@ -568,6 +629,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "A DID method specification MUST specify what constitutes an update to a DID document and how a DID controller can update a DID document or state that updates are not possible."
     },
     {
@@ -577,6 +639,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The DID method specification MUST specify how a DID controller can deactivate a DID or state that deactivation is not possible."
     },
     {
@@ -586,6 +649,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "A DID method specifications MUST follow all guidelines and normative language provided in RFC3552: Writing Security Considerations Sections for the DID operations defined in the DID method specification."
     },
     {
@@ -595,6 +659,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The Security Considerations section MUST document the following forms of attack for the DID operations defined in the DID method specification: eavesdropping, replay, message insertion, deletion, modification, denial of service, amplification, and man-in-the-middle."
     },
     {
@@ -604,6 +669,7 @@
       "keywords": [
         "SHOULD"
       ],
+      "level": "recommendation",
       "text": "Other known forms of attack SHOULD also be documented."
     },
     {
@@ -613,6 +679,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The Security Considerations section MUST discuss residual risks, such as the risks from compromise in a related protocol, incorrect implementation, or cipher after threat mitigation was deployed."
     },
     {
@@ -622,6 +689,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The Security Considerations section MUST provide integrity protection and update authentication for all operations required by Section 7.2 Method Operations."
     },
     {
@@ -631,6 +699,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "If authentication is involved, particularly user-host authentication, the security characteristics of the authentication method MUST be clearly documented."
     },
     {
@@ -640,6 +709,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The Security Considerations section MUST discuss the policy mechanism by which DIDs are proven to be uniquely assigned."
     },
     {
@@ -649,6 +719,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "Method-specific endpoint authentication MUST be discussed."
     },
     {
@@ -658,6 +729,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "Where DID methods make use of DLTs with varying network topology, sometimes offered as light node or thin client implementations to reduce required computing resources, the security assumptions of the topology available to implementations of the DID method MUST be discussed."
     },
     {
@@ -668,6 +740,7 @@
         "MUST",
         "SHOULD"
       ],
+      "level": "requirement",
       "text": "If a protocol incorporates cryptographic protection mechanisms, the DID method specification MUST clearly indicate which portions of the data are protected and by what protections, and it SHOULD give an indication of the sorts of attacks to which the cryptographic protection is susceptible."
     },
     {
@@ -677,6 +750,7 @@
       "keywords": [
         "SHOULD"
       ],
+      "level": "recommendation",
       "text": "Data which is to be held secret (keying material, random seeds, and so on) SHOULD be clearly labeled."
     },
     {
@@ -686,6 +760,7 @@
       "keywords": [
         "SHOULD"
       ],
+      "level": "recommendation",
       "text": "DID method specifications SHOULD explain and specify the implementation of signatures on DID documents, if applicable."
     },
     {
@@ -695,6 +770,7 @@
       "keywords": [
         "SHOULD"
       ],
+      "level": "recommendation",
       "text": "Where DID methods use peer-to-peer computing resources, such as with all known DLTs, the expected burdens of those resources SHOULD be discussed in relation to denial of service."
     },
     {
@@ -704,6 +780,7 @@
       "keywords": [
         "SHOULD"
       ],
+      "level": "recommendation",
       "text": "DID methods that introduce new authentication service types, as described in 5.4 Services, SHOULD consider the security requirements of the supported authentication protocol."
     },
     {
@@ -713,6 +790,7 @@
       "keywords": [
         "MUST"
       ],
+      "level": "requirement",
       "text": "The DID method specification's Privacy Considerations section MUST discuss any subsection of Section 5 of [RFC6973] that could apply in a method-specific manner."
     }
   ]

@@ -7,6 +7,7 @@ import (
 	"github.com/sage-x-project/did-inspector/checks"
 	"github.com/sage-x-project/did-inspector/core"
 	"github.com/sage-x-project/did-inspector/fixtures"
+	"github.com/sage-x-project/did-inspector/profiles/internal/kit"
 )
 
 // mock is a test subject that behaves as DID Core 1.0 requires on the
@@ -127,6 +128,7 @@ func (m *mock) Consume(data []byte, mediaType, requireVersion string, _ bool) (c
 		case mem.Name == "@context" && !m.on("consumer-no-representation-entries"):
 			info.RepresentationEntries.Members = append(info.RepresentationEntries.Members, mem)
 		case m.on("consumer-drops-entries") && (strings.HasPrefix(mem.Name, "ext") || mem.Name == "authentication"):
+		case mem.Name == kit.UndefinedTerm && mt == MediaTypeJSONLD && !m.on("consumer-keeps-undefined"):
 		default:
 			model.Members = append(model.Members, mem)
 		}
@@ -148,6 +150,7 @@ func (m *mock) Produce(doc core.DocumentJSON, _ string) ([]byte, string, error) 
 		switch {
 		case m.on("producer-drops-entries") && (strings.HasPrefix(mem.Name, "ext") || mem.Name == "authentication"):
 		case m.on("producer-drops-context") && mem.Name == "@context":
+		case mem.Name == kit.UndefinedTerm && hasCtx && !m.on("producer-keeps-undefined"):
 		case m.on("producer-reorders-context") && mem.Name == "@context" && mem.Value.Kind == core.KindArray:
 			items := append([]core.Value{}, mem.Value.Array...)
 			items[0], items[len(items)-1] = items[len(items)-1], items[0]
