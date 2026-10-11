@@ -1,0 +1,2099 @@
+{
+  "key": "res10-crd20261001",
+  "title": "DID Resolution v1.0, W3C Candidate Recommendation Draft 1 October 2026",
+  "url": "https://www.w3.org/TR/2026/CRD-did-resolution-1.0-20261001/",
+  "source": "sources/did-resolution-1.0-crd-20261001.html",
+  "sha256": "2b194843d37f5b7f01a4f5464f64d672dc4be43dafe5f2f49114c6070819586e",
+  "extractor": "did-inspector-extract/1",
+  "statements": [
+    {
+      "id": "res10-crd20261001#conformance.1",
+      "section": "conformance",
+      "kind": "requirement",
+      "keywords": [
+        "MAY",
+        "MUST",
+        "MUST NOT",
+        "NOT REQUIRED",
+        "OPTIONAL",
+        "RECOMMENDED",
+        "REQUIRED",
+        "SHOULD"
+      ],
+      "text": "The key words MAY, MUST, MUST NOT, NOT REQUIRED, OPTIONAL, RECOMMENDED, REQUIRED, and SHOULD in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here."
+    },
+    {
+      "id": "res10-crd20261001#did-parameters.1",
+      "section": "did-parameters",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "For each DID parameter that is present, its associated value MUST be a scalar value string serialized into ASCII according to section 3.1 of RFC3987."
+    },
+    {
+      "id": "res10-crd20261001#did-parameters.2",
+      "section": "did-parameters",
+      "kind": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text": "Support for all DID Parameters is OPTIONAL."
+    },
+    {
+      "id": "res10-crd20261001#did-parameters.3",
+      "section": "did-parameters",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the associated value MUST be represented in the datetime format as defined in 3.1 Datetime.",
+      "term": "versionTime"
+    },
+    {
+      "id": "res10-crd20261001#did-parameters.4",
+      "section": "did-parameters",
+      "kind": "requirement",
+      "keywords": [
+        "RECOMMENDED"
+      ],
+      "text": "For maximum interoperability, it is RECOMMENDED that DID parameters use the DID Document Properties Extensions mechanism [DID-EXTENSIONS-PROPERTIES], to avoid collision with other uses of the same DID parameter with different semantics."
+    },
+    {
+      "id": "res10-crd20261001#datetime.1",
+      "section": "datetime",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "All datetime values in this specification MUST be an ASCII string which is a valid XML datetime value defined by the [VC-DATA-MODEL] in Verifiable Credentials Data Model v2.0."
+    },
+    {
+      "id": "res10-crd20261001#datetime.2",
+      "section": "datetime",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Additionally, timestamps used in DID Resolution MUST be adjusted to UTC without sub-second decimal precision."
+    },
+    {
+      "id": "res10-crd20261001#resolving.1",
+      "section": "resolving",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "All conforming DID resolvers MUST implement the DID resolution function for at least one DID method and MUST be able to return a DID document."
+    },
+    {
+      "id": "res10-crd20261001#resolving.2",
+      "section": "resolving",
+      "kind": "requirement",
+      "keywords": [
+        "REQUIRED",
+        "MUST"
+      ],
+      "text": "This input is REQUIRED and the value MUST be a conformant DID as defined in Decentralized Identifiers (DIDs) v1.0.",
+      "term": "did"
+    },
+    {
+      "id": "res10-crd20261001#resolving.3",
+      "section": "resolving",
+      "kind": "requirement",
+      "keywords": [
+        "REQUIRED",
+        "MAY"
+      ],
+      "text": "This input is REQUIRED, but the structure MAY be empty.",
+      "term": "resolutionOptions"
+    },
+    {
+      "id": "res10-crd20261001#resolving.4",
+      "section": "resolving",
+      "kind": "requirement",
+      "keywords": [
+        "REQUIRED",
+        "MUST NOT"
+      ],
+      "text": "This structure is REQUIRED, and in the case of an error in the resolution process, this MUST NOT be empty.",
+      "term": "didResolutionMetadata"
+    },
+    {
+      "id": "res10-crd20261001#resolving.5",
+      "section": "resolving",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the resolution is unsuccessful, this structure MUST contain an error property describing the error.",
+      "term": "didResolutionMetadata"
+    },
+    {
+      "id": "res10-crd20261001#resolving.6",
+      "section": "resolving",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the resolution is successful, this MUST be a DID document that is capable of being represented in one of the conformant representations of the Decentralized Identifiers (DIDs) v1.0 specification.",
+      "term": "didDocument"
+    },
+    {
+      "id": "res10-crd20261001#resolving.7",
+      "section": "resolving",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value of id in the resolved DID document MUST be string equal to the DID that was resolved.",
+      "term": "didDocument"
+    },
+    {
+      "id": "res10-crd20261001#resolving.8",
+      "section": "resolving",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the resolution is unsuccessful, this value MUST be empty.",
+      "term": "didDocument"
+    },
+    {
+      "id": "res10-crd20261001#resolving.9",
+      "section": "resolving",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the resolution is successful, this MUST be a metadata structure.",
+      "term": "didDocumentMetadata"
+    },
+    {
+      "id": "res10-crd20261001#resolving.10",
+      "section": "resolving",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the resolution is unsuccessful, this output MUST be an empty metadata structure.",
+      "term": "didDocumentMetadata"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-options.1",
+      "section": "did-resolution-options",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "The possible properties within this structure and their possible values SHOULD be registered in the DID Resolution Extensions [DID-EXTENSIONS-RESOLUTION]."
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-options.2",
+      "section": "did-resolution-options",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value MUST be expressed according to the Accept header value as defined in HTTP Semantics, Section 12.5.1.",
+      "term": "accept"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-options.3",
+      "section": "did-resolution-options",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "The DID resolver implementation SHOULD use this value to determine the representation of the returned didDocument if such a representation is supported and available.",
+      "term": "accept"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-options.4",
+      "section": "did-resolution-options",
+      "kind": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text": "This property is OPTIONAL.",
+      "term": "accept"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.1",
+      "section": "did-resolution-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "The possible properties within this structure and their possible values SHOULD be registered in the DID Resolution Extensions [DID-EXTENSIONS-RESOLUTION]."
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.2",
+      "section": "did-resolution-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text": "This property is OPTIONAL.",
+      "term": "contentType"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.3",
+      "section": "did-resolution-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the value of this property MUST be an ASCII string that is the Media Type of the conformant representations.",
+      "term": "contentType"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.4",
+      "section": "did-resolution-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "In this case, the caller of the resolve function MUST use this value when determining how to parse and process the didDocument.",
+      "term": "contentType"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.5",
+      "section": "did-resolution-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "Additional errors SHOULD be registered in the DID Resolution Extensions [DID-EXTENSIONS-RESOLUTION].",
+      "term": "error"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.6",
+      "section": "did-resolution-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "DID resolution metadata MAY include a proof property.",
+      "term": "proof"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.7",
+      "section": "did-resolution-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the value MUST be a set where each item is a map that represents a proof.",
+      "term": "proof"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.1",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "The possible properties within this structure and their possible values SHOULD be registered in the DID Document Properties Extensions [DID-EXTENSIONS-PROPERTIES]."
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.2",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "DID document metadata SHOULD include a created property to indicate the timestamp of the Create operation.",
+      "term": "created"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.3",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value of the property MUST be represented in the datetime format as defined in 3.1 Datetime.",
+      "term": "created"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.4",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "DID document metadata SHOULD include an updated property to indicate the timestamp of the last Update operation for the document version which was resolved.",
+      "term": "updated"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.5",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value of the property MUST be represented in the datetime format as defined in 3.1 Datetime.",
+      "term": "updated"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.6",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If a DID has been deactivated, DID document metadata MUST include this property with the boolean value true.",
+      "term": "deactivated"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.7",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "OPTIONAL",
+        "MUST"
+      ],
+      "text": "If a DID has not been deactivated, this property is OPTIONAL, but if included, MUST have the boolean value false.",
+      "term": "deactivated"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.8",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "DID document metadata MAY include a nextUpdate property if the resolved document version is not the latest version of the document.",
+      "term": "nextUpdate"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.9",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value of the property MUST be represented in the datetime format as defined in 3.1 Datetime.",
+      "term": "nextUpdate"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.10",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "DID document metadata SHOULD include a versionId property to indicate the version of the last Update operation for the document version which was resolved.",
+      "term": "versionId"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.11",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value of the property MUST be an ASCII string.",
+      "term": "versionId"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.12",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "DID document metadata MAY include a nextVersionId property if the resolved document version is not the latest version of the document.",
+      "term": "nextVersionId"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.13",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value of the property MUST be an ASCII string.",
+      "term": "nextVersionId"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.14",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "DID document metadata MAY include an equivalentId property.",
+      "term": "equivalentId"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.15",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the value MUST be a set where each item is a string that conforms to the rules in Section Decentralized Identifiers (DIDs) v1.0.",
+      "term": "equivalentId"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.16",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Each equivalentId DID value MUST be produced by, and a form of, the same DID method as the id property value.",
+      "term": "equivalentId"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.17",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A conforming DID method specification MUST guarantee that each equivalentId value is logically equivalent to the id property value.",
+      "term": "equivalentId"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.18",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "equivalentId is a much stronger form of equivalence than alsoKnownAs because the equivalence MUST be guaranteed by the governing DID method.",
+      "term": "equivalentId",
+      "informative": true,
+      "informative_reason": "class note"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.19",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "DID document metadata MAY include a canonicalId property.",
+      "term": "canonicalId"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.20",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the value MUST be a string that conforms to the rules in Section Decentralized Identifiers (DIDs) v1.0.",
+      "term": "canonicalId"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.21",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A canonicalId value MUST be produced by, and a form of, the same DID method as the id property value.",
+      "term": "canonicalId"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.22",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A conforming DID method specification MUST guarantee that the canonicalId value is logically equivalent to the id property value.",
+      "term": "canonicalId"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.23",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "DID document metadata MAY include a proof property.",
+      "term": "proof"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.24",
+      "section": "did-document-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the value MUST be a set where each item is a map that represents a proof.",
+      "term": "proof"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.1",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Validate that the input DID conforms to the did rule of the DID Syntax. If not, the DID resolver MUST return the following result:"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.2",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didResolutionMetadata: error object with type set to https://www.w3.org/ns/did#INVALID_DID",
+      "parent": "res10-crd20261001#resolving-algorithm.1"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.3",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didDocument: null",
+      "parent": "res10-crd20261001#resolving-algorithm.1"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.4",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didDocumentMetadata: «[ ]»",
+      "parent": "res10-crd20261001#resolving-algorithm.1"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.5",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Determine whether the DID method of the input DID is supported by the DID resolver that implements this algorithm. If not, the DID resolver MUST return the following result:"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.6",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didResolutionMetadata: error object with type set to https://www.w3.org/ns/did#METHOD_NOT_SUPPORTED",
+      "parent": "res10-crd20261001#resolving-algorithm.5"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.7",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didDocument: null",
+      "parent": "res10-crd20261001#resolving-algorithm.5"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.8",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didDocumentMetadata: «[ ]»",
+      "parent": "res10-crd20261001#resolving-algorithm.5"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.9",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Determine whether the input DID resolution options are supported by the DID resolver that implements this algorithm. If not, the DID resolver MUST return the following result:"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.10",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didResolutionMetadata: error object with type set to https://www.w3.org/ns/did#FEATURE_NOT_SUPPORTED",
+      "parent": "res10-crd20261001#resolving-algorithm.9"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.11",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didDocument: null",
+      "parent": "res10-crd20261001#resolving-algorithm.9"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.12",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didDocumentMetadata: «[ ]»",
+      "parent": "res10-crd20261001#resolving-algorithm.9"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.13",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Determine whether the input DID resolution options are valid. If not, the DID resolver MUST return the following result:"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.14",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didResolutionMetadata: error object with type set to https://www.w3.org/ns/did#INVALID_OPTIONS",
+      "parent": "res10-crd20261001#resolving-algorithm.13"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.15",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didDocument: null",
+      "parent": "res10-crd20261001#resolving-algorithm.13"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.16",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didDocumentMetadata: «[ ]»",
+      "parent": "res10-crd20261001#resolving-algorithm.13"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.17",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "Obtain the DID document for the input DID by executing the Resolve operation, as defined by the input DID method:"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.18",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "If the input DID does not exist, return the following result:",
+      "parent": "res10-crd20261001#resolving-algorithm.17"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.19",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didResolutionMetadata: error object with type set to https://www.w3.org/ns/did#NOT_FOUND",
+      "parent": "res10-crd20261001#resolving-algorithm.18"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.20",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didDocument: null",
+      "parent": "res10-crd20261001#resolving-algorithm.18"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.21",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didDocumentMetadata: «[ ]»",
+      "parent": "res10-crd20261001#resolving-algorithm.18"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.22",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "If the input DID has been deactivated, return the following result:",
+      "parent": "res10-crd20261001#resolving-algorithm.17"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.23",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didResolutionMetadata: «[ ... ]»",
+      "parent": "res10-crd20261001#resolving-algorithm.22"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.24",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didDocument: null",
+      "parent": "res10-crd20261001#resolving-algorithm.22"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.25",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didDocumentMetadata: «[ \"deactivated\" → true, ... ]»",
+      "parent": "res10-crd20261001#resolving-algorithm.22"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.26",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Otherwise, the result of the Resolve operation is called the output DID document. This result MUST be represented in a conformant representation.",
+      "parent": "res10-crd20261001#resolving-algorithm.17"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.27",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "If the input DID resolution options contain the expandRelativeUrls option with a value of true:"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.28",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "Iterate over all services, verification methods, verification relationships and any extension-defined properties in the output DID document.",
+      "parent": "res10-crd20261001#resolving-algorithm.27"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.29",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "For each item, if the item is an object and the value of the id property is a relative DID URL, or if a verification relationship is a relative DID URL:",
+      "parent": "res10-crd20261001#resolving-algorithm.27"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.30",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "Resolve the relative DID URL to an absolute DID URL conformant with DID URL Syntax, according to the rules of section Relative DID URLs in Decentralized Identifiers (DIDs) v1.0.",
+      "parent": "res10-crd20261001#resolving-algorithm.29"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.31",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "Update the output DID document by replacing the relative DID URLs with the resolved absolute DID URLs.",
+      "parent": "res10-crd20261001#resolving-algorithm.27"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.32",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "Return the following result:"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.33",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didResolutionMetadata: «[ ... ]»",
+      "parent": "res10-crd20261001#resolving-algorithm.32"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.34",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didDocument: output DID document",
+      "parent": "res10-crd20261001#resolving-algorithm.32"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.35",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didDocumentMetadata: «[ \"contentType\" → output DID document media type, ... ]»",
+      "parent": "res10-crd20261001#resolving-algorithm.32"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.36",
+      "section": "resolving-algorithm",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the DID resolver encounters any unexpected errors during the execution of the DID Resolution algorithm, it MUST return the following result:"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.37",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didResolutionMetadata: error object with type set to https://www.w3.org/ns/did#INTERNAL_ERROR"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.38",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didDocument: null"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.39",
+      "section": "resolving-algorithm",
+      "kind": "step",
+      "text": "didDocumentMetadata: «[ ]»"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.1",
+      "section": "dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "All conforming DID URL dereferencers MUST implement the DID URL dereferencing function for at least one DID method."
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.2",
+      "section": "dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "All inputs and outputs of the dereference function apart from contentStream MUST be serializable to JSON."
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.3",
+      "section": "dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "To dereference a DID fragment, the complete DID URL including the DID fragment MUST be used.",
+      "term": "didUrl"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.4",
+      "section": "dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "REQUIRED"
+      ],
+      "text": "This input is REQUIRED.",
+      "term": "didUrl"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.5",
+      "section": "dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "REQUIRED",
+        "MAY"
+      ],
+      "text": "This input is REQUIRED, but the structure MAY be empty.",
+      "term": "dereferencingOptions"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.6",
+      "section": "dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "REQUIRED",
+        "MUST NOT"
+      ],
+      "text": "This structure is REQUIRED, and in the case of an error in the dereferencing process, this MUST NOT be empty.",
+      "term": "dereferencingMetadata"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.7",
+      "section": "dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the dereferencing is unsuccessful, this structure MUST contain an error property describing the error.",
+      "term": "dereferencingMetadata"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.8",
+      "section": "dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the dereferencing function was called and successful, this MUST contain a resource corresponding to the DID URL.",
+      "term": "contentStream"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.9",
+      "section": "dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "The contentStream MAY be a resource such as a DID document that is serializable in one of the conformant representations, a verification method, a service, or any other resource format that can be identified via a Media Type and obtained through the resolution process.",
+      "term": "contentStream"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.10",
+      "section": "dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the dereferencing is unsuccessful, this value MUST be empty.",
+      "term": "contentStream"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.11",
+      "section": "dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "MUST",
+        "MAY"
+      ],
+      "text": "If the dereferencing is successful, this MUST be a metadata structure, but the structure MAY be empty.",
+      "term": "contentMetadata"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.12",
+      "section": "dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the contentStream is a DID document, this MUST be a didDocumentMetadata structure as described in DID Resolution.",
+      "term": "contentMetadata"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.13",
+      "section": "dereferencing",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the dereferencing is unsuccessful, this output MUST be an empty metadata structure.",
+      "term": "contentMetadata"
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-options.1",
+      "section": "did-url-dereferencing-options",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "The possible properties within this structure and their possible values SHOULD be registered in the DID Resolution Extensions [DID-EXTENSIONS-RESOLUTION]."
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-options.2",
+      "section": "did-url-dereferencing-options",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The value MUST be expressed according to the Accept header value as defined in HTTP Semantics, Section 12.5.1.",
+      "term": "accept"
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-options.3",
+      "section": "did-url-dereferencing-options",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "The DID URL dereferencer implementation SHOULD use this value to determine the contentType of the representation contained in the returned value if such a representation is supported and available.",
+      "term": "accept"
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-options.4",
+      "section": "did-url-dereferencing-options",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the associated value MUST be an ASCII string.",
+      "term": "verificationRelationship"
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-options.5",
+      "section": "did-url-dereferencing-options",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the DID URL does not dereference to a verificationMethod, or the DID document does not authorize the verificationMethod for the specified verificationRelationship, then an error MUST be raised.",
+      "term": "verificationRelationship"
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-metadata.1",
+      "section": "did-url-dereferencing-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "The possible properties within this structure and their possible values SHOULD be registered in the DID Resolution Extensions [DID-EXTENSIONS-RESOLUTION]."
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-metadata.2",
+      "section": "did-url-dereferencing-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "The Media Type of the returned contentStream SHOULD be expressed using this property if dereferencing is successful.",
+      "term": "contentType"
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-metadata.3",
+      "section": "did-url-dereferencing-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The Media Type value MUST be expressed as an ASCII string.",
+      "term": "contentType"
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-metadata.4",
+      "section": "did-url-dereferencing-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "REQUIRED"
+      ],
+      "text": "This property is REQUIRED when there is an error in the dereferencing process.",
+      "term": "error"
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-metadata.5",
+      "section": "did-url-dereferencing-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "Additional errors SHOULD be registered in the DID Resolution Extensions [DID-EXTENSIONS-RESOLUTION].",
+      "term": "error"
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-metadata.6",
+      "section": "did-url-dereferencing-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "DID URL dereferencing metadata MAY include a proof property.",
+      "term": "proof"
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-metadata.7",
+      "section": "did-url-dereferencing-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If present, the value MUST be a set where each item is a map that represents a proof.",
+      "term": "proof"
+    },
+    {
+      "id": "res10-crd20261001#did-url-content-metadata.1",
+      "section": "did-url-content-metadata",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "The possible properties within this structure and their possible values SHOULD be registered in the DID Resolution Extensions [DID-EXTENSIONS-RESOLUTION]."
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.1",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Validate that the input DID URL conforms to the did-url rule of the DID URL Syntax. If not, the DID URL dereferencer MUST return the following result:"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.2",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "dereferencingMetadata: error object with type set to https://www.w3.org/ns/did#INVALID_DID_URL",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.1"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.3",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "contentStream: null",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.1"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.4",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "contentMetadata: «[ ]»",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.1"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.5",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Obtain the DID document for the input DID by executing the DID resolution algorithm as defined in 4. DID Resolution. All dereferencing options and all DID parameters of the input DID URL MUST be passed as resolution options to the DID Resolution algorithm."
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.6",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the input DID does not exist in the VDR, the DID URL dereferencer MUST return the following result:"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.7",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "dereferencingMetadata: error object with type set to https://www.w3.org/ns/did#NOT_FOUND",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.6"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.8",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "contentStream: null",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.6"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.9",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "contentMetadata: «[ ]»",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.6"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.10",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "Otherwise, the didDocument result of the DID resolution algorithm is called the resolved DID document."
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.11",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "If present, separate the DID fragment from the input DID URL and continue with the adjusted input DID URL."
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.12",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the input DID URL contains no DID path and no DID query: The DID URL dereferencer MUST return the resolved DID document and resolved 4.3 DID Document Metadata as follows:"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.13",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "dereferencingMetadata: «[ ... ]»",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.12"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.14",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "contentStream: resolved DID document",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.12"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.15",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "contentMetadata: «[ resolved DID document metadata ]»",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.12"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.16",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "If the input DID URL contains the DID parameter service and/or the DID parameter serviceType, and optionally the DID parameter relativeRef:"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.17",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "From the resolved DID document, select all services which fulfill the following conditions: The selected services are a list called the selected services.",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.16"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.18",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the input DID URL contains the DID parameter service: Select the service if its id property matches the value of the service DID parameter. If the id property or the service DID parameter or both contain relative references, the corresponding absolute URIs MUST be resolved and used for determining the match, using the rules specified in RFC3986 Section 5: Reference Resolution and in section Relative DID URLs in Decentralized Identifiers (DIDs) v1.0.",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.17"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.19",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "If the input DID URL contains the DID parameter serviceType: Select the service if its type property matches the value of the serviceType DID parameter.",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.17"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.20",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "If the input DID URL contains the DID parameter relativeRef:",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.16"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.21",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "For each selected service:",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.20"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.22",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "If the value of the serviceEndpoint property of the selected service is a map, skip this selected service.",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.21"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.23",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "If the value of the serviceEndpoint property of the selected service is a string, add this value to a list of selected DID service endpoint URLs.",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.21"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.24",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "If the value of the serviceEndpoint property of the selected service is a set, add all its items that are strings to a list of selected DID service endpoint URLs.",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.21"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.25",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "For each selected DID service endpoint URL, execute the algorithm specified in RFC3986 Section 5: Reference Resolution as follows:",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.20"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.26",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "The base URI value is the selected DID service endpoint URL.",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.25"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.27",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "The relative reference is the value of the DID parameter relativeRef.",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.25"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.28",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "Update the selected DID service endpoint URL to the result of the \"Reference Resolution\" algorithm.",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.25"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.29",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "If the accept input DID URL dereferencing option is missing, or if its value is the Media Type of a representation of a DID document:",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.16"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.30",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "Update the services in the resolved DID document to contain only the selected services.",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.29"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.31",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "Return the following result:",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.29"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.32",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "dereferencingMetadata: «[ ... ]»",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.31"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.33",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "content: resolved DID document with selected services",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.31"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.34",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "contentMetadata: «[ resolved DID document metadata ]»",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.31"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.35",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "If the value of the accept input DID URL deferencing option is text/uri-list:",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.16"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.36",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "Return the following result:",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.35"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.37",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "dereferencingMetadata: «[ ... ]»",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.36"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.38",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "content: « selected service endpoint URLs »",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.36"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.39",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "contentMetadata: «[ \"contentType\" → \"text/uri-list\", ... ]»",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.36"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.40",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "Otherwise, return the following result:",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.16"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.41",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "dereferencingMetadata: error object with type set to https://www.w3.org/ns/did#REPRESENTATION_NOT_SUPPORTED",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.40"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.42",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "content: null",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.40"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.43",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "contentMetadata: «[ ]»",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.40"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.44",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "Otherwise, if the input DID URL contains a DID path and/or DID query:"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.45",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "The applicable DID method MAY specify how to dereference the DID path and/or DID query of the input DID URL.",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.44"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.46",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "An extension specification MAY specify how to dereference the DID path of the input DID URL.",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.44"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.47",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "An extension specification MAY specify how to dereference the DID query of the input DID URL.",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.44"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.48",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "The client MAY be able to dereference the input DID URL in an application-specific way.",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.44"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.49",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "If neither this algorithm, nor the applicable DID method, nor an extension, nor the client is able to dereference the input DID URL, return the following result:"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.50",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "dereferencingMetadata: error object with type set to https://www.w3.org/ns/did#NOT_FOUND",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.49"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.51",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "contentStream: null",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.49"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.52",
+      "section": "dereferencing-algorithm-resource",
+      "kind": "step",
+      "text": "contentMetadata: «[ ]»",
+      "parent": "res10-crd20261001#dereferencing-algorithm-resource.49"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.1",
+      "section": "dereferencing-algorithm-fragment",
+      "kind": "step",
+      "text": "If the result of 5.4.1 Dereferencing the Resource is an output DID document, and the input DID URL dereferencing options contain the verificationRelationship option:"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.2",
+      "section": "dereferencing-algorithm-fragment",
+      "kind": "step",
+      "text": "Let verificationRelationship be the value of the verificationRelationship option.",
+      "parent": "res10-crd20261001#dereferencing-algorithm-fragment.1"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.3",
+      "section": "dereferencing-algorithm-fragment",
+      "kind": "step",
+      "text": "Let verificationMethod be the result of dereferencing the DID fragment from the output DID document according to the rules of the media type of the DID document.",
+      "parent": "res10-crd20261001#dereferencing-algorithm-fragment.1"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.4",
+      "section": "dereferencing-algorithm-fragment",
+      "kind": "step",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text": "If verificationMethod is not a conforming verification method, an error MUST be raised and SHOULD convey an error type of INVALID_VERIFICATION_METHOD.",
+      "parent": "res10-crd20261001#dereferencing-algorithm-fragment.1"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.5",
+      "section": "dereferencing-algorithm-fragment",
+      "kind": "step",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text": "If verificationMethod is not associated, either by reference (URL) or by value (object), with the verification relationship array in the output DID document identified by verificationRelationship, an error MUST be raised and SHOULD convey an error type of INVALID_RELATIONSHIP_FOR_VERIFICATION_METHOD.",
+      "parent": "res10-crd20261001#dereferencing-algorithm-fragment.1"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.6",
+      "section": "dereferencing-algorithm-fragment",
+      "kind": "step",
+      "text": "Return the verificationMethod.",
+      "parent": "res10-crd20261001#dereferencing-algorithm-fragment.1"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.7",
+      "section": "dereferencing-algorithm-fragment",
+      "kind": "step",
+      "text": "If the result of 5.4.1 Dereferencing the Resource is a selected DID service endpoint URL, and the input DID URL contains a DID fragment:"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.8",
+      "section": "dereferencing-algorithm-fragment",
+      "kind": "step",
+      "text": "If the selected DID service endpoint URL contains a fragment component, raise an error.",
+      "parent": "res10-crd20261001#dereferencing-algorithm-fragment.7"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.9",
+      "section": "dereferencing-algorithm-fragment",
+      "kind": "step",
+      "text": "Append the DID fragment to the select DID service endpoint URL. In other words, the select DID service endpoint URL \"inherits\" the DID fragment of the input DID URL.",
+      "parent": "res10-crd20261001#dereferencing-algorithm-fragment.7"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.10",
+      "section": "dereferencing-algorithm-fragment",
+      "kind": "step",
+      "text": "Return the select DID service endpoint URL.",
+      "parent": "res10-crd20261001#dereferencing-algorithm-fragment.7"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.11",
+      "section": "dereferencing-algorithm-fragment",
+      "kind": "step",
+      "text": "Otherwise, dereference the DID fragment as defined by the media type ([RFC2046]) of the resource. For example, if the resource is a representation of a DID document with media type application/did, then the fragment is treated according to the rules associated with the JSON-LD 1.1: application/ld+json media type [JSON-LD11]."
+    },
+    {
+      "id": "res10-crd20261001#metadata-structure.1",
+      "section": "metadata-structure",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The structure used to communicate this metadata MUST be a map of properties."
+    },
+    {
+      "id": "res10-crd20261001#metadata-structure.2",
+      "section": "metadata-structure",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Each property name MUST be a string."
+    },
+    {
+      "id": "res10-crd20261001#metadata-structure.3",
+      "section": "metadata-structure",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Each property value, and each value within any complex data structure such as a map or list, MUST be a string, number, map, list, set, boolean, or null."
+    },
+    {
+      "id": "res10-crd20261001#metadata-structure.4",
+      "section": "metadata-structure",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The entire metadata structure MUST be serializable according to the JSON serialization rules in the [INFRA] specification."
+    },
+    {
+      "id": "res10-crd20261001#metadata-structure.5",
+      "section": "metadata-structure",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "Implementations MAY serialize the metadata structure to other data formats."
+    },
+    {
+      "id": "res10-crd20261001#method-architectures.1",
+      "section": "method-architectures",
+      "kind": "requirement",
+      "keywords": [
+        "MAY",
+        "SHOULD"
+      ],
+      "text": "DID methods MAY allow multiple ways of implementing their \"Resolve\" operation, and SHOULD offer guidance regarding at least one way to implement a verifiable resolution.",
+      "informative": true,
+      "informative_reason": "class note"
+    },
+    {
+      "id": "res10-crd20261001#method-architectures.2",
+      "section": "method-architectures",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If a DID method uses such proofs, it MUST specify in its DID method specification how they are used for verification of the correctness of the result of a \"Resolve\" operation."
+    },
+    {
+      "id": "res10-crd20261001#method-architectures.3",
+      "section": "method-architectures",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "A DID method MAY also include such proofs in the DID document itself, or in a proof property of the DID document metadata."
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures.1",
+      "section": "resolver-architectures",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "The remote binding SHOULD use a trusted instance of a DID resolver, ideally under the control of the client itself (e.g., self-hosted)."
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures.2",
+      "section": "resolver-architectures",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "The remote binding SHOULD use a secure channel such as VPN and/or TLS with mutual authentication."
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures.3",
+      "section": "resolver-architectures",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "A DID resolver MAY also include proofs in a proof property of the DID resolution metadata."
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures-proxied.1",
+      "section": "resolver-architectures-proxied",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "A DID resolver MAY invoke another DID resolver, which serves as a proxy that executes the DID resolution algorithm as defined in 4."
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures-proxied.2",
+      "section": "resolver-architectures-proxied",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "When using proxied resolution, a \"downstream\" resolver SHOULD preserve all DID resolution metadata and DID document metadata from an \"upstream\" resolver in a transparent manner, including any proofs that may be present."
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures-proxied.3",
+      "section": "resolver-architectures-proxied",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "In this process, the \"downstream\" resolver MAY add its own DID resolution metadata, including any metadata about the proxied resolution process itself."
+    },
+    {
+      "id": "res10-crd20261001#errors.1",
+      "section": "errors",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "Implementers SHOULD use [RFC9457] to encode the error data structure."
+    },
+    {
+      "id": "res10-crd20261001#errors.2",
+      "section": "errors",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The type value of the error object MUST be a URL."
+    },
+    {
+      "id": "res10-crd20261001#errors.3",
+      "section": "errors",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Where the values listed in the section below do not define a URL, the values MUST be prepended with the URL https://www.w3.org/ns/did#."
+    },
+    {
+      "id": "res10-crd20261001#errors.4",
+      "section": "errors",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "The title value SHOULD provide a short but specific human-readable string for the error."
+    },
+    {
+      "id": "res10-crd20261001#errors.5",
+      "section": "errors",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "The detail value SHOULD provide a longer human-readable string for the error."
+    },
+    {
+      "id": "res10-crd20261001#errors.6",
+      "section": "errors",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "A specification that defines an error type not defined in this section MAY declare that it refines one of the error types defined in this section."
+    },
+    {
+      "id": "res10-crd20261001#errors.7",
+      "section": "errors",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "The value of the detail field SHOULD provide a longer description of the feature that is not supported by the resolver.",
+      "term": "FEATURE_NOT_SUPPORTED"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.1",
+      "section": "bindings-https",
+      "kind": "requirement",
+      "keywords": [
+        "MUST",
+        "MAY"
+      ],
+      "text": "All conforming DID resolvers MUST implement the GET version of the HTTPS binding and MAY implement the POST version."
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.2",
+      "section": "bindings-https",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "All HTTPS bindings MUST use TLS."
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.3",
+      "section": "bindings-https",
+      "kind": "requirement",
+      "keywords": [
+        "NOT REQUIRED",
+        "MAY"
+      ],
+      "text": "Use of DNS names in certificates is NOT REQUIRED; resolvers MAY use TLS certificates issued for IP addresses."
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.4",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "Initialize a request HTTP(S) URL with the DID resolver HTTP(S) endpoint."
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.5",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "For the DID resolution function:"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.6",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "Append the input DID to the request HTTP(S) URL.",
+      "parent": "res10-crd20261001#bindings-https.5"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.7",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "Set the Accept HTTP request header to application/did-resolution to request a complete 9. DID Resolution Result, OR",
+      "parent": "res10-crd20261001#bindings-https.5"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.8",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "set the Accept HTTP request header to the value of the accept resolution option to request only the didDocument value of the result.",
+      "parent": "res10-crd20261001#bindings-https.5"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.9",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "For the DID URL dereferencing function:"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.10",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "Append the input DID URL to the request HTTP(S) URL.",
+      "parent": "res10-crd20261001#bindings-https.9"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.11",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "Set the Accept HTTP request header to application/did-url-dereferencing to request a complete 10. DID URL Dereferencing Result, OR",
+      "parent": "res10-crd20261001#bindings-https.9"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.12",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "set the Accept HTTP request header to the value of the accept dereferencing option to request only the contentStream value of the result.",
+      "parent": "res10-crd20261001#bindings-https.9"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.13",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "For the HTTP(S) GET binding:"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.14",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "If any other resolution options or dereferencing options than accept are provided:",
+      "parent": "res10-crd20261001#bindings-https.13"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.15",
+      "section": "bindings-https",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The input DID MUST be URL-encoded (as specified in RFC3986 Section 2.1).",
+      "parent": "res10-crd20261001#bindings-https.14"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.16",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "Encode all resolution options except accept as query parameters in the request HTTP(S) URL.",
+      "parent": "res10-crd20261001#bindings-https.14"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.17",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "Execute an HTTP GET request on the request HTTP(S) URL. This invokes the DID resolution or DID URL dereferencing function at the remote DID resolver.",
+      "parent": "res10-crd20261001#bindings-https.13"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.18",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "For the HTTP(S) POST binding:"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.19",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "If any other resolution options or dereferencing options than accept are provided:",
+      "parent": "res10-crd20261001#bindings-https.18"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.20",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "Encode all resolution options except accept as a JSON structure in the HTTP request's POST body.",
+      "parent": "res10-crd20261001#bindings-https.19"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.21",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "Execute an HTTP POST request on the request HTTP(S) URL. This invokes the DID resolution or DID URL dereferencing function at the remote DID resolver.",
+      "parent": "res10-crd20261001#bindings-https.18"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.22",
+      "section": "bindings-https",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If the DID resolution or DID URL dereferencing function returns an error metadata property in the didResolutionMetadata or dereferencingMetadata, then the HTTP response status code MUST correspond to the type property of the error object, according to the following table: error type URI HTTP status code https://www.w3.org/ns/did#INVALID_DID 400 https://www.w3.org/ns/did#INVALID_DID_URL 400 https://www.w3.org/ns/did#INVALID_OPTIONS 400 https://www.w3.org/ns/did#NOT_FOUND 404 https://www.w3.org/ns/did#REPRESENTATION_NOT_SUPPORTED 406 https://www.w3.org/ns/did#INVALID_DID_DOCUMENT 500 https://www.w3.org/ns/did#METHOD_NOT_SUPPORTED 501 https://www.w3.org/ns/did#FEATURE_NOT_SUPPORTED 501 https://www.w3.org/ns/did#INTERNAL_ERROR 500 If the type property of the error object does not appear in the table above, then the HTTP response status code is determined by the implementation."
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.23",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "If the DID resolution or DID URL dereferencing function returns a deactivated metadata property with the value true in the didDocumentMetadata or contentMetadata:"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.24",
+      "section": "bindings-https",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The HTTP response status code MUST be 410.",
+      "parent": "res10-crd20261001#bindings-https.23"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.25",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "For the DID resolution function:"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.26",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "If the value of the Content-Type HTTP response header is application/did-resolution:",
+      "parent": "res10-crd20261001#bindings-https.25"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.27",
+      "section": "bindings-https",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The HTTP body MUST contain a DID resolution result (see 9. DID Resolution Result) that is the result of the DID resolution function.",
+      "parent": "res10-crd20261001#bindings-https.26"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.28",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "If the function is successful and returns a didDocument:",
+      "parent": "res10-crd20261001#bindings-https.25"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.29",
+      "section": "bindings-https",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The HTTP response status code MUST be 200.",
+      "parent": "res10-crd20261001#bindings-https.28"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.30",
+      "section": "bindings-https",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The HTTP response MUST contain a Content-Type HTTP response header. Its value MUST be the value of the contentType metadata property in the didResolutionMetadata (see 4.2 DID Resolution Metadata).",
+      "parent": "res10-crd20261001#bindings-https.28"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.31",
+      "section": "bindings-https",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The HTTP response body MUST contain the didDocument that is the result of the DID resolution function, in the representation corresponding to the Content-Type HTTP response header.",
+      "parent": "res10-crd20261001#bindings-https.28"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.32",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "For the DID URL dereferencing function:"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.33",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "If the value of the Content-Type HTTP response header is application/did-url-dereferencing:",
+      "parent": "res10-crd20261001#bindings-https.32"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.34",
+      "section": "bindings-https",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The HTTP body MUST contain a DID URL dereferencing result (see 10. DID URL Dereferencing Result) that is the result of the DID URL dereferencing function.",
+      "parent": "res10-crd20261001#bindings-https.33"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.35",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "If the function is successful and returns a contentStream and a contentType metadata property with the value text/uri-list in the dereferencingMetadata:",
+      "parent": "res10-crd20261001#bindings-https.32"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.36",
+      "section": "bindings-https",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The HTTP response status code MUST be 303.",
+      "parent": "res10-crd20261001#bindings-https.35"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.37",
+      "section": "bindings-https",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The HTTP response MUST contain an Location header. The value of this header MUST be the selected DID service endpoint URL.",
+      "parent": "res10-crd20261001#bindings-https.35"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.38",
+      "section": "bindings-https",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "the HTTP response body MUST be empty.",
+      "parent": "res10-crd20261001#bindings-https.35"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.39",
+      "section": "bindings-https",
+      "kind": "step",
+      "text": "If the function is successful and returns a contentStream with any other contentType:",
+      "parent": "res10-crd20261001#bindings-https.32"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.40",
+      "section": "bindings-https",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The HTTP response status code MUST be 200.",
+      "parent": "res10-crd20261001#bindings-https.39"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.41",
+      "section": "bindings-https",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The HTTP response MUST contain a Content-Type HTTP response header. Its value MUST be the value of the contentType metadata property in the dereferencingMetadata (see 5.2 DID URL Dereferencing Metadata).",
+      "parent": "res10-crd20261001#bindings-https.39"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.42",
+      "section": "bindings-https",
+      "kind": "step",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The HTTP response body MUST contain the contentStream that is the result of the DID URL dereferencing function, in the representation corresponding to the Content-Type HTTP response header.",
+      "parent": "res10-crd20261001#bindings-https.39"
+    },
+    {
+      "id": "res10-crd20261001#caching.1",
+      "section": "caching",
+      "kind": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text": "This resolution option is OPTIONAL."
+    },
+    {
+      "id": "res10-crd20261001#caching.2",
+      "section": "caching",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Resolvers that deny resolution without caching MUST respond with a FEATURE_NOT_SUPPORTED error that makes it clear that bypassing the cache was not permitted so the client can attempt to resolve without using noCache."
+    },
+    {
+      "id": "res10-crd20261001#versioning.1",
+      "section": "versioning",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "DID document metadata MAY contain a versionId property that changes with each Update operation that is performed on a DID document."
+    },
+    {
+      "id": "res10-crd20261001#vdr-forks.1",
+      "section": "vdr-forks",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "Therefore, the specification of a DID method that uses a distributed system as a VDR SHOULD specify a means by which the VDR they are using can be disambiguated from such forks."
+    }
+  ]
+}

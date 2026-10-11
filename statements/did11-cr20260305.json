@@ -1,0 +1,719 @@
+{
+  "key": "did11-cr20260305",
+  "title": "Decentralized Identifiers (DIDs) v1.1, W3C Candidate Recommendation Snapshot 5 March 2026",
+  "url": "https://www.w3.org/TR/2026/CR-did-1.1-20260305/",
+  "source": "sources/did-core-1.1-cr-20260305.html",
+  "sha256": "4a48022defe07d37d2decc3ec9027a932dc883b2ad164a5aeaf9256e530bd979",
+  "extractor": "did-inspector-extract/1",
+  "statements": [
+    {
+      "id": "did11-cr20260305#conformance.1",
+      "section": "conformance",
+      "kind": "requirement",
+      "keywords": [
+        "MAY",
+        "MUST",
+        "MUST NOT",
+        "RECOMMENDED",
+        "SHOULD",
+        "SHOULD NOT"
+      ],
+      "text": "The key words MAY, MUST, MUST NOT, RECOMMENDED, SHOULD, and SHOULD NOT in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here."
+    },
+    {
+      "id": "did11-cr20260305#did-syntax.1",
+      "section": "did-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "All DIDs MUST conform to the DID Syntax ABNF Rules."
+    },
+    {
+      "id": "did11-cr20260305#did-url-syntax.1",
+      "section": "did-url-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "All DID URLs MUST conform to the DID URL Syntax ABNF Rules."
+    },
+    {
+      "id": "did11-cr20260305#relative-did-urls.1",
+      "section": "relative-did-urls",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "Relative DID URLs MAY contain relative path components, query parameters, and fragment identifiers."
+    },
+    {
+      "id": "did11-cr20260305#relative-did-urls.2",
+      "section": "relative-did-urls",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "When resolving a relative DID URL reference, the algorithm specified in RFC3986 Section 5: Reference Resolution MUST be used."
+    },
+    {
+      "id": "did11-cr20260305#extensibility.1",
+      "section": "extensibility",
+      "kind": "requirement",
+      "keywords": [
+        "RECOMMENDED"
+      ],
+      "text": "For maximum interoperability, it is RECOMMENDED that extensions use the repository of Decentralized Identifier Extensions."
+    },
+    {
+      "id": "did11-cr20260305#extensibility.2",
+      "section": "extensibility",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "Representations MAY define other extensibility mechanisms, including ones that do not require the use of the Decentralized Identifier Extensions repository."
+    },
+    {
+      "id": "did11-cr20260305#extensibility.3",
+      "section": "extensibility",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "Such extension mechanisms SHOULD support lossless conversion into any other conformant representation."
+    },
+    {
+      "id": "did11-cr20260305#extensibility.4",
+      "section": "extensibility",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "Extension mechanisms for a representation SHOULD define a mapping of all properties and representation syntax into the DID document data model and its type system."
+    },
+    {
+      "id": "did11-cr20260305#core-properties.1",
+      "section": "core-properties",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Each string value MUST be a valid URL conforming to URL Standard.",
+      "term": "serviceEndpoint"
+    },
+    {
+      "id": "did11-cr20260305#verification-methods.1",
+      "section": "verification-methods",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A DID document can express verification methods, as defined in Section 2.2: Verification Methods of Controlled Identifiers v1.0 with the added restrictions that (a) the id value MUST conform to Section 3.2 DID URL Syntax or Section 3.2.1 Relative DID URLs and (b) the controller value MUST conform to Section 3.1 DID Syntax."
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.1",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A representation MUST define deterministic production and consumption rules for all data types specified in 4."
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.2",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A representation MUST be uniquely associated with an IANA-registered Media Type."
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.3",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A representation MUST define fragment processing rules for its Media Type that are conformant with the fragment processing rules defined in Fragment."
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.4",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "A representation SHOULD use the lexical representation of data model data types."
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.5",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "A representation MAY choose to serialize the data model data types using a different lexical serializations as long as the consumption process back into the data model is lossless."
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.6",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "A representation MAY define representation-specific entries that are stored in a representation-specific entries map for use during the production and consumption process."
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.7",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "In order to maximize interoperability, representation specification authors SHOULD register their representation in the repository of DID Extensions [DID-EXTENSIONS]."
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.8",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A conforming producer MUST take a DID document data model and a representation-specific entries map as input into the production process."
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.9",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "The conforming producer MAY accept additional options as input into the production process."
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.10",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A conforming producer MUST serialize all entries in the DID document data model, and the representation-specific entries map, that do not have explicit processing rules for the representation being produced using only the representation's data type processing rules and return the serialization after the production process completes."
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.11",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A conforming producer MUST return the Media Type string associated with the representation after the production process completes."
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.12",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST NOT"
+      ],
+      "text": "A conforming producer MUST NOT produce non-conforming DIDs or DID documents."
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.13",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A conforming consumer MUST take a representation and Media Type string as input into the consumption process."
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.14",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "A conforming consumer MAY accept additional options as input into the consumption process."
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.15",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A conforming consumer MUST determine the representation of a DID document using the Media Type input string."
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.16",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A conforming consumer MUST detect any representation-specific entry across all known representations and place the entry into a representation-specific entries map which is returned after the consumption process completes."
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.17",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A conforming consumer MUST add all non-representation-specific entries that do not have explicit processing rules for the representation being consumed to the DID document data model using only the representation's data type processing rules and return the DID document data model after the consumption process completes."
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.18",
+      "section": "production-and-consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A conforming consumer MUST produce errors when consuming non-conforming DIDs or DID documents."
+    },
+    {
+      "id": "did11-cr20260305#production.1",
+      "section": "production",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The DID document, DID document data structures, and representation-specific entries map MUST be serialized to the JSON representation according to the following production rules:"
+    },
+    {
+      "id": "did11-cr20260305#production.2",
+      "section": "production",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "All entries of a DID document MUST be included in the root JSON Object."
+    },
+    {
+      "id": "did11-cr20260305#production.3",
+      "section": "production",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "Entries MAY contain additional data substructures subject to the value representation rules in the list above."
+    },
+    {
+      "id": "did11-cr20260305#production.4",
+      "section": "production",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "When serializing a DID document, a conforming producer MUST specify a media type of application/did to downstream applications."
+    },
+    {
+      "id": "did11-cr20260305#consumption.1",
+      "section": "consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The DID document and DID document data structures JSON representation MUST be deserialized into the data model according to the following consumption rules:"
+    },
+    {
+      "id": "did11-cr20260305#consumption.2",
+      "section": "consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If media type information is available to a conforming consumer and the media type value is application/did, then the data structure being consumed is a DID document, and the root element MUST be a JSON Object where all members of the object are entries of the DID document."
+    },
+    {
+      "id": "did11-cr20260305#consumption.3",
+      "section": "consumption",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A conforming consumer for a JSON representation that is consuming a DID document with a root element that is not a JSON Object MUST report an error."
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.1",
+      "section": "json-ld-processors",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "For JSON-LD processing to occur, a @context property MUST be specified according to the rules specified in the JSON-LD 1.1 specification."
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.2",
+      "section": "json-ld-processors",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The DID document, DID document data structures, and representation-specific entries map MUST be serialized to the JSON representation according to the JSON representation production rules as defined in 6.2 JSON."
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.3",
+      "section": "json-ld-processors",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "In addition to using the JSON representation production rules, production MUST include the @context entry."
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.4",
+      "section": "json-ld-processors",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The serialized value of @context MUST be the JSON String https://www.w3.org/ns/did/v1.1, or a JSON Array where the first item is the JSON String https://www.w3.org/ns/did/v1.1 and the subsequent items are serialized according to the JSON production rules."
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.5",
+      "section": "json-ld-processors",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "To achieve interoperability across different representations, all JSON-LD Contexts and their terms SHOULD be registered in the repository of Decentralized Identifier Extensions."
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.6",
+      "section": "json-ld-processors",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD NOT"
+      ],
+      "text": "A conforming producer that generates a JSON-LD representation SHOULD NOT produce a DID document that contains terms not defined via the @context as conforming consumers are expected to remove unknown terms."
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.7",
+      "section": "json-ld-processors",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "When serializing a JSON-LD representation of a DID document, a conforming producer MUST specify a media type of application/did to downstream applications."
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.8",
+      "section": "json-ld-processors",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "Conforming consumers that process a JSON-LD representation SHOULD drop all terms from a DID document that are not defined via the @context."
+    },
+    {
+      "id": "did11-cr20260305#remote-resource-integrity.1",
+      "section": "remote-resource-integrity",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Implementations MUST treat the base context value, located at https://www.w3.org/ns/did/v1.1, as already retrieved; the following value is the hexadecimal encoded SHA2-256 digest value of the base context file: ea216ecc1cb02cd39b693dba2250141e270ba0bf95890be107dd9a9e8e43de85."
+    },
+    {
+      "id": "did11-cr20260305#media-types.1",
+      "section": "media-types",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "Syntaxes used to express the data model in this specification SHOULD be identified by a media type, and conventions outlined in this section SHOULD be followed when defining or using media types with DID documents."
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.1",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A DID method specification MUST define exactly one method-specific DID scheme that is identified by exactly one method name as specified by the method-name rule in 3.1 DID Syntax."
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.2",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The DID method specification MUST specify how to generate the method-specific-id component of a DID."
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.3",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The DID method specification MUST define sensitivity and normalization of the value of the method-specific-id."
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.4",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The method-specific-id value MUST be unique within a DID method."
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.5",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Any DID generated by a DID method MUST be globally unique."
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.6",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "To reduce the chances of method-name conflicts, a DID method specification SHOULD be registered in the repository of DID Extensions [DID-EXTENSIONS]."
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.7",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "A DID method MAY define multiple method-specific-id formats."
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.8",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "The method-specific-id format MAY include colons."
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.9",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The use of colons MUST comply syntactically with the method-specific-id ABNF rule."
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.10",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "A DID method specification MAY specify ABNF rules for DID paths that are more restrictive than the generic rules in Path."
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.11",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "A DID method specification MAY specify ABNF rules for DID queries that are more restrictive than the generic rules in this section."
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.12",
+      "section": "method-syntax",
+      "kind": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text": "A DID method specification MAY specify ABNF rules for DID fragments that are more restrictive than the generic rules in this section."
+    },
+    {
+      "id": "did11-cr20260305#method-operations.1",
+      "section": "method-operations",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A DID method specification MUST define how authorization is performed to execute all operations, including any necessary cryptographic processes."
+    },
+    {
+      "id": "did11-cr20260305#method-operations.2",
+      "section": "method-operations",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A DID method specification MUST specify how a DID controller creates a DID and its associated DID document."
+    },
+    {
+      "id": "did11-cr20260305#method-operations.3",
+      "section": "method-operations",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A DID method specification MUST specify how a DID resolver uses a DID to resolve a DID document, including how the DID resolver can verify the authenticity of the response."
+    },
+    {
+      "id": "did11-cr20260305#method-operations.4",
+      "section": "method-operations",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A DID method specification MUST specify what constitutes an update to a DID document and how a DID controller can update a DID document or state that updates are not possible."
+    },
+    {
+      "id": "did11-cr20260305#method-operations.5",
+      "section": "method-operations",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The DID method specification MUST specify how a DID controller can deactivate a DID or state that deactivation is not possible."
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.1",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "A DID method specifications MUST follow all guidelines and normative language provided in RFC3552: Writing Security Considerations Sections for the DID operations defined in the DID method specification."
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.2",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The Security Considerations section MUST document the following forms of attack for the DID operations defined in the DID method specification: eavesdropping, replay, message insertion, deletion, modification, denial of service, amplification, and man-in-the-middle."
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.3",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "Other known forms of attack SHOULD also be documented."
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.4",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The Security Considerations section MUST discuss residual risks, such as the risks from compromise in a related protocol, incorrect implementation, or cipher after threat mitigation was deployed."
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.5",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The Security Considerations section MUST provide integrity protection and update authentication for all operations required by Section 7.2 Method Operations."
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.6",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "If authentication is involved, particularly user-host authentication, the security characteristics of the authentication method MUST be clearly documented."
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.7",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The Security Considerations section MUST discuss the policy mechanism by which DIDs are proven to be uniquely assigned."
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.8",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Method-specific endpoint authentication MUST be discussed."
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.9",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "Where DID methods make use of DLTs with varying network topology, sometimes offered as light node or thin client implementations to reduce required computing resources, the security assumptions of the topology available to implementations of the DID method MUST be discussed."
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.10",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text": "If a protocol incorporates cryptographic protection mechanisms, the DID method specification MUST clearly indicate which portions of the data are protected and by what protections, and it SHOULD give an indication of the sorts of attacks to which the cryptographic protection is susceptible."
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.11",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "Data which is to be held secret (keying material, random seeds, and so on) SHOULD be clearly labeled."
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.12",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "DID method specifications SHOULD explain and specify the implementation of signatures on DID documents, if applicable."
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.13",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "Where DID methods use peer-to-peer computing resources, such as with all known DLTs, the expected burdens of those resources SHOULD be discussed in relation to denial of service."
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.14",
+      "section": "security-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text": "DID methods that introduce new authentication service types, as described in 5.4 Services, SHOULD consider the security requirements of the supported authentication protocol."
+    },
+    {
+      "id": "did11-cr20260305#privacy-requirements.1",
+      "section": "privacy-requirements",
+      "kind": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text": "The DID method specification's Privacy Considerations section MUST discuss any subsection of Section 5 of [RFC6973] that could apply in a method-specific manner."
+    }
+  ]
+}
