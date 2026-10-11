@@ -7,26 +7,15 @@ import (
 
 	"github.com/sage-x-project/did-inspector/core"
 	"github.com/sage-x-project/did-inspector/profiles"
-	"github.com/sage-x-project/did-inspector/profiles/did11"
 	"github.com/sage-x-project/did-inspector/report"
 )
 
 // knownNonconformances are the requirement-level statements did-go fails
-// at the pinned revision. Each is a nonconformance of did-go, not of the
-// adapter or the cases: resolution/universal's Handler cannot write the
-// vm.Method that did-go's Dereferencer returns for a DID URL with a
-// fragment, and answers a successful dereference with 500 INTERNAL_ERROR
-// ("content of type vm.Method cannot be written"). The test fails when the
-// set changes, so that a fix in did-go or a new failure is noticed.
-var knownNonconformances = map[string][]string{
-	did11.Name: {
-		"res10-crd20261001#bindings-https.11",
-		"res10-crd20261001#bindings-https.34",
-		"res10-crd20261001#bindings-https.39",
-		"res10-crd20261001#bindings-https.40",
-		"res10-crd20261001#bindings-https.42",
-	},
-}
+// at the pinned revision. It is empty: the HTTPS binding nonconformance
+// found earlier (bindings-https.11, .34, .39, .40, .42) was fixed in did-go
+// d7c44d9. The test fails when the set changes, so that a new failure is
+// noticed.
+var knownNonconformances = map[string][]string{}
 
 // TestProfiles runs every built-in profile against did-go, as the
 // committed evidence reports and the CI job do. A requirement-level FAIL
