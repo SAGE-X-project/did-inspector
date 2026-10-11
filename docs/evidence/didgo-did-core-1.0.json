@@ -1,12 +1,12 @@
 {
   "format": "did-inspector-report/2",
   "inspector": {
-    "revision": "4d53bda2089a9c27571e328ef0b9c96fc66a884c"
+    "revision": "e5698046bf413222a5b5c7455460e0937de21a7b"
   },
   "subject": {
     "name": "did-go",
-    "version": "v0.0.0-20261011195048-c31184bda393",
-    "revision": "c31184bda393"
+    "version": "v0.0.0-20261011210535-bfaee58170b4",
+    "revision": "bfaee58170b4"
   },
   "profile": "did-core-1.0",
   "specs": [
@@ -21,22 +21,22 @@
   "finished_at": "",
   "totals": {
     "statements": 206,
-    "PASS": 119,
+    "PASS": 121,
     "FAIL": 1,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 1,
     "ERROR": 0,
-    "NOT_RUN": 85
+    "NOT_RUN": 83
   },
   "totals_by_level": {
     "requirement": {
       "statements": 172,
-      "PASS": 112,
+      "PASS": 114,
       "FAIL": 0,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 1,
       "ERROR": 0,
-      "NOT_RUN": 59
+      "NOT_RUN": 57
     },
     "recommendation": {
       "statements": 34,
@@ -146,9 +146,12 @@
     },
     {
       "id": "core10#relative-did-urls.2",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-core-1.0/syntax/relative-reference-resolution"
+      ]
     },
     {
       "id": "core10#extensibility.1",
@@ -1002,9 +1005,12 @@
     },
     {
       "id": "core10#production-0.6",
-      "scope": "pending",
+      "scope": "checked",
       "level": "requirement",
-      "verdict": "NOT_RUN"
+      "verdict": "PASS",
+      "cases": [
+        "did-core-1.0/representation/producer-requested-json-ld"
+      ]
     },
     {
       "id": "core10#consumption-0.1",
@@ -1984,6 +1990,14 @@
       "observations": 2
     },
     {
+      "id": "did-core-1.0/syntax/relative-reference-resolution",
+      "statements": [
+        "core10#relative-did-urls.2"
+      ],
+      "verdict": "PASS",
+      "observations": 12
+    },
+    {
       "id": "did-core-1.0/document/did-subject/consumer",
       "statements": [
         "core10#did-subject.1",
@@ -2754,6 +2768,14 @@
       "observations": 3
     },
     {
+      "id": "did-core-1.0/representation/producer-requested-json-ld",
+      "statements": [
+        "core10#production-0.6"
+      ],
+      "verdict": "PASS",
+      "observations": 1
+    },
+    {
       "id": "did-core-1.0/representation/producer-undefined-terms",
       "statements": [
         "core10#production-0.5"
@@ -3058,7 +3080,6 @@
     "core10#did-parameters.5",
     "core10#did-parameters.6",
     "core10#did-parameters.8",
-    "core10#relative-did-urls.2",
     "core10#extensibility.1",
     "core10#extensibility.2",
     "core10#extensibility.3",
@@ -3083,7 +3104,6 @@
     "core10#production-and-consumption.13",
     "core10#production-and-consumption.14",
     "core10#production-0.4",
-    "core10#production-0.6",
     "core10#did-resolution-options.1",
     "core10#did-resolution-options.3",
     "core10#did-resolution-metadata.4",
