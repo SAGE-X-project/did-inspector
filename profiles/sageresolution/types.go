@@ -173,3 +173,24 @@ type TypedProductionSubject interface {
 	core.Subject
 	InspectTypedProduction(context.Context, TypedProductionRequest) (TypedProductionResult, error)
 }
+
+// ConsumedMethod witnesses known datetime entries through actual typed accessors.
+type ConsumedMethod struct {
+	ID      string      `json:"id"`
+	Expires *TypedValue `json:"expires,omitempty"`
+	Revoked *TypedValue `json:"revoked,omitempty"`
+}
+type TypedConsumptionResult struct {
+	Call            ConsumptionCapture `json:"call"`
+	ID              string             `json:"id"`
+	Controllers     []string           `json:"controllers"`
+	ControllerShape string             `json:"controller_shape"`
+	Fields          []TypedMember      `json:"fields"`
+	Entries         []TypedMember      `json:"entries"`
+	Methods         []ConsumedMethod   `json:"methods"`
+	CaptureError    string             `json:"capture_error,omitempty"`
+}
+type TypedConsumptionSubject interface {
+	core.Subject
+	InspectTypedConsumption(context.Context, ConsumptionRequest) (TypedConsumptionResult, error)
+}

@@ -100,6 +100,7 @@ func Profile(name string) (core.Profile, error) {
 	appendPipelineCases(&p, rows)
 	appendConsumptionBoundaryCases(&p, rows)
 	appendTypedProductionCases(&p)
+	appendTypedConsumptionCases(&p)
 	if err := appendConsumerConformanceCases(&p); err != nil {
 		return p, err
 	}
