@@ -27,11 +27,13 @@ certificate. They contact no agent, MCP, RPC or deployed registry.
 
 | Profile | Cases | Requirement PASS | Recommendation PASS | NOT_RUN |
 |---|---:|---:|---:|---:|
-| DID Core 1.0 | 11 | 15 | 0 | 191 |
-| DID 1.1 with CID and Resolution publications | 43 | 39 | 1 | 446 |
+| DID Core 1.0 | 11 | 20 | 0 | 186 |
+| DID 1.1 with CID and Resolution publications | 47 | 43 | 2 | 441 |
 
 There are no FAIL or ERROR statements in these observations. The recommendation
-PASS is the selected resolution Accept option. This does not replace the
+PASS statements cover the selected resolution Accept option and the returned
+contentType for the actual selected JSON key in an HTTP dereferencing result.
+This does not replace the
 projection scope's JWK alg recommendation FAIL or its separately observed
 statements. Results from different scopes are not merged by copying verdicts.
 
@@ -104,3 +106,39 @@ profile: parsing can fail before the resolver is invoked, so those cases do not
 prove a resolver algorithm return or a client's query/body construction rules.
 The additional 13 requirement statements come from native observations. General
 full-document comparison and the other evidence limits above still apply.
+
+## Returned metadata observations
+
+The metadata checks independently inspect the actual native metadata or metadata
+inside GET/POST HTTP envelopes. Native translated fields never override wire
+metadata. Complete HTTP error envelopes now exercise missing and stale source
+records through both methods; the raw archive retains the whole response.
+
+The added checks cover returned versionId ASCII strings, resolution contentType
+ASCII media
+type syntax and the selected fixture representation, dereferencing contentType
+ASCII strings, Core 1.0 single-keyword errors, and the standard namespace prefix for
+selected standard-defined error keywords. Extension error types are not assigned
+the standard-prefix rule. The dereferencing contentType recommendation is judged
+separately from its conditional format requirement. Malformed or duplicate-member
+envelopes cause ERROR rather than PASS. An omitted optional field produces
+NOT_APPLICABLE for its conditional format check; it never establishes that format.
+The dereferencing contentType recommendation fails if omitted from a successful
+key response and also checks its expected JSON type and actual returned wire
+content. Error or content-free results do not satisfy its success precondition.
+
+These cases add five Core 1.0 requirement observations and four DID 1.1 requirement
+observations plus one DID 1.1 recommendation observation. Version syntax checks do
+not require the fixture's exact value, establish historical lookup, or prove the
+version's operational provenance. Resolution media type checks require the
+selected fixture type and actual JSON
+content with a DID identifier; application/did also requires the selected DID 1.1
+context as a string or the first array entry. Media type essence comparison
+accepts case-insensitive type names and valid parameters. Dereferencing ASCII
+checks do not impose media syntax beyond that
+clause. These checks do not certify every supported representation. The source
+observation times
+are not document creation or update times. No created/updated timestamp is
+invented, and their unexercised statements remain NOT_RUN. Full native document
+comparison, all-member HTTP/native equivalence, optional metadata extensions and
+operational authority retain the evidence limits above.

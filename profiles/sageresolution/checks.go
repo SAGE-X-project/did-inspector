@@ -2,6 +2,7 @@ package sageresolution
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/sage-x-project/did-inspector/checks"
 	"github.com/sage-x-project/did-inspector/core"
@@ -51,7 +52,9 @@ func judge(out Result, wants []expected, input string) []core.Observation {
 			e = err
 		}
 		v := core.Pass
-		if e != nil {
+		if errors.Is(e, errAbsentMetadata) {
+			v = core.NotApplicable
+		} else if e != nil {
 			v = core.Error
 		} else if !pass {
 			v = core.Fail
@@ -80,6 +83,8 @@ func errorName(md core.DocumentJSON) string {
 func check(o Result, md, cm core.DocumentJSON, w expected) (bool, error) {
 	want, _ := w.Value.(string)
 	switch w.Check {
+	case "version-ascii", "resolution-media-type", "content-type-ascii", "legacy-keyword", "prefixed-error", "dereference-media-type":
+		return checkMetadata(o, md, cm, w)
 	case "success":
 		d, e := parse(o.Snapshot)
 		id, _ := d.Get("id")
