@@ -101,6 +101,7 @@ func Profile(name string) (core.Profile, error) {
 	appendConsumptionBoundaryCases(&p, rows)
 	appendTypedProductionCases(&p)
 	appendTypedConsumptionCases(&p)
+	appendRepresentationInputCases(&p)
 	if err := appendConsumerConformanceCases(&p); err != nil {
 		return p, err
 	}
