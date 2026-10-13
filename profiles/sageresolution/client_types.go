@@ -21,6 +21,13 @@ type ClientWire struct {
 	Body         []byte `json:"body"`
 	CaptureError string `json:"capture_error,omitempty"`
 }
+type ClientInvocation struct {
+	Function     string `json:"function"`
+	Input        string `json:"input"`
+	Options      []byte `json:"options"`
+	Result       Result `json:"result"`
+	CaptureError string `json:"capture_error,omitempty"`
+}
 type ClientResult struct {
 	Operation   string               `json:"operation"`
 	Request     ClientRequest        `json:"request"`
@@ -30,6 +37,7 @@ type ClientResult struct {
 	ServerTLS   bool                 `json:"server_tls"`
 	ServerRole  string               `json:"server_role"`
 	Consumer    []ConsumptionCapture `json:"consumer"`
+	Native      []ClientInvocation   `json:"native"`
 	Result      Result               `json:"result"`
 }
 type ClientSubject interface {

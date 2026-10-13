@@ -80,6 +80,18 @@ func (s stub) InspectClient(_ context.Context, _ sageprojection.Record, q Client
 	}
 	return ClientResult{}, nil
 }
+func (s stub) InspectRetrieval(_ context.Context, _ sageprojection.Record, q RetrievalRequest) (RetrievalResult, error) {
+	if s.err {
+		return RetrievalResult{}, errors.New("fixture retrieval failure")
+	}
+	return RetrievalResult{}, nil
+}
+func (s stub) InspectBaseContext(context.Context) (BaseContextResult, error) {
+	if s.err {
+		return BaseContextResult{}, errors.New("fixture context failed")
+	}
+	return BaseContextResult{}, nil
+}
 func TestProfileScopeAndUnavailable(t *testing.T) {
 	for _, name := range []string{"did-core-1.0", "did-1.1"} {
 		p, e := Profile(name)

@@ -36,7 +36,17 @@ func clientControl(f clientFixture) ClientResult {
 			w.URL += "?" + k + "=" + fmt.Sprint(v)
 		}
 	}
-	out := ClientResult{Operation: "github.com/sage-x-project/did-go/resolution/universal.Client." + q.Request.Function, Request: q, Endpoint: ep, Wire: []ClientWire{w}, ServerCalls: 1, ServerTLS: true, ServerRole: "SAGE handler with explicit fixture Source"}
+	out := ClientResult{Operation: "github.com/sage-x-project/did-go/resolution/universal.Client." + q.Request.Function, Request: q, Endpoint: ep, Wire: []ClientWire{w}, ServerCalls: 1, ServerTLS: true, ServerRole: "universal handler with SAGE resolver and explicit fixture Source"}
+	options := map[string]any{}
+	for k, v := range q.Request.Options {
+		options[k] = v
+	}
+	if q.Request.Accept != "" {
+		options["accept"] = q.Request.Accept
+	}
+	data, _ := json.Marshal(options)
+	out.Result = Result{HasContent: true, ReturnedID: q.Request.Input}
+	out.Native = []ClientInvocation{{Function: q.Request.Function, Input: q.Request.Input, Options: data, Result: Result{HasContent: true, ReturnedID: q.Request.Input}}}
 	if len(q.Reply) > 0 {
 		var reply struct {
 			Metadata struct {
@@ -50,6 +60,7 @@ func clientControl(f clientFixture) ClientResult {
 			v = "1.0"
 		}
 		out.ServerRole = "controlled client response fixture; not SAGE server output"
+		out.Native = nil
 		out.Consumer = []ConsumptionCapture{{Operation: pipelineConsumer, MediaType: reply.Metadata.ContentType, Version: v, Input: reply.Document}}
 		out.Result.HasContent = true
 		out.Result.ReturnedID = q.Request.Input
@@ -66,7 +77,10 @@ func TestClientBranchControlsAndMutations(t *testing.T) {
 		if v := clientWireVerdict(f, clientControl(f)); v != core.Pass {
 			t.Fatal(f.Name, v)
 		}
-		for _, change := range []func(*ClientResult){func(r *ClientResult) { r.Operation = "manual request" }, func(r *ClientResult) { r.Request.Request.Input = "other" }, func(r *ClientResult) { r.Wire = nil }, func(r *ClientResult) { r.ServerCalls = 0 }, func(r *ClientResult) { r.ServerTLS = false }, func(r *ClientResult) { r.Endpoint = "http://127.0.0.1:42/1.0/identifiers/" }, func(r *ClientResult) { r.Endpoint = "%zz" }, func(r *ClientResult) { r.Wire[0].URL = "%zz" }, func(r *ClientResult) { r.Wire[0].CaptureError = "lost" }, func(r *ClientResult) { r.Wire[0].URL = "https://outside.example/other" }, func(r *ClientResult) { r.Wire[0].URL += "#changed" }, func(r *ClientResult) { r.Wire[0].Method = "DELETE" }, func(r *ClientResult) { r.Wire[0].Accept = "*/*" }, func(r *ClientResult) { r.Wire[0].ContentType = "text/plain" }, func(r *ClientResult) { r.Wire[0].Body = []byte("{") }, func(r *ClientResult) { r.ServerRole = "other actor" }} {
+		for _, change := range []func(*ClientResult){func(r *ClientResult) { r.Operation = "manual request" }, func(r *ClientResult) { r.Request.Request.Input = "other" }, func(r *ClientResult) { r.Wire = nil }, func(r *ClientResult) { r.ServerCalls = 0 }, func(r *ClientResult) { r.ServerTLS = false }, func(r *ClientResult) { r.Endpoint = "http://127.0.0.1:42/1.0/identifiers/" }, func(r *ClientResult) { r.Endpoint = "%zz" }, func(r *ClientResult) { r.Wire[0].URL = "%zz" }, func(r *ClientResult) { r.Wire[0].CaptureError = "lost" }, func(r *ClientResult) { r.Wire[0].URL = "https://outside.example/other" }, func(r *ClientResult) { r.Wire[0].URL += "#changed" }, func(r *ClientResult) { r.Wire[0].Method = "DELETE" }, func(r *ClientResult) { r.Wire[0].Accept = "*/*" }, func(r *ClientResult) { r.Wire[0].ContentType = "text/plain" }, func(r *ClientResult) { r.Wire[0].Body = []byte("{") }, func(r *ClientResult) { r.ServerRole = "other actor" },
+			func(r *ClientResult) { r.Wire[0].URL += "?unknown=%zz" },
+			func(r *ClientResult) { r.Wire[0].URL = "https://user@127.0.0.1:43210/1.0/identifiers/" },
+			func(r *ClientResult) { r.Result.HasContent = false }} {
 			r := clientControl(f)
 			change(&r)
 			if clientWireVerdict(f, r) == core.Pass {
@@ -74,11 +88,20 @@ func TestClientBranchControlsAndMutations(t *testing.T) {
 			}
 		}
 		if len(f.Request.Reply) > 0 {
-			for _, change := range []func(*ClientResult){func(r *ClientResult) { r.Consumer = nil }, func(r *ClientResult) { r.Consumer[0].Version = "wrong" }, func(r *ClientResult) { r.Consumer[0].MediaType = "application/json" }, func(r *ClientResult) { r.Consumer[0].Input = []byte("{}") }, func(r *ClientResult) { r.Consumer[0].Error = "refused" }, func(r *ClientResult) { r.Result.HasContent = false }} {
+			for _, change := range []func(*ClientResult){func(r *ClientResult) { r.Consumer = nil }, func(r *ClientResult) { r.Native = []ClientInvocation{{Function: "resolve"}} }, func(r *ClientResult) { r.Consumer[0].Version = "wrong" }, func(r *ClientResult) { r.Consumer[0].MediaType = "application/json" }, func(r *ClientResult) { r.Consumer[0].Input = []byte("{}") }, func(r *ClientResult) { r.Consumer[0].Error = "refused" }, func(r *ClientResult) { r.Result.HasContent = false }} {
 				r := clientControl(f)
 				change(&r)
 				if clientWireVerdict(f, r) == core.Pass {
 					t.Fatal("false metadata PASS")
+				}
+			}
+		}
+		if len(f.Request.Reply) == 0 {
+			for _, change := range []func(*ClientResult){func(r *ClientResult) { r.Native = nil }, func(r *ClientResult) { r.Native[0].Function = "other" }, func(r *ClientResult) { r.Native[0].Input = "other" }, func(r *ClientResult) { r.Native[0].Options = []byte(`{"extra":"changed"}`) }, func(r *ClientResult) { r.Native[0].Result.HasContent = false }} {
+				r := clientControl(f)
+				change(&r)
+				if clientWireVerdict(f, r) == core.Pass {
+					t.Fatal("missing remote invocation proof")
 				}
 			}
 		}

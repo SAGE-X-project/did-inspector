@@ -2,11 +2,13 @@ package sage
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	didsage "github.com/sage-x-project/did-go/advanced/sage"
 	"github.com/sage-x-project/did-go/consumer"
 	"github.com/sage-x-project/did-go/did"
 	"github.com/sage-x-project/did-go/producer"
+	"github.com/sage-x-project/did-go/resolution"
 	"github.com/sage-x-project/did-go/resolution/universal"
 	"github.com/sage-x-project/did-inspector/profiles/sageprojection"
 	"github.com/sage-x-project/did-inspector/profiles/sageresolution"
@@ -42,10 +44,53 @@ func (t clientTransport) RoundTrip(q *http.Request) (*http.Response, error) {
 	return t.delegate.RoundTrip(q)
 }
 
+type clientResolver struct {
+	delegate *didsage.Resolver
+	mu       *sync.Mutex
+	calls    *[]sageresolution.ClientInvocation
+}
+
+func (r clientResolver) Resolve(ctx context.Context, d did.DID, opts resolution.ResolutionOptions) resolution.Result {
+	data, e := json.Marshal(opts)
+	result := r.delegate.Resolve(ctx, d, opts)
+	capture := sageresolution.Result{HasContent: result.Document != nil, Raw: result.Raw}
+	if result.Document != nil {
+		capture.ReturnedID = result.Document.ID().String()
+		capture.ContentKind = "document"
+		var err error
+		capture.Snapshot, err = documentSnapshot(result.Document)
+		if err != nil {
+			e = errors.Join(e, err)
+		}
+	}
+	capture, f := nativeResult(capture, result.ResolutionMetadata, result.DocumentMetadata)
+	call := sageresolution.ClientInvocation{Function: "resolve", Input: d.String(), Options: data, Result: capture}
+	if err := errors.Join(e, f); err != nil {
+		call.CaptureError = err.Error()
+	}
+	r.mu.Lock()
+	*r.calls = append(*r.calls, call)
+	r.mu.Unlock()
+	return result
+}
+func (r clientResolver) Dereference(ctx context.Context, u did.DIDURL, opts resolution.DereferenceOptions) resolution.DereferenceResult {
+	data, e := json.Marshal(opts)
+	result := r.delegate.Dereference(ctx, u, opts)
+	capture, f := dereferenceResult(sageresolution.Result{}, result.DereferencingMetadata, result.ContentStream, result.ContentMetadata)
+	call := sageresolution.ClientInvocation{Function: "dereference", Input: u.String(), Options: data, Result: capture}
+	if err := errors.Join(e, f); err != nil {
+		call.CaptureError = err.Error()
+	}
+	r.mu.Lock()
+	*r.calls = append(*r.calls, call)
+	r.mu.Unlock()
+	return result
+}
+
 // InspectClient passively captures the unchanged selected Client's request,
 // consumer calls and output. Only the owned loopback server is contacted.
 func (*Subject) InspectClient(ctx context.Context, in sageprojection.Record, q sageresolution.ClientRequest) (sageresolution.ClientResult, error) {
-	out := sageresolution.ClientResult{Operation: "github.com/sage-x-project/did-go/resolution/universal.Client." + q.Request.Function, Request: q, ServerRole: "SAGE handler with explicit fixture Source"}
+	out := sageresolution.ClientResult{Operation: "github.com/sage-x-project/did-go/resolution/universal.Client." + q.Request.Function, Request: q, ServerRole: "universal handler with SAGE resolver and explicit fixture Source"}
 	if q.Request.Function != "resolve" && q.Request.Function != "dereference" {
 		return out, errors.New("unknown client operation")
 	}
@@ -57,7 +102,10 @@ func (*Subject) InspectClient(ctx context.Context, in sageprojection.Record, q s
 	if e != nil {
 		return out, e
 	}
-	var handler http.Handler = didsage.NewHandler(resolver, universal.DefaultPathPrefix, universal.WithProducer(producer.New()))
+	var serverMu sync.Mutex
+	nativeCalls := []sageresolution.ClientInvocation{}
+	observed := clientResolver{resolver, &serverMu, &nativeCalls}
+	var handler http.Handler = universal.NewHandler(observed, observed, universal.WithPathPrefix(universal.DefaultPathPrefix), universal.WithProducer(producer.New()))
 	if len(q.Reply) > 0 {
 		out.ServerRole = "controlled client response fixture; not SAGE server output"
 		handler = http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
@@ -65,7 +113,6 @@ func (*Subject) InspectClient(ctx context.Context, in sageprojection.Record, q s
 			_, _ = w.Write(q.Reply)
 		})
 	}
-	var serverMu sync.Mutex
 	serverCalls := 0
 	serverTLS := false
 	captureServer := func() {
@@ -73,6 +120,7 @@ func (*Subject) InspectClient(ctx context.Context, in sageprojection.Record, q s
 		defer serverMu.Unlock()
 		out.ServerCalls = serverCalls
 		out.ServerTLS = serverTLS
+		out.Native = append([]sageresolution.ClientInvocation{}, nativeCalls...)
 	}
 	srv := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		serverMu.Lock()

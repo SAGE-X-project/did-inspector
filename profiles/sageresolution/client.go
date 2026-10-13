@@ -103,7 +103,7 @@ func clientWireVerdict(f clientFixture, out ClientResult) core.Verdict {
 		return core.Error
 	}
 	ep, e := url.Parse(out.Endpoint)
-	if e != nil || ep.Scheme != "https" || !strings.HasPrefix(ep.Host, "127.0.0.1:") || ep.Path != "/1.0/identifiers/" || ep.RawQuery != "" || ep.Fragment != "" {
+	if e != nil || ep.Scheme != "https" || !strings.HasPrefix(ep.Host, "127.0.0.1:") || ep.Path != "/1.0/identifiers/" || ep.RawQuery != "" || ep.Fragment != "" || ep.User != nil {
 		return core.Error
 	}
 	wire := out.Wire[0]
@@ -126,7 +126,7 @@ func clientWireVerdict(f clientFixture, out ClientResult) core.Verdict {
 	if (!q.Post && len(q.Request.Options) > 0) || strings.ContainsAny(ident, "?#%") {
 		ident = percentIdentifier(ident)
 	}
-	if wire.Method != method || wire.Accept != accept || u.Scheme != ep.Scheme || u.Host != ep.Host || u.EscapedPath() != ep.EscapedPath()+ident || u.Fragment != "" {
+	if wire.Method != method || wire.Accept != accept || u.Scheme != ep.Scheme || u.Host != ep.Host || u.EscapedPath() != ep.EscapedPath()+ident || u.Fragment != "" || u.User != nil {
 		return core.Fail
 	}
 	if q.Post {
@@ -145,7 +145,10 @@ func clientWireVerdict(f clientFixture, out ClientResult) core.Verdict {
 		if len(wire.Body) > 0 || wire.ContentType != "" {
 			return core.Fail
 		}
-		params := u.Query()
+		params, err := url.ParseQuery(u.RawQuery)
+		if err != nil {
+			return core.Fail
+		}
 		if len(params) != len(q.Request.Options) {
 			return core.Fail
 		}
@@ -157,7 +160,7 @@ func clientWireVerdict(f clientFixture, out ClientResult) core.Verdict {
 		}
 	}
 	if len(q.Reply) > 0 {
-		if out.ServerRole != "controlled client response fixture; not SAGE server output" || len(out.Consumer) != 1 {
+		if out.ServerRole != "controlled client response fixture; not SAGE server output" || len(out.Consumer) != 1 || len(out.Native) != 0 {
 			return core.Error
 		}
 		var reply struct {
@@ -180,15 +183,36 @@ func clientWireVerdict(f clientFixture, out ClientResult) core.Verdict {
 		if c.Operation != pipelineConsumer || c.CaptureError != "" || c.Error != "" || c.MediaType != reply.Metadata.ContentType || c.Version != version || e != nil || err != nil || !reflect.DeepEqual(actual, want) || !out.Result.HasContent || out.Result.ReturnedID != q.Request.Input {
 			return core.Fail
 		}
-	} else if out.ServerRole != "SAGE handler with explicit fixture Source" {
-		return core.Error
+	} else {
+		if out.ServerRole != "universal handler with SAGE resolver and explicit fixture Source" || len(out.Native) != 1 {
+			return core.Error
+		}
+		native := out.Native[0]
+		expected := map[string]any{}
+		for k, v := range q.Request.Options {
+			expected[k] = v
+		}
+		if q.Request.Accept != "" {
+			expected["accept"] = q.Request.Accept
+		}
+		var options map[string]any
+		if json.Unmarshal(native.Options, &options) != nil || native.CaptureError != "" {
+			return core.Error
+		}
+		if native.Function != q.Request.Function || native.Input != q.Request.Input || !reflect.DeepEqual(options, expected) || !native.Result.HasContent || !out.Result.HasContent {
+			return core.Fail
+		}
+		expectedID := q.Request.Input
+		if native.Result.ReturnedID != expectedID || out.Result.ReturnedID != expectedID {
+			return core.Fail
+		}
 	}
 	return core.Pass
 }
 func judgeClient(f clientFixture, out ClientResult, input string) []core.Observation {
 	v := clientWireVerdict(f, out)
 	raw, _ := json.Marshal(out)
-	obs := unavailable(f.Statements, v, "Actual pinned universal.Client constructs and executes one request against an owned TLS endpoint. Passive request/consumer captures and actual results are archived. Sixteen branch controls cover GET/POST, resolution/dereferencing, full/direct response choice and non-accept options. Controlled media contrasts prove client parsing only, not SAGE server output. No production trust, mutual TLS, authority or entire internal algorithm trace is established.")
+	obs := unavailable(f.Statements, v, "Actual pinned universal.Client constructs and executes one request against an owned TLS endpoint. Passive request, actual resolver/dereferencer invocation and consumer captures and actual results are archived. Sixteen branch controls cover GET/POST, resolution/dereferencing, full/direct response choice and non-accept options. Controlled media contrasts prove client parsing only, not SAGE server output. No production trust, mutual TLS, authority or entire internal algorithm trace is established.")
 	for i := range obs {
 		obs[i].Input = input
 		obs[i].Observed = string(raw)

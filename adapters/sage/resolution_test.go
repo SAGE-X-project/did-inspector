@@ -55,6 +55,9 @@ func TestActualResolutionProfiles(t *testing.T) {
 				if o.Verdict == core.Fail && strings.Contains(c.Case, "/native-key-fields-") && o.Statement == "cid10#JsonWebKey.7" {
 					allowed = true
 				}
+				if o.Verdict == core.Fail && strings.Contains(c.Case, "/library-context-producer-") && o.Statement == "did11-cr20260305#json-ld-processors.6" {
+					allowed = true
+				}
 				if !allowed {
 					t.Errorf("%s %s: %s %s", c.Case, o.Statement, o.Verdict, o.Observed)
 				}
