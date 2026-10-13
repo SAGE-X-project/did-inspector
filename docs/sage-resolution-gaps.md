@@ -5,7 +5,7 @@ report from CI run [38353322386](https://github.com/SAGE-X-project/did-inspector
 The machine-readable [inventory](sage-resolution-gaps.json) preserves all 416 historical
 statement ids, normative levels and keywords, exact text digests, evidence paths,
 and a next evidence route for each statement. Pending routes are planning evidence, not verdicts or implementation defects.
-Schema 2 keeps 359 pending entries and 57 entries observed since the baseline;
+Schema 2 keeps 357 pending entries and 59 entries observed since the baseline;
 it never assigns new observations to the historical inspector revision.
 
 The baseline inspector revision is `aefdcf9228ec8dcf85fd4aaf08b6e0511af11c36`.
@@ -24,8 +24,8 @@ recommendation-level statements. Requirement-level extraction also includes
 permissions, definitions and algorithm steps; it does not mean every row is a
 standalone MUST with an independently observable violation.
 
-The current report has 159 cases, 122 requirement and two recommendation passes,
-one recommendation failure, two inapplicable statements and 359 unobserved statements. Ten fresh native
+The current report has 161 cases, 124 requirement and two recommendation passes,
+one recommendation failure, two inapplicable statements and 357 unobserved statements. Ten fresh native
 result cases add 13 requirement passes and one conditional NOT_APPLICABLE.
 Twenty-four direct metadata serialization cases add four requirement passes.
 Three native error/state cases and ten owned TLS response cases add 22
@@ -43,12 +43,16 @@ These add three requirements. Direct consumer calls are library actor evidence,
 not SAGE resolver/ingress evidence. Nine additional paired cases execute 18
 actual consumer calls: accepted public controls versus independently specified
 single-field violations. They add two selected nonconforming-input rejection
-requirements without establishing a complete document validator.
-The following routing counts describe the remaining 359, not the baseline 416.
+requirements without establishing a complete document validator. Two new direct
+typed-production cases inspect every row of the pinned JSON production table on
+selected values, adding production.1 and json-ld-processors.2. Actual pre-producer
+type witnesses distinguish value conversion from post-consumption JSON equality.
+Complete consumer conversion rules and arbitrary value ranges remain pending.
+The following routing counts describe the remaining 357, not the baseline 416.
 
 | Primary next evidence route | Statements | Meaning |
 |---|---:|---|
-| Existing observation | 36 | Candidate assertions on actual native results, methods or server responses |
+| Existing observation | 34 | Candidate assertions on actual native results, methods or server responses |
 | Existing operation, new scenario | 0 | Candidate branches requiring fresh requests or controlled Source failures |
 | Additional observer operation | 97 | A different actor, entry point or instrumentation is needed |
 | Additional data or feature | 117 | Applicable optional fields, representations or method branches are absent |

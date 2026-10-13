@@ -135,3 +135,41 @@ type ConsumptionSubject interface {
 	core.Subject
 	InspectConsumption(context.Context, ConsumptionRequest) (ConsumptionCapture, error)
 }
+
+// TypedValue preserves an actual model type, separately from its JSON encoding.
+// Text carries strings, decimal numbers or full original datetime precision.
+type TypedValue struct {
+	Kind    string        `json:"kind"`
+	Text    string        `json:"text,omitempty"`
+	Flag    bool          `json:"flag,omitempty"`
+	Items   []TypedValue  `json:"items,omitempty"`
+	Members []TypedMember `json:"members,omitempty"`
+}
+type TypedMember struct {
+	Name  string     `json:"name"`
+	Value TypedValue `json:"value"`
+}
+type TypedProductionRequest struct {
+	ID          string        `json:"id"`
+	Controllers []string      `json:"controllers"`
+	Fields      []TypedMember `json:"fields"`
+	Entries     []TypedMember `json:"entries"`
+	JSONLD      bool          `json:"json_ld"`
+}
+
+// TypedProductionResult witnesses the actual model before the delegated call.
+// It cannot be replaced with a post-consumption snapshot or input JSON parser.
+type TypedProductionResult struct {
+	ID              string              `json:"id"`
+	Controllers     []string            `json:"controllers"`
+	ControllerShape string              `json:"controller_shape"`
+	Fields          []TypedMember       `json:"fields"`
+	Entries         []TypedMember       `json:"entries"`
+	Calls           []ProductionCapture `json:"calls"`
+	BuildError      string              `json:"build_error,omitempty"`
+	CaptureError    string              `json:"capture_error,omitempty"`
+}
+type TypedProductionSubject interface {
+	core.Subject
+	InspectTypedProduction(context.Context, TypedProductionRequest) (TypedProductionResult, error)
+}

@@ -78,7 +78,7 @@
     "additional-data-or-feature": 117,
     "additional-observer-operation": 97,
     "document-or-applicability-review": 105,
-    "existing-observation": 36,
+    "existing-observation": 34,
     "operational-or-authority-evidence": 4
   },
   "routes": {
@@ -1773,17 +1773,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "did11-cr20260305#json-ld-processors.2",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "dbe605451efb526aec23921e71b7f68fe646aae939cfc82c04ade1d8e38a086c",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
       "id": "did11-cr20260305#json-ld-processors.5",
       "level": "recommendation",
       "keywords": [
@@ -2156,17 +2145,6 @@
       "baseline_verdict": "NOT_RUN",
       "route": "permission-definition",
       "generic_scope": "not-checkable"
-    },
-    {
-      "id": "did11-cr20260305#production.1",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "9ba94b6d1e967791d319198c1d42a0d6be76a3ca93c3806b09f1d712fd9e9bde",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
     },
     {
       "id": "did11-cr20260305#production.3",
@@ -5105,26 +5083,58 @@
         "did-1.1/sage-resolution/native-consumer-conformance-missing-service-endpoint",
         "did-1.1/sage-resolution/native-consumer-conformance-empty-authentication"
       ]
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "dbe605451efb526aec23921e71b7f68fe646aae939cfc82c04ade1d8e38a086c",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-typed-production-",
+      "cases": [
+        "did-1.1/sage-resolution/native-typed-production-1"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#production.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "9ba94b6d1e967791d319198c1d42a0d6be76a3ca93c3806b09f1d712fd9e9bde",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-typed-production-",
+      "cases": [
+        "did-1.1/sage-resolution/native-typed-production-0"
+      ]
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 124,
+    "PASS": 126,
     "FAIL": 1,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 2,
     "ERROR": 0,
-    "NOT_RUN": 359
+    "NOT_RUN": 357
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 122,
+      "PASS": 124,
       "FAIL": 0,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 312
+      "NOT_RUN": 310
     },
     "recommendation": {
       "statements": 50,
@@ -5136,5 +5146,5 @@
       "NOT_RUN": 47
     }
   },
-  "expected_live_cases": 159
+  "expected_live_cases": 161
 }
