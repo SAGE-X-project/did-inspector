@@ -28,7 +28,7 @@ certificate. They contact no agent, MCP, RPC or deployed registry.
 | Profile | Cases | Requirement PASS | Recommendation PASS | NOT_RUN |
 |---|---:|---:|---:|---:|
 | DID Core 1.0 | 16 | 33 | 0 | 173 |
-| DID 1.1 with CID and Resolution publications | 150 | 120 | 2 | 361 |
+| DID 1.1 with CID and Resolution publications | 159 | 122 | 2 | 359 |
 
 There are no requirement-level FAIL or ERROR statements in these observations.
 The fresh DID 1.1 resolution scope retains one recommendation FAIL for missing
@@ -556,14 +556,50 @@ root verdict. Generic cases and prior verdicts are not reused.
 These are selected library-actor input observations. They do not establish
 SAGE resolver request parsing, registry/key/record validation, production
 network ingress, all nonconforming documents, all representations or complete
-schema/value-conversion conformance. production-and-consumption.18 and the
-composite production/consumption rules remain NOT_RUN. Arbitrary extension
+schema/value-conversion conformance. At that boundary production-and-consumption.18
+and the composite production/consumption rules remained NOT_RUN. Arbitrary extension
 values and typed DateTime/Double evidence are not supplied by SAGE's current
 record projection; their work remains pending rather than passed by inference.
 
-DID 1.1 now has 150 cases, 120 requirement and two recommendation passes, one
+After the root/media addition DID 1.1 had 150 cases, 120 requirement and two recommendation passes, one
 alg recommendation failure, two inapplicable statements and 361 NOT_RUN
 (314 requirements and 47 recommendations). All 416 historical entries remain
 as 361 pending and 55 observed (53 PASS, one NOT_APPLICABLE and one FAIL).
 Core 1.0 and projection remain unchanged and separate. Existing implementation
 findings, deferred authority/history and planned work order remain intact.
+
+## Paired nonconforming field consumption
+
+Nine fresh paired cases make 18 direct calls to the same pinned consumer.
+The accepted public control carries a supported JsonWebKey with the existing
+public Ed25519 test material, authentication and a service. Each negative input
+changes exactly one field: missing root id, numeric root id, missing method type
+or controller, numeric method id or controller, missing service type or endpoint,
+and an empty authentication set. All inputs are valid duplicate-free JSON maps,
+not malformed transport or attacker reproductions. Service-id optionality
+conflicts, arbitrary key classes and secret material are outside this selection.
+
+The inspector independently verifies the named pinned field requirement and
+that stripping only that field makes the two source objects equal. Numeric root
+id refers to subjects.1, not subjects.3 (canonical authoritative dereferencing).
+Fixture descriptors and the public control are fixed. Actual bytes, media,
+options, returned maps and errors are retained for both calls. The control must
+be accepted and preserved before the negative input's error/no-document result
+can earn PASS. An unavailable or unconditionally rejected control is ERROR;
+a negative input accepted without an error is FAIL. Returned error annotations
+are evidence only, never the source of the expected rule or rejection verdict.
+
+The two newly observed requirements are production-and-consumption.18 and
+cid10 conformance.2, bounded to these independently nonconforming inputs.
+Acceptance of the paired control is not a claim of full document/key conformance.
+These library actor observations do not establish all schema violations,
+full conversion rules, cryptographic safety, canonical authority, history,
+SAGE resolver/registry validation, network ingress or whole conformance.
+production.1, json-ld-processors.2 and consumption.1 remain NOT_RUN.
+
+DID 1.1 now has 159 cases, 122 requirement and two recommendation passes, one
+alg recommendation failure, two inapplicable statements and 359 NOT_RUN
+(312 requirements and 47 recommendations). All 416 historical entries remain
+as 359 pending and 57 observed (55 PASS, one NOT_APPLICABLE and one FAIL).
+Core 1.0 and projection evidence stay separate and unchanged. Existing findings
+and the deferred implementation work remain open.

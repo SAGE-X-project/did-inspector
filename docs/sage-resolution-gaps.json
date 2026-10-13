@@ -76,7 +76,7 @@
   ],
   "categories": {
     "additional-data-or-feature": 117,
-    "additional-observer-operation": 99,
+    "additional-observer-operation": 97,
     "document-or-applicability-review": 105,
     "existing-observation": 36,
     "operational-or-authority-evidence": 4
@@ -1061,17 +1061,6 @@
       "baseline_verdict": "NOT_RUN",
       "route": "permission-definition",
       "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#conformance.2",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "c3d9e209ff89e873ed97747983c6292d06393905828cc70b20d1ceebadf7c0fc",
-      "baseline_verdict": "NOT_RUN",
-      "route": "representation-consumer",
-      "generic_scope": "checked"
     },
     {
       "id": "cid10#context-injection.1",
@@ -2079,17 +2068,6 @@
       "baseline_verdict": "NOT_RUN",
       "route": "permission-definition",
       "generic_scope": "not-checkable"
-    },
-    {
-      "id": "did11-cr20260305#production-and-consumption.18",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "73469eb5b190d89d7b5bd93de094eac566f2185ef66d0ff775cf3edb90ca1f46",
-      "baseline_verdict": "NOT_RUN",
-      "route": "representation-consumer",
-      "generic_scope": "checked"
     },
     {
       "id": "did11-cr20260305#production-and-consumption.2",
@@ -5079,26 +5057,74 @@
         "did-1.1/sage-resolution/native-production-root-record-3",
         "did-1.1/sage-resolution/native-production-root-record-5"
       ]
+    },
+    {
+      "id": "cid10#conformance.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "c3d9e209ff89e873ed97747983c6292d06393905828cc70b20d1ceebadf7c0fc",
+      "baseline_verdict": "NOT_RUN",
+      "route": "representation-consumer",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-consumer-conformance-",
+      "cases": [
+        "did-1.1/sage-resolution/native-consumer-conformance-missing-id",
+        "did-1.1/sage-resolution/native-consumer-conformance-nonstring-id",
+        "did-1.1/sage-resolution/native-consumer-conformance-missing-method-type",
+        "did-1.1/sage-resolution/native-consumer-conformance-missing-method-controller",
+        "did-1.1/sage-resolution/native-consumer-conformance-nonstring-method-id",
+        "did-1.1/sage-resolution/native-consumer-conformance-nonstring-method-controller",
+        "did-1.1/sage-resolution/native-consumer-conformance-missing-service-type",
+        "did-1.1/sage-resolution/native-consumer-conformance-missing-service-endpoint",
+        "did-1.1/sage-resolution/native-consumer-conformance-empty-authentication"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.18",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "73469eb5b190d89d7b5bd93de094eac566f2185ef66d0ff775cf3edb90ca1f46",
+      "baseline_verdict": "NOT_RUN",
+      "route": "representation-consumer",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-consumer-conformance-",
+      "cases": [
+        "did-1.1/sage-resolution/native-consumer-conformance-missing-id",
+        "did-1.1/sage-resolution/native-consumer-conformance-nonstring-id",
+        "did-1.1/sage-resolution/native-consumer-conformance-missing-method-type",
+        "did-1.1/sage-resolution/native-consumer-conformance-missing-method-controller",
+        "did-1.1/sage-resolution/native-consumer-conformance-nonstring-method-id",
+        "did-1.1/sage-resolution/native-consumer-conformance-nonstring-method-controller",
+        "did-1.1/sage-resolution/native-consumer-conformance-missing-service-type",
+        "did-1.1/sage-resolution/native-consumer-conformance-missing-service-endpoint",
+        "did-1.1/sage-resolution/native-consumer-conformance-empty-authentication"
+      ]
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 122,
+    "PASS": 124,
     "FAIL": 1,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 2,
     "ERROR": 0,
-    "NOT_RUN": 361
+    "NOT_RUN": 359
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 120,
+      "PASS": 122,
       "FAIL": 0,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 314
+      "NOT_RUN": 312
     },
     "recommendation": {
       "statements": 50,
@@ -5110,5 +5136,5 @@
       "NOT_RUN": 47
     }
   },
-  "expected_live_cases": 150
+  "expected_live_cases": 159
 }
