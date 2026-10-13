@@ -28,7 +28,7 @@ certificate. They contact no agent, MCP, RPC or deployed registry.
 | Profile | Cases | Requirement PASS | Recommendation PASS | NOT_RUN |
 |---|---:|---:|---:|---:|
 | DID Core 1.0 | 16 | 33 | 0 | 173 |
-| DID 1.1 with CID and Resolution publications | 161 | 124 | 2 | 357 |
+| DID 1.1 with CID and Resolution publications | 163 | 125 | 2 | 356 |
 
 There are no requirement-level FAIL or ERROR statements in these observations.
 The fresh DID 1.1 resolution scope retains one recommendation FAIL for missing
@@ -635,11 +635,50 @@ Unicode ranges, contextual property conversions, canonical authority, history,
 SAGE resolver/ingress or full JSON-LD term processing and remote contexts.
 
 production.1 and json-ld-processors.2 now pass on these directly observed typed
-inputs, with the same table and scope limits for both. consumption.1 still needs
+inputs, with the same table and scope limits for both. At that boundary consumption.1 still needed
 actual typed consumer evidence, and production-and-consumption.12 remains
 unobserved: builder rejection must not be misreported as producer rejection.
-DID 1.1 now has 161 cases, 124 requirement and two recommendation passes, one
+After the typed producer addition DID 1.1 had 161 cases, 124 requirement and two recommendation passes, one
 alg recommendation failure, two inapplicable statements and 357 NOT_RUN
 (310 requirements and 47 recommendations). Historical entries remain as 357
 pending and 59 observed (57 PASS, one NOT_APPLICABLE and one FAIL). Core 1.0,
+projection and existing implementation findings remain separate and unchanged.
+
+## Actual returned typed JSON consumption values
+
+InspectTypedConsumption passes literal public JSON to the unchanged pinned
+consumer selected by SAGE integration. It archives the actual call inputs,
+options, errors, detected version and returned maps, then observes the returned
+document through typed extension, representation, controller and method
+accessors. It does not build an expected document with a subject producer or
+use subject validator annotations as its oracle.
+
+Two actual inputs differ in root object member order. Each covers the nine
+consumption table rows with a nested/empty map, ordered list and controller set,
+known expires/revoked datetime entries, strings with Unicode/escapes/newlines,
+selected safe integers, doubles 1.5 and 2.0, booleans and null. Unknown
+date-looking strings must stay strings; known datetime fields must retain the
+same instant and nanosecond fraction. Map member insertion order is not
+required, while list/set order is. Typed number kinds are checked separately
+from JSON numerical equality, so an integral double becoming an Integer fails.
+
+Only the reviewed complete literal fixtures are eligible. Missing attribution,
+changed input/options or capture errors are ERROR. Consumer rejection, wrong
+detected information, lost entries or incorrect typed values are FAIL. Unit
+controls cover these boundaries and every selected type without executable
+attack reproduction. Actual returned fields are compared to independent typed
+expectations and separately to the full returned maps.
+
+consumption.1 now passes on these selected JSON inputs. This does not establish
+forced double property conversion without a fractional input, every numeric
+range or property context, JSON-LD terms/remote contexts, operational authority,
+SAGE resolver/ingress, or whole document/key conformance. The method timestamps
+are data-model conversion evidence, not operational expiration/revocation or
+historical truth. production-and-consumption.12 remains NOT_RUN; builder
+rejection is not producer rejection.
+
+DID 1.1 now has 163 cases, 125 requirement and two recommendation passes, one
+alg recommendation failure, two inapplicable statements and 356 NOT_RUN
+(309 requirements and 47 recommendations). Historical entries remain as 356
+pending and 60 observed (58 PASS, one NOT_APPLICABLE and one FAIL). Core 1.0,
 projection and existing implementation findings remain separate and unchanged.

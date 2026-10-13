@@ -51,6 +51,13 @@ func (s stub) InspectTypedProduction(context.Context, TypedProductionRequest) (T
 	return TypedProductionResult{}, nil
 }
 
+func (s stub) InspectTypedConsumption(context.Context, ConsumptionRequest) (TypedConsumptionResult, error) {
+	if s.err {
+		return TypedConsumptionResult{}, errors.New("fixture typed consumer unavailable")
+	}
+	return TypedConsumptionResult{}, nil
+}
+
 type noOperation struct{}
 
 func (noOperation) Describe() core.SubjectInfo            { return core.SubjectInfo{Name: "missing"} }

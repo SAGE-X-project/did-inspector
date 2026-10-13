@@ -165,13 +165,13 @@ jobs:
           import base64, json, os
           from pathlib import Path
           root=Path(os.environ['RUNNER_TEMP'])/'sage-reports'
-          for name,passed,pending,cases in [('did-core-1.0',33,173,16),('did-1.1',126,357,161)]:
+          for name,passed,pending,cases in [('did-core-1.0',33,173,16),('did-1.1',127,356,163)]:
               report=json.loads((root/('resolution-'+name+'.json')).read_text())
               assert report['subject']['name']=='did-go/advanced/sage-resolution'
               assert report['subject']['revision']=='2ef282b40ccfe243c6cf3b1c05594e02171126cc'
               assert report['totals']['FAIL']==(1 if name=='did-1.1' else 0) and report['totals']['ERROR']==0
               assert report['totals']['PASS']==passed and report['totals']['NOT_RUN']==pending
-              assert report['totals_by_level']['requirement']['PASS']==(33 if name=='did-core-1.0' else 124)
+              assert report['totals_by_level']['requirement']['PASS']==(33 if name=='did-core-1.0' else 125)
               raw=json.loads((root/('resolution-'+name+'-raw.json')).read_text())
               assert len(raw['cases'])==cases and raw['subject']==report['subject']
               assert report['totals']['NOT_APPLICABLE']==(2 if name=='did-1.1' else 0)
@@ -364,6 +364,59 @@ jobs:
                   wire={'id':q['id'],'controller':q['controllers'],**{m['name']:typedvalue(m['value'],True) for m in q['fields']},**{m['name']:typedvalue(m['value'],True) for m in q['entries']}}
                   if q['json_ld']: wire['@context']='https://www.w3.org/ns/did/v1.1'
                   assert decode(p['output'])==wire
+              consumed=[c for c in raw['cases'] if '/native-typed-consumption-' in c['case']]
+              assert len(consumed)==(2 if name=='did-1.1' else 0)
+              def jsonkind(v):
+                  if isinstance(v,tuple): return (v[0],str(int(v[1])) if v[0]=='integer' else str(float(v[1])).removesuffix('.0'))
+                  if v is None: return ('null',)
+                  if isinstance(v,bool): return ('boolean',v)
+                  if isinstance(v,str): return ('string',v)
+                  if isinstance(v,list): return ('list',[jsonkind(x) for x in v])
+                  assert isinstance(v,dict)
+                  return ('map',{k:jsonkind(x) for k,x in v.items()})
+              def witnesskind(v):
+                  k=v['kind']
+                  if k in ['string','integer','double']: return (k,v['text'])
+                  if k=='boolean': return (k,v.get('flag',False))
+                  if k=='null': return (k,)
+                  if k=='list': return (k,[witnesskind(x) for x in v.get('items',[])])
+                  assert k=='map'
+                  members=v.get('members',[])
+                  assert len({m['name'] for m in members})==len(members)
+                  return (k,{m['name']:witnesskind(m['value']) for m in members})
+              def instant(text):
+                  match=re.fullmatch(r'(.*?)(?:\.(\d{1,9}))?(Z|[+-]\d{2}:\d{2})',text)
+                  assert match
+                  date=datetime.fromisoformat(match[1]+('+00:00' if match[3]=='Z' else match[3]))
+                  return (int(date.timestamp()),int((match[2] or '').ljust(9,'0')))
+              for case in consumed:
+                  assert len(case['observations'])==1
+                  obs=case['observations'][0]
+                  assert obs['statement']=='did11-cr20260305#consumption.1' and obs['verdict']=='PASS'
+                  q,out=json.loads(obs['input']),json.loads(obs['observed']);call=out['call']
+                  assert q['media_type']==call['media_type']=='application/did' and q['data']==call['input']
+                  assert call['operation']=='github.com/sage-x-project/did-go/consumer.Consumer.Consume'
+                  assert call['require']==call['expected']=='unknown' and not call['strict']
+                  assert call['version']=='1.1' and not call['json_ld'] and not call.get('dropped_terms')
+                  assert not call.get('error') and not call.get('capture_error') and not out.get('capture_error')
+                  literal=base64.b64decode(q['data'],validate=True).decode('utf-8')
+                  typed=json.loads(literal,parse_int=lambda x:('integer',x),parse_float=lambda x:('double',x))
+                  source=json.loads(literal)
+                  assert out['id']==source['id'] and out['controllers']==source['controller'] and out['controller_shape']=='set'
+                  assert len(source['controller'])==2 and len(source['verificationMethod'])==1
+                  fields={m['name']:witnesskind(m['value']) for m in out['fields']}
+                  assert len(fields)==len(out['fields'])
+                  assert fields=={k:jsonkind(x) for k,x in typed.items() if k not in ['id','controller','verificationMethod']}
+                  assert not out['entries'] and len(out['methods'])==1
+                  actual=out['methods'][0];method=source['verificationMethod'][0]
+                  assert actual['id']==method['id']
+                  for key in ['expires','revoked']:
+                      assert actual[key]['kind']=='datetime' and instant(actual[key]['text'])==instant(method[key])
+                  model=json.loads(base64.b64decode(call['model'],validate=True))
+                  for key in ['expires','revoked']:
+                      assert instant(model['verificationMethod'][0][key])==instant(source['verificationMethod'][0][key])
+                      model['verificationMethod'][0][key]=source['verificationMethod'][0][key]
+                  assert model==source and json.loads(base64.b64decode(call['entries'],validate=True))=={}
           PYTHON
       - name: Check complete SAGE pending clause inventory
         run: |
@@ -381,23 +434,23 @@ jobs:
           assert report['inspector']['revision']==os.environ['GITHUB_SHA']
           assert inventory['expected_live_totals']==report['totals']
           assert inventory['expected_live_totals_by_level']==report['totals_by_level']
-          assert inventory['expected_live_cases']==len(raw['cases'])==161
+          assert inventory['expected_live_cases']==len(raw['cases'])==163
           pending=inventory['pending']
           observed=inventory['observed_since_baseline']
           ids=[row['id'] for row in pending]
-          assert len(ids)==len(set(ids))==357
+          assert len(ids)==len(set(ids))==356
           assert set(ids)=={row['id'] for row in report['statements'] if row['verdict']=='NOT_RUN'}
           allrows=pending+observed
           allids=[row['id'] for row in allrows]
           assert len(allids)==len(set(allids))==inventory['baseline']['totals']['NOT_RUN']==416
           assert hashlib.sha256(json.dumps(sorted(allids),separators=(',',':')).encode()).hexdigest()==inventory['baseline']['pending_ids_sha256']
-          assert len(observed)==59
-          assert collections.Counter(row['expected_live_verdict'] for row in observed)=={'PASS':57,'NOT_APPLICABLE':1,'FAIL':1}
+          assert len(observed)==60
+          assert collections.Counter(row['expected_live_verdict'] for row in observed)=={'PASS':58,'NOT_APPLICABLE':1,'FAIL':1}
           live={row['id']:row['verdict'] for row in report['statements']}
           cases={case['case']:case for case in raw['cases']}
           assert len(cases)==len(raw['cases'])
           for row in observed:
-              assert row['case_prefix'] in ['/native-result-','/native-metadata-','/native-branch-','/wire-branch-','/native-key-fields-','/native-representation-','/native-pipeline-','/native-production-root-','/native-consumer-','/native-consumer-conformance-','/native-typed-production-']
+              assert row['case_prefix'] in ['/native-result-','/native-metadata-','/native-branch-','/wire-branch-','/native-key-fields-','/native-representation-','/native-pipeline-','/native-production-root-','/native-consumer-','/native-consumer-conformance-','/native-typed-production-','/native-typed-consumption-']
               assert live[row['id']]==row['expected_live_verdict']
               expectedcases={case['case'] for case in raw['cases'] if row['case_prefix'] in case['case'] and any(o['statement']==row['id'] for o in case['observations'])}
               assert row['cases'] and len(row['cases'])==len(set(row['cases']))
@@ -431,8 +484,8 @@ jobs:
                   categories[route['category']]+=1
           assert dict(categories)==inventory['categories']
           assert collections.Counter(row['level'] for row in allrows)=={'requirement':368,'recommendation':48}
-          assert collections.Counter(row['level'] for row in pending)=={'requirement':310,'recommendation':47}
-          print('Verified 357 pending and 59 newly observed clauses; all 416 historical ids retained')
+          assert collections.Counter(row['level'] for row in pending)=={'requirement':309,'recommendation':47}
+          print('Verified 356 pending and 60 newly observed clauses; all 416 historical ids retained')
           PYTHON
       - name: Preserve independent profile and raw observation artifacts
         if: always()
