@@ -30,6 +30,13 @@ func (s stub) InspectMetadata(context.Context, sageprojection.Record, Request) (
 	return MetadataResult{}, nil
 }
 
+func (s stub) InspectPipeline(context.Context, sageprojection.Record, Request) (PipelineResult, error) {
+	if s.err {
+		return PipelineResult{}, errors.New("fixture pipeline execution failed")
+	}
+	return PipelineResult{}, nil
+}
+
 type noOperation struct{}
 
 func (noOperation) Describe() core.SubjectInfo            { return core.SubjectInfo{Name: "missing"} }

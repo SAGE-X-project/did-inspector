@@ -28,7 +28,7 @@ certificate. They contact no agent, MCP, RPC or deployed registry.
 | Profile | Cases | Requirement PASS | Recommendation PASS | NOT_RUN |
 |---|---:|---:|---:|---:|
 | DID Core 1.0 | 16 | 33 | 0 | 173 |
-| DID 1.1 with CID and Resolution publications | 133 | 112 | 2 | 369 |
+| DID 1.1 with CID and Resolution publications | 138 | 117 | 2 | 364 |
 
 There are no requirement-level FAIL or ERROR statements in these observations.
 The fresh DID 1.1 resolution scope retains one recommendation FAIL for missing
@@ -476,16 +476,57 @@ malformed parameters are rejected rather than discarded. Any error metadata
 property or unusable native representation makes this observation unavailable.
 Raw bytes, request and complete native result remain attached to each verdict.
 
-Four requirements pass on these actual outputs. DID 1.1 now has 133 cases,
+Four requirements passed on these actual outputs. After this addition DID 1.1 had 133 cases,
 112 requirement and two recommendation passes, one recommendation FAIL, two
 inapplicable statements and 369 unobserved statements (322 requirements and
 47 recommendations). Missing alg remains a recommendation failure. The original
 416 entries are retained as 369 pending and 47 observed entries.
 
 These cases establish context fields and media declaration, not general JSON
-production or JSON-LD conformance. production.1/.2 and json-ld-processors.2 remain
-NOT_RUN: post-consumption getter equality cannot prove preservation of all
+production or JSON-LD conformance. At that point production.1/.2 and
+json-ld-processors.2 remained NOT_RUN: post-consumption getter equality cannot prove preservation of all
 pre-producer input entries and value conversion rules. JSON-LD processing, term
 semantics, remote context fetching and extension registration are not invoked
 or established. Absent optional inputs, update history and authority stay outside
 this evidence; no projection/generic verdict is copied and no output repaired.
+
+## Actual producer and consumer call boundaries
+
+Five fresh native resolutions use passive wrappers around the exact pinned
+producer and consumer passed to advanced/sage.NewResolver. They retain detached
+pre-producer data and representation-entry accessor maps, actual options,
+serialized bytes, returned media type and errors. Consumer input bytes/media and
+all options, detected version, dropped terms, and independently returned data
+and representation-entry maps are retained separately. The underlying delegated
+arguments and return values are unchanged. Unit controls and direct runtime
+comparison with the unwrapped resolver verify observation transparency.
+
+The observer requires one attributed call per actor, the actual default DID 1.1
+options, and byte continuity from producer to consumer to resolver. It independently
+parses all captured maps. @context has explicit production processing, so adding
+the base context to an initially empty representation map is allowed; every
+other actual pre-input entry is compared against the root serialization. The
+consumer must return @context separately from every other retained input entry.
+Producer media type is judged independently of consumer or resolver metadata.
+A non-application/did consumer input is outside these consumer observations and
+cannot gain PASS. Dropped-term processing is likewise outside the preservation
+judgment rather than assumed valid. Malformed archives are ERROR with original
+JSON fields preserved as byte strings, not empty evidence or repaired output.
+
+The selected clauses are production-and-consumption.10/.11/.16/.17,
+and consumption.2. Equality covers actual ASCII strings,
+safe integers, booleans, nulls, arrays and maps in the selected fixtures. Other
+numeric/Unicode values remain NOT_SUPPORTED; typed DateTime/Double conversion,
+all data types, JSON-LD term semantics, remote contexts, secret material handling,
+nonconforming inputs, arbitrary representations and whole conformance remain
+unestablished. production.1/.2, json-ld-processors.2 and consumption.1 remain NOT_RUN: their composite
+rules need broader type and input evidence. No generic case/verdict, subject
+validator or post-consumption getter provides the producer's expected input.
+
+Five additional requirements pass. DID 1.1 now has 138 cases, 117 requirement and
+two recommendation passes, one alg recommendation failure, two inapplicable
+statements and 364 NOT_RUN (317 requirements and 47 recommendations). The 416
+historical entries remain as 364 pending and 52 observed (50 PASS, one
+NOT_APPLICABLE and one FAIL). Core 1.0 and projection results remain separate
+and unchanged. Source/history/authority and existing implementation findings
+are neither repaired nor closed by this observation expansion.

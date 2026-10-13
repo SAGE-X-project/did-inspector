@@ -97,6 +97,7 @@ func Profile(name string) (core.Profile, error) {
 	appendMetadataCases(&p, rows)
 	appendKeyFieldCases(&p, rows)
 	appendRepresentationCases(&p, rows)
+	appendPipelineCases(&p, rows)
 	appendBranchCases(&p, rows)
 	if err := appendWireCases(&p, rows); err != nil {
 		return p, err
