@@ -389,3 +389,10 @@ func (s stub) InspectContract(context.Context, sageprojection.Record, ContractRe
 	}
 	return ContractResult{}, nil
 }
+
+func (s stub) InspectPolicy(context.Context, PolicyRequest) (PolicyResult, error) {
+	if s.err {
+		return PolicyResult{}, errors.New("fixture policy failure")
+	}
+	return PolicyResult{}, nil
+}

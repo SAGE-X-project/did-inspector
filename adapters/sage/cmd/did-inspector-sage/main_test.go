@@ -278,7 +278,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		t.Fatal(err)
 	}
 	r, err := report.Decode(data)
-	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 213 {
+	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 215 {
 		t.Fatal("scope identity", err, r.Totals)
 	}
 	binary := filepath.Join(t.TempDir(), "sage-inspector")
@@ -304,15 +304,15 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		want, cases := 33, 16
 		if profile == "did-1.1" {
-			want, cases = 213, 238
+			want, cases = 215, 256
 		}
-		if profile == "did-1.1" && (r.Totals.NotApplicable != 2 || r.Totals.NotRun != 269) {
+		if profile == "did-1.1" && (r.Totals.NotApplicable != 2 || r.Totals.NotRun != 263) {
 			t.Fatal("native URL conditional evidence", r.Totals)
 		}
-		if profile == "did-1.1" && (r.Totals.Fail != 2 || r.TotalsByLevel.Recommendation.Fail != 2) {
+		if profile == "did-1.1" && (r.Totals.Fail != 6 || r.TotalsByLevel.Recommendation.Fail != 2 || r.TotalsByLevel.Requirement.Fail != 4) {
 			t.Fatal("native alg recommendation failure not preserved", r.Totals)
 		}
-		if r.Totals.Pass != want || len(r.GateFailures()) != 0 || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Subject.Revision != "2ef282b40ccfe243c6cf3b1c05594e02171126cc" {
+		if r.Totals.Pass != want || !expectedResolutionGate(r) || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Subject.Revision != "2ef282b40ccfe243c6cf3b1c05594e02171126cc" {
 			t.Fatal("native scope", r.Totals, r.Subject)
 		}
 		data, err = os.ReadFile(rawPath)
@@ -325,7 +325,11 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		for _, c := range raw.Cases {
 			for _, o := range c.Observations {
-				if strings.Contains(c.Case, "/library-") {
+				if strings.Contains(c.Case, "/key-policy-") {
+					if o.Input == "" || o.Observed == "" {
+						t.Fatal("lost policy evidence")
+					}
+				} else if strings.Contains(c.Case, "/library-") {
 					if o.Input == "" || o.Observed == "" {
 						t.Fatal("lost library evidence")
 					}
@@ -344,7 +348,11 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 				} else if !strings.Contains(o.Input, `"record"`) {
 					t.Fatal("lost input evidence")
 				}
-				if strings.Contains(c.Case, "/library-") {
+				if strings.Contains(c.Case, "/key-policy-") {
+					if o.Input == "" || o.Observed == "" {
+						t.Fatal("lost policy evidence")
+					}
+				} else if strings.Contains(c.Case, "/library-") {
 					if o.Input == "" || o.Observed == "" {
 						t.Fatal("lost library evidence")
 					}
@@ -371,4 +379,23 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 			}
 		}
 	}
+}
+
+func expectedResolutionGate(r report.Report) bool {
+	expected := map[string]bool{}
+	if r.Profile == "did-1.1" {
+		for _, id := range []string{"cid10#verification-methods.9", "cid10#verification-methods.11", "cid10#conformance.2", "did11-cr20260305#production-and-consumption.18"} {
+			expected[id] = true
+		}
+	}
+	actual := r.GateFailures()
+	if len(actual) != len(expected) {
+		return false
+	}
+	for _, s := range actual {
+		if !expected[s.ID] || s.Verdict != core.Fail {
+			return false
+		}
+	}
+	return true
 }
