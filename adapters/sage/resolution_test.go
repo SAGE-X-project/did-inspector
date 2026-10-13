@@ -120,7 +120,35 @@ func TestNativeRecordOutcomesRemainUnrepaired(t *testing.T) {
 		t.Fatal("known unsupported accept boundary repaired", e)
 	}
 	out, e = s.InspectResolution(t.Context(), rows[0], sageresolution.Request{Function: "resolve10", Input: rows[0].DID})
-	if e != nil || string(out.Snapshot) != `{"id":"did:sage:web:registry.example:agent-1"}` || len(out.Raw) != 0 {
+	if e != nil || !json.Valid(out.Snapshot) || len(out.Raw) != 0 {
 		t.Fatal("native snapshot scope", e, out)
+	}
+}
+
+func TestActualComparisonsArchiveBothInputsAndAllFields(t *testing.T) {
+	s, _ := identify(pinned)
+	rows, _ := sageprojection.Fixtures()
+	for _, fn := range []string{"resolve", "resolve10", "dereference", "dereference10"} {
+		out, err := s.InspectResolution(t.Context(), rows[0], sageresolution.Request{Function: fn, Input: rows[0].DID})
+		if err != nil {
+			t.Fatal(err)
+		}
+		var doc map[string]any
+		if err = json.Unmarshal(out.Snapshot, &doc); err != nil {
+			t.Fatal(err)
+		}
+		for _, field := range []string{"id", "verificationMethod", "authentication", "assertionMethod", "keyAgreement", "service"} {
+			if _, present := doc[field]; !present {
+				t.Fatal("lost native field", fn, field)
+			}
+		}
+	}
+	// Invalid comparison configuration is rejected; no native result is invented.
+	req := core.HTTPRequest{Method: "GET", Target: rows[0].DID, Header: http.Header{"Accept": {"application/did-resolution"}}}
+	if _, err := s.InspectResolution(t.Context(), rows[0], sageresolution.Request{Function: "http-comparison", Input: rows[0].DID, HTTP: &req}); err == nil {
+		t.Fatal("implicit comparison operation")
+	}
+	if _, err := s.InspectResolution(t.Context(), rows[0], sageresolution.Request{Function: "http-comparison", NativeFunction: "dereference", Input: "invalid", HTTP: &req}); err == nil {
+		t.Fatal("invalid native input")
 	}
 }

@@ -56,7 +56,7 @@ func Profile(name string) (core.Profile, error) {
 			return p, fmt.Errorf("invalid record index")
 		}
 		q := c.Request.Request
-		if q.Function == "http" {
+		if q.Function == "http" || q.Function == "http-comparison" {
 			req, e := checks.BindingRequest(c.Request.Method, q.Input, c.Request.AcceptHeader, q.Options)
 			if e != nil {
 				return p, e

@@ -2074,5 +2074,299 @@
         ]
       }
     ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "compare-get-record-0",
+    "record": 0,
+    "request": {
+      "function": "http-comparison",
+      "native_function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "http_method": "GET",
+      "http_accept": "application/did-resolution"
+    },
+    "expect": [
+      {
+        "check": "http-native-equality",
+        "value": "resolve",
+        "statements": [
+          "res10-crd20261001#bindings-https.27"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "compare-post-record-0",
+    "record": 0,
+    "request": {
+      "function": "http-comparison",
+      "native_function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "http_method": "POST",
+      "http_accept": "application/did-resolution"
+    },
+    "expect": [
+      {
+        "check": "http-native-equality",
+        "value": "resolve",
+        "statements": [
+          "res10-crd20261001#bindings-https.27"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "compare-get-record-1",
+    "record": 1,
+    "request": {
+      "function": "http-comparison",
+      "native_function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "http_method": "GET",
+      "http_accept": "application/did-resolution"
+    },
+    "expect": [
+      {
+        "check": "http-native-equality",
+        "value": "resolve",
+        "statements": [
+          "res10-crd20261001#bindings-https.27"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "compare-post-record-1",
+    "record": 1,
+    "request": {
+      "function": "http-comparison",
+      "native_function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "http_method": "POST",
+      "http_accept": "application/did-resolution"
+    },
+    "expect": [
+      {
+        "check": "http-native-equality",
+        "value": "resolve",
+        "statements": [
+          "res10-crd20261001#bindings-https.27"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "compare-get-record-2",
+    "record": 2,
+    "request": {
+      "function": "http-comparison",
+      "native_function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "http_method": "GET",
+      "http_accept": "application/did-resolution"
+    },
+    "expect": [
+      {
+        "check": "http-native-equality",
+        "value": "resolve",
+        "statements": [
+          "res10-crd20261001#bindings-https.27"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "compare-post-record-2",
+    "record": 2,
+    "request": {
+      "function": "http-comparison",
+      "native_function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "http_method": "POST",
+      "http_accept": "application/did-resolution"
+    },
+    "expect": [
+      {
+        "check": "http-native-equality",
+        "value": "resolve",
+        "statements": [
+          "res10-crd20261001#bindings-https.27"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "compare-get-record-3",
+    "record": 3,
+    "request": {
+      "function": "http-comparison",
+      "native_function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "http_method": "GET",
+      "http_accept": "application/did-resolution"
+    },
+    "expect": [
+      {
+        "check": "http-native-equality",
+        "value": "resolve",
+        "statements": [
+          "res10-crd20261001#bindings-https.27"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "compare-post-record-3",
+    "record": 3,
+    "request": {
+      "function": "http-comparison",
+      "native_function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "http_method": "POST",
+      "http_accept": "application/did-resolution"
+    },
+    "expect": [
+      {
+        "check": "http-native-equality",
+        "value": "resolve",
+        "statements": [
+          "res10-crd20261001#bindings-https.27"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "compare-get-record-4",
+    "record": 4,
+    "request": {
+      "function": "http-comparison",
+      "native_function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "http_method": "GET",
+      "http_accept": "application/did-resolution"
+    },
+    "expect": [
+      {
+        "check": "http-native-equality",
+        "value": "resolve",
+        "statements": [
+          "res10-crd20261001#bindings-https.27"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "compare-post-record-4",
+    "record": 4,
+    "request": {
+      "function": "http-comparison",
+      "native_function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "http_method": "POST",
+      "http_accept": "application/did-resolution"
+    },
+    "expect": [
+      {
+        "check": "http-native-equality",
+        "value": "resolve",
+        "statements": [
+          "res10-crd20261001#bindings-https.27"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "compare-get-record-5",
+    "record": 5,
+    "request": {
+      "function": "http-comparison",
+      "native_function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "http_method": "GET",
+      "http_accept": "application/did-resolution"
+    },
+    "expect": [
+      {
+        "check": "http-native-equality",
+        "value": "resolve",
+        "statements": [
+          "res10-crd20261001#bindings-https.27"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "compare-post-record-5",
+    "record": 5,
+    "request": {
+      "function": "http-comparison",
+      "native_function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "http_method": "POST",
+      "http_accept": "application/did-resolution"
+    },
+    "expect": [
+      {
+        "check": "http-native-equality",
+        "value": "resolve",
+        "statements": [
+          "res10-crd20261001#bindings-https.27"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "compare-get-key",
+    "record": 0,
+    "request": {
+      "function": "http-comparison",
+      "native_function": "dereference",
+      "input": "did:sage:web:registry.example:agent-1#sign",
+      "http_method": "GET",
+      "http_accept": "application/did-url-dereferencing"
+    },
+    "expect": [
+      {
+        "check": "http-native-equality",
+        "value": "dereference",
+        "statements": [
+          "res10-crd20261001#bindings-https.34"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "compare-post-key",
+    "record": 0,
+    "request": {
+      "function": "http-comparison",
+      "native_function": "dereference",
+      "input": "did:sage:web:registry.example:agent-1#sign",
+      "http_method": "POST",
+      "http_accept": "application/did-url-dereferencing"
+    },
+    "expect": [
+      {
+        "check": "http-native-equality",
+        "value": "dereference",
+        "statements": [
+          "res10-crd20261001#bindings-https.34"
+        ]
+      }
+    ]
   }
 ]

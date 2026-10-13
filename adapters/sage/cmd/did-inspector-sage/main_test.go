@@ -303,7 +303,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		want, cases := 20, 11
 		if profile == "did-1.1" {
-			want, cases = 45, 47
+			want, cases = 45, 61
 		}
 		if r.Totals.Pass != want || len(r.GateFailures()) != 0 || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Subject.Revision != "2ef282b40ccfe243c6cf3b1c05594e02171126cc" {
 			t.Fatal("native scope", r.Totals, r.Subject)
