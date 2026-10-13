@@ -278,7 +278,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		t.Fatal(err)
 	}
 	r, err := report.Decode(data)
-	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 124 {
+	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 126 {
 		t.Fatal("scope identity", err, r.Totals)
 	}
 	binary := filepath.Join(t.TempDir(), "sage-inspector")
@@ -304,9 +304,9 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		want, cases := 33, 16
 		if profile == "did-1.1" {
-			want, cases = 124, 159
+			want, cases = 126, 161
 		}
-		if profile == "did-1.1" && (r.Totals.NotApplicable != 2 || r.Totals.NotRun != 359) {
+		if profile == "did-1.1" && (r.Totals.NotApplicable != 2 || r.Totals.NotRun != 357) {
 			t.Fatal("native URL conditional evidence", r.Totals)
 		}
 		if profile == "did-1.1" && (r.Totals.Fail != 1 || r.TotalsByLevel.Recommendation.Fail != 1) {
@@ -325,7 +325,11 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		for _, c := range raw.Cases {
 			for _, o := range c.Observations {
-				if strings.Contains(c.Case, "/native-consumer-") {
+				if strings.Contains(c.Case, "/native-typed-production-") {
+					if !strings.Contains(o.Input, `"fields"`) || !strings.Contains(o.Input, `"json_ld"`) {
+						t.Fatal("lost typed request")
+					}
+				} else if strings.Contains(c.Case, "/native-consumer-") {
 					if !strings.Contains(o.Input, `"data"`) || !strings.Contains(o.Input, `"media_type"`) {
 						t.Fatal("lost direct library input")
 					}
@@ -340,6 +344,10 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 				} else if strings.Contains(c.Case, "/native-consumer-") {
 					if !strings.Contains(o.Observed, `"operation"`) || !strings.Contains(o.Observed, `"input"`) {
 						t.Fatal("lost actual consumer capture")
+					}
+				} else if strings.Contains(c.Case, "/native-typed-production-") {
+					if !strings.Contains(o.Observed, `"calls"`) || !strings.Contains(o.Observed, `"controller_shape"`) {
+						t.Fatal("lost actual typed witnesses")
 					}
 				} else if !strings.Contains(o.Observed, `"metadata"`) {
 					t.Fatal("lost native result evidence")

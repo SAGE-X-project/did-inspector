@@ -28,7 +28,7 @@ certificate. They contact no agent, MCP, RPC or deployed registry.
 | Profile | Cases | Requirement PASS | Recommendation PASS | NOT_RUN |
 |---|---:|---:|---:|---:|
 | DID Core 1.0 | 16 | 33 | 0 | 173 |
-| DID 1.1 with CID and Resolution publications | 159 | 122 | 2 | 359 |
+| DID 1.1 with CID and Resolution publications | 161 | 124 | 2 | 357 |
 
 There are no requirement-level FAIL or ERROR statements in these observations.
 The fresh DID 1.1 resolution scope retains one recommendation FAIL for missing
@@ -595,11 +595,51 @@ Acceptance of the paired control is not a claim of full document/key conformance
 These library actor observations do not establish all schema violations,
 full conversion rules, cryptographic safety, canonical authority, history,
 SAGE resolver/registry validation, network ingress or whole conformance.
-production.1, json-ld-processors.2 and consumption.1 remain NOT_RUN.
+At that boundary production.1, json-ld-processors.2 and consumption.1 remained NOT_RUN.
 
-DID 1.1 now has 159 cases, 122 requirement and two recommendation passes, one
+After the paired field addition DID 1.1 had 159 cases, 122 requirement and two recommendation passes, one
 alg recommendation failure, two inapplicable statements and 359 NOT_RUN
 (312 requirements and 47 recommendations). All 416 historical entries remain
 as 359 pending and 57 observed (55 PASS, one NOT_APPLICABLE and one FAIL).
 Core 1.0 and projection evidence stay separate and unchanged. Existing findings
 and the deferred implementation work remain open.
+
+## Actual typed JSON production table
+
+InspectTypedProduction constructs an explicit public document using typed model
+constructors, not a subject consumer or validator output. Before invoking the
+same pinned producer selected by SAGE integration, it captures actual extension
+and representation-entry model kinds and original values, controller order and
+set shape, separate pre-call maps, options, bytes and errors. Input construction
+errors are distinct from producer rejection and establish no production-and-consumption.12
+verdict. Actual type witnesses must match the reviewed complete fixture.
+
+Two fresh library-actor cases select JSON and JSON-LD production. Each explicitly
+covers all nine rows of the pinned production table: map, list, ordered set,
+datetime, string, integer, double, boolean and null. The independent expected
+conversion uses Unicode/escape/newline strings, safe integers, doubles 1.5 and
+2, nested maps/lists, an ordered controller set and two datetimes with opposite
+offsets and fractional seconds. Pre-input retains original datetime precision;
+output must be UTC without subsecond precision. An integral double must retain a
+decimal fraction, so 2 and 2e0 do not pass for 2.0. Number spelling is checked
+separately from numerical JSON equality. Representation-map fields must also
+survive, and JSON-LD selection must add the DID 1.1 base context.
+
+The actual producer is never used to generate expected output, and a
+post-consumption getter cannot stand in for the typed input. Incomplete fixture,
+missing type attribution, builder failure or capture errors are ERROR. Actual
+producer failure, missing entries, reordered lists/sets or incorrect conversions
+are FAIL. Unit-only controls cover every represented row and guard these
+boundaries. The selected finite fixture values do not establish all numeric or
+Unicode ranges, contextual property conversions, canonical authority, history,
+SAGE resolver/ingress or full JSON-LD term processing and remote contexts.
+
+production.1 and json-ld-processors.2 now pass on these directly observed typed
+inputs, with the same table and scope limits for both. consumption.1 still needs
+actual typed consumer evidence, and production-and-consumption.12 remains
+unobserved: builder rejection must not be misreported as producer rejection.
+DID 1.1 now has 161 cases, 124 requirement and two recommendation passes, one
+alg recommendation failure, two inapplicable statements and 357 NOT_RUN
+(310 requirements and 47 recommendations). Historical entries remain as 357
+pending and 59 observed (57 PASS, one NOT_APPLICABLE and one FAIL). Core 1.0,
+projection and existing implementation findings remain separate and unchanged.
