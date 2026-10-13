@@ -76,9 +76,9 @@
   ],
   "categories": {
     "additional-data-or-feature": 117,
-    "additional-observer-operation": 101,
+    "additional-observer-operation": 99,
     "document-or-applicability-review": 105,
-    "existing-observation": 37,
+    "existing-observation": 36,
     "operational-or-authority-evidence": 4
   },
   "routes": {
@@ -1707,17 +1707,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "did11-cr20260305#consumption.3",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "7d31bb9a70e0d500c29e17da30e951f9a590f4aaf7a993c73310992ff4e7e98b",
-      "baseline_verdict": "NOT_RUN",
-      "route": "representation-consumer",
-      "generic_scope": "checked"
-    },
-    {
       "id": "did11-cr20260305#did-syntax.1",
       "level": "requirement",
       "keywords": [
@@ -2092,17 +2081,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "did11-cr20260305#production-and-consumption.15",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "05230b536b97d19c9023d69b9c591882607a29770bc656f329aa3d96b8d92166",
-      "baseline_verdict": "NOT_RUN",
-      "route": "representation-consumer",
-      "generic_scope": "checked"
-    },
-    {
       "id": "did11-cr20260305#production-and-consumption.18",
       "level": "requirement",
       "keywords": [
@@ -2208,17 +2186,6 @@
         "MUST"
       ],
       "text_sha256": "9ba94b6d1e967791d319198c1d42a0d6be76a3ca93c3806b09f1d712fd9e9bde",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "did11-cr20260305#production.2",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "77685fecaf2930e23217ad0e23f54a546bb8d5b162f86900cbdd4646b92545e1",
       "baseline_verdict": "NOT_RUN",
       "route": "native-result",
       "generic_scope": "checked"
@@ -5055,26 +5022,83 @@
         "did-1.1/sage-resolution/native-pipeline-record-3",
         "did-1.1/sage-resolution/native-pipeline-record-5"
       ]
+    },
+    {
+      "id": "did11-cr20260305#consumption.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "7d31bb9a70e0d500c29e17da30e951f9a590f4aaf7a993c73310992ff4e7e98b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "representation-consumer",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-consumer-",
+      "cases": [
+        "did-1.1/sage-resolution/native-consumer-nonobject-0",
+        "did-1.1/sage-resolution/native-consumer-nonobject-1",
+        "did-1.1/sage-resolution/native-consumer-nonobject-2",
+        "did-1.1/sage-resolution/native-consumer-nonobject-3",
+        "did-1.1/sage-resolution/native-consumer-nonobject-4"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.15",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "05230b536b97d19c9023d69b9c591882607a29770bc656f329aa3d96b8d92166",
+      "baseline_verdict": "NOT_RUN",
+      "route": "representation-consumer",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-consumer-",
+      "cases": [
+        "did-1.1/sage-resolution/native-consumer-media-did",
+        "did-1.1/sage-resolution/native-consumer-media-did-json"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#production.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "77685fecaf2930e23217ad0e23f54a546bb8d5b162f86900cbdd4646b92545e1",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-production-root-",
+      "cases": [
+        "did-1.1/sage-resolution/native-production-root-record-0",
+        "did-1.1/sage-resolution/native-production-root-record-1",
+        "did-1.1/sage-resolution/native-production-root-record-2",
+        "did-1.1/sage-resolution/native-production-root-record-3",
+        "did-1.1/sage-resolution/native-production-root-record-5"
+      ]
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 119,
+    "PASS": 122,
     "FAIL": 1,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 2,
     "ERROR": 0,
-    "NOT_RUN": 364
+    "NOT_RUN": 361
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 117,
+      "PASS": 120,
       "FAIL": 0,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 317
+      "NOT_RUN": 314
     },
     "recommendation": {
       "statements": 50,
@@ -5086,5 +5110,5 @@
       "NOT_RUN": 47
     }
   },
-  "expected_live_cases": 138
+  "expected_live_cases": 150
 }

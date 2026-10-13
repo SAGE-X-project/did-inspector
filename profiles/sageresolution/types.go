@@ -120,3 +120,18 @@ type PipelineSubject interface {
 	core.Subject
 	InspectPipeline(context.Context, sageprojection.Record, Request) (PipelineResult, error)
 }
+
+// ConsumptionRequest supplies literal public-document bytes and their declared
+// representation to the same pinned consumer selected by SAGE integration.
+type ConsumptionRequest struct {
+	Data      []byte `json:"data"`
+	MediaType string `json:"media_type"`
+}
+
+// ConsumptionSubject observes the selected library actor directly, not SAGE's
+// resolver ingress. Its Go error means the adapter could not make the call;
+// the actual consumer error remains inside ConsumptionCapture.
+type ConsumptionSubject interface {
+	core.Subject
+	InspectConsumption(context.Context, ConsumptionRequest) (ConsumptionCapture, error)
+}

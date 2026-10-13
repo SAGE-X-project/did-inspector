@@ -37,6 +37,13 @@ func (s stub) InspectPipeline(context.Context, sageprojection.Record, Request) (
 	return PipelineResult{}, nil
 }
 
+func (s stub) InspectConsumption(context.Context, ConsumptionRequest) (ConsumptionCapture, error) {
+	if s.err {
+		return ConsumptionCapture{}, errors.New("fixture consumer execution error")
+	}
+	return ConsumptionCapture{}, nil
+}
+
 type noOperation struct{}
 
 func (noOperation) Describe() core.SubjectInfo            { return core.SubjectInfo{Name: "missing"} }

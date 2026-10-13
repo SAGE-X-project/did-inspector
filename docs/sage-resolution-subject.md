@@ -28,7 +28,7 @@ certificate. They contact no agent, MCP, RPC or deployed registry.
 | Profile | Cases | Requirement PASS | Recommendation PASS | NOT_RUN |
 |---|---:|---:|---:|---:|
 | DID Core 1.0 | 16 | 33 | 0 | 173 |
-| DID 1.1 with CID and Resolution publications | 138 | 117 | 2 | 364 |
+| DID 1.1 with CID and Resolution publications | 150 | 120 | 2 | 361 |
 
 There are no requirement-level FAIL or ERROR statements in these observations.
 The fresh DID 1.1 resolution scope retains one recommendation FAIL for missing
@@ -519,14 +519,51 @@ safe integers, booleans, nulls, arrays and maps in the selected fixtures. Other
 numeric/Unicode values remain NOT_SUPPORTED; typed DateTime/Double conversion,
 all data types, JSON-LD term semantics, remote contexts, secret material handling,
 nonconforming inputs, arbitrary representations and whole conformance remain
-unestablished. production.1/.2, json-ld-processors.2 and consumption.1 remain NOT_RUN: their composite
+unestablished. At that boundary production.1/.2, json-ld-processors.2 and consumption.1 remained NOT_RUN: their composite
 rules need broader type and input evidence. No generic case/verdict, subject
 validator or post-consumption getter provides the producer's expected input.
 
-Five additional requirements pass. DID 1.1 now has 138 cases, 117 requirement and
+Five additional requirements passed. After that addition DID 1.1 had 138 cases, 117 requirement and
 two recommendation passes, one alg recommendation failure, two inapplicable
 statements and 364 NOT_RUN (317 requirements and 47 recommendations). The 416
 historical entries remain as 364 pending and 52 observed (50 PASS, one
 NOT_APPLICABLE and one FAIL). Core 1.0 and projection results remain separate
 and unchanged. Source/history/authority and existing implementation findings
 are neither repaired nor closed by this observation expansion.
+
+## Root placement and direct selected-consumer inputs
+
+Five fresh passive native producer calls independently inspect production.2:
+every actual pre-producer data-model and representation-map entry name must
+appear in the root JSON object. Additional base context insertion is allowed.
+This checks placement only; value conversion is a separate obligation. It does
+not infer production.1, json-ld-processors.2 or consumption.1 from equality.
+Malformed producer output fails; missing attribution or unusable pre-input is
+ERROR with all available original captures retained.
+
+InspectConsumption invokes the exact pinned consumer.New().Consume that SAGE
+integration selects, with explicit literal bytes, declared media and default
+options. The adapter retains original errors and returned maps; it synthesizes
+no resolver codes and supplies no validator verdicts. Seven fresh calls compare
+the same context-free, minimal public did:sage document under application/did
+(detected DID 1.1) and application/did+json (DID 1.0), then consume valid JSON
+array, string, number, boolean and null roots under application/did. Each
+non-object root must return an actual error and no document maps. The two media
+calls independently establish production-and-consumption.15; the five root
+calls establish consumption.3. A DID 1.0 root error cannot earn this DID 1.1
+root verdict. Generic cases and prior verdicts are not reused.
+
+These are selected library-actor input observations. They do not establish
+SAGE resolver request parsing, registry/key/record validation, production
+network ingress, all nonconforming documents, all representations or complete
+schema/value-conversion conformance. production-and-consumption.18 and the
+composite production/consumption rules remain NOT_RUN. Arbitrary extension
+values and typed DateTime/Double evidence are not supplied by SAGE's current
+record projection; their work remains pending rather than passed by inference.
+
+DID 1.1 now has 150 cases, 120 requirement and two recommendation passes, one
+alg recommendation failure, two inapplicable statements and 361 NOT_RUN
+(314 requirements and 47 recommendations). All 416 historical entries remain
+as 361 pending and 55 observed (53 PASS, one NOT_APPLICABLE and one FAIL).
+Core 1.0 and projection remain unchanged and separate. Existing implementation
+findings, deferred authority/history and planned work order remain intact.
