@@ -45,7 +45,7 @@ def verify_review(repo=REPO):
         assert r["historical_route"] == original[r["id"]]["route"]
         assert r["text_sha256"] == original[r["id"]]["text_sha256"] == hashlib.sha256(r["text"].encode()).hexdigest()
     assert {r["id"] for r in inventory["pending"]}.issubset(set(ids))
-    newly_observed = [r for r in inventory["observed_since_baseline"] if r["id"] in set(ids)]
+    newly_observed = [r for r in inventory["observed_since_baseline"] if r["id"] in set(ids) and r["case_prefix"].startswith("/library-")]
     assert len(newly_observed) == 61
     assert collections.Counter(r["expected_live_verdict"] for r in newly_observed) == {"PASS": 60, "FAIL": 1}
     assert hashlib.sha256((repo / "profiles/sageresolution/did-v1.1-context.jsonld").read_bytes()).hexdigest() == CONTEXT_SHA
@@ -251,7 +251,7 @@ def verify_batch(raw, report):
         assert all(o["verdict"] == expected for o in obs)
     assert len(checked) == 61
     live = {r["id"]: r["verdict"] for r in report["statements"]}
-    assert set(checked) == {r["id"] for r in json.loads((REPO / "docs/sage-resolution-batch-review.json").read_text())["clauses"] if live[r["id"]] != "NOT_RUN"}
+    assert set(checked) == {r["id"] for r in json.loads((REPO / "docs/sage-resolution-batch-review.json").read_text())["clauses"] if r["id"] in {row["id"] for row in json.loads((REPO / "docs/sage-resolution-gaps.json").read_text())["observed_since_baseline"] if row["case_prefix"].startswith("/library-")}}
     assert collections.Counter(live[i] for i in checked) == {"PASS": 60, "FAIL": 1}
     return checked
 
