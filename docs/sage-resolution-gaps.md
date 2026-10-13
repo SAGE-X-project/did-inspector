@@ -5,7 +5,7 @@ report from CI run [38353322386](https://github.com/SAGE-X-project/did-inspector
 The machine-readable [inventory](sage-resolution-gaps.json) preserves all 416 historical
 statement ids, normative levels and keywords, exact text digests, evidence paths,
 and a next evidence route for each statement. Pending routes are planning evidence, not verdicts or implementation defects.
-Schema 2 keeps 402 pending entries and 14 entries observed since the baseline;
+Schema 2 keeps 398 pending entries and 18 entries observed since the baseline;
 it never assigns new observations to the historical inspector revision.
 
 The baseline inspector revision is `aefdcf9228ec8dcf85fd4aaf08b6e0511af11c36`.
@@ -24,10 +24,11 @@ recommendation-level statements. Requirement-level extraction also includes
 permissions, definitions and algorithm steps; it does not mean every row is a
 standalone MUST with an independently observable violation.
 
-The current report has 86 cases, 80 requirement and two recommendation passes,
-two inapplicable statements and 402 unobserved statements. Ten fresh native
+The current report has 110 cases, 84 requirement and two recommendation passes,
+two inapplicable statements and 398 unobserved statements. Ten fresh native
 result cases add 13 requirement passes and one conditional NOT_APPLICABLE.
-The following routing counts describe the remaining 402, not the baseline 416.
+Twenty-four direct metadata serialization cases add four requirement passes.
+The following routing counts describe the remaining 398, not the baseline 416.
 
 | Primary next evidence route | Statements | Meaning |
 |---|---:|---|
@@ -35,7 +36,7 @@ The following routing counts describe the remaining 402, not the baseline 416.
 | Existing operation, new scenario | 11 | Candidate branches requiring fresh requests or controlled Source failures |
 | Additional observer operation | 106 | A different actor, entry point or instrumentation is needed |
 | Additional data or feature | 117 | Applicable optional fields, representations or method branches are absent |
-| Document or applicability review | 109 | Author obligations, permissions, definitions, contracts or conflicts |
+| Document or applicability review | 105 | Author obligations, permissions, definitions, contracts or conflicts |
 | Operational or authority evidence | 4 | Canonical storage or controller authority cannot be proved by fixtures |
 
 These are primary routing counts, not estimates of implementation tasks, new
@@ -63,9 +64,12 @@ preserve its own identity and inputs. The existing generic inspector's 256
 are retained as context only. Generic cases and verdicts are not copied into a
 SAGE report. Previously uncheckable reasons must be reassessed for this actor;
 in particular, metadata-structure.1 through .4 are MUST clauses, not
-permissions. The current adapter marshals typed native metadata; reassess
-attributable native shape and serialization evidence before claiming a fresh
-check. JSON parsing alone does not demonstrate the subject serializer.
+permissions. The original nativeResult adapter captures typed metadata through json.Marshal.
+The separate InspectMetadata operation now directly invokes each pinned native
+1.1 custom MarshalJSON method and retains both bytes and call errors. Its four
+metadata-structure clauses are observed on the fresh output maps. JSON parsing
+alone, generic fallback and an absent serializer identity cannot earn PASS.
+Input metadata and arbitrary pre-serialization values remain unestablished.
 For example, the producer-selected JWK alg recommendation can be inspected
 freshly even though the generic scope treats it as document-author policy.
 
@@ -80,12 +84,11 @@ DID Resolution error types.
 
 ## Recommended continuation within the existing scope
 
-1. Continue native metadata boundary and result assertions after the ten fresh
-   success/error cases. Reassess metadata-structure.1 through .4 against typed
-   subject values and the adapter serialization boundary. Do not count parsing
-   adapter-produced JSON as proof of the subject serializer. Remaining clauses
-   still need their own actor and branch; the existing cases do not establish
-   every internal step or full document conformance.
+1. The direct native output metadata boundary is now observed on selected
+   resolve/dereference results, separately for each metadata structure. Continue
+   remaining native result assertions and server response clauses. Input
+   metadata, arbitrary extension/proof values and internal steps still need
+   their own actor and entry point; output checks cannot establish them.
 2. Add controlled native error branches and remaining server-response checks.
    Keep Source failures, adapter rejection and handler parsing distinct. Observe
    new cases afresh and retain raw inputs and complete native/wire output.

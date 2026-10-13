@@ -28,7 +28,7 @@ certificate. They contact no agent, MCP, RPC or deployed registry.
 | Profile | Cases | Requirement PASS | Recommendation PASS | NOT_RUN |
 |---|---:|---:|---:|---:|
 | DID Core 1.0 | 16 | 33 | 0 | 173 |
-| DID 1.1 with CID and Resolution publications | 86 | 80 | 2 | 402 |
+| DID 1.1 with CID and Resolution publications | 110 | 84 | 2 | 398 |
 
 There are no FAIL or ERROR statements in these observations. The recommendation
 PASS statements cover the selected resolution Accept option and the returned
@@ -327,7 +327,7 @@ profile's separate mandatory-marker failure. Successful cases likewise mark the
 conditional error-descriptor rule inapplicable. Aggregation retains an applicable
 PASS for that rule from actual error cases.
 
-DID 1.1 now has 86 cases, 80 requirement and two recommendation passes, two
+After the native result addition, DID 1.1 had 86 cases, 80 requirement and two recommendation passes, two
 inapplicable statements and 402 unobserved statements. Thirteen requirements
 and one optional conditional rule are newly observed. Core 1.0 is unchanged.
 The schema-2 gap inventory retains every original historical entry and its
@@ -338,3 +338,45 @@ the subject serializer, internal Source call order, authoritative history or ful
 DID-document conformance. Resolving.1 establishes that the selected method returns
 a document for these actual inputs, not conformance of every property. There is
 no output repair, projection verdict copying, external target or private key.
+
+## Direct native output metadata serialization
+
+The separate `InspectMetadata` operation freshly resolves ten selected success
+and error scenarios and dereferences two valid DID URLs (found and missing
+fragments). It directly calls the pinned
+`resolution.ResolutionMetadata.MarshalJSON` and `document.Metadata.MarshalJSON`
+methods. The `Document`/`document` role means didDocumentMetadata for resolve
+and contentMetadata for dereference. Each structure retains the exact returned
+bytes, serializer identity
+and call error independently. It neither runs the subject validator nor uses a
+generic encoder as evidence. An error in one structure cannot erase the other.
+Native 1.1 attribution is unavailable for HTTP, compatibility functions and
+adapter-rejected malformed dereference URLs.
+
+Twenty-four cases separately inspect each output structure against
+metadata-structure.1 through .4. The independent parser checks a UTF-8 JSON map,
+string property names and recursive JSON values, rejecting malformed bytes,
+duplicate members and non-map output. Actual serializer failure is FAIL for
+serializability and ERROR for unavailable shape evidence. Missing or mismatched
+serializer attribution is ERROR. Empty maps are valid; an absent optional
+property is not repaired.
+
+The serializability observation is limited to ASCII strings and safe integer
+literals (absolute value at most 9007199254740991). Unicode, fractional or other
+numeric values return NOT_SUPPORTED for that check, not a standard prohibition.
+These limits avoid claims about numeric/Unicode roundtrip fidelity. The
+[Infra JSON rules](https://infra.spec.whatwg.org/#serialize-an-infra-value-to-json-bytes)
+convert compatible values and serialize to UTF-8; the requirement is that the
+structure is serializable, not that Go and JavaScript emit identical bytes.
+
+All four requirements pass for these actual output maps. DID 1.1 now has 110
+cases, 84 requirement and two recommendation passes, two inapplicable statements
+and 398 unobserved statements (350 requirements and 48 recommendations).
+Core 1.0 and the separate projection observations are unchanged. The historical
+416-entry inventory is retained as 398 pending and 18 observed entries.
+
+These cases establish selected output communication shape and serialization
+possibility only. They do not establish input metadata compliance, all typed
+pre-serialization values, arbitrary Infra values, subject serializer fidelity,
+ECMAScript byte equality, authority or whole-document conformance. Unit-only
+malformed-output controls are never attributed to actual subject execution.

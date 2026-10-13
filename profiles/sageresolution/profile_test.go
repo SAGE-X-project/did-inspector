@@ -23,6 +23,13 @@ func (s stub) InspectResolution(context.Context, sageprojection.Record, Request)
 	return Result{Metadata: json.RawMessage(`{}`), ContentMetadata: json.RawMessage(`{}`)}, nil
 }
 
+func (s stub) InspectMetadata(context.Context, sageprojection.Record, Request) (MetadataResult, error) {
+	if s.err {
+		return MetadataResult{}, errors.New("fixture metadata execution failed")
+	}
+	return MetadataResult{}, nil
+}
+
 type noOperation struct{}
 
 func (noOperation) Describe() core.SubjectInfo            { return core.SubjectInfo{Name: "missing"} }

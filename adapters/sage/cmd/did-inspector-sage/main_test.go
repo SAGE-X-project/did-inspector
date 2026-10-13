@@ -15,6 +15,7 @@ import (
 	"github.com/sage-x-project/did-inspector/adapters/sage"
 	"github.com/sage-x-project/did-inspector/core"
 	"github.com/sage-x-project/did-inspector/profiles/sageprojection"
+	"github.com/sage-x-project/did-inspector/profiles/sageresolution"
 	"github.com/sage-x-project/did-inspector/report"
 	"os/exec"
 )
@@ -277,7 +278,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		t.Fatal(err)
 	}
 	r, err := report.Decode(data)
-	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 82 {
+	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 86 {
 		t.Fatal("scope identity", err, r.Totals)
 	}
 	binary := filepath.Join(t.TempDir(), "sage-inspector")
@@ -303,9 +304,9 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		want, cases := 33, 16
 		if profile == "did-1.1" {
-			want, cases = 82, 86
+			want, cases = 86, 110
 		}
-		if profile == "did-1.1" && (r.Totals.NotApplicable != 2 || r.Totals.NotRun != 402) {
+		if profile == "did-1.1" && (r.Totals.NotApplicable != 2 || r.Totals.NotRun != 398) {
 			t.Fatal("native URL conditional evidence", r.Totals)
 		}
 		if r.Totals.Pass != want || len(r.GateFailures()) != 0 || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Subject.Revision != "2ef282b40ccfe243c6cf3b1c05594e02171126cc" {
@@ -321,8 +322,16 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		for _, c := range raw.Cases {
 			for _, o := range c.Observations {
-				if !strings.Contains(o.Input, `"record"`) || !strings.Contains(o.Observed, `"metadata"`) {
-					t.Fatal("lost evidence")
+				if !strings.Contains(o.Input, `"record"`) {
+					t.Fatal("lost input evidence")
+				}
+				if strings.Contains(c.Case, "/native-metadata-") {
+					var capture sageresolution.MetadataResult
+					if err := json.Unmarshal([]byte(o.Observed), &capture); err != nil || capture.Resolution.Serializer == "" || capture.Document.Serializer == "" || len(capture.Resolution.Bytes) == 0 || len(capture.Document.Bytes) == 0 {
+						t.Fatal("lost direct serializer evidence", err)
+					}
+				} else if !strings.Contains(o.Observed, `"metadata"`) {
+					t.Fatal("lost native result evidence")
 				}
 			}
 		}
