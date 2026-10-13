@@ -278,7 +278,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		t.Fatal(err)
 	}
 	r, err := report.Decode(data)
-	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 129 {
+	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 130 {
 		t.Fatal("scope identity", err, r.Totals)
 	}
 	binary := filepath.Join(t.TempDir(), "sage-inspector")
@@ -304,9 +304,9 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		want, cases := 33, 16
 		if profile == "did-1.1" {
-			want, cases = 129, 167
+			want, cases = 130, 170
 		}
-		if profile == "did-1.1" && (r.Totals.NotApplicable != 2 || r.Totals.NotRun != 354) {
+		if profile == "did-1.1" && (r.Totals.NotApplicable != 2 || r.Totals.NotRun != 353) {
 			t.Fatal("native URL conditional evidence", r.Totals)
 		}
 		if profile == "did-1.1" && (r.Totals.Fail != 1 || r.TotalsByLevel.Recommendation.Fail != 1) {
@@ -325,7 +325,11 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		for _, c := range raw.Cases {
 			for _, o := range c.Observations {
-				if strings.Contains(c.Case, "/native-typed-production-") || strings.Contains(c.Case, "/native-representation-input-producer-") {
+				if strings.Contains(c.Case, "/native-producer-context-") {
+					if !strings.Contains(o.Input, `"positive"`) || !strings.Contains(o.Input, `"negative"`) {
+						t.Fatal("lost producer input pair")
+					}
+				} else if strings.Contains(c.Case, "/native-typed-production-") || strings.Contains(c.Case, "/native-representation-input-producer-") {
 					if !strings.Contains(o.Input, `"fields"`) || !strings.Contains(o.Input, `"json_ld"`) {
 						t.Fatal("lost typed request")
 					}
@@ -336,7 +340,11 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 				} else if !strings.Contains(o.Input, `"record"`) {
 					t.Fatal("lost input evidence")
 				}
-				if strings.Contains(c.Case, "/native-metadata-") {
+				if strings.Contains(c.Case, "/native-producer-context-") {
+					if !strings.Contains(o.Observed, `"calls"`) || !strings.Contains(o.Observed, `"positive"`) || !strings.Contains(o.Observed, `"negative"`) {
+						t.Fatal("lost actual producer pair")
+					}
+				} else if strings.Contains(c.Case, "/native-metadata-") {
 					var capture sageresolution.MetadataResult
 					if err := json.Unmarshal([]byte(o.Observed), &capture); err != nil || capture.Resolution.Serializer == "" || capture.Document.Serializer == "" || len(capture.Resolution.Bytes) == 0 || len(capture.Document.Bytes) == 0 {
 						t.Fatal("lost direct serializer evidence", err)

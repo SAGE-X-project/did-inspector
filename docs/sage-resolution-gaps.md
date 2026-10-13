@@ -5,7 +5,7 @@ report from CI run [38353322386](https://github.com/SAGE-X-project/did-inspector
 The machine-readable [inventory](sage-resolution-gaps.json) preserves all 416 historical
 statement ids, normative levels and keywords, exact text digests, evidence paths,
 and a next evidence route for each statement. Pending routes are planning evidence, not verdicts or implementation defects.
-Schema 2 keeps 354 pending entries and 62 entries observed since the baseline;
+Schema 2 keeps 353 pending entries and 63 entries observed since the baseline;
 it never assigns new observations to the historical inspector revision.
 
 The baseline inspector revision is `aefdcf9228ec8dcf85fd4aaf08b6e0511af11c36`.
@@ -24,8 +24,8 @@ recommendation-level statements. Requirement-level extraction also includes
 permissions, definitions and algorithm steps; it does not mean every row is a
 standalone MUST with an independently observable violation.
 
-The current report has 167 cases, 127 requirement and two recommendation passes,
-one recommendation failure, two inapplicable statements and 354 unobserved statements. Ten fresh native
+The current report has 170 cases, 128 requirement and two recommendation passes,
+one recommendation failure, two inapplicable statements and 353 unobserved statements. Ten fresh native
 result cases add 13 requirement passes and one conditional NOT_APPLICABLE.
 Twenty-four direct metadata serialization cases add four requirement passes.
 Three native error/state cases and ten owned TLS response cases add 22
@@ -52,13 +52,13 @@ table rows, including recognized datetime properties and date-looking unknown
 strings, adding consumption.1 on these selected values. Root/map insertion order
 is not required. All numeric ranges, forced double properties without a fraction,
 other property contexts and full JSON-LD processing remain unestablished.
-The following routing counts describe the remaining 354, not the baseline 416.
+The following routing counts describe the remaining 353, not the baseline 416.
 
 | Primary next evidence route | Statements | Meaning |
 |---|---:|---|
 | Existing observation | 34 | Candidate assertions on actual native results, methods or server responses |
 | Existing operation, new scenario | 0 | Candidate branches requiring fresh requests or controlled Source failures |
-| Additional observer operation | 96 | A different actor, entry point or instrumentation is needed |
+| Additional observer operation | 95 | A different actor, entry point or instrumentation is needed |
 | Additional data or feature | 117 | Applicable optional fields, representations or method branches are absent |
 | Document or applicability review | 103 | Author obligations, permissions, definitions, contracts or conflicts |
 | Operational or authority evidence | 4 | Canonical storage or controller authority cannot be proved by fixtures |
@@ -189,3 +189,11 @@ the actual consumer receives the literal bytes and declared media string.
 These are selected library actor input contracts, not output or rejection
 conformance. Timestamp parsing alone still establishes no expiration/revocation
 non-use policy, and builder rejection is not actual producer rejection.
+
+Three paired producer context cases now observe production-and-consumption.12
+on selected scalar Boolean/Integer and Boolean list-suffix context inputs.
+The valid control must produce the reviewed minimal public document. Negative
+inputs must reach the actual producer after successful model construction.
+Refusal without output or independently checked base-only repaired output can
+pass; error with partial bytes remains ERROR. This does not establish all
+non-conforming DID/schema rejection, full JSON-LD semantics or publication.
