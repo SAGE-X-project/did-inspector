@@ -28,7 +28,7 @@ certificate. They contact no agent, MCP, RPC or deployed registry.
 | Profile | Cases | Requirement PASS | Recommendation PASS | NOT_RUN |
 |---|---:|---:|---:|---:|
 | DID Core 1.0 | 16 | 33 | 0 | 173 |
-| DID 1.1 with CID and Resolution publications | 163 | 125 | 2 | 356 |
+| DID 1.1 with CID and Resolution publications | 167 | 127 | 2 | 354 |
 
 There are no requirement-level FAIL or ERROR statements in these observations.
 The fresh DID 1.1 resolution scope retains one recommendation FAIL for missing
@@ -677,8 +677,40 @@ are data-model conversion evidence, not operational expiration/revocation or
 historical truth. production-and-consumption.12 remains NOT_RUN; builder
 rejection is not producer rejection.
 
-DID 1.1 now has 163 cases, 125 requirement and two recommendation passes, one
+After the typed consumer addition DID 1.1 had 163 cases, 125 requirement and two recommendation passes, one
 alg recommendation failure, two inapplicable statements and 356 NOT_RUN
 (309 requirements and 47 recommendations). Historical entries remain as 356
 pending and 60 observed (58 PASS, one NOT_APPLICABLE and one FAIL). Core 1.0,
 projection and existing implementation findings remain separate and unchanged.
+
+## Actual representation input contracts
+
+Four fresh calls reuse the explicit typed production and consumption operations
+to inspect production-and-consumption.8 and .13. They do not copy verdicts from
+earlier report cases. For the producer, actual typed input witnesses and the
+separate pre-call document and representation maps must match independently
+defined complete input fixtures. Both JSON and JSON-LD options are observed.
+Missing call attribution, builder/capture failure or malformed map captures are
+ERROR; mismatched document or representation witnesses are also ERROR because
+the inspected call input cannot be attributed reliably to the reviewed fixture.
+
+For the consumer, the archived literal bytes and declared media string must
+match the complete reviewed public input and actual call with default options.
+The two inputs differ in object member order. A missing operation or changed
+bytes, media or options is ERROR rather than evidence for another call.
+
+The observations judge only the supplied inputs. Downstream output, detection,
+returned models and delegated errors remain archived but do not decide these
+input contracts. Unit controls verify that output failure cannot silently
+become an input failure or imply output success. Full output/rejection behavior,
+all representations, authority, resolver ingress and JSON-LD processing remain
+unestablished by these observations. production-and-consumption.12 remains
+NOT_RUN: builder rejection is not producer rejection. Recognized timestamp
+conversion alone proves no operational expiration/revocation non-use policy.
+
+DID 1.1 now has 167 cases, 127 requirement and two recommendation passes, one
+alg recommendation failure, two inapplicable statements and 354 NOT_RUN
+(307 requirements and 47 recommendations). The 416 original rows remain as
+354 pending and 62 observed (60 PASS, one NOT_APPLICABLE and one FAIL), with all
+original fields, baseline and routes preserved. Core 1.0, projection and existing
+implementation findings remain separate and unchanged.
