@@ -28,7 +28,7 @@ certificate. They contact no agent, MCP, RPC or deployed registry.
 | Profile | Cases | Requirement PASS | Recommendation PASS | NOT_RUN |
 |---|---:|---:|---:|---:|
 | DID Core 1.0 | 16 | 33 | 0 | 173 |
-| DID 1.1 with CID and Resolution publications | 66 | 56 | 2 | 428 |
+| DID 1.1 with CID and Resolution publications | 71 | 61 | 2 | 423 |
 
 There are no FAIL or ERROR statements in these observations. The recommendation
 PASS statements cover the selected resolution Accept option and the returned
@@ -195,3 +195,48 @@ class semantics and full material validation retain their unobserved status in
 this scope. Syntactically URI-looking strings are not proof of URL Standard
 conformance, and a different registered key class is not treated as JsonWebKey.
 Unexercised publication clauses remain NOT_RUN.
+
+## Public JWK material observations
+
+Five new DID 1.1 native cases inspect exact JsonWebKey methods on the fixed public
+records. These actual fixture relationships use references. The collector also
+supports embedded methods in all five relationship names; unit controls exercise
+embedded authentication methods. Core 1.0 results are unchanged. The cases judge CID JsonWebKey clauses 3, 4, 8, 12 and 13 freshly
+from the actual application/did accessor snapshot. Other method classes,
+including JsonWebKey2020, are not treated as JsonWebKey.
+
+The minimal supported public formats are EC P-256 and OKP Ed25519/X25519. The
+checks require their kty/crv fields, canonical unpadded base64url and complete
+32-byte coordinate/octet lengths. P-256 coordinates must form a curve point.
+OKP observations cover encoded octets; they do not establish point mathematics,
+small-order safety or signature/KEM suitability. Format checks return
+NOT_SUPPORTED for other key types/curves or uninspected registered metadata,
+including algorithms and certificate fields. Unknown additional members are
+retained and ignored as RFC 7517 allows. A y parameter is a supported coordinate
+only for EC; its presence on OKP leaves full format semantics unobserved.
+
+Registered non-public names are derived from the complete embedded
+[jwk-parameters-20261013.csv](../profiles/sageresolution/jwk-parameters-20261013.csv),
+fetched from the [IANA JWK parameter registry](https://www.iana.org/assignments/jose/#web-key-parameters).
+The source bytes have SHA-256
+`e897697bbbfc6df505806acbead93009b9b9534bfd45ce82c6158e6767cc0871`.
+The inspector verifies this hash before building the DID 1.1 cases and makes no
+runtime registry request. Private-class exclusion and Private/Secret-class
+exclusion are separate checks; present forbidden names fail regardless of value.
+This is a dated registry observation, not a promise about future registrations
+or all sensitive information in unknown extensions.
+
+The secretKeyJwk exclusion applies to these explicitly public document fixtures.
+Its absence is judged separately from optional publicKeyJwk format/curve checks.
+A missing optional publicKeyJwk is NOT_APPLICABLE for those conditional rules.
+Malformed maps cannot establish private-member exclusion. Empty method sets or
+other method classes do not invent applicable JsonWebKey evidence.
+
+The format expectations come from [RFC 7517](https://www.rfc-editor.org/rfc/rfc7517),
+[RFC 7518](https://www.rfc-editor.org/rfc/rfc7518) and
+[RFC 8037](https://www.rfc-editor.org/rfc/rfc8037). No subject validator or old
+projection verdict is used. Unit controls use public vectors and harmless
+non-public-member markers; actual CLI and loopback TLS runs use public fixtures.
+These cases add five newly observed requirement clauses. Algorithm recommendations,
+general URL Standard checks, certificates, operational authority and full
+cryptographic/protocol conformance retain their separate evidence limits.

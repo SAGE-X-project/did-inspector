@@ -89,6 +89,9 @@ func Profile(name string) (core.Profile, error) {
 		}})
 	}
 	appendNativeDocumentCases(&p, rows)
+	if err := appendPublicJWKCases(&p, rows); err != nil {
+		return p, err
+	}
 	return p, p.Validate()
 }
 func contains(a []string, s string) bool {
