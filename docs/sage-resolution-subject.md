@@ -28,7 +28,7 @@ certificate. They contact no agent, MCP, RPC or deployed registry.
 | Profile | Cases | Requirement PASS | Recommendation PASS | NOT_RUN |
 |---|---:|---:|---:|---:|
 | DID Core 1.0 | 16 | 33 | 0 | 173 |
-| DID 1.1 with CID and Resolution publications | 71 | 61 | 2 | 423 |
+| DID 1.1 with CID and Resolution publications | 76 | 67 | 2 | 416 |
 
 There are no FAIL or ERROR statements in these observations. The recommendation
 PASS statements cover the selected resolution Accept option and the returned
@@ -240,3 +240,60 @@ non-public-member markers; actual CLI and loopback TLS runs use public fixtures.
 These cases add five newly observed requirement clauses. Algorithm recommendations,
 general URL Standard checks, certificates, operational authority and full
 cryptographic/protocol conformance retain their separate evidence limits.
+
+
+## Selected URL Standard observations
+
+Five additional DID 1.1 cases freshly resolve each active fixed public record
+and inspect its actual application/did accessor snapshot. They cover CID
+subjects.1, controllers.3, verification-methods.5/.7, services.6/.13 and
+DID 1.1 core-properties.1. Six previously unobserved requirements pass.
+The optional root controller property is absent on all these actual records,
+so its clause is NOT_APPLICABLE, rather than PASS. DID 1.1 now has 76 cases,
+67 requirement passes, two recommendation passes, one inapplicable statement
+and 416 unobserved statements. Core 1.0 results remain unchanged.
+
+The independent parser is
+[nlnwa/whatwg-url v0.6.2](https://github.com/nlnwa/whatwg-url/tree/v0.6.2),
+commit `605b909fe66d0472311892f4feed6b4de3e2bdb8`, with versions and checksums
+pinned in the root and SAGE adapter Go modules. CI preserves their selected module
+metadata alongside the actual subject module and binary evidence. Its current Go-compatible transitive dependencies
+are also pinned. The observer uses both validation-error reporting and failure
+on validation errors. Because v0.6.2 predates the current strict-domain error
+reporting step, a separate strict ToASCII check enables STD3, label/hyphen
+validation and DNS length verification for selected ASCII hosts using pinned
+`golang.org/x/net/idna v0.61.0`. Unit controls cover leading/trailing and third/
+fourth-position hyphens, underscores, empty labels and overlong labels. It
+parses the original string without a base URL and
+never repairs the snapshot or substitutes a normalized serialization.
+
+Under the [URL Standard writing and parsing rules](https://url.spec.whatwg.org/#url-writing),
+parser recovery alone does not establish validity. Unit controls separately show
+that permissive parsing can succeed while malformed escaping, whitespace or
+missing HTTPS slashes remain invalid. Expectations come from those rules, not
+from the subject's parser or verdict. The standard was reviewed on 2026-10-13 at
+commit `fde3f74f063341a28d437216f75735b8b40128f5`; that revision records the review
+context, without changing the pinned CID/DID publications or freezing a living
+standard as the protocol's authoritative reference.
+
+The selected scope is ASCII opaque did: URLs and HTTPS DNS URLs. Other schemes,
+relative URLs/base resolution, non-ASCII and IDNA/percent-encoded/IP hosts remain
+NOT_SUPPORTED. This is a bounded syntax observation, not a claim that the older
+parser release implements every current URL Standard branch. Optional absent
+fields and no applicable values are NOT_APPLICABLE. Embedded method definitions
+are collected in all five relationships regardless of material class; reference
+strings are not definitions. Unit controls exercise all five embedded locations;
+actual fixtures use references. Endpoint maps have separate semantics, so nested
+text is not guessed to be a URL. A string endpoint or string element in a mixed
+endpoint set is inspected. Malformed enclosing sets produce ERROR when their
+applicable values cannot be enumerated; other field obligations remain separate.
+
+The remaining resolution scope is still incomplete. This report leaves 368
+requirement and 48 recommendation statements NOT_RUN. These include generic
+DID parsing and production/consumption operations, controller/reference and
+service semantics, optional metadata/time/history, method/registry behavior,
+proof/trust and additional resolution/dereferencing/binding branches. The next
+work is to classify this inventory against actual adapter operations before
+adding cases. No runtime operation or PASS may be inferred from a missing case.
+Endpoint reachability, operational authority, relative expansion, all URL
+schemes, deployed Source behavior and full standard conformance are unestablished.
