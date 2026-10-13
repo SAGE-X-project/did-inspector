@@ -115,6 +115,7 @@ jobs:
           test -z "$(gofmt -l .)"
           go vet -mod=readonly ./...
           go list -m -json github.com/sage-x-project/did-go github.com/sage-x-project/did-go/advanced/sage > "$RUNNER_TEMP/sage-subject-modules.json"
+          go list -m -json github.com/nlnwa/whatwg-url golang.org/x/net golang.org/x/text github.com/bits-and-blooms/bitset > "$RUNNER_TEMP/sage-url-observer-modules.json"
       - name: Lint adapter
         run: go run github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.13.2 run ./...
       - name: Test independent adapter and native CLI with coverage
@@ -164,15 +165,23 @@ jobs:
           import json, os
           from pathlib import Path
           root=Path(os.environ['RUNNER_TEMP'])/'sage-reports'
-          for name,passed,pending,cases in [('did-core-1.0',33,173,16),('did-1.1',63,423,71)]:
+          for name,passed,pending,cases in [('did-core-1.0',33,173,16),('did-1.1',69,416,76)]:
               report=json.loads((root/('resolution-'+name+'.json')).read_text())
               assert report['subject']['name']=='did-go/advanced/sage-resolution'
               assert report['subject']['revision']=='2ef282b40ccfe243c6cf3b1c05594e02171126cc'
               assert report['totals']['FAIL']==0 and report['totals']['ERROR']==0
               assert report['totals']['PASS']==passed and report['totals']['NOT_RUN']==pending
-              assert report['totals_by_level']['requirement']['PASS']==(33 if name=='did-core-1.0' else 61)
+              assert report['totals_by_level']['requirement']['PASS']==(33 if name=='did-core-1.0' else 67)
               raw=json.loads((root/('resolution-'+name+'-raw.json')).read_text())
               assert len(raw['cases'])==cases and raw['subject']==report['subject']
+              assert report['totals']['NOT_APPLICABLE']==(1 if name=='did-1.1' else 0)
+              urlcases=[c for c in raw['cases'] if '/native-url-record-' in c['case']]
+              assert len(urlcases)==(5 if name=='did-1.1' else 0)
+              for case in urlcases:
+                  assert len(case['observations'])==7
+                  for obs in case['observations']:
+                      assert obs['verdict']==('NOT_APPLICABLE' if obs['statement']=='cid10#controllers.3' else 'PASS')
+                      assert obs['input'] and obs['observed'] and 'whatwg-url v0.6.2' in obs['detail']
           PYTHON
       - name: Preserve independent profile and raw observation artifacts
         if: always()
@@ -183,6 +192,7 @@ jobs:
             ${{ runner.temp }}/sage-reports/
             ${{ runner.temp }}/sage-adapter-cover.out
             ${{ runner.temp }}/sage-subject-modules.json
+            ${{ runner.temp }}/sage-url-observer-modules.json
             ${{ runner.temp }}/sage-observer-binary.sha256
             ${{ runner.temp }}/sage-observer-compiler.txt
           if-no-files-found: error

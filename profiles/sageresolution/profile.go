@@ -92,6 +92,7 @@ func Profile(name string) (core.Profile, error) {
 	if err := appendPublicJWKCases(&p, rows); err != nil {
 		return p, err
 	}
+	appendNativeURLCases(&p, rows)
 	return p, p.Validate()
 }
 func contains(a []string, s string) bool {
