@@ -5,7 +5,7 @@ report from CI run [38353322386](https://github.com/SAGE-X-project/did-inspector
 The machine-readable [inventory](sage-resolution-gaps.json) preserves all 416 historical
 statement ids, normative levels and keywords, exact text digests, evidence paths,
 and a next evidence route for each statement. Pending routes are planning evidence, not verdicts or implementation defects.
-Schema 2 keeps 269 pending entries and 147 entries observed since the baseline;
+Schema 2 keeps 263 pending entries and 153 entries observed since the baseline;
 it never assigns new observations to the historical inspector revision.
 
 The baseline inspector revision is `aefdcf9228ec8dcf85fd4aaf08b6e0511af11c36`.
@@ -24,8 +24,8 @@ recommendation-level statements. Requirement-level extraction also includes
 permissions, definitions and algorithm steps; it does not mean every row is a
 standalone MUST with an independently observable violation.
 
-The current report has 238 cases, 204 requirement and nine recommendation passes,
-two recommendation failures, two inapplicable statements and 269 unobserved statements. Ten fresh native
+The current report has 256 cases, 206 requirement and nine recommendation passes,
+four requirement failures, two recommendation failures, two inapplicable statements and 263 unobserved statements. Ten fresh native
 result cases add 13 requirement passes and one conditional NOT_APPLICABLE.
 Twenty-four direct metadata serialization cases add four requirement passes.
 Three native error/state cases and ten owned TLS response cases add 22
@@ -52,14 +52,14 @@ table rows, including recognized datetime properties and date-looking unknown
 strings, adding consumption.1 on these selected values. Root/map insertion order
 is not required. All numeric ranges, forced double properties without a fraction,
 other property contexts and full JSON-LD processing remain unestablished.
-The following routing counts describe the remaining 269, not the baseline 416.
+The following routing counts describe the remaining 263, not the baseline 416.
 
 | Primary next evidence route | Statements | Meaning |
 |---|---:|---|
 | Existing observation | 17 | Candidate assertions on actual native results, methods or server responses |
 | Existing operation, new scenario | 0 | Candidate branches requiring fresh requests or controlled Source failures |
-| Additional observer operation | 52 | A different actor, entry point or instrumentation is needed |
-| Additional data or feature | 97 | Applicable optional fields, representations or method branches are absent |
+| Additional observer operation | 48 | A different actor, entry point or instrumentation is needed |
+| Additional data or feature | 95 | Applicable optional fields, representations or method branches are absent |
 | Document or applicability review | 99 | Author obligations, permissions, definitions, contracts or conflicts |
 | Operational or authority evidence | 4 | Canonical storage or controller authority cannot be proved by fixtures |
 
@@ -258,3 +258,55 @@ review and its original 61 observations are retained with their own attribution.
 New native cases do not alter that audit anchor or copy its verdicts.
 `scripts/check_sage_contracts.py` independently verifies every new case and its
 raw inputs, options, serializers, result comparisons and statement attribution.
+
+
+## Key admission times and literal document retrieval
+
+Eighteen fresh cases execute the pinned consumer and relying party with literal
+public documents, including 30 independent date syntax inputs, 12 before/at/after
+clock calls and four positive/refusal pairs. The fixture dereferencer is explicitly
+identified as a literal library fixture, not a SAGE registry or authoritative
+Source. Actual consumer bytes/options/results, typed date witnesses, supplied
+retrieval options, returned document, clock reads and selected method/errors are
+preserved. No typed document is mutated to bypass validation. Consumer failure
+is not substituted for a relying-party refusal.
+
+The selected [XSD 1.1 dateTimeStamp](https://www.w3.org/TR/xmlschema11-2/#dateTimeStamp)
+syntax controls allow offsets and fractional seconds. They distinguish decimal
+points from commas and enforce the [time-zone range](https://www.w3.org/TR/xmlschema11-2/#rf-timezone)
+through +/-14:00. The actual pinned consumer accepts comma fractional timestamps
+and +/-14:01 for both expires and revoked. This yields FAIL for
+`cid10#verification-methods.9`, `cid10#verification-methods.11`,
+`cid10#conformance.2` and `did11-cr20260305#production-and-consumption.18`.
+These four normative findings share the same permissive date-reader cause;
+they are not four independent defects. Earlier nine-pair PASS observations
+remain, but new counterexamples change the two aggregate consumer clauses to
+FAIL. CI verifies these exact ids and raw counterexamples without weakening
+Inspector's gate. CLI exit0 still means a completed inspection, never compliance.
+
+Actual method admission is refused at/after revocation, and the selected relying
+party also refuses expiry at/after its boundary. Expiry non-use is a SHOULD and
+its refusal is diagnostic, not a second mandatory condition. Before-time method
+admission is not required by either time clause; its result is diagnostic. The
+mandatory time syntax and revocation non-use checks remain distinct. UTC and
++09:00 inputs describe the same half-second instant; one-nanosecond before/after
+clocks distinguish rounding or inclusive-boundary mistakes. These are selected
+method-admission observations, not every application's cryptographic key use,
+irreversible revocation, deployment history or authority proof.
+
+Literal retrieval pairs check non-document content, another document id,
+another absolute method id with the same fragment, and another valid controller.
+Each actual refusal is independent of its recommended canonical problem type.
+An ordinary revoked/expired error is preserved without inventing a problem
+object. The internal fragment extraction clause stays NOT_RUN; a separate getter
+or final method selection is not evidence of an internal algorithm step.
+
+All 416 historical rows remain as 263 pending plus 153 observed (146 PASS,
+one NOT_APPLICABLE and six FAIL). Two original consumer rows retain their
+baseline and old case_prefix/cases, with optional case_prefixes listing the
+additional format case family. CI verifies the union of actual cases across
+those prefixes, the complete historical set and each original field/digest.
+The previously frozen review, 61 library clauses and 23 native contract clauses
+keep their own independent attribution and evidence checks. New failures are
+recorded for later implementation correction and reinspection under the
+existing plan; neither the core nor the pinned subject is silently repaired.
