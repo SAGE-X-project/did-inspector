@@ -28,7 +28,7 @@ certificate. They contact no agent, MCP, RPC or deployed registry.
 | Profile | Cases | Requirement PASS | Recommendation PASS | NOT_RUN |
 |---|---:|---:|---:|---:|
 | DID Core 1.0 | 16 | 33 | 0 | 173 |
-| DID 1.1 with CID and Resolution publications | 128 | 108 | 2 | 373 |
+| DID 1.1 with CID and Resolution publications | 133 | 112 | 2 | 369 |
 
 There are no requirement-level FAIL or ERROR statements in these observations.
 The fresh DID 1.1 resolution scope retains one recommendation FAIL for missing
@@ -449,7 +449,7 @@ optional JWK property. This is presence/type evidence only, not algorithm regist
 membership or compatibility. All five actual native outputs lack alg, so the
 fresh resolution report records that failure. No projection verdict is copied.
 
-DID 1.1 now has 128 cases, 108 requirement and two recommendation passes, one
+After the key-field addition, DID 1.1 had 128 cases, 108 requirement and two recommendation passes, one
 recommendation failure, two inapplicable statements and 373 unobserved statements
 (326 requirements and 47 recommendations). The requirement gate still passes.
 Core 1.0 and the separate projection report are unchanged. The original inventory
@@ -460,3 +460,32 @@ Source version cannot demonstrate actual update history. The composite DID 1.1
 verification-method clause also remains NOT_RUN: id/controller syntax cannot
 prove every referenced CID obligation. No authority/history is fabricated and no
 subject output, missing alg or existing SAGE metadata failure is repaired.
+
+## Actual serialized document context and media type
+
+Five fresh native resolutions inspect actual application/did Raw bytes, not the
+accessor snapshot, for json-ld-processors.3/.4/.7 and production.4. The independent
+parser requires a duplicate-free UTF-8 JSON map. Context presence and the exact
+DID 1.1 string or first array item are checked independently of downstream media
+type. Additional array values are inspected as JSON values only, limited to ASCII
+strings and safe integers; other suffix values remain NOT_SUPPORTED.
+
+Downstream contentType must be an ASCII, syntactically valid MIME type whose
+case-insensitive essence is application/did. Valid parameters are allowed;
+malformed parameters are rejected rather than discarded. Any error metadata
+property or unusable native representation makes this observation unavailable.
+Raw bytes, request and complete native result remain attached to each verdict.
+
+Four requirements pass on these actual outputs. DID 1.1 now has 133 cases,
+112 requirement and two recommendation passes, one recommendation FAIL, two
+inapplicable statements and 369 unobserved statements (322 requirements and
+47 recommendations). Missing alg remains a recommendation failure. The original
+416 entries are retained as 369 pending and 47 observed entries.
+
+These cases establish context fields and media declaration, not general JSON
+production or JSON-LD conformance. production.1/.2 and json-ld-processors.2 remain
+NOT_RUN: post-consumption getter equality cannot prove preservation of all
+pre-producer input entries and value conversion rules. JSON-LD processing, term
+semantics, remote context fetching and extension registration are not invoked
+or established. Absent optional inputs, update history and authority stay outside
+this evidence; no projection/generic verdict is copied and no output repaired.

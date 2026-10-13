@@ -78,7 +78,7 @@
     "additional-data-or-feature": 117,
     "additional-observer-operation": 106,
     "document-or-applicability-review": 105,
-    "existing-observation": 41,
+    "existing-observation": 37,
     "operational-or-authority-evidence": 4
   },
   "routes": {
@@ -1817,28 +1817,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "did11-cr20260305#json-ld-processors.3",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "1a39e99dfa36a8efecc2f01cd12cba77e146794f0ffc409bda930cddcf6b01e8",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "did11-cr20260305#json-ld-processors.4",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "658d56efcd6c350c063c94c76c799c98ed2fdb488fd31f3bd8d5c1109f2b4503",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
       "id": "did11-cr20260305#json-ld-processors.5",
       "level": "recommendation",
       "keywords": [
@@ -1858,17 +1836,6 @@
       "text_sha256": "f9355e8eaf65b5e3163816f5712bd93361fd93c49d4f03565428c0ec4584edd8",
       "baseline_verdict": "NOT_RUN",
       "route": "jsonld-processing",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "did11-cr20260305#json-ld-processors.7",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "cac9fcb22fef2c139f2f341c091c7de0370f1d4f19329eedbd0e1ba386898113",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
       "generic_scope": "checked"
     },
     {
@@ -2318,17 +2285,6 @@
         "MAY"
       ],
       "text_sha256": "6568c1acffbbe4fa14fbf034fe0de521a962923036e6f62b20ee72618d69f9ae",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "did11-cr20260305#production.4",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "5a15d6527b1e9270e40cb742d3d6abb99ede08d9d435a97db56bdf63d383838c",
       "baseline_verdict": "NOT_RUN",
       "route": "native-result",
       "generic_scope": "checked"
@@ -4974,26 +4930,106 @@
         "did-1.1/sage-resolution/native-key-fields-record-3",
         "did-1.1/sage-resolution/native-key-fields-record-5"
       ]
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "1a39e99dfa36a8efecc2f01cd12cba77e146794f0ffc409bda930cddcf6b01e8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-representation-",
+      "cases": [
+        "did-1.1/sage-resolution/native-representation-record-0",
+        "did-1.1/sage-resolution/native-representation-record-1",
+        "did-1.1/sage-resolution/native-representation-record-2",
+        "did-1.1/sage-resolution/native-representation-record-3",
+        "did-1.1/sage-resolution/native-representation-record-5"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.4",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "658d56efcd6c350c063c94c76c799c98ed2fdb488fd31f3bd8d5c1109f2b4503",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-representation-",
+      "cases": [
+        "did-1.1/sage-resolution/native-representation-record-0",
+        "did-1.1/sage-resolution/native-representation-record-1",
+        "did-1.1/sage-resolution/native-representation-record-2",
+        "did-1.1/sage-resolution/native-representation-record-3",
+        "did-1.1/sage-resolution/native-representation-record-5"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.7",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "cac9fcb22fef2c139f2f341c091c7de0370f1d4f19329eedbd0e1ba386898113",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-representation-",
+      "cases": [
+        "did-1.1/sage-resolution/native-representation-record-0",
+        "did-1.1/sage-resolution/native-representation-record-1",
+        "did-1.1/sage-resolution/native-representation-record-2",
+        "did-1.1/sage-resolution/native-representation-record-3",
+        "did-1.1/sage-resolution/native-representation-record-5"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#production.4",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "5a15d6527b1e9270e40cb742d3d6abb99ede08d9d435a97db56bdf63d383838c",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-representation-",
+      "cases": [
+        "did-1.1/sage-resolution/native-representation-record-0",
+        "did-1.1/sage-resolution/native-representation-record-1",
+        "did-1.1/sage-resolution/native-representation-record-2",
+        "did-1.1/sage-resolution/native-representation-record-3",
+        "did-1.1/sage-resolution/native-representation-record-5"
+      ]
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 110,
+    "PASS": 114,
     "FAIL": 1,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 2,
     "ERROR": 0,
-    "NOT_RUN": 373
+    "NOT_RUN": 369
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 108,
+      "PASS": 112,
       "FAIL": 0,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 326
+      "NOT_RUN": 322
     },
     "recommendation": {
       "statements": 50,
@@ -5005,5 +5041,5 @@
       "NOT_RUN": 47
     }
   },
-  "expected_live_cases": 128
+  "expected_live_cases": 133
 }
