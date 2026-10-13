@@ -28,9 +28,11 @@ certificate. They contact no agent, MCP, RPC or deployed registry.
 | Profile | Cases | Requirement PASS | Recommendation PASS | NOT_RUN |
 |---|---:|---:|---:|---:|
 | DID Core 1.0 | 16 | 33 | 0 | 173 |
-| DID 1.1 with CID and Resolution publications | 123 | 106 | 2 | 376 |
+| DID 1.1 with CID and Resolution publications | 128 | 108 | 2 | 373 |
 
-There are no FAIL or ERROR statements in these observations. The recommendation
+There are no requirement-level FAIL or ERROR statements in these observations.
+The fresh DID 1.1 resolution scope retains one recommendation FAIL for missing
+JWK alg. This is independent of the separate projection finding. The recommendation
 PASS statements cover the selected resolution Accept option and the returned
 contentType for the actual selected JSON key in an HTTP dereferencing result.
 This does not replace the
@@ -414,7 +416,7 @@ A body-only change leaves the header assertion intact and fails the body rule.
 GET support is observed at the owned interface; inspector-built requests do not
 establish subject-client construction or production ingress behavior.
 
-DID 1.1 now has 123 cases, 106 requirement and two recommendation passes, two
+After the error/wire addition, DID 1.1 had 123 cases, 106 requirement and two recommendation passes, two
 inapplicable statements and 376 unobserved statements (328 requirements and 48
 recommendations). Core 1.0 remains unchanged. All original 416 pending-clause
 entries are preserved as 376 pending and 40 newly observed entries. The primary
@@ -424,3 +426,37 @@ No output is repaired, validator verdict reused, operational registry queried or
 service endpoint contacted. The two separate SAGE metadata failures remain for
 implementation correction. Source authority, general algorithm conformance and
 all representations are unestablished.
+
+## Selected native key and document fields
+
+Five fresh application/did resolutions inspect service member presence, selected
+verification material and the JWK alg recommendation. Service maps must contain
+id, type and serviceEndpoint. Optional absent service/method/JWK fields remain
+inapplicable; an explicit empty service set has no member to violate that rule.
+Root methods and embedded relationship definitions are inspected independently
+of previously recorded projection results.
+
+A single known JsonWebKey public material field passes the duplicate-material
+check. Unknown method types, additional material aliases or uninspected extension
+names remain NOT_SUPPORTED. If Ed25519 JWK and Multibase fields coexist, the
+observer decodes the canonical 32-byte JWK x and the pinned CID 0xed01 Multibase
+format. Equal public bytes FAIL; different or unrecognized dual encodings remain
+NOT_SUPPORTED. This does not establish full key validity or cryptographic safety.
+
+For an actual JsonWebKey with publicKeyJwk, the recommended alg must be present
+as a nonempty string. Its absence is a recommendation FAIL, despite alg being an
+optional JWK property. This is presence/type evidence only, not algorithm registry
+membership or compatibility. All five actual native outputs lack alg, so the
+fresh resolution report records that failure. No projection verdict is copied.
+
+DID 1.1 now has 128 cases, 108 requirement and two recommendation passes, one
+recommendation failure, two inapplicable statements and 373 unobserved statements
+(326 requirements and 47 recommendations). The requirement gate still passes.
+Core 1.0 and the separate projection report are unchanged. The original inventory
+retains 373 pending and 43 observed entries, including the new failure.
+
+The versionId last-Update recommendation remains NOT_RUN because the fixed
+Source version cannot demonstrate actual update history. The composite DID 1.1
+verification-method clause also remains NOT_RUN: id/controller syntax cannot
+prove every referenced CID obligation. No authority/history is fabricated and no
+subject output, missing alg or existing SAGE metadata failure is repaired.

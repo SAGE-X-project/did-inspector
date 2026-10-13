@@ -78,7 +78,7 @@
     "additional-data-or-feature": 117,
     "additional-observer-operation": 106,
     "document-or-applicability-review": 105,
-    "existing-observation": 44,
+    "existing-observation": 41,
     "operational-or-authority-evidence": 4
   },
   "routes": {
@@ -331,18 +331,6 @@
       "text_sha256": "035910b77fee1fb7737e4f4e3ce0663f046772e00a6e607ef5c65ca752d21ae3",
       "baseline_verdict": "NOT_RUN",
       "route": "conditional-fields",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#JsonWebKey.7",
-      "level": "recommendation",
-      "keywords": [
-        "OPTIONAL",
-        "SHOULD"
-      ],
-      "text_sha256": "1fce250087268d61af856a58541a6a9d4eef26010a3aa4d23f8f28dc252551ac",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-key-document",
       "generic_scope": "not-checkable"
     },
     {
@@ -1513,17 +1501,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "cid10#services.3",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "0c4dbfcec18f7e84dae8ee12bb7a1d73569eaaa5642ef0e79cb0e73c28d964a8",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
       "id": "cid10#services.4",
       "level": "requirement",
       "keywords": [
@@ -1577,17 +1554,6 @@
       "text_sha256": "629ab97c1cfccd0768a2e4d4e0905de50535301e7b3e1c5779696c7e55f61b1a",
       "baseline_verdict": "NOT_RUN",
       "route": "authority",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#verification-material.1",
-      "level": "requirement",
-      "keywords": [
-        "MUST NOT"
-      ],
-      "text_sha256": "813c144976581ae9956b6c9f3ef4255e1d91e4ecfa63625fd98bc043f9c00e44",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-key-document",
       "generic_scope": "checked"
     },
     {
@@ -4947,36 +4913,97 @@
       "cases": [
         "did-1.1/sage-resolution/native-branch-unexpected-source"
       ]
+    },
+    {
+      "id": "cid10#JsonWebKey.7",
+      "level": "recommendation",
+      "keywords": [
+        "OPTIONAL",
+        "SHOULD"
+      ],
+      "text_sha256": "1fce250087268d61af856a58541a6a9d4eef26010a3aa4d23f8f28dc252551ac",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-key-document",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "FAIL",
+      "case_prefix": "/native-key-fields-",
+      "cases": [
+        "did-1.1/sage-resolution/native-key-fields-record-0",
+        "did-1.1/sage-resolution/native-key-fields-record-1",
+        "did-1.1/sage-resolution/native-key-fields-record-2",
+        "did-1.1/sage-resolution/native-key-fields-record-3",
+        "did-1.1/sage-resolution/native-key-fields-record-5"
+      ]
+    },
+    {
+      "id": "cid10#services.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "0c4dbfcec18f7e84dae8ee12bb7a1d73569eaaa5642ef0e79cb0e73c28d964a8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-key-fields-",
+      "cases": [
+        "did-1.1/sage-resolution/native-key-fields-record-0",
+        "did-1.1/sage-resolution/native-key-fields-record-1",
+        "did-1.1/sage-resolution/native-key-fields-record-2",
+        "did-1.1/sage-resolution/native-key-fields-record-3",
+        "did-1.1/sage-resolution/native-key-fields-record-5"
+      ]
+    },
+    {
+      "id": "cid10#verification-material.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST NOT"
+      ],
+      "text_sha256": "813c144976581ae9956b6c9f3ef4255e1d91e4ecfa63625fd98bc043f9c00e44",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-key-document",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-key-fields-",
+      "cases": [
+        "did-1.1/sage-resolution/native-key-fields-record-0",
+        "did-1.1/sage-resolution/native-key-fields-record-1",
+        "did-1.1/sage-resolution/native-key-fields-record-2",
+        "did-1.1/sage-resolution/native-key-fields-record-3",
+        "did-1.1/sage-resolution/native-key-fields-record-5"
+      ]
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 108,
-    "FAIL": 0,
+    "PASS": 110,
+    "FAIL": 1,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 2,
     "ERROR": 0,
-    "NOT_RUN": 376
+    "NOT_RUN": 373
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 106,
+      "PASS": 108,
       "FAIL": 0,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 328
+      "NOT_RUN": 326
     },
     "recommendation": {
       "statements": 50,
       "PASS": 2,
-      "FAIL": 0,
+      "FAIL": 1,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 0,
       "ERROR": 0,
-      "NOT_RUN": 48
+      "NOT_RUN": 47
     }
   },
-  "expected_live_cases": 123
+  "expected_live_cases": 128
 }
