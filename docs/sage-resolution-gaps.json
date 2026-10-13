@@ -76,7 +76,7 @@
   ],
   "categories": {
     "additional-data-or-feature": 117,
-    "additional-observer-operation": 96,
+    "additional-observer-operation": 95,
     "document-or-applicability-review": 103,
     "existing-observation": 34,
     "operational-or-authority-evidence": 4
@@ -2013,17 +2013,6 @@
       "baseline_verdict": "NOT_RUN",
       "route": "specification",
       "generic_scope": "not-checkable"
-    },
-    {
-      "id": "did11-cr20260305#production-and-consumption.12",
-      "level": "requirement",
-      "keywords": [
-        "MUST NOT"
-      ],
-      "text_sha256": "7d8575036936b2d4f77f10798c0cdd25404fb8ed3cc3d3627abaefad5a015933",
-      "baseline_verdict": "NOT_RUN",
-      "route": "representation-consumer",
-      "generic_scope": "checked"
     },
     {
       "id": "did11-cr20260305#production-and-consumption.14",
@@ -5133,26 +5122,44 @@
         "did-1.1/sage-resolution/native-representation-input-producer-0",
         "did-1.1/sage-resolution/native-representation-input-producer-1"
       ]
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.12",
+      "level": "requirement",
+      "keywords": [
+        "MUST NOT"
+      ],
+      "text_sha256": "7d8575036936b2d4f77f10798c0cdd25404fb8ed3cc3d3627abaefad5a015933",
+      "baseline_verdict": "NOT_RUN",
+      "route": "representation-consumer",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-producer-context-",
+      "cases": [
+        "did-1.1/sage-resolution/native-producer-context-invalid-context-0",
+        "did-1.1/sage-resolution/native-producer-context-invalid-context-1",
+        "did-1.1/sage-resolution/native-producer-context-invalid-context-2"
+      ]
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 129,
+    "PASS": 130,
     "FAIL": 1,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 2,
     "ERROR": 0,
-    "NOT_RUN": 354
+    "NOT_RUN": 353
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 127,
+      "PASS": 128,
       "FAIL": 0,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 307
+      "NOT_RUN": 306
     },
     "recommendation": {
       "statements": 50,
@@ -5164,5 +5171,5 @@
       "NOT_RUN": 47
     }
   },
-  "expected_live_cases": 167
+  "expected_live_cases": 170
 }

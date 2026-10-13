@@ -28,7 +28,7 @@ certificate. They contact no agent, MCP, RPC or deployed registry.
 | Profile | Cases | Requirement PASS | Recommendation PASS | NOT_RUN |
 |---|---:|---:|---:|---:|
 | DID Core 1.0 | 16 | 33 | 0 | 173 |
-| DID 1.1 with CID and Resolution publications | 167 | 127 | 2 | 354 |
+| DID 1.1 with CID and Resolution publications | 170 | 128 | 2 | 353 |
 
 There are no requirement-level FAIL or ERROR statements in these observations.
 The fresh DID 1.1 resolution scope retains one recommendation FAIL for missing
@@ -636,7 +636,7 @@ SAGE resolver/ingress or full JSON-LD term processing and remote contexts.
 
 production.1 and json-ld-processors.2 now pass on these directly observed typed
 inputs, with the same table and scope limits for both. At that boundary consumption.1 still needed
-actual typed consumer evidence, and production-and-consumption.12 remains
+actual typed consumer evidence, and production-and-consumption.12 remained
 unobserved: builder rejection must not be misreported as producer rejection.
 After the typed producer addition DID 1.1 had 161 cases, 124 requirement and two recommendation passes, one
 alg recommendation failure, two inapplicable statements and 357 NOT_RUN
@@ -674,7 +674,7 @@ forced double property conversion without a fractional input, every numeric
 range or property context, JSON-LD terms/remote contexts, operational authority,
 SAGE resolver/ingress, or whole document/key conformance. The method timestamps
 are data-model conversion evidence, not operational expiration/revocation or
-historical truth. production-and-consumption.12 remains NOT_RUN; builder
+historical truth. At that earlier boundary production-and-consumption.12 remained NOT_RUN; builder
 rejection is not producer rejection.
 
 After the typed consumer addition DID 1.1 had 163 cases, 125 requirement and two recommendation passes, one
@@ -704,13 +704,47 @@ returned models and delegated errors remain archived but do not decide these
 input contracts. Unit controls verify that output failure cannot silently
 become an input failure or imply output success. Full output/rejection behavior,
 all representations, authority, resolver ingress and JSON-LD processing remain
-unestablished by these observations. production-and-consumption.12 remains
+unestablished by these observations. At that earlier boundary production-and-consumption.12 remained
 NOT_RUN: builder rejection is not producer rejection. Recognized timestamp
 conversion alone proves no operational expiration/revocation non-use policy.
 
-DID 1.1 now has 167 cases, 127 requirement and two recommendation passes, one
+After the representation-input addition DID 1.1 had 167 cases, 127 requirement and two recommendation passes, one
 alg recommendation failure, two inapplicable statements and 354 NOT_RUN
 (307 requirements and 47 recommendations). The 416 original rows remain as
 354 pending and 62 observed (60 PASS, one NOT_APPLICABLE and one FAIL), with all
 original fields, baseline and routes preserved. Core 1.0, projection and existing
 implementation findings remain separate and unchanged.
+
+## Actual producer prevention of selected invalid context output
+
+Three fresh pairs supply the same minimal public typed model and change only
+one representation-specific @context value. The accepted control uses the DID
+1.1 base string; negative values are Boolean false, Integer 42 and a list with
+the base string followed by false. Scalar forms violate the required context
+shape; the Boolean list suffix is excluded by json-ld-processors.1 and the
+pinned context type definition, not by json-ld-processors.4 alone.
+
+Each pair makes two actual calls to the unchanged selected producer. Typed
+pre-input witnesses, both maps, options, bytes and errors are archived. A builder
+rejection cannot pass, and an always-rejecting producer fails to establish the
+accepted control. Subject validator verdicts and error annotations are never
+used to decide the independently defined context condition.
+
+The narrow prohibition can pass when the actual producer refuses with no
+output or successfully returns an independently checked repaired minimal
+document with the base context string or a base-only array. A valid repair is
+not failed merely because the producer did not reject. Error plus partial bytes
+and silent no-output are ERROR; no new rule requiring all errors to return no
+bytes is imposed. Successful known invalid JSON/root/context is FAIL. Other
+media, richer context semantics or a different document are NOT_SUPPORTED.
+
+production-and-consumption.12 now passes only on these selected context output
+conditions. It does not establish all invalid DID/document rejection, every
+schema, JSON-LD processing, remote contexts, authority, resolver ingress,
+downstream publication, or operational expiration/revocation non-use policy.
+DID 1.1 now has 170 cases, 128 requirement and two recommendation passes, one
+alg recommendation failure, two inapplicable statements and 353 NOT_RUN
+(306 requirements and 47 recommendations). All 416 original rows remain as
+353 pending and 63 observed (61 PASS, one NOT_APPLICABLE and one FAIL), with
+original fields, baseline and routes preserved. Core 1.0 and projection remain
+separate; existing implementation findings remain unchanged.
