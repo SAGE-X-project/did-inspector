@@ -278,7 +278,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		t.Fatal(err)
 	}
 	r, err := report.Decode(data)
-	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 108 {
+	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 110 {
 		t.Fatal("scope identity", err, r.Totals)
 	}
 	binary := filepath.Join(t.TempDir(), "sage-inspector")
@@ -304,10 +304,13 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		want, cases := 33, 16
 		if profile == "did-1.1" {
-			want, cases = 108, 123
+			want, cases = 110, 128
 		}
-		if profile == "did-1.1" && (r.Totals.NotApplicable != 2 || r.Totals.NotRun != 376) {
+		if profile == "did-1.1" && (r.Totals.NotApplicable != 2 || r.Totals.NotRun != 373) {
 			t.Fatal("native URL conditional evidence", r.Totals)
+		}
+		if profile == "did-1.1" && (r.Totals.Fail != 1 || r.TotalsByLevel.Recommendation.Fail != 1) {
+			t.Fatal("native alg recommendation failure not preserved", r.Totals)
 		}
 		if r.Totals.Pass != want || len(r.GateFailures()) != 0 || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Subject.Revision != "2ef282b40ccfe243c6cf3b1c05594e02171126cc" {
 			t.Fatal("native scope", r.Totals, r.Subject)
