@@ -57,7 +57,7 @@ func Profile(name string) (core.Profile, error) {
 		}
 		q := c.Request.Request
 		if q.Function == "http" {
-			req, e := checks.BindingRequest(c.Request.Method, q.Input, c.Request.AcceptHeader, nil)
+			req, e := checks.BindingRequest(c.Request.Method, q.Input, c.Request.AcceptHeader, q.Options)
 			if e != nil {
 				return p, e
 			}

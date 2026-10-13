@@ -28,7 +28,7 @@ certificate. They contact no agent, MCP, RPC or deployed registry.
 | Profile | Cases | Requirement PASS | Recommendation PASS | NOT_RUN |
 |---|---:|---:|---:|---:|
 | DID Core 1.0 | 11 | 15 | 0 | 191 |
-| DID 1.1 with CID and Resolution publications | 23 | 26 | 1 | 459 |
+| DID 1.1 with CID and Resolution publications | 43 | 39 | 1 | 446 |
 
 There are no FAIL or ERROR statements in these observations. The recommendation
 PASS is the selected resolution Accept option. This does not replace the
@@ -61,7 +61,7 @@ A PASS is limited to each observed clause and fixture. Native identifier and
 presence checks do not establish full document equality. HTTP complete-result
 checks cover structure and returned identity/deactivation, not equality of all
 members with a separate native resolution call. Full method-specific algorithms,
-optional extensions, caching, historical resolution, remote contexts, endpoint
+other optional extensions, caching, historical resolution, remote contexts, endpoint
 operation and operational Source authority remain unestablished; publication
 statements without a case remain NOT_RUN. Generic fixture-method conformance is
 not advertised by this subject. These cases do not certify full conformance or
@@ -71,3 +71,36 @@ SAGE-specific results in sage-inspector remain separate: active envelopes omit
 `deactivated: false`, and unsupported Accept problems omit `sageCode`. Those two
 requirement findings remain FAIL and retain their planned implementation fixes
 and reinspection. This W3C observation scope neither repairs nor supersedes them.
+
+## Request option observations
+
+The resolution scope also includes 16 native request-option cases and four
+loopback HTTP parsing-error cases. They cover malformed Accept values, wrong
+modeled types, non-ASCII version identifiers and verification relationships,
+invalid timestamp syntax, non-UTC timestamps, sub-second precision and an
+unconfigured extension. Native refusals observe the actual subject's
+INVALID_OPTIONS or FEATURE_NOT_SUPPORTED result; the adapter never invents that
+result or invokes the subject's validator as the inspection oracle.
+
+`Request.Options` takes precedence over the earlier Accept and relationship
+shorthand. Valid types are copied to the subject API; wrong types and unknown
+names are retained in Extra. Timestamp offsets and represented precision are
+preserved when translated. A comma separator or precision beyond time.Time's
+nanosecond capacity remains an original string in Extra, preventing Go's parser
+from accepting a different grammar or truncating the value. The subject then
+handles that modeled-name conflict. The original option strings and types also
+remain in the raw case inputs.
+
+The native timestamp observations include `.1Z`, `+09:00`, a tenth fractional
+digit and a comma separator. They do not establish acceptance or rejection of
+every XML datetime lexical form, historical lookup or normalization behavior.
+For the unconfigured extension, rejection is scoped to this subject's default
+resolver configuration; other resolvers may explicitly support that extension.
+
+The HTTP parsing-error cases archive actual GET/POST request bodies, query
+strings and returned errors. Runtime adapter tests verify status 400 and
+INVALID_OPTIONS. Only their TLS transport statement is judged in the standard
+profile: parsing can fail before the resolver is invoked, so those cases do not
+prove a resolver algorithm return or a client's query/body construction rules.
+The additional 13 requirement statements come from native observations. General
+full-document comparison and the other evidence limits above still apply.
