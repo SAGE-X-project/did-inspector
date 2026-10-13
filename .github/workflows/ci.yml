@@ -92,3 +92,75 @@ jobs:
             if [ "$n" -ne 0 ]; then bad=1; fi
           done
           exit "$bad"
+
+  adapter-sage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: adapters/sage
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e
+        with:
+          go-version: '1.26.8'
+          cache-dependency-path: adapters/sage/go.sum
+      - name: Verify pinned modules and format
+        env:
+          GOTOOLCHAIN: local
+          GOWORK: 'off'
+        run: |
+          go mod download
+          go mod verify
+          test -z "$(gofmt -l .)"
+          go vet -mod=readonly ./...
+          go list -m -json github.com/sage-x-project/did-go github.com/sage-x-project/did-go/advanced/sage > "$RUNNER_TEMP/sage-subject-modules.json"
+      - name: Lint adapter
+        run: go run github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.13.2 run ./...
+      - name: Test independent adapter and native CLI with coverage
+        env:
+          GOTOOLCHAIN: local
+          GOWORK: 'off'
+        run: |
+          go test -mod=readonly -race -coverprofile="$RUNNER_TEMP/sage-adapter-cover.out" ./...
+          go tool cover -func="$RUNNER_TEMP/sage-adapter-cover.out" | awk '/^total:/ { sub(/%$/, "", $3); found=1; if ($3+0 < 90) exit 1 } END { if (!found) exit 1 }'
+          go test -cover ./... | awk '/coverage:/ { for (i=1;i<=NF;i++) if ($i=="coverage:") { v=$(i+1); sub(/%$/,"",v); if(v+0<90) bad=1 } } END { exit bad }'
+      - name: Observe both pinned profiles and preserve all raw cases
+        env:
+          GOTOOLCHAIN: local
+          GOWORK: 'off'
+        run: |
+          mkdir -p "$RUNNER_TEMP/sage-reports"
+          go build -mod=readonly -trimpath -o "$RUNNER_TEMP/did-inspector-sage" ./cmd/did-inspector-sage
+          sha256sum "$RUNNER_TEMP/did-inspector-sage" > "$RUNNER_TEMP/sage-observer-binary.sha256"
+          go version > "$RUNNER_TEMP/sage-observer-compiler.txt"
+          for p in did-core-1.0 did-1.1; do
+            "$RUNNER_TEMP/did-inspector-sage" --profile "$p" --deterministic --inspector-revision "$GITHUB_SHA" --out "$RUNNER_TEMP/sage-reports/$p.json" --raw-out "$RUNNER_TEMP/sage-reports/$p-raw.json"
+          done
+          python3 - <<'PYTHON'
+          import json, os
+          from pathlib import Path
+          root=Path(os.environ['RUNNER_TEMP'])/'sage-reports'
+          for name,passed,pending in [('did-core-1.0',16,190),('did-1.1',20,465)]:
+              report=json.loads((root/(name+'.json')).read_text())
+              assert report['subject']['revision']=='2ef282b40ccfe243c6cf3b1c05594e02171126cc'
+              assert report['totals_by_level']['requirement']['FAIL']==0
+              assert report['totals_by_level']['requirement']['ERROR']==0
+              assert report['totals']['PASS']==passed and report['totals']['NOT_RUN']==pending
+              failed={s['id'] for s in report['statements'] if s['verdict']=='FAIL'}
+              assert failed==({'cid10#JsonWebKey.7'} if name=='did-1.1' else set())
+              raw=json.loads((root/(name+'-raw.json')).read_text())
+              assert len(raw['cases'])==6 and raw['subject']==report['subject']
+          PYTHON
+      - name: Preserve independent profile and raw observation artifacts
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: sage-projection-reports
+          path: |
+            ${{ runner.temp }}/sage-reports/
+            ${{ runner.temp }}/sage-adapter-cover.out
+            ${{ runner.temp }}/sage-subject-modules.json
+            ${{ runner.temp }}/sage-observer-binary.sha256
+            ${{ runner.temp }}/sage-observer-compiler.txt
+          if-no-files-found: error

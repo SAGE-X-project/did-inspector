@@ -1,0 +1,3 @@
+package sageprojection
+
+const fixtureHash = "f87fbff1d38c749e41cd3173c78b72c461fdc8227ebe2353f1dfdfe6c75b774d"

@@ -37,4 +37,12 @@ revision are in [`docs/evidence`](docs/evidence); CI regenerates them, uploads
 them as artifacts and fails when a requirement-level statement is FAIL or
 ERROR. Recommendation-level failures are printed but do not fail CI.
 
+## Inspecting SAGE-produced documents
+
+The separate `adapters/sage` module inspects actual `advanced/sage` projections
+under separate DID Core 1.0 and DID 1.1 profiles. See
+[`docs/sage-projection-subject.md`](docs/sage-projection-subject.md) for commands,
+raw evidence, the recommendation finding and the explicit limits. These reports
+cover produced fixture documents only; unobserved statements remain NOT_RUN.
+
 Licensed under the Apache License, Version 2.0 (see `LICENSE`).
