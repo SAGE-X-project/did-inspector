@@ -27,8 +27,8 @@ certificate. They contact no agent, MCP, RPC or deployed registry.
 
 | Profile | Cases | Requirement PASS | Recommendation PASS | NOT_RUN |
 |---|---:|---:|---:|---:|
-| DID Core 1.0 | 11 | 20 | 0 | 186 |
-| DID 1.1 with CID and Resolution publications | 61 | 43 | 2 | 441 |
+| DID Core 1.0 | 16 | 33 | 0 | 173 |
+| DID 1.1 with CID and Resolution publications | 66 | 56 | 2 | 428 |
 
 There are no FAIL or ERROR statements in these observations. The recommendation
 PASS statements cover the selected resolution Accept option and the returned
@@ -71,8 +71,8 @@ missing content and duplicate members have independent negative unit checks.
 The actual native request and result are retained beside the wire exchange in
 `--raw-out`. The ordinary report omits PASS details. Raw HTTP records include
 ephemeral loopback URLs, so raw output is not byte-deterministic even when report
-timestamps are omitted. Existing clause counts are unchanged: the new cases
-strengthen HTTPS complete-result clauses rather than claim new clauses.
+timestamps are omitted. The fourteen comparison cases strengthen existing HTTPS clauses. The separate
+native field cases below add newly observed clauses.
 
 A PASS is limited to the observed clause and fixture. These comparisons establish
 full captured-content equality for the selected default representations and
@@ -158,3 +158,40 @@ are not document creation or update times. No created/updated timestamp is
 invented, and their unexercised statements remain NOT_RUN. Native document and all-member HTTP/native comparisons now cover the selected
 records described above. Other optional metadata and operational authority
 retain the same evidence limits.
+
+## Native document field observations
+
+Five additional cases per profile inspect fresh native snapshots for active
+records. Core 1.0 uses the compatibility resolver. DID 1.1 explicitly requests
+application/did and verifies that the actual returned metadata declares that
+representation before inspecting CID fields. A missing document, native error,
+wrong representation or malformed/duplicate-member snapshot causes ERROR rather
+than a document verdict. Input and the actual returned observation remain in the
+raw archive; no projection verdict is copied.
+
+The independent rules inspect root identifier presence (also DID syntax for
+Core 1.0), method map/set shape and mandatory properties, known JWK method type
+shape, Core 1.0 method identifier/controller syntax, authentication/assertion/key
+agreement set shape, and service map/set and property types. Core 1.0 checks the
+service's mandatory id/type/endpoint properties. CID checks required type and
+endpoint properties and duplicate present service identifiers; optional CID
+service identifiers are not made mandatory.
+
+Absent optional properties are NOT_APPLICABLE. An explicit empty method/service
+set is checked as a set, but its nonexistent elements do not supply per-element
+PASS observations. Empty present relationships fail their nonempty constraint.
+Known JWK material is checked for mandatory property and map shape only. Unknown
+method types and unsupported reference forms receive NOT_SUPPORTED. Relative or
+external references are not dereferenced or promoted to verified methods. No
+cryptographic key validity, controller authorization or remote service operation
+is established by these field checks.
+
+The new cases observe thirteen additional requirement clauses in each profile.
+Some record-level observations are NOT_APPLICABLE because signing-only or
+expired-signing records omit particular relationships; the corresponding clauses
+also have actual applicable observations on other records. All reported new PASS
+clauses have applicable native evidence. General URL Standard clauses, JWK-specific
+class semantics and full material validation retain their unobserved status in
+this scope. Syntactically URI-looking strings are not proof of URL Standard
+conformance, and a different registered key class is not treated as JsonWebKey.
+Unexercised publication clauses remain NOT_RUN.

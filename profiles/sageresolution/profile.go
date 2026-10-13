@@ -88,6 +88,7 @@ func Profile(name string) (core.Profile, error) {
 			return judge(result, c.Expect, string(input))
 		}})
 	}
+	appendNativeDocumentCases(&p, rows)
 	return p, p.Validate()
 }
 func contains(a []string, s string) bool {
