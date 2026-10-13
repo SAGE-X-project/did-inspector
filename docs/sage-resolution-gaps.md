@@ -5,7 +5,7 @@ report from CI run [38353322386](https://github.com/SAGE-X-project/did-inspector
 The machine-readable [inventory](sage-resolution-gaps.json) preserves all 416 historical
 statement ids, normative levels and keywords, exact text digests, evidence paths,
 and a next evidence route for each statement. Pending routes are planning evidence, not verdicts or implementation defects.
-Schema 2 keeps 369 pending entries and 47 entries observed since the baseline;
+Schema 2 keeps 364 pending entries and 52 entries observed since the baseline;
 it never assigns new observations to the historical inspector revision.
 
 The baseline inspector revision is `aefdcf9228ec8dcf85fd4aaf08b6e0511af11c36`.
@@ -24,8 +24,8 @@ recommendation-level statements. Requirement-level extraction also includes
 permissions, definitions and algorithm steps; it does not mean every row is a
 standalone MUST with an independently observable violation.
 
-The current report has 133 cases, 112 requirement and two recommendation passes,
-one recommendation failure, two inapplicable statements and 369 unobserved statements. Ten fresh native
+The current report has 138 cases, 117 requirement and two recommendation passes,
+one recommendation failure, two inapplicable statements and 364 unobserved statements. Ten fresh native
 result cases add 13 requirement passes and one conditional NOT_APPLICABLE.
 Twenty-four direct metadata serialization cases add four requirement passes.
 Three native error/state cases and ten owned TLS response cases add 22
@@ -33,14 +33,17 @@ requirement passes. Five fresh key/document cases add two requirement passes
 and the missing alg recommendation FAIL. Every historical entry and its original
 provenance remains; a failure is retained rather than removed from the inventory.
 Five fresh serialized-document cases add four requirement passes for context
-and media-type fields. Whole production/input-preservation clauses remain pending.
-The following routing counts describe the remaining 369, not the baseline 416.
+and media-type fields. Five additional passive pipeline captures add five
+requirement passes at actual producer/consumer boundaries. They compare all
+selected pre-input entries and separately returned consumer maps; arbitrary
+value conversion rules and full JSON-LD semantics remain pending.
+The following routing counts describe the remaining 364, not the baseline 416.
 
 | Primary next evidence route | Statements | Meaning |
 |---|---:|---|
 | Existing observation | 37 | Candidate assertions on actual native results, methods or server responses |
 | Existing operation, new scenario | 0 | Candidate branches requiring fresh requests or controlled Source failures |
-| Additional observer operation | 106 | A different actor, entry point or instrumentation is needed |
+| Additional observer operation | 101 | A different actor, entry point or instrumentation is needed |
 | Additional data or feature | 117 | Applicable optional fields, representations or method branches are absent |
 | Document or applicability review | 105 | Author obligations, permissions, definitions, contracts or conflicts |
 | Operational or authority evidence | 4 | Canonical storage or controller authority cannot be proved by fixtures |
@@ -65,7 +68,12 @@ The SAGE adapter deliberately returns false for the generic capability
 interfaces. This is an observation-interface limitation, not evidence that the
 underlying library lacks every such feature. A future parser, consumer,
 retriever or codec adapter must call the actual pinned implementation and
-preserve its own identity and inputs. The existing generic inspector's 256
+preserve its own identity and inputs. InspectPipeline now wraps the actual
+pinned producer and consumer supplied to a fresh SAGE resolver, delegating their
+unchanged arguments and returns. Pre-producer data and representation-entry maps
+are captured before serialization, separately from post-consumption maps. The
+selected ASCII/safe-integer JSON entry-preservation observations do not establish
+all data types, term processing or arbitrary representations. The existing generic inspector's 256
 `checked` and 160 `not-checkable` scope entries among the 416 historical statements
 are retained as context only. Generic cases and verdicts are not copied into a
 SAGE report. Previously uncheckable reasons must be reassessed for this actor;

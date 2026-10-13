@@ -76,7 +76,7 @@
   ],
   "categories": {
     "additional-data-or-feature": 117,
-    "additional-observer-operation": 106,
+    "additional-observer-operation": 101,
     "document-or-applicability-review": 105,
     "existing-observation": 37,
     "operational-or-authority-evidence": 4
@@ -1707,17 +1707,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "did11-cr20260305#consumption.2",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "92bfc991ed22f07417efa599482e9085a4da5af32f17ff3142d8b4540783d3d5",
-      "baseline_verdict": "NOT_RUN",
-      "route": "representation-consumer",
-      "generic_scope": "checked"
-    },
-    {
       "id": "did11-cr20260305#consumption.3",
       "level": "requirement",
       "keywords": [
@@ -2070,28 +2059,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "did11-cr20260305#production-and-consumption.10",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "01de1e9c59413c574fddab7c4e45bfad28372d1546aa1da9eb879327e5b0d1f3",
-      "baseline_verdict": "NOT_RUN",
-      "route": "representation-consumer",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "did11-cr20260305#production-and-consumption.11",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "212ea7bfe38b2650809cf176c34f5182fded12b910900a354d86b87e809d0a1a",
-      "baseline_verdict": "NOT_RUN",
-      "route": "representation-consumer",
-      "generic_scope": "checked"
-    },
-    {
       "id": "did11-cr20260305#production-and-consumption.12",
       "level": "requirement",
       "keywords": [
@@ -2131,28 +2098,6 @@
         "MUST"
       ],
       "text_sha256": "05230b536b97d19c9023d69b9c591882607a29770bc656f329aa3d96b8d92166",
-      "baseline_verdict": "NOT_RUN",
-      "route": "representation-consumer",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "did11-cr20260305#production-and-consumption.16",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "43010dbba306f4c0b38e0ce28848f519ecd8ffaf740c11277bf21c67e8253cc7",
-      "baseline_verdict": "NOT_RUN",
-      "route": "representation-consumer",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "did11-cr20260305#production-and-consumption.17",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "909007e7b2f59e6b5f942083e8430e0ab32c8395c8f4f9ff7a1127665b59fb01",
       "baseline_verdict": "NOT_RUN",
       "route": "representation-consumer",
       "generic_scope": "checked"
@@ -5010,26 +4955,126 @@
         "did-1.1/sage-resolution/native-representation-record-3",
         "did-1.1/sage-resolution/native-representation-record-5"
       ]
+    },
+    {
+      "id": "did11-cr20260305#consumption.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "92bfc991ed22f07417efa599482e9085a4da5af32f17ff3142d8b4540783d3d5",
+      "baseline_verdict": "NOT_RUN",
+      "route": "representation-consumer",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-pipeline-",
+      "cases": [
+        "did-1.1/sage-resolution/native-pipeline-record-0",
+        "did-1.1/sage-resolution/native-pipeline-record-1",
+        "did-1.1/sage-resolution/native-pipeline-record-2",
+        "did-1.1/sage-resolution/native-pipeline-record-3",
+        "did-1.1/sage-resolution/native-pipeline-record-5"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.10",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "01de1e9c59413c574fddab7c4e45bfad28372d1546aa1da9eb879327e5b0d1f3",
+      "baseline_verdict": "NOT_RUN",
+      "route": "representation-consumer",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-pipeline-",
+      "cases": [
+        "did-1.1/sage-resolution/native-pipeline-record-0",
+        "did-1.1/sage-resolution/native-pipeline-record-1",
+        "did-1.1/sage-resolution/native-pipeline-record-2",
+        "did-1.1/sage-resolution/native-pipeline-record-3",
+        "did-1.1/sage-resolution/native-pipeline-record-5"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.11",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "212ea7bfe38b2650809cf176c34f5182fded12b910900a354d86b87e809d0a1a",
+      "baseline_verdict": "NOT_RUN",
+      "route": "representation-consumer",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-pipeline-",
+      "cases": [
+        "did-1.1/sage-resolution/native-pipeline-record-0",
+        "did-1.1/sage-resolution/native-pipeline-record-1",
+        "did-1.1/sage-resolution/native-pipeline-record-2",
+        "did-1.1/sage-resolution/native-pipeline-record-3",
+        "did-1.1/sage-resolution/native-pipeline-record-5"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.16",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "43010dbba306f4c0b38e0ce28848f519ecd8ffaf740c11277bf21c67e8253cc7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "representation-consumer",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-pipeline-",
+      "cases": [
+        "did-1.1/sage-resolution/native-pipeline-record-0",
+        "did-1.1/sage-resolution/native-pipeline-record-1",
+        "did-1.1/sage-resolution/native-pipeline-record-2",
+        "did-1.1/sage-resolution/native-pipeline-record-3",
+        "did-1.1/sage-resolution/native-pipeline-record-5"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.17",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "909007e7b2f59e6b5f942083e8430e0ab32c8395c8f4f9ff7a1127665b59fb01",
+      "baseline_verdict": "NOT_RUN",
+      "route": "representation-consumer",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-pipeline-",
+      "cases": [
+        "did-1.1/sage-resolution/native-pipeline-record-0",
+        "did-1.1/sage-resolution/native-pipeline-record-1",
+        "did-1.1/sage-resolution/native-pipeline-record-2",
+        "did-1.1/sage-resolution/native-pipeline-record-3",
+        "did-1.1/sage-resolution/native-pipeline-record-5"
+      ]
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 114,
+    "PASS": 119,
     "FAIL": 1,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 2,
     "ERROR": 0,
-    "NOT_RUN": 369
+    "NOT_RUN": 364
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 112,
+      "PASS": 117,
       "FAIL": 0,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 322
+      "NOT_RUN": 317
     },
     "recommendation": {
       "statements": 50,
@@ -5041,5 +5086,5 @@
       "NOT_RUN": 47
     }
   },
-  "expected_live_cases": 133
+  "expected_live_cases": 138
 }

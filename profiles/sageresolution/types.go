@@ -73,3 +73,50 @@ type MetadataSubject interface {
 	core.Subject
 	InspectMetadata(context.Context, sageprojection.Record, Request) (MetadataResult, error)
 }
+
+// ProductionCapture archives the actual pre-call maps and unchanged delegated
+// return values. Byte fields preserve even malformed captures without repairs.
+type ProductionCapture struct {
+	Operation     string `json:"operation"`
+	Model         []byte `json:"model"`
+	Entries       []byte `json:"entries"`
+	Version       string `json:"version"`
+	JSONLD        bool   `json:"json_ld"`
+	IncludeSecret bool   `json:"include_secret"`
+	Output        []byte `json:"output"`
+	MediaType     string `json:"media_type"`
+	Error         string `json:"error,omitempty"`
+	CaptureError  string `json:"capture_error,omitempty"`
+}
+
+// ConsumptionCapture separates actual wire input, detected information and
+// the two returned accessor maps. No validation findings are used as an oracle.
+type ConsumptionCapture struct {
+	Operation    string   `json:"operation"`
+	Input        []byte   `json:"input"`
+	MediaType    string   `json:"media_type"`
+	Require      string   `json:"require"`
+	Expected     string   `json:"expected"`
+	Strict       bool     `json:"strict"`
+	Version      string   `json:"version"`
+	JSONLD       bool     `json:"json_ld"`
+	DroppedTerms []string `json:"dropped_terms"`
+	Model        []byte   `json:"model"`
+	Entries      []byte   `json:"entries"`
+	Error        string   `json:"error,omitempty"`
+	CaptureError string   `json:"capture_error,omitempty"`
+}
+
+// PipelineResult retains every call in one fresh native resolver execution.
+// An absent, repeated or differently attributed call is not replaced by a
+// generic producer/consumer test or a post-consumption getter snapshot.
+type PipelineResult struct {
+	Producer []ProductionCapture  `json:"producer"`
+	Consumer []ConsumptionCapture `json:"consumer"`
+	Result   Result               `json:"result"`
+}
+
+type PipelineSubject interface {
+	core.Subject
+	InspectPipeline(context.Context, sageprojection.Record, Request) (PipelineResult, error)
+}
