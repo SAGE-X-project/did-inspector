@@ -1,0 +1,4614 @@
+{
+  "schema": "sage-resolution-gap-inventory/1",
+  "scope": "resolution",
+  "profile": "did-1.1",
+  "baseline": {
+    "inspector_revision": "aefdcf9228ec8dcf85fd4aaf08b6e0511af11c36",
+    "inspector_tree": "9a4645eda4c5fbbd0e02e2b82a0fe2a0b6591da0",
+    "ci_run": 38353322386,
+    "ci_observer": "3c498fa2ea4ebc86eaf90be4e47846e62dc92c40",
+    "artifact": "sage-projection-reports",
+    "report_file": "sage-reports/resolution-did-1.1.json",
+    "report_sha256": "8a42dd7a8693fcf8d00dcdd2587d1914061c43af3dea64c81bb91e83c41b8099",
+    "subject": {
+      "name": "did-go/advanced/sage-resolution",
+      "version": "v0.0.0-20261012020818-2ef282b40ccf",
+      "revision": "2ef282b40ccfe243c6cf3b1c05594e02171126cc"
+    },
+    "subject_root_revision": "ed54c505eafe1c9d3d2decd862d6a9f7fcd2cd23",
+    "publications": [
+      {
+        "key": "did11-cr20260305",
+        "url": "https://www.w3.org/TR/2026/CR-did-1.1-20260305/",
+        "source": "sources/did-core-1.1-cr-20260305.html",
+        "sha256": "4a48022defe07d37d2decc3ec9027a932dc883b2ad164a5aeaf9256e530bd979"
+      },
+      {
+        "key": "cid10",
+        "url": "https://www.w3.org/TR/2025/REC-cid-1.0-20250515/",
+        "source": "sources/controlled-identifiers-1.0-20250515.html",
+        "sha256": "c5e9befba602b53de46669cf98067123d1901357a425f8bff621796b2ac4ac4a"
+      },
+      {
+        "key": "res10-crd20261001",
+        "url": "https://www.w3.org/TR/2026/CRD-did-resolution-1.0-20261001/",
+        "source": "sources/did-resolution-1.0-crd-20261001.html",
+        "sha256": "2b194843d37f5b7f01a4f5464f64d672dc4be43dafe5f2f49114c6070819586e"
+      }
+    ],
+    "totals": {
+      "statements": 486,
+      "PASS": 69,
+      "FAIL": 0,
+      "NOT_SUPPORTED": 0,
+      "NOT_APPLICABLE": 1,
+      "ERROR": 0,
+      "NOT_RUN": 416
+    },
+    "totals_by_level": {
+      "requirement": {
+        "statements": 436,
+        "PASS": 67,
+        "FAIL": 0,
+        "NOT_SUPPORTED": 0,
+        "NOT_APPLICABLE": 1,
+        "ERROR": 0,
+        "NOT_RUN": 368
+      },
+      "recommendation": {
+        "statements": 50,
+        "PASS": 2,
+        "FAIL": 0,
+        "NOT_SUPPORTED": 0,
+        "NOT_APPLICABLE": 0,
+        "ERROR": 0,
+        "NOT_RUN": 48
+      }
+    }
+  },
+  "limits": [
+    "Planning routes are not verdicts, defect counts or completed checks.",
+    "Generic checked scope identifies potential operation coverage only; it is not SAGE evidence.",
+    "All listed clauses remain NOT_RUN until a fresh applicable case actually observes the pinned subject.",
+    "Runtime checking, actor applicability and method/representation documentation need separate evidence.",
+    "No operational source, registration, private key or deployment is supplied by this audit."
+  ],
+  "categories": {
+    "additional-data-or-feature": 117,
+    "additional-observer-operation": 106,
+    "document-or-applicability-review": 109,
+    "existing-observation": 59,
+    "existing-operation-new-scenario": 21,
+    "operational-or-authority-evidence": 4
+  },
+  "routes": {
+    "metadata-boundary": {
+      "category": "document-or-applicability-review",
+      "operation": "reassess typed native metadata and serialization observation boundary",
+      "prerequisite": "These are MUST clauses, not permissions. Generic scope treats the JSON exchange guarantees as construction-only; current nativeResult also marshals typed native values. Reassess attributable shape/serialization evidence before a new case; JSON parsing alone cannot prove the subject serializer.",
+      "evidence": [
+        "adapters/sage/resolution.go",
+        "profiles/sageresolution/types.go",
+        "statements/scope.json"
+      ]
+    },
+    "native-result": {
+      "category": "existing-observation",
+      "operation": "resolve or dereference; inspect original metadata, accessor snapshot and representation bytes",
+      "prerequisite": "Add independent assertions and applicable positive/negative cases against actual native outputs. Evaluate each condition; do not assume PASS.",
+      "evidence": [
+        "adapters/sage/resolution.go",
+        "profiles/sageresolution/types.go",
+        "profiles/sageresolution/cases.json"
+      ]
+    },
+    "dereference-input": {
+      "category": "additional-observer-operation",
+      "operation": "actual subject dereference string-entry or attributed parsing observer",
+      "prerequisite": "The current native adapter parses q.Input with did.ParseURL before invoking DereferenceWithCode. Adapter parsing failures and handler-only errors cannot prove the dereferencing algorithm invalid-input branch.",
+      "evidence": [
+        "adapters/sage/resolution.go"
+      ]
+    },
+    "native-errors": {
+      "category": "existing-operation-new-scenario",
+      "operation": "resolve/dereference with valid fixture record and independent request or source-failure option",
+      "prerequisite": "Preserve exact actual error, null content and metadata; distinguish resolver execution from adapter input rejection or pre-handler parsing.",
+      "evidence": [
+        "adapters/sage/resolution.go",
+        "adapters/sage/options.go"
+      ]
+    },
+    "native-key-document": {
+      "category": "existing-observation",
+      "operation": "resolve(application/did); inspect actual selected JsonWebKey definitions",
+      "prerequisite": "Scope to actual produced methods; distinguish class definitions, optional values and recommendations. Any alg verdict must be fresh and may FAIL.",
+      "evidence": [
+        "profiles/sageresolution/native_document.go",
+        "profiles/sageresolution/public_jwk.go",
+        "adapters/sage/document.go"
+      ]
+    },
+    "server-wire": {
+      "category": "existing-observation",
+      "operation": "http/http-comparison via owned loopback TLS SAGE handler",
+      "prerequisite": "Compare actual response headers/body to a separate actual native call. These observations do not test a client request builder.",
+      "evidence": [
+        "adapters/sage/resolution.go",
+        "profiles/sageresolution/comparison.go"
+      ]
+    },
+    "client-binding": {
+      "category": "additional-observer-operation",
+      "operation": "actual subject HTTP client request-construction and response-consumption observer",
+      "prerequisite": "The current requests are constructed by inspector checks.BindingRequest and sent to a subject handler. Add an actual client actor; never assign inspector-built request behavior to the server.",
+      "evidence": [
+        "checks/binding.go",
+        "adapters/sage/resolution.go",
+        "adapters/sage/subject.go"
+      ]
+    },
+    "parser-reference": {
+      "category": "additional-observer-operation",
+      "operation": "direct subject DID/DID URL parsing and RFC3986 reference resolution",
+      "prerequisite": "Expose these actual operations with independently derived syntax/reference controls; current SAGE Subject.Supports returns false for generic capability interfaces.",
+      "evidence": [
+        "core/subject.go",
+        "adapters/sage/subject.go"
+      ]
+    },
+    "representation-consumer": {
+      "category": "additional-observer-operation",
+      "operation": "direct subject producer/consumer with arbitrary document and representation entries",
+      "prerequisite": "Add an explicit adapter operation and preserve original input/output; fixed record projection alone cannot prove general consumption or extension preservation.",
+      "evidence": [
+        "core/subject.go",
+        "adapters/sage/subject.go",
+        "adapters/sage/resolution.go"
+      ]
+    },
+    "method-retrieval": {
+      "category": "additional-observer-operation",
+      "operation": "actual CID retrieval/fragment algorithm and dedicated error interface",
+      "prerequisite": "DID key dereferencing is not proof of the complete CID retrieval algorithm or security vocabulary. Preserve actor, algorithm and actual error namespace.",
+      "evidence": [
+        "core/subject.go",
+        "adapters/sage/resolution.go"
+      ]
+    },
+    "conditional-fields": {
+      "category": "additional-data-or-feature",
+      "operation": "native/document observation with additional applicable field or representation inputs",
+      "prerequisite": "Current fixed records omit these fields or forms. Add applicable public inputs and verify actual subject support; absent fields never become evidence for a conditional MUST.",
+      "evidence": [
+        "adapters/sage/resolution.go",
+        "profiles/sageprojection/records.json",
+        "adapters/sage/document.go"
+      ]
+    },
+    "multikey-material": {
+      "category": "additional-data-or-feature",
+      "operation": "actual Multikey/multibase/multihash producer, consumer or codec",
+      "prerequisite": "Selected SAGE projection emits JsonWebKey, not Multikey. Expose actual support and independent public vectors; do not repair the type or fabricate subject output.",
+      "evidence": [
+        "adapters/sage/subject.go",
+        "profiles/sageresolution/public_jwk.go"
+      ]
+    },
+    "codec-internals": {
+      "category": "additional-observer-operation",
+      "operation": "codec trace/equivalence observer or independently testable codec interface",
+      "prerequisite": "A document byte match does not demonstrate every internal arithmetic step. Existing generic scope has no codec capability; alternative algorithms may be permitted.",
+      "evidence": [
+        "core/subject.go",
+        "statements/scope.json"
+      ]
+    },
+    "jsonld-processing": {
+      "category": "additional-observer-operation",
+      "operation": "actual JSON-LD/RDF processing and network/context-resolution instrumentation",
+      "prerequisite": "A returned @context is syntax evidence only. No current operation observes processing, injection, remote retrieval or offline context trust.",
+      "evidence": [
+        "core/subject.go",
+        "adapters/sage/subject.go"
+      ]
+    },
+    "history-proof-service": {
+      "category": "additional-data-or-feature",
+      "operation": "conditional resolution/dereferencing with history, proof, relative expansion, service selection or proxy data",
+      "prerequisite": "The fixed current-record Source and restricted did:sage input cannot exercise every branch. First expose applicable inputs and actual feature support; generic fixtures are not this subject evidence.",
+      "evidence": [
+        "adapters/sage/resolution.go",
+        "adapters/sage/options.go"
+      ]
+    },
+    "authority": {
+      "category": "operational-or-authority-evidence",
+      "operation": "authoritative document/source/controller and update authorization evidence",
+      "prerequisite": "Fixture Source, URL equality and controller strings do not establish authoritative storage or update capability. Operational registry/contract integration remains separately deferred.",
+      "evidence": [
+        "adapters/sage/resolution.go",
+        "adapters/sage/subject.go"
+      ]
+    },
+    "deployment": {
+      "category": "operational-or-authority-evidence",
+      "operation": "trusted remote resolver/source, forks or deployment assurance",
+      "prerequisite": "Owned loopback TLS does not establish production trust, mutual authentication, upstream proof provenance or deployed chain behavior. Require approved operational choices.",
+      "evidence": [
+        "adapters/sage/resolution.go",
+        "docs/sage-resolution-subject.md"
+      ]
+    },
+    "specification": {
+      "category": "document-or-applicability-review",
+      "operation": "method/representation/extension specification and privacy/security consideration review",
+      "prerequisite": "Review the addressed specification or registrant, not a resolver output. Registration recommendations remain deferred; this audit submits nothing.",
+      "evidence": [
+        "statements/scope.json"
+      ]
+    },
+    "permission-definition": {
+      "category": "document-or-applicability-review",
+      "operation": "permission/definition/input-contract/actor applicability review",
+      "prerequisite": "A MAY, OPTIONAL, definition or construction-only invariant is not a runtime PASS obligation. Keep baseline NOT_RUN and record applicable evidence before a later decision.",
+      "evidence": [
+        "statements/scope.json",
+        "core/subject.go"
+      ]
+    },
+    "normative-conflict": {
+      "category": "document-or-applicability-review",
+      "operation": "pinned clause conflict interpretation review",
+      "prerequisite": "Preserve both sides of the conflict and their ids; do not invent a failing optionality rule or silently change the pinned standard.",
+      "evidence": [
+        "statements/scope.json"
+      ]
+    }
+  },
+  "pending": [
+    {
+      "id": "cid10#JsonWebKey.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "ccc06a97b1ad07dfd859d055822440d9d120f288580c78cc675627e7ccd95259",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#JsonWebKey.10",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "dd138f257b20b114daadddefeed55616e53bc800a97be8217001dc608ac53baa",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#JsonWebKey.11",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "62fed8d9090480c36dba83923844aeb4232f25b07820eceb319ed77c9dee1bce",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#JsonWebKey.2",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "5698ec15c96e51e0b047c6676c502350dfe0c31f53aec3f011e24503f490a0be",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#JsonWebKey.5",
+      "level": "recommendation",
+      "keywords": [
+        "RECOMMENDED"
+      ],
+      "text_sha256": "d406116129fb1235a033a05937c60e4ccbda30cdd2240972b720313f2019f7c4",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#JsonWebKey.6",
+      "level": "recommendation",
+      "keywords": [
+        "RECOMMENDED"
+      ],
+      "text_sha256": "035910b77fee1fb7737e4f4e3ce0663f046772e00a6e607ef5c65ca752d21ae3",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#JsonWebKey.7",
+      "level": "recommendation",
+      "keywords": [
+        "OPTIONAL",
+        "SHOULD"
+      ],
+      "text_sha256": "1fce250087268d61af856a58541a6a9d4eef26010a3aa4d23f8f28dc252551ac",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-key-document",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#JsonWebKey.9",
+      "level": "recommendation",
+      "keywords": [
+        "OPTIONAL",
+        "SHOULD"
+      ],
+      "text_sha256": "a4fa011b2b54fd73cccaf209f7ff73f25763bff5e46784ab5a42daf16a37bc23",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#Multikey.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "2fc11243041dd3202196a08db6c9bace82ae663a6a9140d7f7964f8ac95adfe2",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#Multikey.10",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "ceba2f55e645966452942cc3dd4a4e7f82dc5c4054d2c1bcaacd6c2679b4723d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#Multikey.11",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "1699235047120807fced07d037970dc8233ce216a4bc326a238bca47dc59f7aa",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#Multikey.12",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "43e1009716854a4062761704f44d5afb4ee5aa4934379731b51a01106844c84b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#Multikey.13",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "e8bdc9a79be3bd92cb3a250fa1e4fc1651461d4cca42d32e2f19ae62d3d56dc7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#Multikey.14",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "8d7e28c469c91c7e6ba6d918ac9c9ba5c16bb8e838ad20491ac0a99dbb21afa9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#Multikey.15",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "5d3cb4602bc141cf71c67cc4e8610832c7fd4cd38edaaa70c121a4ca65de5a02",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#Multikey.16",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "ceba2f55e645966452942cc3dd4a4e7f82dc5c4054d2c1bcaacd6c2679b4723d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#Multikey.17",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "dd1373afb4ca56fd952d27305ed49f554cceaf3a0b05b93c498df4c53f8224c6",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#Multikey.18",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "2e66ebe87d92fb647e846405b684e1ad6305673ed3da6eef9aec0f7606db6de1",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#Multikey.19",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "ceba2f55e645966452942cc3dd4a4e7f82dc5c4054d2c1bcaacd6c2679b4723d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#Multikey.2",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "b5198714363f111bfd6edebad58f419134fa9053082215e01811ee357c89e2f6",
+      "baseline_verdict": "NOT_RUN",
+      "route": "normative-conflict",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#Multikey.20",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "90cf37c185afb0445cadedca6c044b67523e514a5ce6aa8868658f9abd0532d2",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#Multikey.21",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "43e1009716854a4062761704f44d5afb4ee5aa4934379731b51a01106844c84b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#Multikey.22",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "5aa6c2e3161ca13ba71233f38833d1c9d5dd78bfd9997908b49c7b007ba3b665",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#Multikey.23",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "ceba2f55e645966452942cc3dd4a4e7f82dc5c4054d2c1bcaacd6c2679b4723d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#Multikey.24",
+      "level": "requirement",
+      "keywords": [
+        "MAY",
+        "MUST NOT"
+      ],
+      "text_sha256": "310d1814b55b741a40ea501a908c01a81cd1f4ebbadb0a280107b0006a4f0d52",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#Multikey.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "cca92a0aaee218ab420c96537be380f634d596a2cc9ba0d5b85c4512b4bdc7a6",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#Multikey.4",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "ddf2d13e65128e8c8559a69312a233fd6721243d20b1a865e6365f50c4404343",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#Multikey.5",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "cca92a0aaee218ab420c96537be380f634d596a2cc9ba0d5b85c4512b4bdc7a6",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#Multikey.6",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "56e74edbec55351c0a53f9e0e7a338a5454adb15c3c16c5ac219894e58a1333b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#Multikey.7",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "8d7e28c469c91c7e6ba6d918ac9c9ba5c16bb8e838ad20491ac0a99dbb21afa9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#Multikey.8",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "a56f050b7caf39e09ddf4db3857881ef55899bb2dd2f4d6ef7b6d70091732758",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#Multikey.9",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "0420326ba1fa051d45ae255f78d3304390feddc5ff502ef1b217e1b418febc8d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#algorithms.1",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "08e8707ac394c0da1058372ef17fc141446f55fe7edb3ed88dc0aa7f516a16ae",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#also-known-as.1",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "fa0fd236d3e218c3a2dd21fd8073c9ea2eee16aae0d2456313d8d9228d7f020e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#also-known-as.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "d7c8349062df8dee3c991130452f3c4b7c460cb8f64bd57159e378ecb4d65625",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#assertion.1",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "e8131d1b8b2c50679b53a85241917341396970b1b3690fded07c4fde5e676e35",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#assertion.3",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "1bedc892bb3128e65e8cfeb1944f4cf003736b4b283ad865934c7f9401f1aa24",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#authentication.1",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "e80117b47f4da37f76bf54677bf2e1f50f31e06badcd569b8eafbff52e0b82b6",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#authentication.3",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "1bedc892bb3128e65e8cfeb1944f4cf003736b4b283ad865934c7f9401f1aa24",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#base-decode.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "69cdb91731f9cdade10342dfcf4a65e35409def818db538a113e09dee3a5026e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-decode.10",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "b6f48ef7316b9deeb57e4d2c9a9c8b3b5db129bf5addf6dfcd13e8c6241efd12",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-decode.11",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "6587045218d0c288e22410a020c082b5ce27595e64e53b67d0fd71354ea1f0c4",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-decode.12",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "8908000242ac2a9bb27243a0c7ebd77edb3bacd3b7590d785df2ee39990d7946",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-decode.13",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "a3f59c6428961b279140eca138d73c621bef84f9c9c5c1ee5f431371bd3bf75f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-decode.14",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "17b64d549de3c689c45bfe7f6008e80b89a384aba0c25f5a8298dffc08b6e670",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-decode.15",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "63f7971c93a590213a18a43247e218b5abccf78f09c77742811aed2d84eb95a3",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-decode.16",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "fef486d3c68716a02f750a52cc63811d6dcfbb6920fe2f55813449c33acfd31d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-decode.2",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "d5483db4d7b3e360cf2785a070c3cb6612f0e5b75dced1a38fd8a3e7b0d56389",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-decode.3",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "b268c8edfe5d1c641d831135a1cd566739379138b591269f186882f59f13e0f6",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-decode.4",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "5f0a014d9cf95e6b064cdf7c80b64b5f2f96459e1dde49f3745f1a879590d08b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-decode.5",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "4088c3a82cb56e7cdbdcf9049c02e84abde0b621c4907fd17b86197ce7a666be",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-decode.6",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "91b1b0ffeb0c8717ca7a4ec9f2f8d3ed07dfb8d2bda4ed2f5b164f0684126cf1",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-decode.7",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "bf752c7ea3d22ef942cfa9520b14019e0b1df57c9f8656f13717566d3a0becd6",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-decode.8",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "04da638dc857336b817978e246a80f6035e057a16e0f7bc32d71026a822c722c",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-decode.9",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "c97e51c9f418a9844f607aca494947145ea7f1028e5cf511e4405e58fb7f4083",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-encode.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "69cdb91731f9cdade10342dfcf4a65e35409def818db538a113e09dee3a5026e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-encode.10",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "cb04627472278ae320384e233bc21e42165f2548d74f6774862d8b0f82917dc8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-encode.11",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "0e13b27f29b5cad3214b8f63eb104a85c129a753252df3fef7a268139003ecff",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-encode.12",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "0e49ccbcb1268ef03de7bb91292b89411b1ff3d819578fe8e5721e6237a63a62",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-encode.13",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "b6d51ec52faabd81267e46eeea10889fb628ea605a0321b8fbeea91456cef351",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-encode.14",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "7de161c4810b87d0711c9063c339f8ab2d8d1d7ec62311dcd0aac445149c0da7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-encode.15",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "853e49e7f67ac695e7841182b1d1502a5750ff9f74b0ccb701ce8f7c459416f7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-encode.16",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "1739451b56c50e9095e180495e1df1940d779ca2314162b74e434a290e0900ba",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-encode.2",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "9aee1620535197bcc895c4dd8d11ac6281077a6a95c22dc98f9ff14900639d4c",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-encode.3",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "8787491da3f343a1f45d942f3c982430e88a00afefca861e139d02c5ed3f08cf",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-encode.4",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "673a6164e0be01e3eb96cf81445a4f45f3de307151e320fa63e26e086495fe00",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-encode.5",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "2b0eae141ca5365ec0ed3a361e88e311b9acf000679e874a06beda5ea115a7a4",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-encode.6",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "18fd516603838c7882505725837682cc2ba006ed8fad34a07a9f49facce6a714",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-encode.7",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "59713ac54ef586f9eb7537dea09b4214f4fe45a6fdd0abbc09685f9a37e3dea4",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-encode.8",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "958bd4c03a2db95925bcc4a441a041273ecc34ec74bf0cdcfd5ae19fbfb31f0f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#base-encode.9",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "a684c806fcfcdde5c53578f988d50c0ced485b5df762c83e0109602e410e6c75",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#capability-delegation.1",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "69c6cd030de4792707f8956fc499a6ef03c08fcc1817e95f1a9b9a3c0ac1a460",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#capability-delegation.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "6342e3d831978a61fb5de2127da312fcb10720d65e621de5f9a4224c4a664567",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#capability-delegation.3",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "1bedc892bb3128e65e8cfeb1944f4cf003736b4b283ad865934c7f9401f1aa24",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#capability-invocation.1",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "8bb5f89a47777262093b3613b5cd9e4670d7715caea089899dd30639bea29e5f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#capability-invocation.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "6342e3d831978a61fb5de2127da312fcb10720d65e621de5f9a4224c4a664567",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#capability-invocation.3",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "1bedc892bb3128e65e8cfeb1944f4cf003736b4b283ad865934c7f9401f1aa24",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#conformance.1",
+      "level": "requirement",
+      "keywords": [
+        "MAY",
+        "MUST",
+        "MUST NOT",
+        "OPTIONAL",
+        "RECOMMENDED",
+        "REQUIRED",
+        "SHOULD"
+      ],
+      "text_sha256": "b3b26e340a7f7fa13bfc9c045f6bd0aec0b608a313d3bfc7b34cccf55f7536dd",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#conformance.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "c3d9e209ff89e873ed97747983c6292d06393905828cc70b20d1ceebadf7c0fc",
+      "baseline_verdict": "NOT_RUN",
+      "route": "representation-consumer",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#context-injection.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "03db0b1bd9539dfcf5d26b769402008b0ec485703aa1c23726c53d4375f42157",
+      "baseline_verdict": "NOT_RUN",
+      "route": "jsonld-processing",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#context-injection.2",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "fb010752606a70cb0d8ca15589463efb3f30c98db37abc547d7e062acc853cd8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#controllers.1",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "47e4beb2c66332ab9a38028ab2b6a3ae8e4e0e529bd051569d1e98f85e3d734f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#controllers.2",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "e7fde3a1dfd2090dbfb1f10743905646bea61d33d359f5dc081ca0469d93c4a3",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#controllers.4",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "11f62f3eaea28c0d1406bb2e941652ca0d14e6c61e54070b57d9e234e46787c7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "authority",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#data-model.1",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "59dc621890fe3acee65b0bae060495d729d014aa0e814ed9759360075e1ab2d2",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#fragment-resolution.1",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "6e21f3dc6e6cb45c618c0720646f26f18cf76ca2c0b5839d58c13c75404cca06",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#fragment-resolution.2",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "31d0038fb85e1ee4264e1055744344b855a0ab85a93b5e136f868779202bb114",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#fragment-resolution.3",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "e877396dbc04f48168167332107753d0b640cabefd1cf84cdbb8be3515bf5bc8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#fragment-resolution.4",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "5cd76049b3935adbe84f33f91bf5a42487cdc5d858e9154866008ffd4107415c",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#fragment-resolution.5",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "8eae53ea5ee7acfe3d3cee1d3479c7c48dbe430e261579cf8969471981c411bd",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#json-ld-context.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "721d1e47bcb6aea93b5248df3f033717aa0841ea206d31f96dc77074252e79dc",
+      "baseline_verdict": "NOT_RUN",
+      "route": "jsonld-processing",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#key-agreement.1",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "737e1ccb47e5489da9020a1a2f1bd3c7aa54fce37b48303163071f76f37f4ce1",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#key-agreement.3",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "1bedc892bb3128e65e8cfeb1944f4cf003736b4b283ad865934c7f9401f1aa24",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#multibase-0.1",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "b42ff346f8eb6de7bc5b47460f6027597afbc364965c4267a16fc7344ecf96ed",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#multibase-0.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "be6c7963e9f1c60cc473ee12c6c6c59927824e02570837e953831f22905f1b39",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#multibase-0.3",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "652dcd35c9109b2f9b1afef360fc99991eaee7de1e9262b7aed92df2db152228",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#multibase-0.4",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "b7c2f748bd77561620774f83ba09210dfe59d8eb5052eea0b81c5165905c9ba4",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#multibase-0.5",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "652dcd35c9109b2f9b1afef360fc99991eaee7de1e9262b7aed92df2db152228",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#multihash.1",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "895d15079030d6c46c7447e50762f288d3a40fb8700c36ab50a506631cfc4030",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#multihash.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "ba20d0d4888625f8af2a62f6562d37b3fbefc0ca49955c97a49e9fcb283456d7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#multihash.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "6e7a6fd69d7288ac4af2b62963aaab0bccd14d9e29c350e146d70843a728b81a",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#processing-errors.1",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "ab6f922d7605a81927624d7077dd25915272b84bb2ba56590c072610647e7ebd",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#processing-errors.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "984a7270b76b9e227b326b8fc9ed54307f6776aeedb59abff2d4b26b86f9450e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#processing-errors.3",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "7ae2625fe9e48392519c5e56d041870f457edb4a8d312d4dc1be942b9ab430df",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#processing-errors.4",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "e2b5486a7a0e7993b498a60c22b9ad2c83f9cfe7d0cb939a05370a0816afbeba",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text_sha256": "315501c59bcfd4bb17847cca9a9dc77c114fd2f9bc87f524af42ca0387982f48",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.10",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text_sha256": "98b158051904925f77df8e268947454940b7a7de3f7aed96385f9bb723fb6b47",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.11",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text_sha256": "256e2ad1ce51b208f0e2a577499f5ce640904b1e2c962b4fb1c4af78a5ead39c",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.12",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "322303c7d738ea31df36743725a167c4fff14c3dbeff5c449b7ee8a0d45b9d9c",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.2",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "be78a5d1a7ecb9d3bbdf3342fddefb2093422a8f12a7be843b07ecd632a96c89",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.3",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "8371a92b2f57b9974699f6705b79000a80055e22bddaeb8530cd329dbb973c32",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.4",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "6e8a72a4e9fe190972c723455178cd587fc12d766fff169adb4b8914734f5db4",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.5",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text_sha256": "2f99c58379eb136e3b4266cbf359570863eb204f9a279f6ee57070985fbd38f4",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.6",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text_sha256": "f3745c1fb918a8a83c55ca328a48491a85c648db4405eb3c1b5d7e8df71b88c3",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.7",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "9b7caf630f9544164fc788e01888b9a282f760397891ff9a0dd9863550d39fa7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.8",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text_sha256": "c1967ed81269de5af550362fb48cd9873cafdc6bd89877df62f8f654a6abf669",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#retrieve-verification-method.9",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text_sha256": "6cdccc4d8ef2816d4fd7efe41e6869d5723e35a130edc28b0b5e72bf1e90716e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#services.1",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "698e22b7e0a2418b575e4f7eaf7dd329a870ea6302938e0668aeed17d2247891",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#services.10",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "8d2f9b26891d2d5854a5f40e75c0ce77ac59811baac2524eb024740540d59f67",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#services.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "0c4dbfcec18f7e84dae8ee12bb7a1d73569eaaa5642ef0e79cb0e73c28d964a8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#services.4",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "5ea32b3ba69cd47ae47cc7617d0b18a59f05e5a56126d67d129a25f7a73faefc",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#services.5",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "5bc70ff9dd34c8bdf976b9786aaf29869a9ee2b5349ebe8dd91fe3a65dd016e5",
+      "baseline_verdict": "NOT_RUN",
+      "route": "normative-conflict",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#subjects.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "a4f08abbd53c6f491bd5e1afd902826be8b5076a8ec1054fe6908b5fb5f1eeb8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "authority",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#subjects.4",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text_sha256": "1ec39588c82e5fec2663799cbd7025c28eed794c66d83bab2ae55d41e6c2c51c",
+      "baseline_verdict": "NOT_RUN",
+      "route": "authority",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#subjects.5",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "629ab97c1cfccd0768a2e4d4e0905de50535301e7b3e1c5779696c7e55f61b1a",
+      "baseline_verdict": "NOT_RUN",
+      "route": "authority",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#verification-material.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST NOT"
+      ],
+      "text_sha256": "813c144976581ae9956b6c9f3ef4255e1d91e4ecfa63625fd98bc043f9c00e44",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-key-document",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#verification-material.2",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "7fc9ef53c32e7cf4f1d789529627c5d4072d018b5b26cf40ea176f4cad3170e9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#verification-material.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST NOT"
+      ],
+      "text_sha256": "cc2a5def9b3f3e816ed8c55fbd78ba5fdc8ceac554c1261aecbb2c86f286be81",
+      "baseline_verdict": "NOT_RUN",
+      "route": "representation-consumer",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#verification-methods.1",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "d038a347135b425780d168b14c182eeeb6702f9298021c943f52004deb62267f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#verification-methods.10",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "01c59d40bf65af3b102b50373408d87192e1475a4f8a816d7208a4b0422dd298",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#verification-methods.11",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "MUST NOT"
+      ],
+      "text_sha256": "634d8f92329bf06ceb93d44eae97e81c677089d2d5dbb1bff9cf6137db422f3f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#verification-methods.4",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "d38e8bc7d0403c6ad6fbfc2325d8fe1a0dffe6b0e729223dc66377fbb93a18c2",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#verification-methods.8",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "fc953441b195958f5ada17bcc447e119657e2b5bfa275e0030aeb2d7a7c1b4fe",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#verification-methods.9",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text_sha256": "c404f03f358585ad945ad2b2b572658c291bd0c3d0a4040e0fa520488556b589",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#verification-relationships.1",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "71775a7c23be96d17c1f7597365899f4e7194fdd87bc571726c2153f2241dabb",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "cid10#verification-relationships.2",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "25984cfe0cc7f9c8985aafd211489ab4a75e8e5cd6ed3978bb1f44d8b6bb6f21",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "cid10#vocabulary.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "252e6b2470248d09a4b7c13324304432e7c7df1cc6ac301294edcd68ca5ee2a6",
+      "baseline_verdict": "NOT_RUN",
+      "route": "jsonld-processing",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#conformance.1",
+      "level": "requirement",
+      "keywords": [
+        "MAY",
+        "MUST",
+        "MUST NOT",
+        "RECOMMENDED",
+        "SHOULD",
+        "SHOULD NOT"
+      ],
+      "text_sha256": "27e6aa7aa6404a7795f2d777b7f825fb4c659d3921e2b8a81c0b7c363632a57f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#consumption.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "bcf9b43d90d4d22ad2abdd6d99699ab6b0b96e8ba05a62e82d76074460f19e3d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "representation-consumer",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#consumption.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "92bfc991ed22f07417efa599482e9085a4da5af32f17ff3142d8b4540783d3d5",
+      "baseline_verdict": "NOT_RUN",
+      "route": "representation-consumer",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#consumption.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "7d31bb9a70e0d500c29e17da30e951f9a590f4aaf7a993c73310992ff4e7e98b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "representation-consumer",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#did-syntax.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "449157aa0d02f365853c2ac8539e75534205e87175446647cb49b393ab594a84",
+      "baseline_verdict": "NOT_RUN",
+      "route": "parser-reference",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#did-url-syntax.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "05b66207f9795ae440c22d80af2271955360faba8c53e5420979506544f16201",
+      "baseline_verdict": "NOT_RUN",
+      "route": "parser-reference",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#extensibility.1",
+      "level": "recommendation",
+      "keywords": [
+        "RECOMMENDED"
+      ],
+      "text_sha256": "44d0c01cbcd5e3b86e42a0d984faf2ccc25998bf835bece63ca4783079bae20d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#extensibility.2",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "116f03ebba51a0e50896099112d174f0bc31523ab78895d66619488e5ff53063",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#extensibility.3",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "1e2e5134d3219f3b8cc32e7299425cad718db17d27c49a91003390d21ebfa30b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#extensibility.4",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "8b77a7a7414b1c93b975e1f6e7357251a30df57058c4575c65fe9df8b6cc0deb",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "27539a73288d81eb6ac839a55ea1bdbaa7ee1fa7ccd75d47faf44414fbee267d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "jsonld-processing",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "dbe605451efb526aec23921e71b7f68fe646aae939cfc82c04ade1d8e38a086c",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "1a39e99dfa36a8efecc2f01cd12cba77e146794f0ffc409bda930cddcf6b01e8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.4",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "658d56efcd6c350c063c94c76c799c98ed2fdb488fd31f3bd8d5c1109f2b4503",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.5",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "1ae6b2aad5d6f6d36e22afeb8922b4fc6b9d9060b3b40f197710eab3f65efdef",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.6",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD NOT"
+      ],
+      "text_sha256": "f9355e8eaf65b5e3163816f5712bd93361fd93c49d4f03565428c0ec4584edd8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "jsonld-processing",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.7",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "cac9fcb22fef2c139f2f341c091c7de0370f1d4f19329eedbd0e1ba386898113",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.8",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "8d49a479c5df31e1aca64bea1c6dcbe36ae3d9ef7200914e90fe749a12e377ee",
+      "baseline_verdict": "NOT_RUN",
+      "route": "jsonld-processing",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#media-types.1",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "05898a7a8263e228b88118f7280b503360c6af1eb0b2fb2a5bdc7b2db7a1a143",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#method-operations.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "d3baa658d5a6a9e66bc2cba1da4e71a5e0d7e3b49df895cb1d4eb81c2f7d0cd2",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#method-operations.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "82093e661152dc13b4dd2fb83c34e9a7b2dfff9a7228b73762653806b9193387",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#method-operations.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "a75bab77172b71661b814b3f68dfc517ee2091c1fd7bed8902fba33da4a05a45",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#method-operations.4",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "fc2e1a5f40f7a1c09fa245de8c39ee8af8a3ff3dff53a5b1f8694c9c9add0895",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#method-operations.5",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "6fd07f422770f601b428954086c0b505203adaaf763e780d253f622ed0016ca1",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "69ee4c10a6543faf5679f4effcacce9954e2077e22f468bbca9972b9cf0bd038",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.10",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "62663a6f13f857fcb22fbf0b30258d2a1776bd32134a36bc64445c560b7a3fe8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.11",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "76f45fe8788c1671053b26a4826c45af1974e6b500d60b80597d2e7e0f992f94",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.12",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "0e225ad03972ac82c20e5c3d681379b12e60e03d6008a1817f5ddcb1894404ac",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "b182adea95ba28bce23cd9c0318549bf1d677a2e5b9972f67c1c531de526d3b9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "ee943162323f401ed6b24280c305496be31d274d24962892509f71e4ab65c73c",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.4",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "db03406ede87b4b30b3c414f89f05418fa4a85223e5d3f8c232472d2f478fc2f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.5",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "ad848045d9746d2af6aff593a2c5fcd68de5e30082d0fb937363f7dd7ece6a88",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.6",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "b06c152e659481caff40f1823e8c12ea546a8a013666d1e458ecf90bcfdf699d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.7",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "8e5c4a0da5940649de31ced9541cd6cb149f0226c9a57f04af08cd3f9bc418df",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.8",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "5ff207e3decb0cd070634b7c002db07b6ea6953f68b43d7ec56073ee11297aca",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.9",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "eea864c38c21261a9759df7c03e0ba059ad002f58e24da5e80f3a368dd0ccb80",
+      "baseline_verdict": "NOT_RUN",
+      "route": "parser-reference",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#privacy-requirements.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "c47fae06127b02269a8764e0f1b721e9d0198741530182397ea15539708ae2ee",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "f112032c07077934450569e8378e35100f6beed0044e73b912ce49c3985547a6",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.10",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "01de1e9c59413c574fddab7c4e45bfad28372d1546aa1da9eb879327e5b0d1f3",
+      "baseline_verdict": "NOT_RUN",
+      "route": "representation-consumer",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.11",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "212ea7bfe38b2650809cf176c34f5182fded12b910900a354d86b87e809d0a1a",
+      "baseline_verdict": "NOT_RUN",
+      "route": "representation-consumer",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.12",
+      "level": "requirement",
+      "keywords": [
+        "MUST NOT"
+      ],
+      "text_sha256": "7d8575036936b2d4f77f10798c0cdd25404fb8ed3cc3d3627abaefad5a015933",
+      "baseline_verdict": "NOT_RUN",
+      "route": "representation-consumer",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.13",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "a7448477a3ffa006a5482b6711b9c6683f961ebbe96f56a803015ba2afb112c0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.14",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "8825e55d33af46f80094cfb365af75da027416707c96e68f278c826b37d591a8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.15",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "05230b536b97d19c9023d69b9c591882607a29770bc656f329aa3d96b8d92166",
+      "baseline_verdict": "NOT_RUN",
+      "route": "representation-consumer",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.16",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "43010dbba306f4c0b38e0ce28848f519ecd8ffaf740c11277bf21c67e8253cc7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "representation-consumer",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.17",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "909007e7b2f59e6b5f942083e8430e0ab32c8395c8f4f9ff7a1127665b59fb01",
+      "baseline_verdict": "NOT_RUN",
+      "route": "representation-consumer",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.18",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "73469eb5b190d89d7b5bd93de094eac566f2185ef66d0ff775cf3edb90ca1f46",
+      "baseline_verdict": "NOT_RUN",
+      "route": "representation-consumer",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "1a84e0112b30a491a51166e2f71d813da606cdcf1e5066b18538170bd52c18c8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "b71ddae72b33fb158e0a0d2d14a3cea5b1eda57e76276a5162966a21bd8c529b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.4",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "5a987d67caca593f66081a874414e395d5f61701e689f701d0c6b3354f4e9c14",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.5",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "572fd118865fb61d024ae9f0829f11210e7da96c61ecc9c95c130b182369ddc2",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.6",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "d1ecd1c6f7d1c7db3ad35f471f2bc4789bd5a0d76edeace01977b879b11fdf31",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.7",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "5b82677427bb80a7821429415031ffbddad1faa54c072cc41af42282233bd908",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.8",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "e3bcb2f0c14a7a657a94acd512bdb7b5290d5c94ce55687c49410642fb3d786c",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.9",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "97066810dfa5efde209773522e69eeba4732ead688b8b4b2234de4a277896d46",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#production.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "9ba94b6d1e967791d319198c1d42a0d6be76a3ca93c3806b09f1d712fd9e9bde",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#production.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "77685fecaf2930e23217ad0e23f54a546bb8d5b162f86900cbdd4646b92545e1",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#production.3",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "6568c1acffbbe4fa14fbf034fe0de521a962923036e6f62b20ee72618d69f9ae",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#production.4",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "5a15d6527b1e9270e40cb742d3d6abb99ede08d9d435a97db56bdf63d383838c",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#relative-did-urls.1",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "2a66cd72724473ab9a94109c7ec40404cbfce3fa3731411a4103a004ccade8f0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "parser-reference",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#relative-did-urls.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "42dce7ca547d4ca3014c32bd094ef9fc782639d08212ac91f6f2914ef4119e7f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "parser-reference",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "did11-cr20260305#remote-resource-integrity.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "362f757d191084697f0b923682e2d6f1ac0b4c3d1c977333225d6b099b4a96c3",
+      "baseline_verdict": "NOT_RUN",
+      "route": "jsonld-processing",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "11f7f73261e868824223349fbfa751f03b96b8ea90249fedadd503f1bd19c791",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.10",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text_sha256": "1a67f55e75fc34dbb71da7f876c14cfae3111d559cce854d0569ebb111e19797",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.11",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "28be932b25a09473668cf1c7c0129b2b6cf6239d13d6a291954799b561dc0c17",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.12",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "70c566b00519925526d337b5a5d1546bcaae92d971f0f470c63a5cecb5eb9c29",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.13",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "a5ea305e7140d57e7d4f1a9dcc59feb8643852f289c6da66502d0c8a0a36e248",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.14",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "3758e875eb6dd4be6bfa66240f7e9bdfd6e162a1d9e94232e8ae65d86a223400",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "d74dd966541d564febca74e1064fadaaa744cad40a5785ba72ab4fff88480ba6",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.3",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "3fdc4a05f3f4eaa9c6167fa96b642b5f647c86419d818f6832e86cd6c5ec78b7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.4",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "946c892fcfa2dbfb3359ac69edcb144639980a933a8b4bb6d441499f5e9e55fa",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.5",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "9b733ac26432e5bf9664609bcb09747dc0dd3340ebf598b3ffdc476d720cc220",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.6",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "bed5cbf9fdd8820fc2add7c38bcf111997423fe35d6669cb1f38177b380884a8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.7",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "6d702a2a4e566ae601ad5b3081de0499d6708ccf9af9a72eeb46a8a6617e3ae3",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.8",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "863bc9ad6558c7eca027156c0469cc00d9e16ff66c5d3053229d319b08b290af",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.9",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "26aac44cdd2ed9341ed309d8cdec2cd9d07de670de9d78700470b909183e2b49",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "did11-cr20260305#verification-methods.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "d90c9627149aa69051a9d5dd5be29b64bb7de8a194286e3691464c1fd7eaaea0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-key-document",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "MAY"
+      ],
+      "text_sha256": "8085c5ce9538229f5716ad4c83bd802aa6855b9066b08efd9206b1ff5e15d9e1",
+      "baseline_verdict": "NOT_RUN",
+      "route": "server-wire",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.10",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "f9e0836cbbd92958c432ffd652666ea8c975361f4c46600c9b373c66c549b488",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.11",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "17aedaede87e805032a73cadfabdc34f4c11c33c9cbe42ad33a93ad4c3302e95",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.12",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "0439b87debdb75d4b938da075374975b63d58d673db3745705d7cd88446720af",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.13",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "2465d7971d9dd8370b33cd0da068ce45efd17062b3735e3dcf05395e8082c87b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.14",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "81f66c0b02a444439194166ba6a3f121d6a3cbe50f688fcc29c794861e2b880f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.15",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "93ab402ce7c621d3b5606a0b2c574f406123be9015e161cfb173fb81cb04acb0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.16",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "f2055b76f6ad5ea0441792349ebea71c96a3d5790974044bf391300feb46b5e1",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.17",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "0ba4bcc0a16731c6e074b6044dbf27bfb8beb6291795cec659a65905e035bdce",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.18",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "5470f257f24f830ac26cbc20982c95a5a36a5bc4d6927e68415e31137f1f71c9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.19",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "81f66c0b02a444439194166ba6a3f121d6a3cbe50f688fcc29c794861e2b880f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.20",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "2d583b69d1646816b2b7801184dcfed82c19d120c319175773d106f6d3438616",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.21",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "d1829dd683b265155c090c184d945e0e05e55a763d9baaadd721d2383ed3355f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.23",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "3539f20eb792ec49280516a5d64d33643900257dc8af816490f2de86ae5c887b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "server-wire",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.25",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "5eb60678c2d6003e60496861892b4056e3df23e4ae72d9de2e6bdbf76158f52e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "server-wire",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.26",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "18bff5e55fe1b24fbdae462fd75cd4457ef139052f51aa910d40965e5433bf18",
+      "baseline_verdict": "NOT_RUN",
+      "route": "server-wire",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.28",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "cc36e9a880ad4455c74d30afc8ec70788be4a37a6275a9e1995e691dffe74075",
+      "baseline_verdict": "NOT_RUN",
+      "route": "server-wire",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.3",
+      "level": "requirement",
+      "keywords": [
+        "NOT REQUIRED",
+        "MAY"
+      ],
+      "text_sha256": "f9333b587333ae8e570e3918da812ded2d86b081b9abe6e6a3cf562476b48f16",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.30",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "86cebdad0cd28d8d9e8f65002d5d139d96632ec6d67e42c853799f2f06fa44d4",
+      "baseline_verdict": "NOT_RUN",
+      "route": "server-wire",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.32",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "02174fb29938e20a8f6c4c91b3d54f88a9fedd7c20487d036fb49cd0dd015a36",
+      "baseline_verdict": "NOT_RUN",
+      "route": "server-wire",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.33",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "d14e459876b76414d77fe8ac7e3ce7036d213e20f7993a9059e152cc2651c5a2",
+      "baseline_verdict": "NOT_RUN",
+      "route": "server-wire",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.35",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "ba89d8e056c50a93de0cd1f6859ee66fc0790ce6b79a0cc31ae918517a9bfe40",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.36",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "53df92a5460f57abeacadf6005b32975fd9a2854cd5d7980ff76a6c93e2ba350",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.37",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "4867d2799e0ed7adfbe72b6d9b143e52b284f9640706c701d8c8ffc00d7790f8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.38",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "deb118677b5d034d8aa7cd6e047245af7f6abaa3f542ecdc36ebe5f776d6b4cf",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.39",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "c8d3d451731552123894c0ca3376bb4f3bda9f4926ec29d2db485e3df36fdcfb",
+      "baseline_verdict": "NOT_RUN",
+      "route": "server-wire",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.4",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "f547f49ca0a340813516ade058edeca39ca8945ff91da8b0f08c9a3add5a090a",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.41",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "dd9902a3de5ec9e7af7b14a18be34f81ed7dc94fe66e9717fbc9ab4fe9068c14",
+      "baseline_verdict": "NOT_RUN",
+      "route": "server-wire",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.42",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "973f4642bbb4876ec3122d6e7e90bf18028323d1b8ca829d775b63263e4143fa",
+      "baseline_verdict": "NOT_RUN",
+      "route": "server-wire",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.5",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "5eb60678c2d6003e60496861892b4056e3df23e4ae72d9de2e6bdbf76158f52e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.6",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "2d8f4db9c0177efdb962ea04b928dbdf2f3c2ac038e32f193853eeea6ad726b4",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.7",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "10ad4b3cadef7362de1461c505660894e7631b6dfb1555d848a6cd23d7134597",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.8",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "0ec928067814ff1440a74a70aeb0ae5fe07cdef8b2cb4d3c746dd9f7f15d6fed",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.9",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "02174fb29938e20a8f6c4c91b3d54f88a9fedd7c20487d036fb49cd0dd015a36",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#caching.1",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "f6cee0618d31f295c1ded6a90fceb04a3df31adb2132a3b79ed904bf2abfc4e1",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#caching.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "01bbdf38b76ead2dd3878cef24051f804c2b2516c5a43df5dda73517355a8fcb",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#conformance.1",
+      "level": "requirement",
+      "keywords": [
+        "MAY",
+        "MUST",
+        "MUST NOT",
+        "NOT REQUIRED",
+        "OPTIONAL",
+        "RECOMMENDED",
+        "REQUIRED",
+        "SHOULD"
+      ],
+      "text_sha256": "5fedc41b7cabe2777b5de7bcf09dca752530d267c9f6c53d831152b77dfd1092",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.1",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "f98965a4e57c368a97a5e2b91186f7ae54908f4815f057ff9d7f9368e60bfdbc",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.10",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "4f6d97326d4eaeec0a34e4c99a4edfe6d9f8099c0742ab66b279067f101f6cd5",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.2",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "6a12ce6ffd9f065069fb7298d754d4e2c8c4a93855f52858a1b10c4d11aa835d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.3",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "99a7518503a20ba5b04ffad6a7553ee1344f389b114afc11e29b7b52bb1092ed",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.4",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text_sha256": "c1967ed81269de5af550362fb48cd9873cafdc6bd89877df62f8f654a6abf669",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.7",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "c1c5f7ce33d49bf775f80b07b76d7f546b2ef61b3829bbcae90bee5a6b46f4ba",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.8",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "54048e56595d34c1c4e2cad7ac128070915690389efc0f33b9082782ccb7825c",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.9",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "8935f7d77ba2106889be189e3c3695d8d8fe21b9862a0a1925d1812ebe571cee",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "5b7a6c6e645a6adec329314187a44852a8e3fc685b8bdb1c533e788da951f584",
+      "baseline_verdict": "NOT_RUN",
+      "route": "dereference-input",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.10",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "68108453ae29760283ca9fa16bf11adbb579b5bac31cf6724f1852323f9907b9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.11",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "fa044cf32d0535d65d2f1f4bd5f49b5b2cd72fdd48e5db52e07711eaa3e7a95b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.12",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "cece746588015099e140f7f8e5b38dd7114a343aa378b7f4dd2f4d0701f5ff5d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.13",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "f4a3ef4ca2c5f8bc5bece035a0e26e2a4523094ea69e4e691a9ef68e207b4c9f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.14",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "f58619372c0a4aa53559e4c4a988281226e2f0102cc63cfe3ba79b7aae316fb5",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.15",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "28c66db093e712a0b977f02a020b6ca8cb911982494ab0336d3745bfae0fba0e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.16",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "af8badeb6382dda997800d85c17c94af7ed67433ca10625da267d9538f41914f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.17",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "4e64e5cd50443bd0ab056bebce6b36eb71a8f48f48ea8123f7bd2ad996ef789b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.18",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "f6a26b1a92ab75cdb6497805af40164d36c78e0e6d3ee034ef471d29a5329eef",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.19",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "fe27f717f8d61fd5e6cd9cf942d724a92c2f71e4b0a8a4b9f75ac44989efbc4b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.2",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "1751581a0d9e9b7cef763a430dbbd2e3151e72570d5a348e3c96de40652ac832",
+      "baseline_verdict": "NOT_RUN",
+      "route": "dereference-input",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.20",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "14608422ee8a8cbf20409a2e653b3bb7a9168b8e79e3545b5ba637c4b33dbdf6",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.21",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "411ef87e6953616f18685e1699eaf2fb572d870e7020c4a2ee72b9c97074cd74",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.22",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "835ada5dd3204ee63806b375da61494035e8e56e65359435cef8ebb3498e686e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.23",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "182899f49672b4c1f658df92786e4b2e804908ab026f07ed34ff2272f381798f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.24",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "06edcb53bc648399dfc6d582503131cc26f60dbc252581157f5f36572495dbf7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.25",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "84cea5a1e0c5c9a86a69f699e88ddba33a6c8c3d5837c6cdf616578461a117a9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.26",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "dad7d57480b4b9bdf4c1b821c59f1f8af1a5b606dd4ac47f381a9e6713f2ca07",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.27",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "7b4a1b6dfd2eafca13d6179562f2c89ca18336090b30a672c4bd3dcf1b3758f2",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.28",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "68c83d581d6ca92044d6dbbc556d800c8d6a827aab0b15df783db64739e81f85",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.29",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "a711554c329304c85db04ac9a44dd4ec0248e40b7055c6ab8ca56060f8dd6d4f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.3",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "c222065a7466bf7d08fe7dea2629369e50fc612d80923c6d485649a2ca1262cd",
+      "baseline_verdict": "NOT_RUN",
+      "route": "dereference-input",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.30",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "65707eae89df6d48d1e8c8ca443ba1d4c900c7e25882966e85963a1eae697d15",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.31",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "b024db7f38da8010b14d318dcb5097c000915a735895d0025e53f222cef1bc1e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.32",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "f4a3ef4ca2c5f8bc5bece035a0e26e2a4523094ea69e4e691a9ef68e207b4c9f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.33",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "9685da3abf3e426a22c34ca5e1ece627e5548980d41d0339621ef1010726e70b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.34",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "28c66db093e712a0b977f02a020b6ca8cb911982494ab0336d3745bfae0fba0e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.35",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "df0afad17cd52da7084e2b1aa62641dc214f9e56fb70e088313da2bdb0ba9b7d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.36",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "b024db7f38da8010b14d318dcb5097c000915a735895d0025e53f222cef1bc1e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.37",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "f4a3ef4ca2c5f8bc5bece035a0e26e2a4523094ea69e4e691a9ef68e207b4c9f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.38",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "623c51695230ce9f2328bde52b19f1a032c4cff90d348a63049f391f466c5dfa",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.39",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "14635e2f5fafb4824778271d33711a464e898f77fc6e76b684eb237c4105ced3",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.4",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "14e3a24e22608c967eaecd4b7b60694b649bf805c63422f283c4ac379f33dec7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "dereference-input",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.40",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "74f32818ce63b6c70b9abbc23d4062839e1434adeb413451b611364542121a46",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.41",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "31705745de09b2da52d10ac725372beacdca3e283fa4fe9324f21360b417c4ce",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.42",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "802aabf6aab4a3f27d2748128216d76546a5354b480374d5592faa8d4d3c89ad",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.43",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "14e3a24e22608c967eaecd4b7b60694b649bf805c63422f283c4ac379f33dec7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.44",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "4cea6095d9b4e5bbdeb6a93d8fc1f1e9af10c5fc26ce26055e9efe85ea47bc4e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.45",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "47be1ab5eb643fe3dc5abda17c517decfe6165f4ee0896a8e2bc2d0e5b22d27a",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.46",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "ef3a7426057ffec23550f0fe14ff0ee1909c1584d56a52ef363e9dbb5c744944",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.47",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "ce2719c1839bf463fdd97e90785c9f2bc7419635177cd55b71da363f4a8356a9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.48",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "1ea379343bad237935c316fcfef5ac2bba9b31f32ae3c0a16ccf6ad31cc162a0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.49",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "dbe12af79eb708b26656ec055fff9de44e1fd4c62bdf8d898f0141cdba822de8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.5",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "89e658de8f570213418686e77666c3f5b7abf2ac6da14abbb42efbddc9bd3eb7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.50",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "1ff58872160bbf84a8d0f6fe7f186020f58e3c05ff5a726b9ee05e217dd302d0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.51",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "c222065a7466bf7d08fe7dea2629369e50fc612d80923c6d485649a2ca1262cd",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.52",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "14e3a24e22608c967eaecd4b7b60694b649bf805c63422f283c4ac379f33dec7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.6",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "4d5984954d73247bffba9e81ee4cb62528ce907e340a283754d43e67341bab4b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.7",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "1ff58872160bbf84a8d0f6fe7f186020f58e3c05ff5a726b9ee05e217dd302d0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.8",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "c222065a7466bf7d08fe7dea2629369e50fc612d80923c6d485649a2ca1262cd",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.9",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "14e3a24e22608c967eaecd4b7b60694b649bf805c63422f283c4ac379f33dec7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "4de01294315b9b2504aee3a70f73d1ce8881cf6222b7bdaabc314ddb24958f9f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.11",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "MAY"
+      ],
+      "text_sha256": "c42f2689e1635d22bb48da58394d7575d42af0ce683ac48dbcf94579e9a9c13b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "90d1a07dafb89d638f6092ea19fa5eb69e12b630711e4ddba605aa26b6dd59d4",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "faf9a35511d70331bc5afef65a905eb30e0dd05a6aed80b765462c70a0d14f35",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.4",
+      "level": "requirement",
+      "keywords": [
+        "REQUIRED"
+      ],
+      "text_sha256": "1f61cb763ca3b004d7b71e6649bf5ae5db1ee7a94ca7a9959720f6a1ea5c6118",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.5",
+      "level": "requirement",
+      "keywords": [
+        "REQUIRED",
+        "MAY"
+      ],
+      "text_sha256": "dbf74964751799b2263d339e616449c65d8e300ab7779a7a8944f6ccd1d5e099",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.6",
+      "level": "requirement",
+      "keywords": [
+        "REQUIRED",
+        "MUST NOT"
+      ],
+      "text_sha256": "6770a969d56d74f8c019bfb1d48dedf7c833b3fef0272231717ace52bdc99678",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.7",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "601509aafc8c4463296193205075592387fb12685bf16a200107ef2e0b004224",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.9",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "8e898a0151113f66a18980f39f3950fb9e6075c3bec39ac68e38756f387cdaa6",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.1",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "41aa6643ca8e8d3427d9debb1c01757eabfdaeface511d5ca16e8af0b96f918d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.10",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "157738fb60a0d8cd52506a1e81335d48a3fb57b0058fb855223e3d026fbddda9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.12",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "4aaef2745bd24cc8a723a945ea80006fb26c136ff80ac3a85a5258f3ac879e09",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.13",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "ba133deb9c6b43ddd758fb19b85e9fd5c746f01cb0b5ade48ff8168b27b76969",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.14",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "83924758b94db1e777fc8ca064c7e415399c1514009f34416329fa2cd60d8bdb",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.15",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "0b18f91ac8942318c20e25cfe1670779b58e52fa596be8476aa6a99f9c51b88a",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.16",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "9d7312c85aa43b0b13d8468496884a462b21d98c0f72241082a30c3d170ef3c0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.17",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "219feba40019f2480a03ffd37b2fd955c25e2ba21891fa0f08e5f0f031f44a38",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.18",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "e806a4d7a5faa2d89c85f18cf98732c1aa70fed59e76ec0781499821810c2abb",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.19",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "a09bd7b1b83fa4109ea6ea42a08458944c424dfd55d329424670355493ec61a7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.2",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "11a711589f0c0df58ea295b2fced278c54787dea86775f176a402b066953f084",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.20",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "03602c21f3200b54fd9f94ba9301b59a7dd8f3e2c7f274c9f909c16e2d58c910",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.21",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "0a7ef4f3577fa112e3efb0d5c59fcf373305fcbda8b4df2992733472a7e4eb9a",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.22",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "116fb5d219aa0e222dff57a354c2408b18956a2ad4822b45c20dedbc0c99bcdd",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.23",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "f769a3334eb701f2afce18168a33ddbbdcc0e9913a984750e9ae8a18a3b2dd25",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.24",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "8a7f89ec42cbe3c35395cb8c92927a5f96ba39677086fbd04a5c164434994820",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "3a1855bab723a249f2e360ad1e15b0983099b0fa5cd2fe332980b6dc40f26ae0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.4",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "d0afc24cc834de6626995f09d3ce0944f8dea68aa86e9e9ad121872a1c5c96ef",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.5",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "3a1855bab723a249f2e360ad1e15b0983099b0fa5cd2fe332980b6dc40f26ae0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.7",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL",
+        "MUST"
+      ],
+      "text_sha256": "33a047da39baaf13bb86973834d8355b488d50a3cde7f0af0ccc3e10883ed910",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.8",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "65fd83160e68d160d67aee2c64910aaa83c5cd7f006883affd9d9103ad317ce0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.9",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "3a1855bab723a249f2e360ad1e15b0983099b0fa5cd2fe332980b6dc40f26ae0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#did-parameters.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "d9b0da3347781ae58193a1fae88d838e9c5d06659fac371f18805eeee5620055",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#did-parameters.2",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "942688a07834eb1a238482ebdba2b9c65b076b8aa003e475c33b674ca25ab230",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#did-parameters.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "ed5265b28a1b7f2b8a7628a704add95becc3b73c2467fdbd4722798bf46e6327",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#did-parameters.4",
+      "level": "recommendation",
+      "keywords": [
+        "RECOMMENDED"
+      ],
+      "text_sha256": "8e62e1cf1fac23cb32dbda18518d3bb98bd8ea69abcafe6a36642c16f7d038cd",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.1",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "2791b55bcf6ac55bd3aa443b890053d1c70274dc1bf20d485ee972a0f5d96bfc",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.2",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "eb84cd6f42be85375f665392b04ec6332f98e77033b7d9e8be08b587db835ac9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.4",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "8b84b4e7bc3ec1639b23e75fb5595bd1965593a25d3832c837ff0c0dedda5fd3",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.5",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "88bf1b216deb4ec2caed225a93cfa8a02614d599e7fb1ca9a3c602140e0584ed",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.6",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "43fe234562d0e4e6a6e54be2de208add4914676c5175cd12fec61c8caa5a13d4",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.7",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "8a7f89ec42cbe3c35395cb8c92927a5f96ba39677086fbd04a5c164434994820",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-options.1",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "2791b55bcf6ac55bd3aa443b890053d1c70274dc1bf20d485ee972a0f5d96bfc",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-options.4",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "eb84cd6f42be85375f665392b04ec6332f98e77033b7d9e8be08b587db835ac9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#did-url-content-metadata.1",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "2791b55bcf6ac55bd3aa443b890053d1c70274dc1bf20d485ee972a0f5d96bfc",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-metadata.1",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "2791b55bcf6ac55bd3aa443b890053d1c70274dc1bf20d485ee972a0f5d96bfc",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-metadata.5",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "88bf1b216deb4ec2caed225a93cfa8a02614d599e7fb1ca9a3c602140e0584ed",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-metadata.6",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "94bd8ce3bbbad95cd6fb31ff8d0cc97d2acc4214797dfe8206ba12529c6a73e0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-metadata.7",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "8a7f89ec42cbe3c35395cb8c92927a5f96ba39677086fbd04a5c164434994820",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-options.1",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "2791b55bcf6ac55bd3aa443b890053d1c70274dc1bf20d485ee972a0f5d96bfc",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-options.3",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "866cd9ef7a8a34b96fc502fdb32ceefbc95f47682ccf1377ff0239082695b0ed",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-options.5",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "b592681909a777c46af61971ac4fd21efc635027db641fea315b723b57a779f6",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#errors.1",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "2f5ba818206406503576b044e2f620081994dc1db3249284f81f32925d53cd50",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#errors.4",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "7ae2625fe9e48392519c5e56d041870f457edb4a8d312d4dc1be942b9ab430df",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#errors.5",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "e2b5486a7a0e7993b498a60c22b9ad2c83f9cfe7d0cb939a05370a0816afbeba",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#errors.6",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "7c7d832b97e5cde7df1c8feda757fbff5c084e7ff8f3496ced69367fdd864580",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#errors.7",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "c8a50b60279c2a51246b12a2a13df621164d4e9ebf1e20371019d33a8139b340",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#metadata-structure.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "189c41865c0488ae6c20c1891416a9515a79d26f815947ab84a3d83afbc6c951",
+      "baseline_verdict": "NOT_RUN",
+      "route": "metadata-boundary",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#metadata-structure.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "6eaae9a827fda6b771fc4d9cdf12bf60efe5505745568cc84009e28851a4d8c1",
+      "baseline_verdict": "NOT_RUN",
+      "route": "metadata-boundary",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#metadata-structure.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "f4de5c789722a41f69f9c866d0ddf8328de42437999fee2270db86deae8a9812",
+      "baseline_verdict": "NOT_RUN",
+      "route": "metadata-boundary",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#metadata-structure.4",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "25761f1e3b4c8736c0d402ae64fb64c6d29fcf2c60cb0c3de8ac1c0ee95cfbf8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "metadata-boundary",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#metadata-structure.5",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "d55be414c3d990548c86fa008e8f1410a13638d083ca8f58c6258f1fbd8c6a85",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#method-architectures.1",
+      "level": "recommendation",
+      "keywords": [
+        "MAY",
+        "SHOULD"
+      ],
+      "text_sha256": "e9485a18127e4f84a8fc6032532d372e103a63517ef10ecbb8fc7f5f28cd56a2",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#method-architectures.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "73e288ef4f386634774de96f20e19fbf350cc5be79557921fa3c186723554af9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#method-architectures.3",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "2945c5c577e7bf8646421340c94e56c40bbe54b4f4dd1daed25f3191d9cb74d9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures-proxied.1",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "efd7dd4fd594258c97dbb56ce4d1af3bb6a50e993820a8dc9cbfef2822b254bb",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures-proxied.2",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "daf78d42f370ba098c43c1aa7b98fd67b9f1a923e34f04a5f27b85bdfb215b21",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures-proxied.3",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "8848121e9c9dcb5ec0cc65b34f33de45d5fe7a95acf2175492f97110f712a9f2",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures.1",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "8f57053608f6a20ee2161ed5c169721339a94dbccf3e911aa18323e60cdfe3bf",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures.2",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "5b0d9b6f1a84d7df460e1e7f3fa9d8e86be772c7a4d932f3dd2a3dc45b3e1345",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures.3",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "c9a54b375c2ce9b4408beaacf41e7181ac499213f8dd408bbfb4f0577c0a537a",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "10633b2c2dc89d6fae6aed3389e9436e30682e05afd6b23962e5cd8cba3a78c7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.17",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "e92579e7772b206196853d95081fa99fa4adb08de9ad29c12cc041f7d18f93bf",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.18",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "fbc58a7bc39a73a2f1f229c884a094ebb0857fa9817cf858220b7cc5ab7dce0d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.20",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "5fd848588ab9535d6ac3905520679168d175dfe4c57a619d7af535db765b22c9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.21",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "be4e9adcd276b7d0860044cf579994e45cc985443dbc2dc72666768f6e3b9653",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.22",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "01d1ec4bdc33da89e4e672a8627931393a7e03166b1dd000a807f2ef8fc0b6ad",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.23",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "68350753cb3e0b6c4bf66f2b802000af84aab5e5249b65091a92fe0e2b5e5da2",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.24",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "5fd848588ab9535d6ac3905520679168d175dfe4c57a619d7af535db765b22c9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.25",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "aa4c5e00b1828752f650e00289a8538f30eca9086bf7a9d0ecebcf3ff65b105b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.26",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "131cee4e806e9bad0a273f66f29b019212a3a4409f8866a063d2711bc74693ad",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.27",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "38a929bbfacba1dd776390c7c43a1d9695eb582c7e606bfe690cef1648786bd8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.28",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "4ab6a8e74e2db3753d04225a0fb38c11905066c1038b6149cfe9a05e208a9c39",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.29",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "781fe482384d7477f9a8f3fe56a1237b11d9d644e5896aabed9eeba6ba9bb36d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.3",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "5fd848588ab9535d6ac3905520679168d175dfe4c57a619d7af535db765b22c9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.30",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "ba0c448cc2aea21dee8d7bdc5be388b0f1f1e72379316d24c274cb0c47759d84",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.31",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "be3a39df51120a1c8e29bd465ca1b0b6ba4bb7493a7e34fdcfd204ec67701510",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.32",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "b024db7f38da8010b14d318dcb5097c000915a735895d0025e53f222cef1bc1e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.34",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "41b081ef45be9f0e9b12a7abc1f6be288e9ad49e3f777e5dc49beb9dbac3730d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.35",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "1d289368688312969b235b0a30272de657a9c53b6403802d2471ce717a8c4a92",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.36",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "fa138b4a2d175689190f525579438590ba0d8553598e98de14f94555db27810a",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.38",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "5fd848588ab9535d6ac3905520679168d175dfe4c57a619d7af535db765b22c9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.39",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "be4e9adcd276b7d0860044cf579994e45cc985443dbc2dc72666768f6e3b9653",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.4",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "be4e9adcd276b7d0860044cf579994e45cc985443dbc2dc72666768f6e3b9653",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.5",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "52bea88e48c46502c9d47fa057c4b46f10433c6296526901b7f56146d51f4427",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.6",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "cbfe0235f1fbb331168a757934301d91e04c888e1ac0bf127d982105ca8c07bf",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.7",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "5fd848588ab9535d6ac3905520679168d175dfe4c57a619d7af535db765b22c9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.8",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "be4e9adcd276b7d0860044cf579994e45cc985443dbc2dc72666768f6e3b9653",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "2dea60d378744f587ed4fdb3d949c919df899fd9336401f158beb5cd5fb4f58c",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving.2",
+      "level": "requirement",
+      "keywords": [
+        "REQUIRED",
+        "MUST"
+      ],
+      "text_sha256": "c1caf43281020cb0a5f4620109ed0f709559101fe23801433e789d61f5f99678",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving.3",
+      "level": "requirement",
+      "keywords": [
+        "REQUIRED",
+        "MAY"
+      ],
+      "text_sha256": "dbf74964751799b2263d339e616449c65d8e300ab7779a7a8944f6ccd1d5e099",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving.4",
+      "level": "requirement",
+      "keywords": [
+        "REQUIRED",
+        "MUST NOT"
+      ],
+      "text_sha256": "807fa0012993cf923a8988f1febf39e4fd47b924c6dc6014ed940827f095d052",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving.5",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "46c5f190a3824aa3c787cc39b15306e0770b974742f3cc476de20643c7026bb9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#resolving.6",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "4fc944fe999a24d0ae0f190b245781d29e9b21e0562133838b78a50b902b25a3",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked"
+    },
+    {
+      "id": "res10-crd20261001#vdr-forks.1",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "74cf2546e1e2f76440a15d6d761a7b2849bbf631808057cb71f50e37447e5b74",
+      "baseline_verdict": "NOT_RUN",
+      "route": "specification",
+      "generic_scope": "not-checkable"
+    },
+    {
+      "id": "res10-crd20261001#versioning.1",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "a5608f88893a836a4dedf0eecd33d485a448808a50bc325c64f7e67df363f150",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable"
+    }
+  ]
+}
