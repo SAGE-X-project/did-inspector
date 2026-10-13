@@ -5,7 +5,7 @@ report from CI run [38353322386](https://github.com/SAGE-X-project/did-inspector
 The machine-readable [inventory](sage-resolution-gaps.json) preserves all 416 historical
 statement ids, normative levels and keywords, exact text digests, evidence paths,
 and a next evidence route for each statement. Pending routes are planning evidence, not verdicts or implementation defects.
-Schema 2 keeps 398 pending entries and 18 entries observed since the baseline;
+Schema 2 keeps 376 pending entries and 40 entries observed since the baseline;
 it never assigns new observations to the historical inspector revision.
 
 The baseline inspector revision is `aefdcf9228ec8dcf85fd4aaf08b6e0511af11c36`.
@@ -24,16 +24,18 @@ recommendation-level statements. Requirement-level extraction also includes
 permissions, definitions and algorithm steps; it does not mean every row is a
 standalone MUST with an independently observable violation.
 
-The current report has 110 cases, 84 requirement and two recommendation passes,
-two inapplicable statements and 398 unobserved statements. Ten fresh native
+The current report has 123 cases, 106 requirement and two recommendation passes,
+two inapplicable statements and 376 unobserved statements. Ten fresh native
 result cases add 13 requirement passes and one conditional NOT_APPLICABLE.
 Twenty-four direct metadata serialization cases add four requirement passes.
-The following routing counts describe the remaining 398, not the baseline 416.
+Three native error/state cases and ten owned TLS response cases add 22
+requirement passes. Every historical entry and its original provenance remains.
+The following routing counts describe the remaining 376, not the baseline 416.
 
 | Primary next evidence route | Statements | Meaning |
 |---|---:|---|
-| Existing observation | 55 | Candidate assertions on actual native results, methods or server responses |
-| Existing operation, new scenario | 11 | Candidate branches requiring fresh requests or controlled Source failures |
+| Existing observation | 44 | Candidate assertions on actual native results, methods or server responses |
+| Existing operation, new scenario | 0 | Candidate branches requiring fresh requests or controlled Source failures |
 | Additional observer operation | 106 | A different actor, entry point or instrumentation is needed |
 | Additional data or feature | 117 | Applicable optional fields, representations or method branches are absent |
 | Document or applicability review | 105 | Author obligations, permissions, definitions, contracts or conflicts |
@@ -89,9 +91,12 @@ DID Resolution error types.
    remaining native result assertions and server response clauses. Input
    metadata, arbitrary extension/proof values and internal steps still need
    their own actor and entry point; output checks cannot establish them.
-2. Add controlled native error branches and remaining server-response checks.
-   Keep Source failures, adapter rejection and handler parsing distinct. Observe
-   new cases afresh and retain raw inputs and complete native/wire output.
+2. The eleven previously routed native error clauses and eleven server-wire
+   clauses are now observed on selected actual branches. This does not exhaust
+   all errors, HTTP options or representations. Keep Source failures, adapter
+   rejection and handler parsing distinct when extending any other branch.
+   Continue actual selected-key/document checks and applicable optional fields
+   below; remaining actor/data/document/authority routes are still pending.
 3. Expand actual selected-key and document checks, then applicable optional-field
    controls. Do not treat another key class as JsonWebKey. A new alg observation
    may report the same recommendation failure as projection, but must earn its

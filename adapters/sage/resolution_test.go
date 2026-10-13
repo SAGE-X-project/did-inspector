@@ -3,6 +3,8 @@ package sage
 import (
 	"context"
 	"encoding/json"
+	"errors"
+	didsage "github.com/sage-x-project/did-go/advanced/sage"
 	"github.com/sage-x-project/did-go/document"
 	"net/http"
 	"strings"
@@ -161,5 +163,23 @@ func TestActualComparisonsArchiveBothInputsAndAllFields(t *testing.T) {
 	}
 	if _, err := s.InspectResolution(t.Context(), rows[0], sageresolution.Request{Function: "http-comparison", NativeFunction: "dereference", Input: "invalid", HTTP: &req}); err == nil {
 		t.Fatal("invalid native input")
+	}
+}
+
+func TestUnexpectedSourceIsAnOrdinaryErrorAndNotAbsence(t *testing.T) {
+	rows, _ := sageprojection.Fixtures()
+	rec, err := resolutionRecord(rows[0])
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = (resolutionSource{record: rec, failure: "fixture.unexpected"}).Observe(t.Context(), rec.DID)
+	var sageError *didsage.Error
+	if err == nil || errors.As(err, &sageError) {
+		t.Fatal("fixture bypassed ordinary error mapping", err)
+	}
+	s, _ := identify(pinned)
+	out, err := s.InspectResolution(t.Context(), rows[0], sageresolution.Request{Function: "resolve", Input: rows[0].DID, SourceFailure: "fixture.unexpected"})
+	if err != nil || out.HasContent || out.SageCode != "record.unreachable" || !strings.Contains(string(out.Metadata), "https://www.w3.org/ns/did#INTERNAL_ERROR") {
+		t.Fatal(out, err)
 	}
 }
