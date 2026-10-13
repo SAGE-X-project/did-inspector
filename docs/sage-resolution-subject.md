@@ -28,7 +28,7 @@ certificate. They contact no agent, MCP, RPC or deployed registry.
 | Profile | Cases | Requirement PASS | Recommendation PASS | NOT_RUN |
 |---|---:|---:|---:|---:|
 | DID Core 1.0 | 16 | 33 | 0 | 173 |
-| DID 1.1 with CID and Resolution publications | 76 | 67 | 2 | 416 |
+| DID 1.1 with CID and Resolution publications | 86 | 80 | 2 | 402 |
 
 There are no FAIL or ERROR statements in these observations. The recommendation
 PASS statements cover the selected resolution Accept option and the returned
@@ -249,7 +249,7 @@ and inspect its actual application/did accessor snapshot. They cover CID
 subjects.1, controllers.3, verification-methods.5/.7, services.6/.13 and
 DID 1.1 core-properties.1. Six previously unobserved requirements pass.
 The optional root controller property is absent on all these actual records,
-so its clause is NOT_APPLICABLE, rather than PASS. DID 1.1 now has 76 cases,
+so its clause is NOT_APPLICABLE, rather than PASS. After the URL addition, DID 1.1 had 76 cases,
 67 requirement passes, two recommendation passes, one inapplicable statement
 and 416 unobserved statements. Core 1.0 results remain unchanged.
 
@@ -302,3 +302,39 @@ The complete [pending-clause inventory](sage-resolution-gaps.md) records every
 current DID 1.1 NOT_RUN id, its addressed operation and evidence prerequisites.
 Its classifications do not change report verdicts or erase the separate
 Core 1.0 pending work.
+
+## Native result and error observations
+
+Ten fresh native `resolve` cases inspect five active public records and five
+independent error scenarios: malformed DID, unsupported method, fixed Source
+record miss, stale Source and unsupported Accept. The subject's `ResolveString`
+parses malformed input; the inspector does not fabricate its error. Unsupported
+method uses the actual SAGE-only resolver registration. Missing record uses a
+request that differs from the single fixed Source record, not an operational
+registry absence. Stale Source returns INTERNAL_ERROR; unsupported Accept returns
+FEATURE_NOT_SUPPORTED. Neither is attributed to the NOT_FOUND algorithm branch.
+
+The added checks inspect success document identity, resolution metadata, typed
+error descriptor and the selected invalid/method/missing-record branch outcomes.
+Error type, null document and empty document metadata have independent negative
+controls. Expected scenarios are fixed before execution so a missing error cannot
+make its own required check inapplicable. HTTP/comparison output is rejected by
+this native observer. Actual inputs and complete native output are retained.
+
+An absent optional W3C `deactivated` member is NOT_APPLICABLE; when present it
+must be boolean false for these active fixtures. This does not repair the SAGE
+profile's separate mandatory-marker failure. Successful cases likewise mark the
+conditional error-descriptor rule inapplicable. Aggregation retains an applicable
+PASS for that rule from actual error cases.
+
+DID 1.1 now has 86 cases, 80 requirement and two recommendation passes, two
+inapplicable statements and 402 unobserved statements. Thirteen requirements
+and one optional conditional rule are newly observed. Core 1.0 is unchanged.
+The schema-2 gap inventory retains every original historical entry and its
+original provenance while tracking current CI expectations separately.
+
+The native adapter marshals typed metadata for capture; these cases do not prove
+the subject serializer, internal Source call order, authoritative history or full
+DID-document conformance. Resolving.1 establishes that the selected method returns
+a document for these actual inputs, not conformance of every property. There is
+no output repair, projection verdict copying, external target or private key.

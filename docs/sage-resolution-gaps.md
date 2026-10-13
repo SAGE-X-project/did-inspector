@@ -2,10 +2,11 @@
 
 This inventory classifies every NOT_RUN statement in the DID 1.1 SAGE resolution
 report from CI run [38353322386](https://github.com/SAGE-X-project/did-inspector/actions/runs/38353322386).
-The machine-readable [inventory](sage-resolution-gaps.json) contains 416 unique
+The machine-readable [inventory](sage-resolution-gaps.json) preserves all 416 historical
 statement ids, normative levels and keywords, exact text digests, evidence paths,
-and a next evidence route for each statement. It is planning evidence rather
-than a new conformance verdict or a list of 416 implementation defects.
+and a next evidence route for each statement. Pending routes are planning evidence, not verdicts or implementation defects.
+Schema 2 keeps 402 pending entries and 14 entries observed since the baseline;
+it never assigns new observations to the historical inspector revision.
 
 The baseline inspector revision is `aefdcf9228ec8dcf85fd4aaf08b6e0511af11c36`.
 The CI observer was `3c498fa2ea4ebc86eaf90be4e47846e62dc92c40`; its tree equals
@@ -23,10 +24,15 @@ recommendation-level statements. Requirement-level extraction also includes
 permissions, definitions and algorithm steps; it does not mean every row is a
 standalone MUST with an independently observable violation.
 
+The current report has 86 cases, 80 requirement and two recommendation passes,
+two inapplicable statements and 402 unobserved statements. Ten fresh native
+result cases add 13 requirement passes and one conditional NOT_APPLICABLE.
+The following routing counts describe the remaining 402, not the baseline 416.
+
 | Primary next evidence route | Statements | Meaning |
 |---|---:|---|
-| Existing observation | 59 | Candidate assertions on actual native results, methods or server responses |
-| Existing operation, new scenario | 21 | Candidate branches requiring fresh requests or controlled Source failures |
+| Existing observation | 55 | Candidate assertions on actual native results, methods or server responses |
+| Existing operation, new scenario | 11 | Candidate branches requiring fresh requests or controlled Source failures |
 | Additional observer operation | 106 | A different actor, entry point or instrumentation is needed |
 | Additional data or feature | 117 | Applicable optional fields, representations or method branches are absent |
 | Document or applicability review | 109 | Author obligations, permissions, definitions, contracts or conflicts |
@@ -53,7 +59,7 @@ interfaces. This is an observation-interface limitation, not evidence that the
 underlying library lacks every such feature. A future parser, consumer,
 retriever or codec adapter must call the actual pinned implementation and
 preserve its own identity and inputs. The existing generic inspector's 256
-`checked` and 160 `not-checkable` scope entries among these pending statements
+`checked` and 160 `not-checkable` scope entries among the 416 historical statements
 are retained as context only. Generic cases and verdicts are not copied into a
 SAGE report. Previously uncheckable reasons must be reassessed for this actor;
 in particular, metadata-structure.1 through .4 are MUST clauses, not
@@ -74,11 +80,12 @@ DID Resolution error types.
 
 ## Recommended continuation within the existing scope
 
-1. Add independent native resolution-result and metadata assertions first.
-   Check exact success/error contents, null content and selected representation
-   behavior. Identify each clause's actor and branch before assigning an
-   observation. Candidate output assertions may reveal failures; this inventory
-   promises neither PASS nor a case for every internal step.
+1. Continue native metadata boundary and result assertions after the ten fresh
+   success/error cases. Reassess metadata-structure.1 through .4 against typed
+   subject values and the adapter serialization boundary. Do not count parsing
+   adapter-produced JSON as proof of the subject serializer. Remaining clauses
+   still need their own actor and branch; the existing cases do not establish
+   every internal step or full document conformance.
 2. Add controlled native error branches and remaining server-response checks.
    Keep Source failures, adapter rejection and handler parsing distinct. Observe
    new cases afresh and retain raw inputs and complete native/wire output.
@@ -126,8 +133,11 @@ are also not completed by this classification.
 
 CI compares the inventory's exact pending ids to a fresh actual SAGE resolution
 report. It rejects duplicate/missing/extra ids, changed subject/publication
-identity or totals, mismatched normative levels/keywords/text digests, missing
-evidence paths, and incorrect category counts. It does not turn any planning
-route into a verdict. A later case changes the live pending set; that change
-must deliberately update or archive the baseline inventory instead of hiding
-an obsolete row. The historical baseline revision stays historical.
+identity or live totals, mismatched normative levels/keywords/text digests,
+missing evidence paths, and incorrect category counts. A hash of the sorted
+baseline ids anchors lossless membership across pending and observed entries.
+Each observed entry names fresh native cases and its expected live verdict; CI
+checks actual retained inputs/output and current report verdicts. Expectations
+are validated at the current CI observer revision, not the historical baseline.
+No route is itself a verdict. Future observations must move their full original
+entry into the observation ledger, keeping all historical ids and provenance.

@@ -93,6 +93,7 @@ func Profile(name string) (core.Profile, error) {
 		return p, err
 	}
 	appendNativeURLCases(&p, rows)
+	appendNativeResultCases(&p, rows)
 	return p, p.Validate()
 }
 func contains(a []string, s string) bool {

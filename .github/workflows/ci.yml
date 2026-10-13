@@ -165,16 +165,16 @@ jobs:
           import json, os
           from pathlib import Path
           root=Path(os.environ['RUNNER_TEMP'])/'sage-reports'
-          for name,passed,pending,cases in [('did-core-1.0',33,173,16),('did-1.1',69,416,76)]:
+          for name,passed,pending,cases in [('did-core-1.0',33,173,16),('did-1.1',82,402,86)]:
               report=json.loads((root/('resolution-'+name+'.json')).read_text())
               assert report['subject']['name']=='did-go/advanced/sage-resolution'
               assert report['subject']['revision']=='2ef282b40ccfe243c6cf3b1c05594e02171126cc'
               assert report['totals']['FAIL']==0 and report['totals']['ERROR']==0
               assert report['totals']['PASS']==passed and report['totals']['NOT_RUN']==pending
-              assert report['totals_by_level']['requirement']['PASS']==(33 if name=='did-core-1.0' else 67)
+              assert report['totals_by_level']['requirement']['PASS']==(33 if name=='did-core-1.0' else 80)
               raw=json.loads((root/('resolution-'+name+'-raw.json')).read_text())
               assert len(raw['cases'])==cases and raw['subject']==report['subject']
-              assert report['totals']['NOT_APPLICABLE']==(1 if name=='did-1.1' else 0)
+              assert report['totals']['NOT_APPLICABLE']==(2 if name=='did-1.1' else 0)
               urlcases=[c for c in raw['cases'] if '/native-url-record-' in c['case']]
               assert len(urlcases)==(5 if name=='did-1.1' else 0)
               for case in urlcases:
@@ -182,6 +182,15 @@ jobs:
                   for obs in case['observations']:
                       assert obs['verdict']==('NOT_APPLICABLE' if obs['statement']=='cid10#controllers.3' else 'PASS')
                       assert obs['input'] and obs['observed'] and 'whatwg-url v0.6.2' in obs['detail']
+              nativecases=[c for c in raw['cases'] if '/native-result-' in c['case']]
+              assert len(nativecases)==(10 if name=='did-1.1' else 0)
+              for case in nativecases:
+                  active='/native-result-active-record-' in case['case']
+                  assert len(case['observations']) >= 2
+                  for obs in case['observations']:
+                      conditional=obs['statement'] in ['res10-crd20261001#resolving.5','res10-crd20261001#did-document-metadata.7']
+                      assert obs['verdict']==('NOT_APPLICABLE' if active and conditional else 'PASS')
+                      assert obs['input'] and obs['observed'] and obs['detail']
           PYTHON
       - name: Check complete SAGE pending clause inventory
         run: |
@@ -191,23 +200,50 @@ jobs:
           repo=Path('../..')
           inventory=json.loads((repo/'docs/sage-resolution-gaps.json').read_text())
           report=json.loads((Path(os.environ['RUNNER_TEMP'])/'sage-reports/resolution-did-1.1.json').read_text())
-          assert inventory['schema']=='sage-resolution-gap-inventory/1'
+          raw=json.loads((Path(os.environ['RUNNER_TEMP'])/'sage-reports/resolution-did-1.1-raw.json').read_text())
+          assert inventory['schema']=='sage-resolution-gap-inventory/2'
           assert inventory['scope']=='resolution' and inventory['profile']==report['profile']=='did-1.1'
-          assert inventory['baseline']['subject']==report['subject']
+          assert inventory['baseline']['subject']==report['subject']==raw['subject']
           assert inventory['baseline']['publications']==report['specs']
-          assert inventory['baseline']['totals']==report['totals']
-          assert inventory['baseline']['totals_by_level']==report['totals_by_level']
+          assert report['inspector']['revision']==os.environ['GITHUB_SHA']
+          assert inventory['expected_live_totals']==report['totals']
+          assert inventory['expected_live_totals_by_level']==report['totals_by_level']
+          assert inventory['expected_live_cases']==len(raw['cases'])==86
           pending=inventory['pending']
+          observed=inventory['observed_since_baseline']
           ids=[row['id'] for row in pending]
-          assert len(ids)==len(set(ids))==416
+          assert len(ids)==len(set(ids))==402
           assert set(ids)=={row['id'] for row in report['statements'] if row['verdict']=='NOT_RUN'}
+          allrows=pending+observed
+          allids=[row['id'] for row in allrows]
+          assert len(allids)==len(set(allids))==inventory['baseline']['totals']['NOT_RUN']==416
+          assert hashlib.sha256(json.dumps(sorted(allids),separators=(',',':')).encode()).hexdigest()==inventory['baseline']['pending_ids_sha256']
+          assert len(observed)==14
+          assert collections.Counter(row['expected_live_verdict'] for row in observed)=={'PASS':13,'NOT_APPLICABLE':1}
+          live={row['id']:row['verdict'] for row in report['statements']}
+          cases={case['case']:case for case in raw['cases']}
+          assert len(cases)==len(raw['cases'])
+          for row in observed:
+              assert live[row['id']]==row['expected_live_verdict']
+              expectedcases={case['case'] for case in raw['cases'] if '/native-result-' in case['case'] and any(o['statement']==row['id'] for o in case['observations'])}
+              assert row['cases'] and len(row['cases'])==len(set(row['cases']))
+              assert set(row['cases'])==expectedcases
+              matches=[]
+              for caseid in row['cases']:
+                  found=[o for o in cases[caseid]['observations'] if o['statement']==row['id']]
+                  assert len(found)==1
+                  observation=found[0]
+                  assert observation['verdict'] in ['PASS','NOT_APPLICABLE']
+                  assert observation['input'] and observation['observed'] and observation['detail']
+                  matches.append(observation['verdict'])
+              assert row['expected_live_verdict'] in matches
           statements={}
           for publication in ['did11-cr20260305','cid10','res10-crd20261001']:
               for row in json.loads((repo/'statements'/(publication+'.json')).read_text())['statements']:
                   statements[row['id']]=row
           scope=json.loads((repo/'statements/scope.json').read_text())
           categories=collections.Counter()
-          for row in pending:
+          for row in allrows:
               original=statements[row['id']]
               assert row['baseline_verdict']=='NOT_RUN'
               assert row['level']==original['level'] and row['keywords']==original.get('keywords',[])
@@ -217,10 +253,12 @@ jobs:
               assert route['operation'] and route['prerequisite'] and route['evidence']
               for reference in route['evidence']:
                   assert (repo/reference).is_file()
-              categories[route['category']]+=1
+              if row['id'] in set(ids):
+                  categories[route['category']]+=1
           assert dict(categories)==inventory['categories']
-          assert collections.Counter(row['level'] for row in pending)=={'requirement':368,'recommendation':48}
-          print('Verified all 416 pending clauses without changing any verdict')
+          assert collections.Counter(row['level'] for row in allrows)=={'requirement':368,'recommendation':48}
+          assert collections.Counter(row['level'] for row in pending)=={'requirement':354,'recommendation':48}
+          print('Verified 402 pending and 14 newly observed clauses; all 416 historical ids retained')
           PYTHON
       - name: Preserve independent profile and raw observation artifacts
         if: always()
