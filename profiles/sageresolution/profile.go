@@ -38,7 +38,7 @@ func Profile(name string) (core.Profile, error) {
 	if err != nil {
 		return p, err
 	}
-	p.Title = "SAGE record resolution and loopback HTTP observations; " + strings.TrimSuffix(p.Title, "; SAGE produced-document observations only")
+	p.Title = "SAGE record resolution, selected library actors and loopback HTTP observations; " + strings.TrimSuffix(p.Title, "; SAGE produced-document observations only")
 	p.Cases = nil
 	rows, err := sageprojection.Fixtures()
 	if err != nil {
@@ -103,6 +103,14 @@ func Profile(name string) (core.Profile, error) {
 	appendTypedConsumptionCases(&p)
 	appendRepresentationInputCases(&p)
 	appendProducerContextCases(&p)
+	if err := appendLibrarySyntaxCases(&p); err != nil {
+		return p, err
+	}
+	appendLibraryCodecCases(&p)
+	appendClientCases(&p, rows)
+	appendRetrievalCases(&p, rows)
+	appendLibraryDocumentCases(&p)
+	appendLibraryContextCases(&p)
 	if err := appendConsumerConformanceCases(&p); err != nil {
 		return p, err
 	}

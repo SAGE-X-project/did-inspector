@@ -1,0 +1,2 @@
+# Preserve the exact hash-pinned W3C context bytes and published whitespace.
+profiles/sageresolution/did-v1.1-context.jsonld -text whitespace=-blank-at-eol

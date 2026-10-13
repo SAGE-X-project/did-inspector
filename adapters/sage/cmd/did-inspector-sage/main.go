@@ -166,7 +166,7 @@ func runProfile(args []string, e env) error {
 	}
 	scopeText := "produced SAGE fixture documents only"
 	if *scope == "resolution" {
-		scopeText = "SAGE native interfaces and inspector-owned loopback TLS only"
+		scopeText = "SAGE native interfaces, selected library actors and inspector-owned loopback TLS only"
 	}
 	if _, err := fmt.Fprintln(e.stdout, "Scope: "+scopeText+"; unobserved statements remain NOT_RUN; full standard conformance is NOT_ESTABLISHED."); err != nil {
 		return err

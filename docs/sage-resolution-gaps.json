@@ -75,9 +75,9 @@
     "No operational source, registration, private key or deployment is supplied by this audit."
   ],
   "categories": {
-    "additional-data-or-feature": 117,
-    "additional-observer-operation": 95,
-    "document-or-applicability-review": 103,
+    "additional-data-or-feature": 97,
+    "additional-observer-operation": 56,
+    "document-or-applicability-review": 101,
     "existing-observation": 34,
     "operational-or-authority-evidence": 4
   },
@@ -268,17 +268,6 @@
   },
   "pending": [
     {
-      "id": "cid10#JsonWebKey.1",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "ccc06a97b1ad07dfd859d055822440d9d120f288580c78cc675627e7ccd95259",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
       "id": "cid10#JsonWebKey.10",
       "level": "requirement",
       "keywords": [
@@ -346,127 +335,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "cid10#Multikey.1",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "2fc11243041dd3202196a08db6c9bace82ae663a6a9140d7f7964f8ac95adfe2",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#Multikey.10",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "ceba2f55e645966452942cc3dd4a4e7f82dc5c4054d2c1bcaacd6c2679b4723d",
-      "baseline_verdict": "NOT_RUN",
-      "route": "multikey-material",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#Multikey.11",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "1699235047120807fced07d037970dc8233ce216a4bc326a238bca47dc59f7aa",
-      "baseline_verdict": "NOT_RUN",
-      "route": "multikey-material",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#Multikey.12",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "43e1009716854a4062761704f44d5afb4ee5aa4934379731b51a01106844c84b",
-      "baseline_verdict": "NOT_RUN",
-      "route": "multikey-material",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#Multikey.13",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "e8bdc9a79be3bd92cb3a250fa1e4fc1651461d4cca42d32e2f19ae62d3d56dc7",
-      "baseline_verdict": "NOT_RUN",
-      "route": "multikey-material",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#Multikey.14",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "8d7e28c469c91c7e6ba6d918ac9c9ba5c16bb8e838ad20491ac0a99dbb21afa9",
-      "baseline_verdict": "NOT_RUN",
-      "route": "multikey-material",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#Multikey.15",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "5d3cb4602bc141cf71c67cc4e8610832c7fd4cd38edaaa70c121a4ca65de5a02",
-      "baseline_verdict": "NOT_RUN",
-      "route": "multikey-material",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#Multikey.16",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "ceba2f55e645966452942cc3dd4a4e7f82dc5c4054d2c1bcaacd6c2679b4723d",
-      "baseline_verdict": "NOT_RUN",
-      "route": "multikey-material",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#Multikey.17",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "dd1373afb4ca56fd952d27305ed49f554cceaf3a0b05b93c498df4c53f8224c6",
-      "baseline_verdict": "NOT_RUN",
-      "route": "multikey-material",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#Multikey.18",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "2e66ebe87d92fb647e846405b684e1ad6305673ed3da6eef9aec0f7606db6de1",
-      "baseline_verdict": "NOT_RUN",
-      "route": "multikey-material",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#Multikey.19",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "ceba2f55e645966452942cc3dd4a4e7f82dc5c4054d2c1bcaacd6c2679b4723d",
-      "baseline_verdict": "NOT_RUN",
-      "route": "multikey-material",
-      "generic_scope": "checked"
-    },
-    {
       "id": "cid10#Multikey.2",
       "level": "requirement",
       "keywords": [
@@ -500,28 +368,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "cid10#Multikey.22",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "5aa6c2e3161ca13ba71233f38833d1c9d5dd78bfd9997908b49c7b007ba3b665",
-      "baseline_verdict": "NOT_RUN",
-      "route": "multikey-material",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#Multikey.23",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "ceba2f55e645966452942cc3dd4a4e7f82dc5c4054d2c1bcaacd6c2679b4723d",
-      "baseline_verdict": "NOT_RUN",
-      "route": "multikey-material",
-      "generic_scope": "checked"
-    },
-    {
       "id": "cid10#Multikey.24",
       "level": "requirement",
       "keywords": [
@@ -532,17 +378,6 @@
       "baseline_verdict": "NOT_RUN",
       "route": "specification",
       "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#Multikey.3",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "cca92a0aaee218ab420c96537be380f634d596a2cc9ba0d5b85c4512b4bdc7a6",
-      "baseline_verdict": "NOT_RUN",
-      "route": "multikey-material",
-      "generic_scope": "checked"
     },
     {
       "id": "cid10#Multikey.4",
@@ -567,50 +402,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "cid10#Multikey.6",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "56e74edbec55351c0a53f9e0e7a338a5454adb15c3c16c5ac219894e58a1333b",
-      "baseline_verdict": "NOT_RUN",
-      "route": "multikey-material",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#Multikey.7",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "8d7e28c469c91c7e6ba6d918ac9c9ba5c16bb8e838ad20491ac0a99dbb21afa9",
-      "baseline_verdict": "NOT_RUN",
-      "route": "multikey-material",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#Multikey.8",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "a56f050b7caf39e09ddf4db3857881ef55899bb2dd2f4d6ef7b6d70091732758",
-      "baseline_verdict": "NOT_RUN",
-      "route": "multikey-material",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#Multikey.9",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "0420326ba1fa051d45ae255f78d3304390feddc5ff502ef1b217e1b418febc8d",
-      "baseline_verdict": "NOT_RUN",
-      "route": "multikey-material",
-      "generic_scope": "checked"
-    },
-    {
       "id": "cid10#algorithms.1",
       "level": "requirement",
       "keywords": [
@@ -628,17 +419,6 @@
         "OPTIONAL"
       ],
       "text_sha256": "fa0fd236d3e218c3a2dd21fd8073c9ea2eee16aae0d2456313d8d9228d7f020e",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#also-known-as.2",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "d7c8349062df8dee3c991130452f3c4b7c460cb8f64bd57159e378ecb4d65625",
       "baseline_verdict": "NOT_RUN",
       "route": "conditional-fields",
       "generic_scope": "checked"
@@ -991,17 +771,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "cid10#capability-delegation.2",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "6342e3d831978a61fb5de2127da312fcb10720d65e621de5f9a4224c4a664567",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
-    },
-    {
       "id": "cid10#capability-delegation.3",
       "level": "requirement",
       "keywords": [
@@ -1019,17 +788,6 @@
         "OPTIONAL"
       ],
       "text_sha256": "8bb5f89a47777262093b3613b5cd9e4670d7715caea089899dd30639bea29e5f",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#capability-invocation.2",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "6342e3d831978a61fb5de2127da312fcb10720d65e621de5f9a4224c4a664567",
       "baseline_verdict": "NOT_RUN",
       "route": "conditional-fields",
       "generic_scope": "checked"
@@ -1218,17 +976,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "cid10#multibase-0.2",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "be6c7963e9f1c60cc473ee12c6c6c59927824e02570837e953831f22905f1b39",
-      "baseline_verdict": "NOT_RUN",
-      "route": "codec-internals",
-      "generic_scope": "not-checkable"
-    },
-    {
       "id": "cid10#multibase-0.3",
       "level": "requirement",
       "keywords": [
@@ -1237,17 +984,6 @@
       "text_sha256": "652dcd35c9109b2f9b1afef360fc99991eaee7de1e9262b7aed92df2db152228",
       "baseline_verdict": "NOT_RUN",
       "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#multibase-0.4",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "b7c2f748bd77561620774f83ba09210dfe59d8eb5052eea0b81c5165905c9ba4",
-      "baseline_verdict": "NOT_RUN",
-      "route": "codec-internals",
       "generic_scope": "not-checkable"
     },
     {
@@ -1306,51 +1042,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "cid10#processing-errors.2",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "984a7270b76b9e227b326b8fc9ed54307f6776aeedb59abff2d4b26b86f9450e",
-      "baseline_verdict": "NOT_RUN",
-      "route": "method-retrieval",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#processing-errors.3",
-      "level": "recommendation",
-      "keywords": [
-        "SHOULD"
-      ],
-      "text_sha256": "7ae2625fe9e48392519c5e56d041870f457edb4a8d312d4dc1be942b9ab430df",
-      "baseline_verdict": "NOT_RUN",
-      "route": "method-retrieval",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#processing-errors.4",
-      "level": "recommendation",
-      "keywords": [
-        "SHOULD"
-      ],
-      "text_sha256": "e2b5486a7a0e7993b498a60c22b9ad2c83f9cfe7d0cb939a05370a0816afbeba",
-      "baseline_verdict": "NOT_RUN",
-      "route": "method-retrieval",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#retrieve-verification-method.1",
-      "level": "requirement",
-      "keywords": [
-        "MUST",
-        "SHOULD"
-      ],
-      "text_sha256": "315501c59bcfd4bb17847cca9a9dc77c114fd2f9bc87f524af42ca0387982f48",
-      "baseline_verdict": "NOT_RUN",
-      "route": "method-retrieval",
-      "generic_scope": "checked"
-    },
-    {
       "id": "cid10#retrieve-verification-method.10",
       "level": "requirement",
       "keywords": [
@@ -1363,49 +1054,10 @@
       "generic_scope": "checked"
     },
     {
-      "id": "cid10#retrieve-verification-method.11",
-      "level": "requirement",
-      "keywords": [
-        "MUST",
-        "SHOULD"
-      ],
-      "text_sha256": "256e2ad1ce51b208f0e2a577499f5ce640904b1e2c962b4fb1c4af78a5ead39c",
-      "baseline_verdict": "NOT_RUN",
-      "route": "method-retrieval",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#retrieve-verification-method.12",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "322303c7d738ea31df36743725a167c4fff14c3dbeff5c449b7ee8a0d45b9d9c",
-      "baseline_verdict": "NOT_RUN",
-      "route": "method-retrieval",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#retrieve-verification-method.2",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "be78a5d1a7ecb9d3bbdf3342fddefb2093422a8f12a7be843b07ecd632a96c89",
-      "baseline_verdict": "NOT_RUN",
-      "route": "method-retrieval",
-      "generic_scope": "checked"
-    },
-    {
       "id": "cid10#retrieve-verification-method.3",
       "level": "requirement",
       "keywords": [],
       "text_sha256": "8371a92b2f57b9974699f6705b79000a80055e22bddaeb8530cd329dbb973c32",
-      "baseline_verdict": "NOT_RUN",
-      "route": "method-retrieval",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#retrieve-verification-method.4",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "6e8a72a4e9fe190972c723455178cd587fc12d766fff169adb4b8914734f5db4",
       "baseline_verdict": "NOT_RUN",
       "route": "method-retrieval",
       "generic_scope": "checked"
@@ -1430,27 +1082,6 @@
         "SHOULD"
       ],
       "text_sha256": "f3745c1fb918a8a83c55ca328a48491a85c648db4405eb3c1b5d7e8df71b88c3",
-      "baseline_verdict": "NOT_RUN",
-      "route": "method-retrieval",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#retrieve-verification-method.7",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "9b7caf630f9544164fc788e01888b9a282f760397891ff9a0dd9863550d39fa7",
-      "baseline_verdict": "NOT_RUN",
-      "route": "method-retrieval",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#retrieve-verification-method.8",
-      "level": "requirement",
-      "keywords": [
-        "MUST",
-        "SHOULD"
-      ],
-      "text_sha256": "c1967ed81269de5af550362fb48cd9873cafdc6bd89877df62f8f654a6abf669",
       "baseline_verdict": "NOT_RUN",
       "route": "method-retrieval",
       "generic_scope": "checked"
@@ -1685,28 +1316,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "did11-cr20260305#did-syntax.1",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "449157aa0d02f365853c2ac8539e75534205e87175446647cb49b393ab594a84",
-      "baseline_verdict": "NOT_RUN",
-      "route": "parser-reference",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "did11-cr20260305#did-url-syntax.1",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "05b66207f9795ae440c22d80af2271955360faba8c53e5420979506544f16201",
-      "baseline_verdict": "NOT_RUN",
-      "route": "parser-reference",
-      "generic_scope": "checked"
-    },
-    {
       "id": "did11-cr20260305#extensibility.1",
       "level": "recommendation",
       "keywords": [
@@ -1771,28 +1380,6 @@
       "baseline_verdict": "NOT_RUN",
       "route": "specification",
       "generic_scope": "not-checkable"
-    },
-    {
-      "id": "did11-cr20260305#json-ld-processors.6",
-      "level": "recommendation",
-      "keywords": [
-        "SHOULD NOT"
-      ],
-      "text_sha256": "f9355e8eaf65b5e3163816f5712bd93361fd93c49d4f03565428c0ec4584edd8",
-      "baseline_verdict": "NOT_RUN",
-      "route": "jsonld-processing",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "did11-cr20260305#json-ld-processors.8",
-      "level": "recommendation",
-      "keywords": [
-        "SHOULD"
-      ],
-      "text_sha256": "8d49a479c5df31e1aca64bea1c6dcbe36ae3d9ef7200914e90fe749a12e377ee",
-      "baseline_verdict": "NOT_RUN",
-      "route": "jsonld-processing",
-      "generic_scope": "checked"
     },
     {
       "id": "did11-cr20260305#media-types.1",
@@ -1982,17 +1569,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "did11-cr20260305#method-syntax.9",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "eea864c38c21261a9759df7c03e0ba059ad002f58e24da5e80f3a368dd0ccb80",
-      "baseline_verdict": "NOT_RUN",
-      "route": "parser-reference",
-      "generic_scope": "checked"
-    },
-    {
       "id": "did11-cr20260305#privacy-requirements.1",
       "level": "requirement",
       "keywords": [
@@ -2112,39 +1688,6 @@
       "baseline_verdict": "NOT_RUN",
       "route": "native-result",
       "generic_scope": "checked"
-    },
-    {
-      "id": "did11-cr20260305#relative-did-urls.1",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "2a66cd72724473ab9a94109c7ec40404cbfce3fa3731411a4103a004ccade8f0",
-      "baseline_verdict": "NOT_RUN",
-      "route": "parser-reference",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "did11-cr20260305#relative-did-urls.2",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "42dce7ca547d4ca3014c32bd094ef9fc782639d08212ac91f6f2914ef4119e7f",
-      "baseline_verdict": "NOT_RUN",
-      "route": "parser-reference",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "did11-cr20260305#remote-resource-integrity.1",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "362f757d191084697f0b923682e2d6f1ac0b4c3d1c977333225d6b099b4a96c3",
-      "baseline_verdict": "NOT_RUN",
-      "route": "jsonld-processing",
-      "generic_scope": "not-checkable"
     },
     {
       "id": "did11-cr20260305#security-requirements.1",
@@ -2313,116 +1856,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "res10-crd20261001#bindings-https.10",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "f9e0836cbbd92958c432ffd652666ea8c975361f4c46600c9b373c66c549b488",
-      "baseline_verdict": "NOT_RUN",
-      "route": "client-binding",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.11",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "17aedaede87e805032a73cadfabdc34f4c11c33c9cbe42ad33a93ad4c3302e95",
-      "baseline_verdict": "NOT_RUN",
-      "route": "client-binding",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.12",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "0439b87debdb75d4b938da075374975b63d58d673db3745705d7cd88446720af",
-      "baseline_verdict": "NOT_RUN",
-      "route": "client-binding",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.13",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "2465d7971d9dd8370b33cd0da068ce45efd17062b3735e3dcf05395e8082c87b",
-      "baseline_verdict": "NOT_RUN",
-      "route": "client-binding",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.14",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "81f66c0b02a444439194166ba6a3f121d6a3cbe50f688fcc29c794861e2b880f",
-      "baseline_verdict": "NOT_RUN",
-      "route": "client-binding",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.15",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "93ab402ce7c621d3b5606a0b2c574f406123be9015e161cfb173fb81cb04acb0",
-      "baseline_verdict": "NOT_RUN",
-      "route": "client-binding",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.16",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "f2055b76f6ad5ea0441792349ebea71c96a3d5790974044bf391300feb46b5e1",
-      "baseline_verdict": "NOT_RUN",
-      "route": "client-binding",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.17",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "0ba4bcc0a16731c6e074b6044dbf27bfb8beb6291795cec659a65905e035bdce",
-      "baseline_verdict": "NOT_RUN",
-      "route": "client-binding",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.18",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "5470f257f24f830ac26cbc20982c95a5a36a5bc4d6927e68415e31137f1f71c9",
-      "baseline_verdict": "NOT_RUN",
-      "route": "client-binding",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.19",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "81f66c0b02a444439194166ba6a3f121d6a3cbe50f688fcc29c794861e2b880f",
-      "baseline_verdict": "NOT_RUN",
-      "route": "client-binding",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.20",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "2d583b69d1646816b2b7801184dcfed82c19d120c319175773d106f6d3438616",
-      "baseline_verdict": "NOT_RUN",
-      "route": "client-binding",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.21",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "d1829dd683b265155c090c184d945e0e05e55a763d9baaadd721d2383ed3355f",
-      "baseline_verdict": "NOT_RUN",
-      "route": "client-binding",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#bindings-https.3",
       "level": "requirement",
       "keywords": [
@@ -2474,60 +1907,6 @@
       "text_sha256": "deb118677b5d034d8aa7cd6e047245af7f6abaa3f542ecdc36ebe5f776d6b4cf",
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.4",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "f547f49ca0a340813516ade058edeca39ca8945ff91da8b0f08c9a3add5a090a",
-      "baseline_verdict": "NOT_RUN",
-      "route": "client-binding",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.5",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "5eb60678c2d6003e60496861892b4056e3df23e4ae72d9de2e6bdbf76158f52e",
-      "baseline_verdict": "NOT_RUN",
-      "route": "client-binding",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.6",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "2d8f4db9c0177efdb962ea04b928dbdf2f3c2ac038e32f193853eeea6ad726b4",
-      "baseline_verdict": "NOT_RUN",
-      "route": "client-binding",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.7",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "10ad4b3cadef7362de1461c505660894e7631b6dfb1555d848a6cd23d7134597",
-      "baseline_verdict": "NOT_RUN",
-      "route": "client-binding",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.8",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "0ec928067814ff1440a74a70aeb0ae5fe07cdef8b2cb4d3c746dd9f7f15d6fed",
-      "baseline_verdict": "NOT_RUN",
-      "route": "client-binding",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.9",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "02174fb29938e20a8f6c4c91b3d54f88a9fedd7c20487d036fb49cd0dd015a36",
-      "baseline_verdict": "NOT_RUN",
-      "route": "client-binding",
       "generic_scope": "checked"
     },
     {
@@ -3490,17 +2869,6 @@
       "text_sha256": "eb84cd6f42be85375f665392b04ec6332f98e77033b7d9e8be08b587db835ac9",
       "baseline_verdict": "NOT_RUN",
       "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#did-resolution-metadata.4",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "8b84b4e7bc3ec1639b23e75fb5595bd1965593a25d3832c837ff0c0dedda5fd3",
-      "baseline_verdict": "NOT_RUN",
-      "route": "client-binding",
       "generic_scope": "not-checkable"
     },
     {
@@ -5140,36 +4508,1098 @@
         "did-1.1/sage-resolution/native-producer-context-invalid-context-1",
         "did-1.1/sage-resolution/native-producer-context-invalid-context-2"
       ]
+    },
+    {
+      "id": "cid10#JsonWebKey.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "ccc06a97b1ad07dfd859d055822440d9d120f288580c78cc675627e7ccd95259",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-document-",
+      "cases": [
+        "did-1.1/sage-resolution/library-document-jwk-type"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "2fc11243041dd3202196a08db6c9bace82ae663a6a9140d7f7964f8ac95adfe2",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-document-",
+      "cases": [
+        "did-1.1/sage-resolution/library-document-multikey-type"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.10",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "ceba2f55e645966452942cc3dd4a4e7f82dc5c4054d2c1bcaacd6c2679b4723d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-codec-",
+      "cases": [
+        "did-1.1/sage-resolution/library-codec-Ed25519-public"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.11",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "1699235047120807fced07d037970dc8233ce216a4bc326a238bca47dc59f7aa",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-codec-",
+      "cases": [
+        "did-1.1/sage-resolution/library-codec-BLS12-381-G2-public"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.12",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "43e1009716854a4062761704f44d5afb4ee5aa4934379731b51a01106844c84b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-codec-",
+      "cases": [
+        "did-1.1/sage-resolution/library-codec-BLS12-381-G2-public"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.13",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "e8bdc9a79be3bd92cb3a250fa1e4fc1651461d4cca42d32e2f19ae62d3d56dc7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-codec-",
+      "cases": [
+        "did-1.1/sage-resolution/library-codec-SM2-public"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.14",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "8d7e28c469c91c7e6ba6d918ac9c9ba5c16bb8e838ad20491ac0a99dbb21afa9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-codec-",
+      "cases": [
+        "did-1.1/sage-resolution/library-codec-SM2-public"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.15",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "5d3cb4602bc141cf71c67cc4e8610832c7fd4cd38edaaa70c121a4ca65de5a02",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-codec-",
+      "cases": [
+        "did-1.1/sage-resolution/library-codec-P-256-secret"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.16",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "ceba2f55e645966452942cc3dd4a4e7f82dc5c4054d2c1bcaacd6c2679b4723d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-codec-",
+      "cases": [
+        "did-1.1/sage-resolution/library-codec-P-256-secret"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.17",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "dd1373afb4ca56fd952d27305ed49f554cceaf3a0b05b93c498df4c53f8224c6",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-codec-",
+      "cases": [
+        "did-1.1/sage-resolution/library-codec-P-384-secret"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.18",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "2e66ebe87d92fb647e846405b684e1ad6305673ed3da6eef9aec0f7606db6de1",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-codec-",
+      "cases": [
+        "did-1.1/sage-resolution/library-codec-Ed25519-secret"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.19",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "ceba2f55e645966452942cc3dd4a4e7f82dc5c4054d2c1bcaacd6c2679b4723d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-codec-",
+      "cases": [
+        "did-1.1/sage-resolution/library-codec-Ed25519-secret"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.22",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "5aa6c2e3161ca13ba71233f38833d1c9d5dd78bfd9997908b49c7b007ba3b665",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-codec-",
+      "cases": [
+        "did-1.1/sage-resolution/library-codec-SM2-secret"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.23",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "ceba2f55e645966452942cc3dd4a4e7f82dc5c4054d2c1bcaacd6c2679b4723d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-codec-",
+      "cases": [
+        "did-1.1/sage-resolution/library-codec-SM2-secret"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "cca92a0aaee218ab420c96537be380f634d596a2cc9ba0d5b85c4512b4bdc7a6",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-document-",
+      "cases": [
+        "did-1.1/sage-resolution/library-document-multikey-material"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.6",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "56e74edbec55351c0a53f9e0e7a338a5454adb15c3c16c5ac219894e58a1333b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-codec-",
+      "cases": [
+        "did-1.1/sage-resolution/library-codec-P-256-public"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.7",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "8d7e28c469c91c7e6ba6d918ac9c9ba5c16bb8e838ad20491ac0a99dbb21afa9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-codec-",
+      "cases": [
+        "did-1.1/sage-resolution/library-codec-P-256-public"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.8",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "a56f050b7caf39e09ddf4db3857881ef55899bb2dd2f4d6ef7b6d70091732758",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-codec-",
+      "cases": [
+        "did-1.1/sage-resolution/library-codec-P-384-public"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.9",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "0420326ba1fa051d45ae255f78d3304390feddc5ff502ef1b217e1b418febc8d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-codec-",
+      "cases": [
+        "did-1.1/sage-resolution/library-codec-Ed25519-public"
+      ]
+    },
+    {
+      "id": "cid10#also-known-as.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "d7c8349062df8dee3c991130452f3c4b7c460cb8f64bd57159e378ecb4d65625",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-document-",
+      "cases": [
+        "did-1.1/sage-resolution/library-document-also-known-as"
+      ]
+    },
+    {
+      "id": "cid10#capability-delegation.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "6342e3d831978a61fb5de2127da312fcb10720d65e621de5f9a4224c4a664567",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-document-",
+      "cases": [
+        "did-1.1/sage-resolution/library-document-delegation"
+      ]
+    },
+    {
+      "id": "cid10#capability-invocation.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "6342e3d831978a61fb5de2127da312fcb10720d65e621de5f9a4224c4a664567",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-document-",
+      "cases": [
+        "did-1.1/sage-resolution/library-document-invocation"
+      ]
+    },
+    {
+      "id": "cid10#multibase-0.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "be6c7963e9f1c60cc473ee12c6c6c59927824e02570837e953831f22905f1b39",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-codec-",
+      "cases": [
+        "did-1.1/sage-resolution/library-codec-P-256-public",
+        "did-1.1/sage-resolution/library-codec-P-384-public",
+        "did-1.1/sage-resolution/library-codec-Ed25519-public",
+        "did-1.1/sage-resolution/library-codec-BLS12-381-G2-public",
+        "did-1.1/sage-resolution/library-codec-SM2-public",
+        "did-1.1/sage-resolution/library-codec-P-256-secret",
+        "did-1.1/sage-resolution/library-codec-P-384-secret",
+        "did-1.1/sage-resolution/library-codec-Ed25519-secret",
+        "did-1.1/sage-resolution/library-codec-SM2-secret"
+      ]
+    },
+    {
+      "id": "cid10#multibase-0.4",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "b7c2f748bd77561620774f83ba09210dfe59d8eb5052eea0b81c5165905c9ba4",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-codec-",
+      "cases": [
+        "did-1.1/sage-resolution/library-codec-P-256-public",
+        "did-1.1/sage-resolution/library-codec-P-384-public",
+        "did-1.1/sage-resolution/library-codec-Ed25519-public",
+        "did-1.1/sage-resolution/library-codec-BLS12-381-G2-public",
+        "did-1.1/sage-resolution/library-codec-SM2-public",
+        "did-1.1/sage-resolution/library-codec-P-256-secret",
+        "did-1.1/sage-resolution/library-codec-P-384-secret",
+        "did-1.1/sage-resolution/library-codec-Ed25519-secret",
+        "did-1.1/sage-resolution/library-codec-SM2-secret"
+      ]
+    },
+    {
+      "id": "cid10#processing-errors.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "984a7270b76b9e227b326b8fc9ed54307f6776aeedb59abff2d4b26b86f9450e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-retrieval-",
+      "cases": [
+        "did-1.1/sage-resolution/library-retrieval-typed-zero",
+        "did-1.1/sage-resolution/library-retrieval-unauthorized-purpose",
+        "did-1.1/sage-resolution/library-retrieval-missing-method"
+      ]
+    },
+    {
+      "id": "cid10#processing-errors.3",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "7ae2625fe9e48392519c5e56d041870f457edb4a8d312d4dc1be942b9ab430df",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-retrieval-",
+      "cases": [
+        "did-1.1/sage-resolution/library-retrieval-typed-zero",
+        "did-1.1/sage-resolution/library-retrieval-unauthorized-purpose",
+        "did-1.1/sage-resolution/library-retrieval-missing-method"
+      ]
+    },
+    {
+      "id": "cid10#processing-errors.4",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "e2b5486a7a0e7993b498a60c22b9ad2c83f9cfe7d0cb939a05370a0816afbeba",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-retrieval-",
+      "cases": [
+        "did-1.1/sage-resolution/library-retrieval-typed-zero",
+        "did-1.1/sage-resolution/library-retrieval-unauthorized-purpose",
+        "did-1.1/sage-resolution/library-retrieval-missing-method"
+      ]
+    },
+    {
+      "id": "cid10#retrieve-verification-method.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text_sha256": "315501c59bcfd4bb17847cca9a9dc77c114fd2f9bc87f524af42ca0387982f48",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-retrieval-",
+      "cases": [
+        "did-1.1/sage-resolution/library-retrieval-typed-zero"
+      ]
+    },
+    {
+      "id": "cid10#retrieve-verification-method.11",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text_sha256": "256e2ad1ce51b208f0e2a577499f5ce640904b1e2c962b4fb1c4af78a5ead39c",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-retrieval-",
+      "cases": [
+        "did-1.1/sage-resolution/library-retrieval-unauthorized-purpose"
+      ]
+    },
+    {
+      "id": "cid10#retrieve-verification-method.12",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "322303c7d738ea31df36743725a167c4fff14c3dbeff5c449b7ee8a0d45b9d9c",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-retrieval-",
+      "cases": [
+        "did-1.1/sage-resolution/library-retrieval-authorized",
+        "did-1.1/sage-resolution/library-retrieval-authorized-options"
+      ]
+    },
+    {
+      "id": "cid10#retrieve-verification-method.2",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "be78a5d1a7ecb9d3bbdf3342fddefb2093422a8f12a7be843b07ecd632a96c89",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-retrieval-",
+      "cases": [
+        "did-1.1/sage-resolution/library-retrieval-authorized",
+        "did-1.1/sage-resolution/library-retrieval-authorized-options"
+      ]
+    },
+    {
+      "id": "cid10#retrieve-verification-method.4",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "6e8a72a4e9fe190972c723455178cd587fc12d766fff169adb4b8914734f5db4",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-retrieval-",
+      "cases": [
+        "did-1.1/sage-resolution/library-retrieval-authorized",
+        "did-1.1/sage-resolution/library-retrieval-authorized-options"
+      ]
+    },
+    {
+      "id": "cid10#retrieve-verification-method.7",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "9b7caf630f9544164fc788e01888b9a282f760397891ff9a0dd9863550d39fa7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-retrieval-",
+      "cases": [
+        "did-1.1/sage-resolution/library-retrieval-authorized",
+        "did-1.1/sage-resolution/library-retrieval-authorized-options"
+      ]
+    },
+    {
+      "id": "cid10#retrieve-verification-method.8",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text_sha256": "c1967ed81269de5af550362fb48cd9873cafdc6bd89877df62f8f654a6abf669",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-retrieval-",
+      "cases": [
+        "did-1.1/sage-resolution/library-retrieval-missing-method"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#did-syntax.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "449157aa0d02f365853c2ac8539e75534205e87175446647cb49b393ab594a84",
+      "baseline_verdict": "NOT_RUN",
+      "route": "parser-reference",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-syntax-",
+      "cases": [
+        "did-1.1/sage-resolution/library-syntax-did"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#did-url-syntax.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "05b66207f9795ae440c22d80af2271955360faba8c53e5420979506544f16201",
+      "baseline_verdict": "NOT_RUN",
+      "route": "parser-reference",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-syntax-",
+      "cases": [
+        "did-1.1/sage-resolution/library-syntax-did-url"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.6",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD NOT"
+      ],
+      "text_sha256": "f9355e8eaf65b5e3163816f5712bd93361fd93c49d4f03565428c0ec4584edd8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "jsonld-processing",
+      "generic_scope": "checked",
+      "expected_live_verdict": "FAIL",
+      "case_prefix": "/library-context-",
+      "cases": [
+        "did-1.1/sage-resolution/library-context-producer-unknown"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.8",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "8d49a479c5df31e1aca64bea1c6dcbe36ae3d9ef7200914e90fe749a12e377ee",
+      "baseline_verdict": "NOT_RUN",
+      "route": "jsonld-processing",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-context-",
+      "cases": [
+        "did-1.1/sage-resolution/library-context-consumer-unknown"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.9",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "eea864c38c21261a9759df7c03e0ba059ad002f58e24da5e80f3a368dd0ccb80",
+      "baseline_verdict": "NOT_RUN",
+      "route": "parser-reference",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-syntax-",
+      "cases": [
+        "did-1.1/sage-resolution/library-syntax-method-specific-id-colons"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#relative-did-urls.1",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "2a66cd72724473ab9a94109c7ec40404cbfce3fa3731411a4103a004ccade8f0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "parser-reference",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-syntax-",
+      "cases": [
+        "did-1.1/sage-resolution/library-syntax-relative-reference"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#relative-did-urls.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "42dce7ca547d4ca3014c32bd094ef9fc782639d08212ac91f6f2914ef4119e7f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "parser-reference",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-syntax-",
+      "cases": [
+        "did-1.1/sage-resolution/library-syntax-relative-reference"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#remote-resource-integrity.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "362f757d191084697f0b923682e2d6f1ac0b4c3d1c977333225d6b099b4a96c3",
+      "baseline_verdict": "NOT_RUN",
+      "route": "jsonld-processing",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-context-",
+      "cases": [
+        "did-1.1/sage-resolution/library-context-cache"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.10",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "f9e0836cbbd92958c432ffd652666ea8c975361f4c46600c9b373c66c549b488",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-client-",
+      "cases": [
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-true-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-true-options-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.11",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "17aedaede87e805032a73cadfabdc34f4c11c33c9cbe42ad33a93ad4c3302e95",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-client-",
+      "cases": [
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-false-options-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.12",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "0439b87debdb75d4b938da075374975b63d58d673db3745705d7cd88446720af",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-client-",
+      "cases": [
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-true-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-true-options-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.13",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "2465d7971d9dd8370b33cd0da068ce45efd17062b3735e3dcf05395e8082c87b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-client-",
+      "cases": [
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-true-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-true-options-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.14",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "81f66c0b02a444439194166ba6a3f121d6a3cbe50f688fcc29c794861e2b880f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-client-",
+      "cases": [
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-true-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-true-options-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.15",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "93ab402ce7c621d3b5606a0b2c574f406123be9015e161cfb173fb81cb04acb0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-client-",
+      "cases": [
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-true-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-true-options-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.16",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "f2055b76f6ad5ea0441792349ebea71c96a3d5790974044bf391300feb46b5e1",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-client-",
+      "cases": [
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-true-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-true-options-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.17",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "0ba4bcc0a16731c6e074b6044dbf27bfb8beb6291795cec659a65905e035bdce",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-client-",
+      "cases": [
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-true-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-true-options-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.18",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "5470f257f24f830ac26cbc20982c95a5a36a5bc4d6927e68415e31137f1f71c9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-client-",
+      "cases": [
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-true-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-true-options-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.19",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "81f66c0b02a444439194166ba6a3f121d6a3cbe50f688fcc29c794861e2b880f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-client-",
+      "cases": [
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-true-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-true-options-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.20",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "2d583b69d1646816b2b7801184dcfed82c19d120c319175773d106f6d3438616",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-client-",
+      "cases": [
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-true-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-true-options-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.21",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "d1829dd683b265155c090c184d945e0e05e55a763d9baaadd721d2383ed3355f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-client-",
+      "cases": [
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-true-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-true-options-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.4",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "f547f49ca0a340813516ade058edeca39ca8945ff91da8b0f08c9a3add5a090a",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-client-",
+      "cases": [
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-true-options-true",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-true-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-true-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-true-options-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.5",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "5eb60678c2d6003e60496861892b4056e3df23e4ae72d9de2e6bdbf76158f52e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-client-",
+      "cases": [
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-true-options-true",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-true-options-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.6",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "2d8f4db9c0177efdb962ea04b928dbdf2f3c2ac038e32f193853eeea6ad726b4",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-client-",
+      "cases": [
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-true-options-true",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-true-options-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.7",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "10ad4b3cadef7362de1461c505660894e7631b6dfb1555d848a6cd23d7134597",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-client-",
+      "cases": [
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-false-options-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.8",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "0ec928067814ff1440a74a70aeb0ae5fe07cdef8b2cb4d3c746dd9f7f15d6fed",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-client-",
+      "cases": [
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-false-direct-true-options-true",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-resolve-post-true-direct-true-options-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.9",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "02174fb29938e20a8f6c4c91b3d54f88a9fedd7c20487d036fb49cd0dd015a36",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-client-",
+      "cases": [
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-false-direct-true-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-false-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-false-options-true",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-true-options-false",
+        "did-1.1/sage-resolution/library-client-dereference-post-true-direct-true-options-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.4",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "8b84b4e7bc3ec1639b23e75fb5595bd1965593a25d3832c837ff0c0dedda5fd3",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/library-client-",
+      "cases": [
+        "did-1.1/sage-resolution/library-client-metadata-media-did",
+        "did-1.1/sage-resolution/library-client-metadata-media-did+json"
+      ]
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 130,
-    "FAIL": 1,
+    "PASS": 190,
+    "FAIL": 2,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 2,
     "ERROR": 0,
-    "NOT_RUN": 353
+    "NOT_RUN": 292
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 128,
+      "PASS": 185,
       "FAIL": 0,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 306
+      "NOT_RUN": 249
     },
     "recommendation": {
       "statements": 50,
-      "PASS": 2,
-      "FAIL": 1,
+      "PASS": 5,
+      "FAIL": 2,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 0,
       "ERROR": 0,
-      "NOT_RUN": 47
+      "NOT_RUN": 43
     }
   },
-  "expected_live_cases": 170
+  "expected_live_cases": 215
 }

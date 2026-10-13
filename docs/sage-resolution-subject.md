@@ -28,11 +28,11 @@ certificate. They contact no agent, MCP, RPC or deployed registry.
 | Profile | Cases | Requirement PASS | Recommendation PASS | NOT_RUN |
 |---|---:|---:|---:|---:|
 | DID Core 1.0 | 16 | 33 | 0 | 173 |
-| DID 1.1 with CID and Resolution publications | 170 | 128 | 2 | 353 |
+| DID 1.1 with CID and Resolution publications | 215 | 185 | 5 | 292 |
 
 There are no requirement-level FAIL or ERROR statements in these observations.
-The fresh DID 1.1 resolution scope retains one recommendation FAIL for missing
-JWK alg. This is independent of the separate projection finding. The recommendation
+The fresh DID 1.1 resolution scope retains two recommendation FAILs: missing
+JWK alg and default JSON-LD production of an undefined root term. This is independent of the separate projection finding. The earlier recommendation
 PASS statements cover the selected resolution Accept option and the returned
 contentType for the actual selected JSON key in an HTTP dereferencing result.
 This does not replace the
@@ -742,9 +742,25 @@ production-and-consumption.12 now passes only on these selected context output
 conditions. It does not establish all invalid DID/document rejection, every
 schema, JSON-LD processing, remote contexts, authority, resolver ingress,
 downstream publication, or operational expiration/revocation non-use policy.
-DID 1.1 now has 170 cases, 128 requirement and two recommendation passes, one
+At that previous boundary DID 1.1 had 170 cases, 128 requirement and two recommendation passes, one
 alg recommendation failure, two inapplicable statements and 353 NOT_RUN
 (306 requirements and 47 recommendations). All 416 original rows remain as
 353 pending and 63 observed (61 PASS, one NOT_APPLICABLE and one FAIL), with
 original fields, baseline and routes preserved. Core 1.0 and projection remain
 separate; existing implementation findings remain unchanged.
+
+## Batched selected library actors
+
+The complete [audit of 353 remaining clauses](sage-resolution-batch-review.md) supplies per-id actor/precondition/proof requirements and no verdict. The new batch adds 45 cases and fresh observations for 61 of those clauses. Core 1.0 remains unchanged. DID 1.1 now has 215 cases, 185 requirement and five recommendation passes, two recommendation failures, two inapplicable statements and 292 NOT_RUN (249 requirements, 43 recommendations). Full standard conformity remains NOT_ESTABLISHED.
+
+Parser evidence calls the pinned Parse/ParseURL/ParseReference and DIDURL.Resolve operations against literal ABNF and RFC3986 controls. These are selected shared-library actors, not SAGE method policy or resolver invalid-string ingress. Multikey evidence selects actual codec rows by name/role, records their returned metadata, and separately calls encode and decode with independent literal prefixes, lengths and base58-btc strings. Published public point vectors satisfy compressed-point input preconditions; public scalar/seed test bytes exercise secret-row encoding without signing or operational custody. Equivalent-output permissions support only external encoding contracts, not every internal arithmetic step. Conflicting BLS secret clauses .20/.21 remain pending.
+
+Actual universal.Client makes all sixteen GET/POST, resolve/dereference, full/direct and option/no-option requests. A passive RoundTripper reads GetBody copies; an actual universal handler delegates through passive function wrappers to the unchanged SAGE resolver. Endpoint, request bytes, exact native input/options/result and consumer calls are separate evidence. Options are captured before delegation and capture failures are retained. Two controlled full-result replies differ only in declared document media type and cause actual 1.1/1.0 consumption; these replies are explicitly not SAGE server output and have no native resolver invocation. Owned TLS does not establish production trust or mutual authentication.
+
+Relying-party evidence uses the actual SAGE dereferencer and an explicit fixture clock of 1800000000. It preserves primary URL/options, document getters, selected method and actual errors.As problem objects serialized unchanged. Typed zero is passed to the actual native relying party; adapter parser failures cannot earn invalid-input PASS. Unauthorized purpose and absent method are ordinary owned-fixture unit/runtime scenarios. Mandatory refusal, CID type vocabulary and human title/detail recommendations are judged separately. Mixed MUST-raise/SHOULD-type clauses cover mandatory refusal and archive their advisory type diagnostically. Unreviewed nonempty prose is NOT_SUPPORTED rather than automatically invalid. No recursive-map walk, forged id/controller branch, authority or cryptographic-use proof is implied.
+
+Six direct consumer pairs validate present JWK/Multikey type, public Multibase, alsoKnownAs URI set and nonempty capability relationships. Each accepted property is preserved; the paired negative changes only one independently validated field. They do not establish support for those fields in current SAGE registry records or turn optional absence into PASS.
+
+The independent context oracle was fetched from [W3C's explicit v1.1rc1 file](https://www.w3.org/ns/did-vocab/v1.1rc1.jsonld); its exact SHA256 is the pinned publication's ea216ecc1cb02cd39b693dba2250141e270ba0bf95890be107dd9a9e8e43de85. The ambiguous /ns/did/v1.1 URL returned a Multiple Choices page during preparation; that page is not used as an oracle. Actual local BaseContext API bytes/URL are checked against the frozen file. This verifies local cached availability/integrity, not consumer network wiring or full JSON-LD expansion/RDF. The frozen context independently has neither inspectionNote nor @vocab. The selected default consumer drops that root term; the default producer returns it and therefore records the new recommendation FAIL. Strict producer options are not silently enabled.
+
+The historical inventory keeps all 416 ids, baseline fields and previous observations unchanged in meaning. Cases lacking actual evidence remain NOT_RUN. New library/fixture operations do not establish canonical storage, legitimate controllers, Update history, W3C registration or missing SAGE contract/service branches. These stay in the existing follow-up plan.
