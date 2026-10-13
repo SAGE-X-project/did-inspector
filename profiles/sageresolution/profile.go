@@ -99,6 +99,9 @@ func Profile(name string) (core.Profile, error) {
 	appendRepresentationCases(&p, rows)
 	appendPipelineCases(&p, rows)
 	appendConsumptionBoundaryCases(&p, rows)
+	if err := appendConsumerConformanceCases(&p); err != nil {
+		return p, err
+	}
 	appendBranchCases(&p, rows)
 	if err := appendWireCases(&p, rows); err != nil {
 		return p, err
