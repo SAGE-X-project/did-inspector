@@ -122,10 +122,7 @@ func judgeNativeResult(o Result, s resultScenario, input string) []core.Observat
 	}
 	return out
 }
-func appendNativeResultCases(p *core.Profile, rows []sageprojection.Record) {
-	if p.Name != "did-1.1" {
-		return
-	}
+func resultScenarios(rows []sageprojection.Record) []resultScenario {
 	var scenarios []resultScenario
 	for i, record := range rows {
 		if record.State == "deactivated" {
@@ -140,7 +137,14 @@ func appendNativeResultCases(p *core.Profile, rows []sageprojection.Record) {
 		{name: "stale-source", request: Request{Function: "resolve", Input: rows[0].DID, Accept: "application/did", SourceFailure: "record.stale"}, errorKeyword: "INTERNAL_ERROR"},
 		{name: "unsupported-accept", request: Request{Function: "resolve", Input: rows[0].DID, Accept: "text/html"}, errorKeyword: "FEATURE_NOT_SUPPORTED"},
 	}...)
-	for _, s := range scenarios {
+	return scenarios
+}
+
+func appendNativeResultCases(p *core.Profile, rows []sageprojection.Record) {
+	if p.Name != "did-1.1" {
+		return
+	}
+	for _, s := range resultScenarios(rows) {
 		record := rows[s.record]
 		ids := resultStatements(s)
 		p.Cases = append(p.Cases, core.Case{ID: p.Name + "/sage-resolution/native-result-" + s.name, Profile: p.Name, Statements: ids, Run: func(ctx context.Context, target core.Subject) []core.Observation {

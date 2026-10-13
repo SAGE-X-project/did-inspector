@@ -77,7 +77,7 @@
   "categories": {
     "additional-data-or-feature": 117,
     "additional-observer-operation": 106,
-    "document-or-applicability-review": 109,
+    "document-or-applicability-review": 105,
     "existing-observation": 55,
     "existing-operation-new-scenario": 11,
     "operational-or-authority-evidence": 4
@@ -4103,50 +4103,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "res10-crd20261001#metadata-structure.1",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "189c41865c0488ae6c20c1891416a9515a79d26f815947ab84a3d83afbc6c951",
-      "baseline_verdict": "NOT_RUN",
-      "route": "metadata-boundary",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#metadata-structure.2",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "6eaae9a827fda6b771fc4d9cdf12bf60efe5505745568cc84009e28851a4d8c1",
-      "baseline_verdict": "NOT_RUN",
-      "route": "metadata-boundary",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#metadata-structure.3",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "f4de5c789722a41f69f9c866d0ddf8328de42437999fee2270db86deae8a9812",
-      "baseline_verdict": "NOT_RUN",
-      "route": "metadata-boundary",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#metadata-structure.4",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "25761f1e3b4c8736c0d402ae64fb64c6d29fcf2c60cb0c3de8ac1c0ee95cfbf8",
-      "baseline_verdict": "NOT_RUN",
-      "route": "metadata-boundary",
-      "generic_scope": "not-checkable"
-    },
-    {
       "id": "res10-crd20261001#metadata-structure.5",
       "level": "requirement",
       "keywords": [
@@ -4491,7 +4447,8 @@
         "did-1.1/sage-resolution/native-result-active-record-2",
         "did-1.1/sage-resolution/native-result-active-record-3",
         "did-1.1/sage-resolution/native-result-active-record-5"
-      ]
+      ],
+      "case_prefix": "/native-result-"
     },
     {
       "id": "res10-crd20261001#resolving-algorithm.1",
@@ -4506,7 +4463,8 @@
       "expected_live_verdict": "PASS",
       "cases": [
         "did-1.1/sage-resolution/native-result-invalid-input"
-      ]
+      ],
+      "case_prefix": "/native-result-"
     },
     {
       "id": "res10-crd20261001#resolving-algorithm.18",
@@ -4519,7 +4477,8 @@
       "expected_live_verdict": "PASS",
       "cases": [
         "did-1.1/sage-resolution/native-result-missing-record"
-      ]
+      ],
+      "case_prefix": "/native-result-"
     },
     {
       "id": "res10-crd20261001#resolving-algorithm.20",
@@ -4532,7 +4491,8 @@
       "expected_live_verdict": "PASS",
       "cases": [
         "did-1.1/sage-resolution/native-result-missing-record"
-      ]
+      ],
+      "case_prefix": "/native-result-"
     },
     {
       "id": "res10-crd20261001#resolving-algorithm.21",
@@ -4545,7 +4505,8 @@
       "expected_live_verdict": "PASS",
       "cases": [
         "did-1.1/sage-resolution/native-result-missing-record"
-      ]
+      ],
+      "case_prefix": "/native-result-"
     },
     {
       "id": "res10-crd20261001#resolving-algorithm.3",
@@ -4558,7 +4519,8 @@
       "expected_live_verdict": "PASS",
       "cases": [
         "did-1.1/sage-resolution/native-result-invalid-input"
-      ]
+      ],
+      "case_prefix": "/native-result-"
     },
     {
       "id": "res10-crd20261001#resolving-algorithm.4",
@@ -4571,7 +4533,8 @@
       "expected_live_verdict": "PASS",
       "cases": [
         "did-1.1/sage-resolution/native-result-invalid-input"
-      ]
+      ],
+      "case_prefix": "/native-result-"
     },
     {
       "id": "res10-crd20261001#resolving-algorithm.5",
@@ -4586,7 +4549,8 @@
       "expected_live_verdict": "PASS",
       "cases": [
         "did-1.1/sage-resolution/native-result-unsupported-method"
-      ]
+      ],
+      "case_prefix": "/native-result-"
     },
     {
       "id": "res10-crd20261001#resolving-algorithm.6",
@@ -4599,7 +4563,8 @@
       "expected_live_verdict": "PASS",
       "cases": [
         "did-1.1/sage-resolution/native-result-unsupported-method"
-      ]
+      ],
+      "case_prefix": "/native-result-"
     },
     {
       "id": "res10-crd20261001#resolving-algorithm.7",
@@ -4612,7 +4577,8 @@
       "expected_live_verdict": "PASS",
       "cases": [
         "did-1.1/sage-resolution/native-result-unsupported-method"
-      ]
+      ],
+      "case_prefix": "/native-result-"
     },
     {
       "id": "res10-crd20261001#resolving-algorithm.8",
@@ -4625,7 +4591,8 @@
       "expected_live_verdict": "PASS",
       "cases": [
         "did-1.1/sage-resolution/native-result-unsupported-method"
-      ]
+      ],
+      "case_prefix": "/native-result-"
     },
     {
       "id": "res10-crd20261001#resolving.1",
@@ -4644,7 +4611,8 @@
         "did-1.1/sage-resolution/native-result-active-record-2",
         "did-1.1/sage-resolution/native-result-active-record-3",
         "did-1.1/sage-resolution/native-result-active-record-5"
-      ]
+      ],
+      "case_prefix": "/native-result-"
     },
     {
       "id": "res10-crd20261001#resolving.4",
@@ -4669,7 +4637,8 @@
         "did-1.1/sage-resolution/native-result-missing-record",
         "did-1.1/sage-resolution/native-result-stale-source",
         "did-1.1/sage-resolution/native-result-unsupported-accept"
-      ]
+      ],
+      "case_prefix": "/native-result-"
     },
     {
       "id": "res10-crd20261001#resolving.5",
@@ -4693,27 +4662,184 @@
         "did-1.1/sage-resolution/native-result-missing-record",
         "did-1.1/sage-resolution/native-result-stale-source",
         "did-1.1/sage-resolution/native-result-unsupported-accept"
+      ],
+      "case_prefix": "/native-result-"
+    },
+    {
+      "id": "res10-crd20261001#metadata-structure.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "189c41865c0488ae6c20c1891416a9515a79d26f815947ab84a3d83afbc6c951",
+      "baseline_verdict": "NOT_RUN",
+      "route": "metadata-boundary",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-metadata-",
+      "cases": [
+        "did-1.1/sage-resolution/native-metadata-active-record-0-resolution",
+        "did-1.1/sage-resolution/native-metadata-active-record-0-document",
+        "did-1.1/sage-resolution/native-metadata-active-record-1-resolution",
+        "did-1.1/sage-resolution/native-metadata-active-record-1-document",
+        "did-1.1/sage-resolution/native-metadata-active-record-2-resolution",
+        "did-1.1/sage-resolution/native-metadata-active-record-2-document",
+        "did-1.1/sage-resolution/native-metadata-active-record-3-resolution",
+        "did-1.1/sage-resolution/native-metadata-active-record-3-document",
+        "did-1.1/sage-resolution/native-metadata-active-record-5-resolution",
+        "did-1.1/sage-resolution/native-metadata-active-record-5-document",
+        "did-1.1/sage-resolution/native-metadata-invalid-input-resolution",
+        "did-1.1/sage-resolution/native-metadata-invalid-input-document",
+        "did-1.1/sage-resolution/native-metadata-unsupported-method-resolution",
+        "did-1.1/sage-resolution/native-metadata-unsupported-method-document",
+        "did-1.1/sage-resolution/native-metadata-missing-record-resolution",
+        "did-1.1/sage-resolution/native-metadata-missing-record-document",
+        "did-1.1/sage-resolution/native-metadata-stale-source-resolution",
+        "did-1.1/sage-resolution/native-metadata-stale-source-document",
+        "did-1.1/sage-resolution/native-metadata-unsupported-accept-resolution",
+        "did-1.1/sage-resolution/native-metadata-unsupported-accept-document",
+        "did-1.1/sage-resolution/native-metadata-dereference-method-resolution",
+        "did-1.1/sage-resolution/native-metadata-dereference-method-document",
+        "did-1.1/sage-resolution/native-metadata-dereference-missing-resolution",
+        "did-1.1/sage-resolution/native-metadata-dereference-missing-document"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#metadata-structure.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "6eaae9a827fda6b771fc4d9cdf12bf60efe5505745568cc84009e28851a4d8c1",
+      "baseline_verdict": "NOT_RUN",
+      "route": "metadata-boundary",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-metadata-",
+      "cases": [
+        "did-1.1/sage-resolution/native-metadata-active-record-0-resolution",
+        "did-1.1/sage-resolution/native-metadata-active-record-0-document",
+        "did-1.1/sage-resolution/native-metadata-active-record-1-resolution",
+        "did-1.1/sage-resolution/native-metadata-active-record-1-document",
+        "did-1.1/sage-resolution/native-metadata-active-record-2-resolution",
+        "did-1.1/sage-resolution/native-metadata-active-record-2-document",
+        "did-1.1/sage-resolution/native-metadata-active-record-3-resolution",
+        "did-1.1/sage-resolution/native-metadata-active-record-3-document",
+        "did-1.1/sage-resolution/native-metadata-active-record-5-resolution",
+        "did-1.1/sage-resolution/native-metadata-active-record-5-document",
+        "did-1.1/sage-resolution/native-metadata-invalid-input-resolution",
+        "did-1.1/sage-resolution/native-metadata-invalid-input-document",
+        "did-1.1/sage-resolution/native-metadata-unsupported-method-resolution",
+        "did-1.1/sage-resolution/native-metadata-unsupported-method-document",
+        "did-1.1/sage-resolution/native-metadata-missing-record-resolution",
+        "did-1.1/sage-resolution/native-metadata-missing-record-document",
+        "did-1.1/sage-resolution/native-metadata-stale-source-resolution",
+        "did-1.1/sage-resolution/native-metadata-stale-source-document",
+        "did-1.1/sage-resolution/native-metadata-unsupported-accept-resolution",
+        "did-1.1/sage-resolution/native-metadata-unsupported-accept-document",
+        "did-1.1/sage-resolution/native-metadata-dereference-method-resolution",
+        "did-1.1/sage-resolution/native-metadata-dereference-method-document",
+        "did-1.1/sage-resolution/native-metadata-dereference-missing-resolution",
+        "did-1.1/sage-resolution/native-metadata-dereference-missing-document"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#metadata-structure.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "f4de5c789722a41f69f9c866d0ddf8328de42437999fee2270db86deae8a9812",
+      "baseline_verdict": "NOT_RUN",
+      "route": "metadata-boundary",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-metadata-",
+      "cases": [
+        "did-1.1/sage-resolution/native-metadata-active-record-0-resolution",
+        "did-1.1/sage-resolution/native-metadata-active-record-0-document",
+        "did-1.1/sage-resolution/native-metadata-active-record-1-resolution",
+        "did-1.1/sage-resolution/native-metadata-active-record-1-document",
+        "did-1.1/sage-resolution/native-metadata-active-record-2-resolution",
+        "did-1.1/sage-resolution/native-metadata-active-record-2-document",
+        "did-1.1/sage-resolution/native-metadata-active-record-3-resolution",
+        "did-1.1/sage-resolution/native-metadata-active-record-3-document",
+        "did-1.1/sage-resolution/native-metadata-active-record-5-resolution",
+        "did-1.1/sage-resolution/native-metadata-active-record-5-document",
+        "did-1.1/sage-resolution/native-metadata-invalid-input-resolution",
+        "did-1.1/sage-resolution/native-metadata-invalid-input-document",
+        "did-1.1/sage-resolution/native-metadata-unsupported-method-resolution",
+        "did-1.1/sage-resolution/native-metadata-unsupported-method-document",
+        "did-1.1/sage-resolution/native-metadata-missing-record-resolution",
+        "did-1.1/sage-resolution/native-metadata-missing-record-document",
+        "did-1.1/sage-resolution/native-metadata-stale-source-resolution",
+        "did-1.1/sage-resolution/native-metadata-stale-source-document",
+        "did-1.1/sage-resolution/native-metadata-unsupported-accept-resolution",
+        "did-1.1/sage-resolution/native-metadata-unsupported-accept-document",
+        "did-1.1/sage-resolution/native-metadata-dereference-method-resolution",
+        "did-1.1/sage-resolution/native-metadata-dereference-method-document",
+        "did-1.1/sage-resolution/native-metadata-dereference-missing-resolution",
+        "did-1.1/sage-resolution/native-metadata-dereference-missing-document"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#metadata-structure.4",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "25761f1e3b4c8736c0d402ae64fb64c6d29fcf2c60cb0c3de8ac1c0ee95cfbf8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "metadata-boundary",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-metadata-",
+      "cases": [
+        "did-1.1/sage-resolution/native-metadata-active-record-0-resolution",
+        "did-1.1/sage-resolution/native-metadata-active-record-0-document",
+        "did-1.1/sage-resolution/native-metadata-active-record-1-resolution",
+        "did-1.1/sage-resolution/native-metadata-active-record-1-document",
+        "did-1.1/sage-resolution/native-metadata-active-record-2-resolution",
+        "did-1.1/sage-resolution/native-metadata-active-record-2-document",
+        "did-1.1/sage-resolution/native-metadata-active-record-3-resolution",
+        "did-1.1/sage-resolution/native-metadata-active-record-3-document",
+        "did-1.1/sage-resolution/native-metadata-active-record-5-resolution",
+        "did-1.1/sage-resolution/native-metadata-active-record-5-document",
+        "did-1.1/sage-resolution/native-metadata-invalid-input-resolution",
+        "did-1.1/sage-resolution/native-metadata-invalid-input-document",
+        "did-1.1/sage-resolution/native-metadata-unsupported-method-resolution",
+        "did-1.1/sage-resolution/native-metadata-unsupported-method-document",
+        "did-1.1/sage-resolution/native-metadata-missing-record-resolution",
+        "did-1.1/sage-resolution/native-metadata-missing-record-document",
+        "did-1.1/sage-resolution/native-metadata-stale-source-resolution",
+        "did-1.1/sage-resolution/native-metadata-stale-source-document",
+        "did-1.1/sage-resolution/native-metadata-unsupported-accept-resolution",
+        "did-1.1/sage-resolution/native-metadata-unsupported-accept-document",
+        "did-1.1/sage-resolution/native-metadata-dereference-method-resolution",
+        "did-1.1/sage-resolution/native-metadata-dereference-method-document",
+        "did-1.1/sage-resolution/native-metadata-dereference-missing-resolution",
+        "did-1.1/sage-resolution/native-metadata-dereference-missing-document"
       ]
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 82,
+    "PASS": 86,
     "FAIL": 0,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 2,
     "ERROR": 0,
-    "NOT_RUN": 402
+    "NOT_RUN": 398
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 80,
+      "PASS": 84,
       "FAIL": 0,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 354
+      "NOT_RUN": 350
     },
     "recommendation": {
       "statements": 50,
@@ -4725,5 +4851,5 @@
       "NOT_RUN": 48
     }
   },
-  "expected_live_cases": 86
+  "expected_live_cases": 110
 }

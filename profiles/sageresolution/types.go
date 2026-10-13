@@ -49,3 +49,27 @@ type Subject interface {
 	core.Subject
 	InspectResolution(context.Context, sageprojection.Record, Request) (Result, error)
 }
+
+// SerializedMetadata preserves a direct subject serializer call, including
+// failures. Bytes are not RawMessage: malformed output must remain archivable.
+type SerializedMetadata struct {
+	Serializer string `json:"serializer"`
+	Bytes      []byte `json:"bytes"`
+	Error      string `json:"error,omitempty"`
+}
+
+// MetadataResult keeps resolution/dereferencing metadata and document or
+// dereferenced-content metadata, with their independent
+// serialization outcomes. It carries no subject validation verdict.
+type MetadataResult struct {
+	Resolution SerializedMetadata `json:"resolution"`
+	Document   SerializedMetadata `json:"document"`
+	SageCode   string             `json:"sage_code,omitempty"`
+}
+
+// MetadataSubject exposes fresh native 1.1 output serialization, independently
+// of adapter JSON capture, HTTP bindings and legacy compatibility functions.
+type MetadataSubject interface {
+	core.Subject
+	InspectMetadata(context.Context, sageprojection.Record, Request) (MetadataResult, error)
+}
