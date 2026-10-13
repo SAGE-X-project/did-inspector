@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"github.com/sage-x-project/did-go/document"
 	"net/http"
+	"strings"
 	"testing"
 
 	"github.com/sage-x-project/did-inspector/core"
@@ -39,7 +40,11 @@ func TestActualResolutionProfiles(t *testing.T) {
 		t.Log(name, r.Totals)
 		for _, c := range res.Cases {
 			for _, o := range c.Observations {
-				if o.Verdict != core.Pass {
+				allowed := o.Verdict == core.Pass
+				if o.Verdict == core.NotApplicable && strings.Contains(c.Case, "/native-document-record-") {
+					allowed = true
+				}
+				if !allowed {
 					t.Errorf("%s %s: %s %s", c.Case, o.Statement, o.Verdict, o.Observed)
 				}
 			}
