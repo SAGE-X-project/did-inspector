@@ -165,13 +165,15 @@ jobs:
           import base64, json, os
           from pathlib import Path
           root=Path(os.environ['RUNNER_TEMP'])/'sage-reports'
-          for name,passed,pending,cases in [('did-core-1.0',33,173,16),('did-1.1',213,269,238)]:
+          for name,passed,pending,cases in [('did-core-1.0',33,173,16),('did-1.1',215,263,256)]:
               report=json.loads((root/('resolution-'+name+'.json')).read_text())
               assert report['subject']['name']=='did-go/advanced/sage-resolution'
               assert report['subject']['revision']=='2ef282b40ccfe243c6cf3b1c05594e02171126cc'
-              assert report['totals']['FAIL']==(2 if name=='did-1.1' else 0) and report['totals']['ERROR']==0
+              assert report['totals']['FAIL']==(6 if name=='did-1.1' else 0) and report['totals']['ERROR']==0
               assert report['totals']['PASS']==passed and report['totals']['NOT_RUN']==pending
-              assert report['totals_by_level']['requirement']['PASS']==(33 if name=='did-core-1.0' else 204)
+              assert report['totals_by_level']['requirement']['PASS']==(33 if name=='did-core-1.0' else 206)
+              required_failures={row['id'] for row in report['statements'] if row['level']=='requirement' and row['verdict'] in ['FAIL','ERROR']}
+              assert required_failures==({'cid10#verification-methods.9','cid10#verification-methods.11','cid10#conformance.2','did11-cr20260305#production-and-consumption.18'} if name=='did-1.1' else set())
               raw=json.loads((root/('resolution-'+name+'-raw.json')).read_text())
               assert len(raw['cases'])==cases and raw['subject']==report['subject']
               assert report['totals']['NOT_APPLICABLE']==(2 if name=='did-1.1' else 0)
@@ -228,7 +230,7 @@ jobs:
                       assert obs['verdict']==('FAIL' if obs['statement']=='cid10#JsonWebKey.7' else 'PASS')
                       assert obs['input'] and obs['observed']
               if name=='did-1.1':
-                  failures=[row for row in report['statements'] if row['verdict']=='FAIL']
+                  failures=[row for row in report['statements'] if row['verdict']=='FAIL' and row['level']=='recommendation']
                   assert len(failures)==2 and {(row['id'],row['level']) for row in failures}=={('cid10#JsonWebKey.7','recommendation'),('did11-cr20260305#json-ld-processors.6','recommendation')}
               representations=[c for c in raw['cases'] if '/native-representation-' in c['case'] and '/native-representation-input-' not in c['case']]
               assert len(representations)==(5 if name=='did-1.1' else 0)
@@ -502,25 +504,28 @@ jobs:
           assert report['inspector']['revision']==os.environ['GITHUB_SHA']
           assert inventory['expected_live_totals']==report['totals']
           assert inventory['expected_live_totals_by_level']==report['totals_by_level']
-          assert inventory['expected_live_cases']==len(raw['cases'])==238
+          assert inventory['expected_live_cases']==len(raw['cases'])==256
           pending=inventory['pending']
           observed=inventory['observed_since_baseline']
           ids=[row['id'] for row in pending]
-          assert len(ids)==len(set(ids))==269
+          assert len(ids)==len(set(ids))==263
           assert set(ids)=={row['id'] for row in report['statements'] if row['verdict']=='NOT_RUN'}
           allrows=pending+observed
           allids=[row['id'] for row in allrows]
           assert len(allids)==len(set(allids))==inventory['baseline']['totals']['NOT_RUN']==416
           assert hashlib.sha256(json.dumps(sorted(allids),separators=(',',':')).encode()).hexdigest()==inventory['baseline']['pending_ids_sha256']
-          assert len(observed)==147
-          assert collections.Counter(row['expected_live_verdict'] for row in observed)=={'PASS':144,'NOT_APPLICABLE':1,'FAIL':2}
+          assert len(observed)==153
+          assert collections.Counter(row['expected_live_verdict'] for row in observed)=={'PASS':146,'NOT_APPLICABLE':1,'FAIL':6}
           live={row['id']:row['verdict'] for row in report['statements']}
           cases={case['case']:case for case in raw['cases']}
           assert len(cases)==len(raw['cases'])
           for row in observed:
-              assert row['case_prefix'] in ['/native-result-','/native-metadata-','/native-branch-','/wire-branch-','/native-key-fields-','/native-representation-','/native-pipeline-','/native-production-root-','/native-consumer-','/native-consumer-conformance-','/native-typed-production-','/native-typed-consumption-','/native-representation-input-','/native-producer-context-','/library-syntax-','/library-codec-','/library-client-','/library-retrieval-','/library-document-','/library-context-','/native-contract-']
+              assert row['case_prefix'] in ['/native-result-','/native-metadata-','/native-branch-','/wire-branch-','/native-key-fields-','/native-representation-','/native-pipeline-','/native-production-root-','/native-consumer-','/native-consumer-conformance-','/native-typed-production-','/native-typed-consumption-','/native-representation-input-','/native-producer-context-','/library-syntax-','/library-codec-','/library-client-','/library-retrieval-','/library-document-','/library-context-','/native-contract-','/key-policy-','/key-policy-format-']
               assert live[row['id']]==row['expected_live_verdict']
-              expectedcases={case['case'] for case in raw['cases'] if row['case_prefix'] in case['case'] and any(o['statement']==row['id'] for o in case['observations'])}
+              prefixes=row.get('case_prefixes',[row['case_prefix']])
+              assert prefixes and len(prefixes)==len(set(prefixes)) and row['case_prefix'] in prefixes
+              if 'case_prefixes' in row: assert row['id'] in ['cid10#conformance.2','did11-cr20260305#production-and-consumption.18'] and prefixes==['/native-consumer-conformance-','/key-policy-format-']
+              expectedcases={case['case'] for case in raw['cases'] if any(prefix in case['case'] for prefix in prefixes) and any(o['statement']==row['id'] for o in case['observations'])}
               assert row['cases'] and len(row['cases'])==len(set(row['cases']))
               assert set(row['cases'])==expectedcases
               matches=[]
@@ -552,13 +557,14 @@ jobs:
                   categories[route['category']]+=1
           assert dict(categories)==inventory['categories']
           assert collections.Counter(row['level'] for row in allrows)=={'requirement':368,'recommendation':48}
-          assert collections.Counter(row['level'] for row in pending)=={'requirement':230,'recommendation':39}
-          print('Verified 269 pending and 147 newly observed clauses; all 416 historical ids retained')
+          assert collections.Counter(row['level'] for row in pending)=={'requirement':224,'recommendation':39}
+          print('Verified 263 pending and 153 newly observed clauses; all 416 historical ids retained')
           PYTHON
       - name: Check complete batched library evidence
         run: |
           python3 ../../scripts/check_sage_batch.py --reports "$RUNNER_TEMP/sage-reports"
           python3 ../../scripts/check_sage_contracts.py --reports "$RUNNER_TEMP/sage-reports"
+          python3 ../../scripts/check_sage_policy.py --reports "$RUNNER_TEMP/sage-reports"
           SAGE_BATCH_REPORT_DIR="$RUNNER_TEMP/sage-reports" python3 -m unittest discover -s ../../scripts -p 'test_*.py'
       - name: Preserve independent profile and raw observation artifacts
         if: always()

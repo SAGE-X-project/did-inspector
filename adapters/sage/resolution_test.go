@@ -58,12 +58,15 @@ func TestActualResolutionProfiles(t *testing.T) {
 				if o.Verdict == core.Fail && strings.Contains(c.Case, "/library-context-producer-") && o.Statement == "did11-cr20260305#json-ld-processors.6" {
 					allowed = true
 				}
+				if o.Verdict == core.Fail && strings.Contains(c.Case, "/key-policy-format-") && (o.Statement == "cid10#verification-methods.9" || o.Statement == "cid10#verification-methods.11" || o.Statement == "cid10#conformance.2" || o.Statement == "did11-cr20260305#production-and-consumption.18") {
+					allowed = true
+				}
 				if !allowed {
 					t.Errorf("%s %s: %s %s", c.Case, o.Statement, o.Verdict, o.Observed)
 				}
 			}
 		}
-		if len(r.GateFailures()) != 0 {
+		if !expectedResolutionGate(r) {
 			t.Fatal(r.GateFailures())
 		}
 	}
@@ -188,4 +191,23 @@ func TestUnexpectedSourceIsAnOrdinaryErrorAndNotAbsence(t *testing.T) {
 	if err != nil || out.HasContent || out.SageCode != "record.unreachable" || !strings.Contains(string(out.Metadata), "https://www.w3.org/ns/did#INTERNAL_ERROR") {
 		t.Fatal(out, err)
 	}
+}
+
+func expectedResolutionGate(r report.Report) bool {
+	expected := map[string]bool{}
+	if r.Profile == "did-1.1" {
+		for _, id := range []string{"cid10#verification-methods.9", "cid10#verification-methods.11", "cid10#conformance.2", "did11-cr20260305#production-and-consumption.18"} {
+			expected[id] = true
+		}
+	}
+	actual := r.GateFailures()
+	if len(actual) != len(expected) {
+		return false
+	}
+	for _, s := range actual {
+		if !expected[s.ID] || s.Verdict != core.Fail {
+			return false
+		}
+	}
+	return true
 }

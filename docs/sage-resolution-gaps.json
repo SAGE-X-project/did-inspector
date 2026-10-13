@@ -75,8 +75,8 @@
     "No operational source, registration, private key or deployment is supplied by this audit."
   ],
   "categories": {
-    "additional-data-or-feature": 97,
-    "additional-observer-operation": 52,
+    "additional-data-or-feature": 95,
+    "additional-observer-operation": 48,
     "document-or-applicability-review": 99,
     "existing-observation": 17,
     "operational-or-authority-evidence": 4
@@ -1042,58 +1042,10 @@
       "generic_scope": "checked"
     },
     {
-      "id": "cid10#retrieve-verification-method.10",
-      "level": "requirement",
-      "keywords": [
-        "MUST",
-        "SHOULD"
-      ],
-      "text_sha256": "98b158051904925f77df8e268947454940b7a7de3f7aed96385f9bb723fb6b47",
-      "baseline_verdict": "NOT_RUN",
-      "route": "method-retrieval",
-      "generic_scope": "checked"
-    },
-    {
       "id": "cid10#retrieve-verification-method.3",
       "level": "requirement",
       "keywords": [],
       "text_sha256": "8371a92b2f57b9974699f6705b79000a80055e22bddaeb8530cd329dbb973c32",
-      "baseline_verdict": "NOT_RUN",
-      "route": "method-retrieval",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#retrieve-verification-method.5",
-      "level": "requirement",
-      "keywords": [
-        "MUST",
-        "SHOULD"
-      ],
-      "text_sha256": "2f99c58379eb136e3b4266cbf359570863eb204f9a279f6ee57070985fbd38f4",
-      "baseline_verdict": "NOT_RUN",
-      "route": "method-retrieval",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#retrieve-verification-method.6",
-      "level": "requirement",
-      "keywords": [
-        "MUST",
-        "SHOULD"
-      ],
-      "text_sha256": "f3745c1fb918a8a83c55ca328a48491a85c648db4405eb3c1b5d7e8df71b88c3",
-      "baseline_verdict": "NOT_RUN",
-      "route": "method-retrieval",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#retrieve-verification-method.9",
-      "level": "requirement",
-      "keywords": [
-        "MUST",
-        "SHOULD"
-      ],
-      "text_sha256": "6cdccc4d8ef2816d4fd7efe41e6869d5723e35a130edc28b0b5e72bf1e90716e",
       "baseline_verdict": "NOT_RUN",
       "route": "method-retrieval",
       "generic_scope": "checked"
@@ -1221,18 +1173,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "cid10#verification-methods.11",
-      "level": "requirement",
-      "keywords": [
-        "MUST",
-        "MUST NOT"
-      ],
-      "text_sha256": "634d8f92329bf06ceb93d44eae97e81c677089d2d5dbb1bff9cf6137db422f3f",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
-    },
-    {
       "id": "cid10#verification-methods.4",
       "level": "requirement",
       "keywords": [
@@ -1250,18 +1190,6 @@
         "OPTIONAL"
       ],
       "text_sha256": "fc953441b195958f5ada17bcc447e119657e2b5bfa275e0030aeb2d7a7c1b4fe",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#verification-methods.9",
-      "level": "requirement",
-      "keywords": [
-        "MUST",
-        "SHOULD"
-      ],
-      "text_sha256": "c404f03f358585ad945ad2b2b572658c291bd0c3d0a4040e0fa520488556b589",
       "baseline_verdict": "NOT_RUN",
       "route": "conditional-fields",
       "generic_scope": "checked"
@@ -4124,7 +4052,7 @@
       "baseline_verdict": "NOT_RUN",
       "route": "representation-consumer",
       "generic_scope": "checked",
-      "expected_live_verdict": "PASS",
+      "expected_live_verdict": "FAIL",
       "case_prefix": "/native-consumer-conformance-",
       "cases": [
         "did-1.1/sage-resolution/native-consumer-conformance-missing-id",
@@ -4135,7 +4063,13 @@
         "did-1.1/sage-resolution/native-consumer-conformance-nonstring-method-controller",
         "did-1.1/sage-resolution/native-consumer-conformance-missing-service-type",
         "did-1.1/sage-resolution/native-consumer-conformance-missing-service-endpoint",
-        "did-1.1/sage-resolution/native-consumer-conformance-empty-authentication"
+        "did-1.1/sage-resolution/native-consumer-conformance-empty-authentication",
+        "did-1.1/sage-resolution/key-policy-format-expires",
+        "did-1.1/sage-resolution/key-policy-format-revoked"
+      ],
+      "case_prefixes": [
+        "/native-consumer-conformance-",
+        "/key-policy-format-"
       ]
     },
     {
@@ -4148,7 +4082,7 @@
       "baseline_verdict": "NOT_RUN",
       "route": "representation-consumer",
       "generic_scope": "checked",
-      "expected_live_verdict": "PASS",
+      "expected_live_verdict": "FAIL",
       "case_prefix": "/native-consumer-conformance-",
       "cases": [
         "did-1.1/sage-resolution/native-consumer-conformance-missing-id",
@@ -4159,7 +4093,13 @@
         "did-1.1/sage-resolution/native-consumer-conformance-nonstring-method-controller",
         "did-1.1/sage-resolution/native-consumer-conformance-missing-service-type",
         "did-1.1/sage-resolution/native-consumer-conformance-missing-service-endpoint",
-        "did-1.1/sage-resolution/native-consumer-conformance-empty-authentication"
+        "did-1.1/sage-resolution/native-consumer-conformance-empty-authentication",
+        "did-1.1/sage-resolution/key-policy-format-expires",
+        "did-1.1/sage-resolution/key-policy-format-revoked"
+      ],
+      "case_prefixes": [
+        "/native-consumer-conformance-",
+        "/key-policy-format-"
       ]
     },
     {
@@ -5840,26 +5780,140 @@
         "did-1.1/sage-resolution/native-contract-zero-resolve",
         "did-1.1/sage-resolution/native-contract-unsupported-media"
       ]
+    },
+    {
+      "id": "cid10#retrieve-verification-method.10",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text_sha256": "98b158051904925f77df8e268947454940b7a7de3f7aed96385f9bb723fb6b47",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/key-policy-",
+      "cases": [
+        "did-1.1/sage-resolution/key-policy-controller"
+      ]
+    },
+    {
+      "id": "cid10#retrieve-verification-method.5",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text_sha256": "2f99c58379eb136e3b4266cbf359570863eb204f9a279f6ee57070985fbd38f4",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/key-policy-",
+      "cases": [
+        "did-1.1/sage-resolution/key-policy-non-document"
+      ]
+    },
+    {
+      "id": "cid10#retrieve-verification-method.6",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text_sha256": "f3745c1fb918a8a83c55ca328a48491a85c648db4405eb3c1b5d7e8df71b88c3",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/key-policy-",
+      "cases": [
+        "did-1.1/sage-resolution/key-policy-document-id"
+      ]
+    },
+    {
+      "id": "cid10#retrieve-verification-method.9",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text_sha256": "6cdccc4d8ef2816d4fd7efe41e6869d5723e35a130edc28b0b5e72bf1e90716e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/key-policy-",
+      "cases": [
+        "did-1.1/sage-resolution/key-policy-method-id"
+      ]
+    },
+    {
+      "id": "cid10#verification-methods.11",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "MUST NOT"
+      ],
+      "text_sha256": "634d8f92329bf06ceb93d44eae97e81c677089d2d5dbb1bff9cf6137db422f3f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "FAIL",
+      "case_prefix": "/key-policy-",
+      "cases": [
+        "did-1.1/sage-resolution/key-policy-format-revoked",
+        "did-1.1/sage-resolution/key-policy-revoked-utc-0",
+        "did-1.1/sage-resolution/key-policy-revoked-utc-1",
+        "did-1.1/sage-resolution/key-policy-revoked-utc-2",
+        "did-1.1/sage-resolution/key-policy-revoked-offset-0",
+        "did-1.1/sage-resolution/key-policy-revoked-offset-1",
+        "did-1.1/sage-resolution/key-policy-revoked-offset-2"
+      ]
+    },
+    {
+      "id": "cid10#verification-methods.9",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text_sha256": "c404f03f358585ad945ad2b2b572658c291bd0c3d0a4040e0fa520488556b589",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "FAIL",
+      "case_prefix": "/key-policy-",
+      "cases": [
+        "did-1.1/sage-resolution/key-policy-format-expires",
+        "did-1.1/sage-resolution/key-policy-expires-utc-0",
+        "did-1.1/sage-resolution/key-policy-expires-utc-1",
+        "did-1.1/sage-resolution/key-policy-expires-utc-2",
+        "did-1.1/sage-resolution/key-policy-expires-offset-0",
+        "did-1.1/sage-resolution/key-policy-expires-offset-1",
+        "did-1.1/sage-resolution/key-policy-expires-offset-2"
+      ]
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 213,
-    "FAIL": 2,
+    "PASS": 215,
+    "FAIL": 6,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 2,
     "ERROR": 0,
-    "NOT_RUN": 269
+    "NOT_RUN": 263
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 204,
-      "FAIL": 0,
+      "PASS": 206,
+      "FAIL": 4,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 230
+      "NOT_RUN": 224
     },
     "recommendation": {
       "statements": 50,
@@ -5871,5 +5925,5 @@
       "NOT_RUN": 39
     }
   },
-  "expected_live_cases": 238
+  "expected_live_cases": 256
 }

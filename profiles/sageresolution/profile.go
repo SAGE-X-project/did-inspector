@@ -112,6 +112,7 @@ func Profile(name string) (core.Profile, error) {
 	appendLibraryDocumentCases(&p)
 	appendLibraryContextCases(&p)
 	appendContractCases(&p, rows)
+	appendPolicyCases(&p)
 	if err := appendConsumerConformanceCases(&p); err != nil {
 		return p, err
 	}
