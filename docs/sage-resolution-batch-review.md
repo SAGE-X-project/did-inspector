@@ -11,9 +11,10 @@ CID Multikey.20/.21 has a literal-prefix/varint conflict (`0x8030` versus `0x8a2
 | Review group | Anchored clauses |
 |---|---:|
 | actual-http-client | 19 |
-| algorithm-evidence | 36 |
+| algorithm-evidence | 34 |
 | applicability-or-contract | 32 |
 | author-document-evidence | 65 |
+| codec-external-contract | 2 |
 | codec-or-document | 19 |
 | conditional-library-input | 32 |
 | dereference-input | 4 |
@@ -28,3 +29,5 @@ CID Multikey.20/.21 has a literal-prefix/varint conflict (`0x8030` versus `0x8a2
 | retrieval-library | 21 |
 
 The audit deliberately assigns no PASS/FAIL/NOT_APPLICABLE. Current observations and aggregate verdicts are supplied separately by fresh reports and the lossless inventory.
+
+Selected codec fixtures use published public points from [RFC5114](https://www.rfc-editor.org/rfc/rfc5114.html#section-2.6), [RFC8032](https://www.rfc-editor.org/rfc/rfc8032.html#section-7.1), [RFC8998](https://www.rfc-editor.org/rfc/rfc8998.html#section-3.2.1), and the [BBS draft12 BP2 encoding](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-bbs-signatures-12#appendix-B). The draft supplies a frozen point fixture, not a new SAGE normative dependency. Public scalar/seed test bytes exercise secret-row encoding without signing, custody or operational-key claims.

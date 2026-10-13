@@ -103,6 +103,11 @@ func Profile(name string) (core.Profile, error) {
 	appendTypedConsumptionCases(&p)
 	appendRepresentationInputCases(&p)
 	appendProducerContextCases(&p)
+	if err := appendLibrarySyntaxCases(&p); err != nil {
+		return p, err
+	}
+	appendLibraryCodecCases(&p)
+	appendClientCases(&p, rows)
 	if err := appendConsumerConformanceCases(&p); err != nil {
 		return p, err
 	}

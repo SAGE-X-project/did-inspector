@@ -278,7 +278,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		t.Fatal(err)
 	}
 	r, err := report.Decode(data)
-	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 130 {
+	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 172 {
 		t.Fatal("scope identity", err, r.Totals)
 	}
 	binary := filepath.Join(t.TempDir(), "sage-inspector")
@@ -304,9 +304,9 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		want, cases := 33, 16
 		if profile == "did-1.1" {
-			want, cases = 130, 170
+			want, cases = 172, 201
 		}
-		if profile == "did-1.1" && (r.Totals.NotApplicable != 2 || r.Totals.NotRun != 353) {
+		if profile == "did-1.1" && (r.Totals.NotApplicable != 2 || r.Totals.NotRun != 311) {
 			t.Fatal("native URL conditional evidence", r.Totals)
 		}
 		if profile == "did-1.1" && (r.Totals.Fail != 1 || r.TotalsByLevel.Recommendation.Fail != 1) {
@@ -325,7 +325,11 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		for _, c := range raw.Cases {
 			for _, o := range c.Observations {
-				if strings.Contains(c.Case, "/native-producer-context-") {
+				if strings.Contains(c.Case, "/library-") {
+					if o.Input == "" || o.Observed == "" {
+						t.Fatal("lost library evidence")
+					}
+				} else if strings.Contains(c.Case, "/native-producer-context-") {
 					if !strings.Contains(o.Input, `"positive"`) || !strings.Contains(o.Input, `"negative"`) {
 						t.Fatal("lost producer input pair")
 					}
@@ -340,7 +344,11 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 				} else if !strings.Contains(o.Input, `"record"`) {
 					t.Fatal("lost input evidence")
 				}
-				if strings.Contains(c.Case, "/native-producer-context-") {
+				if strings.Contains(c.Case, "/library-") {
+					if o.Input == "" || o.Observed == "" {
+						t.Fatal("lost library evidence")
+					}
+				} else if strings.Contains(c.Case, "/native-producer-context-") {
 					if !strings.Contains(o.Observed, `"calls"`) || !strings.Contains(o.Observed, `"positive"`) || !strings.Contains(o.Observed, `"negative"`) {
 						t.Fatal("lost actual producer pair")
 					}

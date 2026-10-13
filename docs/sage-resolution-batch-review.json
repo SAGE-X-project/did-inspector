@@ -18,9 +18,10 @@
   ],
   "groups": {
     "actual-http-client": 19,
-    "algorithm-evidence": 36,
+    "algorithm-evidence": 34,
     "applicability-or-contract": 32,
     "author-document-evidence": 65,
+    "codec-external-contract": 2,
     "codec-or-document": 19,
     "conditional-library-input": 32,
     "dereference-input": 4,
@@ -1053,9 +1054,9 @@
       "historical_route": "codec-internals",
       "text": "To base-encode a binary value into a Multibase string, an implementation MUST apply the algorithm in Section 3.1 Base Encode to the binary value, with the desired base encoding and alphabet from the table above, ensuring to prepend the associated Multibase header from the table above to the result.",
       "text_sha256": "be6c7963e9f1c60cc473ee12c6c6c59927824e02570837e953831f22905f1b39",
-      "review_group": "algorithm-evidence",
-      "actor": "selected codec algorithm or alternative implementation",
-      "evidence_required": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
+      "review_group": "codec-external-contract",
+      "actor": "actual codec encode/decode",
+      "evidence_required": "Read with permitted equivalent-output algorithms (.3/.5). Independently compare literal bytes/string for selected base58-btc transport encoding; no claim about internal 32 steps.",
       "status": "reviewed-no-verdict"
     },
     {
@@ -1065,8 +1066,8 @@
       "text": "Any algorithm with equivalent output MAY be used.",
       "text_sha256": "652dcd35c9109b2f9b1afef360fc99991eaee7de1e9262b7aed92df2db152228",
       "review_group": "applicability-or-contract",
-      "actor": "permission, definition or stated input/output actor",
-      "evidence_required": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
+      "actor": "equivalent-output algorithm permission",
+      "evidence_required": "Permits equivalent-output implementations; this is applicability evidence for external .2/.4, not a separate runtime duty or automatic PASS.",
       "status": "reviewed-no-verdict"
     },
     {
@@ -1075,9 +1076,9 @@
       "historical_route": "codec-internals",
       "text": "To base-decode a Multibase string, an implementation MUST apply the algorithm in Section 3.2 Base Decode to the string following the first character (Multibase header), with the alphabet associated with the Multibase header.",
       "text_sha256": "b7c2f748bd77561620774f83ba09210dfe59d8eb5052eea0b81c5165905c9ba4",
-      "review_group": "algorithm-evidence",
-      "actor": "selected codec algorithm or alternative implementation",
-      "evidence_required": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
+      "review_group": "codec-external-contract",
+      "actor": "actual codec encode/decode",
+      "evidence_required": "Read with permitted equivalent-output algorithms (.3/.5). Independently compare literal bytes/string for selected base58-btc transport encoding; no claim about internal 32 steps.",
       "status": "reviewed-no-verdict"
     },
     {
@@ -1087,8 +1088,8 @@
       "text": "Any algorithm with equivalent output MAY be used.",
       "text_sha256": "652dcd35c9109b2f9b1afef360fc99991eaee7de1e9262b7aed92df2db152228",
       "review_group": "applicability-or-contract",
-      "actor": "permission, definition or stated input/output actor",
-      "evidence_required": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
+      "actor": "equivalent-output algorithm permission",
+      "evidence_required": "Permits equivalent-output implementations; this is applicability evidence for external .2/.4, not a separate runtime duty or automatic PASS.",
       "status": "reviewed-no-verdict"
     },
     {

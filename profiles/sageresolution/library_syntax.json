@@ -1,0 +1,378 @@
+[
+  {
+    "name": "did",
+    "statements": [
+      "did11-cr20260305#did-syntax.1"
+    ],
+    "items": [
+      {
+        "request": {
+          "kind": "did",
+          "input": "did:example:123456789abcdefghi"
+        },
+        "accepted": true,
+        "value": "did:example:123456789abcdefghi"
+      },
+      {
+        "request": {
+          "kind": "did",
+          "input": "did:web:example.com"
+        },
+        "accepted": true,
+        "value": "did:web:example.com"
+      },
+      {
+        "request": {
+          "kind": "did",
+          "input": "did:a1:B-._x"
+        },
+        "accepted": true,
+        "value": "did:a1:B-._x"
+      },
+      {
+        "request": {
+          "kind": "did",
+          "input": "did:example:%20x%aF"
+        },
+        "accepted": true,
+        "value": "did:example:%20x%aF"
+      },
+      {
+        "request": {
+          "kind": "did",
+          "input": "did:Example:123"
+        },
+        "accepted": false,
+        "value": ""
+      },
+      {
+        "request": {
+          "kind": "did",
+          "input": "did:ex_ample:123"
+        },
+        "accepted": false,
+        "value": ""
+      },
+      {
+        "request": {
+          "kind": "did",
+          "input": "did::123"
+        },
+        "accepted": false,
+        "value": ""
+      },
+      {
+        "request": {
+          "kind": "did",
+          "input": "did:example:"
+        },
+        "accepted": false,
+        "value": ""
+      },
+      {
+        "request": {
+          "kind": "did",
+          "input": "did:example:12%3"
+        },
+        "accepted": false,
+        "value": ""
+      },
+      {
+        "request": {
+          "kind": "did",
+          "input": "did:example:a b"
+        },
+        "accepted": false,
+        "value": ""
+      },
+      {
+        "request": {
+          "kind": "did",
+          "input": "did:example:123#key-1"
+        },
+        "accepted": false,
+        "value": ""
+      },
+      {
+        "request": {
+          "kind": "did",
+          "input": "example:123"
+        },
+        "accepted": false,
+        "value": ""
+      }
+    ]
+  },
+  {
+    "name": "method-specific-id-colons",
+    "statements": [
+      "did11-cr20260305#method-syntax.9"
+    ],
+    "items": [
+      {
+        "request": {
+          "kind": "did",
+          "input": "did:example:a:b:c"
+        },
+        "accepted": true,
+        "value": "did:example:a:b:c"
+      },
+      {
+        "request": {
+          "kind": "did",
+          "input": "did:example::a"
+        },
+        "accepted": true,
+        "value": "did:example::a"
+      },
+      {
+        "request": {
+          "kind": "did",
+          "input": "did:example:a:"
+        },
+        "accepted": false,
+        "value": ""
+      },
+      {
+        "request": {
+          "kind": "did",
+          "input": "did:example:a::"
+        },
+        "accepted": false,
+        "value": ""
+      }
+    ]
+  },
+  {
+    "name": "did-url",
+    "statements": [
+      "did11-cr20260305#did-url-syntax.1"
+    ],
+    "items": [
+      {
+        "request": {
+          "kind": "url",
+          "input": "did:example:123456789abcdefghi/path/to?query=1#frag"
+        },
+        "accepted": true,
+        "value": "did:example:123456789abcdefghi/path/to?query=1#frag"
+      },
+      {
+        "request": {
+          "kind": "url",
+          "input": "did:example:123456789abcdefghi#key-1"
+        },
+        "accepted": true,
+        "value": "did:example:123456789abcdefghi#key-1"
+      },
+      {
+        "request": {
+          "kind": "url",
+          "input": "did:example:123456789abcdefghi?"
+        },
+        "accepted": true,
+        "value": "did:example:123456789abcdefghi?"
+      },
+      {
+        "request": {
+          "kind": "url",
+          "input": "did:example:123456789abcdefghi/"
+        },
+        "accepted": true,
+        "value": "did:example:123456789abcdefghi/"
+      },
+      {
+        "request": {
+          "kind": "url",
+          "input": "did:example:123456789abcdefghi?service=files&relativeRef=%2Fresume.pdf"
+        },
+        "accepted": true,
+        "value": "did:example:123456789abcdefghi?service=files&relativeRef=%2Fresume.pdf"
+      },
+      {
+        "request": {
+          "kind": "url",
+          "input": "did:example:123456789abcdefghi#a#b"
+        },
+        "accepted": false,
+        "value": ""
+      },
+      {
+        "request": {
+          "kind": "url",
+          "input": "did:example:123456789abcdefghi/pa th"
+        },
+        "accepted": false,
+        "value": ""
+      },
+      {
+        "request": {
+          "kind": "url",
+          "input": "did:example:123456789abcdefghi?q=%zz"
+        },
+        "accepted": false,
+        "value": ""
+      },
+      {
+        "request": {
+          "kind": "url",
+          "input": "did:example:123456789abcdefghi#frag^"
+        },
+        "accepted": false,
+        "value": ""
+      },
+      {
+        "request": {
+          "kind": "url",
+          "input": "did:Example:123/x"
+        },
+        "accepted": false,
+        "value": ""
+      }
+    ]
+  },
+  {
+    "name": "relative-reference",
+    "statements": [
+      "did11-cr20260305#relative-did-urls.1",
+      "did11-cr20260305#relative-did-urls.2"
+    ],
+    "items": [
+      {
+        "request": {
+          "kind": "reference",
+          "input": "",
+          "base": "did:sage:web:registry.example:agent-1/a/b?before=1#old"
+        },
+        "accepted": true,
+        "value": "did:sage:web:registry.example:agent-1/a/b?before=1"
+      },
+      {
+        "request": {
+          "kind": "reference",
+          "input": "#sign",
+          "base": "did:sage:web:registry.example:agent-1/a/b?before=1#old"
+        },
+        "accepted": true,
+        "value": "did:sage:web:registry.example:agent-1/a/b?before=1#sign"
+      },
+      {
+        "request": {
+          "kind": "reference",
+          "input": "?new=2",
+          "base": "did:sage:web:registry.example:agent-1/a/b?before=1#old"
+        },
+        "accepted": true,
+        "value": "did:sage:web:registry.example:agent-1/a/b?new=2"
+      },
+      {
+        "request": {
+          "kind": "reference",
+          "input": "../c",
+          "base": "did:sage:web:registry.example:agent-1/a/b?before=1#old"
+        },
+        "accepted": true,
+        "value": "did:sage:web:registry.example:agent-1/c"
+      },
+      {
+        "request": {
+          "kind": "reference",
+          "input": "./c",
+          "base": "did:sage:web:registry.example:agent-1/a/b?before=1#old"
+        },
+        "accepted": true,
+        "value": "did:sage:web:registry.example:agent-1/a/c"
+      },
+      {
+        "request": {
+          "kind": "reference",
+          "input": "/c",
+          "base": "did:sage:web:registry.example:agent-1/a/b?before=1#old"
+        },
+        "accepted": true,
+        "value": "did:sage:web:registry.example:agent-1/c"
+      },
+      {
+        "request": {
+          "kind": "reference",
+          "input": "../../c",
+          "base": "did:sage:web:registry.example:agent-1/a/b?before=1#old"
+        },
+        "accepted": true,
+        "value": "did:sage:web:registry.example:agent-1/c"
+      },
+      {
+        "request": {
+          "kind": "reference",
+          "input": "c/../d",
+          "base": "did:sage:web:registry.example:agent-1/a/b?before=1#old"
+        },
+        "accepted": true,
+        "value": "did:sage:web:registry.example:agent-1/a/d"
+      },
+      {
+        "request": {
+          "kind": "reference",
+          "input": ".",
+          "base": "did:sage:web:registry.example:agent-1/a/b?before=1#old"
+        },
+        "accepted": true,
+        "value": "did:sage:web:registry.example:agent-1/a/"
+      },
+      {
+        "request": {
+          "kind": "reference",
+          "input": "..",
+          "base": "did:sage:web:registry.example:agent-1/a/b?before=1#old"
+        },
+        "accepted": true,
+        "value": "did:sage:web:registry.example:agent-1/"
+      },
+      {
+        "request": {
+          "kind": "reference",
+          "input": "%2e%2e/c",
+          "base": "did:sage:web:registry.example:agent-1/a/b?before=1#old"
+        },
+        "accepted": true,
+        "value": "did:sage:web:registry.example:agent-1/a/%2e%2e/c"
+      },
+      {
+        "request": {
+          "kind": "reference",
+          "input": "c?x=1#f",
+          "base": "did:sage:web:registry.example:agent-1/a/b?before=1#old"
+        },
+        "accepted": true,
+        "value": "did:sage:web:registry.example:agent-1/a/c?x=1#f"
+      },
+      {
+        "request": {
+          "kind": "reference",
+          "input": "?#",
+          "base": "did:sage:web:registry.example:agent-1/a/b?before=1#old"
+        },
+        "accepted": true,
+        "value": "did:sage:web:registry.example:agent-1/a/b?#"
+      },
+      {
+        "request": {
+          "kind": "reference",
+          "input": "did:example:other/x/../y?q=1#f",
+          "base": "did:sage:web:registry.example:agent-1/a/b?before=1#old"
+        },
+        "accepted": true,
+        "value": "did:example:other/y?q=1#f"
+      },
+      {
+        "request": {
+          "kind": "reference",
+          "input": "%zz",
+          "base": "did:sage:web:registry.example:agent-1/a/b?before=1#old"
+        },
+        "accepted": false,
+        "value": ""
+      }
+    ]
+  }
+]

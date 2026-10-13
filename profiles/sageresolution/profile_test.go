@@ -62,6 +62,24 @@ type noOperation struct{}
 
 func (noOperation) Describe() core.SubjectInfo            { return core.SubjectInfo{Name: "missing"} }
 func (noOperation) Supports(string, core.Capability) bool { return false }
+func (s stub) InspectSyntax(_ context.Context, q SyntaxRequest) (SyntaxResult, error) {
+	if s.err {
+		return SyntaxResult{}, errors.New("fixture syntax failure")
+	}
+	return SyntaxResult{}, nil
+}
+func (s stub) InspectCodec(_ context.Context, q CodecRequest) (CodecResult, error) {
+	if s.err {
+		return CodecResult{}, errors.New("fixture codec failure")
+	}
+	return CodecResult{}, nil
+}
+func (s stub) InspectClient(_ context.Context, _ sageprojection.Record, q ClientRequest) (ClientResult, error) {
+	if s.err {
+		return ClientResult{}, errors.New("fixture client failure")
+	}
+	return ClientResult{}, nil
+}
 func TestProfileScopeAndUnavailable(t *testing.T) {
 	for _, name := range []string{"did-core-1.0", "did-1.1"} {
 		p, e := Profile(name)
