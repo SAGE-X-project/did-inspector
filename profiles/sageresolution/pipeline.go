@@ -42,15 +42,8 @@ func pipelineEqual(a, b core.Value) core.Verdict {
 	}
 	return core.Pass
 }
-func judgePipeline(result PipelineResult, input string) []core.Observation {
+func pipelineArchive(result PipelineResult) ([]byte, error) {
 	raw, archiveError := json.Marshal(result)
-	unavailable := func(detail string) []core.Observation {
-		out := make([]core.Observation, 0, len(pipelineStatements))
-		for _, id := range pipelineStatements {
-			out = append(out, core.Observation{Statement: id, Verdict: core.Error, Input: input, Observed: string(raw), Detail: detail})
-		}
-		return out
-	}
 	if archiveError != nil {
 		// Preserve malformed RawMessage fields as byte strings in an error archive.
 		safe := result
@@ -62,8 +55,24 @@ func judgePipeline(result PipelineResult, input string) []core.Observation {
 			Snapshot        []byte         `json:"snapshot_bytes"`
 			Error           string         `json:"archive_error"`
 		}{safe, result.Result.Metadata, result.Result.ContentMetadata, result.Result.Snapshot, archiveError.Error()})
+		return raw, archiveError
+	}
+	return raw, nil
+}
+
+func judgePipeline(result PipelineResult, input string) []core.Observation {
+	raw, archiveError := pipelineArchive(result)
+	unavailable := func(detail string) []core.Observation {
+		out := make([]core.Observation, 0, len(pipelineStatements))
+		for _, id := range pipelineStatements {
+			out = append(out, core.Observation{Statement: id, Verdict: core.Error, Input: input, Observed: string(raw), Detail: detail})
+		}
+		return out
+	}
+	if archiveError != nil {
 		return unavailable("native result archive failed; original JSON field bytes retained")
 	}
+
 	if len(result.Producer) != 1 || len(result.Consumer) != 1 {
 		return unavailable("one actual producer and consumer call required")
 	}

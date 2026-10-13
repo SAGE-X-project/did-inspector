@@ -109,3 +109,16 @@ func (s *Subject) InspectPipeline(ctx context.Context, in sageprojection.Record,
 	out.Result, err = nativeResult(native, res.ResolutionMetadata, res.DocumentMetadata)
 	return out, err
 }
+
+// InspectConsumption probes the actual consumer selected by SAGE integration.
+// This is an explicit library input boundary, not evidence for resolver or
+// production ingress behavior. It preserves errors rather than converting them
+// into synthesized resolution codes or validator verdicts.
+func (s *Subject) InspectConsumption(_ context.Context, q sageresolution.ConsumptionRequest) (sageresolution.ConsumptionCapture, error) {
+	if q.MediaType != "application/did" && q.MediaType != "application/did+json" {
+		return sageresolution.ConsumptionCapture{}, errors.New("unsupported inspection media type")
+	}
+	calls := []sageresolution.ConsumptionCapture{}
+	_, _, _ = (observedConsumer{consumer.New(), &calls}).Consume(q.Data, q.MediaType, representation.ConsumeOptions{})
+	return calls[0], nil
+}

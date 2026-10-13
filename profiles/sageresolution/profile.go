@@ -98,6 +98,7 @@ func Profile(name string) (core.Profile, error) {
 	appendKeyFieldCases(&p, rows)
 	appendRepresentationCases(&p, rows)
 	appendPipelineCases(&p, rows)
+	appendConsumptionBoundaryCases(&p, rows)
 	appendBranchCases(&p, rows)
 	if err := appendWireCases(&p, rows); err != nil {
 		return p, err

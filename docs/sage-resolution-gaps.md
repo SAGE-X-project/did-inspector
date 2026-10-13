@@ -5,7 +5,7 @@ report from CI run [38353322386](https://github.com/SAGE-X-project/did-inspector
 The machine-readable [inventory](sage-resolution-gaps.json) preserves all 416 historical
 statement ids, normative levels and keywords, exact text digests, evidence paths,
 and a next evidence route for each statement. Pending routes are planning evidence, not verdicts or implementation defects.
-Schema 2 keeps 364 pending entries and 52 entries observed since the baseline;
+Schema 2 keeps 361 pending entries and 55 entries observed since the baseline;
 it never assigns new observations to the historical inspector revision.
 
 The baseline inspector revision is `aefdcf9228ec8dcf85fd4aaf08b6e0511af11c36`.
@@ -24,8 +24,8 @@ recommendation-level statements. Requirement-level extraction also includes
 permissions, definitions and algorithm steps; it does not mean every row is a
 standalone MUST with an independently observable violation.
 
-The current report has 138 cases, 117 requirement and two recommendation passes,
-one recommendation failure, two inapplicable statements and 364 unobserved statements. Ten fresh native
+The current report has 150 cases, 120 requirement and two recommendation passes,
+one recommendation failure, two inapplicable statements and 361 unobserved statements. Ten fresh native
 result cases add 13 requirement passes and one conditional NOT_APPLICABLE.
 Twenty-four direct metadata serialization cases add four requirement passes.
 Three native error/state cases and ten owned TLS response cases add 22
@@ -36,14 +36,18 @@ Five fresh serialized-document cases add four requirement passes for context
 and media-type fields. Five additional passive pipeline captures add five
 requirement passes at actual producer/consumer boundaries. They compare all
 selected pre-input entries and separately returned consumer maps; arbitrary
-value conversion rules and full JSON-LD semantics remain pending.
-The following routing counts describe the remaining 364, not the baseline 416.
+value conversion rules and full JSON-LD semantics remain pending. Five further
+producer calls observe root entry placement, while seven direct selected-consumer
+calls observe declared media selection and five literal non-object rejections.
+These add three requirements. Direct consumer calls are library actor evidence,
+not SAGE resolver/ingress evidence.
+The following routing counts describe the remaining 361, not the baseline 416.
 
 | Primary next evidence route | Statements | Meaning |
 |---|---:|---|
-| Existing observation | 37 | Candidate assertions on actual native results, methods or server responses |
+| Existing observation | 36 | Candidate assertions on actual native results, methods or server responses |
 | Existing operation, new scenario | 0 | Candidate branches requiring fresh requests or controlled Source failures |
-| Additional observer operation | 101 | A different actor, entry point or instrumentation is needed |
+| Additional observer operation | 99 | A different actor, entry point or instrumentation is needed |
 | Additional data or feature | 117 | Applicable optional fields, representations or method branches are absent |
 | Document or applicability review | 105 | Author obligations, permissions, definitions, contracts or conflicts |
 | Operational or authority evidence | 4 | Canonical storage or controller authority cannot be proved by fixtures |
