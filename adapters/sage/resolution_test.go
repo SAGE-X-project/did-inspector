@@ -47,6 +47,9 @@ func TestActualResolutionProfiles(t *testing.T) {
 				if o.Verdict == core.NotApplicable && strings.Contains(c.Case, "/native-url-record-") && o.Statement == "cid10#controllers.3" {
 					allowed = true
 				}
+				if o.Verdict == core.NotApplicable && strings.Contains(c.Case, "/native-result-active-record-") && (o.Statement == "res10-crd20261001#resolving.5" || o.Statement == "res10-crd20261001#did-document-metadata.7") {
+					allowed = true
+				}
 				if !allowed {
 					t.Errorf("%s %s: %s %s", c.Case, o.Statement, o.Verdict, o.Observed)
 				}

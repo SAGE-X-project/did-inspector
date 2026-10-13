@@ -1,5 +1,5 @@
 {
-  "schema": "sage-resolution-gap-inventory/1",
+  "schema": "sage-resolution-gap-inventory/2",
   "scope": "resolution",
   "profile": "did-1.1",
   "baseline": {
@@ -64,12 +64,13 @@
         "ERROR": 0,
         "NOT_RUN": 48
       }
-    }
+    },
+    "pending_ids_sha256": "bd088d48217d4bb6cf41fdac91347385ae5aa8800923aa785b9f0fdfdf956652"
   },
   "limits": [
     "Planning routes are not verdicts, defect counts or completed checks.",
     "Generic checked scope identifies potential operation coverage only; it is not SAGE evidence.",
-    "All listed clauses remain NOT_RUN until a fresh applicable case actually observes the pinned subject.",
+    "Pending clauses remain NOT_RUN. Observed-since-baseline entries specify expectations verified against fresh current CI observations, not evidence at the historical baseline revision.",
     "Runtime checking, actor applicability and method/representation documentation need separate evidence.",
     "No operational source, registration, private key or deployment is supplied by this audit."
   ],
@@ -77,8 +78,8 @@
     "additional-data-or-feature": 117,
     "additional-observer-operation": 106,
     "document-or-applicability-review": 109,
-    "existing-observation": 59,
-    "existing-operation-new-scenario": 21,
+    "existing-observation": 55,
+    "existing-operation-new-scenario": 11,
     "operational-or-authority-evidence": 4
   },
   "routes": {
@@ -3805,18 +3806,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "res10-crd20261001#did-document-metadata.7",
-      "level": "requirement",
-      "keywords": [
-        "OPTIONAL",
-        "MUST"
-      ],
-      "text_sha256": "33a047da39baaf13bb86973834d8355b488d50a3cde7f0af0ccc3e10883ed910",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#did-document-metadata.8",
       "level": "requirement",
       "keywords": [
@@ -4269,50 +4258,12 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "res10-crd20261001#resolving-algorithm.1",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "10633b2c2dc89d6fae6aed3389e9436e30682e05afd6b23962e5cd8cba3a78c7",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-errors",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#resolving-algorithm.17",
       "level": "requirement",
       "keywords": [],
       "text_sha256": "e92579e7772b206196853d95081fa99fa4adb08de9ad29c12cc041f7d18f93bf",
       "baseline_verdict": "NOT_RUN",
       "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#resolving-algorithm.18",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "fbc58a7bc39a73a2f1f229c884a094ebb0857fa9817cf858220b7cc5ab7dce0d",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-errors",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#resolving-algorithm.20",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "5fd848588ab9535d6ac3905520679168d175dfe4c57a619d7af535db765b22c9",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-errors",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#resolving-algorithm.21",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "be4e9adcd276b7d0860044cf579994e45cc985443dbc2dc72666768f6e3b9653",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-errors",
       "generic_scope": "checked"
     },
     {
@@ -4390,15 +4341,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "res10-crd20261001#resolving-algorithm.3",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "5fd848588ab9535d6ac3905520679168d175dfe4c57a619d7af535db765b22c9",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-errors",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#resolving-algorithm.30",
       "level": "requirement",
       "keywords": [],
@@ -4473,64 +4415,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "res10-crd20261001#resolving-algorithm.4",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "be4e9adcd276b7d0860044cf579994e45cc985443dbc2dc72666768f6e3b9653",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-errors",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#resolving-algorithm.5",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "52bea88e48c46502c9d47fa057c4b46f10433c6296526901b7f56146d51f4427",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-errors",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#resolving-algorithm.6",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "cbfe0235f1fbb331168a757934301d91e04c888e1ac0bf127d982105ca8c07bf",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-errors",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#resolving-algorithm.7",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "5fd848588ab9535d6ac3905520679168d175dfe4c57a619d7af535db765b22c9",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-errors",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#resolving-algorithm.8",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "be4e9adcd276b7d0860044cf579994e45cc985443dbc2dc72666768f6e3b9653",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-errors",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#resolving.1",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "2dea60d378744f587ed4fdb3d949c919df899fd9336401f158beb5cd5fb4f58c",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#resolving.2",
       "level": "requirement",
       "keywords": [
@@ -4550,29 +4434,6 @@
         "MAY"
       ],
       "text_sha256": "dbf74964751799b2263d339e616449c65d8e300ab7779a7a8944f6ccd1d5e099",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#resolving.4",
-      "level": "requirement",
-      "keywords": [
-        "REQUIRED",
-        "MUST NOT"
-      ],
-      "text_sha256": "807fa0012993cf923a8988f1febf39e4fd47b924c6dc6014ed940827f095d052",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#resolving.5",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "46c5f190a3824aa3c787cc39b15306e0770b974742f3cc476de20643c7026bb9",
       "baseline_verdict": "NOT_RUN",
       "route": "native-result",
       "generic_scope": "checked"
@@ -4610,5 +4471,259 @@
       "route": "permission-definition",
       "generic_scope": "not-checkable"
     }
-  ]
+  ],
+  "observed_since_baseline": [
+    {
+      "id": "res10-crd20261001#did-document-metadata.7",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL",
+        "MUST"
+      ],
+      "text_sha256": "33a047da39baaf13bb86973834d8355b488d50a3cde7f0af0ccc3e10883ed910",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "NOT_APPLICABLE",
+      "cases": [
+        "did-1.1/sage-resolution/native-result-active-record-0",
+        "did-1.1/sage-resolution/native-result-active-record-1",
+        "did-1.1/sage-resolution/native-result-active-record-2",
+        "did-1.1/sage-resolution/native-result-active-record-3",
+        "did-1.1/sage-resolution/native-result-active-record-5"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "10633b2c2dc89d6fae6aed3389e9436e30682e05afd6b23962e5cd8cba3a78c7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/native-result-invalid-input"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.18",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "fbc58a7bc39a73a2f1f229c884a094ebb0857fa9817cf858220b7cc5ab7dce0d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/native-result-missing-record"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.20",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "5fd848588ab9535d6ac3905520679168d175dfe4c57a619d7af535db765b22c9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/native-result-missing-record"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.21",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "be4e9adcd276b7d0860044cf579994e45cc985443dbc2dc72666768f6e3b9653",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/native-result-missing-record"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.3",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "5fd848588ab9535d6ac3905520679168d175dfe4c57a619d7af535db765b22c9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/native-result-invalid-input"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.4",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "be4e9adcd276b7d0860044cf579994e45cc985443dbc2dc72666768f6e3b9653",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/native-result-invalid-input"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.5",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "52bea88e48c46502c9d47fa057c4b46f10433c6296526901b7f56146d51f4427",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/native-result-unsupported-method"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.6",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "cbfe0235f1fbb331168a757934301d91e04c888e1ac0bf127d982105ca8c07bf",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/native-result-unsupported-method"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.7",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "5fd848588ab9535d6ac3905520679168d175dfe4c57a619d7af535db765b22c9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/native-result-unsupported-method"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.8",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "be4e9adcd276b7d0860044cf579994e45cc985443dbc2dc72666768f6e3b9653",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/native-result-unsupported-method"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "2dea60d378744f587ed4fdb3d949c919df899fd9336401f158beb5cd5fb4f58c",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/native-result-active-record-0",
+        "did-1.1/sage-resolution/native-result-active-record-1",
+        "did-1.1/sage-resolution/native-result-active-record-2",
+        "did-1.1/sage-resolution/native-result-active-record-3",
+        "did-1.1/sage-resolution/native-result-active-record-5"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving.4",
+      "level": "requirement",
+      "keywords": [
+        "REQUIRED",
+        "MUST NOT"
+      ],
+      "text_sha256": "807fa0012993cf923a8988f1febf39e4fd47b924c6dc6014ed940827f095d052",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/native-result-active-record-0",
+        "did-1.1/sage-resolution/native-result-active-record-1",
+        "did-1.1/sage-resolution/native-result-active-record-2",
+        "did-1.1/sage-resolution/native-result-active-record-3",
+        "did-1.1/sage-resolution/native-result-active-record-5",
+        "did-1.1/sage-resolution/native-result-invalid-input",
+        "did-1.1/sage-resolution/native-result-unsupported-method",
+        "did-1.1/sage-resolution/native-result-missing-record",
+        "did-1.1/sage-resolution/native-result-stale-source",
+        "did-1.1/sage-resolution/native-result-unsupported-accept"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving.5",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "46c5f190a3824aa3c787cc39b15306e0770b974742f3cc476de20643c7026bb9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/native-result-active-record-0",
+        "did-1.1/sage-resolution/native-result-active-record-1",
+        "did-1.1/sage-resolution/native-result-active-record-2",
+        "did-1.1/sage-resolution/native-result-active-record-3",
+        "did-1.1/sage-resolution/native-result-active-record-5",
+        "did-1.1/sage-resolution/native-result-invalid-input",
+        "did-1.1/sage-resolution/native-result-unsupported-method",
+        "did-1.1/sage-resolution/native-result-missing-record",
+        "did-1.1/sage-resolution/native-result-stale-source",
+        "did-1.1/sage-resolution/native-result-unsupported-accept"
+      ]
+    }
+  ],
+  "expected_live_totals": {
+    "statements": 486,
+    "PASS": 82,
+    "FAIL": 0,
+    "NOT_SUPPORTED": 0,
+    "NOT_APPLICABLE": 2,
+    "ERROR": 0,
+    "NOT_RUN": 402
+  },
+  "expected_live_totals_by_level": {
+    "requirement": {
+      "statements": 436,
+      "PASS": 80,
+      "FAIL": 0,
+      "NOT_SUPPORTED": 0,
+      "NOT_APPLICABLE": 2,
+      "ERROR": 0,
+      "NOT_RUN": 354
+    },
+    "recommendation": {
+      "statements": 50,
+      "PASS": 2,
+      "FAIL": 0,
+      "NOT_SUPPORTED": 0,
+      "NOT_APPLICABLE": 0,
+      "ERROR": 0,
+      "NOT_RUN": 48
+    }
+  },
+  "expected_live_cases": 86
 }
