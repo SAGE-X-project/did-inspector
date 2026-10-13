@@ -11,7 +11,7 @@ CID Multikey.20/.21 has a literal-prefix/varint conflict (`0x8030` versus `0x8a2
 | Review group | Anchored clauses |
 |---|---:|
 | actual-http-client | 19 |
-| algorithm-evidence | 34 |
+| algorithm-evidence | 32 |
 | applicability-or-contract | 32 |
 | author-document-evidence | 65 |
 | codec-external-contract | 2 |
@@ -22,6 +22,7 @@ CID Multikey.20/.21 has a literal-prefix/varint conflict (`0x8030` versus `0x8a2
 | document-type | 2 |
 | feature-prerequisite | 64 |
 | jsonld-library | 7 |
+| multihash-external-contract | 2 |
 | native-contract | 35 |
 | operational-evidence | 6 |
 | pinned-text-conflict | 5 |
@@ -31,3 +32,5 @@ CID Multikey.20/.21 has a literal-prefix/varint conflict (`0x8030` versus `0x8a2
 The audit deliberately assigns no PASS/FAIL/NOT_APPLICABLE. Current observations and aggregate verdicts are supplied separately by fresh reports and the lossless inventory.
 
 Selected codec fixtures use published public points from [RFC5114](https://www.rfc-editor.org/rfc/rfc5114.html#section-2.6), [RFC8032](https://www.rfc-editor.org/rfc/rfc8032.html#section-7.1), [RFC8998](https://www.rfc-editor.org/rfc/rfc8998.html#section-3.2.1), and the [BBS draft12 BP2 encoding](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-bbs-signatures-12#appendix-B). The draft supplies a frozen point fixture, not a new SAGE normative dependency. Public scalar/seed test bytes exercise secret-row encoding without signing, custody or operational-key claims.
+
+The first consolidated implementation observes 61 anchored clauses through 45 cases (60 PASS and one recommendation FAIL). The other 292 retain their exact prerequisites; runtime candidates are not declared permanently unavailable, and optional permissions/author duties are not relabeled as defects. Multihash contracts .2/.3 are external format duties requiring their own subject operation, separate from the 32 internal base conversion steps.

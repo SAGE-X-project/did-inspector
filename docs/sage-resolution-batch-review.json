@@ -18,7 +18,7 @@
   ],
   "groups": {
     "actual-http-client": 19,
-    "algorithm-evidence": 34,
+    "algorithm-evidence": 32,
     "applicability-or-contract": 32,
     "author-document-evidence": 65,
     "codec-external-contract": 2,
@@ -29,6 +29,7 @@
     "document-type": 2,
     "feature-prerequisite": 64,
     "jsonld-library": 7,
+    "multihash-external-contract": 2,
     "native-contract": 35,
     "operational-evidence": 6,
     "pinned-text-conflict": 5,
@@ -1109,9 +1110,9 @@
       "historical_route": "codec-internals",
       "text": "To encode to a Multihash value, an implementation MUST concatenate the associated Multihash header (encoded as a varint), the cryptographic digest length in bytes (encoded as a varint), and the cryptographic digest value, in that order.",
       "text_sha256": "ba20d0d4888625f8af2a62f6562d37b3fbefc0ca49955c97a49e9fcb283456d7",
-      "review_group": "algorithm-evidence",
-      "actor": "selected codec algorithm or alternative implementation",
-      "evidence_required": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
+      "review_group": "multihash-external-contract",
+      "actor": "actual subject multihash encoder/decoder",
+      "evidence_required": "Need an attributable subject operation and independent header-varint, digest-length and digest-byte controls. Selected vm Multikey encode/decode is not a multihash operation; unrelated codec outputs cannot prove this contract. Reassess a public API observer before changing the subject implementation.",
       "status": "reviewed-no-verdict"
     },
     {
@@ -1120,9 +1121,9 @@
       "historical_route": "codec-internals",
       "text": "To decode a Multihash value, an implementation MUST 1) remove the prepended Multihash header value, which identifies the type of cryptographic hashing algorithm, 2) remove the cryptographic digest length in bytes, and 3) extract the raw cryptographic digest value which MUST match the expected output length associated with the Multihash header as well as the output length provided in the Multihash value itself.",
       "text_sha256": "6e7a6fd69d7288ac4af2b62963aaab0bccd14d9e29c350e146d70843a728b81a",
-      "review_group": "algorithm-evidence",
-      "actor": "selected codec algorithm or alternative implementation",
-      "evidence_required": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
+      "review_group": "multihash-external-contract",
+      "actor": "actual subject multihash encoder/decoder",
+      "evidence_required": "Need an attributable subject operation and independent header-varint, digest-length and digest-byte controls. Selected vm Multikey encode/decode is not a multihash operation; unrelated codec outputs cannot prove this contract. Reassess a public API observer before changing the subject implementation.",
       "status": "reviewed-no-verdict"
     },
     {

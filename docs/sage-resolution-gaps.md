@@ -5,7 +5,7 @@ report from CI run [38353322386](https://github.com/SAGE-X-project/did-inspector
 The machine-readable [inventory](sage-resolution-gaps.json) preserves all 416 historical
 statement ids, normative levels and keywords, exact text digests, evidence paths,
 and a next evidence route for each statement. Pending routes are planning evidence, not verdicts or implementation defects.
-Schema 2 keeps 353 pending entries and 63 entries observed since the baseline;
+Schema 2 keeps 292 pending entries and 124 entries observed since the baseline;
 it never assigns new observations to the historical inspector revision.
 
 The baseline inspector revision is `aefdcf9228ec8dcf85fd4aaf08b6e0511af11c36`.
@@ -24,8 +24,8 @@ recommendation-level statements. Requirement-level extraction also includes
 permissions, definitions and algorithm steps; it does not mean every row is a
 standalone MUST with an independently observable violation.
 
-The current report has 170 cases, 128 requirement and two recommendation passes,
-one recommendation failure, two inapplicable statements and 353 unobserved statements. Ten fresh native
+The current report has 215 cases, 185 requirement and five recommendation passes,
+two recommendation failures, two inapplicable statements and 292 unobserved statements. Ten fresh native
 result cases add 13 requirement passes and one conditional NOT_APPLICABLE.
 Twenty-four direct metadata serialization cases add four requirement passes.
 Three native error/state cases and ten owned TLS response cases add 22
@@ -52,15 +52,15 @@ table rows, including recognized datetime properties and date-looking unknown
 strings, adding consumption.1 on these selected values. Root/map insertion order
 is not required. All numeric ranges, forced double properties without a fraction,
 other property contexts and full JSON-LD processing remain unestablished.
-The following routing counts describe the remaining 353, not the baseline 416.
+The following routing counts describe the remaining 292, not the baseline 416.
 
 | Primary next evidence route | Statements | Meaning |
 |---|---:|---|
 | Existing observation | 34 | Candidate assertions on actual native results, methods or server responses |
 | Existing operation, new scenario | 0 | Candidate branches requiring fresh requests or controlled Source failures |
-| Additional observer operation | 95 | A different actor, entry point or instrumentation is needed |
-| Additional data or feature | 117 | Applicable optional fields, representations or method branches are absent |
-| Document or applicability review | 103 | Author obligations, permissions, definitions, contracts or conflicts |
+| Additional observer operation | 56 | A different actor, entry point or instrumentation is needed |
+| Additional data or feature | 97 | Applicable optional fields, representations or method branches are absent |
+| Document or applicability review | 101 | Author obligations, permissions, definitions, contracts or conflicts |
 | Operational or authority evidence | 4 | Canonical storage or controller authority cannot be proved by fixtures |
 
 These are primary routing counts, not estimates of implementation tasks, new
@@ -81,8 +81,8 @@ bound by those fixtures.
 
 The SAGE adapter deliberately returns false for the generic capability
 interfaces. This is an observation-interface limitation, not evidence that the
-underlying library lacks every such feature. A future parser, consumer,
-retriever or codec adapter must call the actual pinned implementation and
+underlying library lacks every such feature. The new explicit parser, consumer,
+retriever, codec and client operations call the actual pinned implementation and
 preserve its own identity and inputs. InspectPipeline now wraps the actual
 pinned producer and consumer supplied to a fresh SAGE resolver, delegating their
 unchanged arguments and returns. Pre-producer data and representation-entry maps
@@ -102,9 +102,11 @@ Input metadata and arbitrary pre-serialization values remain unestablished.
 For example, the producer-selected JWK alg recommendation can be inspected
 freshly even though the generic scope treats it as document-author policy.
 
-Client and server duties remain distinct. Binding requests are currently built
-by the inspector, so the server cannot receive PASS for the client's request
-construction or response-consumption obligations. A native dereference request
+Client and server duties remain distinct. The earlier server scenarios use inspector-built
+requests and cannot prove client behavior. The separate actual universal.Client
+batch now constructs its own requests, delegates through an owned universal
+handler to the SAGE resolver, and passively captures the exact native invocation.
+Controlled response fixtures establish only client metadata-directed parsing. A native dereference request
 is parsed by the adapter before calling the typed subject API; a rejected
 adapter input does not demonstrate the subject algorithm's invalid-input
 branch. This requires an attributed subject entry point, not a fabricated
@@ -197,3 +199,13 @@ inputs must reach the actual producer after successful model construction.
 Refusal without output or independently checked base-only repaired output can
 pass; error with partial bytes remains ERROR. This does not establish all
 non-conforming DID/schema rejection, full JSON-LD semantics or publication.
+
+## Consolidated library verification
+
+The [353-clause batch audit](sage-resolution-batch-review.md) reads and individually records every anchored remaining clause. Related implementations are committed together on one PR; this changes delivery cadence, not the existing stage order. It supplies no automatic verdict.
+
+The batch adds 45 cases and observes 61 anchored clauses: five syntax/reference clauses, eighteen key/multibase encoding clauses, nineteen actual-client binding/metadata clauses, ten relying-party/error clauses, six conditional document clauses and three local context/undefined-term clauses. Sixty PASS and one recommendation FAIL are preserved. All 416 historical ids remain as 292 pending and 124 observed (121 PASS, one NOT_APPLICABLE, two FAIL).
+
+The newly observed recommendation failure is json-ld-processors.6: the actual default producer returns the undefined root term. The independent pinned-context oracle and paired accepted control prevent a strict-option substitute from hiding it. The default consumer removes the same term as json-ld-processors.8 recommends. No core implementation is changed in this PR.
+
+Public point fixtures and public deterministic scalar/seed bytes check transport encoding only. CID secret BLS prefix/varint ambiguity, internal arithmetic steps, optional permissions, full JSON-LD/RDF processing, author obligations, operational authority and missing history/service features remain separately unestablished. The stage-eight contract/core work and deferred W3C registration are retained.
