@@ -81,3 +81,7 @@ active JSON envelopes omit `deactivated: false`, and unsupported DID Resolution
 Accept errors omit `sageCode`. They remain implementation fixes and reinspection
 work in the approved core migration order. Neither the W3C recommendation result
 nor these projection PASS observations resolve or supersede those findings.
+
+A separate [resolution scope](sage-resolution-subject.md) connects native SAGE
+resolution, dereferencing and loopback HTTP observations. It preserves a separate
+subject identity and does not extend the PASS claims of this projection scope.

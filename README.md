@@ -46,3 +46,7 @@ raw evidence, the recommendation finding and the explicit limits. These reports
 cover produced fixture documents only; unobserved statements remain NOT_RUN.
 
 Licensed under the Apache License, Version 2.0 (see `LICENSE`).
+
+The SAGE adapter also has a separate [resolution scope](docs/sage-resolution-subject.md)
+for native DID resolution, key dereferencing and inspector-owned loopback TLS.
+Unobserved publication statements remain NOT_RUN.

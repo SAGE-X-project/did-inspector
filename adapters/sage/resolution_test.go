@@ -1,0 +1,126 @@
+package sage
+
+import (
+	"context"
+	"encoding/json"
+	"github.com/sage-x-project/did-go/document"
+	"net/http"
+	"testing"
+
+	"github.com/sage-x-project/did-inspector/core"
+	"github.com/sage-x-project/did-inspector/profiles/sageprojection"
+	"github.com/sage-x-project/did-inspector/profiles/sageresolution"
+	"github.com/sage-x-project/did-inspector/report"
+)
+
+func TestActualResolutionProfiles(t *testing.T) {
+	s, err := identify(pinned)
+	if err != nil {
+		t.Fatal(err)
+	}
+	target := s.ResolutionIdentity()
+	if target.Describe().Name == s.Describe().Name {
+		t.Fatal("mixed scopes")
+	}
+	for _, name := range []string{"did-core-1.0", "did-1.1"} {
+		p, e := sageresolution.Profile(name)
+		if e != nil {
+			t.Fatal(e)
+		}
+		res, e := (core.Runner{}).Run(t.Context(), p, target)
+		if e != nil {
+			t.Fatal(e)
+		}
+		in, e := report.InputFor(p, res, "unit-native")
+		if e != nil {
+			t.Fatal(e)
+		}
+		r := report.Build(in)
+		t.Log(name, r.Totals)
+		for _, c := range res.Cases {
+			for _, o := range c.Observations {
+				if o.Verdict != core.Pass {
+					t.Errorf("%s %s: %s %s", c.Case, o.Statement, o.Verdict, o.Observed)
+				}
+			}
+		}
+		if len(r.GateFailures()) != 0 {
+			t.Fatal(r.GateFailures())
+		}
+	}
+}
+func TestResolutionTranslationFailures(t *testing.T) {
+	s, _ := identify(pinned)
+	rows, _ := sageprojection.Fixtures()
+	q := sageresolution.Request{Function: "resolve", Input: rows[0].DID}
+	bad := rows[0]
+	bad.DID = "bad"
+	if _, e := s.InspectResolution(t.Context(), bad, q); e == nil {
+		t.Fatal("bad fixture DID")
+	}
+	bad = rows[0]
+	bad.Keys = append([]sageprojection.Key(nil), bad.Keys...)
+	bad.Keys[0].MaterialHex = "zz"
+	if _, e := s.InspectResolution(t.Context(), bad, q); e == nil {
+		t.Fatal("bad fixture bytes")
+	}
+	for _, request := range []sageresolution.Request{{Function: "bad"}, {Function: "http"}, {Function: "resolve10", Input: "bad"}, {Function: "dereference", Input: "bad"}} {
+		if _, e := s.InspectResolution(t.Context(), rows[0], request); e == nil {
+			t.Fatal(request)
+		}
+	}
+	req := core.HTTPRequest{Method: http.MethodGet, Target: "did:sage:web:registry.example:agent-1", Header: http.Header{}}
+	ctx, cancel := context.WithCancel(t.Context())
+	cancel()
+	if _, e := s.InspectResolution(ctx, rows[0], sageresolution.Request{Function: "http", HTTP: &req}); e == nil {
+		t.Fatal("canceled exchange")
+	}
+	if _, e := nativeResult(sageresolution.Result{}, func() {}, document.Metadata{}); e == nil {
+		t.Fatal("native metadata encoding")
+	}
+	if _, e := nativeResult(sageresolution.Result{}, map[string]any{}, document.Metadata{Extra: map[string]any{"bad": func() {}}}); e == nil {
+		t.Fatal("content metadata encoding")
+	}
+	if _, e := dereferenceResult(sageresolution.Result{}, nil, func() {}, document.Metadata{}); e == nil {
+		t.Fatal("content encoding")
+	}
+	// Native metadata remains unchanged: the known SAGE-only missing member is
+	// not repaired by adapter translation.
+	out, e := s.InspectResolution(t.Context(), rows[0], q)
+	if e != nil {
+		t.Fatal(e)
+	}
+	var md map[string]any
+	if e = json.Unmarshal(out.ContentMetadata, &md); e != nil {
+		t.Fatal(e)
+	}
+	if md["versionId"] != "7" {
+		t.Fatal("fixture version not preserved")
+	}
+	if _, ok := md["deactivated"]; ok {
+		t.Fatal("adapter inserted active metadata")
+	}
+}
+
+func TestNativeRecordOutcomesRemainUnrepaired(t *testing.T) {
+	s, _ := identify(pinned)
+	rows, _ := sageprojection.Fixtures()
+	for _, fn := range []string{"resolve", "resolve10", "representation10"} {
+		out, e := s.InspectResolution(t.Context(), rows[4], sageresolution.Request{Function: fn, Input: rows[4].DID})
+		if e != nil || out.HasContent {
+			t.Fatal("deactivation output", fn, e)
+		}
+		var md map[string]any
+		if e = json.Unmarshal(out.ContentMetadata, &md); e != nil || md["deactivated"] != true {
+			t.Fatal("deactivation metadata", fn, e)
+		}
+	}
+	out, e := s.InspectResolution(t.Context(), rows[0], sageresolution.Request{Function: "resolve", Input: rows[0].DID, Accept: "text/html"})
+	if e != nil || out.HasContent || out.SageCode != "" {
+		t.Fatal("known unsupported accept boundary repaired", e)
+	}
+	out, e = s.InspectResolution(t.Context(), rows[0], sageresolution.Request{Function: "resolve10", Input: rows[0].DID})
+	if e != nil || string(out.Snapshot) != `{"id":"did:sage:web:registry.example:agent-1"}` || len(out.Raw) != 0 {
+		t.Fatal("native snapshot scope", e, out)
+	}
+}

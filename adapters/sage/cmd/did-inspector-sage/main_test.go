@@ -12,6 +12,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"github.com/sage-x-project/did-inspector/adapters/sage"
 	"github.com/sage-x-project/did-inspector/core"
 	"github.com/sage-x-project/did-inspector/profiles/sageprojection"
 	"github.com/sage-x-project/did-inspector/report"
@@ -258,5 +259,69 @@ func TestReportAndRawOutputsCannotOverwriteEachOther(t *testing.T) {
 	e.now = func() time.Time { return time.Date(10000, 1, 1, 0, 0, 0, 0, time.UTC) }
 	if run([]string{"--profile", "did-1.1", "--raw-out", filepath.Join(dir, "bad-time.json")}, e) != 1 {
 		t.Fatal("invalid raw timestamp accepted")
+	}
+}
+
+func TestResolutionScopeAndNativeCLI(t *testing.T) {
+	e, _, _ := testEnv()
+	if run([]string{"--profile", "did-1.1", "--scope", "bad"}, e) != 2 {
+		t.Fatal("unknown scope")
+	}
+	e.subject = func() (core.Subject, error) { return &sage.Subject{}, nil }
+	path := filepath.Join(t.TempDir(), "unit.json")
+	if run([]string{"--profile", "did-1.1", "--scope", "resolution", "--out", path}, e) != 0 {
+		t.Fatal("resolution scope")
+	}
+	data, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	r, err := report.Decode(data)
+	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 27 {
+		t.Fatal("scope identity", err, r.Totals)
+	}
+	binary := filepath.Join(t.TempDir(), "sage-inspector")
+	cmd := exec.Command("go", "build", "-mod=readonly", "-o", binary, ".")
+	if out, err := cmd.CombinedOutput(); err != nil {
+		t.Fatalf("build %v %s", err, out)
+	}
+	for _, profile := range []string{"did-core-1.0", "did-1.1"} {
+		dir := t.TempDir()
+		reportPath := filepath.Join(dir, "report.json")
+		rawPath := filepath.Join(dir, "raw.json")
+		cmd = exec.Command(binary, "--scope", "resolution", "--profile", profile, "--deterministic", "--out", reportPath, "--raw-out", rawPath)
+		if out, err := cmd.CombinedOutput(); err != nil {
+			t.Fatalf("native %v %s", err, out)
+		}
+		data, err := os.ReadFile(reportPath)
+		if err != nil {
+			t.Fatal(err)
+		}
+		r, err = report.Decode(data)
+		if err != nil {
+			t.Fatal(err)
+		}
+		want, cases := 15, 11
+		if profile == "did-1.1" {
+			want, cases = 27, 23
+		}
+		if r.Totals.Pass != want || len(r.GateFailures()) != 0 || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Subject.Revision != "2ef282b40ccfe243c6cf3b1c05594e02171126cc" {
+			t.Fatal("native scope", r.Totals, r.Subject)
+		}
+		data, err = os.ReadFile(rawPath)
+		if err != nil {
+			t.Fatal(err)
+		}
+		var raw core.RunResult
+		if err = json.Unmarshal(data, &raw); err != nil || len(raw.Cases) != cases {
+			t.Fatal("raw", err, len(raw.Cases))
+		}
+		for _, c := range raw.Cases {
+			for _, o := range c.Observations {
+				if !strings.Contains(o.Input, `"record"`) || !strings.Contains(o.Observed, `"metadata"`) {
+					t.Fatal("lost evidence")
+				}
+			}
+		}
 	}
 }
