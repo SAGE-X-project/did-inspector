@@ -164,13 +164,13 @@ jobs:
           import json, os
           from pathlib import Path
           root=Path(os.environ['RUNNER_TEMP'])/'sage-reports'
-          for name,passed,pending,cases in [('did-core-1.0',33,173,16),('did-1.1',58,428,66)]:
+          for name,passed,pending,cases in [('did-core-1.0',33,173,16),('did-1.1',63,423,71)]:
               report=json.loads((root/('resolution-'+name+'.json')).read_text())
               assert report['subject']['name']=='did-go/advanced/sage-resolution'
               assert report['subject']['revision']=='2ef282b40ccfe243c6cf3b1c05594e02171126cc'
               assert report['totals']['FAIL']==0 and report['totals']['ERROR']==0
               assert report['totals']['PASS']==passed and report['totals']['NOT_RUN']==pending
-              assert report['totals_by_level']['requirement']['PASS']==(33 if name=='did-core-1.0' else 56)
+              assert report['totals_by_level']['requirement']['PASS']==(33 if name=='did-core-1.0' else 61)
               raw=json.loads((root/('resolution-'+name+'-raw.json')).read_text())
               assert len(raw['cases'])==cases and raw['subject']==report['subject']
           PYTHON
