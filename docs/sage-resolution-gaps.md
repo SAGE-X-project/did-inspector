@@ -5,7 +5,7 @@ report from CI run [38353322386](https://github.com/SAGE-X-project/did-inspector
 The machine-readable [inventory](sage-resolution-gaps.json) preserves all 416 historical
 statement ids, normative levels and keywords, exact text digests, evidence paths,
 and a next evidence route for each statement. Pending routes are planning evidence, not verdicts or implementation defects.
-Schema 2 keeps 292 pending entries and 124 entries observed since the baseline;
+Schema 2 keeps 269 pending entries and 147 entries observed since the baseline;
 it never assigns new observations to the historical inspector revision.
 
 The baseline inspector revision is `aefdcf9228ec8dcf85fd4aaf08b6e0511af11c36`.
@@ -24,8 +24,8 @@ recommendation-level statements. Requirement-level extraction also includes
 permissions, definitions and algorithm steps; it does not mean every row is a
 standalone MUST with an independently observable violation.
 
-The current report has 215 cases, 185 requirement and five recommendation passes,
-two recommendation failures, two inapplicable statements and 292 unobserved statements. Ten fresh native
+The current report has 238 cases, 204 requirement and nine recommendation passes,
+two recommendation failures, two inapplicable statements and 269 unobserved statements. Ten fresh native
 result cases add 13 requirement passes and one conditional NOT_APPLICABLE.
 Twenty-four direct metadata serialization cases add four requirement passes.
 Three native error/state cases and ten owned TLS response cases add 22
@@ -52,15 +52,15 @@ table rows, including recognized datetime properties and date-looking unknown
 strings, adding consumption.1 on these selected values. Root/map insertion order
 is not required. All numeric ranges, forced double properties without a fraction,
 other property contexts and full JSON-LD processing remain unestablished.
-The following routing counts describe the remaining 292, not the baseline 416.
+The following routing counts describe the remaining 269, not the baseline 416.
 
 | Primary next evidence route | Statements | Meaning |
 |---|---:|---|
-| Existing observation | 34 | Candidate assertions on actual native results, methods or server responses |
+| Existing observation | 17 | Candidate assertions on actual native results, methods or server responses |
 | Existing operation, new scenario | 0 | Candidate branches requiring fresh requests or controlled Source failures |
-| Additional observer operation | 56 | A different actor, entry point or instrumentation is needed |
+| Additional observer operation | 52 | A different actor, entry point or instrumentation is needed |
 | Additional data or feature | 97 | Applicable optional fields, representations or method branches are absent |
-| Document or applicability review | 101 | Author obligations, permissions, definitions, contracts or conflicts |
+| Document or applicability review | 99 | Author obligations, permissions, definitions, contracts or conflicts |
 | Operational or authority evidence | 4 | Canonical storage or controller authority cannot be proved by fixtures |
 
 These are primary routing counts, not estimates of implementation tasks, new
@@ -209,3 +209,52 @@ The batch adds 45 cases and observes 61 anchored clauses: five syntax/reference 
 The newly observed recommendation failure is json-ld-processors.6: the actual default producer returns the undefined root term. The independent pinned-context oracle and paired accepted control prevent a strict-option substitute from hiding it. The default consumer removes the same term as json-ld-processors.8 recommends. No core implementation is changed in this PR.
 
 Public point fixtures and public deterministic scalar/seed bytes check transport encoding only. CID secret BLS prefix/varint ambiguity, internal arithmetic steps, optional permissions, full JSON-LD/RDF processing, author obligations, operational authority and missing history/service features remain separately unestablished. The stage-eight contract/core work and deferred W3C registration are retained.
+
+
+## Typed native input and result contracts
+
+A second consolidated batch adds 23 fresh cases for 23 previously unobserved
+clauses (19 requirements and four recommendations). Actual SAGE
+`ResolveWithCode` and `DereferenceWithCode` calls receive typed identifiers and
+empty or explicit options. The adapter captures their textual identifier and
+actual options serialization before invocation, preserving original native
+metadata serializer bytes, errors and the actual problem object. Invalid
+text rejected by an adapter parser is never evidence of native rejection;
+zero DID/DIDURL values reach the actual entry directly.
+
+Ten plain-document dereferences over five public records compare the complete
+snapshot and content metadata with a separately executed same-record resolve.
+This comparison proves the selected externally observable outcomes only; it
+does not trace an internal algorithm step or establish complete document
+conformance. Complete `#sign` and `#agree` inputs select the exact methods from
+the independently captured document. Missing fragments, an unauthorized
+relationship, and an input without a verification method are refusal controls.
+No service-path/query or historical feature is inferred from these results.
+
+JSON serializability covers the selected identifier text, actual typed options
+and two native metadata outputs, excluding contentStream. Successful document
+and fragment metadata, typed-zero failure metadata and absent error content are
+checked independently. Input-required and DID-grammar statements are observed
+only for these typed API inputs and explicit zero refusal, not every malformed
+string, extension value or DID method. Successful method support is restricted
+to the actual `did:sage` implementation and pinned revision.
+
+RFC9457 evidence checks the unchanged native problem data structure; it does
+not claim HTTP problem transmission or all RFC9457 semantics. Input/options capture mismatch is an observer ERROR. JSON object member order
+and known DID-set order do not change semantic equality, while unknown extension
+lists remain ordered. Mandatory refusal requires an actual descriptive error
+object; an empty or null error cannot earn PASS. Canonical error type checks
+apply only where the clause prescribes that type. Short titles and
+longer details are separately compared with reviewed human-readable fixture
+explanations. Missing explanations fail their recommendation; unreviewed
+nonempty prose remains NOT_SUPPORTED. They never change mandatory refusal
+verdicts. The `FEATURE_NOT_SUPPORTED` detail recommendation uses an actual
+resolve request for unsupported `text/html`; the dereferencing
+`REPRESENTATION_NOT_SUPPORTED` response is not substituted for it.
+
+The current ledger preserves all 416 historical rows as 269 pending plus 147
+observed (144 PASS, one NOT_APPLICABLE and two FAIL). The frozen 353-clause
+review and its original 61 observations are retained with their own attribution.
+New native cases do not alter that audit anchor or copy its verdicts.
+`scripts/check_sage_contracts.py` independently verifies every new case and its
+raw inputs, options, serializers, result comparisons and statement attribution.

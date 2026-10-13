@@ -111,6 +111,7 @@ func Profile(name string) (core.Profile, error) {
 	appendRetrievalCases(&p, rows)
 	appendLibraryDocumentCases(&p)
 	appendLibraryContextCases(&p)
+	appendContractCases(&p, rows)
 	if err := appendConsumerConformanceCases(&p); err != nil {
 		return p, err
 	}

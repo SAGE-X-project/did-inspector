@@ -382,3 +382,10 @@ func TestOptionInputsAndHTTPParsingScopeArePreserved(t *testing.T) {
 		t.Fatal("HTTP parsing scope", found)
 	}
 }
+
+func (s stub) InspectContract(context.Context, sageprojection.Record, ContractRequest) (ContractResult, error) {
+	if s.err {
+		return ContractResult{}, errors.New("fixture contract failure")
+	}
+	return ContractResult{}, nil
+}

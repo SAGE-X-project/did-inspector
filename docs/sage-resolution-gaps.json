@@ -76,9 +76,9 @@
   ],
   "categories": {
     "additional-data-or-feature": 97,
-    "additional-observer-operation": 56,
-    "document-or-applicability-review": 101,
-    "existing-observation": 34,
+    "additional-observer-operation": 52,
+    "document-or-applicability-review": 99,
+    "existing-observation": 17,
     "operational-or-authority-evidence": 4
   },
   "routes": {
@@ -2025,17 +2025,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.1",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "5b7a6c6e645a6adec329314187a44852a8e3fc685b8bdb1c533e788da951f584",
-      "baseline_verdict": "NOT_RUN",
-      "route": "dereference-input",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#dereferencing-algorithm-resource.10",
       "level": "requirement",
       "keywords": [],
@@ -2049,44 +2038,6 @@
       "level": "requirement",
       "keywords": [],
       "text_sha256": "fa044cf32d0535d65d2f1f4bd5f49b5b2cd72fdd48e5db52e07711eaa3e7a95b",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.12",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "cece746588015099e140f7f8e5b38dd7114a343aa378b7f4dd2f4d0701f5ff5d",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.13",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "f4a3ef4ca2c5f8bc5bece035a0e26e2a4523094ea69e4e691a9ef68e207b4c9f",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.14",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "f58619372c0a4aa53559e4c4a988281226e2f0102cc63cfe3ba79b7aae316fb5",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.15",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "28c66db093e712a0b977f02a020b6ca8cb911982494ab0336d3745bfae0fba0e",
       "baseline_verdict": "NOT_RUN",
       "route": "native-result",
       "generic_scope": "checked"
@@ -2127,15 +2078,6 @@
       "text_sha256": "fe27f717f8d61fd5e6cd9cf942d724a92c2f71e4b0a8a4b9f75ac44989efbc4b",
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.2",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "1751581a0d9e9b7cef763a430dbbd2e3151e72570d5a348e3c96de40652ac832",
-      "baseline_verdict": "NOT_RUN",
-      "route": "dereference-input",
       "generic_scope": "checked"
     },
     {
@@ -2229,15 +2171,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.3",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "c222065a7466bf7d08fe7dea2629369e50fc612d80923c6d485649a2ca1262cd",
-      "baseline_verdict": "NOT_RUN",
-      "route": "dereference-input",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#dereferencing-algorithm-resource.30",
       "level": "requirement",
       "keywords": [],
@@ -2325,15 +2258,6 @@
       "text_sha256": "14635e2f5fafb4824778271d33711a464e898f77fc6e76b684eb237c4105ced3",
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.4",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "14e3a24e22608c967eaecd4b7b60694b649bf805c63422f283c4ac379f33dec7",
-      "baseline_verdict": "NOT_RUN",
-      "route": "dereference-input",
       "generic_scope": "checked"
     },
     {
@@ -2470,97 +2394,6 @@
       "text_sha256": "14e3a24e22608c967eaecd4b7b60694b649bf805c63422f283c4ac379f33dec7",
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing.1",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "4de01294315b9b2504aee3a70f73d1ce8881cf6222b7bdaabc314ddb24958f9f",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing.11",
-      "level": "requirement",
-      "keywords": [
-        "MUST",
-        "MAY"
-      ],
-      "text_sha256": "c42f2689e1635d22bb48da58394d7575d42af0ce683ac48dbcf94579e9a9c13b",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing.2",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "90d1a07dafb89d638f6092ea19fa5eb69e12b630711e4ddba605aa26b6dd59d4",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing.3",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "faf9a35511d70331bc5afef65a905eb30e0dd05a6aed80b765462c70a0d14f35",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing.4",
-      "level": "requirement",
-      "keywords": [
-        "REQUIRED"
-      ],
-      "text_sha256": "1f61cb763ca3b004d7b71e6649bf5ae5db1ee7a94ca7a9959720f6a1ea5c6118",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing.5",
-      "level": "requirement",
-      "keywords": [
-        "REQUIRED",
-        "MAY"
-      ],
-      "text_sha256": "dbf74964751799b2263d339e616449c65d8e300ab7779a7a8944f6ccd1d5e099",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing.6",
-      "level": "requirement",
-      "keywords": [
-        "REQUIRED",
-        "MUST NOT"
-      ],
-      "text_sha256": "6770a969d56d74f8c019bfb1d48dedf7c833b3fef0272231717ace52bdc99678",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing.7",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "601509aafc8c4463296193205075592387fb12685bf16a200107ef2e0b004224",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
       "generic_scope": "checked"
     },
     {
@@ -3004,50 +2837,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "res10-crd20261001#did-url-dereferencing-options.5",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "b592681909a777c46af61971ac4fd21efc635027db641fea315b723b57a779f6",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#errors.1",
-      "level": "recommendation",
-      "keywords": [
-        "SHOULD"
-      ],
-      "text_sha256": "2f5ba818206406503576b044e2f620081994dc1db3249284f81f32925d53cd50",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#errors.4",
-      "level": "recommendation",
-      "keywords": [
-        "SHOULD"
-      ],
-      "text_sha256": "7ae2625fe9e48392519c5e56d041870f457edb4a8d312d4dc1be942b9ab430df",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#errors.5",
-      "level": "recommendation",
-      "keywords": [
-        "SHOULD"
-      ],
-      "text_sha256": "e2b5486a7a0e7993b498a60c22b9ad2c83f9cfe7d0cb939a05370a0816afbeba",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#errors.6",
       "level": "requirement",
       "keywords": [
@@ -3057,17 +2846,6 @@
       "baseline_verdict": "NOT_RUN",
       "route": "specification",
       "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#errors.7",
-      "level": "recommendation",
-      "keywords": [
-        "SHOULD"
-      ],
-      "text_sha256": "c8a50b60279c2a51246b12a2a13df621164d4e9ebf1e20371019d33a8139b340",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
     },
     {
       "id": "res10-crd20261001#metadata-structure.5",
@@ -3268,30 +3046,6 @@
       "level": "requirement",
       "keywords": [],
       "text_sha256": "1d289368688312969b235b0a30272de657a9c53b6403802d2471ce717a8c4a92",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#resolving.2",
-      "level": "requirement",
-      "keywords": [
-        "REQUIRED",
-        "MUST"
-      ],
-      "text_sha256": "c1caf43281020cb0a5f4620109ed0f709559101fe23801433e789d61f5f99678",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#resolving.3",
-      "level": "requirement",
-      "keywords": [
-        "REQUIRED",
-        "MAY"
-      ],
-      "text_sha256": "dbf74964751799b2263d339e616449c65d8e300ab7779a7a8944f6ccd1d5e099",
       "baseline_verdict": "NOT_RUN",
       "route": "native-result",
       "generic_scope": "checked"
@@ -5570,36 +5324,552 @@
         "did-1.1/sage-resolution/library-client-metadata-media-did",
         "did-1.1/sage-resolution/library-client-metadata-media-did+json"
       ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "5b7a6c6e645a6adec329314187a44852a8e3fc685b8bdb1c533e788da951f584",
+      "baseline_verdict": "NOT_RUN",
+      "route": "dereference-input",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-contract-",
+      "cases": [
+        "did-1.1/sage-resolution/native-contract-zero-dereference"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.12",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "cece746588015099e140f7f8e5b38dd7114a343aa378b7f4dd2f4d0701f5ff5d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-contract-",
+      "cases": [
+        "did-1.1/sage-resolution/native-contract-document-0-false",
+        "did-1.1/sage-resolution/native-contract-document-0-true",
+        "did-1.1/sage-resolution/native-contract-document-1-false",
+        "did-1.1/sage-resolution/native-contract-document-1-true",
+        "did-1.1/sage-resolution/native-contract-document-2-false",
+        "did-1.1/sage-resolution/native-contract-document-2-true",
+        "did-1.1/sage-resolution/native-contract-document-3-false",
+        "did-1.1/sage-resolution/native-contract-document-3-true",
+        "did-1.1/sage-resolution/native-contract-document-5-false",
+        "did-1.1/sage-resolution/native-contract-document-5-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.13",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "f4a3ef4ca2c5f8bc5bece035a0e26e2a4523094ea69e4e691a9ef68e207b4c9f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-contract-",
+      "cases": [
+        "did-1.1/sage-resolution/native-contract-document-0-false",
+        "did-1.1/sage-resolution/native-contract-document-0-true",
+        "did-1.1/sage-resolution/native-contract-document-1-false",
+        "did-1.1/sage-resolution/native-contract-document-1-true",
+        "did-1.1/sage-resolution/native-contract-document-2-false",
+        "did-1.1/sage-resolution/native-contract-document-2-true",
+        "did-1.1/sage-resolution/native-contract-document-3-false",
+        "did-1.1/sage-resolution/native-contract-document-3-true",
+        "did-1.1/sage-resolution/native-contract-document-5-false",
+        "did-1.1/sage-resolution/native-contract-document-5-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.14",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "f58619372c0a4aa53559e4c4a988281226e2f0102cc63cfe3ba79b7aae316fb5",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-contract-",
+      "cases": [
+        "did-1.1/sage-resolution/native-contract-document-0-false",
+        "did-1.1/sage-resolution/native-contract-document-0-true",
+        "did-1.1/sage-resolution/native-contract-document-1-false",
+        "did-1.1/sage-resolution/native-contract-document-1-true",
+        "did-1.1/sage-resolution/native-contract-document-2-false",
+        "did-1.1/sage-resolution/native-contract-document-2-true",
+        "did-1.1/sage-resolution/native-contract-document-3-false",
+        "did-1.1/sage-resolution/native-contract-document-3-true",
+        "did-1.1/sage-resolution/native-contract-document-5-false",
+        "did-1.1/sage-resolution/native-contract-document-5-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.15",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "28c66db093e712a0b977f02a020b6ca8cb911982494ab0336d3745bfae0fba0e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-contract-",
+      "cases": [
+        "did-1.1/sage-resolution/native-contract-document-0-false",
+        "did-1.1/sage-resolution/native-contract-document-0-true",
+        "did-1.1/sage-resolution/native-contract-document-1-false",
+        "did-1.1/sage-resolution/native-contract-document-1-true",
+        "did-1.1/sage-resolution/native-contract-document-2-false",
+        "did-1.1/sage-resolution/native-contract-document-2-true",
+        "did-1.1/sage-resolution/native-contract-document-3-false",
+        "did-1.1/sage-resolution/native-contract-document-3-true",
+        "did-1.1/sage-resolution/native-contract-document-5-false",
+        "did-1.1/sage-resolution/native-contract-document-5-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.2",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "1751581a0d9e9b7cef763a430dbbd2e3151e72570d5a348e3c96de40652ac832",
+      "baseline_verdict": "NOT_RUN",
+      "route": "dereference-input",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-contract-",
+      "cases": [
+        "did-1.1/sage-resolution/native-contract-zero-dereference"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.3",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "c222065a7466bf7d08fe7dea2629369e50fc612d80923c6d485649a2ca1262cd",
+      "baseline_verdict": "NOT_RUN",
+      "route": "dereference-input",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-contract-",
+      "cases": [
+        "did-1.1/sage-resolution/native-contract-zero-dereference"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.4",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "14e3a24e22608c967eaecd4b7b60694b649bf805c63422f283c4ac379f33dec7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "dereference-input",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-contract-",
+      "cases": [
+        "did-1.1/sage-resolution/native-contract-zero-dereference"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "4de01294315b9b2504aee3a70f73d1ce8881cf6222b7bdaabc314ddb24958f9f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-contract-",
+      "cases": [
+        "did-1.1/sage-resolution/native-contract-document-0-false",
+        "did-1.1/sage-resolution/native-contract-document-0-true",
+        "did-1.1/sage-resolution/native-contract-document-1-false",
+        "did-1.1/sage-resolution/native-contract-document-1-true",
+        "did-1.1/sage-resolution/native-contract-document-2-false",
+        "did-1.1/sage-resolution/native-contract-document-2-true",
+        "did-1.1/sage-resolution/native-contract-document-3-false",
+        "did-1.1/sage-resolution/native-contract-document-3-true",
+        "did-1.1/sage-resolution/native-contract-document-5-false",
+        "did-1.1/sage-resolution/native-contract-document-5-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.11",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "MAY"
+      ],
+      "text_sha256": "c42f2689e1635d22bb48da58394d7575d42af0ce683ac48dbcf94579e9a9c13b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-contract-",
+      "cases": [
+        "did-1.1/sage-resolution/native-contract-document-0-false",
+        "did-1.1/sage-resolution/native-contract-document-0-true",
+        "did-1.1/sage-resolution/native-contract-document-1-false",
+        "did-1.1/sage-resolution/native-contract-document-1-true",
+        "did-1.1/sage-resolution/native-contract-document-2-false",
+        "did-1.1/sage-resolution/native-contract-document-2-true",
+        "did-1.1/sage-resolution/native-contract-document-3-false",
+        "did-1.1/sage-resolution/native-contract-document-3-true",
+        "did-1.1/sage-resolution/native-contract-document-5-false",
+        "did-1.1/sage-resolution/native-contract-document-5-true",
+        "did-1.1/sage-resolution/native-contract-fragment-sign",
+        "did-1.1/sage-resolution/native-contract-fragment-agree"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "90d1a07dafb89d638f6092ea19fa5eb69e12b630711e4ddba605aa26b6dd59d4",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-contract-",
+      "cases": [
+        "did-1.1/sage-resolution/native-contract-document-0-false",
+        "did-1.1/sage-resolution/native-contract-document-0-true",
+        "did-1.1/sage-resolution/native-contract-document-1-false",
+        "did-1.1/sage-resolution/native-contract-document-1-true",
+        "did-1.1/sage-resolution/native-contract-document-2-false",
+        "did-1.1/sage-resolution/native-contract-document-2-true",
+        "did-1.1/sage-resolution/native-contract-document-3-false",
+        "did-1.1/sage-resolution/native-contract-document-3-true",
+        "did-1.1/sage-resolution/native-contract-document-5-false",
+        "did-1.1/sage-resolution/native-contract-document-5-true",
+        "did-1.1/sage-resolution/native-contract-fragment-sign",
+        "did-1.1/sage-resolution/native-contract-fragment-agree",
+        "did-1.1/sage-resolution/native-contract-zero-dereference",
+        "did-1.1/sage-resolution/native-contract-missing-fragment",
+        "did-1.1/sage-resolution/native-contract-wrong-purpose",
+        "did-1.1/sage-resolution/native-contract-no-method",
+        "did-1.1/sage-resolution/native-contract-unsupported-deref-media"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "faf9a35511d70331bc5afef65a905eb30e0dd05a6aed80b765462c70a0d14f35",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-contract-",
+      "cases": [
+        "did-1.1/sage-resolution/native-contract-fragment-sign",
+        "did-1.1/sage-resolution/native-contract-fragment-agree",
+        "did-1.1/sage-resolution/native-contract-authorized-sign",
+        "did-1.1/sage-resolution/native-contract-missing-fragment"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.4",
+      "level": "requirement",
+      "keywords": [
+        "REQUIRED"
+      ],
+      "text_sha256": "1f61cb763ca3b004d7b71e6649bf5ae5db1ee7a94ca7a9959720f6a1ea5c6118",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-contract-",
+      "cases": [
+        "did-1.1/sage-resolution/native-contract-document-0-false",
+        "did-1.1/sage-resolution/native-contract-document-0-true",
+        "did-1.1/sage-resolution/native-contract-document-1-false",
+        "did-1.1/sage-resolution/native-contract-document-1-true",
+        "did-1.1/sage-resolution/native-contract-document-2-false",
+        "did-1.1/sage-resolution/native-contract-document-2-true",
+        "did-1.1/sage-resolution/native-contract-document-3-false",
+        "did-1.1/sage-resolution/native-contract-document-3-true",
+        "did-1.1/sage-resolution/native-contract-document-5-false",
+        "did-1.1/sage-resolution/native-contract-document-5-true",
+        "did-1.1/sage-resolution/native-contract-fragment-sign",
+        "did-1.1/sage-resolution/native-contract-fragment-agree",
+        "did-1.1/sage-resolution/native-contract-zero-dereference",
+        "did-1.1/sage-resolution/native-contract-missing-fragment",
+        "did-1.1/sage-resolution/native-contract-wrong-purpose",
+        "did-1.1/sage-resolution/native-contract-no-method",
+        "did-1.1/sage-resolution/native-contract-unsupported-deref-media"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.5",
+      "level": "requirement",
+      "keywords": [
+        "REQUIRED",
+        "MAY"
+      ],
+      "text_sha256": "dbf74964751799b2263d339e616449c65d8e300ab7779a7a8944f6ccd1d5e099",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-contract-",
+      "cases": [
+        "did-1.1/sage-resolution/native-contract-document-0-false",
+        "did-1.1/sage-resolution/native-contract-document-0-true",
+        "did-1.1/sage-resolution/native-contract-document-1-false",
+        "did-1.1/sage-resolution/native-contract-document-1-true",
+        "did-1.1/sage-resolution/native-contract-document-2-false",
+        "did-1.1/sage-resolution/native-contract-document-2-true",
+        "did-1.1/sage-resolution/native-contract-document-3-false",
+        "did-1.1/sage-resolution/native-contract-document-3-true",
+        "did-1.1/sage-resolution/native-contract-document-5-false",
+        "did-1.1/sage-resolution/native-contract-document-5-true",
+        "did-1.1/sage-resolution/native-contract-fragment-sign",
+        "did-1.1/sage-resolution/native-contract-fragment-agree",
+        "did-1.1/sage-resolution/native-contract-zero-dereference",
+        "did-1.1/sage-resolution/native-contract-missing-fragment",
+        "did-1.1/sage-resolution/native-contract-wrong-purpose",
+        "did-1.1/sage-resolution/native-contract-no-method",
+        "did-1.1/sage-resolution/native-contract-unsupported-deref-media"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.6",
+      "level": "requirement",
+      "keywords": [
+        "REQUIRED",
+        "MUST NOT"
+      ],
+      "text_sha256": "6770a969d56d74f8c019bfb1d48dedf7c833b3fef0272231717ace52bdc99678",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-contract-",
+      "cases": [
+        "did-1.1/sage-resolution/native-contract-document-0-false",
+        "did-1.1/sage-resolution/native-contract-document-0-true",
+        "did-1.1/sage-resolution/native-contract-document-1-false",
+        "did-1.1/sage-resolution/native-contract-document-1-true",
+        "did-1.1/sage-resolution/native-contract-document-2-false",
+        "did-1.1/sage-resolution/native-contract-document-2-true",
+        "did-1.1/sage-resolution/native-contract-document-3-false",
+        "did-1.1/sage-resolution/native-contract-document-3-true",
+        "did-1.1/sage-resolution/native-contract-document-5-false",
+        "did-1.1/sage-resolution/native-contract-document-5-true",
+        "did-1.1/sage-resolution/native-contract-fragment-sign",
+        "did-1.1/sage-resolution/native-contract-fragment-agree",
+        "did-1.1/sage-resolution/native-contract-zero-dereference",
+        "did-1.1/sage-resolution/native-contract-missing-fragment",
+        "did-1.1/sage-resolution/native-contract-wrong-purpose",
+        "did-1.1/sage-resolution/native-contract-no-method",
+        "did-1.1/sage-resolution/native-contract-unsupported-deref-media"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.7",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "601509aafc8c4463296193205075592387fb12685bf16a200107ef2e0b004224",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-contract-",
+      "cases": [
+        "did-1.1/sage-resolution/native-contract-zero-dereference",
+        "did-1.1/sage-resolution/native-contract-missing-fragment",
+        "did-1.1/sage-resolution/native-contract-wrong-purpose",
+        "did-1.1/sage-resolution/native-contract-no-method",
+        "did-1.1/sage-resolution/native-contract-unsupported-deref-media"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-options.5",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "b592681909a777c46af61971ac4fd21efc635027db641fea315b723b57a779f6",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-contract-",
+      "cases": [
+        "did-1.1/sage-resolution/native-contract-authorized-sign",
+        "did-1.1/sage-resolution/native-contract-wrong-purpose",
+        "did-1.1/sage-resolution/native-contract-no-method"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#errors.1",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "2f5ba818206406503576b044e2f620081994dc1db3249284f81f32925d53cd50",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-contract-",
+      "cases": [
+        "did-1.1/sage-resolution/native-contract-zero-resolve",
+        "did-1.1/sage-resolution/native-contract-zero-dereference",
+        "did-1.1/sage-resolution/native-contract-missing-fragment",
+        "did-1.1/sage-resolution/native-contract-wrong-purpose",
+        "did-1.1/sage-resolution/native-contract-no-method",
+        "did-1.1/sage-resolution/native-contract-unsupported-media",
+        "did-1.1/sage-resolution/native-contract-unsupported-deref-media"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#errors.4",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "7ae2625fe9e48392519c5e56d041870f457edb4a8d312d4dc1be942b9ab430df",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-contract-",
+      "cases": [
+        "did-1.1/sage-resolution/native-contract-zero-resolve",
+        "did-1.1/sage-resolution/native-contract-zero-dereference",
+        "did-1.1/sage-resolution/native-contract-missing-fragment",
+        "did-1.1/sage-resolution/native-contract-wrong-purpose",
+        "did-1.1/sage-resolution/native-contract-no-method",
+        "did-1.1/sage-resolution/native-contract-unsupported-media",
+        "did-1.1/sage-resolution/native-contract-unsupported-deref-media"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#errors.5",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "e2b5486a7a0e7993b498a60c22b9ad2c83f9cfe7d0cb939a05370a0816afbeba",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-contract-",
+      "cases": [
+        "did-1.1/sage-resolution/native-contract-zero-resolve",
+        "did-1.1/sage-resolution/native-contract-zero-dereference",
+        "did-1.1/sage-resolution/native-contract-missing-fragment",
+        "did-1.1/sage-resolution/native-contract-wrong-purpose",
+        "did-1.1/sage-resolution/native-contract-no-method",
+        "did-1.1/sage-resolution/native-contract-unsupported-media",
+        "did-1.1/sage-resolution/native-contract-unsupported-deref-media"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#errors.7",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "c8a50b60279c2a51246b12a2a13df621164d4e9ebf1e20371019d33a8139b340",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-contract-",
+      "cases": [
+        "did-1.1/sage-resolution/native-contract-unsupported-media"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving.2",
+      "level": "requirement",
+      "keywords": [
+        "REQUIRED",
+        "MUST"
+      ],
+      "text_sha256": "c1caf43281020cb0a5f4620109ed0f709559101fe23801433e789d61f5f99678",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-contract-",
+      "cases": [
+        "did-1.1/sage-resolution/native-contract-resolve-false",
+        "did-1.1/sage-resolution/native-contract-resolve-true",
+        "did-1.1/sage-resolution/native-contract-resolve-options",
+        "did-1.1/sage-resolution/native-contract-zero-resolve",
+        "did-1.1/sage-resolution/native-contract-unsupported-media"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving.3",
+      "level": "requirement",
+      "keywords": [
+        "REQUIRED",
+        "MAY"
+      ],
+      "text_sha256": "dbf74964751799b2263d339e616449c65d8e300ab7779a7a8944f6ccd1d5e099",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-contract-",
+      "cases": [
+        "did-1.1/sage-resolution/native-contract-resolve-false",
+        "did-1.1/sage-resolution/native-contract-resolve-true",
+        "did-1.1/sage-resolution/native-contract-resolve-options",
+        "did-1.1/sage-resolution/native-contract-zero-resolve",
+        "did-1.1/sage-resolution/native-contract-unsupported-media"
+      ]
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 190,
+    "PASS": 213,
     "FAIL": 2,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 2,
     "ERROR": 0,
-    "NOT_RUN": 292
+    "NOT_RUN": 269
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 185,
+      "PASS": 204,
       "FAIL": 0,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 249
+      "NOT_RUN": 230
     },
     "recommendation": {
       "statements": 50,
-      "PASS": 5,
+      "PASS": 9,
       "FAIL": 2,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 0,
       "ERROR": 0,
-      "NOT_RUN": 43
+      "NOT_RUN": 39
     }
   },
-  "expected_live_cases": 215
+  "expected_live_cases": 238
 }
