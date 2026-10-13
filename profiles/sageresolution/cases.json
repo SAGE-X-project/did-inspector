@@ -936,5 +936,674 @@
         ]
       }
     ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "options-accept-syntax",
+    "record": 0,
+    "request": {
+      "function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "options": {
+        "accept": "not a media type"
+      }
+    },
+    "expect": [
+      {
+        "check": "error",
+        "value": "INVALID_OPTIONS",
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.13",
+          "res10-crd20261001#resolving-algorithm.14",
+          "res10-crd20261001#did-resolution-options.2"
+        ]
+      },
+      {
+        "check": "failed-no-content",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.15"
+        ]
+      },
+      {
+        "check": "failed-empty-metadata",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.16"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "options-accept-type",
+    "record": 0,
+    "request": {
+      "function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "options": {
+        "accept": 7
+      }
+    },
+    "expect": [
+      {
+        "check": "error",
+        "value": "INVALID_OPTIONS",
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.13",
+          "res10-crd20261001#resolving-algorithm.14",
+          "res10-crd20261001#did-resolution-options.2"
+        ]
+      },
+      {
+        "check": "failed-no-content",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.15"
+        ]
+      },
+      {
+        "check": "failed-empty-metadata",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.16"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "options-expand-type",
+    "record": 0,
+    "request": {
+      "function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "options": {
+        "expandRelativeUrls": "true"
+      }
+    },
+    "expect": [
+      {
+        "check": "error",
+        "value": "INVALID_OPTIONS",
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.13",
+          "res10-crd20261001#resolving-algorithm.14"
+        ]
+      },
+      {
+        "check": "failed-no-content",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.15"
+        ]
+      },
+      {
+        "check": "failed-empty-metadata",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.16"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "options-cache-type",
+    "record": 0,
+    "request": {
+      "function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "options": {
+        "noCache": "true"
+      }
+    },
+    "expect": [
+      {
+        "check": "error",
+        "value": "INVALID_OPTIONS",
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.13",
+          "res10-crd20261001#resolving-algorithm.14"
+        ]
+      },
+      {
+        "check": "failed-no-content",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.15"
+        ]
+      },
+      {
+        "check": "failed-empty-metadata",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.16"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "options-version-type",
+    "record": 0,
+    "request": {
+      "function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "options": {
+        "versionId": 7
+      }
+    },
+    "expect": [
+      {
+        "check": "error",
+        "value": "INVALID_OPTIONS",
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.13",
+          "res10-crd20261001#resolving-algorithm.14"
+        ]
+      },
+      {
+        "check": "failed-no-content",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.15"
+        ]
+      },
+      {
+        "check": "failed-empty-metadata",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.16"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "options-version-ascii",
+    "record": 0,
+    "request": {
+      "function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "options": {
+        "versionId": "é"
+      }
+    },
+    "expect": [
+      {
+        "check": "error",
+        "value": "INVALID_OPTIONS",
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.13",
+          "res10-crd20261001#resolving-algorithm.14"
+        ]
+      },
+      {
+        "check": "failed-no-content",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.15"
+        ]
+      },
+      {
+        "check": "failed-empty-metadata",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.16"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "options-time-syntax",
+    "record": 0,
+    "request": {
+      "function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "options": {
+        "versionTime": "not-a-date"
+      }
+    },
+    "expect": [
+      {
+        "check": "error",
+        "value": "INVALID_OPTIONS",
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.13",
+          "res10-crd20261001#resolving-algorithm.14",
+          "res10-crd20261001#datetime.1"
+        ]
+      },
+      {
+        "check": "failed-no-content",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.15"
+        ]
+      },
+      {
+        "check": "failed-empty-metadata",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.16"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "options-time-type",
+    "record": 0,
+    "request": {
+      "function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "options": {
+        "versionTime": 1799999000
+      }
+    },
+    "expect": [
+      {
+        "check": "error",
+        "value": "INVALID_OPTIONS",
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.13",
+          "res10-crd20261001#resolving-algorithm.14",
+          "res10-crd20261001#datetime.1"
+        ]
+      },
+      {
+        "check": "failed-no-content",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.15"
+        ]
+      },
+      {
+        "check": "failed-empty-metadata",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.16"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "options-time-fraction",
+    "record": 0,
+    "request": {
+      "function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "options": {
+        "versionTime": "2026-01-01T00:00:00.1Z"
+      }
+    },
+    "expect": [
+      {
+        "check": "error",
+        "value": "INVALID_OPTIONS",
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.13",
+          "res10-crd20261001#resolving-algorithm.14",
+          "res10-crd20261001#datetime.2"
+        ]
+      },
+      {
+        "check": "failed-no-content",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.15"
+        ]
+      },
+      {
+        "check": "failed-empty-metadata",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.16"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "options-time-offset",
+    "record": 0,
+    "request": {
+      "function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "options": {
+        "versionTime": "2026-01-01T00:00:00+09:00"
+      }
+    },
+    "expect": [
+      {
+        "check": "error",
+        "value": "INVALID_OPTIONS",
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.13",
+          "res10-crd20261001#resolving-algorithm.14",
+          "res10-crd20261001#datetime.2"
+        ]
+      },
+      {
+        "check": "failed-no-content",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.15"
+        ]
+      },
+      {
+        "check": "failed-empty-metadata",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.16"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "options-unknown-extension",
+    "record": 0,
+    "request": {
+      "function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "options": {
+        "unconfiguredExtension": "fixture"
+      }
+    },
+    "expect": [
+      {
+        "check": "error",
+        "value": "FEATURE_NOT_SUPPORTED",
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.9",
+          "res10-crd20261001#resolving-algorithm.10"
+        ]
+      },
+      {
+        "check": "failed-no-content",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.11"
+        ]
+      },
+      {
+        "check": "failed-empty-metadata",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.12"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "options-dereference-accept",
+    "record": 0,
+    "request": {
+      "function": "dereference",
+      "input": "did:sage:web:registry.example:agent-1#sign",
+      "options": {
+        "accept": "not a media type"
+      }
+    },
+    "expect": [
+      {
+        "check": "error",
+        "value": "INVALID_OPTIONS",
+        "statements": [
+          "res10-crd20261001#did-url-dereferencing-options.2"
+        ]
+      },
+      {
+        "check": "failed-no-content",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#dereferencing.10"
+        ]
+      },
+      {
+        "check": "failed-empty-metadata",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#dereferencing.13"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "options-relationship-ascii",
+    "record": 0,
+    "request": {
+      "function": "dereference",
+      "input": "did:sage:web:registry.example:agent-1#sign",
+      "options": {
+        "verificationRelationship": "authentificación"
+      }
+    },
+    "expect": [
+      {
+        "check": "error",
+        "value": "INVALID_OPTIONS",
+        "statements": [
+          "res10-crd20261001#did-url-dereferencing-options.4"
+        ]
+      },
+      {
+        "check": "failed-no-content",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#dereferencing.10"
+        ]
+      },
+      {
+        "check": "failed-empty-metadata",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#dereferencing.13"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "options-relationship-type",
+    "record": 0,
+    "request": {
+      "function": "dereference",
+      "input": "did:sage:web:registry.example:agent-1#sign",
+      "options": {
+        "verificationRelationship": 7
+      }
+    },
+    "expect": [
+      {
+        "check": "error",
+        "value": "INVALID_OPTIONS",
+        "statements": [
+          "res10-crd20261001#did-url-dereferencing-options.4"
+        ]
+      },
+      {
+        "check": "failed-no-content",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#dereferencing.10"
+        ]
+      },
+      {
+        "check": "failed-empty-metadata",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#dereferencing.13"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "http-options-get-expandRelativeUrls",
+    "record": 0,
+    "request": {
+      "function": "http",
+      "input": "did:sage:web:registry.example:agent-1",
+      "options": {
+        "expandRelativeUrls": "wrong"
+      },
+      "http_method": "GET",
+      "http_accept": "application/did-resolution"
+    },
+    "expect": [
+      {
+        "check": "tls",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#bindings-https.2"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "http-options-post-expandRelativeUrls",
+    "record": 0,
+    "request": {
+      "function": "http",
+      "input": "did:sage:web:registry.example:agent-1",
+      "options": {
+        "expandRelativeUrls": "wrong"
+      },
+      "http_method": "POST",
+      "http_accept": "application/did-resolution"
+    },
+    "expect": [
+      {
+        "check": "tls",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#bindings-https.2"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "http-options-get-versionTime",
+    "record": 0,
+    "request": {
+      "function": "http",
+      "input": "did:sage:web:registry.example:agent-1",
+      "options": {
+        "versionTime": "2026-01-01T00:00:00.1Z"
+      },
+      "http_method": "GET",
+      "http_accept": "application/did-resolution"
+    },
+    "expect": [
+      {
+        "check": "tls",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#bindings-https.2"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "http-options-post-versionTime",
+    "record": 0,
+    "request": {
+      "function": "http",
+      "input": "did:sage:web:registry.example:agent-1",
+      "options": {
+        "versionTime": "2026-01-01T00:00:00+09:00"
+      },
+      "http_method": "POST",
+      "http_accept": "application/did-resolution"
+    },
+    "expect": [
+      {
+        "check": "tls",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#bindings-https.2"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "options-time-unrepresentable",
+    "record": 0,
+    "request": {
+      "function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "options": {
+        "versionTime": "2026-01-01T00:00:00.0000000001Z"
+      }
+    },
+    "expect": [
+      {
+        "check": "error",
+        "value": "INVALID_OPTIONS",
+        "statements": [
+          "res10-crd20261001#datetime.2"
+        ]
+      },
+      {
+        "check": "failed-no-content",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.15"
+        ]
+      },
+      {
+        "check": "failed-empty-metadata",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.16"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "did-1.1",
+    "name": "options-time-comma",
+    "record": 0,
+    "request": {
+      "function": "resolve",
+      "input": "did:sage:web:registry.example:agent-1",
+      "options": {
+        "versionTime": "2026-01-01T00:00:00,1Z"
+      }
+    },
+    "expect": [
+      {
+        "check": "error",
+        "value": "INVALID_OPTIONS",
+        "statements": [
+          "res10-crd20261001#datetime.1"
+        ]
+      },
+      {
+        "check": "failed-no-content",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.15"
+        ]
+      },
+      {
+        "check": "failed-empty-metadata",
+        "value": null,
+        "statements": [
+          "res10-crd20261001#resolving-algorithm.16"
+        ]
+      }
+    ]
   }
 ]

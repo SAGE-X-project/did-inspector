@@ -277,7 +277,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		t.Fatal(err)
 	}
 	r, err := report.Decode(data)
-	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 27 {
+	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 40 {
 		t.Fatal("scope identity", err, r.Totals)
 	}
 	binary := filepath.Join(t.TempDir(), "sage-inspector")
@@ -303,7 +303,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		want, cases := 15, 11
 		if profile == "did-1.1" {
-			want, cases = 27, 23
+			want, cases = 40, 43
 		}
 		if r.Totals.Pass != want || len(r.GateFailures()) != 0 || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Subject.Revision != "2ef282b40ccfe243c6cf3b1c05594e02171126cc" {
 			t.Fatal("native scope", r.Totals, r.Subject)

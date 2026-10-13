@@ -8,6 +8,7 @@ import (
 	"github.com/sage-x-project/did-inspector/profiles/sageprojection"
 	"github.com/sage-x-project/did-inspector/report"
 	"net/http"
+	"strings"
 	"testing"
 )
 
@@ -275,5 +276,44 @@ func TestFailureChecksRemainIndependentlyAttributed(t *testing.T) {
 		if ok, e := check(r, d, cm, w); e != nil || ok {
 			t.Fatal("negative", name, e)
 		}
+	}
+}
+
+func TestOptionInputsAndHTTPParsingScopeArePreserved(t *testing.T) {
+	p, e := Profile("did-1.1")
+	if e != nil {
+		t.Fatal(e)
+	}
+	result, e := (core.Runner{}).Run(t.Context(), p, stub{})
+	if e != nil {
+		t.Fatal(e)
+	}
+	found := 0
+	for _, c := range result.Cases {
+		if !strings.Contains(c.Case, "/http-options-") {
+			continue
+		}
+		found++
+		if len(c.Statements) != 1 || c.Statements[0] != "res10-crd20261001#bindings-https.2" {
+			t.Fatal("parsing refusal attributed to resolver", c)
+		}
+		for _, o := range c.Observations {
+			var input struct {
+				Request Request `json:"request"`
+			}
+			if e = json.Unmarshal([]byte(o.Input), &input); e != nil || input.Request.HTTP == nil || len(input.Request.Options) == 0 {
+				t.Fatal("lost options", e)
+			}
+			req := input.Request.HTTP
+			if req.Method == "GET" && !strings.Contains(req.Target, "?") {
+				t.Fatal("lost query", req)
+			}
+			if req.Method == "POST" && len(req.Body) == 0 {
+				t.Fatal("lost body", req)
+			}
+		}
+	}
+	if found != 4 {
+		t.Fatal("HTTP parsing scope", found)
 	}
 }

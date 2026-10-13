@@ -17,6 +17,7 @@ type Request struct {
 	Accept        string            `json:"accept,omitempty"`
 	Relationship  string            `json:"relationship,omitempty"`
 	SourceFailure string            `json:"source_failure,omitempty"`
+	Options       map[string]any    `json:"options,omitempty"`
 	HTTP          *core.HTTPRequest `json:"http,omitempty"`
 }
 

@@ -12,7 +12,6 @@ import (
 	"github.com/sage-x-project/did-go/did"
 	"github.com/sage-x-project/did-go/document"
 	"github.com/sage-x-project/did-go/producer"
-	"github.com/sage-x-project/did-go/resolution"
 	"github.com/sage-x-project/did-go/resolution/compat"
 	"github.com/sage-x-project/did-go/resolution/universal"
 	"github.com/sage-x-project/did-go/vm"
@@ -74,8 +73,7 @@ func (s *Subject) InspectResolution(ctx context.Context, in sageprojection.Recor
 	if err != nil {
 		return out, err
 	}
-	ro := resolution.ResolutionOptions{Accept: q.Accept}
-	do := resolution.DereferenceOptions{Accept: q.Accept, VerificationRelationship: q.Relationship}
+	ro, do := nativeOptions(q)
 	switch q.Function {
 	case "http":
 		if q.HTTP == nil {
