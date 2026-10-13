@@ -292,8 +292,13 @@ The remaining resolution scope is still incomplete. This report leaves 368
 requirement and 48 recommendation statements NOT_RUN. These include generic
 DID parsing and production/consumption operations, controller/reference and
 service semantics, optional metadata/time/history, method/registry behavior,
-proof/trust and additional resolution/dereferencing/binding branches. The next
-work is to classify this inventory against actual adapter operations before
-adding cases. No runtime operation or PASS may be inferred from a missing case.
+proof/trust and additional resolution/dereferencing/binding branches. The complete gap inventory now classifies these statements against actual
+adapter operations. The next work is to add fresh native result and metadata
+assertions according to those evidence prerequisites. No runtime operation or PASS may be inferred from a missing case.
 Endpoint reachability, operational authority, relative expansion, all URL
 schemes, deployed Source behavior and full standard conformance are unestablished.
+
+The complete [pending-clause inventory](sage-resolution-gaps.md) records every
+current DID 1.1 NOT_RUN id, its addressed operation and evidence prerequisites.
+Its classifications do not change report verdicts or erase the separate
+Core 1.0 pending work.
