@@ -28,7 +28,7 @@ certificate. They contact no agent, MCP, RPC or deployed registry.
 | Profile | Cases | Requirement PASS | Recommendation PASS | NOT_RUN |
 |---|---:|---:|---:|---:|
 | DID Core 1.0 | 16 | 33 | 0 | 173 |
-| DID 1.1 with CID and Resolution publications | 110 | 84 | 2 | 398 |
+| DID 1.1 with CID and Resolution publications | 123 | 106 | 2 | 376 |
 
 There are no FAIL or ERROR statements in these observations. The recommendation
 PASS statements cover the selected resolution Accept option and the returned
@@ -369,7 +369,7 @@ These limits avoid claims about numeric/Unicode roundtrip fidelity. The
 convert compatible values and serialize to UTF-8; the requirement is that the
 structure is serializable, not that Go and JavaScript emit identical bytes.
 
-All four requirements pass for these actual output maps. DID 1.1 now has 110
+All four requirements pass for these actual output maps. After this addition, DID 1.1 had 110
 cases, 84 requirement and two recommendation passes, two inapplicable statements
 and 398 unobserved statements (350 requirements and 48 recommendations).
 Core 1.0 and the separate projection observations are unchanged. The historical
@@ -380,3 +380,47 @@ possibility only. They do not establish input metadata compliance, all typed
 pre-serialization values, arbitrary Infra values, subject serializer fidelity,
 ECMAScript byte equality, authority or whole-document conformance. Unit-only
 malformed-output controls are never attributed to actual subject execution.
+
+## Selected native error/state and HTTPS response branches
+
+Three fresh native cases inspect missing DID dereferencing, deactivated DID
+resolution and an ordinary unexpected Source error. Missing uses a different DID
+with no fragment, not a missing key within an existing document. It establishes
+the fixed Source record miss only. Deactivated uses the actual inactive public
+record; metadata, null document and boolean true marker are checked separately.
+`SourceFailure: fixture.unexpected` returns an ordinary Go error, not a SAGE error
+code. The actual SAGE wrapper maps it to record.unreachable and INTERNAL_ERROR.
+This tests that wrapper's unexpected Source path, not every internal failure.
+
+Error type, absent content, actual null dereference stream and content metadata
+have independent negative controls. The eleven previously pending native error
+clauses pass; the already observed INTERNAL_ERROR type clause is freshly checked
+again without counting it as a new requirement. Expected branches are fixed
+before execution and never become inapplicable because output is missing.
+
+Ten fresh owned loopback TLS cases cover GET/POST resolution envelopes, direct
+DID-document responses, dereferencing envelopes, direct verification-method
+responses and deactivated envelopes. Each archives a separate actual native call
+on the same public record. TLS, request method/Accept/body and native input,
+operation and Accept must match the independently selected scenario. Response
+status, exact content-type and complete selected JSON representation are checked.
+Direct responses are compared with native Raw, not just an accessor snapshot.
+
+Eleven previously pending HTTPS clauses pass for those selected branches. Parent
+clauses establish their particular response branch, not every option or media
+type. The body-representation rule includes correspondence with the Content-Type
+header; a header-only change fails both that rule and the header-equality rule.
+A body-only change leaves the header assertion intact and fails the body rule.
+GET support is observed at the owned interface; inspector-built requests do not
+establish subject-client construction or production ingress behavior.
+
+DID 1.1 now has 123 cases, 106 requirement and two recommendation passes, two
+inapplicable statements and 376 unobserved statements (328 requirements and 48
+recommendations). Core 1.0 remains unchanged. All original 416 pending-clause
+entries are preserved as 376 pending and 40 newly observed entries. The primary
+remaining counts are 44/0/106/117/105/4; they are routing counts, not task counts.
+
+No output is repaired, validator verdict reused, operational registry queried or
+service endpoint contacted. The two separate SAGE metadata failures remain for
+implementation correction. Source authority, general algorithm conformance and
+all representations are unestablished.

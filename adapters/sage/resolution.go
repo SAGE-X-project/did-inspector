@@ -33,6 +33,9 @@ type resolutionSource struct {
 }
 
 func (s resolutionSource) Observe(_ context.Context, d did.DID) (didsage.Record, error) {
+	if s.failure == "fixture.unexpected" {
+		return didsage.Record{}, errors.New("controlled unexpected inspector Source failure")
+	}
 	if s.failure != "" {
 		return didsage.Record{}, didsage.NewError(didsage.Code(s.failure), "explicit inspector source fixture")
 	}

@@ -78,8 +78,7 @@
     "additional-data-or-feature": 117,
     "additional-observer-operation": 106,
     "document-or-applicability-review": 105,
-    "existing-observation": 55,
-    "existing-operation-new-scenario": 11,
+    "existing-observation": 44,
     "operational-or-authority-evidence": 4
   },
   "routes": {
@@ -2568,18 +2567,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "res10-crd20261001#bindings-https.1",
-      "level": "requirement",
-      "keywords": [
-        "MUST",
-        "MAY"
-      ],
-      "text_sha256": "8085c5ce9538229f5716ad4c83bd802aa6855b9066b08efd9206b1ff5e15d9e1",
-      "baseline_verdict": "NOT_RUN",
-      "route": "server-wire",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#bindings-https.10",
       "level": "requirement",
       "keywords": [],
@@ -2690,42 +2677,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "res10-crd20261001#bindings-https.23",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "3539f20eb792ec49280516a5d64d33643900257dc8af816490f2de86ae5c887b",
-      "baseline_verdict": "NOT_RUN",
-      "route": "server-wire",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.25",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "5eb60678c2d6003e60496861892b4056e3df23e4ae72d9de2e6bdbf76158f52e",
-      "baseline_verdict": "NOT_RUN",
-      "route": "server-wire",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.26",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "18bff5e55fe1b24fbdae462fd75cd4457ef139052f51aa910d40965e5433bf18",
-      "baseline_verdict": "NOT_RUN",
-      "route": "server-wire",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.28",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "cc36e9a880ad4455c74d30afc8ec70788be4a37a6275a9e1995e691dffe74075",
-      "baseline_verdict": "NOT_RUN",
-      "route": "server-wire",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#bindings-https.3",
       "level": "requirement",
       "keywords": [
@@ -2736,35 +2687,6 @@
       "baseline_verdict": "NOT_RUN",
       "route": "permission-definition",
       "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.30",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "86cebdad0cd28d8d9e8f65002d5d139d96632ec6d67e42c853799f2f06fa44d4",
-      "baseline_verdict": "NOT_RUN",
-      "route": "server-wire",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.32",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "02174fb29938e20a8f6c4c91b3d54f88a9fedd7c20487d036fb49cd0dd015a36",
-      "baseline_verdict": "NOT_RUN",
-      "route": "server-wire",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.33",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "d14e459876b76414d77fe8ac7e3ce7036d213e20f7993a9059e152cc2651c5a2",
-      "baseline_verdict": "NOT_RUN",
-      "route": "server-wire",
-      "generic_scope": "checked"
     },
     {
       "id": "res10-crd20261001#bindings-https.35",
@@ -2809,43 +2731,12 @@
       "generic_scope": "checked"
     },
     {
-      "id": "res10-crd20261001#bindings-https.39",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "c8d3d451731552123894c0ca3376bb4f3bda9f4926ec29d2db485e3df36fdcfb",
-      "baseline_verdict": "NOT_RUN",
-      "route": "server-wire",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#bindings-https.4",
       "level": "requirement",
       "keywords": [],
       "text_sha256": "f547f49ca0a340813516ade058edeca39ca8945ff91da8b0f08c9a3add5a090a",
       "baseline_verdict": "NOT_RUN",
       "route": "client-binding",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.41",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "dd9902a3de5ec9e7af7b14a18be34f81ed7dc94fe66e9717fbc9ab4fe9068c14",
-      "baseline_verdict": "NOT_RUN",
-      "route": "server-wire",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.42",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "973f4642bbb4876ec3122d6e7e90bf18028323d1b8ca829d775b63263e4143fa",
-      "baseline_verdict": "NOT_RUN",
-      "route": "server-wire",
       "generic_scope": "checked"
     },
     {
@@ -3454,44 +3345,6 @@
       "text_sha256": "14e3a24e22608c967eaecd4b7b60694b649bf805c63422f283c4ac379f33dec7",
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.6",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "4d5984954d73247bffba9e81ee4cb62528ce907e340a283754d43e67341bab4b",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-errors",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.7",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "1ff58872160bbf84a8d0f6fe7f186020f58e3c05ff5a726b9ee05e217dd302d0",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-errors",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.8",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "c222065a7466bf7d08fe7dea2629369e50fc612d80923c6d485649a2ca1262cd",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-errors",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.9",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "14e3a24e22608c967eaecd4b7b60694b649bf805c63422f283c4ac379f33dec7",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-errors",
       "generic_scope": "checked"
     },
     {
@@ -4223,42 +4076,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "res10-crd20261001#resolving-algorithm.22",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "01d1ec4bdc33da89e4e672a8627931393a7e03166b1dd000a807f2ef8fc0b6ad",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-errors",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#resolving-algorithm.23",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "68350753cb3e0b6c4bf66f2b802000af84aab5e5249b65091a92fe0e2b5e5da2",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-errors",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#resolving-algorithm.24",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "5fd848588ab9535d6ac3905520679168d175dfe4c57a619d7af535db765b22c9",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-errors",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#resolving-algorithm.25",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "aa4c5e00b1828752f650e00289a8538f30eca9086bf7a9d0ecebcf3ff65b105b",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-errors",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#resolving-algorithm.26",
       "level": "requirement",
       "keywords": [
@@ -4339,35 +4156,6 @@
       "text_sha256": "1d289368688312969b235b0a30272de657a9c53b6403802d2471ce717a8c4a92",
       "baseline_verdict": "NOT_RUN",
       "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#resolving-algorithm.36",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "fa138b4a2d175689190f525579438590ba0d8553598e98de14f94555db27810a",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-errors",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#resolving-algorithm.38",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "5fd848588ab9535d6ac3905520679168d175dfe4c57a619d7af535db765b22c9",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-errors",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#resolving-algorithm.39",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "be4e9adcd276b7d0860044cf579994e45cc985443dbc2dc72666768f6e3b9653",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-errors",
       "generic_scope": "checked"
     },
     {
@@ -4820,26 +4608,365 @@
         "did-1.1/sage-resolution/native-metadata-dereference-missing-resolution",
         "did-1.1/sage-resolution/native-metadata-dereference-missing-document"
       ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "MAY"
+      ],
+      "text_sha256": "8085c5ce9538229f5716ad4c83bd802aa6855b9066b08efd9206b1ff5e15d9e1",
+      "baseline_verdict": "NOT_RUN",
+      "route": "server-wire",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/wire-branch-",
+      "cases": [
+        "did-1.1/sage-resolution/wire-branch-get-resolve-envelope",
+        "did-1.1/sage-resolution/wire-branch-get-resolve-direct",
+        "did-1.1/sage-resolution/wire-branch-get-dereference-envelope",
+        "did-1.1/sage-resolution/wire-branch-get-dereference-direct",
+        "did-1.1/sage-resolution/wire-branch-get-deactivated"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.23",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "3539f20eb792ec49280516a5d64d33643900257dc8af816490f2de86ae5c887b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "server-wire",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/wire-branch-",
+      "cases": [
+        "did-1.1/sage-resolution/wire-branch-get-deactivated",
+        "did-1.1/sage-resolution/wire-branch-post-deactivated"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.25",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "5eb60678c2d6003e60496861892b4056e3df23e4ae72d9de2e6bdbf76158f52e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "server-wire",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/wire-branch-",
+      "cases": [
+        "did-1.1/sage-resolution/wire-branch-get-resolve-envelope",
+        "did-1.1/sage-resolution/wire-branch-get-resolve-direct",
+        "did-1.1/sage-resolution/wire-branch-post-resolve-envelope",
+        "did-1.1/sage-resolution/wire-branch-post-resolve-direct"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.26",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "18bff5e55fe1b24fbdae462fd75cd4457ef139052f51aa910d40965e5433bf18",
+      "baseline_verdict": "NOT_RUN",
+      "route": "server-wire",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/wire-branch-",
+      "cases": [
+        "did-1.1/sage-resolution/wire-branch-get-resolve-envelope",
+        "did-1.1/sage-resolution/wire-branch-post-resolve-envelope"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.28",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "cc36e9a880ad4455c74d30afc8ec70788be4a37a6275a9e1995e691dffe74075",
+      "baseline_verdict": "NOT_RUN",
+      "route": "server-wire",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/wire-branch-",
+      "cases": [
+        "did-1.1/sage-resolution/wire-branch-get-resolve-direct",
+        "did-1.1/sage-resolution/wire-branch-post-resolve-direct"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.30",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "86cebdad0cd28d8d9e8f65002d5d139d96632ec6d67e42c853799f2f06fa44d4",
+      "baseline_verdict": "NOT_RUN",
+      "route": "server-wire",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/wire-branch-",
+      "cases": [
+        "did-1.1/sage-resolution/wire-branch-get-resolve-direct",
+        "did-1.1/sage-resolution/wire-branch-post-resolve-direct"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.32",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "02174fb29938e20a8f6c4c91b3d54f88a9fedd7c20487d036fb49cd0dd015a36",
+      "baseline_verdict": "NOT_RUN",
+      "route": "server-wire",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/wire-branch-",
+      "cases": [
+        "did-1.1/sage-resolution/wire-branch-get-dereference-envelope",
+        "did-1.1/sage-resolution/wire-branch-get-dereference-direct",
+        "did-1.1/sage-resolution/wire-branch-post-dereference-envelope",
+        "did-1.1/sage-resolution/wire-branch-post-dereference-direct"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.33",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "d14e459876b76414d77fe8ac7e3ce7036d213e20f7993a9059e152cc2651c5a2",
+      "baseline_verdict": "NOT_RUN",
+      "route": "server-wire",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/wire-branch-",
+      "cases": [
+        "did-1.1/sage-resolution/wire-branch-get-dereference-envelope",
+        "did-1.1/sage-resolution/wire-branch-post-dereference-envelope"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.39",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "c8d3d451731552123894c0ca3376bb4f3bda9f4926ec29d2db485e3df36fdcfb",
+      "baseline_verdict": "NOT_RUN",
+      "route": "server-wire",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/wire-branch-",
+      "cases": [
+        "did-1.1/sage-resolution/wire-branch-get-dereference-direct",
+        "did-1.1/sage-resolution/wire-branch-post-dereference-direct"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.41",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "dd9902a3de5ec9e7af7b14a18be34f81ed7dc94fe66e9717fbc9ab4fe9068c14",
+      "baseline_verdict": "NOT_RUN",
+      "route": "server-wire",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/wire-branch-",
+      "cases": [
+        "did-1.1/sage-resolution/wire-branch-get-dereference-direct",
+        "did-1.1/sage-resolution/wire-branch-post-dereference-direct"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.42",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "973f4642bbb4876ec3122d6e7e90bf18028323d1b8ca829d775b63263e4143fa",
+      "baseline_verdict": "NOT_RUN",
+      "route": "server-wire",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/wire-branch-",
+      "cases": [
+        "did-1.1/sage-resolution/wire-branch-get-dereference-direct",
+        "did-1.1/sage-resolution/wire-branch-post-dereference-direct"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.6",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "4d5984954d73247bffba9e81ee4cb62528ce907e340a283754d43e67341bab4b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-branch-",
+      "cases": [
+        "did-1.1/sage-resolution/native-branch-missing-did"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.7",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "1ff58872160bbf84a8d0f6fe7f186020f58e3c05ff5a726b9ee05e217dd302d0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-branch-",
+      "cases": [
+        "did-1.1/sage-resolution/native-branch-missing-did"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.8",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "c222065a7466bf7d08fe7dea2629369e50fc612d80923c6d485649a2ca1262cd",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-branch-",
+      "cases": [
+        "did-1.1/sage-resolution/native-branch-missing-did"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.9",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "14e3a24e22608c967eaecd4b7b60694b649bf805c63422f283c4ac379f33dec7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-branch-",
+      "cases": [
+        "did-1.1/sage-resolution/native-branch-missing-did"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.22",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "01d1ec4bdc33da89e4e672a8627931393a7e03166b1dd000a807f2ef8fc0b6ad",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-branch-",
+      "cases": [
+        "did-1.1/sage-resolution/native-branch-deactivated"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.23",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "68350753cb3e0b6c4bf66f2b802000af84aab5e5249b65091a92fe0e2b5e5da2",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-branch-",
+      "cases": [
+        "did-1.1/sage-resolution/native-branch-deactivated"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.24",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "5fd848588ab9535d6ac3905520679168d175dfe4c57a619d7af535db765b22c9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-branch-",
+      "cases": [
+        "did-1.1/sage-resolution/native-branch-deactivated"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.25",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "aa4c5e00b1828752f650e00289a8538f30eca9086bf7a9d0ecebcf3ff65b105b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-branch-",
+      "cases": [
+        "did-1.1/sage-resolution/native-branch-deactivated"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.36",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "fa138b4a2d175689190f525579438590ba0d8553598e98de14f94555db27810a",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-branch-",
+      "cases": [
+        "did-1.1/sage-resolution/native-branch-unexpected-source"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.38",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "5fd848588ab9535d6ac3905520679168d175dfe4c57a619d7af535db765b22c9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-branch-",
+      "cases": [
+        "did-1.1/sage-resolution/native-branch-unexpected-source"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.39",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "be4e9adcd276b7d0860044cf579994e45cc985443dbc2dc72666768f6e3b9653",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-errors",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/native-branch-",
+      "cases": [
+        "did-1.1/sage-resolution/native-branch-unexpected-source"
+      ]
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 86,
+    "PASS": 108,
     "FAIL": 0,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 2,
     "ERROR": 0,
-    "NOT_RUN": 398
+    "NOT_RUN": 376
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 84,
+      "PASS": 106,
       "FAIL": 0,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 350
+      "NOT_RUN": 328
     },
     "recommendation": {
       "statements": 50,
@@ -4851,5 +4978,5 @@
       "NOT_RUN": 48
     }
   },
-  "expected_live_cases": 110
+  "expected_live_cases": 123
 }
