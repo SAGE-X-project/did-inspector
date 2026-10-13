@@ -28,7 +28,7 @@ certificate. They contact no agent, MCP, RPC or deployed registry.
 | Profile | Cases | Requirement PASS | Recommendation PASS | NOT_RUN |
 |---|---:|---:|---:|---:|
 | DID Core 1.0 | 11 | 20 | 0 | 186 |
-| DID 1.1 with CID and Resolution publications | 47 | 43 | 2 | 441 |
+| DID 1.1 with CID and Resolution publications | 61 | 43 | 2 | 441 |
 
 There are no FAIL or ERROR statements in these observations. The recommendation
 PASS statements cover the selected resolution Accept option and the returned
@@ -50,24 +50,40 @@ Accept and deactivation. Status checks compare the expected status with the
 actual problem type and the pinned standard's status table. Server response
 checks do not claim to prove a client's request-construction obligations.
 
-Native document snapshots explicitly archive the actual identifier through its
-accessor. They do not archive the complete native document data model. Native
-verification methods preserve their typed public fields with identifier strings;
-that encoding is not advertised as a standard DID representation. Native resolve
-representation bytes and HTTP request/response bytes are preserved separately.
-The ordinary report omits PASS details; `--raw-out` retains all inputs and these
-observations. Raw HTTP records include ephemeral loopback URLs, so the raw file
-is not byte-deterministic even when report timestamps are omitted.
+Native document snapshots now capture every exposed data model property and
+representation entry through public accessors, including keys, relationships,
+services, extensions and explicit empty sets. Native method snapshots preserve
+all returned fields under their standard property names. Dates retain the
+returned offset and sub-second precision. No producer or validator is used to
+repair this observation. The snapshot is an accessor translation, not a produced
+DID representation; native representation bytes remain separate.
 
-A PASS is limited to each observed clause and fixture. Native identifier and
-presence checks do not establish full document equality. HTTP complete-result
-checks cover structure and returned identity/deactivation, not equality of all
-members with a separate native resolution call. Full method-specific algorithms,
-other optional extensions, caching, historical resolution, remote contexts, endpoint
-operation and operational Source authority remain unestablished; publication
-statements without a case remain NOT_RUN. Generic fixture-method conformance is
-not advertised by this subject. These cases do not certify full conformance or
-protected deployment.
+Fourteen additional cases compare actual GET/POST complete HTTP results with a
+separate actual native call on the same fixed public record: six document fixture
+shapes through each method and one key through each method. The comparison covers
+all captured content, resolution/dereferencing metadata and document/content
+metadata, including absent versus present members. It checks deactivated null
+content, retains every extension, ignores map order and the order of recognized
+DID sets, and permits singleton/set alternatives only where allowed. Unknown
+extension arrays remain ordered. Changed keys, relationships, services, metadata,
+missing content and duplicate members have independent negative unit checks.
+
+The actual native request and result are retained beside the wire exchange in
+`--raw-out`. The ordinary report omits PASS details. Raw HTTP records include
+ephemeral loopback URLs, so raw output is not byte-deterministic even when report
+timestamps are omitted. Existing clause counts are unchanged: the new cases
+strengthen HTTPS complete-result clauses rather than claim new clauses.
+
+A PASS is limited to the observed clause and fixture. These comparisons establish
+full captured-content equality for the selected default representations and
+fixed records, not every representation, option or method algorithm. Error
+result equality remains unobserved: HTTP may add SAGE-specific error extensions,
+and those fields are neither silently removed nor inserted into native output.
+Historical resolution, caching, remote contexts, endpoint operation, optional
+metadata not returned by these records and operational Source authority remain
+unestablished. Statements without a case remain NOT_RUN. Generic fixture-method
+conformance is not advertised by this subject. These cases do not certify full
+conformance or protected deployment.
 
 SAGE-specific results in sage-inspector remain separate: active envelopes omit
 `deactivated: false`, and unsupported Accept problems omit `sageCode`. Those two
@@ -105,7 +121,7 @@ INVALID_OPTIONS. Only their TLS transport statement is judged in the standard
 profile: parsing can fail before the resolver is invoked, so those cases do not
 prove a resolver algorithm return or a client's query/body construction rules.
 The additional 13 requirement statements come from native observations. General
-full-document comparison and the other evidence limits above still apply.
+full-document coverage and the other evidence limits above still apply.
 
 ## Returned metadata observations
 
@@ -139,6 +155,6 @@ checks do not impose media syntax beyond that
 clause. These checks do not certify every supported representation. The source
 observation times
 are not document creation or update times. No created/updated timestamp is
-invented, and their unexercised statements remain NOT_RUN. Full native document
-comparison, all-member HTTP/native equivalence, optional metadata extensions and
-operational authority retain the evidence limits above.
+invented, and their unexercised statements remain NOT_RUN. Native document and all-member HTTP/native comparisons now cover the selected
+records described above. Other optional metadata and operational authority
+retain the same evidence limits.

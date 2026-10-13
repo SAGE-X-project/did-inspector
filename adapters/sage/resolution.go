@@ -75,7 +75,7 @@ func (s *Subject) InspectResolution(ctx context.Context, in sageprojection.Recor
 	}
 	ro, do := nativeOptions(q)
 	switch q.Function {
-	case "http":
+	case "http", "http-comparison":
 		if q.HTTP == nil {
 			return out, errors.New("missing inspector HTTP request")
 		}
@@ -87,7 +87,20 @@ func (s *Subject) InspectResolution(ctx context.Context, in sageprojection.Recor
 		}
 		ex, e := remote.Exchange(ctx, *q.HTTP)
 		out.Exchange = &ex
-		return out, e
+		if e != nil || q.Function != "http-comparison" {
+			return out, e
+		}
+		if q.NativeFunction != "resolve" && q.NativeFunction != "dereference" {
+			return out, errors.New("comparison requires an explicit native operation")
+		}
+		nativeRequest := q
+		nativeRequest.Function, nativeRequest.NativeFunction, nativeRequest.HTTP = q.NativeFunction, "", nil
+		native, err := s.InspectResolution(ctx, in, nativeRequest)
+		if err != nil {
+			return out, err
+		}
+		out.Native = &sageresolution.NativeObservation{Request: nativeRequest, Result: &native}
+		return out, nil
 	case "resolve":
 		res, code := r.ResolveString(ctx, q.Input, ro)
 		out.SageCode = string(code)
@@ -96,7 +109,10 @@ func (s *Subject) InspectResolution(ctx context.Context, in sageprojection.Recor
 		if res.Document != nil {
 			out.ReturnedID = res.Document.ID().String()
 			out.ContentKind = "document"
-			out.Snapshot, _ = json.Marshal(map[string]string{"id": out.ReturnedID})
+			out.Snapshot, err = documentSnapshot(res.Document)
+			if err != nil {
+				return out, err
+			}
 		}
 		return nativeResult(out, res.ResolutionMetadata, res.DocumentMetadata)
 	case "resolve10", "representation10":
@@ -116,7 +132,10 @@ func (s *Subject) InspectResolution(ctx context.Context, in sageprojection.Recor
 		if doc != nil {
 			out.ReturnedID = doc.ID().String()
 			out.ContentKind = "document"
-			out.Snapshot, _ = json.Marshal(map[string]string{"id": out.ReturnedID})
+			out.Snapshot, err = documentSnapshot(doc)
+			if err != nil {
+				return out, err
+			}
 		}
 		return nativeResult(out, md, dm)
 	case "dereference", "dereference10":
@@ -146,32 +165,31 @@ func nativeResult(out sageresolution.Result, md any, dm document.Metadata) (sage
 	return out, err
 }
 func dereferenceResult(out sageresolution.Result, md any, c any, dm document.Metadata) (sageresolution.Result, error) {
+	var err error
 	out.HasContent = c != nil
 	switch v := c.(type) {
 	case *document.Document:
 		out.ReturnedID = v.ID().String()
 		out.ContentKind = "document"
-		out.Snapshot, _ = json.Marshal(map[string]string{"id": out.ReturnedID})
+		out.Snapshot, err = documentSnapshot(v)
 	case vm.Method:
 		out.ReturnedID = v.ID.String()
 		out.ContentKind = "verification-method"
+		value, e := methodJSON(v)
+		if e != nil {
+			return out, e
+		}
+		out.Snapshot, err = value.MarshalJSON()
 	}
-	// Native typed content is archived as such, not advertised as a conformant
-	// DID representation. The HTTP exchange preserves its actual wire encoding.
-	var b []byte
-	var err error
-	switch v := c.(type) {
-	case *document.Document:
-		// This explicit ID snapshot does not claim to archive the complete data
-		// model. Native documents have unexported fields and cannot be JSON-marshaled.
-		b = out.Snapshot
-	case vm.Method:
-		b, err = json.Marshal(struct {
-			vm.Method
-			ID         string
-			Controller string
-		}{v, v.ID.String(), v.Controller.String()})
-	default:
+	if err != nil {
+		return out, err
+	}
+	// This JSON captures the native data model, not a produced representation.
+	b := out.Snapshot
+	if c == nil {
+		b = []byte("null")
+	}
+	if b == nil {
 		b, err = json.Marshal(c)
 	}
 	if err != nil {

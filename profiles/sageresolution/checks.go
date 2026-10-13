@@ -60,7 +60,10 @@ func judge(out Result, wants []expected, input string) []core.Observation {
 			v = core.Fail
 		}
 		for _, id := range w.Statements {
-			detail := "Native fixture or inspector-owned loopback TLS observation only. Native document checks cover returned identity, presence and metadata; full document equality and full algorithm conformance are untested. No deployed authority is established."
+			detail := "Clause-specific native fixture or inspector-owned loopback TLS observation only. This check does not establish general document equality, full algorithm conformance or deployed authority."
+			if w.Check == "http-native-equality" {
+				detail = "All captured content and both metadata structures compared with a separate actual native call on the same fixed public record. Map and known DID set ordering are ignored; unknown extension lists retain order. Selected default representations only; general algorithm conformance, error serialization equality and deployed authority are unestablished."
+			}
 			if e != nil {
 				detail = e.Error()
 			}
@@ -85,6 +88,8 @@ func check(o Result, md, cm core.DocumentJSON, w expected) (bool, error) {
 	switch w.Check {
 	case "version-ascii", "resolution-media-type", "content-type-ascii", "legacy-keyword", "prefixed-error", "dereference-media-type":
 		return checkMetadata(o, md, cm, w)
+	case "http-native-equality":
+		return checkHTTPNative(o, w)
 	case "success":
 		d, e := parse(o.Snapshot)
 		id, _ := d.Get("id")
