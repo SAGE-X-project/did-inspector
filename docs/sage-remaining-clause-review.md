@@ -2,7 +2,7 @@
 
 All 246 clauses unobserved at `1efc9f0` are reviewed individually in the [machine-readable audit](sage-remaining-clause-review.json). The earlier [353-clause review](sage-resolution-batch-review.json) and all 416 historical ledger entries remain intact. Review coverage does not establish execution coverage or standards conformance.
 
-This grouped implementation adds 91 selected-branch observations across 52 cases, including fourteen fixed-source arithmetic and state obligations. Of the 246 anchor clauses, 104 now have execution verdicts and 142 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
+This grouped implementation adds 94 selected-branch observations across 52 cases, including seventeen fixed-source arithmetic, state and cursor obligations. Of the 246 anchor clauses, 107 now have execution verdicts and 139 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
 
 | Review disposition | Clauses |
 |---|---:|
@@ -83,4 +83,12 @@ The counter body increment and for Post decrement affect distinct bare local int
 
 The encode length/cursor composite remains pending because its range cursor needs a separate state-projection contract. Loop guards, leading zeros, size bounds, overflow, termination and full algorithm equivalence also remain independent. Existing source identity checks, integer and recurrence audits, subject pins and all nine findings are preserved.
 
-Current resolution: 350 cases, 331 PASS, nine FAIL, four NOT_APPLICABLE and 142 NOT_RUN. Original 416 ledger: 274 observed (262 PASS, three NOT_APPLICABLE, nine FAIL) plus 142 pending. The 246 anchor has 104 execution verdicts and 142 pending.
+State-transition checkpoint: 350 cases, 331 PASS, nine FAIL, four NOT_APPLICABLE and 142 NOT_RUN. Original 416 ledger: 274 observed (262 PASS, three NOT_APPLICABLE, nine FAIL) plus 142 pending. The 246 anchor has 104 execution verdicts and 142 pending.
+
+## Selected input cursor projection
+
+Three source clauses inspect encoding byte iteration, encoding length storage with virtual input advancement, and decoding character iteration. For a stable byte input, Go evaluates the slice header once and ranges over its elements in increasing index order. It does not copy the backing bytes. The actual range start plus iteration index k defines the virtual cursor; normal body completion advances k by one. Actual local prefix, byte, counter and length objects are checked independently under reviewed source context. The initial range offset and the length/advance transition have separate verdicts.
+
+The decoder uses an explicit prefix-initialized index, input-length comparison, increment and current ASCII character lookup. Unsupported expressions or contexts remain ERROR; recognized incorrect bare variables/operators fail only their own predicate. Source controls are parsed/type-checked without execution. Scope excludes external concurrent input mutation and abnormal completion. The reviewed frame is a prerequisite, not a verdict or a runtime trace. Termination, overflow, size safety and whole-algorithm equivalence remain independent.
+
+Current resolution: 350 cases, 334 PASS, nine preserved FAIL, four NOT_APPLICABLE and 139 NOT_RUN. Original 416 ledger: 277 observed (265 PASS, three NOT_APPLICABLE, nine FAIL) plus 139 pending. The 246 anchor has 107 execution verdicts and 139 pending.

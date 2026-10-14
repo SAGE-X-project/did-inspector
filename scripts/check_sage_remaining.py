@@ -50,7 +50,7 @@ def verify_review(report, repo=REPO):
         else:
             assert r["status"] == "observed-selected-branch" and r["cases"]
     assert collections.Counter(r["review_disposition"] for r in rows) == audit["review_counts"]
-    assert collections.Counter(r["expected_live_verdict"] for r in rows) == audit["execution_counts"] == {"PASS": 99, "FAIL": 3, "NOT_APPLICABLE": 2, "NOT_RUN": 142}
+    assert collections.Counter(r["expected_live_verdict"] for r in rows) == audit["execution_counts"] == {"PASS": 102, "FAIL": 3, "NOT_APPLICABLE": 2, "NOT_RUN": 139}
     return {r["id"] for r in rows if r["status"] == "observed-selected-branch" and any("/remaining-" in c for c in r["cases"])}
 
 
@@ -316,7 +316,7 @@ def main():
     p.add_argument("--report", type=Path, required=True)
     a = p.parse_args()
     checked = verify_remaining(json.loads(a.raw.read_text()), json.loads(a.report.read_text()))
-    print(f"Verified all 246 anchored reviews, {len(checked)} fresh selected-branch verdicts, and 142 explicitly unobserved clauses")
+    print(f"Verified all 246 anchored reviews, {len(checked)} fresh selected-branch verdicts, and 139 explicitly unobserved clauses")
 
 
 if __name__ == "__main__":

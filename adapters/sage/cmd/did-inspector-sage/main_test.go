@@ -270,7 +270,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 	}
 	e.subject = func() (core.Subject, error) { return &sage.Subject{}, nil }
 	path := filepath.Join(t.TempDir(), "unit.json")
-	if run([]string{"--profile", "did-1.1", "--scope", "resolution", "--out", path}, e) != 0 {
+	if run([]string{"--profile", "did-1.1", "--scope", "resolution", "--out", path, "--raw-out", path + ".raw"}, e) != 0 {
 		t.Fatal("resolution scope")
 	}
 	data, err := os.ReadFile(path)
@@ -278,7 +278,24 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		t.Fatal(err)
 	}
 	r, err := report.Decode(data)
-	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 331 {
+	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 334 {
+		raw, _ := os.ReadFile(path + ".raw")
+		var x struct {
+			Cases []struct {
+				Case         string             `json:"case"`
+				Observations []core.Observation `json:"observations"`
+			} `json:"cases"`
+		}
+		_ = json.Unmarshal(raw, &x)
+		for _, c := range x.Cases {
+			if strings.HasSuffix(c.Case, "/integer-source-arithmetic") {
+				var v struct {
+					Error string `json:"analysis_error"`
+				}
+				_ = json.Unmarshal([]byte(c.Observations[0].Observed), &v)
+				t.Log("source failure", c.Observations[0].Detail, v.Error)
+			}
+		}
 		t.Fatal("scope identity", err, r.Totals)
 	}
 	binary := filepath.Join(t.TempDir(), "sage-inspector")
@@ -298,7 +315,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		t.Fatal(err)
 	}
 	missingReport, err := report.Decode(missingData)
-	if err != nil || missingReport.Totals.Error != 14 || missingReport.Totals.Pass != 317 {
+	if err != nil || missingReport.Totals.Error != 17 || missingReport.Totals.Pass != 317 {
 		t.Fatal("missing source accepted", err, missingReport.Totals)
 	}
 	missingErrors := map[string]bool{}
@@ -307,10 +324,10 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 			missingErrors[row.ID] = true
 		}
 	}
-	if len(missingErrors) != 14 {
+	if len(missingErrors) != 17 {
 		t.Fatal("wrong source error count", missingErrors)
 	}
-	for _, id := range []string{"cid10#base-encode.1", "cid10#base-decode.1", "cid10#base-encode.8", "cid10#base-encode.9", "cid10#base-encode.10", "cid10#base-decode.9", "cid10#base-decode.10", "cid10#base-decode.11", "cid10#base-encode.6", "cid10#base-encode.11", "cid10#base-decode.2", "cid10#base-decode.7", "cid10#base-decode.12", "cid10#base-decode.13"} {
+	for _, id := range []string{"cid10#base-encode.1", "cid10#base-decode.1", "cid10#base-encode.8", "cid10#base-encode.9", "cid10#base-encode.10", "cid10#base-decode.9", "cid10#base-decode.10", "cid10#base-decode.11", "cid10#base-encode.6", "cid10#base-encode.11", "cid10#base-decode.2", "cid10#base-decode.7", "cid10#base-decode.12", "cid10#base-decode.13", "cid10#base-encode.5", "cid10#base-encode.12", "cid10#base-decode.6"} {
 		if !missingErrors[id] {
 			t.Fatal("source errors assigned to wrong clauses", missingErrors)
 		}
@@ -340,9 +357,9 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		want, cases := 33, 16
 		if profile == "did-1.1" {
-			want, cases = 331, 350
+			want, cases = 334, 350
 		}
-		if profile == "did-1.1" && (r.Totals.NotApplicable != 4 || r.Totals.NotRun != 142) {
+		if profile == "did-1.1" && (r.Totals.NotApplicable != 4 || r.Totals.NotRun != 139) {
 			t.Fatal("native URL conditional evidence", r.Totals)
 		}
 		if profile == "did-1.1" && (r.Totals.Fail != 9 || r.TotalsByLevel.Recommendation.Fail != 4 || r.TotalsByLevel.Requirement.Fail != 5) {

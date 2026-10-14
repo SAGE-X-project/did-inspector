@@ -223,3 +223,48 @@ func TestStateVerdictsAreIndependentAndBounded(t *testing.T) {
 		t.Fatal("invalid index")
 	}
 }
+
+func TestCursorVerdictsKeepUnknownAndIndependentSteps(t *testing.T) {
+	var v integerSourceEvidence
+	obs := judgeIntegerSource(t.Context(), sourceControl(t), "unit")
+	if e := json.Unmarshal([]byte(obs[0].Observed), &v); e != nil {
+		t.Fatal(e)
+	}
+	if len(v.Cursor) != 2 {
+		t.Fatal("missing cursor")
+	}
+	for _, a := range v.Cursor {
+		for i := range a.Steps {
+			if cursorVerdict(a, i) != core.Pass {
+				t.Fatal(a)
+			}
+		}
+		a.Steps[0].Correct = false
+		if cursorVerdict(a, 0) != core.Fail {
+			t.Fatal("wrong cursor accepted")
+		}
+		if len(a.Steps) == 2 && cursorVerdict(a, 1) != core.Pass {
+			t.Fatal("coupled")
+		}
+		a.Unknown = []string{"unknown"}
+		if cursorVerdict(a, 0) != core.Error {
+			t.Fatal("unknown accepted")
+		}
+		a.Unknown = nil
+		a.Frame = "wrong"
+		if cursorVerdict(a, 0) != core.Error {
+			t.Fatal("frame ignored")
+		}
+	}
+	if cursorVerdict(sourcearith.CursorAudit{}, 0) != core.Error {
+		t.Fatal("missing evidence")
+	}
+	a := v.Cursor[0]
+	if cursorVerdict(a, -1) != core.Error || cursorVerdict(a, 2) != core.Error {
+		t.Fatal("invalid index")
+	}
+	a.Steps = nil
+	if cursorVerdict(a, 0) != core.Error {
+		t.Fatal("missing steps")
+	}
+}
