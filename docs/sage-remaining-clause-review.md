@@ -2,7 +2,7 @@
 
 All 246 clauses unobserved at `1efc9f0` are reviewed individually in the [machine-readable audit](sage-remaining-clause-review.json). The earlier [353-clause review](sage-resolution-batch-review.json) and all 416 historical ledger entries remain intact. Review coverage does not establish execution coverage or standards conformance.
 
-This grouped implementation adds 105 selected-branch observations across 52 cases, including twenty-eight fixed-source arithmetic, state, cursor, prefix, guard and output obligations. Of the 246 anchor clauses, 118 now have execution verdicts and 128 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
+This grouped implementation adds 108 selected-branch observations across 53 cases, including twenty-eight fixed-source codec obligations and three separate fragment identifier/return obligations. Of the 246 anchor clauses, 121 now have execution verdicts and 125 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
 
 | Review disposition | Clauses |
 |---|---:|
@@ -125,4 +125,15 @@ The frozen encode.13 prose says a cell does not equal zero, conflicting with its
 
 Mutation sources are parsed/typechecked only; each has fresh subject objects and only immutable installed standard-library imports are cached within a test. This is selected fixed-source evidence with stable inputs, successful allocation and normal completion, not size-formula proof, complete codec equivalence, global termination or runtime/binary attestation. The original nine findings and target pins remain unchanged.
 
-Current resolution: 350 cases, 345 PASS, nine FAIL, four NOT_APPLICABLE and 128 NOT_RUN. Original 416 ledger: 288 observed (276 PASS, three NOT_APPLICABLE, nine FAIL) plus 128 pending. The 246 anchor has 118 execution verdicts and 128 pending.
+Output checkpoint: 350 cases, 345 PASS, nine FAIL, four NOT_APPLICABLE and 128 NOT_RUN. Original 416 ledger: 288 observed (276 PASS, three NOT_APPLICABLE, nine FAIL) plus 128 pending. The 246 anchor has 118 execution verdicts and 128 pending.
+
+
+## Fragment identifier and return bindings
+
+A separate fixed-source case inspects CID fragment-resolution.2/.3/.5. The original 28-observation codec case and its witness remain unchanged. The new request binds all 38 production sources needed for the root dereferencer to the same canonical module h1 and cache/ZIP bytes. Typed symbol edges, actual document/fragment/result objects and reviewed getter/caller/search/error-envelope context establish the selected normal typed-document phase.
+
+The document ID is a nested accessor expression, not an invented local variable. ASCII fragment inputs arrive without the hash character; the full string uses the document ID, one hash and the same fragment. The search callback consumes the constructed values. The selected found value is passed unchanged in ContentStream; the no-match envelope projects null content. The player's NOT_FOUND policy is not a CID MUST. Fresh nested full/relative map and miss calls corroborate the selected actor. Without an intermediate trace, a runtime mismatch is ERROR rather than an inferred internal return defect.
+
+Initial null and every-map recursion remain NOT_RUN. Size allocation steps remain pending: conservative base58 bounds differ from the reference formula, but alternatives with identical outputs are allowed. Exact base64 component ratios alone do not establish the current Multikey actor, complete alternative equivalence or overflow freedom. These reviewed items remain in their original internal category and are not silently completed or discarded.
+
+Current resolution: 351 cases, 348 PASS, nine preserved FAIL, four NOT_APPLICABLE and 125 NOT_RUN. Original 416 ledger: 291 observed (279 PASS, three NOT_APPLICABLE, nine FAIL) plus 125 pending. The 246 anchor has 121 execution verdicts and 125 pending. Remaining classification: internal/equivalence32, document actor51, choices12, registration15, operational/history10, existing interpretation4 and complete tuple1. Existing target pins, frozen statement bytes and stage-eight fixes are unchanged.
