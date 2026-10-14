@@ -98,6 +98,9 @@ func TestRunErrors(t *testing.T) {
 		{[]string{"--bogus"}, 2},
 		{[]string{"--profile", "did-1.1", "extra"}, 2},
 		{[]string{"--profile", "did-9"}, 2},
+		{[]string{"--profile", "did-1.1", "--case-timeout", "0"}, 2},
+		{[]string{"--profile", "did-1.1", "--case-timeout", "-1s"}, 2},
+		{[]string{"--profile", "did-1.1", "--case-timeout", "bad"}, 2},
 		{[]string{"--profile", "did-1.1", "--out", filepath.Join(t.TempDir(), "missing", "r.json")}, 1},
 	}
 	for _, c := range cases {
@@ -270,7 +273,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 	}
 	e.subject = func() (core.Subject, error) { return &sage.Subject{}, nil }
 	path := filepath.Join(t.TempDir(), "unit.json")
-	if run([]string{"--profile", "did-1.1", "--scope", "resolution", "--out", path, "--raw-out", path + ".raw"}, e) != 0 {
+	if run([]string{"--profile", "did-1.1", "--scope", "resolution", "--case-timeout", "30s", "--out", path, "--raw-out", path + ".raw"}, e) != 0 {
 		t.Fatal("resolution scope")
 	}
 	data, err := os.ReadFile(path)
@@ -288,7 +291,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		_ = json.Unmarshal(raw, &x)
 		for _, c := range x.Cases {
-			if strings.HasSuffix(c.Case, "/integer-source-arithmetic") {
+			if strings.HasSuffix(c.Case, "/integer-source-arithmetic") && len(c.Observations) > 0 {
 				var v struct {
 					Error string `json:"analysis_error"`
 				}
@@ -305,7 +308,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 	}
 	// Missing standard-library source is an evidence error, never a PASS.
 	missingPath := filepath.Join(t.TempDir(), "missing-source.json")
-	missing := exec.Command(binary, "--scope", "resolution", "--profile", "did-1.1", "--deterministic", "--out", missingPath)
+	missing := exec.Command(binary, "--case-timeout", "30s", "--scope", "resolution", "--profile", "did-1.1", "--deterministic", "--out", missingPath)
 	missing.Env = append(os.Environ(), "GOROOT=")
 	if output, e := missing.CombinedOutput(); e != nil {
 		t.Fatalf("missing-source run failed: %v %s", e, output)
@@ -342,7 +345,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		dir := t.TempDir()
 		reportPath := filepath.Join(dir, "report.json")
 		rawPath := filepath.Join(dir, "raw.json")
-		cmd = exec.Command(binary, "--scope", "resolution", "--profile", profile, "--deterministic", "--out", reportPath, "--raw-out", rawPath)
+		cmd = exec.Command(binary, "--case-timeout", "30s", "--scope", "resolution", "--profile", profile, "--deterministic", "--out", reportPath, "--raw-out", rawPath)
 		cmd.Env = append(os.Environ(), "GOROOT="+strings.TrimSpace(string(root)))
 		if out, err := cmd.CombinedOutput(); err != nil {
 			t.Fatalf("native %v %s", err, out)
@@ -451,4 +454,69 @@ func expectedResolutionGate(r report.Report) bool {
 		}
 	}
 	return true
+}
+
+// A source importer may need more time under race instrumentation; the budget
+// is execution policy only. Expiry still produces evidence ERROR, never PASS.
+type deadlineSubject struct {
+	unitSubject
+	remaining *[]time.Duration
+	wait      bool
+}
+
+func (s deadlineSubject) Project(ctx context.Context, r sageprojection.Record, v string) (sageprojection.Result, error) {
+	deadline, _ := ctx.Deadline()
+	*s.remaining = append(*s.remaining, time.Until(deadline))
+	if s.wait {
+		<-ctx.Done()
+		return sageprojection.Result{}, ctx.Err()
+	}
+	return s.unitSubject.Project(ctx, r, v)
+}
+func TestCaseTimeoutConfiguration(t *testing.T) {
+	for _, tc := range []struct {
+		name, flag string
+		budget     time.Duration
+		expire     bool
+	}{
+		{"default", "", 5 * time.Second, false},
+		{"source budget", "30s", 30 * time.Second, false},
+		{"expiry", "1ns", time.Nanosecond, true},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			e, _, _ := testEnv()
+			var remaining []time.Duration
+			e.subject = func() (core.Subject, error) { return deadlineSubject{remaining: &remaining, wait: tc.expire}, nil }
+			path := filepath.Join(t.TempDir(), "report.json")
+			args := []string{"--profile", "did-1.1", "--out", path}
+			if tc.flag != "" {
+				args = append(args, "--case-timeout", tc.flag)
+			}
+			if run(args, e) != 0 {
+				t.Fatal("run did not complete")
+			}
+			data, err := os.ReadFile(path)
+			if err != nil {
+				t.Fatal(err)
+			}
+			rep, err := report.Decode(data)
+			if err != nil || len(remaining) != 6 {
+				t.Fatal("missing timed observations", err, remaining)
+			}
+			if tc.expire {
+				if rep.Totals.Error == 0 || len(rep.GateFailures()) == 0 {
+					t.Fatal("timeout became success", rep.Totals)
+				}
+			} else {
+				if rep.Totals.Error != 0 {
+					t.Fatal("unexpected evidence error", rep.Totals)
+				}
+				for _, d := range remaining {
+					if d <= 0 || d > tc.budget || d < tc.budget-time.Second {
+						t.Fatal("wrong configured deadline", d, tc.budget)
+					}
+				}
+			}
+		})
+	}
 }

@@ -137,7 +137,7 @@ jobs:
           sha256sum "$RUNNER_TEMP/did-inspector-sage" > "$RUNNER_TEMP/sage-observer-binary.sha256"
           go version > "$RUNNER_TEMP/sage-observer-compiler.txt"
           for p in did-core-1.0 did-1.1; do
-            "$RUNNER_TEMP/did-inspector-sage" --profile "$p" --deterministic --inspector-revision "$GITHUB_SHA" --out "$RUNNER_TEMP/sage-reports/$p.json" --raw-out "$RUNNER_TEMP/sage-reports/$p-raw.json"
+            "$RUNNER_TEMP/did-inspector-sage" --case-timeout 30s --profile "$p" --deterministic --inspector-revision "$GITHUB_SHA" --out "$RUNNER_TEMP/sage-reports/$p.json" --raw-out "$RUNNER_TEMP/sage-reports/$p-raw.json"
           done
           python3 - <<'PYTHON'
           import json, os
@@ -161,7 +161,7 @@ jobs:
         run: |
           export GOROOT="$(go env GOROOT)"
           for p in did-core-1.0 did-1.1; do
-            "$RUNNER_TEMP/did-inspector-sage" --scope resolution --profile "$p" --deterministic --inspector-revision "$GITHUB_SHA" --out "$RUNNER_TEMP/sage-reports/resolution-$p.json" --raw-out "$RUNNER_TEMP/sage-reports/resolution-$p-raw.json"
+            "$RUNNER_TEMP/did-inspector-sage" --case-timeout 30s --scope resolution --profile "$p" --deterministic --inspector-revision "$GITHUB_SHA" --out "$RUNNER_TEMP/sage-reports/resolution-$p.json" --raw-out "$RUNNER_TEMP/sage-reports/resolution-$p-raw.json"
           done
           python3 - <<'PYTHON'
           import base64, json, os

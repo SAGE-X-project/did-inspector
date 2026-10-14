@@ -3,7 +3,7 @@
 //
 // Usage:
 //
-//	did-inspector-sage --profile <did-core-1.0|did-1.1> [--scope projection|resolution] [--out report.json] [--raw-out cases.json] [--deterministic] [--inspector-revision <rev>]
+//	did-inspector-sage --profile <did-core-1.0|did-1.1> [--scope projection|resolution] [--out report.json] [--raw-out cases.json] [--deterministic] [--case-timeout <duration>] [--inspector-revision <rev>]
 //
 // It runs the profile with the inspector's runner, writes the JSON report to
 // --out and prints the text summary. --deterministic leaves the run times
@@ -32,7 +32,7 @@ import (
 	"github.com/sage-x-project/did-inspector/report"
 )
 
-const usage = "usage: did-inspector-sage --profile <did-core-1.0|did-1.1> [--scope projection|resolution] [--out report.json] [--raw-out cases.json] [--deterministic] [--inspector-revision <rev>]\n"
+const usage = "usage: did-inspector-sage --profile <did-core-1.0|did-1.1> [--scope projection|resolution] [--out report.json] [--raw-out cases.json] [--deterministic] [--case-timeout <duration>] [--inspector-revision <rev>]\n"
 
 // env is what the command needs from the outside world.
 type env struct {
@@ -79,8 +79,12 @@ func runProfile(args []string, e env) error {
 	rawOut := fs.String("raw-out", "", "preserve all case inputs and observed bytes")
 	deterministic := fs.Bool("deterministic", false, "leave the run times out of the report")
 	revision := fs.String("inspector-revision", "", "inspector revision to report")
+	caseTimeout := fs.Duration("case-timeout", 5*time.Second, "positive time budget per inspection case")
 	if err := fs.Parse(args); err != nil {
 		return usageError{err.Error()}
+	}
+	if *caseTimeout <= 0 {
+		return usageError{"--case-timeout must be positive"}
 	}
 	if fs.NArg() > 0 {
 		return usageError{fmt.Sprintf("unexpected argument %q", fs.Arg(0))}
@@ -117,7 +121,7 @@ func runProfile(args []string, e env) error {
 		return usageError{err.Error()}
 	}
 
-	runner := core.Runner{Now: e.now, CaseTimeout: 5 * time.Second}
+	runner := core.Runner{Now: e.now, CaseTimeout: *caseTimeout}
 	if *deterministic {
 		runner.Now = func() time.Time { return time.Time{} }
 	}

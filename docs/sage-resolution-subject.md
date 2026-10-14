@@ -16,6 +16,12 @@ go build -mod=readonly -o /tmp/did-inspector-sage ./cmd/did-inspector-sage
 /tmp/did-inspector-sage --scope resolution --profile did-1.1 --out /tmp/sage-resolution-did11.json --raw-out /tmp/sage-resolution-did11-cases.json
 ```
 
+`--case-timeout` sets a positive per-case execution budget (default `5s`).
+Use `--case-timeout 30s` for source inspection on cold or race-instrumented
+runners, as CI does. This budget is an inspector execution limit, not a
+protocol timing requirement. Expired or incomplete source analysis remains
+ERROR; increasing the budget never substitutes evidence or changes predicates.
+
 The inspector owns the expectations and HTTP request construction. The adapter
 calls actual `advanced/sage` players with explicitly local public record fixtures,
 including source errors; it does not substitute the generic example method,
