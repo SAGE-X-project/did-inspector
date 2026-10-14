@@ -75,7 +75,7 @@
     "No operational source, registration, private key or deployment is supplied by this audit."
   ],
   "categories": {
-    "additional-data-or-feature": 95,
+    "additional-data-or-feature": 78,
     "additional-observer-operation": 48,
     "document-or-applicability-review": 99,
     "existing-observation": 17,
@@ -413,61 +413,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "cid10#also-known-as.1",
-      "level": "requirement",
-      "keywords": [
-        "OPTIONAL"
-      ],
-      "text_sha256": "fa0fd236d3e218c3a2dd21fd8073c9ea2eee16aae0d2456313d8d9228d7f020e",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#assertion.1",
-      "level": "requirement",
-      "keywords": [
-        "OPTIONAL"
-      ],
-      "text_sha256": "e8131d1b8b2c50679b53a85241917341396970b1b3690fded07c4fde5e676e35",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#assertion.3",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "1bedc892bb3128e65e8cfeb1944f4cf003736b4b283ad865934c7f9401f1aa24",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#authentication.1",
-      "level": "requirement",
-      "keywords": [
-        "OPTIONAL"
-      ],
-      "text_sha256": "e80117b47f4da37f76bf54677bf2e1f50f31e06badcd569b8eafbff52e0b82b6",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#authentication.3",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "1bedc892bb3128e65e8cfeb1944f4cf003736b4b283ad865934c7f9401f1aa24",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
-    },
-    {
       "id": "cid10#base-decode.1",
       "level": "requirement",
       "keywords": [
@@ -760,50 +705,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "cid10#capability-delegation.1",
-      "level": "requirement",
-      "keywords": [
-        "OPTIONAL"
-      ],
-      "text_sha256": "69c6cd030de4792707f8956fc499a6ef03c08fcc1817e95f1a9b9a3c0ac1a460",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#capability-delegation.3",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "1bedc892bb3128e65e8cfeb1944f4cf003736b4b283ad865934c7f9401f1aa24",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#capability-invocation.1",
-      "level": "requirement",
-      "keywords": [
-        "OPTIONAL"
-      ],
-      "text_sha256": "8bb5f89a47777262093b3613b5cd9e4670d7715caea089899dd30639bea29e5f",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#capability-invocation.3",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "1bedc892bb3128e65e8cfeb1944f4cf003736b4b283ad865934c7f9401f1aa24",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
-    },
-    {
       "id": "cid10#conformance.1",
       "level": "requirement",
       "keywords": [
@@ -841,17 +742,6 @@
       "baseline_verdict": "NOT_RUN",
       "route": "permission-definition",
       "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#controllers.1",
-      "level": "requirement",
-      "keywords": [
-        "OPTIONAL"
-      ],
-      "text_sha256": "47e4beb2c66332ab9a38028ab2b6a3ae8e4e0e529bd051569d1e98f85e3d734f",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
     },
     {
       "id": "cid10#controllers.2",
@@ -943,28 +833,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "cid10#key-agreement.1",
-      "level": "requirement",
-      "keywords": [
-        "OPTIONAL"
-      ],
-      "text_sha256": "737e1ccb47e5489da9020a1a2f1bd3c7aa54fce37b48303163071f76f37f4ce1",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#key-agreement.3",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "1bedc892bb3128e65e8cfeb1944f4cf003736b4b283ad865934c7f9401f1aa24",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
-    },
-    {
       "id": "cid10#multibase-0.1",
       "level": "requirement",
       "keywords": [
@@ -1048,17 +916,6 @@
       "text_sha256": "8371a92b2f57b9974699f6705b79000a80055e22bddaeb8530cd329dbb973c32",
       "baseline_verdict": "NOT_RUN",
       "route": "method-retrieval",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#services.1",
-      "level": "requirement",
-      "keywords": [
-        "OPTIONAL"
-      ],
-      "text_sha256": "698e22b7e0a2418b575e4f7eaf7dd329a870ea6302938e0668aeed17d2247891",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
       "generic_scope": "checked"
     },
     {
@@ -1148,50 +1005,6 @@
       "text_sha256": "cc2a5def9b3f3e816ed8c55fbd78ba5fdc8ceac554c1261aecbb2c86f286be81",
       "baseline_verdict": "NOT_RUN",
       "route": "representation-consumer",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#verification-methods.1",
-      "level": "requirement",
-      "keywords": [
-        "OPTIONAL"
-      ],
-      "text_sha256": "d038a347135b425780d168b14c182eeeb6702f9298021c943f52004deb62267f",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#verification-methods.10",
-      "level": "requirement",
-      "keywords": [
-        "OPTIONAL"
-      ],
-      "text_sha256": "01c59d40bf65af3b102b50373408d87192e1475a4f8a816d7208a4b0422dd298",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#verification-methods.4",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "d38e8bc7d0403c6ad6fbfc2325d8fe1a0dffe6b0e729223dc66377fbb93a18c2",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#verification-methods.8",
-      "level": "requirement",
-      "keywords": [
-        "OPTIONAL"
-      ],
-      "text_sha256": "fc953441b195958f5ada17bcc447e119657e2b5bfa275e0030aeb2d7a7c1b4fe",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
       "generic_scope": "checked"
     },
     {
@@ -5894,26 +5707,298 @@
         "did-1.1/sage-resolution/key-policy-expires-offset-1",
         "did-1.1/sage-resolution/key-policy-expires-offset-2"
       ]
+    },
+    {
+      "id": "cid10#also-known-as.1",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "fa0fd236d3e218c3a2dd21fd8073c9ea2eee16aae0d2456313d8d9228d7f020e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/optional-",
+      "cases": [
+        "did-1.1/sage-resolution/optional-alsoKnownAs"
+      ]
+    },
+    {
+      "id": "cid10#assertion.1",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "e8131d1b8b2c50679b53a85241917341396970b1b3690fded07c4fde5e676e35",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/optional-",
+      "cases": [
+        "did-1.1/sage-resolution/optional-assertionMethod"
+      ]
+    },
+    {
+      "id": "cid10#assertion.3",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "1bedc892bb3128e65e8cfeb1944f4cf003736b4b283ad865934c7f9401f1aa24",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/optional-",
+      "cases": [
+        "did-1.1/sage-resolution/optional-assertionMethod"
+      ]
+    },
+    {
+      "id": "cid10#authentication.1",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "e80117b47f4da37f76bf54677bf2e1f50f31e06badcd569b8eafbff52e0b82b6",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/optional-",
+      "cases": [
+        "did-1.1/sage-resolution/optional-authentication"
+      ]
+    },
+    {
+      "id": "cid10#authentication.3",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "1bedc892bb3128e65e8cfeb1944f4cf003736b4b283ad865934c7f9401f1aa24",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/optional-",
+      "cases": [
+        "did-1.1/sage-resolution/optional-authentication"
+      ]
+    },
+    {
+      "id": "cid10#capability-delegation.1",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "69c6cd030de4792707f8956fc499a6ef03c08fcc1817e95f1a9b9a3c0ac1a460",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/optional-",
+      "cases": [
+        "did-1.1/sage-resolution/optional-capabilityDelegation"
+      ]
+    },
+    {
+      "id": "cid10#capability-delegation.3",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "1bedc892bb3128e65e8cfeb1944f4cf003736b4b283ad865934c7f9401f1aa24",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/optional-",
+      "cases": [
+        "did-1.1/sage-resolution/optional-capabilityDelegation"
+      ]
+    },
+    {
+      "id": "cid10#capability-invocation.1",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "8bb5f89a47777262093b3613b5cd9e4670d7715caea089899dd30639bea29e5f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/optional-",
+      "cases": [
+        "did-1.1/sage-resolution/optional-capabilityInvocation"
+      ]
+    },
+    {
+      "id": "cid10#capability-invocation.3",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "1bedc892bb3128e65e8cfeb1944f4cf003736b4b283ad865934c7f9401f1aa24",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/optional-",
+      "cases": [
+        "did-1.1/sage-resolution/optional-capabilityInvocation"
+      ]
+    },
+    {
+      "id": "cid10#controllers.1",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "47e4beb2c66332ab9a38028ab2b6a3ae8e4e0e529bd051569d1e98f85e3d734f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/optional-",
+      "cases": [
+        "did-1.1/sage-resolution/optional-controller"
+      ]
+    },
+    {
+      "id": "cid10#key-agreement.1",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "737e1ccb47e5489da9020a1a2f1bd3c7aa54fce37b48303163071f76f37f4ce1",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/optional-",
+      "cases": [
+        "did-1.1/sage-resolution/optional-keyAgreement"
+      ]
+    },
+    {
+      "id": "cid10#key-agreement.3",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "1bedc892bb3128e65e8cfeb1944f4cf003736b4b283ad865934c7f9401f1aa24",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/optional-",
+      "cases": [
+        "did-1.1/sage-resolution/optional-keyAgreement"
+      ]
+    },
+    {
+      "id": "cid10#services.1",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "698e22b7e0a2418b575e4f7eaf7dd329a870ea6302938e0668aeed17d2247891",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/optional-",
+      "cases": [
+        "did-1.1/sage-resolution/optional-service"
+      ]
+    },
+    {
+      "id": "cid10#verification-methods.1",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "d038a347135b425780d168b14c182eeeb6702f9298021c943f52004deb62267f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/optional-",
+      "cases": [
+        "did-1.1/sage-resolution/optional-verificationMethod"
+      ]
+    },
+    {
+      "id": "cid10#verification-methods.10",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "01c59d40bf65af3b102b50373408d87192e1475a4f8a816d7208a4b0422dd298",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/optional-",
+      "cases": [
+        "did-1.1/sage-resolution/optional-revoked"
+      ]
+    },
+    {
+      "id": "cid10#verification-methods.4",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "d38e8bc7d0403c6ad6fbfc2325d8fe1a0dffe6b0e729223dc66377fbb93a18c2",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/optional-",
+      "cases": [
+        "did-1.1/sage-resolution/optional-exampleExtra"
+      ]
+    },
+    {
+      "id": "cid10#verification-methods.8",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "fc953441b195958f5ada17bcc447e119657e2b5bfa275e0030aeb2d7a7c1b4fe",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/optional-",
+      "cases": [
+        "did-1.1/sage-resolution/optional-expires"
+      ]
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 215,
+    "PASS": 232,
     "FAIL": 6,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 2,
     "ERROR": 0,
-    "NOT_RUN": 263
+    "NOT_RUN": 246
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 206,
+      "PASS": 223,
       "FAIL": 4,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 224
+      "NOT_RUN": 207
     },
     "recommendation": {
       "statements": 50,
@@ -5925,5 +6010,5 @@
       "NOT_RUN": 39
     }
   },
-  "expected_live_cases": 256
+  "expected_live_cases": 268
 }

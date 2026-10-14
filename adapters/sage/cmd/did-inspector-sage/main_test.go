@@ -278,7 +278,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		t.Fatal(err)
 	}
 	r, err := report.Decode(data)
-	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 215 {
+	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 232 {
 		t.Fatal("scope identity", err, r.Totals)
 	}
 	binary := filepath.Join(t.TempDir(), "sage-inspector")
@@ -304,9 +304,9 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		want, cases := 33, 16
 		if profile == "did-1.1" {
-			want, cases = 215, 256
+			want, cases = 232, 268
 		}
-		if profile == "did-1.1" && (r.Totals.NotApplicable != 2 || r.Totals.NotRun != 263) {
+		if profile == "did-1.1" && (r.Totals.NotApplicable != 2 || r.Totals.NotRun != 246) {
 			t.Fatal("native URL conditional evidence", r.Totals)
 		}
 		if profile == "did-1.1" && (r.Totals.Fail != 6 || r.TotalsByLevel.Recommendation.Fail != 2 || r.TotalsByLevel.Requirement.Fail != 4) {
@@ -325,7 +325,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		for _, c := range raw.Cases {
 			for _, o := range c.Observations {
-				if strings.Contains(c.Case, "/key-policy-") {
+				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") {
 					if o.Input == "" || o.Observed == "" {
 						t.Fatal("lost policy evidence")
 					}
@@ -348,7 +348,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 				} else if !strings.Contains(o.Input, `"record"`) {
 					t.Fatal("lost input evidence")
 				}
-				if strings.Contains(c.Case, "/key-policy-") {
+				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") {
 					if o.Input == "" || o.Observed == "" {
 						t.Fatal("lost policy evidence")
 					}
