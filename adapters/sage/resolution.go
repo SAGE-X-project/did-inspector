@@ -175,6 +175,28 @@ func dereferenceResult(out sageresolution.Result, md any, c any, dm document.Met
 		out.ReturnedID = v.ID().String()
 		out.ContentKind = "document"
 		out.Snapshot, err = documentSnapshot(v)
+	case vm.Service:
+		out.ReturnedID = v.ID
+		out.ContentKind = "service"
+		value, e := serviceJSON(v)
+		if e != nil {
+			return out, e
+		}
+		out.Snapshot, err = value.MarshalJSON()
+	case document.Map:
+		out.ContentKind = "map"
+		if id, ok := v.Get("id"); ok {
+			if text, ok := id.(document.String); ok {
+				out.ReturnedID = string(text)
+			}
+		}
+		value, e := mapJSON(v)
+		if e != nil {
+			return out, e
+		}
+		out.Snapshot, err = value.MarshalJSON()
+	case []string:
+		out.ContentKind = "uri-list"
 	case vm.Method:
 		out.ReturnedID = v.ID.String()
 		out.ContentKind = "verification-method"

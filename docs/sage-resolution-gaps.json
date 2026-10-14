@@ -76,7 +76,7 @@
   ],
   "categories": {
     "additional-data-or-feature": 20,
-    "document-or-applicability-review": 81,
+    "document-or-applicability-review": 79,
     "additional-observer-operation": 44,
     "operational-or-authority-evidence": 4,
     "existing-observation": 9
@@ -1540,17 +1540,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "res10-crd20261001#dereferencing.9",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "8e898a0151113f66a18980f39f3950fb9e6075c3bec39ac68e38756f387cdaa6",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
       "id": "res10-crd20261001#did-document-metadata.1",
       "level": "recommendation",
       "keywords": [
@@ -1667,17 +1656,6 @@
         "MAY"
       ],
       "text_sha256": "65fd83160e68d160d67aee2c64910aaa83c5cd7f006883affd9d9103ad317ce0",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#did-parameters.2",
-      "level": "requirement",
-      "keywords": [
-        "OPTIONAL"
-      ],
-      "text_sha256": "942688a07834eb1a238482ebdba2b9c65b076b8aa003e475c33b674ca25ab230",
       "baseline_verdict": "NOT_RUN",
       "route": "permission-definition",
       "generic_scope": "not-checkable"
@@ -6460,26 +6438,65 @@
       "cases": [
         "did-1.1/sage-resolution/representation-options-resolver-proof"
       ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing.9",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "8e898a0151113f66a18980f39f3950fb9e6075c3bec39ac68e38756f387cdaa6",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/resource-choice-",
+      "cases": [
+        "did-1.1/sage-resolution/resource-choice-document",
+        "did-1.1/sage-resolution/resource-choice-embedded-method",
+        "did-1.1/sage-resolution/resource-choice-method",
+        "did-1.1/sage-resolution/resource-choice-nested-full",
+        "did-1.1/sage-resolution/resource-choice-nested-relative",
+        "did-1.1/sage-resolution/resource-choice-service"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-parameters.2",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "942688a07834eb1a238482ebdba2b9c65b076b8aa003e475c33b674ca25ab230",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/resource-choice-",
+      "cases": [
+        "did-1.1/sage-resolution/resource-choice-parameter-relative-reference",
+        "did-1.1/sage-resolution/resource-choice-parameter-service",
+        "did-1.1/sage-resolution/resource-choice-parameter-service-type"
+      ]
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 315,
+    "PASS": 317,
     "FAIL": 9,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 4,
     "ERROR": 0,
-    "NOT_RUN": 158
+    "NOT_RUN": 156
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 301,
+      "PASS": 303,
       "FAIL": 5,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 128
+      "NOT_RUN": 126
     },
     "recommendation": {
       "statements": 50,
@@ -6491,5 +6508,5 @@
       "NOT_RUN": 30
     }
   },
-  "expected_live_cases": 340
+  "expected_live_cases": 349
 }
