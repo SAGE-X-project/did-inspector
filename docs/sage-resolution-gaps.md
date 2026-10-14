@@ -5,7 +5,7 @@ report from CI run [38353322386](https://github.com/SAGE-X-project/did-inspector
 The machine-readable [inventory](sage-resolution-gaps.json) preserves all 416 historical
 statement ids, normative levels and keywords, exact text digests, evidence paths,
 and a next evidence route for each statement. Pending routes are planning evidence, not verdicts or implementation defects.
-Schema 2 keeps 161 pending entries and 255 entries observed since the baseline;
+Schema 2 keeps 158 pending entries and 258 entries observed since the baseline;
 it never assigns new observations to the historical inspector revision.
 
 The baseline inspector revision is `aefdcf9228ec8dcf85fd4aaf08b6e0511af11c36`.
@@ -24,8 +24,8 @@ recommendation-level statements. Requirement-level extraction also includes
 permissions, definitions and algorithm steps; it does not mean every row is a
 standalone MUST with an independently observable violation.
 
-The current report has 335 cases, 298 requirement and fourteen recommendation passes,
-five requirement failures, four recommendation failures, four inapplicable statements and 161 unobserved statements. Ten fresh native
+The current report has 340 cases, 301 requirement and fourteen recommendation passes,
+five requirement failures, four recommendation failures, four inapplicable statements and 158 unobserved statements. Ten fresh native
 result cases add 13 requirement passes and one conditional NOT_APPLICABLE.
 Twenty-four direct metadata serialization cases add four requirement passes.
 Three native error/state cases and ten owned TLS response cases add 22
@@ -53,7 +53,7 @@ strings, adding consumption.1 on these selected values. Root/map insertion order
 is not required. All numeric ranges, forced double properties without a fraction,
 other property contexts and full JSON-LD processing remain unestablished.
 The earlier routing table below describes the 246-clause anchor, not the baseline 416.
-The [current full review](sage-remaining-clause-review.md) records all anchor clauses individually and identifies the 161 still unobserved.
+The [current full review](sage-remaining-clause-review.md) records all anchor clauses individually and identifies the 158 still unobserved.
 
 | Primary next evidence route | Statements | Meaning |
 |---|---:|---|
@@ -352,3 +352,11 @@ with regression controls for missing cases, observer misattribution, missing
 values, extension order and equivalent date instants.
 
 Sixteen selected-choice cases now add eight requirement-level observations: public codec output equivalence, local optional Multikey consumption, actual proxy invocation, IP-address certificate choice, and public-key conversion with external Multikey preservation. These are bounded actual observations, not proof of every internal algorithm step, all input values or operational registry authority.
+
+### Additional options and resolver proof inclusion
+
+Five fresh cases cover three previously unobserved MAY clauses: production-and-consumption.9/.14 and resolver-architectures.3. The selected direct producer receives JSONLD false/true; the selected consumer receives Require=1.1 with Strict false/true on explicit-context literal input. Call-boundary input and options are captured before delegation. These observations prove selected option acceptance, not universal option effects or full JSON-LD processing.
+
+The actual universal Client.Resolve returns a proof-shaped resolution metadata map from an owned TLS upstream, with a proof-absent diagnostic control. This does not establish SAGE method proof creation, signature validity, result correctness verification or operational authority. An optional refusal or unavailable capability is NOT_SUPPORTED, not FAIL; missing or mismatched observation provenance is ERROR. Unrelated document metadata and additional proofs in the absent control do not impose new requirements on this MAY.
+
+The original 416-clause baseline is preserved: 258 observed and 158 pending. Of the 246 reviewed anchor clauses, 88 have selected execution verdicts and 158 remain NOT_RUN. Existing nine failures and the failing conformance gate are retained.

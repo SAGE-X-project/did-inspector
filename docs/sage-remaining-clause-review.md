@@ -2,7 +2,7 @@
 
 All 246 clauses unobserved at `1efc9f0` are reviewed individually in the [machine-readable audit](sage-remaining-clause-review.json). The earlier [353-clause review](sage-resolution-batch-review.json) and all 416 historical ledger entries remain intact. Review coverage does not establish execution coverage or standards conformance.
 
-This grouped implementation adds 77 selected-branch observations across 51 cases. Of the 246 anchor clauses, 85 now have execution verdicts and 161 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
+This grouped implementation adds 77 selected-branch observations across 51 cases. Of the 246 anchor clauses, 88 now have execution verdicts and 158 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
 
 | Review disposition | Clauses |
 |---|---:|
@@ -37,4 +37,12 @@ Existing scope and execution evidence are separate. A reviewed row is not closed
 
 Sixteen additional actual cases exercise eight previously unobserved clauses, with public vectors and owned TLS only. Encoder and decoder equivalence are independent predicates. The malformed decoder input is diagnostic because these clauses define no error shape. IP certificate choice is independent of client authentication. Optional public-key conversion refusal is a capability finding; only actual successful conversions are checked for external Multikey changes. Internal type/raw diagnostics cannot by themselves fail that external-value requirement. A local consumer contrast uses published RFC8032 data and does not publish a secret or grant key-use authorization.
 
-The current DID1.1 resolution report is 335 cases, 312 PASS, 9 FAIL, 4 NOT_APPLICABLE and 161 NOT_RUN. The original baseline and existing failures are retained. Full standards conformance remains unestablished.
+The current DID1.1 resolution report is 340 cases, 315 PASS, 9 FAIL, 4 NOT_APPLICABLE and 158 NOT_RUN. The original baseline and existing failures are retained. Full standards conformance remains unestablished.
+
+### Additional options and resolver proof inclusion
+
+Five fresh cases cover three previously unobserved MAY clauses: production-and-consumption.9/.14 and resolver-architectures.3. The selected direct producer receives JSONLD false/true; the selected consumer receives Require=1.1 with Strict false/true on explicit-context literal input. Call-boundary input and options are captured before delegation. These observations prove selected option acceptance, not universal option effects or full JSON-LD processing.
+
+The actual universal Client.Resolve returns a proof-shaped resolution metadata map from an owned TLS upstream, with a proof-absent diagnostic control. This does not establish SAGE method proof creation, signature validity, result correctness verification or operational authority. An optional refusal or unavailable capability is NOT_SUPPORTED, not FAIL; missing or mismatched observation provenance is ERROR. Unrelated document metadata and additional proofs in the absent control do not impose new requirements on this MAY.
+
+The original 416-clause baseline is preserved: 258 observed and 158 pending. Of the 246 reviewed anchor clauses, 88 have selected execution verdicts and 158 remain NOT_RUN. Existing nine failures and the failing conformance gate are retained.

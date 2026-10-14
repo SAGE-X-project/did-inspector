@@ -111,6 +111,8 @@ func Profile(name string) (core.Profile, error) {
 	appendChoiceClientCases(&p, rows)
 	appendKeyConversionCases(&p)
 	appendChoiceOptionalCases(&p)
+	appendRepresentationOptionsCases(&p)
+	appendResolverProofCases(&p, rows)
 	appendClientCases(&p, rows)
 	appendRetrievalCases(&p, rows)
 	appendLibraryDocumentCases(&p)

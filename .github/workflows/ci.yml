@@ -165,13 +165,13 @@ jobs:
           import base64, json, os
           from pathlib import Path
           root=Path(os.environ['RUNNER_TEMP'])/'sage-reports'
-          for name,passed,pending,cases in [('did-core-1.0',33,173,16),('did-1.1',312,161,335)]:
+          for name,passed,pending,cases in [('did-core-1.0',33,173,16),('did-1.1',315,158,340)]:
               report=json.loads((root/('resolution-'+name+'.json')).read_text())
               assert report['subject']['name']=='did-go/advanced/sage-resolution'
               assert report['subject']['revision']=='2ef282b40ccfe243c6cf3b1c05594e02171126cc'
               assert report['totals']['FAIL']==(9 if name=='did-1.1' else 0) and report['totals']['ERROR']==0
               assert report['totals']['PASS']==passed and report['totals']['NOT_RUN']==pending
-              assert report['totals_by_level']['requirement']['PASS']==(33 if name=='did-core-1.0' else 298)
+              assert report['totals_by_level']['requirement']['PASS']==(33 if name=='did-core-1.0' else 301)
               required_failures={row['id'] for row in report['statements'] if row['level']=='requirement' and row['verdict'] in ['FAIL','ERROR']}
               assert required_failures==({'cid10#verification-methods.9','cid10#verification-methods.11','cid10#conformance.2','did11-cr20260305#production-and-consumption.18','res10-crd20261001#dereferencing-algorithm-resource.5'} if name=='did-1.1' else set())
               raw=json.loads((root/('resolution-'+name+'-raw.json')).read_text())
@@ -510,23 +510,23 @@ jobs:
           assert report['inspector']['revision']==os.environ['GITHUB_SHA']
           assert inventory['expected_live_totals']==report['totals']
           assert inventory['expected_live_totals_by_level']==report['totals_by_level']
-          assert inventory['expected_live_cases']==len(raw['cases'])==335
+          assert inventory['expected_live_cases']==len(raw['cases'])==340
           pending=inventory['pending']
           observed=inventory['observed_since_baseline']
           ids=[row['id'] for row in pending]
-          assert len(ids)==len(set(ids))==161
+          assert len(ids)==len(set(ids))==158
           assert set(ids)=={row['id'] for row in report['statements'] if row['verdict']=='NOT_RUN'}
           allrows=pending+observed
           allids=[row['id'] for row in allrows]
           assert len(allids)==len(set(allids))==inventory['baseline']['totals']['NOT_RUN']==416
           assert hashlib.sha256(json.dumps(sorted(allids),separators=(',',':')).encode()).hexdigest()==inventory['baseline']['pending_ids_sha256']
-          assert len(observed)==255
-          assert collections.Counter(row['expected_live_verdict'] for row in observed)=={'PASS':243,'NOT_APPLICABLE':3,'FAIL':9}
+          assert len(observed)==258
+          assert collections.Counter(row['expected_live_verdict'] for row in observed)=={'PASS':246,'NOT_APPLICABLE':3,'FAIL':9}
           live={row['id']:row['verdict'] for row in report['statements']}
           cases={case['case']:case for case in raw['cases']}
           assert len(cases)==len(raw['cases'])
           for row in observed:
-              assert row['case_prefix'] in ['/native-result-','/native-metadata-','/native-branch-','/wire-branch-','/native-key-fields-','/native-representation-','/native-pipeline-','/native-production-root-','/native-consumer-','/native-consumer-conformance-','/native-typed-production-','/native-typed-consumption-','/native-representation-input-','/native-producer-context-','/library-syntax-','/library-codec-','/library-client-','/library-retrieval-','/library-document-','/library-context-','/native-contract-','/key-policy-','/key-policy-format-','/optional-','/remaining-','/choice-']
+              assert row['case_prefix'] in ['/native-result-','/native-metadata-','/native-branch-','/wire-branch-','/native-key-fields-','/native-representation-','/native-pipeline-','/native-production-root-','/native-consumer-','/native-consumer-conformance-','/native-typed-production-','/native-typed-consumption-','/native-representation-input-','/native-producer-context-','/library-syntax-','/library-codec-','/library-client-','/library-retrieval-','/library-document-','/library-context-','/native-contract-','/key-policy-','/key-policy-format-','/optional-','/remaining-','/choice-','/representation-options-']
               assert live[row['id']]==row['expected_live_verdict']
               prefixes=row.get('case_prefixes',[row['case_prefix']])
               assert prefixes and len(prefixes)==len(set(prefixes)) and row['case_prefix'] in prefixes
@@ -563,8 +563,8 @@ jobs:
                   categories[route['category']]+=1
           assert dict(categories)==inventory['categories']
           assert collections.Counter(row['level'] for row in allrows)=={'requirement':368,'recommendation':48}
-          assert collections.Counter(row['level'] for row in pending)=={'requirement':131,'recommendation':30}
-          print('Verified 161 pending and 255 newly observed clauses; all 416 historical ids retained')
+          assert collections.Counter(row['level'] for row in pending)=={'requirement':128,'recommendation':30}
+          print('Verified 158 pending and 258 newly observed clauses; all 416 historical ids retained')
           PYTHON
       - name: Check complete batched library evidence
         run: |
@@ -573,6 +573,7 @@ jobs:
           python3 ../../scripts/check_sage_policy.py --reports "$RUNNER_TEMP/sage-reports"
           python3 ../../scripts/check_sage_optional.py --reports "$RUNNER_TEMP/sage-reports"
           python3 ../../scripts/check_sage_choices.py --reports "$RUNNER_TEMP/sage-reports"
+          python3 ../../scripts/check_sage_representation_options.py --reports "$RUNNER_TEMP/sage-reports"
           SAGE_BATCH_REPORT_DIR="$RUNNER_TEMP/sage-reports" python3 -m unittest discover -s ../../scripts -p 'test_*.py'
       - name: Preserve independent profile and raw observation artifacts
         if: always()
