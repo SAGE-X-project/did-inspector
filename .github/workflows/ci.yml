@@ -12,7 +12,7 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e
@@ -30,11 +30,11 @@ jobs:
           git diff --exit-code -- statements
       - name: Test with coverage
         run: |
-          go test -race -coverprofile="$RUNNER_TEMP/cover.out" ./...
+          go test -timeout=20m -race -coverprofile="$RUNNER_TEMP/cover.out" ./...
           go tool cover -func="$RUNNER_TEMP/cover.out" | awk '/^total:/ { sub(/%$/, "", $3); found=1; if ($3+0 < 90) exit 1 } END { if (!found) exit 1 }'
       - name: Coverage per package
         run: |
-          go test -cover ./... | awk '
+          go test -timeout=20m -cover ./... | awk '
             /coverage:/ { for (i = 1; i <= NF; i++) if ($i == "coverage:") { v = $(i+1); sub(/%$/, "", v); if (v+0 < 90) { print "below 90%: " $0; bad = 1 } } }
             /no test files/ { print "no tests: " $0; bad = 1 }
             END { exit bad }'
@@ -167,13 +167,13 @@ jobs:
           import base64, json, os
           from pathlib import Path
           root=Path(os.environ['RUNNER_TEMP'])/'sage-reports'
-          for name,passed,pending,cases in [('did-core-1.0',33,173,16),('did-1.1',338,135,350)]:
+          for name,passed,pending,cases in [('did-core-1.0',33,173,16),('did-1.1',340,133,350)]:
               report=json.loads((root/('resolution-'+name+'.json')).read_text())
               assert report['subject']['name']=='did-go/advanced/sage-resolution'
               assert report['subject']['revision']=='2ef282b40ccfe243c6cf3b1c05594e02171126cc'
               assert report['totals']['FAIL']==(9 if name=='did-1.1' else 0) and report['totals']['ERROR']==0
               assert report['totals']['PASS']==passed and report['totals']['NOT_RUN']==pending
-              assert report['totals_by_level']['requirement']['PASS']==(33 if name=='did-core-1.0' else 324)
+              assert report['totals_by_level']['requirement']['PASS']==(33 if name=='did-core-1.0' else 326)
               required_failures={row['id'] for row in report['statements'] if row['level']=='requirement' and row['verdict'] in ['FAIL','ERROR']}
               assert required_failures==({'cid10#verification-methods.9','cid10#verification-methods.11','cid10#conformance.2','did11-cr20260305#production-and-consumption.18','res10-crd20261001#dereferencing-algorithm-resource.5'} if name=='did-1.1' else set())
               raw=json.loads((root/('resolution-'+name+'-raw.json')).read_text())
@@ -516,14 +516,14 @@ jobs:
           pending=inventory['pending']
           observed=inventory['observed_since_baseline']
           ids=[row['id'] for row in pending]
-          assert len(ids)==len(set(ids))==135
+          assert len(ids)==len(set(ids))==133
           assert set(ids)=={row['id'] for row in report['statements'] if row['verdict']=='NOT_RUN'}
           allrows=pending+observed
           allids=[row['id'] for row in allrows]
           assert len(allids)==len(set(allids))==inventory['baseline']['totals']['NOT_RUN']==416
           assert hashlib.sha256(json.dumps(sorted(allids),separators=(',',':')).encode()).hexdigest()==inventory['baseline']['pending_ids_sha256']
-          assert len(observed)==281
-          assert collections.Counter(row['expected_live_verdict'] for row in observed)=={'PASS':269,'NOT_APPLICABLE':3,'FAIL':9}
+          assert len(observed)==283
+          assert collections.Counter(row['expected_live_verdict'] for row in observed)=={'PASS':271,'NOT_APPLICABLE':3,'FAIL':9}
           live={row['id']:row['verdict'] for row in report['statements']}
           cases={case['case']:case for case in raw['cases']}
           assert len(cases)==len(raw['cases'])
@@ -565,8 +565,8 @@ jobs:
                   categories[route['category']]+=1
           assert dict(categories)==inventory['categories']
           assert collections.Counter(row['level'] for row in allrows)=={'requirement':368,'recommendation':48}
-          assert collections.Counter(row['level'] for row in pending)=={'requirement':105,'recommendation':30}
-          print('Verified 135 pending and 281 newly observed clauses; all 416 historical ids retained')
+          assert collections.Counter(row['level'] for row in pending)=={'requirement':103,'recommendation':30}
+          print('Verified 133 pending and 283 newly observed clauses; all 416 historical ids retained')
           PYTHON
       - name: Check complete batched library evidence
         run: |

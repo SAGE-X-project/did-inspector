@@ -275,7 +275,7 @@ func TestPrefixVerdictsPreserveIndependentPredicates(t *testing.T) {
 	if err := json.Unmarshal([]byte(obs[0].Observed), &v); err != nil {
 		t.Fatal(err)
 	}
-	if len(v.Prefix) != 2 || len(obs) != 21 {
+	if len(v.Prefix) != 2 || len(obs) != 23 {
 		t.Fatal("missing prefix observations")
 	}
 	for _, a := range v.Prefix {
@@ -308,5 +308,39 @@ func TestPrefixVerdictsPreserveIndependentPredicates(t *testing.T) {
 	a.Steps = nil
 	if prefixVerdict(a, 0) != core.Error {
 		t.Fatal("missing steps")
+	}
+}
+
+func TestGuardVerdictsBoundBothRoots(t *testing.T) {
+	obs := judgeIntegerSource(t.Context(), sourceControl(t), "unit")
+	var evidence integerSourceEvidence
+	if e := json.Unmarshal([]byte(obs[0].Observed), &evidence); e != nil {
+		t.Fatal(e)
+	}
+	if len(obs) != 23 || len(evidence.Guard) != 2 {
+		t.Fatal("missing guards")
+	}
+	for _, a := range evidence.Guard {
+		if guardVerdict(a) != core.Pass {
+			t.Fatal(a)
+		}
+		a.Steps[0].Correct = false
+		if guardVerdict(a) != core.Fail {
+			t.Fatal("violation hidden")
+		}
+		a.Unknown = []string{"unproved"}
+		if guardVerdict(a) != core.Error {
+			t.Fatal("unknown accepted")
+		}
+		a.Unknown = nil
+		a.Frame = "other"
+		if guardVerdict(a) != core.Error {
+			t.Fatal("changed context")
+		}
+	}
+	for _, a := range []sourcearith.StateAudit{{}, {Root: IntegerSourceModule + "/internal/multiformats.BaseEncode", Frame: evidence.Guard[0].Frame}} {
+		if guardVerdict(a) != core.Error {
+			t.Fatal("missing evidence")
+		}
 	}
 }
