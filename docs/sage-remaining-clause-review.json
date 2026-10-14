@@ -23,10 +23,10 @@
     "runtime-candidate": 69
   },
   "execution_counts": {
-    "PASS": 85,
+    "PASS": 87,
     "FAIL": 3,
     "NOT_APPLICABLE": 2,
-    "NOT_RUN": 156
+    "NOT_RUN": 154
   },
   "clauses": [
     {
@@ -333,11 +333,13 @@
       "actor": "selected codec algorithm or alternative implementation",
       "applicable_evidence": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Pinned module ZIP h1 and cache byte identity bind the selected source. Standard Go parser/types resolve public codec-to-base calls and inspect integer arithmetic in reachable helpers and used initializers. This fixed-source inspection does not prove compiled binary bytes, all runtime executions, bounds, overflow, reference steps or output equivalence.",
       "follow_up_condition": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ]
     },
     {
       "id": "cid10#base-decode.10",
@@ -623,11 +625,13 @@
       "actor": "selected codec algorithm or alternative implementation",
       "applicable_evidence": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Pinned module ZIP h1 and cache byte identity bind the selected source. Standard Go parser/types resolve public codec-to-base calls and inspect integer arithmetic in reachable helpers and used initializers. This fixed-source inspection does not prove compiled binary bytes, all runtime executions, bounds, overflow, reference steps or output equivalence.",
       "follow_up_condition": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ]
     },
     {
       "id": "cid10#base-encode.10",

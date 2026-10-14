@@ -77,7 +77,7 @@
   "categories": {
     "additional-data-or-feature": 20,
     "document-or-applicability-review": 79,
-    "additional-observer-operation": 44,
+    "additional-observer-operation": 42,
     "operational-or-authority-evidence": 4,
     "existing-observation": 9
   },
@@ -302,17 +302,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "cid10#base-decode.1",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "69cdb91731f9cdade10342dfcf4a65e35409def818db538a113e09dee3a5026e",
-      "baseline_verdict": "NOT_RUN",
-      "route": "codec-internals",
-      "generic_scope": "not-checkable"
-    },
-    {
       "id": "cid10#base-decode.10",
       "level": "requirement",
       "keywords": [],
@@ -443,17 +432,6 @@
       "level": "requirement",
       "keywords": [],
       "text_sha256": "c97e51c9f418a9844f607aca494947145ea7f1028e5cf511e4405e58fb7f4083",
-      "baseline_verdict": "NOT_RUN",
-      "route": "codec-internals",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#base-encode.1",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "69cdb91731f9cdade10342dfcf4a65e35409def818db538a113e09dee3a5026e",
       "baseline_verdict": "NOT_RUN",
       "route": "codec-internals",
       "generic_scope": "not-checkable"
@@ -6477,26 +6455,58 @@
         "did-1.1/sage-resolution/resource-choice-parameter-service",
         "did-1.1/sage-resolution/resource-choice-parameter-service-type"
       ]
+    },
+    {
+      "id": "cid10#base-decode.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "69cdb91731f9cdade10342dfcf4a65e35409def818db538a113e09dee3a5026e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/integer-source-",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ]
+    },
+    {
+      "id": "cid10#base-encode.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "69cdb91731f9cdade10342dfcf4a65e35409def818db538a113e09dee3a5026e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/integer-source-",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ]
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 317,
+    "PASS": 319,
     "FAIL": 9,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 4,
     "ERROR": 0,
-    "NOT_RUN": 156
+    "NOT_RUN": 154
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 303,
+      "PASS": 305,
       "FAIL": 5,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 126
+      "NOT_RUN": 124
     },
     "recommendation": {
       "statements": 50,
@@ -6508,5 +6518,5 @@
       "NOT_RUN": 30
     }
   },
-  "expected_live_cases": 349
+  "expected_live_cases": 350
 }
