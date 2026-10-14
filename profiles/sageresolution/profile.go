@@ -114,6 +114,18 @@ func Profile(name string) (core.Profile, error) {
 	appendContractCases(&p, rows)
 	appendPolicyCases(&p)
 	appendOptionalCases(&p)
+	appendLibraryValueCases(&p)
+	appendRemainingFieldCases(&p)
+	appendRoutingCases(&p)
+	appendRemainingNativeKeyCases(&p, rows)
+	appendTrustCases(&p, rows)
+	appendOperationCases(&p)
+	appendRoutingBindingCases(&p)
+	appendExpansionCases(&p)
+	appendProxyCases(&p, rows)
+	appendPreferenceCases(&p, rows)
+	appendCIDHTTPCases(&p)
+	appendMinimalCase(&p)
 	if err := appendConsumerConformanceCases(&p); err != nil {
 		return p, err
 	}

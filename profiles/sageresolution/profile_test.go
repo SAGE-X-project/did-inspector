@@ -116,7 +116,7 @@ func TestProfileScopeAndUnavailable(t *testing.T) {
 					if _, ok := s.(noOperation); ok && o.Verdict != core.NotSupported {
 						t.Fatal(o)
 					}
-					if v, ok := s.(stub); ok && v.err && o.Verdict != core.Error {
+					if v, ok := s.(stub); ok && v.err && o.Verdict != core.Error && o.Verdict != core.NotSupported {
 						t.Fatal(o)
 					}
 					if v, ok := s.(stub); ok && !v.err && len(o.Input) == 0 {

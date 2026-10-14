@@ -119,7 +119,17 @@ func (s *Subject) InspectTypedProduction(_ context.Context, q sageresolution.Typ
 	if e != nil {
 		return fail(e)
 	}
-	b := document.NewBuilder(id).ControllerShape(vm.ShapeSet)
+	b := document.NewBuilder(id)
+	switch q.ControllerShape {
+	case "", "set":
+		b.ControllerShape(vm.ShapeSet)
+	case "absent":
+		if len(q.Controllers) != 0 {
+			return fail(fmt.Errorf("absent controller property cannot have values"))
+		}
+	default:
+		return fail(fmt.Errorf("unsupported explicit controller shape %q", q.ControllerShape))
+	}
 	for _, c := range q.Controllers {
 		ctl, e := did.Parse(c)
 		if e != nil {
@@ -159,6 +169,14 @@ func (s *Subject) InspectTypedProduction(_ context.Context, q sageresolution.Typ
 		out.CaptureError = e.Error()
 		return out, nil
 	}
-	_, _, _ = (observedProducer{producer.New(), &out.Calls}).Produce(d, representation.ProduceOptions{Version: spec.V11, JSONLD: q.JSONLD})
+	version := spec.V11
+	switch q.Version {
+	case "", "1.1":
+	case "1.0":
+		version = spec.V10
+	default:
+		return fail(fmt.Errorf("unsupported explicit production version %q", q.Version))
+	}
+	_, _, _ = (observedProducer{producer.New(), &out.Calls}).Produce(d, representation.ProduceOptions{Version: version, JSONLD: q.JSONLD})
 	return out, nil
 }
