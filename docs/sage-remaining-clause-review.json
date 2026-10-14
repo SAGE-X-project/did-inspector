@@ -23,10 +23,10 @@
     "runtime-candidate": 69
   },
   "execution_counts": {
+    "PASS": 80,
     "FAIL": 3,
     "NOT_APPLICABLE": 2,
-    "NOT_RUN": 169,
-    "PASS": 72
+    "NOT_RUN": 161
   },
   "clauses": [
     {
@@ -176,11 +176,13 @@
       "actor": "pinned specification interpretation",
       "applicable_evidence": "Retain both clauses and interpretation uncertainty. Do not silently replace pinned text or mark optional absence as failure.",
       "review_disposition": "normative-conflict",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The pinned normative text contains a recorded conflict or ambiguity. Retain its exact digest and resolve the standards interpretation before designing a pass/fail oracle.",
+      "status": "observed-selected-branch",
+      "reason": "Actual selected public codec, key-conversion, local consumer or owned TLS client observations. Permission and conditional preservation predicates remain separate; no internal-step, authority or universal-input inference.",
       "follow_up_condition": "Retain both clauses and interpretation uncertainty. Do not silently replace pinned text or mark optional absence as failure.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/choice-optional-public-multibase-local-model"
+      ]
     },
     {
       "id": "cid10#Multikey.20",
@@ -301,11 +303,21 @@
       "actor": "permission, definition or stated input/output actor",
       "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
       "review_disposition": "construction-or-permission",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "A definition, permission or conditional construction is not an unconditional implementation obligation. Establish the claimed feature/actor and exercise its applicable branch before an execution verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Actual selected public codec, key-conversion, local consumer or owned TLS client observations. Permission and conditional preservation predicates remain separate; no internal-step, authority or universal-input inference.",
       "follow_up_condition": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/choice-codec-P-256-public",
+        "did-1.1/sage-resolution/choice-codec-P-384-public",
+        "did-1.1/sage-resolution/choice-codec-Ed25519-public",
+        "did-1.1/sage-resolution/choice-codec-BLS12-381-G2-public",
+        "did-1.1/sage-resolution/choice-codec-SM2-public",
+        "did-1.1/sage-resolution/choice-codec-P-256-public-test-secret",
+        "did-1.1/sage-resolution/choice-codec-P-384-public-test-secret",
+        "did-1.1/sage-resolution/choice-codec-Ed25519-public-test-secret",
+        "did-1.1/sage-resolution/choice-codec-SM2-public-test-secret"
+      ]
     },
     {
       "id": "cid10#base-decode.1",
@@ -1161,11 +1173,21 @@
       "actor": "equivalent-output algorithm permission",
       "applicable_evidence": "Permits equivalent-output implementations; this is applicability evidence for external .2/.4, not a separate runtime duty or automatic PASS.",
       "review_disposition": "construction-or-permission",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "A definition, permission or conditional construction is not an unconditional implementation obligation. Establish the claimed feature/actor and exercise its applicable branch before an execution verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Actual selected public codec, key-conversion, local consumer or owned TLS client observations. Permission and conditional preservation predicates remain separate; no internal-step, authority or universal-input inference.",
       "follow_up_condition": "Permits equivalent-output implementations; this is applicability evidence for external .2/.4, not a separate runtime duty or automatic PASS.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/choice-codec-P-256-public",
+        "did-1.1/sage-resolution/choice-codec-P-384-public",
+        "did-1.1/sage-resolution/choice-codec-Ed25519-public",
+        "did-1.1/sage-resolution/choice-codec-BLS12-381-G2-public",
+        "did-1.1/sage-resolution/choice-codec-SM2-public",
+        "did-1.1/sage-resolution/choice-codec-P-256-public-test-secret",
+        "did-1.1/sage-resolution/choice-codec-P-384-public-test-secret",
+        "did-1.1/sage-resolution/choice-codec-Ed25519-public-test-secret",
+        "did-1.1/sage-resolution/choice-codec-SM2-public-test-secret"
+      ]
     },
     {
       "id": "cid10#multibase-0.5",
@@ -1181,11 +1203,21 @@
       "actor": "equivalent-output algorithm permission",
       "applicable_evidence": "Permits equivalent-output implementations; this is applicability evidence for external .2/.4, not a separate runtime duty or automatic PASS.",
       "review_disposition": "construction-or-permission",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "A definition, permission or conditional construction is not an unconditional implementation obligation. Establish the claimed feature/actor and exercise its applicable branch before an execution verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Actual selected public codec, key-conversion, local consumer or owned TLS client observations. Permission and conditional preservation predicates remain separate; no internal-step, authority or universal-input inference.",
       "follow_up_condition": "Permits equivalent-output implementations; this is applicability evidence for external .2/.4, not a separate runtime duty or automatic PASS.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/choice-codec-P-256-public",
+        "did-1.1/sage-resolution/choice-codec-P-384-public",
+        "did-1.1/sage-resolution/choice-codec-Ed25519-public",
+        "did-1.1/sage-resolution/choice-codec-BLS12-381-G2-public",
+        "did-1.1/sage-resolution/choice-codec-SM2-public",
+        "did-1.1/sage-resolution/choice-codec-P-256-public-test-secret",
+        "did-1.1/sage-resolution/choice-codec-P-384-public-test-secret",
+        "did-1.1/sage-resolution/choice-codec-Ed25519-public-test-secret",
+        "did-1.1/sage-resolution/choice-codec-SM2-public-test-secret"
+      ]
     },
     {
       "id": "cid10#multihash.1",
@@ -1425,11 +1457,15 @@
       "actor": "permission, definition or stated input/output actor",
       "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
       "review_disposition": "construction-or-permission",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "A definition, permission or conditional construction is not an unconditional implementation obligation. Establish the claimed feature/actor and exercise its applicable branch before an execution verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Actual selected public codec, key-conversion, local consumer or owned TLS client observations. Permission and conditional preservation predicates remain separate; no internal-step, authority or universal-input inference.",
       "follow_up_condition": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/choice-key-conversion-P-256",
+        "did-1.1/sage-resolution/choice-key-conversion-P-384",
+        "did-1.1/sage-resolution/choice-key-conversion-Ed25519"
+      ]
     },
     {
       "id": "cid10#verification-material.3",
@@ -1445,11 +1481,15 @@
       "actor": "selected producer/consumer",
       "applicable_evidence": "Observe actual two maps, types, options and unchanged result; keep actor and compound clause boundaries.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "No operational key-material conversion boundary is exposed by the selected adapter. External codec round trips and immutable fixture preservation cannot prove the actual internal conversion left the external representation unchanged.",
+      "status": "observed-selected-branch",
+      "reason": "Actual selected public codec, key-conversion, local consumer or owned TLS client observations. Permission and conditional preservation predicates remain separate; no internal-step, authority or universal-input inference.",
       "follow_up_condition": "Observe actual two maps, types, options and unchanged result; keep actor and compound clause boundaries.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/choice-key-conversion-P-256",
+        "did-1.1/sage-resolution/choice-key-conversion-P-384",
+        "did-1.1/sage-resolution/choice-key-conversion-Ed25519"
+      ]
     },
     {
       "id": "cid10#verification-relationships.1",
@@ -2538,11 +2578,13 @@
       "actor": "permission, definition or stated input/output actor",
       "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
       "review_disposition": "construction-or-permission",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "A definition, permission or conditional construction is not an unconditional implementation obligation. Establish the claimed feature/actor and exercise its applicable branch before an execution verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Actual selected public codec, key-conversion, local consumer or owned TLS client observations. Permission and conditional preservation predicates remain separate; no internal-step, authority or universal-input inference.",
       "follow_up_condition": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/choice-ip-certificate"
+      ]
     },
     {
       "id": "res10-crd20261001#bindings-https.35",
@@ -4600,11 +4642,14 @@
       "actor": "permission, definition or stated input/output actor",
       "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
       "review_disposition": "construction-or-permission",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "A definition, permission or conditional construction is not an unconditional implementation obligation. Establish the claimed feature/actor and exercise its applicable branch before an execution verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Actual selected public codec, key-conversion, local consumer or owned TLS client observations. Permission and conditional preservation predicates remain separate; no internal-step, authority or universal-input inference.",
       "follow_up_condition": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/choice-proxy-post-false",
+        "did-1.1/sage-resolution/choice-proxy-post-true"
+      ]
     },
     {
       "id": "res10-crd20261001#resolver-architectures-proxied.2",

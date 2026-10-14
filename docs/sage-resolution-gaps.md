@@ -5,7 +5,7 @@ report from CI run [38353322386](https://github.com/SAGE-X-project/did-inspector
 The machine-readable [inventory](sage-resolution-gaps.json) preserves all 416 historical
 statement ids, normative levels and keywords, exact text digests, evidence paths,
 and a next evidence route for each statement. Pending routes are planning evidence, not verdicts or implementation defects.
-Schema 2 keeps 169 pending entries and 247 entries observed since the baseline;
+Schema 2 keeps 161 pending entries and 255 entries observed since the baseline;
 it never assigns new observations to the historical inspector revision.
 
 The baseline inspector revision is `aefdcf9228ec8dcf85fd4aaf08b6e0511af11c36`.
@@ -24,8 +24,8 @@ recommendation-level statements. Requirement-level extraction also includes
 permissions, definitions and algorithm steps; it does not mean every row is a
 standalone MUST with an independently observable violation.
 
-The current report has 319 cases, 290 requirement and fourteen recommendation passes,
-five requirement failures, four recommendation failures, four inapplicable statements and 169 unobserved statements. Ten fresh native
+The current report has 335 cases, 298 requirement and fourteen recommendation passes,
+five requirement failures, four recommendation failures, four inapplicable statements and 161 unobserved statements. Ten fresh native
 result cases add 13 requirement passes and one conditional NOT_APPLICABLE.
 Twenty-four direct metadata serialization cases add four requirement passes.
 Three native error/state cases and ten owned TLS response cases add 22
@@ -53,7 +53,7 @@ strings, adding consumption.1 on these selected values. Root/map insertion order
 is not required. All numeric ranges, forced double properties without a fraction,
 other property contexts and full JSON-LD processing remain unestablished.
 The earlier routing table below describes the 246-clause anchor, not the baseline 416.
-The [current full review](sage-remaining-clause-review.md) records all anchor clauses individually and identifies the 169 still unobserved.
+The [current full review](sage-remaining-clause-review.md) records all anchor clauses individually and identifies the 161 still unobserved.
 
 | Primary next evidence route | Statements | Meaning |
 |---|---:|---|
@@ -350,3 +350,5 @@ The frozen353 review and previous library/native/policy evidence remain intact.
 CI independently verifies all46 original calls and expected literal variants,
 with regression controls for missing cases, observer misattribution, missing
 values, extension order and equivalent date instants.
+
+Sixteen selected-choice cases now add eight requirement-level observations: public codec output equivalence, local optional Multikey consumption, actual proxy invocation, IP-address certificate choice, and public-key conversion with external Multikey preservation. These are bounded actual observations, not proof of every internal algorithm step, all input values or operational registry authority.
