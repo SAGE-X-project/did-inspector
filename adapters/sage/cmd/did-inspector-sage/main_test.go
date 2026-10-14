@@ -282,15 +282,46 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		t.Fatal("scope identity", err, r.Totals)
 	}
 	binary := filepath.Join(t.TempDir(), "sage-inspector")
-	cmd := exec.Command("go", "build", "-mod=readonly", "-o", binary, ".")
+	cmd := exec.Command("go", "build", "-mod=readonly", "-trimpath", "-o", binary, ".")
 	if out, err := cmd.CombinedOutput(); err != nil {
 		t.Fatalf("build %v %s", err, out)
+	}
+	// Missing standard-library source is an evidence error, never a PASS.
+	missingPath := filepath.Join(t.TempDir(), "missing-source.json")
+	missing := exec.Command(binary, "--scope", "resolution", "--profile", "did-1.1", "--deterministic", "--out", missingPath)
+	missing.Env = append(os.Environ(), "GOROOT=")
+	if output, e := missing.CombinedOutput(); e != nil {
+		t.Fatalf("missing-source run failed: %v %s", e, output)
+	}
+	missingData, err := os.ReadFile(missingPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	missingReport, err := report.Decode(missingData)
+	if err != nil || missingReport.Totals.Error != 2 || missingReport.Totals.Pass != 317 {
+		t.Fatal("missing source accepted", err, missingReport.Totals)
+	}
+	missingErrors := map[string]bool{}
+	for _, row := range missingReport.Statements {
+		if row.Verdict == core.Error {
+			missingErrors[row.ID] = true
+		}
+	}
+	if !missingErrors["cid10#base-encode.1"] || !missingErrors["cid10#base-decode.1"] {
+		t.Fatal("source errors assigned to wrong clauses", missingErrors)
+	}
+	// A trimmed binary has no embedded toolchain source path. Supply the
+	// installed Go source tree explicitly, as the CI observer does.
+	root, err := exec.Command("go", "env", "GOROOT").Output()
+	if err != nil {
+		t.Fatal(err)
 	}
 	for _, profile := range []string{"did-core-1.0", "did-1.1"} {
 		dir := t.TempDir()
 		reportPath := filepath.Join(dir, "report.json")
 		rawPath := filepath.Join(dir, "raw.json")
 		cmd = exec.Command(binary, "--scope", "resolution", "--profile", profile, "--deterministic", "--out", reportPath, "--raw-out", rawPath)
+		cmd.Env = append(os.Environ(), "GOROOT="+strings.TrimSpace(string(root)))
 		if out, err := cmd.CombinedOutput(); err != nil {
 			t.Fatalf("native %v %s", err, out)
 		}

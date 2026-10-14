@@ -131,6 +131,7 @@ jobs:
           GOTOOLCHAIN: local
           GOWORK: 'off'
         run: |
+          export GOROOT="$(go env GOROOT)"
           mkdir -p "$RUNNER_TEMP/sage-reports"
           go build -mod=readonly -trimpath -o "$RUNNER_TEMP/did-inspector-sage" ./cmd/did-inspector-sage
           sha256sum "$RUNNER_TEMP/did-inspector-sage" > "$RUNNER_TEMP/sage-observer-binary.sha256"
@@ -158,6 +159,7 @@ jobs:
           GOTOOLCHAIN: local
           GOWORK: 'off'
         run: |
+          export GOROOT="$(go env GOROOT)"
           for p in did-core-1.0 did-1.1; do
             "$RUNNER_TEMP/did-inspector-sage" --scope resolution --profile "$p" --deterministic --inspector-revision "$GITHUB_SHA" --out "$RUNNER_TEMP/sage-reports/resolution-$p.json" --raw-out "$RUNNER_TEMP/sage-reports/resolution-$p-raw.json"
           done

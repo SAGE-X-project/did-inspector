@@ -768,3 +768,5 @@ The historical inventory keeps all 416 ids, baseline fields and previous observa
 ### Pinned source arithmetic
 
 The DID1.1 resolution scope also inspects the fixed module source for the CID integer-arithmetic obligations. It binds independently read cache files to the full canonical module ZIP using the pinned Go h1 sum and nominal build dependency identity, then uses the standard Go parser/type checker for public call paths and selected algorithm closures. The artifact retains source bytes, typed operations, reviewed boundaries and unknown paths. It is source inspection, not compiled-byte attestation or proof of all executions. See [the grouped review](sage-remaining-clause-review.md#fixed-source-integer-arithmetic-inspection) for the exact limits.
+
+The source observer requires an installed Go 1.26.8 toolchain including its standard-library source tree. For a binary built with `-trimpath`, explicitly provide `GOROOT` from that toolchain (`GOROOT="$(go env GOROOT)" did-inspector-sage ...`). CI and the native CLI test use this same execution environment. Missing standard source produces ERROR; it never substitutes a stub or infers PASS.
