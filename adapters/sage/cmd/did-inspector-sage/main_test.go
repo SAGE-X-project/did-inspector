@@ -278,7 +278,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		t.Fatal(err)
 	}
 	r, err := report.Decode(data)
-	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 232 {
+	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 304 {
 		t.Fatal("scope identity", err, r.Totals)
 	}
 	binary := filepath.Join(t.TempDir(), "sage-inspector")
@@ -304,12 +304,12 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		want, cases := 33, 16
 		if profile == "did-1.1" {
-			want, cases = 232, 268
+			want, cases = 304, 319
 		}
-		if profile == "did-1.1" && (r.Totals.NotApplicable != 2 || r.Totals.NotRun != 246) {
+		if profile == "did-1.1" && (r.Totals.NotApplicable != 4 || r.Totals.NotRun != 169) {
 			t.Fatal("native URL conditional evidence", r.Totals)
 		}
-		if profile == "did-1.1" && (r.Totals.Fail != 6 || r.TotalsByLevel.Recommendation.Fail != 2 || r.TotalsByLevel.Requirement.Fail != 4) {
+		if profile == "did-1.1" && (r.Totals.Fail != 9 || r.TotalsByLevel.Recommendation.Fail != 4 || r.TotalsByLevel.Requirement.Fail != 5) {
 			t.Fatal("native alg recommendation failure not preserved", r.Totals)
 		}
 		if r.Totals.Pass != want || !expectedResolutionGate(r) || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Subject.Revision != "2ef282b40ccfe243c6cf3b1c05594e02171126cc" {
@@ -325,7 +325,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		for _, c := range raw.Cases {
 			for _, o := range c.Observations {
-				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") {
+				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") || strings.Contains(c.Case, "/remaining-") {
 					if o.Input == "" || o.Observed == "" {
 						t.Fatal("lost policy evidence")
 					}
@@ -348,7 +348,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 				} else if !strings.Contains(o.Input, `"record"`) {
 					t.Fatal("lost input evidence")
 				}
-				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") {
+				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") || strings.Contains(c.Case, "/remaining-") {
 					if o.Input == "" || o.Observed == "" {
 						t.Fatal("lost policy evidence")
 					}
@@ -384,7 +384,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 func expectedResolutionGate(r report.Report) bool {
 	expected := map[string]bool{}
 	if r.Profile == "did-1.1" {
-		for _, id := range []string{"cid10#verification-methods.9", "cid10#verification-methods.11", "cid10#conformance.2", "did11-cr20260305#production-and-consumption.18"} {
+		for _, id := range []string{"cid10#verification-methods.9", "cid10#verification-methods.11", "cid10#conformance.2", "did11-cr20260305#production-and-consumption.18", "res10-crd20261001#dereferencing-algorithm-resource.5"} {
 			expected[id] = true
 		}
 	}

@@ -82,7 +82,7 @@ func optionalFixtures() []optionalFixture {
 	return out
 }
 func optionalPremise(f optionalFixture) bool {
-	for _, expected := range optionalFixtures() {
+	for _, expected := range append(optionalFixtures(), remainingFieldFixtures()...) {
 		if f.Name == expected.Name {
 			return reflect.DeepEqual(f, expected)
 		}

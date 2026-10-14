@@ -150,11 +150,13 @@ type TypedMember struct {
 	Value TypedValue `json:"value"`
 }
 type TypedProductionRequest struct {
-	ID          string        `json:"id"`
-	Controllers []string      `json:"controllers"`
-	Fields      []TypedMember `json:"fields"`
-	Entries     []TypedMember `json:"entries"`
-	JSONLD      bool          `json:"json_ld"`
+	ControllerShape string        `json:"controller_shape,omitempty"`
+	Version         string        `json:"version,omitempty"`
+	ID              string        `json:"id"`
+	Controllers     []string      `json:"controllers"`
+	Fields          []TypedMember `json:"fields"`
+	Entries         []TypedMember `json:"entries"`
+	JSONLD          bool          `json:"json_ld"`
 }
 
 // TypedProductionResult witnesses the actual model before the delegated call.

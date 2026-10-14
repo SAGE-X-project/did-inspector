@@ -129,6 +129,29 @@ func libraryDocumentPremise(f libraryDocumentFixture) bool {
 	parent, field := "", ""
 	valid := false
 	switch f.Statement {
+	case "cid10#JsonWebKey.11", "cid10#Multikey.5":
+		parent = "verificationMethod"
+		gm, gok := good[parent].([]any)
+		bm, bok := bad[parent].([]any)
+		if !gok || !bok || len(gm) != 1 || len(bm) != 1 {
+			return false
+		}
+		g, gok := gm[0].(map[string]any)
+		b, bok := bm[0].(map[string]any)
+		if !gok || !bok {
+			return false
+		}
+		field = "secretKeyJwk"
+		if f.Statement == "cid10#Multikey.5" {
+			field = "secretKeyMultibase"
+		}
+		for _, known := range remainingMaterialFixtures() {
+			if f.Name == known.Name && string(f.Positive.Data) == string(known.Positive.Data) && string(f.Negative.Data) == string(known.Negative.Data) {
+				valid = true
+			}
+		}
+		_ = g
+		_ = b
 	case "cid10#JsonWebKey.1", "cid10#Multikey.1", "cid10#Multikey.3":
 		parent = "verificationMethod"
 		gm, gok := good[parent].([]any)

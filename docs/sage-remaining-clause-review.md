@@ -1,0 +1,34 @@
+# SAGE remaining clause review
+
+All 246 clauses unobserved at `1efc9f0` are reviewed individually in the [machine-readable audit](sage-remaining-clause-review.json). The earlier [353-clause review](sage-resolution-batch-review.json) and all 416 historical ledger entries remain intact. Review coverage does not establish execution coverage or standards conformance.
+
+This grouped implementation adds 77 selected-branch observations across 51 cases. Of the 246 anchor clauses, 77 now have execution verdicts and 169 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
+
+| Review disposition | Clauses |
+|---|---:|
+| construction-or-permission | 31 |
+| deferred-registration | 15 |
+| needs-authority | 10 |
+| needs-complete-contract | 1 |
+| needs-internal-observer | 64 |
+| needs-method-spec | 51 |
+| normative-conflict | 5 |
+| runtime-candidate | 69 |
+
+## Executed groups
+
+Typed metadata reader/validator/writer calls cover date, ASCII, DID and structural proof values. Direct document consumption covers optional/extension fields and public RFC8032 test material. Root resolver/dereferencer calls use a clearly labeled literal example driver for service matching, relative endpoints, fragments, option forwarding and relative URL expansion. Native SAGE production covers selected public OKP methods, recommendation choices and supported accept preferences. The actual HTTP client and handlers run only on owned TLS servers, including authenticated peers, ordinary missing-client-identity refusal, URI-list redirects and downstream metadata preservation.
+
+A proof-shaped map is a structural input, not a valid cryptographic proof. Ephemeral TLS fixture keys remain in memory and are not included in reports. Published RFC8032 material is a fixed public test vector, not an operational credential.
+
+## Preserved findings
+
+The four existing mandatory date/input findings remain. A fifth requirement failure records omitted `accept=text/uri-list` in the actual nested Resolve call despite the all-options forwarding rule. Recommendations now also record absent producer `kid` and downstream serialization dropping an explicitly supplied `deactivated: false`. The original missing `alg` and undefined JSON-LD term recommendation failures remain. Absent actual `kid` makes its thumbprint and hint-id comparisons inapplicable for these produced methods; it does not excuse the separate recommendation to use `kid`.
+
+These are inspection findings, not core fixes. The conformance gate remains FAIL, and successful CI means the inspector retained and correctly detected the expected failures.
+
+## Follow-up boundary
+
+Internal codec/algorithm steps need passive observers of the actual selected implementation. Full JSON-LD/RDF processing, method-spec duties, genuine registry history and controller authority need their own evidence. Registration remains deferred by user decision. The pinned normative conflicts must be resolved without silently rewriting extracted clauses. Every row names its follow-up condition; no original task is removed or reordered.
+
+Existing scope and execution evidence are separate. A reviewed row is not closed as an execution verdict until its actual actor and applicable precondition are observable.

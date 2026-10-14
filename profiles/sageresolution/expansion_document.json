@@ -1,0 +1,33 @@
+{
+  "id": "did:example:123",
+  "verificationMethod": [
+    {
+      "id": "#sign",
+      "type": "JsonWebKey",
+      "controller": "did:example:123",
+      "publicKeyJwk": {
+        "kty": "OKP",
+        "crv": "Ed25519",
+        "x": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+      }
+    }
+  ],
+  "authentication": [
+    "#sign"
+  ],
+  "service": [
+    {
+      "id": "#one",
+      "type": "Messaging",
+      "serviceEndpoint": "https://agent.example/base/"
+    }
+  ],
+  "extension": {
+    "id": "/relative?scope=one#piece",
+    "nested": [
+      {
+        "id": "#extension"
+      }
+    ]
+  }
+}

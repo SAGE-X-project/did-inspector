@@ -1,0 +1,523 @@
+[
+  {
+    "name": "created",
+    "kind": "document-metadata",
+    "statements": [
+      "res10-crd20261001#did-document-metadata.3"
+    ],
+    "permission": false,
+    "values": [
+      {
+        "valid": true,
+        "input": {
+          "created": "2030-01-01T00:00:00Z"
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "created": "2030-01-01T00:00:00.5Z"
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "created": "2030-01-01T09:00:00+09:00"
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "created": "2030-02-30T00:00:00Z"
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "created": 42
+        }
+      }
+    ],
+    "field": "created"
+  },
+  {
+    "name": "updated",
+    "kind": "document-metadata",
+    "statements": [
+      "res10-crd20261001#did-document-metadata.5"
+    ],
+    "permission": false,
+    "values": [
+      {
+        "valid": true,
+        "input": {
+          "updated": "2030-01-01T00:00:00Z"
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "updated": "2030-01-01T00:00:00.5Z"
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "updated": "2030-01-01T09:00:00+09:00"
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "updated": "2030-02-30T00:00:00Z"
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "updated": 42
+        }
+      }
+    ],
+    "field": "updated"
+  },
+  {
+    "name": "nextUpdate",
+    "kind": "document-metadata",
+    "statements": [
+      "res10-crd20261001#did-document-metadata.9"
+    ],
+    "permission": false,
+    "values": [
+      {
+        "valid": true,
+        "input": {
+          "nextUpdate": "2030-01-01T00:00:00Z"
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "nextUpdate": "2030-01-01T00:00:00.5Z"
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "nextUpdate": "2030-01-01T09:00:00+09:00"
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "nextUpdate": "2030-02-30T00:00:00Z"
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "nextUpdate": 42
+        }
+      }
+    ],
+    "field": "nextUpdate"
+  },
+  {
+    "name": "nextVersionId",
+    "kind": "document-metadata",
+    "statements": [
+      "res10-crd20261001#did-document-metadata.13"
+    ],
+    "permission": false,
+    "values": [
+      {
+        "valid": true,
+        "input": {
+          "nextVersionId": "v-2"
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "nextVersionId": "\ud55c\uae00"
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "nextVersionId": 42
+        }
+      }
+    ],
+    "field": "nextVersionId"
+  },
+  {
+    "name": "equivalentId-format",
+    "kind": "document-metadata",
+    "statements": [
+      "res10-crd20261001#did-document-metadata.15"
+    ],
+    "permission": false,
+    "values": [
+      {
+        "valid": true,
+        "input": {
+          "equivalentId": [
+            "did:sage:web:registry.example:other-agent"
+          ]
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "equivalentId": [
+            "not-a-did"
+          ]
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "equivalentId": [
+            42
+          ]
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "equivalentId": "did:sage:web:registry.example:other-agent"
+        }
+      }
+    ],
+    "field": "equivalentId"
+  },
+  {
+    "name": "canonicalId-format",
+    "kind": "document-metadata",
+    "statements": [
+      "res10-crd20261001#did-document-metadata.20"
+    ],
+    "permission": false,
+    "values": [
+      {
+        "valid": true,
+        "input": {
+          "canonicalId": "did:sage:web:registry.example:other-agent"
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "canonicalId": "not-a-did"
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "canonicalId": 42
+        }
+      }
+    ],
+    "field": "canonicalId"
+  },
+  {
+    "name": "document-metadata-proof-shape",
+    "kind": "document-metadata",
+    "statements": [
+      "res10-crd20261001#did-document-metadata.24"
+    ],
+    "permission": false,
+    "values": [
+      {
+        "valid": true,
+        "input": {
+          "proof": [
+            {
+              "type": "ExampleStructuralProof",
+              "value": "public test data; not a cryptographic proof"
+            }
+          ]
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "proof": [
+            false
+          ]
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "proof": [
+            null
+          ]
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "proof": {}
+        }
+      }
+    ],
+    "field": "proof"
+  },
+  {
+    "name": "resolution-metadata-proof-shape",
+    "kind": "resolution-metadata",
+    "statements": [
+      "res10-crd20261001#did-resolution-metadata.7"
+    ],
+    "permission": false,
+    "values": [
+      {
+        "valid": true,
+        "input": {
+          "proof": [
+            {
+              "type": "ExampleStructuralProof",
+              "value": "public test data; not a cryptographic proof"
+            }
+          ]
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "proof": [
+            false
+          ]
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "proof": [
+            null
+          ]
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "proof": {}
+        }
+      }
+    ],
+    "field": "proof"
+  },
+  {
+    "name": "dereferencing-metadata-proof-shape",
+    "kind": "dereferencing-metadata",
+    "statements": [
+      "res10-crd20261001#did-url-dereferencing-metadata.7"
+    ],
+    "permission": false,
+    "values": [
+      {
+        "valid": true,
+        "input": {
+          "proof": [
+            {
+              "type": "ExampleStructuralProof",
+              "value": "public test data; not a cryptographic proof"
+            }
+          ]
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "proof": [
+            false
+          ]
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "proof": [
+            null
+          ]
+        }
+      },
+      {
+        "valid": false,
+        "input": {
+          "proof": {}
+        }
+      }
+    ],
+    "field": "proof"
+  },
+  {
+    "name": "equivalentId-optional",
+    "kind": "document-metadata",
+    "statements": [
+      "res10-crd20261001#did-document-metadata.14"
+    ],
+    "permission": true,
+    "values": [
+      {
+        "valid": true,
+        "input": {}
+      },
+      {
+        "valid": true,
+        "input": {
+          "equivalentId": [
+            "did:sage:web:registry.example:other-agent"
+          ]
+        }
+      }
+    ],
+    "field": "equivalentId"
+  },
+  {
+    "name": "canonicalId-optional",
+    "kind": "document-metadata",
+    "statements": [
+      "res10-crd20261001#did-document-metadata.19"
+    ],
+    "permission": true,
+    "values": [
+      {
+        "valid": true,
+        "input": {}
+      },
+      {
+        "valid": true,
+        "input": {
+          "canonicalId": "did:sage:web:registry.example:other-agent"
+        }
+      }
+    ],
+    "field": "canonicalId"
+  },
+  {
+    "name": "proof-optional",
+    "kind": "document-metadata",
+    "statements": [
+      "res10-crd20261001#did-document-metadata.23"
+    ],
+    "permission": true,
+    "values": [
+      {
+        "valid": true,
+        "input": {}
+      },
+      {
+        "valid": true,
+        "input": {
+          "proof": [
+            {
+              "type": "ExampleStructuralProof",
+              "value": "public test data; not a cryptographic proof"
+            }
+          ]
+        }
+      }
+    ],
+    "field": "proof"
+  },
+  {
+    "name": "resolution-metadata-proof-optional",
+    "kind": "resolution-metadata",
+    "statements": [
+      "res10-crd20261001#did-resolution-metadata.6"
+    ],
+    "permission": true,
+    "values": [
+      {
+        "valid": true,
+        "input": {}
+      },
+      {
+        "valid": true,
+        "input": {
+          "proof": [
+            {
+              "type": "ExampleStructuralProof",
+              "value": "public test data; not a cryptographic proof"
+            }
+          ]
+        }
+      }
+    ],
+    "field": "proof"
+  },
+  {
+    "name": "dereferencing-metadata-proof-optional",
+    "kind": "dereferencing-metadata",
+    "statements": [
+      "res10-crd20261001#did-url-dereferencing-metadata.6"
+    ],
+    "permission": true,
+    "values": [
+      {
+        "valid": true,
+        "input": {}
+      },
+      {
+        "valid": true,
+        "input": {
+          "proof": [
+            {
+              "type": "ExampleStructuralProof",
+              "value": "public test data; not a cryptographic proof"
+            }
+          ]
+        }
+      }
+    ],
+    "field": "proof"
+  },
+  {
+    "name": "resolution-error-optional",
+    "kind": "resolution-metadata",
+    "statements": [
+      "res10-crd20261001#did-resolution-metadata.2"
+    ],
+    "permission": true,
+    "values": [
+      {
+        "valid": true,
+        "input": {}
+      },
+      {
+        "valid": true,
+        "input": {
+          "error": {
+            "type": "https://www.w3.org/ns/did#NOT_FOUND",
+            "title": "Not found"
+          }
+        }
+      }
+    ],
+    "field": "error"
+  },
+  {
+    "name": "noCache-optional",
+    "kind": "resolution-options",
+    "statements": [
+      "res10-crd20261001#caching.1"
+    ],
+    "permission": true,
+    "values": [
+      {
+        "valid": true,
+        "input": {}
+      },
+      {
+        "valid": true,
+        "input": {
+          "noCache": true
+        }
+      }
+    ],
+    "field": "noCache"
+  }
+]

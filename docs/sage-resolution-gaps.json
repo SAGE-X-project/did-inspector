@@ -75,10 +75,10 @@
     "No operational source, registration, private key or deployment is supplied by this audit."
   ],
   "categories": {
-    "additional-data-or-feature": 78,
-    "additional-observer-operation": 48,
-    "document-or-applicability-review": 99,
-    "existing-observation": 17,
+    "additional-data-or-feature": 20,
+    "additional-observer-operation": 45,
+    "document-or-applicability-review": 91,
+    "existing-observation": 9,
     "operational-or-authority-evidence": 4
   },
   "routes": {
@@ -268,73 +268,6 @@
   },
   "pending": [
     {
-      "id": "cid10#JsonWebKey.10",
-      "level": "requirement",
-      "keywords": [
-        "OPTIONAL"
-      ],
-      "text_sha256": "dd138f257b20b114daadddefeed55616e53bc800a97be8217001dc608ac53baa",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#JsonWebKey.11",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "62fed8d9090480c36dba83923844aeb4232f25b07820eceb319ed77c9dee1bce",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#JsonWebKey.2",
-      "level": "requirement",
-      "keywords": [
-        "OPTIONAL"
-      ],
-      "text_sha256": "5698ec15c96e51e0b047c6676c502350dfe0c31f53aec3f011e24503f490a0be",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#JsonWebKey.5",
-      "level": "recommendation",
-      "keywords": [
-        "RECOMMENDED"
-      ],
-      "text_sha256": "d406116129fb1235a033a05937c60e4ccbda30cdd2240972b720313f2019f7c4",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#JsonWebKey.6",
-      "level": "recommendation",
-      "keywords": [
-        "RECOMMENDED"
-      ],
-      "text_sha256": "035910b77fee1fb7737e4f4e3ce0663f046772e00a6e607ef5c65ca752d21ae3",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#JsonWebKey.9",
-      "level": "recommendation",
-      "keywords": [
-        "OPTIONAL",
-        "SHOULD"
-      ],
-      "text_sha256": "a4fa011b2b54fd73cccaf209f7ff73f25763bff5e46784ab5a42daf16a37bc23",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "not-checkable"
-    },
-    {
       "id": "cid10#Multikey.2",
       "level": "requirement",
       "keywords": [
@@ -378,28 +311,6 @@
       "baseline_verdict": "NOT_RUN",
       "route": "specification",
       "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#Multikey.4",
-      "level": "requirement",
-      "keywords": [
-        "OPTIONAL"
-      ],
-      "text_sha256": "ddf2d13e65128e8c8559a69312a233fd6721243d20b1a865e6365f50c4404343",
-      "baseline_verdict": "NOT_RUN",
-      "route": "multikey-material",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#Multikey.5",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "cca92a0aaee218ab420c96537be380f634d596a2cc9ba0d5b85c4512b4bdc7a6",
-      "baseline_verdict": "NOT_RUN",
-      "route": "multikey-material",
-      "generic_scope": "checked"
     },
     {
       "id": "cid10#algorithms.1",
@@ -733,17 +644,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "cid10#context-injection.2",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "fb010752606a70cb0d8ca15589463efb3f30c98db37abc547d7e062acc853cd8",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
       "id": "cid10#controllers.2",
       "level": "recommendation",
       "keywords": [
@@ -763,17 +663,6 @@
       "text_sha256": "11f62f3eaea28c0d1406bb2e941652ca0d14e6c61e54070b57d9e234e46787c7",
       "baseline_verdict": "NOT_RUN",
       "route": "authority",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#data-model.1",
-      "level": "recommendation",
-      "keywords": [
-        "SHOULD"
-      ],
-      "text_sha256": "59dc621890fe3acee65b0bae060495d729d014aa0e814ed9759360075e1ab2d2",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
       "generic_scope": "not-checkable"
     },
     {
@@ -899,17 +788,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "cid10#processing-errors.1",
-      "level": "recommendation",
-      "keywords": [
-        "SHOULD"
-      ],
-      "text_sha256": "ab6f922d7605a81927624d7077dd25915272b84bb2ba56590c072610647e7ebd",
-      "baseline_verdict": "NOT_RUN",
-      "route": "method-retrieval",
-      "generic_scope": "checked"
-    },
-    {
       "id": "cid10#retrieve-verification-method.3",
       "level": "requirement",
       "keywords": [],
@@ -928,17 +806,6 @@
       "baseline_verdict": "NOT_RUN",
       "route": "specification",
       "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#services.4",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "5ea32b3ba69cd47ae47cc7617d0b18a59f05e5a56126d67d129a25f7a73faefc",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
-      "generic_scope": "checked"
     },
     {
       "id": "cid10#services.5",
@@ -1005,17 +872,6 @@
       "text_sha256": "cc2a5def9b3f3e816ed8c55fbd78ba5fdc8ceac554c1261aecbb2c86f286be81",
       "baseline_verdict": "NOT_RUN",
       "route": "representation-consumer",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#verification-relationships.1",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "71775a7c23be96d17c1f7597365899f4e7194fdd87bc571726c2153f2241dabb",
-      "baseline_verdict": "NOT_RUN",
-      "route": "conditional-fields",
       "generic_scope": "checked"
     },
     {
@@ -1420,17 +1276,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "did11-cr20260305#production.3",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "6568c1acffbbe4fa14fbf034fe0de521a962923036e6f62b20ee72618d69f9ae",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
       "id": "did11-cr20260305#security-requirements.1",
       "level": "requirement",
       "keywords": [
@@ -1586,17 +1431,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "did11-cr20260305#verification-methods.1",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "d90c9627149aa69051a9d5dd5be29b64bb7de8a194286e3691464c1fd7eaaea0",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-key-document",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#bindings-https.3",
       "level": "requirement",
       "keywords": [
@@ -1607,70 +1441,6 @@
       "baseline_verdict": "NOT_RUN",
       "route": "permission-definition",
       "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.35",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "ba89d8e056c50a93de0cd1f6859ee66fc0790ce6b79a0cc31ae918517a9bfe40",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.36",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "53df92a5460f57abeacadf6005b32975fd9a2854cd5d7980ff76a6c93e2ba350",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.37",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "4867d2799e0ed7adfbe72b6d9b143e52b284f9640706c701d8c8ffc00d7790f8",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#bindings-https.38",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "deb118677b5d034d8aa7cd6e047245af7f6abaa3f542ecdc36ebe5f776d6b4cf",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#caching.1",
-      "level": "requirement",
-      "keywords": [
-        "OPTIONAL"
-      ],
-      "text_sha256": "f6cee0618d31f295c1ded6a90fceb04a3df31adb2132a3b79ed904bf2abfc4e1",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#caching.2",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "01bbdf38b76ead2dd3878cef24051f804c2b2516c5a43df5dda73517355a8fcb",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
     },
     {
       "id": "res10-crd20261001#conformance.1",
@@ -1700,15 +1470,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "res10-crd20261001#dereferencing-algorithm-fragment.10",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "4f6d97326d4eaeec0a34e4c99a4edfe6d9f8099c0742ab66b279067f101f6cd5",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#dereferencing-algorithm-fragment.2",
       "level": "requirement",
       "keywords": [],
@@ -1727,40 +1488,10 @@
       "generic_scope": "checked"
     },
     {
-      "id": "res10-crd20261001#dereferencing-algorithm-fragment.4",
-      "level": "requirement",
-      "keywords": [
-        "MUST",
-        "SHOULD"
-      ],
-      "text_sha256": "c1967ed81269de5af550362fb48cd9873cafdc6bd89877df62f8f654a6abf669",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#dereferencing-algorithm-fragment.7",
       "level": "requirement",
       "keywords": [],
       "text_sha256": "c1c5f7ce33d49bf775f80b07b76d7f546b2ef61b3829bbcae90bee5a6b46f4ba",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-fragment.8",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "54048e56595d34c1c4e2cad7ac128070915690389efc0f33b9082782ccb7825c",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-fragment.9",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "8935f7d77ba2106889be189e3c3695d8d8fe21b9862a0a1925d1812ebe571cee",
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
       "generic_scope": "checked"
@@ -1802,26 +1533,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.18",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "f6a26b1a92ab75cdb6497805af40164d36c78e0e6d3ee034ef471d29a5329eef",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.19",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "fe27f717f8d61fd5e6cd9cf942d724a92c2f71e4b0a8a4b9f75ac44989efbc4b",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#dereferencing-algorithm-resource.20",
       "level": "requirement",
       "keywords": [],
@@ -1835,42 +1546,6 @@
       "level": "requirement",
       "keywords": [],
       "text_sha256": "411ef87e6953616f18685e1699eaf2fb572d870e7020c4a2ee72b9c97074cd74",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.22",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "835ada5dd3204ee63806b375da61494035e8e56e65359435cef8ebb3498e686e",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.23",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "182899f49672b4c1f658df92786e4b2e804908ab026f07ed34ff2272f381798f",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.24",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "06edcb53bc648399dfc6d582503131cc26f60dbc252581157f5f36572495dbf7",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.25",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "84cea5a1e0c5c9a86a69f699e88ddba33a6c8c3d5837c6cdf616578461a117a9",
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
       "generic_scope": "checked"
@@ -1894,15 +1569,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.28",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "68c83d581d6ca92044d6dbbc556d800c8d6a827aab0b15df783db64739e81f85",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#dereferencing-algorithm-resource.29",
       "level": "requirement",
       "keywords": [],
@@ -1912,127 +1578,10 @@
       "generic_scope": "checked"
     },
     {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.30",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "65707eae89df6d48d1e8c8ca443ba1d4c900c7e25882966e85963a1eae697d15",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.31",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "b024db7f38da8010b14d318dcb5097c000915a735895d0025e53f222cef1bc1e",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.32",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "f4a3ef4ca2c5f8bc5bece035a0e26e2a4523094ea69e4e691a9ef68e207b4c9f",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.33",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "9685da3abf3e426a22c34ca5e1ece627e5548980d41d0339621ef1010726e70b",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.34",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "28c66db093e712a0b977f02a020b6ca8cb911982494ab0336d3745bfae0fba0e",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#dereferencing-algorithm-resource.35",
       "level": "requirement",
       "keywords": [],
       "text_sha256": "df0afad17cd52da7084e2b1aa62641dc214f9e56fb70e088313da2bdb0ba9b7d",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.36",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "b024db7f38da8010b14d318dcb5097c000915a735895d0025e53f222cef1bc1e",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.37",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "f4a3ef4ca2c5f8bc5bece035a0e26e2a4523094ea69e4e691a9ef68e207b4c9f",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.38",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "623c51695230ce9f2328bde52b19f1a032c4cff90d348a63049f391f466c5dfa",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.39",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "14635e2f5fafb4824778271d33711a464e898f77fc6e76b684eb237c4105ced3",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.40",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "74f32818ce63b6c70b9abbc23d4062839e1434adeb413451b611364542121a46",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.41",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "31705745de09b2da52d10ac725372beacdca3e283fa4fe9324f21360b417c4ce",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.42",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "802aabf6aab4a3f27d2748128216d76546a5354b480374d5592faa8d4d3c89ad",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.43",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "14e3a24e22608c967eaecd4b7b60694b649bf805c63422f283c4ac379f33dec7",
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
       "generic_scope": "checked"
@@ -2091,53 +1640,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.49",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "dbe12af79eb708b26656ec055fff9de44e1fd4c62bdf8d898f0141cdba822de8",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.5",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "89e658de8f570213418686e77666c3f5b7abf2ac6da14abbb42efbddc9bd3eb7",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.50",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "1ff58872160bbf84a8d0f6fe7f186020f58e3c05ff5a726b9ee05e217dd302d0",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.51",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "c222065a7466bf7d08fe7dea2629369e50fc612d80923c6d485649a2ca1262cd",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.52",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "14e3a24e22608c967eaecd4b7b60694b649bf805c63422f283c4ac379f33dec7",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#dereferencing.9",
       "level": "requirement",
       "keywords": [
@@ -2182,39 +1684,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "res10-crd20261001#did-document-metadata.13",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "ba133deb9c6b43ddd758fb19b85e9fd5c746f01cb0b5ade48ff8168b27b76969",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#did-document-metadata.14",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "83924758b94db1e777fc8ca064c7e415399c1514009f34416329fa2cd60d8bdb",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#did-document-metadata.15",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "0b18f91ac8942318c20e25cfe1670779b58e52fa596be8476aa6a99f9c51b88a",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#did-document-metadata.16",
       "level": "requirement",
       "keywords": [
@@ -2248,34 +1717,12 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "res10-crd20261001#did-document-metadata.19",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "a09bd7b1b83fa4109ea6ea42a08458944c424dfd55d329424670355493ec61a7",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
       "id": "res10-crd20261001#did-document-metadata.2",
       "level": "recommendation",
       "keywords": [
         "SHOULD"
       ],
       "text_sha256": "11a711589f0c0df58ea295b2fced278c54787dea86775f176a402b066953f084",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#did-document-metadata.20",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "03602c21f3200b54fd9f94ba9301b59a7dd8f3e2c7f274c9f909c16e2d58c910",
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
       "generic_scope": "checked"
@@ -2303,56 +1750,12 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "res10-crd20261001#did-document-metadata.23",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "f769a3334eb701f2afce18168a33ddbbdcc0e9913a984750e9ae8a18a3b2dd25",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#did-document-metadata.24",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "8a7f89ec42cbe3c35395cb8c92927a5f96ba39677086fbd04a5c164434994820",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#did-document-metadata.3",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "3a1855bab723a249f2e360ad1e15b0983099b0fa5cd2fe332980b6dc40f26ae0",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#did-document-metadata.4",
       "level": "recommendation",
       "keywords": [
         "SHOULD"
       ],
       "text_sha256": "d0afc24cc834de6626995f09d3ce0944f8dea68aa86e9e9ad121872a1c5c96ef",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#did-document-metadata.5",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "3a1855bab723a249f2e360ad1e15b0983099b0fa5cd2fe332980b6dc40f26ae0",
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
       "generic_scope": "checked"
@@ -2369,28 +1772,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "res10-crd20261001#did-document-metadata.9",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "3a1855bab723a249f2e360ad1e15b0983099b0fa5cd2fe332980b6dc40f26ae0",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#did-parameters.1",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "d9b0da3347781ae58193a1fae88d838e9c5d06659fac371f18805eeee5620055",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#did-parameters.2",
       "level": "requirement",
       "keywords": [
@@ -2400,17 +1781,6 @@
       "baseline_verdict": "NOT_RUN",
       "route": "permission-definition",
       "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#did-parameters.3",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "ed5265b28a1b7f2b8a7628a704add95becc3b73c2467fdbd4722798bf46e6327",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
     },
     {
       "id": "res10-crd20261001#did-parameters.4",
@@ -2435,17 +1805,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "res10-crd20261001#did-resolution-metadata.2",
-      "level": "requirement",
-      "keywords": [
-        "OPTIONAL"
-      ],
-      "text_sha256": "eb84cd6f42be85375f665392b04ec6332f98e77033b7d9e8be08b587db835ac9",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
       "id": "res10-crd20261001#did-resolution-metadata.5",
       "level": "recommendation",
       "keywords": [
@@ -2457,28 +1816,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "res10-crd20261001#did-resolution-metadata.6",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "43fe234562d0e4e6a6e54be2de208add4914676c5175cd12fec61c8caa5a13d4",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#did-resolution-metadata.7",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "8a7f89ec42cbe3c35395cb8c92927a5f96ba39677086fbd04a5c164434994820",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#did-resolution-options.1",
       "level": "recommendation",
       "keywords": [
@@ -2488,17 +1825,6 @@
       "baseline_verdict": "NOT_RUN",
       "route": "specification",
       "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#did-resolution-options.4",
-      "level": "requirement",
-      "keywords": [
-        "OPTIONAL"
-      ],
-      "text_sha256": "eb84cd6f42be85375f665392b04ec6332f98e77033b7d9e8be08b587db835ac9",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
     },
     {
       "id": "res10-crd20261001#did-url-content-metadata.1",
@@ -2534,28 +1860,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "res10-crd20261001#did-url-dereferencing-metadata.6",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "94bd8ce3bbbad95cd6fb31ff8d0cc97d2acc4214797dfe8206ba12529c6a73e0",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#did-url-dereferencing-metadata.7",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "8a7f89ec42cbe3c35395cb8c92927a5f96ba39677086fbd04a5c164434994820",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#did-url-dereferencing-options.1",
       "level": "recommendation",
       "keywords": [
@@ -2565,17 +1869,6 @@
       "baseline_verdict": "NOT_RUN",
       "route": "specification",
       "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#did-url-dereferencing-options.3",
-      "level": "recommendation",
-      "keywords": [
-        "SHOULD"
-      ],
-      "text_sha256": "866cd9ef7a8a34b96fc502fdb32ceefbc95f47682ccf1377ff0239082695b0ed",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
     },
     {
       "id": "res10-crd20261001#errors.6",
@@ -2645,17 +1938,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "res10-crd20261001#resolver-architectures-proxied.2",
-      "level": "recommendation",
-      "keywords": [
-        "SHOULD"
-      ],
-      "text_sha256": "daf78d42f370ba098c43c1aa7b98fd67b9f1a923e34f04a5f27b85bdfb215b21",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "not-checkable"
-    },
-    {
       "id": "res10-crd20261001#resolver-architectures-proxied.3",
       "level": "requirement",
       "keywords": [
@@ -2664,28 +1946,6 @@
       "text_sha256": "8848121e9c9dcb5ec0cc65b34f33de45d5fe7a95acf2175492f97110f712a9f2",
       "baseline_verdict": "NOT_RUN",
       "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#resolver-architectures.1",
-      "level": "recommendation",
-      "keywords": [
-        "SHOULD"
-      ],
-      "text_sha256": "8f57053608f6a20ee2161ed5c169721339a94dbccf3e911aa18323e60cdfe3bf",
-      "baseline_verdict": "NOT_RUN",
-      "route": "client-binding",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#resolver-architectures.2",
-      "level": "recommendation",
-      "keywords": [
-        "SHOULD"
-      ],
-      "text_sha256": "5b0d9b6f1a84d7df460e1e7f3fa9d8e86be772c7a4d932f3dd2a3dc45b3e1345",
-      "baseline_verdict": "NOT_RUN",
-      "route": "client-binding",
       "generic_scope": "not-checkable"
     },
     {
@@ -2698,15 +1958,6 @@
       "baseline_verdict": "NOT_RUN",
       "route": "permission-definition",
       "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#resolving-algorithm.17",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "e92579e7772b206196853d95081fa99fa4adb08de9ad29c12cc041f7d18f93bf",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
     },
     {
       "id": "res10-crd20261001#resolving-algorithm.26",
@@ -2747,24 +1998,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "res10-crd20261001#resolving-algorithm.30",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "ba0c448cc2aea21dee8d7bdc5be388b0f1f1e72379316d24c274cb0c47759d84",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#resolving-algorithm.31",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "be3a39df51120a1c8e29bd465ca1b0b6ba4bb7493a7e34fdcfd204ec67701510",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#resolving-algorithm.32",
       "level": "requirement",
       "keywords": [],
@@ -2774,30 +2007,10 @@
       "generic_scope": "checked"
     },
     {
-      "id": "res10-crd20261001#resolving-algorithm.34",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "41b081ef45be9f0e9b12a7abc1f6be288e9ad49e3f777e5dc49beb9dbac3730d",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#resolving-algorithm.35",
       "level": "requirement",
       "keywords": [],
       "text_sha256": "1d289368688312969b235b0a30272de657a9c53b6403802d2471ce717a8c4a92",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#resolving.6",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "4fc944fe999a24d0ae0f190b245781d29e9b21e0562133838b78a50b902b25a3",
       "baseline_verdict": "NOT_RUN",
       "route": "native-result",
       "generic_scope": "checked"
@@ -5979,36 +5192,1218 @@
       "cases": [
         "did-1.1/sage-resolution/optional-expires"
       ]
+    },
+    {
+      "id": "cid10#JsonWebKey.10",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "dd138f257b20b114daadddefeed55616e53bc800a97be8217001dc608ac53baa",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-fields-secret-jwk"
+      ]
+    },
+    {
+      "id": "cid10#JsonWebKey.11",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "62fed8d9090480c36dba83923844aeb4232f25b07820eceb319ed77c9dee1bce",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-fields-secret-jwk-shape"
+      ]
+    },
+    {
+      "id": "cid10#JsonWebKey.2",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "5698ec15c96e51e0b047c6676c502350dfe0c31f53aec3f011e24503f490a0be",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-fields-public-jwk"
+      ]
+    },
+    {
+      "id": "cid10#JsonWebKey.5",
+      "level": "recommendation",
+      "keywords": [
+        "RECOMMENDED"
+      ],
+      "text_sha256": "d406116129fb1235a033a05937c60e4ccbda30cdd2240972b720313f2019f7c4",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "FAIL",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-native-keys"
+      ]
+    },
+    {
+      "id": "cid10#JsonWebKey.6",
+      "level": "recommendation",
+      "keywords": [
+        "RECOMMENDED"
+      ],
+      "text_sha256": "035910b77fee1fb7737e4f4e3ce0663f046772e00a6e607ef5c65ca752d21ae3",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "NOT_APPLICABLE",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-native-keys"
+      ]
+    },
+    {
+      "id": "cid10#JsonWebKey.9",
+      "level": "recommendation",
+      "keywords": [
+        "OPTIONAL",
+        "SHOULD"
+      ],
+      "text_sha256": "a4fa011b2b54fd73cccaf209f7ff73f25763bff5e46784ab5a42daf16a37bc23",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "NOT_APPLICABLE",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-native-keys"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.4",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "ddf2d13e65128e8c8559a69312a233fd6721243d20b1a865e6365f50c4404343",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-fields-secret-multibase"
+      ]
+    },
+    {
+      "id": "cid10#Multikey.5",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "cca92a0aaee218ab420c96537be380f634d596a2cc9ba0d5b85c4512b4bdc7a6",
+      "baseline_verdict": "NOT_RUN",
+      "route": "multikey-material",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-fields-secret-multibase-shape"
+      ]
+    },
+    {
+      "id": "cid10#context-injection.2",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "fb010752606a70cb0d8ca15589463efb3f30c98db37abc547d7e062acc853cd8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-fields-no-context"
+      ]
+    },
+    {
+      "id": "cid10#data-model.1",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "59dc621890fe3acee65b0bae060495d729d014aa0e814ed9759360075e1ab2d2",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-native-keys"
+      ]
+    },
+    {
+      "id": "cid10#processing-errors.1",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "ab6f922d7605a81927624d7077dd25915272b84bb2ba56590c072610647e7ebd",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-cid-http-GET",
+        "did-1.1/sage-resolution/remaining-cid-http-POST"
+      ]
+    },
+    {
+      "id": "cid10#services.4",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "5ea32b3ba69cd47ae47cc7617d0b18a59f05e5a56126d67d129a25f7a73faefc",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-fields-service-extension"
+      ]
+    },
+    {
+      "id": "cid10#verification-relationships.1",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "71775a7c23be96d17c1f7597365899f4e7194fdd87bc571726c2153f2241dabb",
+      "baseline_verdict": "NOT_RUN",
+      "route": "conditional-fields",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-fields-custom-relationship"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#production.3",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "6568c1acffbbe4fa14fbf034fe0de521a962923036e6f62b20ee72618d69f9ae",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-fields-substructures"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#verification-methods.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "d90c9627149aa69051a9d5dd5be29b64bb7de8a194286e3691464c1fd7eaaea0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-key-document",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-native-keys"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.35",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "ba89d8e056c50a93de0cd1f6859ee66fc0790ce6b79a0cc31ae918517a9bfe40",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-binding-uri-list-GET",
+        "did-1.1/sage-resolution/remaining-binding-uri-list-POST"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.36",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "53df92a5460f57abeacadf6005b32975fd9a2854cd5d7980ff76a6c93e2ba350",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-binding-uri-list-GET",
+        "did-1.1/sage-resolution/remaining-binding-uri-list-POST"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.37",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "4867d2799e0ed7adfbe72b6d9b143e52b284f9640706c701d8c8ffc00d7790f8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-binding-uri-list-GET",
+        "did-1.1/sage-resolution/remaining-binding-uri-list-POST"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.38",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "deb118677b5d034d8aa7cd6e047245af7f6abaa3f542ecdc36ebe5f776d6b4cf",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-binding-uri-list-GET",
+        "did-1.1/sage-resolution/remaining-binding-uri-list-POST"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#caching.1",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "f6cee0618d31f295c1ded6a90fceb04a3df31adb2132a3b79ed904bf2abfc4e1",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-value-noCache-optional"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#caching.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "01bbdf38b76ead2dd3878cef24051f804c2b2516c5a43df5dda73517355a8fcb",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-operation-cache-refusal"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.10",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "4f6d97326d4eaeec0a34e4c99a4edfe6d9f8099c0742ab66b279067f101f6cd5",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-inherited-fragment"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.4",
+      "level": "requirement",
+      "keywords": [
+        "MUST",
+        "SHOULD"
+      ],
+      "text_sha256": "c1967ed81269de5af550362fb48cd9873cafdc6bd89877df62f8f654a6abf669",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-non-method-fragment"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.8",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "54048e56595d34c1c4e2cad7ac128070915690389efc0f33b9082782ccb7825c",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-conflicting-fragment"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.9",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "8935f7d77ba2106889be189e3c3695d8d8fe21b9862a0a1925d1812ebe571cee",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-inherited-fragment"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.18",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "f6a26b1a92ab75cdb6497805af40164d36c78e0e6d3ee034ef471d29a5329eef",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-service-id",
+        "did-1.1/sage-resolution/remaining-routing-service-absolute"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.19",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "fe27f717f8d61fd5e6cd9cf942d724a92c2f71e4b0a8a4b9f75ac44989efbc4b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-service-type"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.22",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "835ada5dd3204ee63806b375da61494035e8e56e65359435cef8ebb3498e686e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-service-urls"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.23",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "182899f49672b4c1f658df92786e4b2e804908ab026f07ed34ff2272f381798f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-service-urls"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.24",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "06edcb53bc648399dfc6d582503131cc26f60dbc252581157f5f36572495dbf7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-service-urls"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.25",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "84cea5a1e0c5c9a86a69f699e88ddba33a6c8c3d5837c6cdf616578461a117a9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-relative-endpoint"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.28",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "68c83d581d6ca92044d6dbbc556d800c8d6a827aab0b15df783db64739e81f85",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-relative-endpoint"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.30",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "65707eae89df6d48d1e8c8ca443ba1d4c900c7e25882966e85963a1eae697d15",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-service-id",
+        "did-1.1/sage-resolution/remaining-routing-service-type"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.31",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "b024db7f38da8010b14d318dcb5097c000915a735895d0025e53f222cef1bc1e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-service-id"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.32",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "f4a3ef4ca2c5f8bc5bece035a0e26e2a4523094ea69e4e691a9ef68e207b4c9f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-service-id"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.33",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "9685da3abf3e426a22c34ca5e1ece627e5548980d41d0339621ef1010726e70b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-service-id",
+        "did-1.1/sage-resolution/remaining-routing-service-type"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.34",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "28c66db093e712a0b977f02a020b6ca8cb911982494ab0336d3745bfae0fba0e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-service-id"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.36",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "b024db7f38da8010b14d318dcb5097c000915a735895d0025e53f222cef1bc1e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-service-urls"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.37",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "f4a3ef4ca2c5f8bc5bece035a0e26e2a4523094ea69e4e691a9ef68e207b4c9f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-service-urls"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.38",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "623c51695230ce9f2328bde52b19f1a032c4cff90d348a63049f391f466c5dfa",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-service-urls",
+        "did-1.1/sage-resolution/remaining-routing-relative-endpoint"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.39",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "14635e2f5fafb4824778271d33711a464e898f77fc6e76b684eb237c4105ced3",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-service-urls"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.40",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "74f32818ce63b6c70b9abbc23d4062839e1434adeb413451b611364542121a46",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-unsupported-service-media"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.41",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "31705745de09b2da52d10ac725372beacdca3e283fa4fe9324f21360b417c4ce",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-unsupported-service-media"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.42",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "802aabf6aab4a3f27d2748128216d76546a5354b480374d5592faa8d4d3c89ad",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-unsupported-service-media"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.43",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "14e3a24e22608c967eaecd4b7b60694b649bf805c63422f283c4ac379f33dec7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-unsupported-service-media"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.49",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "dbe12af79eb708b26656ec055fff9de44e1fd4c62bdf8d898f0141cdba822de8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-unhandled-path"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.5",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "89e658de8f570213418686e77666c3f5b7abf2ac6da14abbb42efbddc9bd3eb7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "FAIL",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-forward-document-options",
+        "did-1.1/sage-resolution/remaining-routing-forward-uri-options"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.50",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "1ff58872160bbf84a8d0f6fe7f186020f58e3c05ff5a726b9ee05e217dd302d0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-unhandled-path"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.51",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "c222065a7466bf7d08fe7dea2629369e50fc612d80923c6d485649a2ca1262cd",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-unhandled-path"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.52",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "14e3a24e22608c967eaecd4b7b60694b649bf805c63422f283c4ac379f33dec7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-routing-unhandled-path"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.13",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "ba133deb9c6b43ddd758fb19b85e9fd5c746f01cb0b5ade48ff8168b27b76969",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-value-nextVersionId"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.14",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "83924758b94db1e777fc8ca064c7e415399c1514009f34416329fa2cd60d8bdb",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-value-equivalentId-optional"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.15",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "0b18f91ac8942318c20e25cfe1670779b58e52fa596be8476aa6a99f9c51b88a",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-value-equivalentId-format"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.19",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "a09bd7b1b83fa4109ea6ea42a08458944c424dfd55d329424670355493ec61a7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-value-canonicalId-optional"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.20",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "03602c21f3200b54fd9f94ba9301b59a7dd8f3e2c7f274c9f909c16e2d58c910",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-value-canonicalId-format"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.23",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "f769a3334eb701f2afce18168a33ddbbdcc0e9913a984750e9ae8a18a3b2dd25",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-value-proof-optional"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.24",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "8a7f89ec42cbe3c35395cb8c92927a5f96ba39677086fbd04a5c164434994820",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-value-document-metadata-proof-shape"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "3a1855bab723a249f2e360ad1e15b0983099b0fa5cd2fe332980b6dc40f26ae0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-value-created"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.5",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "3a1855bab723a249f2e360ad1e15b0983099b0fa5cd2fe332980b6dc40f26ae0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-value-updated"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.9",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "3a1855bab723a249f2e360ad1e15b0983099b0fa5cd2fe332980b6dc40f26ae0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-value-nextUpdate"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-parameters.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "d9b0da3347781ae58193a1fae88d838e9c5d06659fac371f18805eeee5620055",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-operation-parameters-ascii"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-parameters.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "ed5265b28a1b7f2b8a7628a704add95becc3b73c2467fdbd4722798bf46e6327",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-operation-parameters-time"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.2",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "eb84cd6f42be85375f665392b04ec6332f98e77033b7d9e8be08b587db835ac9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-value-resolution-error-optional"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.6",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "43fe234562d0e4e6a6e54be2de208add4914676c5175cd12fec61c8caa5a13d4",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-value-resolution-metadata-proof-optional"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-metadata.7",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "8a7f89ec42cbe3c35395cb8c92927a5f96ba39677086fbd04a5c164434994820",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-value-resolution-metadata-proof-shape"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-resolution-options.4",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "eb84cd6f42be85375f665392b04ec6332f98e77033b7d9e8be08b587db835ac9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-preference-resolve"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-metadata.6",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "94bd8ce3bbbad95cd6fb31ff8d0cc97d2acc4214797dfe8206ba12529c6a73e0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-value-dereferencing-metadata-proof-optional"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-metadata.7",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "8a7f89ec42cbe3c35395cb8c92927a5f96ba39677086fbd04a5c164434994820",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-value-dereferencing-metadata-proof-shape"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#did-url-dereferencing-options.3",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "866cd9ef7a8a34b96fc502fdb32ceefbc95f47682ccf1377ff0239082695b0ed",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-preference-dereference"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures-proxied.2",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "daf78d42f370ba098c43c1aa7b98fd67b9f1a923e34f04a5f27b85bdfb215b21",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "FAIL",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-proxy-metadata"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures.1",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "8f57053608f6a20ee2161ed5c169721339a94dbccf3e911aa18323e60cdfe3bf",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-trust-mutual-tls"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures.2",
+      "level": "recommendation",
+      "keywords": [
+        "SHOULD"
+      ],
+      "text_sha256": "5b0d9b6f1a84d7df460e1e7f3fa9d8e86be772c7a4d932f3dd2a3dc45b3e1345",
+      "baseline_verdict": "NOT_RUN",
+      "route": "client-binding",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-trust-mutual-tls"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.17",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "e92579e7772b206196853d95081fa99fa4adb08de9ad29c12cc041f7d18f93bf",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-expansion-output"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.30",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "ba0c448cc2aea21dee8d7bdc5be388b0f1f1e72379316d24c274cb0c47759d84",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-expansion-output"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.31",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "be3a39df51120a1c8e29bd465ca1b0b6ba4bb7493a7e34fdcfd204ec67701510",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-expansion-output"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.34",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "41b081ef45be9f0e9b12a7abc1f6be288e9ad49e3f777e5dc49beb9dbac3730d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-expansion-output"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving.6",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "4fc944fe999a24d0ae0f190b245781d29e9b21e0562133838b78a50b902b25a3",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/remaining-",
+      "cases": [
+        "did-1.1/sage-resolution/remaining-minimal-representation"
+      ]
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 232,
-    "FAIL": 6,
+    "PASS": 304,
+    "FAIL": 9,
     "NOT_SUPPORTED": 0,
-    "NOT_APPLICABLE": 2,
+    "NOT_APPLICABLE": 4,
     "ERROR": 0,
-    "NOT_RUN": 246
+    "NOT_RUN": 169
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 223,
+      "PASS": 290,
+      "FAIL": 5,
+      "NOT_SUPPORTED": 0,
+      "NOT_APPLICABLE": 2,
+      "ERROR": 0,
+      "NOT_RUN": 139
+    },
+    "recommendation": {
+      "statements": 50,
+      "PASS": 14,
       "FAIL": 4,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 207
-    },
-    "recommendation": {
-      "statements": 50,
-      "PASS": 9,
-      "FAIL": 2,
-      "NOT_SUPPORTED": 0,
-      "NOT_APPLICABLE": 0,
-      "ERROR": 0,
-      "NOT_RUN": 39
+      "NOT_RUN": 30
     }
   },
-  "expected_live_cases": 268
+  "expected_live_cases": 319
 }
