@@ -5,7 +5,7 @@ report from CI run [38353322386](https://github.com/SAGE-X-project/did-inspector
 The machine-readable [inventory](sage-resolution-gaps.json) preserves all 416 historical
 statement ids, normative levels and keywords, exact text digests, evidence paths,
 and a next evidence route for each statement. Pending routes are planning evidence, not verdicts or implementation defects.
-Schema 2 keeps 246 pending entries and 170 entries observed since the baseline;
+Schema 2 keeps 169 pending entries and 247 entries observed since the baseline;
 it never assigns new observations to the historical inspector revision.
 
 The baseline inspector revision is `aefdcf9228ec8dcf85fd4aaf08b6e0511af11c36`.
@@ -24,8 +24,8 @@ recommendation-level statements. Requirement-level extraction also includes
 permissions, definitions and algorithm steps; it does not mean every row is a
 standalone MUST with an independently observable violation.
 
-The current report has 268 cases, 223 requirement and nine recommendation passes,
-four requirement failures, two recommendation failures, two inapplicable statements and 246 unobserved statements. Ten fresh native
+The current report has 319 cases, 290 requirement and fourteen recommendation passes,
+five requirement failures, four recommendation failures, four inapplicable statements and 169 unobserved statements. Ten fresh native
 result cases add 13 requirement passes and one conditional NOT_APPLICABLE.
 Twenty-four direct metadata serialization cases add four requirement passes.
 Three native error/state cases and ten owned TLS response cases add 22
@@ -52,7 +52,8 @@ table rows, including recognized datetime properties and date-looking unknown
 strings, adding consumption.1 on these selected values. Root/map insertion order
 is not required. All numeric ranges, forced double properties without a fraction,
 other property contexts and full JSON-LD processing remain unestablished.
-The following routing counts describe the remaining 246, not the baseline 416.
+The earlier routing table below describes the 246-clause anchor, not the baseline 416.
+The [current full review](sage-remaining-clause-review.md) records all anchor clauses individually and identifies the 169 still unobserved.
 
 | Primary next evidence route | Statements | Meaning |
 |---|---:|---|

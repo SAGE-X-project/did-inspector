@@ -163,7 +163,7 @@ def verify_policy(raw, report):
     assert checked == FAIL_IDS | RETRIEVAL_IDS
     live = {s["id"]: s["verdict"] for s in report["statements"]}
     assert all(live[i] == "FAIL" for i in FAIL_IDS) and all(live[i] == "PASS" for i in RETRIEVAL_IDS)
-    assert {s["id"] for s in report["statements"] if s["level"] == "requirement" and s["verdict"] in ["FAIL", "ERROR"]} == FAIL_IDS
+    assert {s["id"] for s in report["statements"] if s["level"] == "requirement" and s["verdict"] in ["FAIL", "ERROR"]} == FAIL_IDS | {"res10-crd20261001#dereferencing-algorithm-resource.5"}
     return checked
 
 
