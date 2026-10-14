@@ -23,10 +23,10 @@
     "runtime-candidate": 69
   },
   "execution_counts": {
-    "PASS": 113,
+    "PASS": 116,
     "FAIL": 3,
     "NOT_APPLICABLE": 2,
-    "NOT_RUN": 128
+    "NOT_RUN": 125
   },
   "clauses": [
     {
@@ -552,7 +552,7 @@
       "applicable_evidence": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
       "review_disposition": "needs-internal-observer",
       "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
+      "reason": "Reviewed source uses a conservative integer expansion bound rather than the reference logarithm ratio. The frozen algorithm permits alternatives with equal outputs, so a larger buffer alone is neither normative FAIL nor PASS. Exact u/64 component ratios do not establish the existing public Multikey z actor, complete output equivalence or overflow freedom. Retain this internal pending item until an attributed formula/phase or alternative-output contract is verified; do not substitute RFC4648 helper outputs.",
       "follow_up_condition": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
       "expected_live_verdict": "NOT_RUN",
       "cases": []
@@ -850,7 +850,7 @@
       "applicable_evidence": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
       "review_disposition": "needs-internal-observer",
       "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
+      "reason": "Reviewed source uses a conservative integer expansion bound rather than the reference logarithm ratio. The frozen algorithm permits alternatives with equal outputs, so a larger buffer alone is neither normative FAIL nor PASS. Exact u/64 component ratios do not establish the existing public Multikey z actor, complete output equivalence or overflow freedom. Retain this internal pending item until an attributed formula/phase or alternative-output contract is verified; do not substitute RFC4648 helper outputs.",
       "follow_up_condition": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
       "expected_live_verdict": "NOT_RUN",
       "cases": []
@@ -1115,11 +1115,13 @@
       "actor": "selected relying party and SAGE dereferencer",
       "applicable_evidence": "Fresh positive and negative calls, unchanged actual problem objects, reference and purpose observations. Output cannot prove every internal assignment or full authority.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Separate fixed-source typed document ID, raw ASCII fragment construction and same-search-result ContentStream projection, with independently bound getter/caller/search/error-envelope context and fresh selected full/relative nested-map/miss calls. Normal typed document branch without verificationRelationship only. Runtime mismatches without an attributed intermediate trace remain ERROR, not an inferred return-step FAIL. Null initialization, every-map recursion and public authority remain unobserved.",
       "follow_up_condition": "Fresh positive and negative calls, unchanged actual problem objects, reference and purpose observations. Output cannot prove every internal assignment or full authority.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/fragment-source-bindings"
+      ]
     },
     {
       "id": "cid10#fragment-resolution.3",
@@ -1133,11 +1135,13 @@
       "actor": "selected relying party and SAGE dereferencer",
       "applicable_evidence": "Fresh positive and negative calls, unchanged actual problem objects, reference and purpose observations. Output cannot prove every internal assignment or full authority.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Separate fixed-source typed document ID, raw ASCII fragment construction and same-search-result ContentStream projection, with independently bound getter/caller/search/error-envelope context and fresh selected full/relative nested-map/miss calls. Normal typed document branch without verificationRelationship only. Runtime mismatches without an attributed intermediate trace remain ERROR, not an inferred return-step FAIL. Null initialization, every-map recursion and public authority remain unobserved.",
       "follow_up_condition": "Fresh positive and negative calls, unchanged actual problem objects, reference and purpose observations. Output cannot prove every internal assignment or full authority.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/fragment-source-bindings"
+      ]
     },
     {
       "id": "cid10#fragment-resolution.4",
@@ -1169,11 +1173,13 @@
       "actor": "selected relying party and SAGE dereferencer",
       "applicable_evidence": "Fresh positive and negative calls, unchanged actual problem objects, reference and purpose observations. Output cannot prove every internal assignment or full authority.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Separate fixed-source typed document ID, raw ASCII fragment construction and same-search-result ContentStream projection, with independently bound getter/caller/search/error-envelope context and fresh selected full/relative nested-map/miss calls. Normal typed document branch without verificationRelationship only. Runtime mismatches without an attributed intermediate trace remain ERROR, not an inferred return-step FAIL. Null initialization, every-map recursion and public authority remain unobserved.",
       "follow_up_condition": "Fresh positive and negative calls, unchanged actual problem objects, reference and purpose observations. Output cannot prove every internal assignment or full authority.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/fragment-source-bindings"
+      ]
     },
     {
       "id": "cid10#json-ld-context.1",

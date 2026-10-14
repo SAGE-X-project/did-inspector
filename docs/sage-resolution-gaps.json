@@ -77,7 +77,7 @@
   "categories": {
     "additional-data-or-feature": 20,
     "document-or-applicability-review": 79,
-    "additional-observer-operation": 16,
+    "additional-observer-operation": 13,
     "operational-or-authority-evidence": 4,
     "existing-observation": 9
   },
@@ -397,37 +397,10 @@
       "generic_scope": "checked"
     },
     {
-      "id": "cid10#fragment-resolution.2",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "31d0038fb85e1ee4264e1055744344b855a0ab85a93b5e136f868779202bb114",
-      "baseline_verdict": "NOT_RUN",
-      "route": "method-retrieval",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#fragment-resolution.3",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "e877396dbc04f48168167332107753d0b640cabefd1cf84cdbb8be3515bf5bc8",
-      "baseline_verdict": "NOT_RUN",
-      "route": "method-retrieval",
-      "generic_scope": "checked"
-    },
-    {
       "id": "cid10#fragment-resolution.4",
       "level": "requirement",
       "keywords": [],
       "text_sha256": "5cd76049b3935adbe84f33f91bf5a42487cdc5d858e9154866008ffd4107415c",
-      "baseline_verdict": "NOT_RUN",
-      "route": "method-retrieval",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#fragment-resolution.5",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "8eae53ea5ee7acfe3d3cee1d3479c7c48dbe430e261579cf8969471981c411bd",
       "baseline_verdict": "NOT_RUN",
       "route": "method-retrieval",
       "generic_scope": "checked"
@@ -6617,26 +6590,68 @@
         "did-1.1/sage-resolution/integer-source-arithmetic"
       ],
       "expected_live_verdict": "PASS"
+    },
+    {
+      "id": "cid10#fragment-resolution.2",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "31d0038fb85e1ee4264e1055744344b855a0ab85a93b5e136f868779202bb114",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked",
+      "case_prefix": "/fragment-source-",
+      "cases": [
+        "did-1.1/sage-resolution/fragment-source-bindings"
+      ],
+      "expected_live_verdict": "PASS"
+    },
+    {
+      "id": "cid10#fragment-resolution.3",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "e877396dbc04f48168167332107753d0b640cabefd1cf84cdbb8be3515bf5bc8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked",
+      "case_prefix": "/fragment-source-",
+      "cases": [
+        "did-1.1/sage-resolution/fragment-source-bindings"
+      ],
+      "expected_live_verdict": "PASS"
+    },
+    {
+      "id": "cid10#fragment-resolution.5",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "8eae53ea5ee7acfe3d3cee1d3479c7c48dbe430e261579cf8969471981c411bd",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked",
+      "case_prefix": "/fragment-source-",
+      "cases": [
+        "did-1.1/sage-resolution/fragment-source-bindings"
+      ],
+      "expected_live_verdict": "PASS"
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 345,
+    "PASS": 348,
     "FAIL": 9,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 4,
     "ERROR": 0,
-    "NOT_RUN": 128
+    "NOT_RUN": 125
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 331,
+      "PASS": 334,
       "FAIL": 5,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 98
+      "NOT_RUN": 95
     },
     "recommendation": {
       "statements": 50,
@@ -6648,5 +6663,5 @@
       "NOT_RUN": 30
     }
   },
-  "expected_live_cases": 350
+  "expected_live_cases": 351
 }

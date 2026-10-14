@@ -1,0 +1,73 @@
+{
+  "root": "github.com/sage-x-project/did-go/dereferencer.resolveFragment",
+  "call_paths": [
+    [
+      "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).Dereference",
+      "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).fragment"
+    ],
+    [
+      "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).fragment",
+      "github.com/sage-x-project/did-go/dereferencer.resolveFragment"
+    ],
+    [
+      "github.com/sage-x-project/did-go/dereferencer.resolveFragment",
+      "github.com/sage-x-project/did-go/dereferencer.findFragment"
+    ]
+  ],
+  "frames": {
+    "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).Dereference": "173e0b69043b634d492ad5efbcfacebc480d7c5f6878f0de2945fa54649f16d1",
+    "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).fragment": "c4d84a6ea2a6e58893f96518e5375b21191d6fb322ffb7e51c63b195f604cdb5",
+    "github.com/sage-x-project/did-go/dereferencer.failed": "9b32dec3c9ee9c27fc1e5dfd2fa185a1720ee8a3b58fa6515458a3720dfe6255",
+    "github.com/sage-x-project/did-go/dereferencer.findFragment": "39a29f81c319a3c53a828f5eba6955f10f93cf2fcfcf7a34f047f683d9934e9a",
+    "github.com/sage-x-project/did-go/dereferencer.findMap": "e7492628845cf417def40697bddf81b5e6c1c059f62039281df8a6a7157823a5",
+    "github.com/sage-x-project/did-go/dereferencer.resolveFragment": "90f94893d0f19465de783a612c4f3c075be6cb5185358d763c9c114a95729e8f",
+    "github.com/sage-x-project/did-go/did.(github.com/sage-x-project/did-go/did.DID).IsZero": "9aa6fd8b9079c28f839e0b647a2df8dfffcfb1aa614bd5387e0c6b45a90c13c1",
+    "github.com/sage-x-project/did-go/did.(github.com/sage-x-project/did-go/did.DID).MSID": "9ad2644ceaae40b5b6f5f2e6cc74aa2b3e9a1da4a1775a7ba5e476f7d6e01eea",
+    "github.com/sage-x-project/did-go/did.(github.com/sage-x-project/did-go/did.DID).Method": "78e0c8276649b4cebc50f2f3aaa9b1f0e85ef23497903df46ff426f700f00c0d",
+    "github.com/sage-x-project/did-go/did.(github.com/sage-x-project/did-go/did.DID).String": "0bb0badddfbfaaab841f7a29688fa3c6aa197aa3d7d629697d6ecfb51a916ce9",
+    "github.com/sage-x-project/did-go/did.(github.com/sage-x-project/did-go/did.DIDURL).Fragment": "63e5a6f6546ae166dc8504a5a6b09c3ae88e7e022c35b3461a66da2d64925e12",
+    "github.com/sage-x-project/did-go/did.(github.com/sage-x-project/did-go/did.DIDURL).HasFragment": "52308467379ec12e0ac83ba14948f4370eaeb072df360d0de42e191d4e507d1e",
+    "github.com/sage-x-project/did-go/did.(github.com/sage-x-project/did-go/did.DIDURL).IsZero": "0b2b1295702fb46ff3fbfaa30a4747e8f8c229c4f6798d4039870519d385da2f",
+    "github.com/sage-x-project/did-go/did.(github.com/sage-x-project/did-go/did.DIDURL).String": "4dcbdab2ca5d5289d902ccbd360ab65e20baa1b3cb618aba12c3b8e198fafac0",
+    "github.com/sage-x-project/did-go/document.(*github.com/sage-x-project/did-go/document.Document).ID": "665b5bd58d37e9e9373b3633e81b21b7f6def345d8540c461ef5f709d7ee587f",
+    "github.com/sage-x-project/did-go/resolution.ErrorDereferenceResult": "4a1e28d5d4ff0bd851cd4ec164dabbe5160944de21c76be7a7b7f27614c8be49"
+  },
+  "roles": {
+    "document": "doc *github.com/sage-x-project/did-go/document.Document @dereferencer/fragment.go:95:22",
+    "found": "found any @dereferencer/fragment.go:98:2",
+    "fragment": "frag string @dereferencer/fragment.go:95:46",
+    "fully_qualified": "full string @dereferencer/fragment.go:96:2"
+  },
+  "scope": [
+    "fixed source, stable non-nil typed document, fragment-bearing document branch without verificationRelationship",
+    "Document.ID and DID.String/IsZero, DIDURL.Fragment, caller routing, search callback and error-envelope source are explicit reviewed prerequisites",
+    "selected identifier construction and exact returned search result; null initialization and every-map recursion remain unjudged",
+    "not public authority, all media types, whole algorithm equivalence or runtime/binary attestation"
+  ],
+  "steps": [
+    {
+      "kind": "canonical-document-id",
+      "expressions": [
+        "doc.ID()",
+        "doc.ID().String()"
+      ],
+      "correct": true
+    },
+    {
+      "kind": "fully-qualified-fragment",
+      "expressions": [
+        "doc.ID().String() + \"#\" + frag"
+      ],
+      "correct": true
+    },
+    {
+      "kind": "return-search-result",
+      "expressions": [
+        "findFragment(doc, match)",
+        "found"
+      ],
+      "correct": true
+    }
+  ],
+  "unknown": []
+}
