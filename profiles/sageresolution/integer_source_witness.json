@@ -1077,5 +1077,87 @@
       ],
       "unknown": []
     }
+  ],
+  "cursor": [
+    {
+      "root": "github.com/sage-x-project/did-go/internal/multiformats.BaseEncode",
+      "frame": "0e102b69a9ae1a214fdc7304c8ecde2b4433aa741dbb7dbb4d3eb537f3e27a2e",
+      "roles": {
+        "alphabet": "alphabet string @internal/multiformats/base.go:49:30",
+        "buffer_offset": "pos int @internal/multiformats/base.go:64:7",
+        "carry": "carry int @internal/multiformats/base.go:62:3",
+        "counter": "i int @internal/multiformats/base.go:63:3",
+        "decoded_length": "length int @internal/multiformats/base.go:60:2",
+        "input": "data []byte @internal/multiformats/base.go:49:17",
+        "prefix_offset": "zeroes int @internal/multiformats/base.go:54:2",
+        "range_byte": "b byte @internal/multiformats/base.go:61:9",
+        "range_start": "zeroes int @internal/multiformats/base.go:54:2"
+      },
+      "projection": [
+        "slice header data[zeroes:] is evaluated once; backing bytes are not copied",
+        "for each k in the ranged slice, cursor=zeroes+k and byte=data[cursor]",
+        "normal body completion advances k to k+1; no materialized begin variable"
+      ],
+      "scope": [
+        "fixed source and stable input; external concurrent mutation excluded",
+        "normal completion; Go slice-range evaluation and iteration or Go for body/Post semantics"
+      ],
+      "steps": [
+        {
+          "kind": "byte-range-from-prefix",
+          "expressions": [
+            "data[zeroes:]",
+            "b"
+          ],
+          "correct": true
+        },
+        {
+          "kind": "length-and-virtual-source-advance",
+          "expressions": [
+            "length = i",
+            "virtual cursor'=zeroes+(k+1)"
+          ],
+          "correct": true
+        }
+      ],
+      "unknown": []
+    },
+    {
+      "root": "github.com/sage-x-project/did-go/internal/multiformats.BaseDecode",
+      "frame": "bbb5a5657f8fa63cb8b49beb9b0868e7b5204a03a4071df38f37bd7798f8037c",
+      "roles": {
+        "alphabet": "alphabet string @internal/multiformats/base.go:87:26",
+        "alphabet_map": "values [256]int @internal/multiformats/base.go:92:6",
+        "buffer_offset": "pos int @internal/multiformats/base.go:112:7",
+        "carry": "carry int @internal/multiformats/base.go:107:3",
+        "counter": "i int @internal/multiformats/base.go:111:3",
+        "decoded_length": "length int @internal/multiformats/base.go:105:2",
+        "input": "encoded string @internal/multiformats/base.go:87:17",
+        "prefix_offset": "zeroes int @internal/multiformats/base.go:99:2",
+        "source_cursor": "idx int @internal/multiformats/base.go:106:6"
+      },
+      "projection": [
+        "expected relation: idx starts at the actual input-prefix offset",
+        "expected relation: each normal iteration reads encoded[idx], then advances idx by one while idx<len(encoded)"
+      ],
+      "scope": [
+        "fixed source and stable input; external concurrent mutation excluded",
+        "normal completion; Go slice-range evaluation and iteration or Go for body/Post semantics",
+        "valid ASCII standard-alphabet encoding; byte equals character"
+      ],
+      "steps": [
+        {
+          "kind": "characters-from-prefix",
+          "expressions": [
+            "idx := zeroes",
+            "idx < len(encoded)",
+            "idx++",
+            "encoded[idx]"
+          ],
+          "correct": true
+        }
+      ],
+      "unknown": []
+    }
   ]
 }

@@ -10,7 +10,7 @@ import (
 	"runtime"
 )
 
-var integerSourceIDs = []string{"cid10#base-encode.1", "cid10#base-decode.1", "cid10#base-encode.8", "cid10#base-encode.9", "cid10#base-encode.10", "cid10#base-decode.9", "cid10#base-decode.10", "cid10#base-decode.11", "cid10#base-encode.6", "cid10#base-encode.11", "cid10#base-decode.2", "cid10#base-decode.7", "cid10#base-decode.12", "cid10#base-decode.13"}
+var integerSourceIDs = []string{"cid10#base-encode.1", "cid10#base-decode.1", "cid10#base-encode.8", "cid10#base-encode.9", "cid10#base-encode.10", "cid10#base-decode.9", "cid10#base-decode.10", "cid10#base-decode.11", "cid10#base-encode.6", "cid10#base-encode.11", "cid10#base-decode.2", "cid10#base-decode.7", "cid10#base-decode.12", "cid10#base-decode.13", "cid10#base-encode.5", "cid10#base-encode.12", "cid10#base-decode.6"}
 
 func integerSourceRequest() IntegerSourceRequest {
 	var selected codecFixture
@@ -23,14 +23,15 @@ func integerSourceRequest() IntegerSourceRequest {
 }
 
 type integerSourceEvidence struct {
-	Source       IntegerSourceResult      `json:"source"`
-	Audits       []sourcearith.Audit      `json:"audits"`
-	State        []sourcearith.StateAudit `json:"state"`
-	Carry        []sourcearith.CarryAudit `json:"carry"`
-	CallPaths    [][]string               `json:"call_paths"`
-	Compiler     string                   `json:"type_checker_compiler"`
-	Architecture string                   `json:"type_checker_architecture"`
-	Error        string                   `json:"analysis_error,omitempty"`
+	Source       IntegerSourceResult       `json:"source"`
+	Audits       []sourcearith.Audit       `json:"audits"`
+	Cursor       []sourcearith.CursorAudit `json:"cursor"`
+	State        []sourcearith.StateAudit  `json:"state"`
+	Carry        []sourcearith.CarryAudit  `json:"carry"`
+	CallPaths    [][]string                `json:"call_paths"`
+	Compiler     string                    `json:"type_checker_compiler"`
+	Architecture string                    `json:"type_checker_architecture"`
+	Error        string                    `json:"analysis_error,omitempty"`
 }
 
 func sourceIdentity(v IntegerSourceResult) bool {
@@ -45,7 +46,7 @@ func sourceIdentity(v IntegerSourceResult) bool {
 	return true
 }
 func judgeIntegerSource(ctx context.Context, v IntegerSourceResult, input string) []core.Observation {
-	evidence := integerSourceEvidence{Source: v, Audits: []sourcearith.Audit{}, Carry: []sourcearith.CarryAudit{}, State: []sourcearith.StateAudit{}, CallPaths: [][]string{}, Compiler: runtime.Version(), Architecture: runtime.GOARCH}
+	evidence := integerSourceEvidence{Source: v, Audits: []sourcearith.Audit{}, Carry: []sourcearith.CarryAudit{}, State: []sourcearith.StateAudit{}, Cursor: []sourcearith.CursorAudit{}, CallPaths: [][]string{}, Compiler: runtime.Version(), Architecture: runtime.GOARCH}
 	obs := libraryUnavailable(integerSourceIDs, core.Error, "Static inspection of pinned module source. Go h1 ZIP content digest binds source identity to the reported dependency pin; cached production files must match ZIP bytes. Standard Go parser/types resolve public codec-to-base symbol paths and all selected algorithm helpers, used global initializers, argument arithmetic and numeric conversions. Reviewed text/error/buffer boundaries are explicit. This is fixed-source arithmetic compliance, not proof of verbatim compiled binary bytes, all runtime executions, overflow safety, capacity bounds, termination, reference steps or output equivalence. Public codec calls are diagnostic only.", input, evidence)
 	if !sourceIdentity(v) || runtime.Version() != v.Compiler {
 		return finishIntegerSource(ctx, evidence, obs)
@@ -104,6 +105,16 @@ func judgeIntegerSource(ctx context.Context, v IntegerSourceResult, input string
 		for j := 0; j < stepCount; j++ {
 			obs[start+j].Verdict = stateVerdict(state, j)
 			obs[start+j].Expected = "Selected fixed-source byte/alphabet initialization and local loop-state transition. Typed storage and real public ASCII selector are proved independently. Normal Go body-to-Post completion is an explicit language-semantic boundary; no whole algorithm, guard, overflow or runtime-trace claim."
+		}
+		cursor := program.CursorAudit(root)
+		evidence.Cursor = append(evidence.Cursor, cursor)
+		start, count := 14, 2
+		if i == 1 {
+			start, count = 16, 1
+		}
+		for j := 0; j < count; j++ {
+			obs[start+j].Verdict = cursorVerdict(cursor, j)
+			obs[start+j].Expected = "Fixed-source stable-input cursor projection: actual byte/ASCII character at the prefix offset, each normal iteration, and independent length storage with next cursor. Go range header evaluation/body/Post semantics is explicit; backing bytes are not copied and caller concurrent mutation is excluded. No termination, overflow, full algorithm or runtime-trace claim."
 		}
 	}
 	return finishIntegerSource(ctx, evidence, obs)
@@ -184,6 +195,26 @@ func stateVerdict(a sourcearith.StateAudit, index int) core.Verdict {
 	case IntegerSourceModule + "/internal/multiformats.BaseDecode":
 		frame = "945a2f0a3a496baad2db648d7319b940c520f729bc8e8dd9b5f8aae1d855ba45"
 		count = 4
+	}
+	if frame == "" || a.Frame != frame || len(a.Unknown) != 0 || len(a.Steps) != count || index < 0 || index >= count {
+		return core.Error
+	}
+	if !a.Steps[index].Correct {
+		return core.Fail
+	}
+	return core.Pass
+}
+
+func cursorVerdict(a sourcearith.CursorAudit, index int) core.Verdict {
+	frame := ""
+	count := 0
+	switch a.Root {
+	case IntegerSourceModule + "/internal/multiformats.BaseEncode":
+		frame = "0e102b69a9ae1a214fdc7304c8ecde2b4433aa741dbb7dbb4d3eb537f3e27a2e"
+		count = 2
+	case IntegerSourceModule + "/internal/multiformats.BaseDecode":
+		frame = "bbb5a5657f8fa63cb8b49beb9b0868e7b5204a03a4071df38f37bd7798f8037c"
+		count = 1
 	}
 	if frame == "" || a.Frame != frame || len(a.Unknown) != 0 || len(a.Steps) != count || index < 0 || index >= count {
 		return core.Error
