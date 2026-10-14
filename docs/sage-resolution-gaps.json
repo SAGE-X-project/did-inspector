@@ -76,7 +76,7 @@
   ],
   "categories": {
     "additional-data-or-feature": 20,
-    "document-or-applicability-review": 84,
+    "document-or-applicability-review": 81,
     "additional-observer-operation": 44,
     "operational-or-authority-evidence": 4,
     "existing-observation": 9
@@ -1122,17 +1122,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "did11-cr20260305#production-and-consumption.14",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "8825e55d33af46f80094cfb365af75da027416707c96e68f278c826b37d591a8",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
       "id": "did11-cr20260305#production-and-consumption.2",
       "level": "requirement",
       "keywords": [
@@ -1196,17 +1185,6 @@
       "text_sha256": "5b82677427bb80a7821429415031ffbddad1faa54c072cc41af42282233bd908",
       "baseline_verdict": "NOT_RUN",
       "route": "specification",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "did11-cr20260305#production-and-consumption.9",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "97066810dfa5efde209773522e69eeba4732ead688b8b4b2234de4a277896d46",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
       "generic_scope": "not-checkable"
     },
     {
@@ -1855,17 +1833,6 @@
         "MAY"
       ],
       "text_sha256": "8848121e9c9dcb5ec0cc65b34f33de45d5fe7a95acf2175492f97110f712a9f2",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#resolver-architectures.3",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "c9a54b375c2ce9b4408beaacf41e7181ac499213f8dd408bbfb4f0577c0a537a",
       "baseline_verdict": "NOT_RUN",
       "route": "permission-definition",
       "generic_scope": "not-checkable"
@@ -6443,26 +6410,76 @@
         "did-1.1/sage-resolution/choice-proxy-post-false",
         "did-1.1/sage-resolution/choice-proxy-post-true"
       ]
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.14",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "8825e55d33af46f80094cfb365af75da027416707c96e68f278c826b37d591a8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/representation-options-",
+      "cases": [
+        "did-1.1/sage-resolution/representation-options-consumer-false",
+        "did-1.1/sage-resolution/representation-options-consumer-true"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.9",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "97066810dfa5efde209773522e69eeba4732ead688b8b4b2234de4a277896d46",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/representation-options-",
+      "cases": [
+        "did-1.1/sage-resolution/representation-options-producer-false",
+        "did-1.1/sage-resolution/representation-options-producer-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures.3",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "c9a54b375c2ce9b4408beaacf41e7181ac499213f8dd408bbfb4f0577c0a537a",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/representation-options-",
+      "cases": [
+        "did-1.1/sage-resolution/representation-options-resolver-proof"
+      ]
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 312,
+    "PASS": 315,
     "FAIL": 9,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 4,
     "ERROR": 0,
-    "NOT_RUN": 161
+    "NOT_RUN": 158
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 298,
+      "PASS": 301,
       "FAIL": 5,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 131
+      "NOT_RUN": 128
     },
     "recommendation": {
       "statements": 50,
@@ -6474,5 +6491,5 @@
       "NOT_RUN": 30
     }
   },
-  "expected_live_cases": 335
+  "expected_live_cases": 340
 }

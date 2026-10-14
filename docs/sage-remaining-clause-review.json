@@ -23,10 +23,10 @@
     "runtime-candidate": 69
   },
   "execution_counts": {
-    "PASS": 80,
+    "PASS": 83,
     "FAIL": 3,
     "NOT_APPLICABLE": 2,
-    "NOT_RUN": 161
+    "NOT_RUN": 158
   },
   "clauses": [
     {
@@ -2090,13 +2090,16 @@
       "generic_scope": "not-checkable",
       "text": "A conforming consumer MAY accept additional options as input into the consumption process.",
       "actor": "permission, definition or stated input/output actor",
-      "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
+      "applicable_evidence": "Actual selected producer/consumer additional-option captures or owned TLS downstream resolver proof inclusion. Independent literal controls; optional refusal is NOT_SUPPORTED, never a MAY failure. No universal option semantics, cryptographic proof correctness or operational authority claim.",
       "review_disposition": "construction-or-permission",
-      "status": "reviewed-awaiting-evidence",
+      "status": "observed-selected-branch",
       "reason": "A definition, permission or conditional construction is not an unconditional implementation obligation. Establish the claimed feature/actor and exercise its applicable branch before an execution verdict.",
-      "follow_up_condition": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "follow_up_condition": "Broader option effects, proof signatures/correctness and deployment authority remain separate contracts. This evidence is limited to the selected pinned actor and public inputs.",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/representation-options-consumer-false",
+        "did-1.1/sage-resolution/representation-options-consumer-true"
+      ]
     },
     {
       "id": "did11-cr20260305#production-and-consumption.2",
@@ -2230,13 +2233,16 @@
       "generic_scope": "not-checkable",
       "text": "The conforming producer MAY accept additional options as input into the production process.",
       "actor": "permission, definition or stated input/output actor",
-      "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
+      "applicable_evidence": "Actual selected producer/consumer additional-option captures or owned TLS downstream resolver proof inclusion. Independent literal controls; optional refusal is NOT_SUPPORTED, never a MAY failure. No universal option semantics, cryptographic proof correctness or operational authority claim.",
       "review_disposition": "construction-or-permission",
-      "status": "reviewed-awaiting-evidence",
+      "status": "observed-selected-branch",
       "reason": "A definition, permission or conditional construction is not an unconditional implementation obligation. Establish the claimed feature/actor and exercise its applicable branch before an execution verdict.",
-      "follow_up_condition": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "follow_up_condition": "Broader option effects, proof signatures/correctness and deployment authority remain separate contracts. This evidence is limited to the selected pinned actor and public inputs.",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/representation-options-producer-false",
+        "did-1.1/sage-resolution/representation-options-producer-true"
+      ]
     },
     {
       "id": "did11-cr20260305#production.3",
@@ -4749,13 +4755,15 @@
       "generic_scope": "not-checkable",
       "text": "A DID resolver MAY also include proofs in a proof property of the DID resolution metadata.",
       "actor": "permission, definition or stated input/output actor",
-      "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
+      "applicable_evidence": "Actual selected producer/consumer additional-option captures or owned TLS downstream resolver proof inclusion. Independent literal controls; optional refusal is NOT_SUPPORTED, never a MAY failure. No universal option semantics, cryptographic proof correctness or operational authority claim.",
       "review_disposition": "construction-or-permission",
-      "status": "reviewed-awaiting-evidence",
+      "status": "observed-selected-branch",
       "reason": "A definition, permission or conditional construction is not an unconditional implementation obligation. Establish the claimed feature/actor and exercise its applicable branch before an execution verdict.",
-      "follow_up_condition": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "follow_up_condition": "Broader option effects, proof signatures/correctness and deployment authority remain separate contracts. This evidence is limited to the selected pinned actor and public inputs.",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/representation-options-resolver-proof"
+      ]
     },
     {
       "id": "res10-crd20261001#resolving-algorithm.17",
