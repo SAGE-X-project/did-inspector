@@ -77,7 +77,7 @@
   "categories": {
     "additional-data-or-feature": 20,
     "document-or-applicability-review": 79,
-    "additional-observer-operation": 27,
+    "additional-observer-operation": 23,
     "operational-or-authority-evidence": 4,
     "existing-observation": 9
   },
@@ -329,24 +329,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "cid10#base-decode.3",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "b268c8edfe5d1c641d831135a1cd566739379138b591269f186882f59f13e0f6",
-      "baseline_verdict": "NOT_RUN",
-      "route": "codec-internals",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#base-decode.4",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "5f0a014d9cf95e6b064cdf7c80b64b5f2f96459e1dde49f3745f1a879590d08b",
-      "baseline_verdict": "NOT_RUN",
-      "route": "codec-internals",
-      "generic_scope": "not-checkable"
-    },
-    {
       "id": "cid10#base-decode.5",
       "level": "requirement",
       "keywords": [],
@@ -396,24 +378,6 @@
       "level": "requirement",
       "keywords": [],
       "text_sha256": "1739451b56c50e9095e180495e1df1940d779ca2314162b74e434a290e0900ba",
-      "baseline_verdict": "NOT_RUN",
-      "route": "codec-internals",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#base-encode.2",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "9aee1620535197bcc895c4dd8d11ac6281077a6a95c22dc98f9ff14900639d4c",
-      "baseline_verdict": "NOT_RUN",
-      "route": "codec-internals",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#base-encode.3",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "8787491da3f343a1f45d942f3c982430e88a00afefca861e139d02c5ed3f08cf",
       "baseline_verdict": "NOT_RUN",
       "route": "codec-internals",
       "generic_scope": "not-checkable"
@@ -6562,26 +6526,82 @@
       "cases": [
         "did-1.1/sage-resolution/integer-source-arithmetic"
       ]
+    },
+    {
+      "id": "cid10#base-decode.3",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "b268c8edfe5d1c641d831135a1cd566739379138b591269f186882f59f13e0f6",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/integer-source-",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ]
+    },
+    {
+      "id": "cid10#base-decode.4",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "5f0a014d9cf95e6b064cdf7c80b64b5f2f96459e1dde49f3745f1a879590d08b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/integer-source-",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ]
+    },
+    {
+      "id": "cid10#base-encode.2",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "9aee1620535197bcc895c4dd8d11ac6281077a6a95c22dc98f9ff14900639d4c",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/integer-source-",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ]
+    },
+    {
+      "id": "cid10#base-encode.3",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "8787491da3f343a1f45d942f3c982430e88a00afefca861e139d02c5ed3f08cf",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/integer-source-",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ]
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 334,
+    "PASS": 338,
     "FAIL": 9,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 4,
     "ERROR": 0,
-    "NOT_RUN": 139
+    "NOT_RUN": 135
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 320,
+      "PASS": 324,
       "FAIL": 5,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 109
+      "NOT_RUN": 105
     },
     "recommendation": {
       "statements": 50,

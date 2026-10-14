@@ -195,6 +195,9 @@ func (p *Program) asciiSelector() bool {
 			return false
 		}
 		data := p.functions[f]
+		if data.node.Body == nil {
+			return false
+		}
 		bound := map[types.Object]bool{}
 		calls := 0
 		writes := map[types.Object]int{}

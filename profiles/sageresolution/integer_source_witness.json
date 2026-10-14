@@ -1159,5 +1159,98 @@
       ],
       "unknown": []
     }
+  ],
+  "prefix": [
+    {
+      "root": "github.com/sage-x-project/did-go/internal/multiformats.BaseEncode",
+      "frame": "f5240f0023a1e109bdc9b31dfefeb0ce680896c2241fca71b0e433144a474d58",
+      "roles": {
+        "alphabet": "alphabet string @internal/multiformats/base.go:49:30",
+        "first_length_use": "internal/multiformats/base.go:64:43",
+        "input": "data []byte @internal/multiformats/base.go:49:17",
+        "input_end": "len(data) (implicit upper bound)",
+        "length": "length int @internal/multiformats/base.go:60:2",
+        "prefix_count": "zeroes int @internal/multiformats/base.go:54:2",
+        "source_offset": "zeroes int @internal/multiformats/base.go:54:2"
+      },
+      "projection": [
+        "expected relation: logical source cursor starts at zero and equals prefix_count while scanning; no separate begin/sourceOffset storage",
+        "expected relation: logical end is len(input), supplied by the Go slice range or explicit input-loop bound",
+        "expected relation: length is logically zero before its materialized declaration, with no earlier reads; normal declaration completion realizes that value",
+        "expected relation: 0<=prefix_count<=len(input), every input[j] for j<prefix_count is the zero symbol (byte 0 or first alphabet character); at normal scan completion count=len(input) or input[count] is not that symbol"
+      ],
+      "scope": [
+        "fixed source, stable input, normal completion; external input mutation excluded",
+        "logical cursor and length projection across declaration order; not a runtime trace or complete codec equivalence"
+      ],
+      "steps": [
+        {
+          "kind": "initial-zero-state",
+          "expressions": [
+            "zeroes := 0",
+            "length := 0",
+            "logical cursor=0; logical end=len(data) (implicit upper bound)",
+            "delayed zero initializer before first storage use @internal/multiformats/base.go:64:43"
+          ],
+          "correct": true
+        },
+        {
+          "kind": "leading-zero-count-and-offset",
+          "expressions": [
+            "zeroes < len(data) && data[zeroes] == 0",
+            "zeroes++",
+            "zeroes"
+          ],
+          "correct": true
+        }
+      ],
+      "unknown": []
+    },
+    {
+      "root": "github.com/sage-x-project/did-go/internal/multiformats.BaseDecode",
+      "frame": "fdb7514f7d05195f7a08a4da6fe3252b9447fc4fe5b21166dbbb9dc5b8de63d7",
+      "roles": {
+        "alphabet": "alphabet string @internal/multiformats/base.go:87:26",
+        "first_length_use": "internal/multiformats/base.go:112:43",
+        "input": "encoded string @internal/multiformats/base.go:87:17",
+        "input_end": "len(encoded)",
+        "length": "length int @internal/multiformats/base.go:105:2",
+        "prefix_count": "zeroes int @internal/multiformats/base.go:99:2",
+        "source_offset": "zeroes int @internal/multiformats/base.go:99:2"
+      },
+      "projection": [
+        "expected relation: logical source cursor starts at zero and equals prefix_count while scanning; no separate begin/sourceOffset storage",
+        "expected relation: logical end is len(input), supplied by the Go slice range or explicit input-loop bound",
+        "expected relation: length is logically zero before its materialized declaration, with no earlier reads; normal declaration completion realizes that value",
+        "expected relation: 0<=prefix_count<=len(input), every input[j] for j<prefix_count is the zero symbol (byte 0 or first alphabet character); at normal scan completion count=len(input) or input[count] is not that symbol"
+      ],
+      "scope": [
+        "fixed source, stable input, normal completion; external input mutation excluded",
+        "logical cursor and length projection across declaration order; not a runtime trace or complete codec equivalence",
+        "distinct standard ASCII alphabets selected by real z/u public codec paths; bytes equal characters"
+      ],
+      "steps": [
+        {
+          "kind": "initial-zero-state",
+          "expressions": [
+            "zeroes := 0",
+            "length := 0",
+            "logical cursor=0; logical end=len(encoded)",
+            "delayed zero initializer before first storage use @internal/multiformats/base.go:112:43"
+          ],
+          "correct": true
+        },
+        {
+          "kind": "leading-zero-count-and-offset",
+          "expressions": [
+            "zeroes < len(encoded) && encoded[zeroes] == alphabet[0]",
+            "zeroes++",
+            "zeroes"
+          ],
+          "correct": true
+        }
+      ],
+      "unknown": []
+    }
   ]
 }

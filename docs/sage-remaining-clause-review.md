@@ -2,7 +2,7 @@
 
 All 246 clauses unobserved at `1efc9f0` are reviewed individually in the [machine-readable audit](sage-remaining-clause-review.json). The earlier [353-clause review](sage-resolution-batch-review.json) and all 416 historical ledger entries remain intact. Review coverage does not establish execution coverage or standards conformance.
 
-This grouped implementation adds 94 selected-branch observations across 52 cases, including seventeen fixed-source arithmetic, state and cursor obligations. Of the 246 anchor clauses, 107 now have execution verdicts and 139 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
+This grouped implementation adds 98 selected-branch observations across 52 cases, including twenty-one fixed-source arithmetic, state, cursor and prefix obligations. Of the 246 anchor clauses, 111 now have execution verdicts and 135 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
 
 | Review disposition | Clauses |
 |---|---:|
@@ -91,4 +91,14 @@ Three source clauses inspect encoding byte iteration, encoding length storage wi
 
 The decoder uses an explicit prefix-initialized index, input-length comparison, increment and current ASCII character lookup. Unsupported expressions or contexts remain ERROR; recognized incorrect bare variables/operators fail only their own predicate. Source controls are parsed/type-checked without execution. Scope excludes external concurrent input mutation and abnormal completion. The reviewed frame is a prerequisite, not a verdict or a runtime trace. Termination, overflow, size safety and whole-algorithm equivalence remain independent.
 
-Current resolution: 350 cases, 334 PASS, nine preserved FAIL, four NOT_APPLICABLE and 139 NOT_RUN. Original 416 ledger: 277 observed (265 PASS, three NOT_APPLICABLE, nine FAIL) plus 139 pending. The 246 anchor has 107 execution verdicts and 139 pending.
+Input-cursor checkpoint: 350 cases, 334 PASS, nine preserved FAIL, four NOT_APPLICABLE and 139 NOT_RUN. Original 416 ledger: 277 observed (265 PASS, three NOT_APPLICABLE, nine FAIL) plus 139 pending. The 246 anchor has 107 execution verdicts and 139 pending.
+
+## Selected initialization and leading-zero prefix
+
+Four source clauses inspect the zero initializers and maximal leading-zero scan. The actual length declaration occurs after the scan and allocation. A typed first-use check and unchanged context establish the delayed pure initializer before any read; an explicit phase projection relates it to the earlier logical zero state without claiming a physical declaration at that time. The logical pre-scan cursor is the actual prefix counter's initial state. The original input end is bound to the implicit Go slice upper bound or explicit input length. Post-scan range/idx initialization is independently tied to the same prefix counter.
+
+A stable input, zero counter, exact short-circuit length/zero-symbol guard and same-counter increment establish the maximal prefix invariant, including empty, no-prefix and all-prefix inputs. Decoder scope uses only the actual standard ASCII alphabet selector. Length initialization failure is not copied into prefix counting. The initial prefix counter affects both predicates only through their own checks. Unknown or changed contexts remain ERROR; recognized incorrect values, operands and operators fail their own predicate. Source controls are data-only, never executed. Missing selector function bodies are treated as unavailable evidence.
+
+Normal completion and stable input are explicit assumptions. No backing-byte copy, complete codec equivalence, allocation-size proof, overflow guarantee, global termination or runtime/binary attestation is established here. Subject pins and all nine findings remain unchanged.
+
+Current resolution: 350 cases, 338 PASS, nine preserved FAIL, four NOT_APPLICABLE and 135 NOT_RUN. Original 416 ledger: 281 observed (269 PASS, three NOT_APPLICABLE, nine FAIL) plus 135 pending. The 246 anchor has 111 execution verdicts and 135 pending.

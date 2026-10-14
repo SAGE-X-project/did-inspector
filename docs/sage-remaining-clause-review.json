@@ -23,10 +23,10 @@
     "runtime-candidate": 69
   },
   "execution_counts": {
-    "PASS": 102,
+    "PASS": 106,
     "FAIL": 3,
     "NOT_APPLICABLE": 2,
-    "NOT_RUN": 139
+    "NOT_RUN": 135
   },
   "clauses": [
     {
@@ -507,11 +507,13 @@
       "actor": "selected codec algorithm or alternative implementation",
       "applicable_evidence": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Fixed-source stable-input initialization and maximal leading-zero scan. Typed initializer, delayed pure zero length declaration before first actual use, input-end and post-scan offset binding are explicit phase projections. Initialization and count predicates are independent; reviewed context is a prerequisite. Full algorithm, size, overflow and runtime/binary attestation remain separate.",
       "follow_up_condition": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ]
     },
     {
       "id": "cid10#base-decode.4",
@@ -525,11 +527,13 @@
       "actor": "selected codec algorithm or alternative implementation",
       "applicable_evidence": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Fixed-source stable-input initialization and maximal leading-zero scan. Typed initializer, delayed pure zero length declaration before first actual use, input-end and post-scan offset binding are explicit phase projections. Initialization and count predicates are independent; reviewed context is a prerequisite. Full algorithm, size, overflow and runtime/binary attestation remain separate.",
       "follow_up_condition": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ]
     },
     {
       "id": "cid10#base-decode.5",
@@ -793,11 +797,13 @@
       "actor": "selected codec algorithm or alternative implementation",
       "applicable_evidence": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Fixed-source stable-input initialization and maximal leading-zero scan. Typed initializer, delayed pure zero length declaration before first actual use, input-end and post-scan offset binding are explicit phase projections. Initialization and count predicates are independent; reviewed context is a prerequisite. Full algorithm, size, overflow and runtime/binary attestation remain separate.",
       "follow_up_condition": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ]
     },
     {
       "id": "cid10#base-encode.3",
@@ -811,11 +817,13 @@
       "actor": "selected codec algorithm or alternative implementation",
       "applicable_evidence": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Fixed-source stable-input initialization and maximal leading-zero scan. Typed initializer, delayed pure zero length declaration before first actual use, input-end and post-scan offset binding are explicit phase projections. Initialization and count predicates are independent; reviewed context is a prerequisite. Full algorithm, size, overflow and runtime/binary attestation remain separate.",
       "follow_up_condition": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ]
     },
     {
       "id": "cid10#base-encode.4",
