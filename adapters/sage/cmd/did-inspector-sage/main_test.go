@@ -278,7 +278,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		t.Fatal(err)
 	}
 	r, err := report.Decode(data)
-	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 304 {
+	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 312 {
 		t.Fatal("scope identity", err, r.Totals)
 	}
 	binary := filepath.Join(t.TempDir(), "sage-inspector")
@@ -304,9 +304,9 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		want, cases := 33, 16
 		if profile == "did-1.1" {
-			want, cases = 304, 319
+			want, cases = 312, 335
 		}
-		if profile == "did-1.1" && (r.Totals.NotApplicable != 4 || r.Totals.NotRun != 169) {
+		if profile == "did-1.1" && (r.Totals.NotApplicable != 4 || r.Totals.NotRun != 161) {
 			t.Fatal("native URL conditional evidence", r.Totals)
 		}
 		if profile == "did-1.1" && (r.Totals.Fail != 9 || r.TotalsByLevel.Recommendation.Fail != 4 || r.TotalsByLevel.Requirement.Fail != 5) {
@@ -325,7 +325,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		for _, c := range raw.Cases {
 			for _, o := range c.Observations {
-				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") || strings.Contains(c.Case, "/remaining-") {
+				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") || strings.Contains(c.Case, "/remaining-") || strings.Contains(c.Case, "/choice-") {
 					if o.Input == "" || o.Observed == "" {
 						t.Fatal("lost policy evidence")
 					}
@@ -348,7 +348,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 				} else if !strings.Contains(o.Input, `"record"`) {
 					t.Fatal("lost input evidence")
 				}
-				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") || strings.Contains(c.Case, "/remaining-") {
+				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") || strings.Contains(c.Case, "/remaining-") || strings.Contains(c.Case, "/choice-") {
 					if o.Input == "" || o.Observed == "" {
 						t.Fatal("lost policy evidence")
 					}

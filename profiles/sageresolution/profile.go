@@ -107,6 +107,10 @@ func Profile(name string) (core.Profile, error) {
 		return p, err
 	}
 	appendLibraryCodecCases(&p)
+	appendChoiceCodecCases(&p)
+	appendChoiceClientCases(&p, rows)
+	appendKeyConversionCases(&p)
+	appendChoiceOptionalCases(&p)
 	appendClientCases(&p, rows)
 	appendRetrievalCases(&p, rows)
 	appendLibraryDocumentCases(&p)
