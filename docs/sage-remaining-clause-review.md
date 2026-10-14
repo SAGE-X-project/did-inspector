@@ -2,7 +2,7 @@
 
 All 246 clauses unobserved at `1efc9f0` are reviewed individually in the [machine-readable audit](sage-remaining-clause-review.json). The earlier [353-clause review](sage-resolution-batch-review.json) and all 416 historical ledger entries remain intact. Review coverage does not establish execution coverage or standards conformance.
 
-This grouped implementation adds 100 selected-branch observations across 52 cases, including twenty-three fixed-source arithmetic, state, cursor, prefix and guard obligations. Of the 246 anchor clauses, 113 now have execution verdicts and 133 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
+This grouped implementation adds 105 selected-branch observations across 52 cases, including twenty-eight fixed-source arithmetic, state, cursor, prefix, guard and output obligations. Of the 246 anchor clauses, 118 now have execution verdicts and 128 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
 
 | Review disposition | Clauses |
 |---|---:|
@@ -111,4 +111,18 @@ After normal allocation completion, `size=len(buffer)>=0`. On the reviewed uncha
 
 This is fixed-source inspection with stable inputs, successful allocation and normal completion, not a proof of the size formula, sufficient capacity, complete codec equivalence, global termination or runtime/binary attestation. Mutation controls are parsed/typechecked data and are not executed. The existing nine findings and target pins remain unchanged.
 
-Current resolution: 350 cases, 340 PASS, nine FAIL, four NOT_APPLICABLE and 133 NOT_RUN. Original 416 ledger: 283 observed (271 PASS, three NOT_APPLICABLE, nine FAIL) plus 133 pending. The 246 anchor has 113 execution verdicts and 133 pending.
+Inner-loop checkpoint: 350 cases, 340 PASS, nine FAIL, four NOT_APPLICABLE and 133 NOT_RUN. Original 416 ledger: 283 observed (271 PASS, three NOT_APPLICABLE, nine FAIL) plus 133 pending. The 246 anchor has 113 execution verdicts and 133 pending.
+
+## Output formation and phase evidence
+
+Five selected output obligations are inspected: encode.14/.15/.16 and decode.14/.15. Actual typed counter, length, size, recurrence buffer, output position, ASCII alphabet and output storage are linked independently. The preceding inner-loop initialization, bounded position and counter updates, tracked length assignment and initial zero length establish `0<=length<=size` without consulting an earlier verdict.
+
+Encoding inspects the empty actual Builder's first `WriteString(Repeat(alphabet[:1], zeroes))`, then each actual suffix `WriteByte(alphabet[buffer[pos]])` and normal Post increment, and the same Builder's `String` return. Standard installed Go symbols, ASCII selector and unchanged surrounding context are explicit boundaries. Suffix evidence starts at the actual post-skip position and does not certify the disputed encode.13 canonical start.
+
+Decoding inspects the zero scan from `size-length` and normal bounded increment. The reserved capacity is a source prerequisite, not the final-size oracle. Immediately after `make`, concrete length is zeroes; each one-position suffix iteration appends once to the same slice and preserves its zero prefix. On the proved reachable position domain, both `<size` and `!=size` guards are supported and agree. Normal completion realizes final length `zeroes+(size-p)` for the actual post-scan p. This phase relation does not claim the concrete slice was initially allocated with that length. Different capacity policies remain unsupported alternatives rather than normative FAIL merely because the reservation differs.
+
+The frozen encode.13 prose says a cell does not equal zero, conflicting with its zero-skipping purpose, Example 18 and the selected source's equality test. The frozen decode.16 destination says zeroes plus one, conflicting with Example 19 and the actual append placement at zeroes. Both original IDs/text/hashes and NOT_RUN are preserved; neither example nor adjacent evidence silently corrects the standard. Five newly observed rows and two pending explanation rows are updated; all other historical rows and witness fields are preserved.
+
+Mutation sources are parsed/typechecked only; each has fresh subject objects and only immutable installed standard-library imports are cached within a test. This is selected fixed-source evidence with stable inputs, successful allocation and normal completion, not size-formula proof, complete codec equivalence, global termination or runtime/binary attestation. The original nine findings and target pins remain unchanged.
+
+Current resolution: 350 cases, 345 PASS, nine FAIL, four NOT_APPLICABLE and 128 NOT_RUN. Original 416 ledger: 288 observed (276 PASS, three NOT_APPLICABLE, nine FAIL) plus 128 pending. The 246 anchor has 118 execution verdicts and 128 pending.

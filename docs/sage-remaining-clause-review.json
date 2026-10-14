@@ -23,10 +23,10 @@
     "runtime-candidate": 69
   },
   "execution_counts": {
-    "PASS": 108,
+    "PASS": 113,
     "FAIL": 3,
     "NOT_APPLICABLE": 2,
-    "NOT_RUN": 133
+    "NOT_RUN": 128
   },
   "clauses": [
     {
@@ -433,11 +433,13 @@
       "actor": "selected codec algorithm or alternative implementation",
       "applicable_evidence": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Fixed-source output/phase relation with actual typed position, successful buffer allocation, independently established preceding local length bound, ASCII alphabet, prefix count and output storage. Standard Go Repeat/Builder/make/append semantics and reviewed context are explicit boundaries. Decoder final size uses actual append count and preserved zero prefix, never capacity alone. Encoding starts at the actual post-skip position; encode.13/decode.16 interpretation, size formula, whole codec and runtime/binary attestation remain separate.",
       "follow_up_condition": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ]
     },
     {
       "id": "cid10#base-decode.15",
@@ -451,11 +453,13 @@
       "actor": "selected codec algorithm or alternative implementation",
       "applicable_evidence": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Fixed-source output/phase relation with actual typed position, successful buffer allocation, independently established preceding local length bound, ASCII alphabet, prefix count and output storage. Standard Go Repeat/Builder/make/append semantics and reviewed context are explicit boundaries. Decoder final size uses actual append count and preserved zero prefix, never capacity alone. Encoding starts at the actual post-skip position; encode.13/decode.16 interpretation, size formula, whole codec and runtime/binary attestation remain separate.",
       "follow_up_condition": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ]
     },
     {
       "id": "cid10#base-decode.16",
@@ -470,7 +474,7 @@
       "applicable_evidence": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
       "review_disposition": "needs-internal-observer",
       "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
+      "reason": "Frozen prose starts the destination at zeroes plus one, while Example 19 and the selected actual append path start at zeroes. Keep the exact original text/hash and NOT_RUN until standards interpretation reconciles the conflict; final size/prefix evidence does not settle copy placement.",
       "follow_up_condition": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
       "expected_live_verdict": "NOT_RUN",
       "cases": []
@@ -728,7 +732,7 @@
       "applicable_evidence": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
       "review_disposition": "needs-internal-observer",
       "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
+      "reason": "Frozen prose says the buffer cell does not equal zero, while its stated zero-skipping purpose, Example 18 and selected fixed source use equality to zero. Keep the exact original text/hash and NOT_RUN until standards interpretation reconciles the conflict; adjacent suffix evidence does not settle this clause.",
       "follow_up_condition": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
       "expected_live_verdict": "NOT_RUN",
       "cases": []
@@ -745,11 +749,13 @@
       "actor": "selected codec algorithm or alternative implementation",
       "applicable_evidence": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Fixed-source output/phase relation with actual typed position, successful buffer allocation, independently established preceding local length bound, ASCII alphabet, prefix count and output storage. Standard Go Repeat/Builder/make/append semantics and reviewed context are explicit boundaries. Decoder final size uses actual append count and preserved zero prefix, never capacity alone. Encoding starts at the actual post-skip position; encode.13/decode.16 interpretation, size formula, whole codec and runtime/binary attestation remain separate.",
       "follow_up_condition": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ]
     },
     {
       "id": "cid10#base-encode.15",
@@ -763,11 +769,13 @@
       "actor": "selected codec algorithm or alternative implementation",
       "applicable_evidence": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Fixed-source output/phase relation with actual typed position, successful buffer allocation, independently established preceding local length bound, ASCII alphabet, prefix count and output storage. Standard Go Repeat/Builder/make/append semantics and reviewed context are explicit boundaries. Decoder final size uses actual append count and preserved zero prefix, never capacity alone. Encoding starts at the actual post-skip position; encode.13/decode.16 interpretation, size formula, whole codec and runtime/binary attestation remain separate.",
       "follow_up_condition": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ]
     },
     {
       "id": "cid10#base-encode.16",
@@ -781,11 +789,13 @@
       "actor": "selected codec algorithm or alternative implementation",
       "applicable_evidence": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Fixed-source output/phase relation with actual typed position, successful buffer allocation, independently established preceding local length bound, ASCII alphabet, prefix count and output storage. Standard Go Repeat/Builder/make/append semantics and reviewed context are explicit boundaries. Decoder final size uses actual append count and preserved zero prefix, never capacity alone. Encoding starts at the actual post-skip position; encode.13/decode.16 interpretation, size formula, whole codec and runtime/binary attestation remain separate.",
       "follow_up_condition": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ]
     },
     {
       "id": "cid10#base-encode.2",

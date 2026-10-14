@@ -1318,5 +1318,103 @@
       ],
       "unknown": []
     }
+  ],
+  "output": [
+    {
+      "root": "github.com/sage-x-project/did-go/internal/multiformats.BaseEncode",
+      "frame": "6308c6330db89abea6766a795d754f2c8ad8d30c826d615707a2ca73db978a89",
+      "roles": {
+        "alphabet": "alphabet string @internal/multiformats/base.go:49:30",
+        "buffer": "digits []int @internal/multiformats/base.go:59:2",
+        "builder": "sb strings.Builder @internal/multiformats/base.go:76:6",
+        "length": "length int @internal/multiformats/base.go:60:2",
+        "position": "pos int @internal/multiformats/base.go:72:2",
+        "size": "size int @internal/multiformats/base.go:58:2",
+        "zeroes": "zeroes int @internal/multiformats/base.go:54:2"
+      },
+      "scope": [
+        "fixed source, standard ASCII z/u alphabets, stable input, normal completion",
+        "reviewed preceding phases and standard Go make/append and strings.Builder/Repeat semantics are explicit boundaries",
+        "not complete codec equivalence, capacity formula, global termination or runtime/binary attestation"
+      ],
+      "projection": [
+        "expected relation: zero-value Builder is initially empty; Repeat of alphabet[:1] supplies exactly zeroes copies of the first ASCII alphabet character",
+        "expected relation: after each normal suffix body the same Builder contains its old bytes followed by alphabet[buffer[pos]], then pos advances once",
+        "expected relation: reviewed prior phases bound the actual post-skip position in [0,size], where <size and !=size agree; Go body-to-Post order advances it once, and the same Builder.String returns the assembled encoding"
+      ],
+      "steps": [
+        {
+          "kind": "output-leading-symbols",
+          "expressions": [
+            "sb.WriteString(strings.Repeat(alphabet[:1], zeroes))"
+          ],
+          "correct": true
+        },
+        {
+          "kind": "output-suffix-symbols",
+          "expressions": [
+            "pos < size",
+            "sb.WriteByte(alphabet[digits[pos]])",
+            "pos++"
+          ],
+          "correct": true
+        },
+        {
+          "kind": "output-return",
+          "expressions": [
+            "sb.String()"
+          ],
+          "correct": true
+        }
+      ],
+      "unknown": []
+    },
+    {
+      "root": "github.com/sage-x-project/did-go/internal/multiformats.BaseDecode",
+      "frame": "0a035e645d64bfddd1efdc89678f4886af75c5aaa6f2eb5f8362afd90bea751a",
+      "roles": {
+        "alphabet": "alphabet string @internal/multiformats/base.go:87:26",
+        "buffer": "decoded []int @internal/multiformats/base.go:104:2",
+        "length": "length int @internal/multiformats/base.go:105:2",
+        "output": "out []byte @internal/multiformats/base.go:124:2",
+        "position": "pos int @internal/multiformats/base.go:120:2",
+        "size": "size int @internal/multiformats/base.go:103:2",
+        "zeroes": "zeroes int @internal/multiformats/base.go:99:2"
+      },
+      "scope": [
+        "fixed source, standard ASCII z/u alphabets, stable input, normal completion",
+        "reviewed preceding phases and standard Go make/append and strings.Builder/Repeat semantics are explicit boundaries",
+        "not complete codec equivalence, capacity formula, global termination or runtime/binary attestation"
+      ],
+      "projection": [
+        "expected relation: reviewed earlier bounded inner loops establish 0<=length<=size; scan starts at size-length and advances across zero cells to p in [0,size], where <size and !=size agree",
+        "expected relation: len(out)=zeroes and cap(out)=zeroes+size-p after successful make; Go zeroes the prefix and backing allocation",
+        "expected relation: each normal suffix append grows length once, giving final len(out)=zeroes+(size-p); intermediate slice length is not the reference preallocated length",
+        "the disputed reference destination offset in decode.16 is not interpreted or judged by this final-size/prefix relation"
+      ],
+      "steps": [
+        {
+          "kind": "decoded-leading-zero-scan",
+          "expressions": [
+            "pos := size - length",
+            "pos < size && decoded[pos] == 0",
+            "pos++"
+          ],
+          "correct": true
+        },
+        {
+          "kind": "decoded-final-size-and-zero-prefix",
+          "expressions": [
+            "out := make([]byte, zeroes, zeroes+size-pos)",
+            "pos < size",
+            "out = append(out, byte(decoded[pos]))",
+            "pos++",
+            "return out, nil"
+          ],
+          "correct": true
+        }
+      ],
+      "unknown": []
+    }
   ]
 }
