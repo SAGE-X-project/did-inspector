@@ -76,10 +76,10 @@
   ],
   "categories": {
     "additional-data-or-feature": 20,
-    "additional-observer-operation": 45,
-    "document-or-applicability-review": 91,
-    "existing-observation": 9,
-    "operational-or-authority-evidence": 4
+    "document-or-applicability-review": 84,
+    "additional-observer-operation": 44,
+    "operational-or-authority-evidence": 4,
+    "existing-observation": 9
   },
   "routes": {
     "metadata-boundary": {
@@ -268,17 +268,6 @@
   },
   "pending": [
     {
-      "id": "cid10#Multikey.2",
-      "level": "requirement",
-      "keywords": [
-        "OPTIONAL"
-      ],
-      "text_sha256": "b5198714363f111bfd6edebad58f419134fa9053082215e01811ee357c89e2f6",
-      "baseline_verdict": "NOT_RUN",
-      "route": "normative-conflict",
-      "generic_scope": "not-checkable"
-    },
-    {
       "id": "cid10#Multikey.20",
       "level": "requirement",
       "keywords": [
@@ -310,17 +299,6 @@
       "text_sha256": "310d1814b55b741a40ea501a908c01a81cd1f4ebbadb0a280107b0006a4f0d52",
       "baseline_verdict": "NOT_RUN",
       "route": "specification",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#algorithms.1",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "08e8707ac394c0da1058372ef17fc141446f55fe7edb3ed88dc0aa7f516a16ae",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
       "generic_scope": "not-checkable"
     },
     {
@@ -733,28 +711,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "cid10#multibase-0.3",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "652dcd35c9109b2f9b1afef360fc99991eaee7de1e9262b7aed92df2db152228",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#multibase-0.5",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "652dcd35c9109b2f9b1afef360fc99991eaee7de1e9262b7aed92df2db152228",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
       "id": "cid10#multihash.1",
       "level": "requirement",
       "keywords": [
@@ -850,28 +806,6 @@
       "text_sha256": "629ab97c1cfccd0768a2e4d4e0905de50535301e7b3e1c5779696c7e55f61b1a",
       "baseline_verdict": "NOT_RUN",
       "route": "authority",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#verification-material.2",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "7fc9ef53c32e7cf4f1d789529627c5d4072d018b5b26cf40ea176f4cad3170e9",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#verification-material.3",
-      "level": "requirement",
-      "keywords": [
-        "MUST NOT"
-      ],
-      "text_sha256": "cc2a5def9b3f3e816ed8c55fbd78ba5fdc8ceac554c1261aecbb2c86f286be81",
-      "baseline_verdict": "NOT_RUN",
-      "route": "representation-consumer",
       "generic_scope": "checked"
     },
     {
@@ -1431,18 +1365,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "res10-crd20261001#bindings-https.3",
-      "level": "requirement",
-      "keywords": [
-        "NOT REQUIRED",
-        "MAY"
-      ],
-      "text_sha256": "f9333b587333ae8e570e3918da812ded2d86b081b9abe6e6a3cf562476b48f16",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
       "id": "res10-crd20261001#conformance.1",
       "level": "requirement",
       "keywords": [
@@ -1924,17 +1846,6 @@
       "text_sha256": "2945c5c577e7bf8646421340c94e56c40bbe54b4f4dd1daed25f3191d9cb74d9",
       "baseline_verdict": "NOT_RUN",
       "route": "specification",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#resolver-architectures-proxied.1",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "efd7dd4fd594258c97dbb56ce4d1af3bb6a50e993820a8dc9cbfef2822b254bb",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
       "generic_scope": "not-checkable"
     },
     {
@@ -6374,26 +6285,184 @@
       "cases": [
         "did-1.1/sage-resolution/remaining-minimal-representation"
       ]
+    },
+    {
+      "id": "cid10#Multikey.2",
+      "level": "requirement",
+      "keywords": [
+        "OPTIONAL"
+      ],
+      "text_sha256": "b5198714363f111bfd6edebad58f419134fa9053082215e01811ee357c89e2f6",
+      "baseline_verdict": "NOT_RUN",
+      "route": "normative-conflict",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/choice-",
+      "cases": [
+        "did-1.1/sage-resolution/choice-optional-public-multibase-local-model"
+      ]
+    },
+    {
+      "id": "cid10#algorithms.1",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "08e8707ac394c0da1058372ef17fc141446f55fe7edb3ed88dc0aa7f516a16ae",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/choice-",
+      "cases": [
+        "did-1.1/sage-resolution/choice-codec-P-256-public",
+        "did-1.1/sage-resolution/choice-codec-P-384-public",
+        "did-1.1/sage-resolution/choice-codec-Ed25519-public",
+        "did-1.1/sage-resolution/choice-codec-BLS12-381-G2-public",
+        "did-1.1/sage-resolution/choice-codec-SM2-public",
+        "did-1.1/sage-resolution/choice-codec-P-256-public-test-secret",
+        "did-1.1/sage-resolution/choice-codec-P-384-public-test-secret",
+        "did-1.1/sage-resolution/choice-codec-Ed25519-public-test-secret",
+        "did-1.1/sage-resolution/choice-codec-SM2-public-test-secret"
+      ]
+    },
+    {
+      "id": "cid10#multibase-0.3",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "652dcd35c9109b2f9b1afef360fc99991eaee7de1e9262b7aed92df2db152228",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/choice-",
+      "cases": [
+        "did-1.1/sage-resolution/choice-codec-P-256-public",
+        "did-1.1/sage-resolution/choice-codec-P-384-public",
+        "did-1.1/sage-resolution/choice-codec-Ed25519-public",
+        "did-1.1/sage-resolution/choice-codec-BLS12-381-G2-public",
+        "did-1.1/sage-resolution/choice-codec-SM2-public",
+        "did-1.1/sage-resolution/choice-codec-P-256-public-test-secret",
+        "did-1.1/sage-resolution/choice-codec-P-384-public-test-secret",
+        "did-1.1/sage-resolution/choice-codec-Ed25519-public-test-secret",
+        "did-1.1/sage-resolution/choice-codec-SM2-public-test-secret"
+      ]
+    },
+    {
+      "id": "cid10#multibase-0.5",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "652dcd35c9109b2f9b1afef360fc99991eaee7de1e9262b7aed92df2db152228",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/choice-",
+      "cases": [
+        "did-1.1/sage-resolution/choice-codec-P-256-public",
+        "did-1.1/sage-resolution/choice-codec-P-384-public",
+        "did-1.1/sage-resolution/choice-codec-Ed25519-public",
+        "did-1.1/sage-resolution/choice-codec-BLS12-381-G2-public",
+        "did-1.1/sage-resolution/choice-codec-SM2-public",
+        "did-1.1/sage-resolution/choice-codec-P-256-public-test-secret",
+        "did-1.1/sage-resolution/choice-codec-P-384-public-test-secret",
+        "did-1.1/sage-resolution/choice-codec-Ed25519-public-test-secret",
+        "did-1.1/sage-resolution/choice-codec-SM2-public-test-secret"
+      ]
+    },
+    {
+      "id": "cid10#verification-material.2",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "7fc9ef53c32e7cf4f1d789529627c5d4072d018b5b26cf40ea176f4cad3170e9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/choice-",
+      "cases": [
+        "did-1.1/sage-resolution/choice-key-conversion-P-256",
+        "did-1.1/sage-resolution/choice-key-conversion-P-384",
+        "did-1.1/sage-resolution/choice-key-conversion-Ed25519"
+      ]
+    },
+    {
+      "id": "cid10#verification-material.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST NOT"
+      ],
+      "text_sha256": "cc2a5def9b3f3e816ed8c55fbd78ba5fdc8ceac554c1261aecbb2c86f286be81",
+      "baseline_verdict": "NOT_RUN",
+      "route": "representation-consumer",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/choice-",
+      "cases": [
+        "did-1.1/sage-resolution/choice-key-conversion-P-256",
+        "did-1.1/sage-resolution/choice-key-conversion-P-384",
+        "did-1.1/sage-resolution/choice-key-conversion-Ed25519"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#bindings-https.3",
+      "level": "requirement",
+      "keywords": [
+        "NOT REQUIRED",
+        "MAY"
+      ],
+      "text_sha256": "f9333b587333ae8e570e3918da812ded2d86b081b9abe6e6a3cf562476b48f16",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/choice-",
+      "cases": [
+        "did-1.1/sage-resolution/choice-ip-certificate"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures-proxied.1",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "efd7dd4fd594258c97dbb56ce4d1af3bb6a50e993820a8dc9cbfef2822b254bb",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/choice-",
+      "cases": [
+        "did-1.1/sage-resolution/choice-proxy-post-false",
+        "did-1.1/sage-resolution/choice-proxy-post-true"
+      ]
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 304,
+    "PASS": 312,
     "FAIL": 9,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 4,
     "ERROR": 0,
-    "NOT_RUN": 169
+    "NOT_RUN": 161
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 290,
+      "PASS": 298,
       "FAIL": 5,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 139
+      "NOT_RUN": 131
     },
     "recommendation": {
       "statements": 50,
@@ -6405,5 +6474,5 @@
       "NOT_RUN": 30
     }
   },
-  "expected_live_cases": 319
+  "expected_live_cases": 335
 }
