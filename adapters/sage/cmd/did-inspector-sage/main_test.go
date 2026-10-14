@@ -278,7 +278,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		t.Fatal(err)
 	}
 	r, err := report.Decode(data)
-	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 319 {
+	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 325 {
 		t.Fatal("scope identity", err, r.Totals)
 	}
 	binary := filepath.Join(t.TempDir(), "sage-inspector")
@@ -298,7 +298,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		t.Fatal(err)
 	}
 	missingReport, err := report.Decode(missingData)
-	if err != nil || missingReport.Totals.Error != 2 || missingReport.Totals.Pass != 317 {
+	if err != nil || missingReport.Totals.Error != 8 || missingReport.Totals.Pass != 317 {
 		t.Fatal("missing source accepted", err, missingReport.Totals)
 	}
 	missingErrors := map[string]bool{}
@@ -307,8 +307,13 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 			missingErrors[row.ID] = true
 		}
 	}
-	if !missingErrors["cid10#base-encode.1"] || !missingErrors["cid10#base-decode.1"] {
-		t.Fatal("source errors assigned to wrong clauses", missingErrors)
+	if len(missingErrors) != 8 {
+		t.Fatal("wrong source error count", missingErrors)
+	}
+	for _, id := range []string{"cid10#base-encode.1", "cid10#base-decode.1", "cid10#base-encode.8", "cid10#base-encode.9", "cid10#base-encode.10", "cid10#base-decode.9", "cid10#base-decode.10", "cid10#base-decode.11"} {
+		if !missingErrors[id] {
+			t.Fatal("source errors assigned to wrong clauses", missingErrors)
+		}
 	}
 	// A trimmed binary has no embedded toolchain source path. Supply the
 	// installed Go source tree explicitly, as the CI observer does.
@@ -335,9 +340,9 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		want, cases := 33, 16
 		if profile == "did-1.1" {
-			want, cases = 319, 350
+			want, cases = 325, 350
 		}
-		if profile == "did-1.1" && (r.Totals.NotApplicable != 4 || r.Totals.NotRun != 154) {
+		if profile == "did-1.1" && (r.Totals.NotApplicable != 4 || r.Totals.NotRun != 148) {
 			t.Fatal("native URL conditional evidence", r.Totals)
 		}
 		if profile == "did-1.1" && (r.Totals.Fail != 9 || r.TotalsByLevel.Recommendation.Fail != 4 || r.TotalsByLevel.Requirement.Fail != 5) {

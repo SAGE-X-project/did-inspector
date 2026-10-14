@@ -10,7 +10,7 @@ import (
 	"runtime"
 )
 
-var integerSourceIDs = []string{"cid10#base-encode.1", "cid10#base-decode.1"}
+var integerSourceIDs = []string{"cid10#base-encode.1", "cid10#base-decode.1", "cid10#base-encode.8", "cid10#base-encode.9", "cid10#base-encode.10", "cid10#base-decode.9", "cid10#base-decode.10", "cid10#base-decode.11"}
 
 func integerSourceRequest() IntegerSourceRequest {
 	var selected codecFixture
@@ -23,12 +23,13 @@ func integerSourceRequest() IntegerSourceRequest {
 }
 
 type integerSourceEvidence struct {
-	Source       IntegerSourceResult `json:"source"`
-	Audits       []sourcearith.Audit `json:"audits"`
-	CallPaths    [][]string          `json:"call_paths"`
-	Compiler     string              `json:"type_checker_compiler"`
-	Architecture string              `json:"type_checker_architecture"`
-	Error        string              `json:"analysis_error,omitempty"`
+	Source       IntegerSourceResult      `json:"source"`
+	Audits       []sourcearith.Audit      `json:"audits"`
+	Carry        []sourcearith.CarryAudit `json:"carry"`
+	CallPaths    [][]string               `json:"call_paths"`
+	Compiler     string                   `json:"type_checker_compiler"`
+	Architecture string                   `json:"type_checker_architecture"`
+	Error        string                   `json:"analysis_error,omitempty"`
 }
 
 func sourceIdentity(v IntegerSourceResult) bool {
@@ -43,7 +44,7 @@ func sourceIdentity(v IntegerSourceResult) bool {
 	return true
 }
 func judgeIntegerSource(ctx context.Context, v IntegerSourceResult, input string) []core.Observation {
-	evidence := integerSourceEvidence{Source: v, Audits: []sourcearith.Audit{}, CallPaths: [][]string{}, Compiler: runtime.Version(), Architecture: runtime.GOARCH}
+	evidence := integerSourceEvidence{Source: v, Audits: []sourcearith.Audit{}, Carry: []sourcearith.CarryAudit{}, CallPaths: [][]string{}, Compiler: runtime.Version(), Architecture: runtime.GOARCH}
 	obs := libraryUnavailable(integerSourceIDs, core.Error, "Static inspection of pinned module source. Go h1 ZIP content digest binds source identity to the reported dependency pin; cached production files must match ZIP bytes. Standard Go parser/types resolve public codec-to-base symbol paths and all selected algorithm helpers, used global initializers, argument arithmetic and numeric conversions. Reviewed text/error/buffer boundaries are explicit. This is fixed-source arithmetic compliance, not proof of verbatim compiled binary bytes, all runtime executions, overflow safety, capacity bounds, termination, reference steps or output equivalence. Public codec calls are diagnostic only.", input, evidence)
 	if !sourceIdentity(v) || runtime.Version() != v.Compiler {
 		return finishIntegerSource(ctx, evidence, obs)
@@ -86,6 +87,13 @@ func judgeIntegerSource(ctx context.Context, v IntegerSourceResult, input string
 		evidence.Audits = append(evidence.Audits, a)
 		obs[i].Verdict = integerAuditVerdict(a)
 		obs[i].Expected = "All mathematical operations in the selected fixed-source algorithm closure have integer operand/result types, including numeric conversions and used package initializers"
+		carry := program.CarryAudit(root)
+		evidence.Carry = append(evidence.Carry, carry)
+		for j := 0; j < 3; j++ {
+			index := 2 + i*3 + j
+			obs[index].Verdict = carryVerdict(carry, j)
+			obs[index].Expected = "Selected fixed-source recurrence uses the bound carry, current buffer cell, alphabet-length base and specified multiply/remainder/integer-division operation. Reviewed surrounding context is a prerequisite, not an arithmetic verdict."
+		}
 	}
 	return finishIntegerSource(ctx, evidence, obs)
 }
@@ -132,4 +140,24 @@ func finishIntegerSource(ctx context.Context, evidence integerSourceEvidence, ob
 		obs[i].Observed = string(raw)
 	}
 	return obs
+}
+
+// A reviewed frame limits the operand proof to the selected source context.
+// Different or missing context is unknown; equivalent alternative algorithms
+// are not failed merely because their structure differs.
+func carryVerdict(a sourcearith.CarryAudit, index int) core.Verdict {
+	frame := ""
+	switch a.Root {
+	case IntegerSourceModule + "/internal/multiformats.BaseEncode":
+		frame = "c043e4908d7fb16b464fe90b45fdc29ce59cf1d4053cb815c915ee27586d4990"
+	case IntegerSourceModule + "/internal/multiformats.BaseDecode":
+		frame = "efc1882f97b1fe4bdcb49831cc69a0a9a607310808a1071c8837ffd134af6526"
+	}
+	if frame == "" || a.Frame != frame || len(a.Unknown) > 0 || len(a.Steps) != 3 || index < 0 || index >= 3 {
+		return core.Error
+	}
+	if !a.Steps[index].Correct || !a.Steps[index].Operation.Integer {
+		return core.Fail
+	}
+	return core.Pass
 }

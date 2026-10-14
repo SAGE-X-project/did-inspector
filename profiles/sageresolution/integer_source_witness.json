@@ -871,5 +871,123 @@
       "unknown": []
     }
   ],
-  "scope": "Reviewed fixed-pin typed operation witness, not independent Go parsing or compiled binary attestation."
+  "scope": "Reviewed fixed-pin typed operation witness, not independent Go parsing or compiled binary attestation.",
+  "carry": [
+    {
+      "root": "github.com/sage-x-project/did-go/internal/multiformats.BaseEncode",
+      "frame": "c043e4908d7fb16b464fe90b45fdc29ce59cf1d4053cb815c915ee27586d4990",
+      "base": "base",
+      "carry": "carry",
+      "buffer": "digits",
+      "index": "pos",
+      "steps": [
+        {
+          "operation": {
+            "file": "internal/multiformats/base.go",
+            "line": 65,
+            "column": 4,
+            "operator": "+=",
+            "types": [
+              "int",
+              "int",
+              "int"
+            ],
+            "integer": true
+          },
+          "expression": "carry += 256 * digits[pos]",
+          "correct": true
+        },
+        {
+          "operation": {
+            "file": "internal/multiformats/base.go",
+            "line": 66,
+            "column": 4,
+            "operator": "%",
+            "types": [
+              "int",
+              "int",
+              "int"
+            ],
+            "integer": true
+          },
+          "expression": "digits[pos] = carry % base",
+          "correct": true
+        },
+        {
+          "operation": {
+            "file": "internal/multiformats/base.go",
+            "line": 67,
+            "column": 4,
+            "operator": "/=",
+            "types": [
+              "int",
+              "int"
+            ],
+            "integer": true
+          },
+          "expression": "carry /= base",
+          "correct": true
+        }
+      ],
+      "unknown": []
+    },
+    {
+      "root": "github.com/sage-x-project/did-go/internal/multiformats.BaseDecode",
+      "frame": "efc1882f97b1fe4bdcb49831cc69a0a9a607310808a1071c8837ffd134af6526",
+      "base": "base",
+      "carry": "carry",
+      "buffer": "decoded",
+      "index": "pos",
+      "steps": [
+        {
+          "operation": {
+            "file": "internal/multiformats/base.go",
+            "line": 113,
+            "column": 4,
+            "operator": "+=",
+            "types": [
+              "int",
+              "int",
+              "int"
+            ],
+            "integer": true
+          },
+          "expression": "carry += base * decoded[pos]",
+          "correct": true
+        },
+        {
+          "operation": {
+            "file": "internal/multiformats/base.go",
+            "line": 114,
+            "column": 4,
+            "operator": "%",
+            "types": [
+              "int",
+              "int",
+              "int"
+            ],
+            "integer": true
+          },
+          "expression": "decoded[pos] = carry % 256",
+          "correct": true
+        },
+        {
+          "operation": {
+            "file": "internal/multiformats/base.go",
+            "line": 115,
+            "column": 4,
+            "operator": "/=",
+            "types": [
+              "int",
+              "int"
+            ],
+            "integer": true
+          },
+          "expression": "carry /= 256",
+          "correct": true
+        }
+      ],
+      "unknown": []
+    }
+  ]
 }

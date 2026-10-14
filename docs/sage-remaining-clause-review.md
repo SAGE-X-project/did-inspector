@@ -2,7 +2,7 @@
 
 All 246 clauses unobserved at `1efc9f0` are reviewed individually in the [machine-readable audit](sage-remaining-clause-review.json). The earlier [353-clause review](sage-resolution-batch-review.json) and all 416 historical ledger entries remain intact. Review coverage does not establish execution coverage or standards conformance.
 
-This grouped implementation adds 79 selected-branch observations across 52 cases, including two fixed-source arithmetic obligations. Of the 246 anchor clauses, 92 now have execution verdicts and 154 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
+This grouped implementation adds 85 selected-branch observations across 52 cases, including eight fixed-source arithmetic obligations. Of the 246 anchor clauses, 98 now have execution verdicts and 148 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
 
 | Review disposition | Clauses |
 |---|---:|
@@ -63,4 +63,14 @@ The inspected encode and decode closures contain 33 and 39 operations respective
 
 This proves fixed-source arithmetic typing for the reported pin. It does not establish verbatim compiled binary bytes, every runtime execution, overflow safety, capacity bounds, termination, equivalence to every reference step, or output equivalence. Other internal algorithm obligations remain pending.
 
-Current DID1.1 resolution: 350 cases, 319 PASS, nine FAIL, four NOT_APPLICABLE and 154 NOT_RUN. The 416-clause baseline is retained as 262 observed (250 PASS, three NOT_APPLICABLE, nine FAIL) plus 154 pending. The 246-clause anchor has 92 execution verdicts and 154 pending. Existing failure findings and the failing conformance gate remain visible.
+Integer-typing checkpoint: 350 cases, 319 PASS, nine FAIL, four NOT_APPLICABLE and 154 NOT_RUN. The 416-clause baseline is retained as 262 observed (250 PASS, three NOT_APPLICABLE, nine FAIL) plus 154 pending. The 246-clause anchor has 92 execution verdicts and 154 pending. Existing failure findings and the failing conformance gate remain visible.
+
+## Selected recurrence arithmetic
+
+Six additional algorithm clauses inspect multiply/add, remainder/store and integer division separately in the selected BaseEncode/BaseDecode recurrence. The same source case now covers eight clauses: two integer-typing obligations plus these six operations. Actual Go type objects connect the current carry, buffer cell, loop index and alphabet-length base. The carry must have its local initializer and the conversion buffer its top-level integer-slice allocation. Global variables, struct selectors with shared field symbols and unproved aliases cannot substitute for those local storage roles.
+
+A separately reviewed surrounding function frame excludes decoys, base reassignment, shadowing and input/output-role changes. It removes only the three arithmetic statements from a cloned AST; it never serves as their verdict. Wrong recognized operators/constants fail independent predicates, while unsupported equivalent structures or unknown bindings remain ERROR. Unit source controls are parsed/type-checked without execution. The original AST, source integrity checks, public codec paths and diagnostic separation are retained.
+
+This is bounded fixed-source operation evidence. Initialization correctness, loop guards, size bounds, overflow, termination, reference text conflicts and whole algorithm equivalence remain independent. No target code, method policy or subject pin is repaired to clear existing findings. Those repairs remain in the approved later implementation work.
+
+Current resolution: 350 cases, 325 PASS, nine preserved FAIL, four NOT_APPLICABLE and 148 NOT_RUN. Original 416 ledger: 268 observed (256 PASS, three NOT_APPLICABLE, nine FAIL) plus 148 pending. The 246 anchor has 98 execution verdicts and 148 pending.
