@@ -5,7 +5,7 @@ report from CI run [38353322386](https://github.com/SAGE-X-project/did-inspector
 The machine-readable [inventory](sage-resolution-gaps.json) preserves all 416 historical
 statement ids, normative levels and keywords, exact text digests, evidence paths,
 and a next evidence route for each statement. Pending routes are planning evidence, not verdicts or implementation defects.
-Schema 2 keeps 158 pending entries and 258 entries observed since the baseline;
+Schema 2 keeps 156 pending entries and 260 entries observed since the baseline;
 it never assigns new observations to the historical inspector revision.
 
 The baseline inspector revision is `aefdcf9228ec8dcf85fd4aaf08b6e0511af11c36`.
@@ -24,8 +24,8 @@ recommendation-level statements. Requirement-level extraction also includes
 permissions, definitions and algorithm steps; it does not mean every row is a
 standalone MUST with an independently observable violation.
 
-The current report has 340 cases, 301 requirement and fourteen recommendation passes,
-five requirement failures, four recommendation failures, four inapplicable statements and 158 unobserved statements. Ten fresh native
+The current report has 349 cases, 303 requirement and fourteen recommendation passes,
+five requirement failures, four recommendation failures, four inapplicable statements and 156 unobserved statements. Ten fresh native
 result cases add 13 requirement passes and one conditional NOT_APPLICABLE.
 Twenty-four direct metadata serialization cases add four requirement passes.
 Three native error/state cases and ten owned TLS response cases add 22
@@ -53,7 +53,7 @@ strings, adding consumption.1 on these selected values. Root/map insertion order
 is not required. All numeric ranges, forced double properties without a fraction,
 other property contexts and full JSON-LD processing remain unestablished.
 The earlier routing table below describes the 246-clause anchor, not the baseline 416.
-The [current full review](sage-remaining-clause-review.md) records all anchor clauses individually and identifies the 158 still unobserved.
+The [current full review](sage-remaining-clause-review.md) records all anchor clauses individually and identifies the 156 still unobserved.
 
 | Primary next evidence route | Statements | Meaning |
 |---|---:|---|
@@ -359,4 +359,12 @@ Five fresh cases cover three previously unobserved MAY clauses: production-and-c
 
 The actual universal Client.Resolve returns a proof-shaped resolution metadata map from an owned TLS upstream, with a proof-absent diagnostic control. This does not establish SAGE method proof creation, signature validity, result correctness verification or operational authority. An optional refusal or unavailable capability is NOT_SUPPORTED, not FAIL; missing or mismatched observation provenance is ERROR. Unrelated document metadata and additional proofs in the absent control do not impose new requirements on this MAY.
 
-The original 416-clause baseline is preserved: 258 observed and 158 pending. Of the 246 reviewed anchor clauses, 88 have selected execution verdicts and 158 remain NOT_RUN. Existing nine failures and the failing conformance gate are retained.
+The original 416-clause baseline is preserved: 260 observed and 156 pending. Of the 246 reviewed anchor clauses, 90 have selected execution verdicts and 156 remain NOT_RUN. Existing nine failures and the failing conformance gate are retained.
+
+### Selected resource kinds and DID parameters
+
+Nine fresh cases archive eighteen actual root dereferencer calls with a literal example driver. Document native archives and accessor models are checked separately for capture consistency; neither replaces missing evidence from the other. Neutral archives are not subject-produced representations. Six cases return a document, listed or embedded verification method, service, or nested full/relative-id map with their actual native resource kind and media type. Three cases exercise service, serviceType and relativeRef selection. URI-list output establishes URL calculation and return only; no external endpoint content is retrieved.
+
+Missing-fragment and unfiltered-document controls are diagnostic and cannot create extra MAY/OPTIONAL obligations. Optional refusal is NOT_SUPPORTED; missing or misattributed call evidence is ERROR. The existing required accept-forwarding failure, internal algorithm NOT_RUN entries and all original clause identities are preserved. This is selected library capability evidence, not arbitrary resource format support, all parameters, historical resolution, full JSON-LD processing or SAGE operational authority.
+
+Current DID1.1 resolution: 349 cases, 317 PASS, nine FAIL, four NOT_APPLICABLE and 156 NOT_RUN. Original baseline: 260 observed (248 PASS, three NOT_APPLICABLE, nine FAIL) and 156 pending. Of the 246 anchor clauses, 90 have execution verdicts and 156 remain NOT_RUN.

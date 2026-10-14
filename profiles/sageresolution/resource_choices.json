@@ -1,0 +1,825 @@
+[
+  {
+    "name": "document",
+    "statement": "res10-crd20261001#dereferencing.9",
+    "document": {
+      "id": "did:example:resources",
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "authentication": [
+        {
+          "id": "did:example:resources#embedded",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "service": [
+        {
+          "id": "#one",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/base/"
+        },
+        {
+          "id": "#two",
+          "type": "Other",
+          "serviceEndpoint": "https://agent.example/other/"
+        }
+      ],
+      "extension": {
+        "container": [
+          {
+            "child": {
+              "id": "did:example:resources#nested",
+              "values": [
+                "first",
+                {
+                  "count": 2
+                },
+                false
+              ]
+            }
+          },
+          {
+            "id": "#short",
+            "label": "nested relative fragment"
+          }
+        ]
+      }
+    },
+    "requests": [
+      {
+        "function": "dereference",
+        "input": "did:example:resources",
+        "accept": "application/did"
+      },
+      {
+        "function": "dereference",
+        "input": "did:example:resources#missing-control",
+        "accept": "application/did"
+      }
+    ],
+    "expected_content": {
+      "id": "did:example:resources",
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "authentication": [
+        {
+          "id": "did:example:resources#embedded",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "service": [
+        {
+          "id": "#one",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/base/"
+        },
+        {
+          "id": "#two",
+          "type": "Other",
+          "serviceEndpoint": "https://agent.example/other/"
+        }
+      ],
+      "extension": {
+        "container": [
+          {
+            "child": {
+              "id": "did:example:resources#nested",
+              "values": [
+                "first",
+                {
+                  "count": 2
+                },
+                false
+              ]
+            }
+          },
+          {
+            "id": "#short",
+            "label": "nested relative fragment"
+          }
+        ]
+      }
+    },
+    "expected_kind": "document",
+    "expected_id": "did:example:resources",
+    "expected_media": "application/did",
+    "expected_parameters": {}
+  },
+  {
+    "name": "method",
+    "statement": "res10-crd20261001#dereferencing.9",
+    "document": {
+      "id": "did:example:resources",
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "authentication": [
+        {
+          "id": "did:example:resources#embedded",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "service": [
+        {
+          "id": "#one",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/base/"
+        },
+        {
+          "id": "#two",
+          "type": "Other",
+          "serviceEndpoint": "https://agent.example/other/"
+        }
+      ],
+      "extension": {
+        "container": [
+          {
+            "child": {
+              "id": "did:example:resources#nested",
+              "values": [
+                "first",
+                {
+                  "count": 2
+                },
+                false
+              ]
+            }
+          },
+          {
+            "id": "#short",
+            "label": "nested relative fragment"
+          }
+        ]
+      }
+    },
+    "requests": [
+      {
+        "function": "dereference",
+        "input": "did:example:resources#sign",
+        "accept": "application/did"
+      },
+      {
+        "function": "dereference",
+        "input": "did:example:resources#missing-control",
+        "accept": "application/did"
+      }
+    ],
+    "expected_content": {
+      "id": "did:example:resources#sign",
+      "type": "Multikey",
+      "controller": "did:example:resources",
+      "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+    },
+    "expected_kind": "verification-method",
+    "expected_id": "did:example:resources#sign",
+    "expected_media": "application/ld+json",
+    "expected_parameters": {}
+  },
+  {
+    "name": "embedded-method",
+    "statement": "res10-crd20261001#dereferencing.9",
+    "document": {
+      "id": "did:example:resources",
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "authentication": [
+        {
+          "id": "did:example:resources#embedded",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "service": [
+        {
+          "id": "#one",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/base/"
+        },
+        {
+          "id": "#two",
+          "type": "Other",
+          "serviceEndpoint": "https://agent.example/other/"
+        }
+      ],
+      "extension": {
+        "container": [
+          {
+            "child": {
+              "id": "did:example:resources#nested",
+              "values": [
+                "first",
+                {
+                  "count": 2
+                },
+                false
+              ]
+            }
+          },
+          {
+            "id": "#short",
+            "label": "nested relative fragment"
+          }
+        ]
+      }
+    },
+    "requests": [
+      {
+        "function": "dereference",
+        "input": "did:example:resources#embedded",
+        "accept": "application/did"
+      },
+      {
+        "function": "dereference",
+        "input": "did:example:resources#missing-control",
+        "accept": "application/did"
+      }
+    ],
+    "expected_content": {
+      "id": "did:example:resources#embedded",
+      "type": "Multikey",
+      "controller": "did:example:resources",
+      "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+    },
+    "expected_kind": "verification-method",
+    "expected_id": "did:example:resources#embedded",
+    "expected_media": "application/ld+json",
+    "expected_parameters": {}
+  },
+  {
+    "name": "service",
+    "statement": "res10-crd20261001#dereferencing.9",
+    "document": {
+      "id": "did:example:resources",
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "authentication": [
+        {
+          "id": "did:example:resources#embedded",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "service": [
+        {
+          "id": "#one",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/base/"
+        },
+        {
+          "id": "#two",
+          "type": "Other",
+          "serviceEndpoint": "https://agent.example/other/"
+        }
+      ],
+      "extension": {
+        "container": [
+          {
+            "child": {
+              "id": "did:example:resources#nested",
+              "values": [
+                "first",
+                {
+                  "count": 2
+                },
+                false
+              ]
+            }
+          },
+          {
+            "id": "#short",
+            "label": "nested relative fragment"
+          }
+        ]
+      }
+    },
+    "requests": [
+      {
+        "function": "dereference",
+        "input": "did:example:resources#one",
+        "accept": "application/did"
+      },
+      {
+        "function": "dereference",
+        "input": "did:example:resources#missing-control",
+        "accept": "application/did"
+      }
+    ],
+    "expected_content": {
+      "id": "#one",
+      "type": "Messaging",
+      "serviceEndpoint": "https://agent.example/base/"
+    },
+    "expected_kind": "service",
+    "expected_id": "#one",
+    "expected_media": "application/ld+json",
+    "expected_parameters": {}
+  },
+  {
+    "name": "nested-full",
+    "statement": "res10-crd20261001#dereferencing.9",
+    "document": {
+      "id": "did:example:resources",
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "authentication": [
+        {
+          "id": "did:example:resources#embedded",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "service": [
+        {
+          "id": "#one",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/base/"
+        },
+        {
+          "id": "#two",
+          "type": "Other",
+          "serviceEndpoint": "https://agent.example/other/"
+        }
+      ],
+      "extension": {
+        "container": [
+          {
+            "child": {
+              "id": "did:example:resources#nested",
+              "values": [
+                "first",
+                {
+                  "count": 2
+                },
+                false
+              ]
+            }
+          },
+          {
+            "id": "#short",
+            "label": "nested relative fragment"
+          }
+        ]
+      }
+    },
+    "requests": [
+      {
+        "function": "dereference",
+        "input": "did:example:resources#nested",
+        "accept": "application/did"
+      },
+      {
+        "function": "dereference",
+        "input": "did:example:resources#missing-control",
+        "accept": "application/did"
+      }
+    ],
+    "expected_content": {
+      "id": "did:example:resources#nested",
+      "values": [
+        "first",
+        {
+          "count": 2
+        },
+        false
+      ]
+    },
+    "expected_kind": "map",
+    "expected_id": "did:example:resources#nested",
+    "expected_media": "application/ld+json",
+    "expected_parameters": {}
+  },
+  {
+    "name": "nested-relative",
+    "statement": "res10-crd20261001#dereferencing.9",
+    "document": {
+      "id": "did:example:resources",
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "authentication": [
+        {
+          "id": "did:example:resources#embedded",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "service": [
+        {
+          "id": "#one",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/base/"
+        },
+        {
+          "id": "#two",
+          "type": "Other",
+          "serviceEndpoint": "https://agent.example/other/"
+        }
+      ],
+      "extension": {
+        "container": [
+          {
+            "child": {
+              "id": "did:example:resources#nested",
+              "values": [
+                "first",
+                {
+                  "count": 2
+                },
+                false
+              ]
+            }
+          },
+          {
+            "id": "#short",
+            "label": "nested relative fragment"
+          }
+        ]
+      }
+    },
+    "requests": [
+      {
+        "function": "dereference",
+        "input": "did:example:resources#short",
+        "accept": "application/did"
+      },
+      {
+        "function": "dereference",
+        "input": "did:example:resources#missing-control",
+        "accept": "application/did"
+      }
+    ],
+    "expected_content": {
+      "id": "#short",
+      "label": "nested relative fragment"
+    },
+    "expected_kind": "map",
+    "expected_id": "#short",
+    "expected_media": "application/ld+json",
+    "expected_parameters": {}
+  },
+  {
+    "name": "parameter-service",
+    "statement": "res10-crd20261001#did-parameters.2",
+    "document": {
+      "id": "did:example:resources",
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "authentication": [
+        {
+          "id": "did:example:resources#embedded",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "service": [
+        {
+          "id": "#one",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/base/"
+        },
+        {
+          "id": "#two",
+          "type": "Other",
+          "serviceEndpoint": "https://agent.example/other/"
+        }
+      ],
+      "extension": {
+        "container": [
+          {
+            "child": {
+              "id": "did:example:resources#nested",
+              "values": [
+                "first",
+                {
+                  "count": 2
+                },
+                false
+              ]
+            }
+          },
+          {
+            "id": "#short",
+            "label": "nested relative fragment"
+          }
+        ]
+      }
+    },
+    "requests": [
+      {
+        "function": "dereference",
+        "input": "did:example:resources?service=one",
+        "accept": "application/did"
+      },
+      {
+        "function": "dereference",
+        "input": "did:example:resources",
+        "accept": "application/did"
+      }
+    ],
+    "expected_content": {
+      "id": "did:example:resources",
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "authentication": [
+        {
+          "id": "did:example:resources#embedded",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "service": [
+        {
+          "id": "#one",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/base/"
+        }
+      ],
+      "extension": {
+        "container": [
+          {
+            "child": {
+              "id": "did:example:resources#nested",
+              "values": [
+                "first",
+                {
+                  "count": 2
+                },
+                false
+              ]
+            }
+          },
+          {
+            "id": "#short",
+            "label": "nested relative fragment"
+          }
+        ]
+      }
+    },
+    "expected_kind": "document",
+    "expected_id": "did:example:resources",
+    "expected_media": "application/did",
+    "expected_parameters": {
+      "service": "one"
+    }
+  },
+  {
+    "name": "parameter-service-type",
+    "statement": "res10-crd20261001#did-parameters.2",
+    "document": {
+      "id": "did:example:resources",
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "authentication": [
+        {
+          "id": "did:example:resources#embedded",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "service": [
+        {
+          "id": "#one",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/base/"
+        },
+        {
+          "id": "#two",
+          "type": "Other",
+          "serviceEndpoint": "https://agent.example/other/"
+        }
+      ],
+      "extension": {
+        "container": [
+          {
+            "child": {
+              "id": "did:example:resources#nested",
+              "values": [
+                "first",
+                {
+                  "count": 2
+                },
+                false
+              ]
+            }
+          },
+          {
+            "id": "#short",
+            "label": "nested relative fragment"
+          }
+        ]
+      }
+    },
+    "requests": [
+      {
+        "function": "dereference",
+        "input": "did:example:resources?serviceType=Messaging",
+        "accept": "application/did"
+      },
+      {
+        "function": "dereference",
+        "input": "did:example:resources",
+        "accept": "application/did"
+      }
+    ],
+    "expected_content": {
+      "id": "did:example:resources",
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "authentication": [
+        {
+          "id": "did:example:resources#embedded",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "service": [
+        {
+          "id": "#one",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/base/"
+        }
+      ],
+      "extension": {
+        "container": [
+          {
+            "child": {
+              "id": "did:example:resources#nested",
+              "values": [
+                "first",
+                {
+                  "count": 2
+                },
+                false
+              ]
+            }
+          },
+          {
+            "id": "#short",
+            "label": "nested relative fragment"
+          }
+        ]
+      }
+    },
+    "expected_kind": "document",
+    "expected_id": "did:example:resources",
+    "expected_media": "application/did",
+    "expected_parameters": {
+      "serviceType": "Messaging"
+    }
+  },
+  {
+    "name": "parameter-relative-reference",
+    "statement": "res10-crd20261001#did-parameters.2",
+    "document": {
+      "id": "did:example:resources",
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "authentication": [
+        {
+          "id": "did:example:resources#embedded",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "service": [
+        {
+          "id": "#one",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/base/"
+        },
+        {
+          "id": "#two",
+          "type": "Other",
+          "serviceEndpoint": "https://agent.example/other/"
+        }
+      ],
+      "extension": {
+        "container": [
+          {
+            "child": {
+              "id": "did:example:resources#nested",
+              "values": [
+                "first",
+                {
+                  "count": 2
+                },
+                false
+              ]
+            }
+          },
+          {
+            "id": "#short",
+            "label": "nested relative fragment"
+          }
+        ]
+      }
+    },
+    "requests": [
+      {
+        "function": "dereference",
+        "input": "did:example:resources?service=one&relativeRef=..%2Fsend",
+        "accept": "text/uri-list"
+      },
+      {
+        "function": "dereference",
+        "input": "did:example:resources",
+        "accept": "application/did"
+      }
+    ],
+    "expected_content": [
+      "https://agent.example/send"
+    ],
+    "expected_kind": "uri-list",
+    "expected_id": "",
+    "expected_media": "text/uri-list",
+    "expected_parameters": {
+      "service": "one",
+      "relativeRef": "../send"
+    }
+  }
+]

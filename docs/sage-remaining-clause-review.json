@@ -23,10 +23,10 @@
     "runtime-candidate": 69
   },
   "execution_counts": {
-    "PASS": 83,
+    "PASS": 85,
     "FAIL": 3,
     "NOT_APPLICABLE": 2,
-    "NOT_RUN": 158
+    "NOT_RUN": 156
   },
   "clauses": [
     {
@@ -3707,13 +3707,20 @@
       "generic_scope": "not-checkable",
       "text": "The contentStream MAY be a resource such as a DID document that is serializable in one of the conformant representations, a verification method, a service, or any other resource format that can be identified via a Media Type and obtained through the resolution process.",
       "actor": "permission, definition or stated input/output actor",
-      "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
+      "applicable_evidence": "Actual selected root dereferencer with literal example driver; typed contentStream witnesses and media, original Read document, selected service/serviceType/relativeRef inputs and independent returned content. No external endpoint retrieval or operational authority.",
       "review_disposition": "construction-or-permission",
-      "status": "reviewed-awaiting-evidence",
+      "status": "observed-selected-branch",
       "reason": "A definition, permission or conditional construction is not an unconditional implementation obligation. Establish the claimed feature/actor and exercise its applicable branch before an execution verdict.",
-      "follow_up_condition": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "follow_up_condition": "Only the selected resource kinds and parameter combinations are covered. Arbitrary resource formats, other parameters, history, internal algorithm traces and operating method authority remain separate contracts.",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/resource-choice-document",
+        "did-1.1/sage-resolution/resource-choice-embedded-method",
+        "did-1.1/sage-resolution/resource-choice-method",
+        "did-1.1/sage-resolution/resource-choice-nested-full",
+        "did-1.1/sage-resolution/resource-choice-nested-relative",
+        "did-1.1/sage-resolution/resource-choice-service"
+      ]
     },
     {
       "id": "res10-crd20261001#did-document-metadata.1",
@@ -4189,13 +4196,17 @@
       "generic_scope": "not-checkable",
       "text": "Support for all DID Parameters is OPTIONAL.",
       "actor": "permission, definition or stated input/output actor",
-      "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
+      "applicable_evidence": "Actual selected root dereferencer with literal example driver; typed contentStream witnesses and media, original Read document, selected service/serviceType/relativeRef inputs and independent returned content. No external endpoint retrieval or operational authority.",
       "review_disposition": "construction-or-permission",
-      "status": "reviewed-awaiting-evidence",
+      "status": "observed-selected-branch",
       "reason": "A definition, permission or conditional construction is not an unconditional implementation obligation. Establish the claimed feature/actor and exercise its applicable branch before an execution verdict.",
-      "follow_up_condition": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "follow_up_condition": "Only the selected resource kinds and parameter combinations are covered. Arbitrary resource formats, other parameters, history, internal algorithm traces and operating method authority remain separate contracts.",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/resource-choice-parameter-relative-reference",
+        "did-1.1/sage-resolution/resource-choice-parameter-service",
+        "did-1.1/sage-resolution/resource-choice-parameter-service-type"
+      ]
     },
     {
       "id": "res10-crd20261001#did-parameters.3",

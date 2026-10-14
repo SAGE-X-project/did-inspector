@@ -112,6 +112,7 @@ func Profile(name string) (core.Profile, error) {
 	appendKeyConversionCases(&p)
 	appendChoiceOptionalCases(&p)
 	appendRepresentationOptionsCases(&p)
+	appendResourceChoiceCases(&p)
 	appendResolverProofCases(&p, rows)
 	appendClientCases(&p, rows)
 	appendRetrievalCases(&p, rows)
