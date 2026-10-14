@@ -77,7 +77,7 @@
   "categories": {
     "additional-data-or-feature": 20,
     "document-or-applicability-review": 79,
-    "additional-observer-operation": 42,
+    "additional-observer-operation": 36,
     "operational-or-authority-evidence": 4,
     "existing-observation": 9
   },
@@ -302,24 +302,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "cid10#base-decode.10",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "b6f48ef7316b9deeb57e4d2c9a9c8b3b5db129bf5addf6dfcd13e8c6241efd12",
-      "baseline_verdict": "NOT_RUN",
-      "route": "codec-internals",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#base-decode.11",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "6587045218d0c288e22410a020c082b5ce27595e64e53b67d0fd71354ea1f0c4",
-      "baseline_verdict": "NOT_RUN",
-      "route": "codec-internals",
-      "generic_scope": "not-checkable"
-    },
-    {
       "id": "cid10#base-decode.12",
       "level": "requirement",
       "keywords": [],
@@ -428,24 +410,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "cid10#base-decode.9",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "c97e51c9f418a9844f607aca494947145ea7f1028e5cf511e4405e58fb7f4083",
-      "baseline_verdict": "NOT_RUN",
-      "route": "codec-internals",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#base-encode.10",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "cb04627472278ae320384e233bc21e42165f2548d74f6774862d8b0f82917dc8",
-      "baseline_verdict": "NOT_RUN",
-      "route": "codec-internals",
-      "generic_scope": "not-checkable"
-    },
-    {
       "id": "cid10#base-encode.11",
       "level": "requirement",
       "keywords": [],
@@ -549,24 +513,6 @@
       "level": "requirement",
       "keywords": [],
       "text_sha256": "59713ac54ef586f9eb7537dea09b4214f4fe45a6fdd0abbc09685f9a37e3dea4",
-      "baseline_verdict": "NOT_RUN",
-      "route": "codec-internals",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#base-encode.8",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "958bd4c03a2db95925bcc4a441a041273ecc34ec74bf0cdcfd5ae19fbfb31f0f",
-      "baseline_verdict": "NOT_RUN",
-      "route": "codec-internals",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#base-encode.9",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "a684c806fcfcdde5c53578f988d50c0ced485b5df762c83e0109602e410e6c75",
       "baseline_verdict": "NOT_RUN",
       "route": "codec-internals",
       "generic_scope": "not-checkable"
@@ -6487,26 +6433,110 @@
       "cases": [
         "did-1.1/sage-resolution/integer-source-arithmetic"
       ]
+    },
+    {
+      "id": "cid10#base-decode.10",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "b6f48ef7316b9deeb57e4d2c9a9c8b3b5db129bf5addf6dfcd13e8c6241efd12",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/integer-source-",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ]
+    },
+    {
+      "id": "cid10#base-decode.11",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "6587045218d0c288e22410a020c082b5ce27595e64e53b67d0fd71354ea1f0c4",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/integer-source-",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ]
+    },
+    {
+      "id": "cid10#base-decode.9",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "c97e51c9f418a9844f607aca494947145ea7f1028e5cf511e4405e58fb7f4083",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/integer-source-",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ]
+    },
+    {
+      "id": "cid10#base-encode.10",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "cb04627472278ae320384e233bc21e42165f2548d74f6774862d8b0f82917dc8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/integer-source-",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ]
+    },
+    {
+      "id": "cid10#base-encode.8",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "958bd4c03a2db95925bcc4a441a041273ecc34ec74bf0cdcfd5ae19fbfb31f0f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/integer-source-",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ]
+    },
+    {
+      "id": "cid10#base-encode.9",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "a684c806fcfcdde5c53578f988d50c0ced485b5df762c83e0109602e410e6c75",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/integer-source-",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ]
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 319,
+    "PASS": 325,
     "FAIL": 9,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 4,
     "ERROR": 0,
-    "NOT_RUN": 154
+    "NOT_RUN": 148
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 305,
+      "PASS": 311,
       "FAIL": 5,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 124
+      "NOT_RUN": 118
     },
     "recommendation": {
       "statements": 50,

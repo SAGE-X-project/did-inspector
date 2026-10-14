@@ -4,6 +4,7 @@ import (
 	"archive/zip"
 	"bytes"
 	"context"
+	"encoding/json"
 	"errors"
 	"github.com/sage-x-project/did-inspector/checks/sourcearith"
 	"github.com/sage-x-project/did-inspector/core"
@@ -136,5 +137,48 @@ func TestConfirmedFloatSurvivesUnknownPaths(t *testing.T) {
 	a := sourcearith.Audit{Operations: []sourcearith.Operation{{Integer: false}}, Unknown: []string{"unreviewed call"}}
 	if integerAuditVerdict(a) != core.Fail {
 		t.Fatal("confirmed violation hidden by unknown path")
+	}
+}
+
+func TestCarryVerdictsPreserveUnknownContext(t *testing.T) {
+	v := sourceControl(t)
+	observations := judgeIntegerSource(t.Context(), v, "unit")
+	var evidence integerSourceEvidence
+	if e := json.Unmarshal([]byte(observations[0].Observed), &evidence); e != nil {
+		t.Fatal(e)
+	}
+	for _, a := range evidence.Carry {
+		for i := 0; i < 3; i++ {
+			if carryVerdict(a, i) != core.Pass {
+				t.Fatal(a)
+			}
+		}
+		a.Steps[0].Correct = false
+		if carryVerdict(a, 0) != core.Fail || carryVerdict(a, 1) != core.Pass {
+			t.Fatal("step verdicts coupled")
+		}
+		a.Steps[0].Correct = true
+		a.Steps[0].Operation.Integer = false
+		if carryVerdict(a, 0) != core.Fail {
+			t.Fatal("float accepted")
+		}
+		a.Unknown = []string{"unreviewed context"}
+		if carryVerdict(a, 0) != core.Error {
+			t.Fatal("unknown accepted")
+		}
+		a.Unknown = nil
+		a.Frame = "other"
+		if carryVerdict(a, 0) != core.Error {
+			t.Fatal("context drift accepted")
+		}
+	}
+	for _, a := range []sourcearith.CarryAudit{{}, {Root: IntegerSourceModule + "/internal/multiformats.BaseEncode", Frame: "c043e4908d7fb16b464fe90b45fdc29ce59cf1d4053cb815c915ee27586d4990"}} {
+		if carryVerdict(a, 0) != core.Error {
+			t.Fatal("missing evidence")
+		}
+	}
+	a := evidence.Carry[0]
+	if carryVerdict(a, -1) != core.Error || carryVerdict(a, 3) != core.Error {
+		t.Fatal("invalid step")
 	}
 }

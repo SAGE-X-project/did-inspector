@@ -14,7 +14,7 @@ from pathlib import Path
 import zipfile
 
 REPO=Path(__file__).resolve().parents[1]
-IDS=['cid10#base-encode.1','cid10#base-decode.1']
+IDS=['cid10#base-encode.1','cid10#base-decode.1','cid10#base-encode.8','cid10#base-encode.9','cid10#base-encode.10','cid10#base-decode.9','cid10#base-decode.10','cid10#base-decode.11']
 CASE='did-1.1/sage-resolution/integer-source-arithmetic'
 OPERATION='debug.ReadBuildInfo + local go env + module cache/ZIP byte capture'
 
@@ -36,11 +36,11 @@ def verify_integer_source(raw,report,repo=REPO):
     assert raw['profile']==report['profile']=='did-1.1' and raw['subject']==report['subject']
     cases=[c for c in raw['cases'] if '/integer-source-' in c['case']]
     assert len(cases)==1 and cases[0]['case']==CASE
-    observations=cases[0]['observations'];assert len(observations)==2
+    observations=cases[0]['observations'];assert len(observations)==8
     assert [o['statement'] for o in observations]==IDS
     witness=json.loads((repo/'profiles/sageresolution/integer_source_witness.json').read_text())
     assert witness['schema']=='sage-integer-source-witness/1'
-    assert observations[0]['input']==observations[1]['input'] and observations[0]['observed']==observations[1]['observed']
+    assert all(o['input']==observations[0]['input'] and o['observed']==observations[0]['observed'] for o in observations)
     q=json.loads(observations[0]['input']);v=json.loads(observations[0]['observed']);s=v['source']
     assert q==s['request']==witness['request']
     for k in ['module','version','sum']:assert s[k]==witness[k]
@@ -53,6 +53,11 @@ def verify_integer_source(raw,report,repo=REPO):
     assert hashlib.sha256(files['internal/multiformats/base.go']).hexdigest()=='42e24ce29efbe606550c0d118081f35606c0c976c80a2b48a2f807084900708e'
     assert v['call_paths']==[[s['module']+'/vm.'+op+'Multikey',s['module']+'/internal/multiformats.'+op+'Multibase',s['module']+'/internal/multiformats.Base'+op] for op in ['Encode','Decode']]
     assert v['audits']==witness['audits']
+    assert v['carry']==witness['carry']
+    assert len(v['carry'])==2
+    for audit in v['carry']:
+        assert not audit['unknown'] and len(audit['steps'])==3
+        assert all(step['correct'] is True and step['operation']['integer'] is True for step in audit['steps'])
     for audit,count in zip(v['audits'],[33,39]):
         assert len(audit['operations'])==count and not audit['unknown']
         assert all(op['integer'] is True and op['types'] and op['line']>0 and op['column']>0 for op in audit['operations'])
