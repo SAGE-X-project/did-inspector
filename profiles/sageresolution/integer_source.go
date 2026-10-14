@@ -10,7 +10,7 @@ import (
 	"runtime"
 )
 
-var integerSourceIDs = []string{"cid10#base-encode.1", "cid10#base-decode.1", "cid10#base-encode.8", "cid10#base-encode.9", "cid10#base-encode.10", "cid10#base-decode.9", "cid10#base-decode.10", "cid10#base-decode.11", "cid10#base-encode.6", "cid10#base-encode.11", "cid10#base-decode.2", "cid10#base-decode.7", "cid10#base-decode.12", "cid10#base-decode.13", "cid10#base-encode.5", "cid10#base-encode.12", "cid10#base-decode.6"}
+var integerSourceIDs = []string{"cid10#base-encode.1", "cid10#base-decode.1", "cid10#base-encode.8", "cid10#base-encode.9", "cid10#base-encode.10", "cid10#base-decode.9", "cid10#base-decode.10", "cid10#base-decode.11", "cid10#base-encode.6", "cid10#base-encode.11", "cid10#base-decode.2", "cid10#base-decode.7", "cid10#base-decode.12", "cid10#base-decode.13", "cid10#base-encode.5", "cid10#base-encode.12", "cid10#base-decode.6", "cid10#base-encode.2", "cid10#base-encode.3", "cid10#base-decode.3", "cid10#base-decode.4"}
 
 func integerSourceRequest() IntegerSourceRequest {
 	var selected codecFixture
@@ -26,6 +26,7 @@ type integerSourceEvidence struct {
 	Source       IntegerSourceResult       `json:"source"`
 	Audits       []sourcearith.Audit       `json:"audits"`
 	Cursor       []sourcearith.CursorAudit `json:"cursor"`
+	Prefix       []sourcearith.PrefixAudit `json:"prefix"`
 	State        []sourcearith.StateAudit  `json:"state"`
 	Carry        []sourcearith.CarryAudit  `json:"carry"`
 	CallPaths    [][]string                `json:"call_paths"`
@@ -46,7 +47,7 @@ func sourceIdentity(v IntegerSourceResult) bool {
 	return true
 }
 func judgeIntegerSource(ctx context.Context, v IntegerSourceResult, input string) []core.Observation {
-	evidence := integerSourceEvidence{Source: v, Audits: []sourcearith.Audit{}, Carry: []sourcearith.CarryAudit{}, State: []sourcearith.StateAudit{}, Cursor: []sourcearith.CursorAudit{}, CallPaths: [][]string{}, Compiler: runtime.Version(), Architecture: runtime.GOARCH}
+	evidence := integerSourceEvidence{Source: v, Audits: []sourcearith.Audit{}, Carry: []sourcearith.CarryAudit{}, State: []sourcearith.StateAudit{}, Cursor: []sourcearith.CursorAudit{}, Prefix: []sourcearith.PrefixAudit{}, CallPaths: [][]string{}, Compiler: runtime.Version(), Architecture: runtime.GOARCH}
 	obs := libraryUnavailable(integerSourceIDs, core.Error, "Static inspection of pinned module source. Go h1 ZIP content digest binds source identity to the reported dependency pin; cached production files must match ZIP bytes. Standard Go parser/types resolve public codec-to-base symbol paths and all selected algorithm helpers, used global initializers, argument arithmetic and numeric conversions. Reviewed text/error/buffer boundaries are explicit. This is fixed-source arithmetic compliance, not proof of verbatim compiled binary bytes, all runtime executions, overflow safety, capacity bounds, termination, reference steps or output equivalence. Public codec calls are diagnostic only.", input, evidence)
 	if !sourceIdentity(v) || runtime.Version() != v.Compiler {
 		return finishIntegerSource(ctx, evidence, obs)
@@ -116,6 +117,13 @@ func judgeIntegerSource(ctx context.Context, v IntegerSourceResult, input string
 			obs[start+j].Verdict = cursorVerdict(cursor, j)
 			obs[start+j].Expected = "Fixed-source stable-input cursor projection: actual byte/ASCII character at the prefix offset, each normal iteration, and independent length storage with next cursor. Go range header evaluation/body/Post semantics is explicit; backing bytes are not copied and caller concurrent mutation is excluded. No termination, overflow, full algorithm or runtime-trace claim."
 		}
+		prefix := program.PrefixAudit(root)
+		evidence.Prefix = append(evidence.Prefix, prefix)
+		for j := 0; j < 2; j++ {
+			obs[17+i*2+j].Verdict = prefixVerdict(prefix, j)
+			obs[17+i*2+j].Expected = "Selected fixed-source zero initialization, delayed pure length initialization before actual first use, and maximal leading-zero count bound to the actual post-scan offset. Logical cursor/end are explicit phase projections; stable input and normal completion only. No full codec, size, overflow or binary/runtime attestation claim."
+		}
+
 	}
 	return finishIntegerSource(ctx, evidence, obs)
 }
@@ -217,6 +225,25 @@ func cursorVerdict(a sourcearith.CursorAudit, index int) core.Verdict {
 		count = 1
 	}
 	if frame == "" || a.Frame != frame || len(a.Unknown) != 0 || len(a.Steps) != count || index < 0 || index >= count {
+		return core.Error
+	}
+	if !a.Steps[index].Correct {
+		return core.Fail
+	}
+	return core.Pass
+}
+
+// The frame is a scope prerequisite; initialization and maximal-prefix
+// predicates are independent, including length initialization versus counting.
+func prefixVerdict(a sourcearith.PrefixAudit, index int) core.Verdict {
+	frame := ""
+	switch a.Root {
+	case IntegerSourceModule + "/internal/multiformats.BaseEncode":
+		frame = "f5240f0023a1e109bdc9b31dfefeb0ce680896c2241fca71b0e433144a474d58"
+	case IntegerSourceModule + "/internal/multiformats.BaseDecode":
+		frame = "fdb7514f7d05195f7a08a4da6fe3252b9447fc4fe5b21166dbbb9dc5b8de63d7"
+	}
+	if frame == "" || a.Frame != frame || len(a.Unknown) > 0 || len(a.Steps) != 2 || index < 0 || index >= 2 {
 		return core.Error
 	}
 	if !a.Steps[index].Correct {

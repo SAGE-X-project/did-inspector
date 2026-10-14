@@ -268,3 +268,45 @@ func TestCursorVerdictsKeepUnknownAndIndependentSteps(t *testing.T) {
 		t.Fatal("missing steps")
 	}
 }
+
+func TestPrefixVerdictsPreserveIndependentPredicates(t *testing.T) {
+	var v integerSourceEvidence
+	obs := judgeIntegerSource(t.Context(), sourceControl(t), "unit")
+	if err := json.Unmarshal([]byte(obs[0].Observed), &v); err != nil {
+		t.Fatal(err)
+	}
+	if len(v.Prefix) != 2 || len(obs) != 21 {
+		t.Fatal("missing prefix observations")
+	}
+	for _, a := range v.Prefix {
+		for i := range a.Steps {
+			if prefixVerdict(a, i) != core.Pass {
+				t.Fatal(a)
+			}
+		}
+		a.Steps[0].Correct = false
+		if prefixVerdict(a, 0) != core.Fail || prefixVerdict(a, 1) != core.Pass {
+			t.Fatal("coupled prefix verdicts")
+		}
+		a.Unknown = []string{"missing phase"}
+		if prefixVerdict(a, 0) != core.Error {
+			t.Fatal("unknown accepted")
+		}
+		a.Unknown = nil
+		a.Frame = "wrong"
+		if prefixVerdict(a, 0) != core.Error {
+			t.Fatal("frame ignored")
+		}
+	}
+	if prefixVerdict(sourcearith.PrefixAudit{}, 0) != core.Error {
+		t.Fatal("missing root")
+	}
+	a := v.Prefix[0]
+	if prefixVerdict(a, -1) != core.Error || prefixVerdict(a, 2) != core.Error {
+		t.Fatal("invalid index")
+	}
+	a.Steps = nil
+	if prefixVerdict(a, 0) != core.Error {
+		t.Fatal("missing steps")
+	}
+}
