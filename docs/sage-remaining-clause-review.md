@@ -2,7 +2,7 @@
 
 All 246 clauses unobserved at `1efc9f0` are reviewed individually in the [machine-readable audit](sage-remaining-clause-review.json). The earlier [353-clause review](sage-resolution-batch-review.json) and all 416 historical ledger entries remain intact. Review coverage does not establish execution coverage or standards conformance.
 
-This grouped implementation adds 77 selected-branch observations across 51 cases. Of the 246 anchor clauses, 90 now have execution verdicts and 156 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
+This grouped implementation adds 79 selected-branch observations across 52 cases, including two fixed-source arithmetic obligations. Of the 246 anchor clauses, 92 now have execution verdicts and 154 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
 
 | Review disposition | Clauses |
 |---|---:|
@@ -37,7 +37,7 @@ Existing scope and execution evidence are separate. A reviewed row is not closed
 
 Sixteen additional actual cases exercise eight previously unobserved clauses, with public vectors and owned TLS only. Encoder and decoder equivalence are independent predicates. The malformed decoder input is diagnostic because these clauses define no error shape. IP certificate choice is independent of client authentication. Optional public-key conversion refusal is a capability finding; only actual successful conversions are checked for external Multikey changes. Internal type/raw diagnostics cannot by themselves fail that external-value requirement. A local consumer contrast uses published RFC8032 data and does not publish a secret or grant key-use authorization.
 
-The current DID1.1 resolution report is 349 cases, 317 PASS, 9 FAIL, 4 NOT_APPLICABLE and 156 NOT_RUN. The original baseline and existing failures are retained. Full standards conformance remains unestablished.
+The resource-group checkpoint report was 349 cases, 317 PASS, 9 FAIL, 4 NOT_APPLICABLE and 156 NOT_RUN. The original baseline and existing failures are retained. Full standards conformance remains unestablished.
 
 ### Additional options and resolver proof inclusion
 
@@ -45,7 +45,7 @@ Five fresh cases cover three previously unobserved MAY clauses: production-and-c
 
 The actual universal Client.Resolve returns a proof-shaped resolution metadata map from an owned TLS upstream, with a proof-absent diagnostic control. This does not establish SAGE method proof creation, signature validity, result correctness verification or operational authority. An optional refusal or unavailable capability is NOT_SUPPORTED, not FAIL; missing or mismatched observation provenance is ERROR. Unrelated document metadata and additional proofs in the absent control do not impose new requirements on this MAY.
 
-The original 416-clause baseline is preserved: 260 observed and 156 pending. Of the 246 reviewed anchor clauses, 90 have selected execution verdicts and 156 remain NOT_RUN. Existing nine failures and the failing conformance gate are retained.
+At the resource-group checkpoint, the original 416-clause baseline was preserved: 260 observed and 156 pending. Of the 246 reviewed anchor clauses, 90 have selected execution verdicts and 156 remain NOT_RUN. Existing nine failures and the failing conformance gate are retained.
 
 ### Selected resource kinds and DID parameters
 
@@ -53,4 +53,14 @@ Nine fresh cases archive eighteen actual root dereferencer calls with a literal 
 
 Missing-fragment and unfiltered-document controls are diagnostic and cannot create extra MAY/OPTIONAL obligations. Optional refusal is NOT_SUPPORTED; missing or misattributed call evidence is ERROR. The existing required accept-forwarding failure, internal algorithm NOT_RUN entries and all original clause identities are preserved. This is selected library capability evidence, not arbitrary resource format support, all parameters, historical resolution, full JSON-LD processing or SAGE operational authority.
 
-Current DID1.1 resolution: 349 cases, 317 PASS, nine FAIL, four NOT_APPLICABLE and 156 NOT_RUN. Original baseline: 260 observed (248 PASS, three NOT_APPLICABLE, nine FAIL) and 156 pending. Of the 246 anchor clauses, 90 have execution verdicts and 156 remain NOT_RUN.
+Resource-group checkpoint: 349 cases, 317 PASS, nine FAIL, four NOT_APPLICABLE and 156 NOT_RUN. Original baseline: 260 observed (248 PASS, three NOT_APPLICABLE, nine FAIL) and 156 pending. Of the 246 anchor clauses, 90 have execution verdicts and 156 remain NOT_RUN.
+
+## Fixed-source integer arithmetic inspection
+
+Two CID MUST clauses now have separately attributed source verdicts: base-encode.1 and base-decode.1. One case captures the actual pinned dependency build identity, local compiler/cache environment, canonical module ZIP and independently read production source files. The ZIP's Go h1 content digest must match the dependency sum; all 16 selected production files must match the ZIP bytes. Standard Go parser/types resolves both public codec-to-base call paths and audits arithmetic in the selected algorithms, reachable helpers, used global initializers and argument expressions. Numeric conversions and numeric comparisons are included.
+
+The inspected encode and decode closures contain 33 and 39 operations respectively, all with integer operand/result types. Unknown calls, generic functions and unreviewed mutable package initialization cannot yield PASS. Confirmed noninteger operations remain FAIL even if other paths are unknown. Reviewed text/error/buffer boundaries are explicit. Public codec calls are diagnostic, so their output is not used to establish integer arithmetic. Unit controls are source data that is parsed and type-checked, never executed. The canonical public module ZIP fixture supports offline unit tests; the actual observer reads the real module cache and ZIP independently.
+
+This proves fixed-source arithmetic typing for the reported pin. It does not establish verbatim compiled binary bytes, every runtime execution, overflow safety, capacity bounds, termination, equivalence to every reference step, or output equivalence. Other internal algorithm obligations remain pending.
+
+Current DID1.1 resolution: 350 cases, 319 PASS, nine FAIL, four NOT_APPLICABLE and 154 NOT_RUN. The 416-clause baseline is retained as 262 observed (250 PASS, three NOT_APPLICABLE, nine FAIL) plus 154 pending. The 246-clause anchor has 92 execution verdicts and 154 pending. Existing failure findings and the failing conformance gate remain visible.

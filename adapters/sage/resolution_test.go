@@ -16,11 +16,16 @@ import (
 	"github.com/sage-x-project/did-inspector/report"
 )
 
-func TestActualResolutionProfiles(t *testing.T) {
+func TestNativeResolutionProfilesWithStaticSourceFixture(t *testing.T) {
 	s, err := identify(pinned)
 	if err != nil {
 		t.Fatal(err)
 	}
+	// Go test binaries do not reliably retain dependency build metadata.
+	// Static-source unit coverage uses an explicit data fixture; the native CLI
+	// test independently checks real build metadata and actual cache/ZIP files.
+	fixture, _ := sourceTest(t)
+	s.sourceObserver = fixture.sourceObserver
 	target := s.ResolutionIdentity()
 	if target.Describe().Name == s.Describe().Name {
 		t.Fatal("mixed scopes")

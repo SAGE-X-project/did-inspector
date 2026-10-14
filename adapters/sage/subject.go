@@ -18,8 +18,11 @@ import (
 const ModulePath = "github.com/sage-x-project/did-go/advanced/sage"
 const Version = "v0.0.0-20261012020818-2ef282b40ccf"
 
-// Subject exposes record projection only, not general did-go capabilities.
-type Subject struct{ info core.SubjectInfo }
+// Subject provides explicit projection, native resolution and fixed-source observers.
+type Subject struct {
+	info           core.SubjectInfo
+	sourceObserver *sourceObserver
+}
 
 // New identifies the pinned subject from actual binary build information.
 func New() (*Subject, error) { return identify(debug.ReadBuildInfo) }

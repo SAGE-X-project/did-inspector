@@ -1,0 +1,875 @@
+{
+  "schema": "sage-integer-source-witness/1",
+  "module": "github.com/sage-x-project/did-go",
+  "version": "v0.0.0-20261012015322-ed54c505eafe",
+  "sum": "h1:phZzJEVaBYD9ylcNhmODNZ4mSp3N4j/4HwILUmFWnrE=",
+  "request": {
+    "module": "github.com/sage-x-project/did-go",
+    "version": "v0.0.0-20261012015322-ed54c505eafe",
+    "packages": [
+      "vm",
+      "did",
+      "internal/multiformats"
+    ],
+    "diagnostics": [
+      {
+        "name": "Ed25519",
+        "secret": false,
+        "key": "11qYAYKxCrfVS/7TyWQHOg7hcvPapiMlrwIaaPcHURo=",
+        "encoded": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+      },
+      {
+        "name": "Ed25519",
+        "secret": false,
+        "key": "PUAXw+hDiVqStwqnTRt+vJyYLM8uxJaMwM1V8Sr0Zgw=",
+        "encoded": "z6MkiaMbhXHNA4eJVCCj8dbzKzTgYDKf6crKgHVHid1F1WCT"
+      }
+    ]
+  },
+  "audits": [
+    {
+      "root": "github.com/sage-x-project/did-go/internal/multiformats.BaseEncode",
+      "functions": [
+        "github.com/sage-x-project/did-go/internal/multiformats.BaseEncode",
+        "github.com/sage-x-project/did-go/internal/multiformats.ceilLog2",
+        "github.com/sage-x-project/did-go/internal/multiformats.expansion",
+        "github.com/sage-x-project/did-go/internal/multiformats.floorLog2"
+      ],
+      "globals": [
+        "github.com/sage-x-project/did-go/internal/multiformats.errEmptyAlphabet"
+      ],
+      "operations": [
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 27,
+          "column": 9,
+          "operator": "+",
+          "types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 27,
+          "column": 9,
+          "operator": "*",
+          "types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 27,
+          "column": 9,
+          "operator": "/",
+          "types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 32,
+          "column": 14,
+          "operator": "compare-<",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 32,
+          "column": 21,
+          "operator": "<<=",
+          "types": [
+            "int",
+            "untyped int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 33,
+          "column": 3,
+          "operator": "++",
+          "types": [
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 40,
+          "column": 14,
+          "operator": "compare->",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 40,
+          "column": 21,
+          "operator": ">>=",
+          "types": [
+            "int",
+            "untyped int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 41,
+          "column": 3,
+          "operator": "++",
+          "types": [
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 51,
+          "column": 5,
+          "operator": "compare-<",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 55,
+          "column": 6,
+          "operator": "compare-<",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 55,
+          "column": 28,
+          "operator": "compare-==",
+          "types": [
+            "byte",
+            "byte"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 56,
+          "column": 3,
+          "operator": "++",
+          "types": [
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 58,
+          "column": 20,
+          "operator": "-",
+          "types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 62,
+          "column": 12,
+          "operator": "numeric-conversion",
+          "types": [
+            "byte",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 64,
+          "column": 14,
+          "operator": "-",
+          "types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 64,
+          "column": 25,
+          "operator": "compare-!=",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 64,
+          "column": 39,
+          "operator": "compare-<",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 64,
+          "column": 54,
+          "operator": "compare->=",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 64,
+          "column": 64,
+          "operator": "--",
+          "types": [
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 65,
+          "column": 4,
+          "operator": "+=",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 65,
+          "column": 13,
+          "operator": "*",
+          "types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 66,
+          "column": 18,
+          "operator": "%",
+          "types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 67,
+          "column": 4,
+          "operator": "/=",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 68,
+          "column": 4,
+          "operator": "++",
+          "types": [
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 72,
+          "column": 9,
+          "operator": "-",
+          "types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 73,
+          "column": 6,
+          "operator": "compare-<",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 73,
+          "column": 20,
+          "operator": "compare-==",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 74,
+          "column": 3,
+          "operator": "++",
+          "types": [
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 77,
+          "column": 10,
+          "operator": "-",
+          "types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 77,
+          "column": 10,
+          "operator": "+",
+          "types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 79,
+          "column": 8,
+          "operator": "compare-<",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 79,
+          "column": 20,
+          "operator": "++",
+          "types": [
+            "int"
+          ],
+          "integer": true
+        }
+      ],
+      "boundaries": [
+        "builtin.len",
+        "builtin.make",
+        "errors.New",
+        "strings.(*strings.Builder).Grow",
+        "strings.(*strings.Builder).String",
+        "strings.(*strings.Builder).WriteByte",
+        "strings.(*strings.Builder).WriteString",
+        "strings.Repeat"
+      ],
+      "unknown": []
+    },
+    {
+      "root": "github.com/sage-x-project/did-go/internal/multiformats.BaseDecode",
+      "functions": [
+        "github.com/sage-x-project/did-go/internal/multiformats.BaseDecode",
+        "github.com/sage-x-project/did-go/internal/multiformats.ceilLog2",
+        "github.com/sage-x-project/did-go/internal/multiformats.expansion",
+        "github.com/sage-x-project/did-go/internal/multiformats.floorLog2"
+      ],
+      "globals": [
+        "github.com/sage-x-project/did-go/internal/multiformats.errEmptyAlphabet"
+      ],
+      "operations": [
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 27,
+          "column": 9,
+          "operator": "+",
+          "types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 27,
+          "column": 9,
+          "operator": "*",
+          "types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 27,
+          "column": 9,
+          "operator": "/",
+          "types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 32,
+          "column": 14,
+          "operator": "compare-<",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 32,
+          "column": 21,
+          "operator": "<<=",
+          "types": [
+            "int",
+            "untyped int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 33,
+          "column": 3,
+          "operator": "++",
+          "types": [
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 40,
+          "column": 14,
+          "operator": "compare->",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 40,
+          "column": 21,
+          "operator": ">>=",
+          "types": [
+            "int",
+            "untyped int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 41,
+          "column": 3,
+          "operator": "++",
+          "types": [
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 89,
+          "column": 5,
+          "operator": "compare-<",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 94,
+          "column": 15,
+          "operator": "unary--",
+          "types": [
+            "untyped int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 96,
+          "column": 14,
+          "operator": "compare-<",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 96,
+          "column": 24,
+          "operator": "++",
+          "types": [
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 100,
+          "column": 6,
+          "operator": "compare-<",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 100,
+          "column": 31,
+          "operator": "compare-==",
+          "types": [
+            "byte",
+            "byte"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 101,
+          "column": 3,
+          "operator": "++",
+          "types": [
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 103,
+          "column": 20,
+          "operator": "-",
+          "types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 106,
+          "column": 21,
+          "operator": "compare-<",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 106,
+          "column": 41,
+          "operator": "++",
+          "types": [
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 108,
+          "column": 6,
+          "operator": "compare-<",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 112,
+          "column": 14,
+          "operator": "-",
+          "types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 112,
+          "column": 25,
+          "operator": "compare-!=",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 112,
+          "column": 39,
+          "operator": "compare-<",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 112,
+          "column": 54,
+          "operator": "compare->=",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 112,
+          "column": 64,
+          "operator": "--",
+          "types": [
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 113,
+          "column": 4,
+          "operator": "+=",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 113,
+          "column": 13,
+          "operator": "*",
+          "types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 114,
+          "column": 19,
+          "operator": "%",
+          "types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 115,
+          "column": 4,
+          "operator": "/=",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 116,
+          "column": 4,
+          "operator": "++",
+          "types": [
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 120,
+          "column": 9,
+          "operator": "-",
+          "types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 121,
+          "column": 6,
+          "operator": "compare-<",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 121,
+          "column": 20,
+          "operator": "compare-==",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 122,
+          "column": 3,
+          "operator": "++",
+          "types": [
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 124,
+          "column": 30,
+          "operator": "-",
+          "types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 124,
+          "column": 30,
+          "operator": "+",
+          "types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 125,
+          "column": 8,
+          "operator": "compare-<",
+          "types": [
+            "int",
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 125,
+          "column": 20,
+          "operator": "++",
+          "types": [
+            "int"
+          ],
+          "integer": true
+        },
+        {
+          "file": "internal/multiformats/base.go",
+          "line": 126,
+          "column": 21,
+          "operator": "numeric-conversion",
+          "types": [
+            "int",
+            "byte"
+          ],
+          "integer": true
+        }
+      ],
+      "boundaries": [
+        "builtin.append",
+        "builtin.len",
+        "builtin.make",
+        "errors.New",
+        "fmt.Errorf"
+      ],
+      "unknown": []
+    }
+  ],
+  "scope": "Reviewed fixed-pin typed operation witness, not independent Go parsing or compiled binary attestation."
+}
