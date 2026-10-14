@@ -989,5 +989,93 @@
       ],
       "unknown": []
     }
+  ],
+  "state": [
+    {
+      "root": "github.com/sage-x-project/did-go/internal/multiformats.BaseEncode",
+      "frame": "4b94ff9ac70dd5af838a92595d85f199f80598e4bfa88b764b6ab4717c41465f",
+      "roles": {
+        "alphabet": "alphabet string @internal/multiformats/base.go:49:30",
+        "buffer_offset": "pos int @internal/multiformats/base.go:64:7",
+        "carry": "carry int @internal/multiformats/base.go:62:3",
+        "counter": "i int @internal/multiformats/base.go:63:3",
+        "decoded_length": "length int @internal/multiformats/base.go:60:2",
+        "input": "data []byte @internal/multiformats/base.go:49:17",
+        "range_byte": "b byte @internal/multiformats/base.go:61:9"
+      },
+      "scope": [
+        "fixed source; normal loop completion; Go for body then Post semantics"
+      ],
+      "steps": [
+        {
+          "kind": "carry-initialization",
+          "expressions": [
+            "carry := int(b)"
+          ],
+          "correct": true
+        },
+        {
+          "kind": "inner-state-advance",
+          "expressions": [
+            "i++",
+            "pos--"
+          ],
+          "correct": true
+        }
+      ],
+      "unknown": []
+    },
+    {
+      "root": "github.com/sage-x-project/did-go/internal/multiformats.BaseDecode",
+      "frame": "945a2f0a3a496baad2db648d7319b940c520f729bc8e8dd9b5f8aae1d855ba45",
+      "roles": {
+        "alphabet": "alphabet string @internal/multiformats/base.go:87:26",
+        "alphabet_map": "values [256]int @internal/multiformats/base.go:92:6",
+        "buffer_offset": "pos int @internal/multiformats/base.go:112:7",
+        "carry": "carry int @internal/multiformats/base.go:107:3",
+        "counter": "i int @internal/multiformats/base.go:111:3",
+        "decoded_length": "length int @internal/multiformats/base.go:105:2",
+        "input": "encoded string @internal/multiformats/base.go:87:17",
+        "source_cursor": "idx int @internal/multiformats/base.go:106:6"
+      },
+      "scope": [
+        "fixed source; normal loop completion; Go for body then Post semantics",
+        "distinct ASCII alphabets selected by z/u public codec paths; byte equals character"
+      ],
+      "steps": [
+        {
+          "kind": "alphabet-map",
+          "expressions": [
+            "for i := range values {\n\tvalues[i] = -1\n}",
+            "for i := 0; i < base; i++ {\n\tvalues[alphabet[i]] = i\n}"
+          ],
+          "correct": true
+        },
+        {
+          "kind": "carry-initialization",
+          "expressions": [
+            "carry := values[encoded[idx]]"
+          ],
+          "correct": true
+        },
+        {
+          "kind": "inner-state-advance",
+          "expressions": [
+            "i++",
+            "pos--"
+          ],
+          "correct": true
+        },
+        {
+          "kind": "length-and-source-advance",
+          "expressions": [
+            "length = i",
+            "idx++"
+          ],
+          "correct": true
+        }
+      ],
+      "unknown": []
+    }
   ]
 }

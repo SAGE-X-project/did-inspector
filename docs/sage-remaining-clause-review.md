@@ -2,7 +2,7 @@
 
 All 246 clauses unobserved at `1efc9f0` are reviewed individually in the [machine-readable audit](sage-remaining-clause-review.json). The earlier [353-clause review](sage-resolution-batch-review.json) and all 416 historical ledger entries remain intact. Review coverage does not establish execution coverage or standards conformance.
 
-This grouped implementation adds 85 selected-branch observations across 52 cases, including eight fixed-source arithmetic obligations. Of the 246 anchor clauses, 98 now have execution verdicts and 148 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
+This grouped implementation adds 91 selected-branch observations across 52 cases, including fourteen fixed-source arithmetic and state obligations. Of the 246 anchor clauses, 104 now have execution verdicts and 142 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
 
 | Review disposition | Clauses |
 |---|---:|
@@ -73,4 +73,14 @@ A separately reviewed surrounding function frame excludes decoys, base reassignm
 
 This is bounded fixed-source operation evidence. Initialization correctness, loop guards, size bounds, overflow, termination, reference text conflicts and whole algorithm equivalence remain independent. No target code, method policy or subject pin is repaired to clear existing findings. Those repairs remain in the approved later implementation work.
 
-Current resolution: 350 cases, 325 PASS, nine preserved FAIL, four NOT_APPLICABLE and 148 NOT_RUN. Original 416 ledger: 268 observed (256 PASS, three NOT_APPLICABLE, nine FAIL) plus 148 pending. The 246 anchor has 98 execution verdicts and 148 pending.
+Recurrence checkpoint: 350 cases, 325 PASS, nine preserved FAIL, four NOT_APPLICABLE and 148 NOT_RUN. Original 416 ledger: 268 observed (256 PASS, three NOT_APPLICABLE, nine FAIL) plus 148 pending. The 246 anchor has 98 execution verdicts and 148 pending.
+
+## Selected codec state transitions
+
+Six more source clauses cover the byte carry initializer, the standard ASCII alphabet-position map and corresponding decode carry lookup, inner counter/index updates, and explicit decode length/source-offset advancement. Actual Go type objects bind each local variable and declaration. The selector is checked against independent z/u alphabet literals, its actual local return binding and the real Base calls; reassignment and address escapes cannot establish ASCII scope. Arbitrary Unicode alphabets are outside this proof.
+
+The counter body increment and for Post decrement affect distinct bare local int variables. With no intervening control transfer, write or observation, their normal-completion state matches the reference order. Go body-to-Post semantics is an explicit language boundary. A reviewed cloned frame fixes surrounding context but never replaces any transition predicate. Unknown structures remain ERROR; recognized incorrect updates fail their own predicate. Map construction and the current-character carry lookup are separate predicates; a failure in one is not copied to the other. Source controls are parsed/type-checked as data and never executed.
+
+The encode length/cursor composite remains pending because its range cursor needs a separate state-projection contract. Loop guards, leading zeros, size bounds, overflow, termination and full algorithm equivalence also remain independent. Existing source identity checks, integer and recurrence audits, subject pins and all nine findings are preserved.
+
+Current resolution: 350 cases, 331 PASS, nine FAIL, four NOT_APPLICABLE and 142 NOT_RUN. Original 416 ledger: 274 observed (262 PASS, three NOT_APPLICABLE, nine FAIL) plus 142 pending. The 246 anchor has 104 execution verdicts and 142 pending.

@@ -14,7 +14,7 @@ from pathlib import Path
 import zipfile
 
 REPO=Path(__file__).resolve().parents[1]
-IDS=['cid10#base-encode.1','cid10#base-decode.1','cid10#base-encode.8','cid10#base-encode.9','cid10#base-encode.10','cid10#base-decode.9','cid10#base-decode.10','cid10#base-decode.11']
+IDS=['cid10#base-encode.1','cid10#base-decode.1','cid10#base-encode.8','cid10#base-encode.9','cid10#base-encode.10','cid10#base-decode.9','cid10#base-decode.10','cid10#base-decode.11','cid10#base-encode.6','cid10#base-encode.11','cid10#base-decode.2','cid10#base-decode.7','cid10#base-decode.12','cid10#base-decode.13']
 CASE='did-1.1/sage-resolution/integer-source-arithmetic'
 OPERATION='debug.ReadBuildInfo + local go env + module cache/ZIP byte capture'
 
@@ -36,7 +36,7 @@ def verify_integer_source(raw,report,repo=REPO):
     assert raw['profile']==report['profile']=='did-1.1' and raw['subject']==report['subject']
     cases=[c for c in raw['cases'] if '/integer-source-' in c['case']]
     assert len(cases)==1 and cases[0]['case']==CASE
-    observations=cases[0]['observations'];assert len(observations)==8
+    observations=cases[0]['observations'];assert len(observations)==14
     assert [o['statement'] for o in observations]==IDS
     witness=json.loads((repo/'profiles/sageresolution/integer_source_witness.json').read_text())
     assert witness['schema']=='sage-integer-source-witness/1'
@@ -54,6 +54,11 @@ def verify_integer_source(raw,report,repo=REPO):
     assert v['call_paths']==[[s['module']+'/vm.'+op+'Multikey',s['module']+'/internal/multiformats.'+op+'Multibase',s['module']+'/internal/multiformats.Base'+op] for op in ['Encode','Decode']]
     assert v['audits']==witness['audits']
     assert v['carry']==witness['carry']
+    assert v['state']==witness['state']
+    assert len(v['state'])==2
+    for audit,count in zip(v['state'],[2,4]):
+        assert not audit['unknown'] and len(audit['steps'])==count and audit['roles'] and audit['scope']
+        assert all(step['correct'] is True and step['expressions'] for step in audit['steps'])
     assert len(v['carry'])==2
     for audit in v['carry']:
         assert not audit['unknown'] and len(audit['steps'])==3
@@ -75,7 +80,7 @@ def verify_integer_source(raw,report,repo=REPO):
 def main():
     p=argparse.ArgumentParser();p.add_argument('--reports',type=Path,required=True);args=p.parse_args();r=args.reports
     ids=verify_integer_source(json.loads((r/'resolution-did-1.1-raw.json').read_text()),json.loads((r/'resolution-did-1.1.json').read_text()))
-    print(f'Verified {len(ids)} fixed-source integer arithmetic clauses, canonical h1 and 16 cache files')
+    print(f'Verified {len(ids)} fixed-source arithmetic and state clauses, canonical h1 and 16 cache files')
 
 
 if __name__=='__main__':main()

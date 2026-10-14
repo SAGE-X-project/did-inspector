@@ -182,3 +182,44 @@ func TestCarryVerdictsPreserveUnknownContext(t *testing.T) {
 		t.Fatal("invalid step")
 	}
 }
+
+func TestStateVerdictsAreIndependentAndBounded(t *testing.T) {
+	observations := judgeIntegerSource(t.Context(), sourceControl(t), "unit")
+	var v integerSourceEvidence
+	if e := json.Unmarshal([]byte(observations[0].Observed), &v); e != nil {
+		t.Fatal(e)
+	}
+	if len(v.State) != 2 {
+		t.Fatal("missing state evidence")
+	}
+	for _, a := range v.State {
+		for i := range a.Steps {
+			if stateVerdict(a, i) != core.Pass {
+				t.Fatal(a)
+			}
+		}
+		a.Steps[0].Correct = false
+		if stateVerdict(a, 0) != core.Fail || stateVerdict(a, 1) != core.Pass {
+			t.Fatal("step verdict coupling")
+		}
+		a.Steps[0].Correct = true
+		a.Unknown = []string{"unreviewed"}
+		if stateVerdict(a, 0) != core.Error {
+			t.Fatal("unknown accepted")
+		}
+		a.Unknown = nil
+		a.Frame = "wrong"
+		if stateVerdict(a, 0) != core.Error {
+			t.Fatal("frame ignored")
+		}
+	}
+	for _, a := range []sourcearith.StateAudit{{}, {Root: IntegerSourceModule + "/internal/multiformats.BaseEncode", Frame: "4b94ff9ac70dd5af838a92595d85f199f80598e4bfa88b764b6ab4717c41465f"}} {
+		if stateVerdict(a, 0) != core.Error {
+			t.Fatal("missing steps")
+		}
+	}
+	a := v.State[1]
+	if stateVerdict(a, -1) != core.Error || stateVerdict(a, 4) != core.Error {
+		t.Fatal("invalid index")
+	}
+}
