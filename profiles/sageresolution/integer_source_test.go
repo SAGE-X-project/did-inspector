@@ -275,7 +275,7 @@ func TestPrefixVerdictsPreserveIndependentPredicates(t *testing.T) {
 	if err := json.Unmarshal([]byte(obs[0].Observed), &v); err != nil {
 		t.Fatal(err)
 	}
-	if len(v.Prefix) != 2 || len(obs) != 23 {
+	if len(v.Prefix) != 2 || len(obs) != 28 {
 		t.Fatal("missing prefix observations")
 	}
 	for _, a := range v.Prefix {
@@ -317,7 +317,7 @@ func TestGuardVerdictsBoundBothRoots(t *testing.T) {
 	if e := json.Unmarshal([]byte(obs[0].Observed), &evidence); e != nil {
 		t.Fatal(e)
 	}
-	if len(obs) != 23 || len(evidence.Guard) != 2 {
+	if len(obs) != 28 || len(evidence.Guard) != 2 {
 		t.Fatal("missing guards")
 	}
 	for _, a := range evidence.Guard {
@@ -342,5 +342,47 @@ func TestGuardVerdictsBoundBothRoots(t *testing.T) {
 		if guardVerdict(a) != core.Error {
 			t.Fatal("missing evidence")
 		}
+	}
+}
+
+func TestOutputVerdictsPreserveSeparateClauses(t *testing.T) {
+	obs := judgeIntegerSource(t.Context(), sourceControl(t), "unit")
+	var v integerSourceEvidence
+	if e := json.Unmarshal([]byte(obs[0].Observed), &v); e != nil {
+		t.Fatal(e)
+	}
+	if len(obs) != 28 || len(v.Output) != 2 {
+		t.Fatal("missing output evidence")
+	}
+	for _, a := range v.Output {
+		for i := range a.Steps {
+			if outputVerdict(a, i) != core.Pass {
+				t.Fatal(a)
+			}
+		}
+		a.Steps[0].Correct = false
+		if outputVerdict(a, 0) != core.Fail || outputVerdict(a, 1) != core.Pass {
+			t.Fatal("coupled output clauses")
+		}
+		a.Unknown = []string{"unproved"}
+		if outputVerdict(a, 0) != core.Error {
+			t.Fatal("missing evidence passed")
+		}
+		a.Unknown = nil
+		a.Frame = "other"
+		if outputVerdict(a, 0) != core.Error {
+			t.Fatal("changed context passed")
+		}
+	}
+	if outputVerdict(sourcearith.OutputAudit{}, 0) != core.Error {
+		t.Fatal("missing root")
+	}
+	a := v.Output[0]
+	if outputVerdict(a, -1) != core.Error || outputVerdict(a, 3) != core.Error {
+		t.Fatal("invalid index")
+	}
+	a.Steps = nil
+	if outputVerdict(a, 0) != core.Error {
+		t.Fatal("missing steps")
 	}
 }

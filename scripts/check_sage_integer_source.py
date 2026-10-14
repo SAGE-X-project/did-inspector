@@ -14,7 +14,7 @@ from pathlib import Path
 import zipfile
 
 REPO=Path(__file__).resolve().parents[1]
-IDS=['cid10#base-encode.1','cid10#base-decode.1','cid10#base-encode.8','cid10#base-encode.9','cid10#base-encode.10','cid10#base-decode.9','cid10#base-decode.10','cid10#base-decode.11','cid10#base-encode.6','cid10#base-encode.11','cid10#base-decode.2','cid10#base-decode.7','cid10#base-decode.12','cid10#base-decode.13','cid10#base-encode.5','cid10#base-encode.12','cid10#base-decode.6','cid10#base-encode.2','cid10#base-encode.3','cid10#base-decode.3','cid10#base-decode.4','cid10#base-encode.7','cid10#base-decode.8']
+IDS=['cid10#base-encode.1','cid10#base-decode.1','cid10#base-encode.8','cid10#base-encode.9','cid10#base-encode.10','cid10#base-decode.9','cid10#base-decode.10','cid10#base-decode.11','cid10#base-encode.6','cid10#base-encode.11','cid10#base-decode.2','cid10#base-decode.7','cid10#base-decode.12','cid10#base-decode.13','cid10#base-encode.5','cid10#base-encode.12','cid10#base-decode.6','cid10#base-encode.2','cid10#base-encode.3','cid10#base-decode.3','cid10#base-decode.4','cid10#base-encode.7','cid10#base-decode.8','cid10#base-encode.14','cid10#base-encode.15','cid10#base-encode.16','cid10#base-decode.14','cid10#base-decode.15']
 CASE='did-1.1/sage-resolution/integer-source-arithmetic'
 OPERATION='debug.ReadBuildInfo + local go env + module cache/ZIP byte capture'
 
@@ -36,7 +36,7 @@ def verify_integer_source(raw,report,repo=REPO):
     assert raw['profile']==report['profile']=='did-1.1' and raw['subject']==report['subject']
     cases=[c for c in raw['cases'] if '/integer-source-' in c['case']]
     assert len(cases)==1 and cases[0]['case']==CASE
-    observations=cases[0]['observations'];assert len(observations)==23
+    observations=cases[0]['observations'];assert len(observations)==28
     assert [o['statement'] for o in observations]==IDS
     witness=json.loads((repo/'profiles/sageresolution/integer_source_witness.json').read_text())
     assert witness['schema']=='sage-integer-source-witness/1'
@@ -55,6 +55,11 @@ def verify_integer_source(raw,report,repo=REPO):
     assert v['audits']==witness['audits']
     assert v['carry']==witness['carry']
     assert v['state']==witness['state']
+    assert v['output']==witness['output']
+    assert len(v['output'])==2
+    for audit,count,projection in zip(v['output'],[3,2],[3,4]):
+        assert not audit['unknown'] and len(audit['steps'])==count and len(audit['projection'])==projection and len(audit['scope'])==3 and len(audit['roles'])==7
+        assert all(s['correct'] is True and s['expressions'] for s in audit['steps'])
     assert v['guard']==witness['guard']
     assert len(v['guard'])==2
     for audit in v['guard']:
