@@ -1252,5 +1252,71 @@
       ],
       "unknown": []
     }
+  ],
+  "guard": [
+    {
+      "root": "github.com/sage-x-project/did-go/internal/multiformats.BaseEncode",
+      "frame": "f141dd42188b5485028e8d289725a40b1b09a79a473944dd1d77f0f62f187807",
+      "roles": {
+        "buffer": "digits []int @internal/multiformats/base.go:59:2",
+        "carry": "carry int @internal/multiformats/base.go:62:3",
+        "counter": "i int @internal/multiformats/base.go:63:3",
+        "length": "length int @internal/multiformats/base.go:60:2",
+        "position": "pos int @internal/multiformats/base.go:64:7",
+        "size": "size int @internal/multiformats/base.go:58:2"
+      },
+      "scope": [
+        "fixed source, stable input, successful allocation and normal iteration completion",
+        "expected relation: size=len(actual recurrence buffer)>=0 after make completion; initial pos=size-1>=-1 and i=0",
+        "expected relation: on the unchanged body i++/Post pos-- path, pos>=0 is equivalent to pos!=-1; -1 stops before another decrement",
+        "size formula, sufficient capacity, global termination, arbitrary input mutation and runtime/binary attestation are separate"
+      ],
+      "steps": [
+        {
+          "kind": "inner-initialization-and-guard",
+          "expressions": [
+            "i := 0",
+            "pos := size - 1",
+            "(carry != 0 || i < length) && pos >= 0",
+            "i++",
+            "pos--"
+          ],
+          "correct": true
+        }
+      ],
+      "unknown": []
+    },
+    {
+      "root": "github.com/sage-x-project/did-go/internal/multiformats.BaseDecode",
+      "frame": "bc22349fe91ab8dc0caa0851fdfa6f9ffc8b91077a5e310efe1b8f41e85718d7",
+      "roles": {
+        "buffer": "decoded []int @internal/multiformats/base.go:104:2",
+        "carry": "carry int @internal/multiformats/base.go:107:3",
+        "counter": "i int @internal/multiformats/base.go:111:3",
+        "length": "length int @internal/multiformats/base.go:105:2",
+        "position": "pos int @internal/multiformats/base.go:112:7",
+        "size": "size int @internal/multiformats/base.go:103:2"
+      },
+      "scope": [
+        "fixed source, stable input, successful allocation and normal iteration completion",
+        "expected relation: size=len(actual recurrence buffer)>=0 after make completion; initial pos=size-1>=-1 and i=0",
+        "expected relation: on the unchanged body i++/Post pos-- path, pos>=0 is equivalent to pos!=-1; -1 stops before another decrement",
+        "size formula, sufficient capacity, global termination, arbitrary input mutation and runtime/binary attestation are separate"
+      ],
+      "steps": [
+        {
+          "kind": "inner-initialization-and-guard",
+          "expressions": [
+            "i := 0",
+            "pos := size - 1",
+            "(carry != 0 || i < length) && pos >= 0",
+            "i++",
+            "pos--"
+          ],
+          "correct": true
+        }
+      ],
+      "unknown": []
+    }
   ]
 }

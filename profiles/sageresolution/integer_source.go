@@ -10,7 +10,7 @@ import (
 	"runtime"
 )
 
-var integerSourceIDs = []string{"cid10#base-encode.1", "cid10#base-decode.1", "cid10#base-encode.8", "cid10#base-encode.9", "cid10#base-encode.10", "cid10#base-decode.9", "cid10#base-decode.10", "cid10#base-decode.11", "cid10#base-encode.6", "cid10#base-encode.11", "cid10#base-decode.2", "cid10#base-decode.7", "cid10#base-decode.12", "cid10#base-decode.13", "cid10#base-encode.5", "cid10#base-encode.12", "cid10#base-decode.6", "cid10#base-encode.2", "cid10#base-encode.3", "cid10#base-decode.3", "cid10#base-decode.4"}
+var integerSourceIDs = []string{"cid10#base-encode.1", "cid10#base-decode.1", "cid10#base-encode.8", "cid10#base-encode.9", "cid10#base-encode.10", "cid10#base-decode.9", "cid10#base-decode.10", "cid10#base-decode.11", "cid10#base-encode.6", "cid10#base-encode.11", "cid10#base-decode.2", "cid10#base-decode.7", "cid10#base-decode.12", "cid10#base-decode.13", "cid10#base-encode.5", "cid10#base-encode.12", "cid10#base-decode.6", "cid10#base-encode.2", "cid10#base-encode.3", "cid10#base-decode.3", "cid10#base-decode.4", "cid10#base-encode.7", "cid10#base-decode.8"}
 
 func integerSourceRequest() IntegerSourceRequest {
 	var selected codecFixture
@@ -26,6 +26,7 @@ type integerSourceEvidence struct {
 	Source       IntegerSourceResult       `json:"source"`
 	Audits       []sourcearith.Audit       `json:"audits"`
 	Cursor       []sourcearith.CursorAudit `json:"cursor"`
+	Guard        []sourcearith.StateAudit  `json:"guard"`
 	Prefix       []sourcearith.PrefixAudit `json:"prefix"`
 	State        []sourcearith.StateAudit  `json:"state"`
 	Carry        []sourcearith.CarryAudit  `json:"carry"`
@@ -47,7 +48,7 @@ func sourceIdentity(v IntegerSourceResult) bool {
 	return true
 }
 func judgeIntegerSource(ctx context.Context, v IntegerSourceResult, input string) []core.Observation {
-	evidence := integerSourceEvidence{Source: v, Audits: []sourcearith.Audit{}, Carry: []sourcearith.CarryAudit{}, State: []sourcearith.StateAudit{}, Cursor: []sourcearith.CursorAudit{}, Prefix: []sourcearith.PrefixAudit{}, CallPaths: [][]string{}, Compiler: runtime.Version(), Architecture: runtime.GOARCH}
+	evidence := integerSourceEvidence{Source: v, Audits: []sourcearith.Audit{}, Carry: []sourcearith.CarryAudit{}, State: []sourcearith.StateAudit{}, Cursor: []sourcearith.CursorAudit{}, Prefix: []sourcearith.PrefixAudit{}, Guard: []sourcearith.StateAudit{}, CallPaths: [][]string{}, Compiler: runtime.Version(), Architecture: runtime.GOARCH}
 	obs := libraryUnavailable(integerSourceIDs, core.Error, "Static inspection of pinned module source. Go h1 ZIP content digest binds source identity to the reported dependency pin; cached production files must match ZIP bytes. Standard Go parser/types resolve public codec-to-base symbol paths and all selected algorithm helpers, used global initializers, argument arithmetic and numeric conversions. Reviewed text/error/buffer boundaries are explicit. This is fixed-source arithmetic compliance, not proof of verbatim compiled binary bytes, all runtime executions, overflow safety, capacity bounds, termination, reference steps or output equivalence. Public codec calls are diagnostic only.", input, evidence)
 	if !sourceIdentity(v) || runtime.Version() != v.Compiler {
 		return finishIntegerSource(ctx, evidence, obs)
@@ -117,6 +118,11 @@ func judgeIntegerSource(ctx context.Context, v IntegerSourceResult, input string
 			obs[start+j].Verdict = cursorVerdict(cursor, j)
 			obs[start+j].Expected = "Fixed-source stable-input cursor projection: actual byte/ASCII character at the prefix offset, each normal iteration, and independent length storage with next cursor. Go range header evaluation/body/Post semantics is explicit; backing bytes are not copied and caller concurrent mutation is excluded. No termination, overflow, full algorithm or runtime-trace claim."
 		}
+		guard := program.GuardAudit(root)
+		evidence.Guard = append(evidence.Guard, guard)
+		obs[21+i].Verdict = guardVerdict(guard)
+		obs[21+i].Expected = "Fixed-source inner-loop initialization and guard, with actual local counter/carry/length/index and successful allocation size. Reviewed descending position domain justifies >=0 versus !=-1; arbitrary integer equivalence, capacity formula, global termination and runtime/binary attestation are separate."
+
 		prefix := program.PrefixAudit(root)
 		evidence.Prefix = append(evidence.Prefix, prefix)
 		for j := 0; j < 2; j++ {
@@ -247,6 +253,24 @@ func prefixVerdict(a sourcearith.PrefixAudit, index int) core.Verdict {
 		return core.Error
 	}
 	if !a.Steps[index].Correct {
+		return core.Fail
+	}
+	return core.Pass
+}
+
+// The initializer and guard predicate is independent of previous audit results.
+func guardVerdict(a sourcearith.StateAudit) core.Verdict {
+	frame := ""
+	switch a.Root {
+	case IntegerSourceModule + "/internal/multiformats.BaseEncode":
+		frame = "f141dd42188b5485028e8d289725a40b1b09a79a473944dd1d77f0f62f187807"
+	case IntegerSourceModule + "/internal/multiformats.BaseDecode":
+		frame = "bc22349fe91ab8dc0caa0851fdfa6f9ffc8b91077a5e310efe1b8f41e85718d7"
+	}
+	if frame == "" || a.Frame != frame || len(a.Unknown) != 0 || len(a.Steps) != 1 {
+		return core.Error
+	}
+	if !a.Steps[0].Correct {
 		return core.Fail
 	}
 	return core.Pass

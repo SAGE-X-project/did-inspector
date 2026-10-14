@@ -2,7 +2,7 @@
 
 All 246 clauses unobserved at `1efc9f0` are reviewed individually in the [machine-readable audit](sage-remaining-clause-review.json). The earlier [353-clause review](sage-resolution-batch-review.json) and all 416 historical ledger entries remain intact. Review coverage does not establish execution coverage or standards conformance.
 
-This grouped implementation adds 98 selected-branch observations across 52 cases, including twenty-one fixed-source arithmetic, state, cursor and prefix obligations. Of the 246 anchor clauses, 111 now have execution verdicts and 135 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
+This grouped implementation adds 100 selected-branch observations across 52 cases, including twenty-three fixed-source arithmetic, state, cursor, prefix and guard obligations. Of the 246 anchor clauses, 113 now have execution verdicts and 133 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
 
 | Review disposition | Clauses |
 |---|---:|
@@ -101,4 +101,14 @@ A stable input, zero counter, exact short-circuit length/zero-symbol guard and s
 
 Normal completion and stable input are explicit assumptions. No backing-byte copy, complete codec equivalence, allocation-size proof, overflow guarantee, global termination or runtime/binary attestation is established here. Subject pins and all nine findings remain unchanged.
 
-Current resolution: 350 cases, 338 PASS, nine preserved FAIL, four NOT_APPLICABLE and 135 NOT_RUN. Original 416 ledger: 281 observed (269 PASS, three NOT_APPLICABLE, nine FAIL) plus 135 pending. The 246 anchor has 111 execution verdicts and 135 pending.
+Prefix checkpoint: 350 cases, 338 PASS, nine preserved FAIL, four NOT_APPLICABLE and 135 NOT_RUN. Original 416 ledger: 281 observed (269 PASS, three NOT_APPLICABLE, nine FAIL) plus 135 pending. The 246 anchor has 111 execution verdicts and 135 pending.
+
+## Inner-loop initialization and guard evidence
+
+Two more fixed-source obligations, `cid10#base-encode.7` and `cid10#base-decode.8`, independently bind the actual local counter, carry, length, recurrence buffer index and successful `make([]int, size)` allocation. Typed initializers must establish `i=0` and `pos=size-1`; the actual condition must combine carry/nonzero or counter/length with the position bound.
+
+After normal allocation completion, `size=len(buffer)>=0`. On the reviewed unchanged descending path, the position starts at `size-1`, decrements once after each normal body and stops at `-1`. Only that reachable domain justifies `pos>=0` versus the reference `pos!=-1`. A zero-size buffer starts at `-1` without entering. The complete function frame excludes intervening writes, escapes and control transfers; it is a prerequisite, never the predicate oracle. Recognized wrong constants, operators or local operands fail the composite clause; unsupported alternatives or changed context remain ERROR. Supported `pos!=-1`, `pos>-1` and `size+(-1)` expressions preserve the same relation.
+
+This is fixed-source inspection with stable inputs, successful allocation and normal completion, not a proof of the size formula, sufficient capacity, complete codec equivalence, global termination or runtime/binary attestation. Mutation controls are parsed/typechecked data and are not executed. The existing nine findings and target pins remain unchanged.
+
+Current resolution: 350 cases, 340 PASS, nine FAIL, four NOT_APPLICABLE and 133 NOT_RUN. Original 416 ledger: 283 observed (271 PASS, three NOT_APPLICABLE, nine FAIL) plus 133 pending. The 246 anchor has 113 execution verdicts and 133 pending.

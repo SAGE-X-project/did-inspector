@@ -77,7 +77,7 @@
   "categories": {
     "additional-data-or-feature": 20,
     "document-or-applicability-review": 79,
-    "additional-observer-operation": 23,
+    "additional-observer-operation": 21,
     "operational-or-authority-evidence": 4,
     "existing-observation": 9
   },
@@ -338,15 +338,6 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "cid10#base-decode.8",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "04da638dc857336b817978e246a80f6035e057a16e0f7bc32d71026a822c722c",
-      "baseline_verdict": "NOT_RUN",
-      "route": "codec-internals",
-      "generic_scope": "not-checkable"
-    },
-    {
       "id": "cid10#base-encode.13",
       "level": "requirement",
       "keywords": [],
@@ -387,15 +378,6 @@
       "level": "requirement",
       "keywords": [],
       "text_sha256": "673a6164e0be01e3eb96cf81445a4f45f3de307151e320fa63e26e086495fe00",
-      "baseline_verdict": "NOT_RUN",
-      "route": "codec-internals",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#base-encode.7",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "59713ac54ef586f9eb7537dea09b4214f4fe45a6fdd0abbc09685f9a37e3dea4",
       "baseline_verdict": "NOT_RUN",
       "route": "codec-internals",
       "generic_scope": "not-checkable"
@@ -6582,26 +6564,54 @@
       "cases": [
         "did-1.1/sage-resolution/integer-source-arithmetic"
       ]
+    },
+    {
+      "id": "cid10#base-decode.8",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "04da638dc857336b817978e246a80f6035e057a16e0f7bc32d71026a822c722c",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable",
+      "case_prefix": "/integer-source-",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ],
+      "expected_live_verdict": "PASS"
+    },
+    {
+      "id": "cid10#base-encode.7",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "59713ac54ef586f9eb7537dea09b4214f4fe45a6fdd0abbc09685f9a37e3dea4",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable",
+      "case_prefix": "/integer-source-",
+      "cases": [
+        "did-1.1/sage-resolution/integer-source-arithmetic"
+      ],
+      "expected_live_verdict": "PASS"
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 338,
+    "PASS": 340,
     "FAIL": 9,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 4,
     "ERROR": 0,
-    "NOT_RUN": 135
+    "NOT_RUN": 133
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 324,
+      "PASS": 326,
       "FAIL": 5,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 105
+      "NOT_RUN": 103
     },
     "recommendation": {
       "statements": 50,
