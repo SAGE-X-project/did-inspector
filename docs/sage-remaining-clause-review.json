@@ -23,10 +23,10 @@
     "runtime-candidate": 69
   },
   "execution_counts": {
-    "PASS": 123,
+    "PASS": 127,
     "FAIL": 4,
     "NOT_APPLICABLE": 2,
-    "NOT_RUN": 117
+    "NOT_RUN": 113
   },
   "clauses": [
     {
@@ -3050,11 +3050,13 @@
       "actor": "SAGE resolver/source or service dereferencer",
       "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The named conditional, alias, loop or intermediate value is not exposed by the selected public operation. Existing externally observed results do not prove this internal algorithm step; a passive attributed internal witness or an approved functional-equivalence interpretation is required.",
+      "status": "observed-selected-branch",
+      "reason": "Typed resolved-document service list, both optional field filters and same selected append/range; exact absent or single offered DID/URI media partition with original resolved maps/metadata and twelve independent public literal calls. Fixed helpers/Go semantics and normal typed inputs are premises. Not complete matching, URL/media semantics, authority or physical tracing.",
       "follow_up_condition": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/selection-source-roles"
+      ]
     },
     {
       "id": "res10-crd20261001#dereferencing-algorithm-resource.18",
@@ -3131,11 +3133,13 @@
       "actor": "SAGE resolver/source or service dereferencer",
       "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The named conditional, alias, loop or intermediate value is not exposed by the selected public operation. Existing externally observed results do not prove this internal algorithm step; a passive attributed internal witness or an approved functional-equivalence interpretation is required.",
+      "status": "observed-selected-branch",
+      "reason": "Typed resolved-document service list, both optional field filters and same selected append/range; exact absent or single offered DID/URI media partition with original resolved maps/metadata and twelve independent public literal calls. Fixed helpers/Go semantics and normal typed inputs are premises. Not complete matching, URL/media semantics, authority or physical tracing.",
       "follow_up_condition": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/selection-source-roles"
+      ]
     },
     {
       "id": "res10-crd20261001#dereferencing-algorithm-resource.22",
@@ -3289,11 +3293,13 @@
       "actor": "SAGE resolver/source or service dereferencer",
       "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The named conditional, alias, loop or intermediate value is not exposed by the selected public operation. Existing externally observed results do not prove this internal algorithm step; a passive attributed internal witness or an approved functional-equivalence interpretation is required.",
+      "status": "observed-selected-branch",
+      "reason": "Typed resolved-document service list, both optional field filters and same selected append/range; exact absent or single offered DID/URI media partition with original resolved maps/metadata and twelve independent public literal calls. Fixed helpers/Go semantics and normal typed inputs are premises. Not complete matching, URL/media semantics, authority or physical tracing.",
       "follow_up_condition": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/selection-source-roles"
+      ]
     },
     {
       "id": "res10-crd20261001#dereferencing-algorithm-resource.30",
@@ -3409,11 +3415,13 @@
       "actor": "SAGE resolver/source or service dereferencer",
       "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The named conditional, alias, loop or intermediate value is not exposed by the selected public operation. Existing externally observed results do not prove this internal algorithm step; a passive attributed internal witness or an approved functional-equivalence interpretation is required.",
+      "status": "observed-selected-branch",
+      "reason": "Typed resolved-document service list, both optional field filters and same selected append/range; exact absent or single offered DID/URI media partition with original resolved maps/metadata and twelve independent public literal calls. Fixed helpers/Go semantics and normal typed inputs are premises. Not complete matching, URL/media semantics, authority or physical tracing.",
       "follow_up_condition": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/selection-source-roles"
+      ]
     },
     {
       "id": "res10-crd20261001#dereferencing-algorithm-resource.36",

@@ -6,7 +6,7 @@ from check_sage_fragment_source import verify_fragment_source,CASE as SOURCE,MOD
 REPO=Path(__file__).resolve().parents[1]
 CASE='did-1.1/sage-resolution/service-source-roles'
 IDS=['res10-crd20261001#dereferencing-algorithm-resource.'+str(i) for i in [16,20,26,27]]
-PENDING=['cid10#retrieve-verification-method.3','res10-crd20261001#dereferencing-algorithm-fragment.3']+['res10-crd20261001#dereferencing-algorithm-resource.'+str(i) for i in [11,17,21]]
+PENDING=['cid10#retrieve-verification-method.3','res10-crd20261001#dereferencing-algorithm-fragment.3']+['res10-crd20261001#dereferencing-algorithm-resource.'+str(i) for i in [11]]
 def decoded(v):return json.loads(base64.b64decode(v,validate=True))
 def verify_service(raw,report,repo=REPO):
  verify_fragment_source(raw,report,repo)

@@ -62,14 +62,26 @@ func (r routingResolver) Resolve(ctx context.Context, id did.DID, o resolution.R
 	r.out.ResolveInputs = append(r.out.ResolveInputs, id.String())
 	b, e := json.Marshal(o)
 	if e != nil {
-		r.out.CaptureError = e.Error()
+		r.out.CaptureError = joinRoutingCapture(r.out.CaptureError, e.Error())
 	}
 	r.out.ResolveOptions = append(r.out.ResolveOptions, b)
 	result := r.delegate.Resolve(ctx, id, o)
 	// Capture the actual nested resolver output before fragment processing.
 	// Preserve the document and result passed to the dereferencer unchanged.
+	metadata, err := json.Marshal(result.ResolutionMetadata)
+	if err != nil {
+		r.out.CaptureError = joinRoutingCapture(r.out.CaptureError, err.Error())
+	} else {
+		r.out.ResolvedMetadata = metadata
+	}
 	if result.Document != nil {
-		r.out.DataModel, r.out.Entries, r.out.CaptureError = captureMaps(result.Document)
+		model, entries, captureError := captureMaps(result.Document)
+		r.out.DataModel, r.out.Entries = model, entries
+		r.out.ResolvedDataModel = append([]byte(nil), model...)
+		r.out.ResolvedEntries = append([]byte(nil), entries...)
+		if captureError != "" {
+			r.out.CaptureError = joinRoutingCapture(r.out.CaptureError, captureError)
+		}
 	}
 	return result
 }
@@ -110,7 +122,9 @@ func (*Subject) InspectRouting(ctx context.Context, q sageresolution.RoutingRequ
 			}
 		}
 		if result.Document != nil {
-			out.DataModel, out.Entries, out.CaptureError = captureMaps(result.Document)
+			model, entries, captureError := captureMaps(result.Document)
+			out.DataModel, out.Entries = model, entries
+			out.CaptureError = joinRoutingCapture(out.CaptureError, captureError)
 		}
 		out.Result, e = nativeResult(capture, result.ResolutionMetadata, result.DocumentMetadata)
 		return out, e
@@ -135,8 +149,19 @@ func (*Subject) InspectRouting(ctx context.Context, q sageresolution.RoutingRequ
 		out.DataModel = append([]byte(nil), model...)
 		out.Entries = append([]byte(nil), entries...)
 		if captureError != "" {
-			out.CaptureError = captureError
+			out.CaptureError = joinRoutingCapture(out.CaptureError, captureError)
 		}
 	}
 	return out, e
+}
+
+// joinRoutingCapture preserves earlier evidence failures across later captures.
+func joinRoutingCapture(previous, next string) string {
+	if next == "" {
+		return previous
+	}
+	if previous == "" {
+		return next
+	}
+	return previous + "\n" + next
 }

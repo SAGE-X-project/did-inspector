@@ -75,7 +75,7 @@
     "No operational source, registration, private key or deployment is supplied by this audit."
   ],
   "categories": {
-    "additional-data-or-feature": 16,
+    "additional-data-or-feature": 12,
     "document-or-applicability-review": 79,
     "additional-observer-operation": 11,
     "operational-or-authority-evidence": 4,
@@ -1093,42 +1093,6 @@
       "text_sha256": "fa044cf32d0535d65d2f1f4bd5f49b5b2cd72fdd48e5db52e07711eaa3e7a95b",
       "baseline_verdict": "NOT_RUN",
       "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.17",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "4e64e5cd50443bd0ab056bebce6b36eb71a8f48f48ea8123f7bd2ad996ef789b",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.21",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "411ef87e6953616f18685e1699eaf2fb572d870e7020c4a2ee72b9c97074cd74",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.29",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "a711554c329304c85db04ac9a44dd4ec0248e40b7055c6ab8ca56060f8dd6d4f",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.35",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "df0afad17cd52da7084e2b1aa62641dc214f9e56fb70e088313da2bdb0ba9b7d",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
       "generic_scope": "checked"
     },
     {
@@ -6688,26 +6652,90 @@
       "case_prefix": "/service-source-",
       "observed_in_scope": "sage-resolution",
       "reason": "Selected URI-list/string-endpoint service and relativeRef presence branches and typed endpoint/base/reference source roles, corroborated by seven fresh ordinary library calls including empty relativeRef presence. Whole service matching, media/URL semantics, authority and physical runtime trace remain separate."
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.17",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "4e64e5cd50443bd0ab056bebce6b36eb71a8f48f48ea8123f7bd2ad996ef789b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/selection-source-roles"
+      ],
+      "case_prefix": "/selection-source-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Typed resolved-document service list, both optional field filters and same selected append/range; exact absent or single offered DID/URI media partition with original resolved maps/metadata and twelve independent public literal calls. Fixed helpers/Go semantics and normal typed inputs are premises. Not complete matching, URL/media semantics, authority or physical tracing."
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.21",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "411ef87e6953616f18685e1699eaf2fb572d870e7020c4a2ee72b9c97074cd74",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/selection-source-roles"
+      ],
+      "case_prefix": "/selection-source-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Typed resolved-document service list, both optional field filters and same selected append/range; exact absent or single offered DID/URI media partition with original resolved maps/metadata and twelve independent public literal calls. Fixed helpers/Go semantics and normal typed inputs are premises. Not complete matching, URL/media semantics, authority or physical tracing."
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.29",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "a711554c329304c85db04ac9a44dd4ec0248e40b7055c6ab8ca56060f8dd6d4f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/selection-source-roles"
+      ],
+      "case_prefix": "/selection-source-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Typed resolved-document service list, both optional field filters and same selected append/range; exact absent or single offered DID/URI media partition with original resolved maps/metadata and twelve independent public literal calls. Fixed helpers/Go semantics and normal typed inputs are premises. Not complete matching, URL/media semantics, authority or physical tracing."
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.35",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "df0afad17cd52da7084e2b1aa62641dc214f9e56fb70e088313da2bdb0ba9b7d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/selection-source-roles"
+      ],
+      "case_prefix": "/selection-source-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Typed resolved-document service list, both optional field filters and same selected append/range; exact absent or single offered DID/URI media partition with original resolved maps/metadata and twelve independent public literal calls. Fixed helpers/Go semantics and normal typed inputs are premises. Not complete matching, URL/media semantics, authority or physical tracing."
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 355,
+    "PASS": 359,
     "FAIL": 10,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 4,
     "ERROR": 0,
-    "NOT_RUN": 117
+    "NOT_RUN": 113
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 341,
+      "PASS": 345,
       "FAIL": 6,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 87
+      "NOT_RUN": 83
     },
     "recommendation": {
       "statements": 50,
@@ -6719,5 +6747,5 @@
       "NOT_RUN": 30
     }
   },
-  "expected_live_cases": 359
+  "expected_live_cases": 360
 }
