@@ -23,10 +23,10 @@
     "runtime-candidate": 69
   },
   "execution_counts": {
-    "PASS": 117,
+    "PASS": 119,
     "FAIL": 4,
     "NOT_APPLICABLE": 2,
-    "NOT_RUN": 123
+    "NOT_RUN": 121
   },
   "clauses": [
     {
@@ -2835,11 +2835,13 @@
       "actor": "native resolver/dereferencer input or output",
       "applicable_evidence": "Fresh observable input/result contract only; internal variable assignment, all-valid-representations and global conformity need additional proof.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The named conditional, alias, loop or intermediate value is not exposed by the selected public operation. Existing externally observed results do not prove this internal algorithm step; a passive attributed internal witness or an approved functional-equivalence interpretation is required.",
+      "status": "observed-selected-branch",
+      "reason": "Selected fixed-source resolved-document and nonempty typed verificationRelationship branch and exact option-to-local-to-selection role, with five fresh normal library controls. Empty-option presence, media/retrieval semantics and physical runtime trace remain separate.",
       "follow_up_condition": "Fresh observable input/result contract only; internal variable assignment, all-valid-representations and global conformity need additional proof.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/fragment-relationship-source"
+      ]
     },
     {
       "id": "res10-crd20261001#dereferencing-algorithm-fragment.10",
@@ -2873,11 +2875,13 @@
       "actor": "native resolver/dereferencer input or output",
       "applicable_evidence": "Fresh observable input/result contract only; internal variable assignment, all-valid-representations and global conformity need additional proof.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Selected fixed-source resolved-document and nonempty typed verificationRelationship branch and exact option-to-local-to-selection role, with five fresh normal library controls. Empty-option presence, media/retrieval semantics and physical runtime trace remain separate.",
       "follow_up_condition": "Fresh observable input/result contract only; internal variable assignment, all-valid-representations and global conformity need additional proof.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/fragment-relationship-source"
+      ]
     },
     {
       "id": "res10-crd20261001#dereferencing-algorithm-fragment.3",

@@ -2,7 +2,7 @@
 
 All 246 clauses unobserved at `1efc9f0` are reviewed individually in the [machine-readable audit](sage-remaining-clause-review.json). The earlier [353-clause review](sage-resolution-batch-review.json) and all 416 historical ledger entries remain intact. Review coverage does not establish execution coverage or standards conformance.
 
-This grouped implementation connects 110 distinct selected clauses across 59 cases, including twenty-eight fixed-source codec obligations and five separately judged fragment obligations. Of the 246 anchor clauses, 123 now have execution verdicts and 123 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
+This grouped implementation connects 112 distinct selected clauses across 60 cases, including twenty-eight fixed-source codec obligations and five separately judged fragment obligations. Of the 246 anchor clauses, 125 now have execution verdicts and 121 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
 
 | Review disposition | Clauses |
 |---|---:|
@@ -149,3 +149,9 @@ Five normal public literal fixtures inspect `cid10#fragment-resolution.4`. A pas
 The selected component uses CID fragment semantics on its normal `application/did` typed-document branch; this does not establish `application/cid` ingress, other media semantics, every valid input or operational SAGE authority. All prior nine findings remain. Recursive traversal is one additional required-clause finding and a seventh repair cause to address only in the existing later core-repair work. No core, dependency pin, frozen standard or contract changed. Inputs are benign document maps and published public key material, with no offensive reproduction or modified subject execution.
 
 Current resolution checkpoint: 357 cases, 349 PASS, ten FAIL, four NOT_APPLICABLE and 123 NOT_RUN. Original 416 ledger: 293 observed (280 PASS, ten FAIL, three NOT_APPLICABLE) and 123 pending. The 246 anchor has 123 execution verdicts (117 PASS, four FAIL, two NOT_APPLICABLE) and 123 pending. Thirty internal clauses remain, including both size items and frozen codec-text conflicts.
+
+### Selected fragment relationship option roles
+
+A separate fixed-source case binds the resolved-document type branch and nonempty typed verificationRelationship guard, and the exact options field through its local value to the selection argument. Five ordinary actual calls cover referenced and embedded selection, a different valid relationship, no fragment and no relationship. Caller/helper context and five earlier fragment checks stay independently bound. Empty-option presence, complete parsing/retrieval, all media semantics and physical runtime tracing remain unestablished. No core repair or subject pin changes are made.
+
+The current report has 358 cases, 351 PASS, ten FAIL, four NOT_APPLICABLE and 121 NOT_RUN. The existing ten findings remain for the planned core repair step.
