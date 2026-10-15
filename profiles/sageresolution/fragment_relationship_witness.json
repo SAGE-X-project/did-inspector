@@ -1,0 +1,29 @@
+{
+  "root": "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).fragment",
+  "frame": "be1f9db0c7bde4a979ed0d3235287384cc16b5a2a0ebde7577dda4a1f5de0d87",
+  "roles": {
+    "content": "content *github.com/sage-x-project/did-go/document.Document",
+    "options": "opts github.com/sage-x-project/did-go/resolution.DereferenceOptions",
+    "relationship": "rel string"
+  },
+  "steps": [
+    {
+      "kind": "document-relationship-branch",
+      "expressions": [
+        "out.ContentStream.(type)",
+        "*document.Document",
+        "rel != \"\""
+      ],
+      "correct": true
+    },
+    {
+      "kind": "relationship-option-value",
+      "expressions": [
+        "opts.VerificationRelationship",
+        "rel"
+      ],
+      "correct": true
+    }
+  ],
+  "unknown": []
+}

@@ -79,7 +79,7 @@ func (p *Program) Import(name string) (*types.Package, error) {
 		}
 		files = append(files, f)
 	}
-	info := &types.Info{Types: map[ast.Expr]types.TypeAndValue{}, Defs: map[*ast.Ident]types.Object{}, Uses: map[*ast.Ident]types.Object{}, Selections: map[*ast.SelectorExpr]*types.Selection{}}
+	info := &types.Info{Types: map[ast.Expr]types.TypeAndValue{}, Defs: map[*ast.Ident]types.Object{}, Uses: map[*ast.Ident]types.Object{}, Selections: map[*ast.SelectorExpr]*types.Selection{}, Implicits: map[ast.Node]types.Object{}}
 	cfg := types.Config{Importer: p, GoVersion: "go1.26", Sizes: types.SizesFor("gc", runtime.GOARCH)}
 	pkg, e := cfg.Check(name, p.set, files, info)
 	if e != nil {
