@@ -115,6 +115,8 @@ func Profile(name string) (core.Profile, error) {
 	appendResourceChoiceCases(&p)
 	appendIntegerSourceCases(&p)
 	appendFragmentSourceCases(&p)
+	appendFragmentInitialCase(&p)
+	appendFragmentSearchCases(&p)
 	appendResolverProofCases(&p, rows)
 	appendClientCases(&p, rows)
 	appendRetrievalCases(&p, rows)

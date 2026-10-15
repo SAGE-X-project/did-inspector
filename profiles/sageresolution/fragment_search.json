@@ -1,0 +1,331 @@
+[
+  {
+    "name": "extension-list",
+    "document": {
+      "id": "did:example:resources",
+      "extension": {
+        "container": [
+          {
+            "child": {
+              "id": "did:example:resources#target",
+              "label": "public fragment map",
+              "values": [
+                false,
+                2,
+                "sample"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "expected_content": {
+      "id": "did:example:resources#target",
+      "label": "public fragment map",
+      "values": [
+        false,
+        2,
+        "sample"
+      ]
+    },
+    "request": {
+      "function": "dereference",
+      "input": "did:example:resources#target",
+      "accept": "application/did"
+    },
+    "control_document": {
+      "id": "did:example:resources",
+      "extension": {
+        "container": [
+          {
+            "child": {
+              "id": "did:example:resources#target",
+              "label": "public fragment map",
+              "values": [
+                false,
+                2,
+                "sample"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "method-extra",
+    "document": {
+      "id": "did:example:resources",
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw",
+          "extra": {
+            "container": [
+              {
+                "child": {
+                  "id": "did:example:resources#target",
+                  "label": "public fragment map",
+                  "values": [
+                    false,
+                    2,
+                    "sample"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "expected_content": {
+      "id": "did:example:resources#target",
+      "label": "public fragment map",
+      "values": [
+        false,
+        2,
+        "sample"
+      ]
+    },
+    "request": {
+      "function": "dereference",
+      "input": "did:example:resources#target",
+      "accept": "application/did"
+    },
+    "control_document": {
+      "id": "did:example:resources",
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "extension": {
+        "container": [
+          {
+            "child": {
+              "id": "did:example:resources#target",
+              "label": "public fragment map",
+              "values": [
+                false,
+                2,
+                "sample"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "embedded-extra",
+    "document": {
+      "id": "did:example:resources",
+      "authentication": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw",
+          "extra": {
+            "container": [
+              {
+                "child": {
+                  "id": "did:example:resources#target",
+                  "label": "public fragment map",
+                  "values": [
+                    false,
+                    2,
+                    "sample"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "expected_content": {
+      "id": "did:example:resources#target",
+      "label": "public fragment map",
+      "values": [
+        false,
+        2,
+        "sample"
+      ]
+    },
+    "request": {
+      "function": "dereference",
+      "input": "did:example:resources#target",
+      "accept": "application/did"
+    },
+    "control_document": {
+      "id": "did:example:resources",
+      "authentication": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ],
+      "extension": {
+        "container": [
+          {
+            "child": {
+              "id": "did:example:resources#target",
+              "label": "public fragment map",
+              "values": [
+                false,
+                2,
+                "sample"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "service-extra",
+    "document": {
+      "id": "did:example:resources",
+      "service": [
+        {
+          "id": "#one",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/base/",
+          "extra": {
+            "container": [
+              {
+                "child": {
+                  "id": "did:example:resources#target",
+                  "label": "public fragment map",
+                  "values": [
+                    false,
+                    2,
+                    "sample"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "expected_content": {
+      "id": "did:example:resources#target",
+      "label": "public fragment map",
+      "values": [
+        false,
+        2,
+        "sample"
+      ]
+    },
+    "request": {
+      "function": "dereference",
+      "input": "did:example:resources#target",
+      "accept": "application/did"
+    },
+    "control_document": {
+      "id": "did:example:resources",
+      "service": [
+        {
+          "id": "#one",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/base/"
+        }
+      ],
+      "extension": {
+        "container": [
+          {
+            "child": {
+              "id": "did:example:resources#target",
+              "label": "public fragment map",
+              "values": [
+                false,
+                2,
+                "sample"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "endpoint-map",
+    "document": {
+      "id": "did:example:resources",
+      "service": [
+        {
+          "id": "#one",
+          "type": "Messaging",
+          "serviceEndpoint": {
+            "uri": "https://agent.example/base/",
+            "extra": {
+              "container": [
+                {
+                  "child": {
+                    "id": "did:example:resources#target",
+                    "label": "public fragment map",
+                    "values": [
+                      false,
+                      2,
+                      "sample"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "expected_content": {
+      "id": "did:example:resources#target",
+      "label": "public fragment map",
+      "values": [
+        false,
+        2,
+        "sample"
+      ]
+    },
+    "request": {
+      "function": "dereference",
+      "input": "did:example:resources#target",
+      "accept": "application/did"
+    },
+    "control_document": {
+      "id": "did:example:resources",
+      "service": [
+        {
+          "id": "#one",
+          "type": "Messaging",
+          "serviceEndpoint": {
+            "uri": "https://agent.example/base/"
+          }
+        }
+      ],
+      "extension": {
+        "container": [
+          {
+            "child": {
+              "id": "did:example:resources#target",
+              "label": "public fragment map",
+              "values": [
+                false,
+                2,
+                "sample"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+]

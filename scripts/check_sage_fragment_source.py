@@ -52,7 +52,7 @@ def verify_fragment_source(raw,report,repo=REPO):
     assert len(selected)==38 and set(selected)==set(s['files'])
     assert all(data(s['files'][n])==b for n,b in selected.items())
     witness=json.loads((repo/'profiles/sageresolution/fragment_source_witness.json').read_text())
-    assert e['audit']==witness and not witness['unknown'] and len(witness['steps'])==3
+    assert semantic_equal(e['audit'],witness,'unknown') and not witness['unknown'] and len(witness['steps'])==3
     assert len(witness['call_paths'])==3 and len(witness['roles'])==4 and len(witness['scope'])==4
     assert all(step['correct'] is True and step['expressions'] for step in witness['steps'])
     assert MODULE+'/resolution.ErrorDereferenceResult' in witness['frames']
@@ -80,8 +80,12 @@ def verify_fragment_source(raw,report,repo=REPO):
     for o in obs:
         assert o['verdict']==live[o['statement']]['verdict']=='PASS' and o['detail'] and o['expected']
         assert CASE in live[o['statement']]['cases']
-    for ident in ['cid10#fragment-resolution.1','cid10#fragment-resolution.4','cid10#base-encode.4','cid10#base-decode.5']:
+    for ident in ['cid10#base-encode.4','cid10#base-decode.5']:
         assert live[ident]['verdict']=='NOT_RUN'
+    for ident,prefix,wanted in [('cid10#fragment-resolution.1','/fragment-initial-','PASS'),('cid10#fragment-resolution.4','/fragment-search-','FAIL')]:
+        linked=[c['case'] for c in raw['cases'] if prefix in c['case']]
+        assert live[ident]['verdict']==(wanted if linked else 'NOT_RUN')
+        if linked: assert set(live[ident]['cases'])==set(linked)
     return set(IDS)
 
 

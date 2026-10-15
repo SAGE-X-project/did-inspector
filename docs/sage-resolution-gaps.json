@@ -77,7 +77,7 @@
   "categories": {
     "additional-data-or-feature": 20,
     "document-or-applicability-review": 79,
-    "additional-observer-operation": 13,
+    "additional-observer-operation": 11,
     "operational-or-authority-evidence": 4,
     "existing-observation": 9
   },
@@ -386,24 +386,6 @@
       "baseline_verdict": "NOT_RUN",
       "route": "authority",
       "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#fragment-resolution.1",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "6e21f3dc6e6cb45c618c0720646f26f18cf76ca2c0b5839d58c13c75404cca06",
-      "baseline_verdict": "NOT_RUN",
-      "route": "method-retrieval",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "cid10#fragment-resolution.4",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "5cd76049b3935adbe84f33f91bf5a42487cdc5d858e9154866008ffd4107415c",
-      "baseline_verdict": "NOT_RUN",
-      "route": "method-retrieval",
-      "generic_scope": "checked"
     },
     {
       "id": "cid10#json-ld-context.1",
@@ -6632,26 +6614,58 @@
         "did-1.1/sage-resolution/fragment-source-bindings"
       ],
       "expected_live_verdict": "PASS"
+    },
+    {
+      "id": "cid10#fragment-resolution.1",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "6e21f3dc6e6cb45c618c0720646f26f18cf76ca2c0b5839d58c13c75404cca06",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked",
+      "case_prefix": "/fragment-initial-",
+      "cases": [
+        "did-1.1/sage-resolution/fragment-initial-source"
+      ],
+      "expected_live_verdict": "PASS"
+    },
+    {
+      "id": "cid10#fragment-resolution.4",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "5cd76049b3935adbe84f33f91bf5a42487cdc5d858e9154866008ffd4107415c",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked",
+      "case_prefix": "/fragment-search-",
+      "cases": [
+        "did-1.1/sage-resolution/fragment-search-extension-list",
+        "did-1.1/sage-resolution/fragment-search-method-extra",
+        "did-1.1/sage-resolution/fragment-search-embedded-extra",
+        "did-1.1/sage-resolution/fragment-search-service-extra",
+        "did-1.1/sage-resolution/fragment-search-endpoint-map"
+      ],
+      "expected_live_verdict": "FAIL"
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 348,
-    "FAIL": 9,
+    "PASS": 349,
+    "FAIL": 10,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 4,
     "ERROR": 0,
-    "NOT_RUN": 125
+    "NOT_RUN": 123
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 334,
-      "FAIL": 5,
+      "PASS": 335,
+      "FAIL": 6,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 95
+      "NOT_RUN": 93
     },
     "recommendation": {
       "statements": 50,
@@ -6663,5 +6677,5 @@
       "NOT_RUN": 30
     }
   },
-  "expected_live_cases": 351
+  "expected_live_cases": 357
 }

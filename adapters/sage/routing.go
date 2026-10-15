@@ -65,7 +65,13 @@ func (r routingResolver) Resolve(ctx context.Context, id did.DID, o resolution.R
 		r.out.CaptureError = e.Error()
 	}
 	r.out.ResolveOptions = append(r.out.ResolveOptions, b)
-	return r.delegate.Resolve(ctx, id, o)
+	result := r.delegate.Resolve(ctx, id, o)
+	// Capture the actual nested resolver output before fragment processing.
+	// Preserve the document and result passed to the dereferencer unchanged.
+	if result.Document != nil {
+		r.out.DataModel, r.out.Entries, r.out.CaptureError = captureMaps(result.Document)
+	}
+	return result
 }
 func (*Subject) InspectRouting(ctx context.Context, q sageresolution.RoutingRequest) (sageresolution.RoutingResult, error) {
 	out := sageresolution.RoutingResult{Role: "root resolver/dereferencer library with literal example driver; not SAGE Source", Request: q, ResolveInputs: []string{}, ResolveOptions: [][]byte{}, DriverOptions: [][]byte{}}
