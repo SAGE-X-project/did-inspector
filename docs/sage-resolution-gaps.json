@@ -75,11 +75,11 @@
     "No operational source, registration, private key or deployment is supplied by this audit."
   ],
   "categories": {
-    "additional-data-or-feature": 12,
+    "additional-data-or-feature": 10,
     "document-or-applicability-review": 79,
     "additional-observer-operation": 11,
     "operational-or-authority-evidence": 4,
-    "existing-observation": 7
+    "existing-observation": 6
   },
   "routes": {
     "metadata-boundary": {
@@ -1069,39 +1069,12 @@
       "generic_scope": "checked"
     },
     {
-      "id": "res10-crd20261001#dereferencing-algorithm-fragment.7",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "c1c5f7ce33d49bf775f80b07b76d7f546b2ef61b3829bbcae90bee5a6b46f4ba",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.10",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "68108453ae29760283ca9fa16bf11adbb579b5bac31cf6724f1852323f9907b9",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#dereferencing-algorithm-resource.11",
       "level": "requirement",
       "keywords": [],
       "text_sha256": "fa044cf32d0535d65d2f1f4bd5f49b5b2cd72fdd48e5db52e07711eaa3e7a95b",
       "baseline_verdict": "NOT_RUN",
       "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.44",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "4cea6095d9b4e5bbdeb6a93d8fc1f1e9af10c5fc26ce26055e9efe85ea47bc4e",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
       "generic_scope": "checked"
     },
     {
@@ -6716,26 +6689,74 @@
       "case_prefix": "/selection-source-",
       "observed_in_scope": "sage-resolution",
       "reason": "Typed resolved-document service list, both optional field filters and same selected append/range; exact absent or single offered DID/URI media partition with original resolved maps/metadata and twelve independent public literal calls. Fixed helpers/Go semantics and normal typed inputs are premises. Not complete matching, URL/media semantics, authority or physical tracing."
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.7",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "c1c5f7ce33d49bf775f80b07b76d7f546b2ef61b3829bbcae90bee5a6b46f4ba",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/dispatch-source-roles"
+      ],
+      "case_prefix": "/dispatch-source-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Typed same Resolve result/document role, service-absent nonempty path or accepted relativeRef-query empty-handler fallback, and same selected URI-list output plus same input HasFragment under empty relationship. Reviewed helper context and Go semantics are premises; thirteen independent ordinary actual calls preserve original documents and final outputs. Not adjusted URL, full query/media/URI grammar, handler execution, operational authority or physical tracing."
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.10",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "68108453ae29760283ca9fa16bf11adbb579b5bac31cf6724f1852323f9907b9",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/dispatch-source-roles"
+      ],
+      "case_prefix": "/dispatch-source-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Typed same Resolve result/document role, service-absent nonempty path or accepted relativeRef-query empty-handler fallback, and same selected URI-list output plus same input HasFragment under empty relationship. Reviewed helper context and Go semantics are premises; thirteen independent ordinary actual calls preserve original documents and final outputs. Not adjusted URL, full query/media/URI grammar, handler execution, operational authority or physical tracing."
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.44",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "4cea6095d9b4e5bbdeb6a93d8fc1f1e9af10c5fc26ce26055e9efe85ea47bc4e",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/dispatch-source-roles"
+      ],
+      "case_prefix": "/dispatch-source-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Typed same Resolve result/document role, service-absent nonempty path or accepted relativeRef-query empty-handler fallback, and same selected URI-list output plus same input HasFragment under empty relationship. Reviewed helper context and Go semantics are premises; thirteen independent ordinary actual calls preserve original documents and final outputs. Not adjusted URL, full query/media/URI grammar, handler execution, operational authority or physical tracing."
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 359,
+    "PASS": 362,
     "FAIL": 10,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 4,
     "ERROR": 0,
-    "NOT_RUN": 113
+    "NOT_RUN": 110
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 345,
+      "PASS": 348,
       "FAIL": 6,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 83
+      "NOT_RUN": 80
     },
     "recommendation": {
       "statements": 50,
@@ -6747,5 +6768,5 @@
       "NOT_RUN": 30
     }
   },
-  "expected_live_cases": 360
+  "expected_live_cases": 361
 }

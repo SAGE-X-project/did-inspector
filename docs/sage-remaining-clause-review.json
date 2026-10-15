@@ -23,10 +23,10 @@
     "runtime-candidate": 69
   },
   "execution_counts": {
-    "PASS": 127,
+    "PASS": 130,
     "FAIL": 4,
     "NOT_APPLICABLE": 2,
-    "NOT_RUN": 113
+    "NOT_RUN": 110
   },
   "clauses": [
     {
@@ -2934,13 +2934,15 @@
       "generic_scope": "checked",
       "text": "If the result of 5.4.1 Dereferencing the Resource is a selected DID service endpoint URL, and the input DID URL contains a DID fragment:",
       "actor": "SAGE resolver/source or service dereferencer",
-      "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
+      "applicable_evidence": "Typed same Resolve result/document role, service-absent nonempty path or accepted relativeRef-query empty-handler fallback, and same selected URI-list output plus same input HasFragment under empty relationship. Reviewed helper context and Go semantics are premises; thirteen independent ordinary actual calls preserve original documents and final outputs. Not adjusted URL, full query/media/URI grammar, handler execution, operational authority or physical tracing.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The named conditional, alias, loop or intermediate value is not exposed by the selected public operation. Existing externally observed results do not prove this internal algorithm step; a passive attributed internal witness or an approved functional-equivalence interpretation is required.",
-      "follow_up_condition": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "status": "observed-selected-branch",
+      "reason": "Typed same Resolve result/document role, service-absent nonempty path or accepted relativeRef-query empty-handler fallback, and same selected URI-list output plus same input HasFragment under empty relationship. Reviewed helper context and Go semantics are premises; thirteen independent ordinary actual calls preserve original documents and final outputs. Not adjusted URL, full query/media/URI grammar, handler execution, operational authority or physical tracing.",
+      "follow_up_condition": "Preserve the independently bound source roles and actual ordinary call receipts; broader grammar, adjusted URL and authority require separate evidence.",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/dispatch-source-roles"
+      ]
     },
     {
       "id": "res10-crd20261001#dereferencing-algorithm-fragment.8",
@@ -2992,13 +2994,15 @@
       "generic_scope": "checked",
       "text": "Otherwise, the didDocument result of the DID resolution algorithm is called the resolved DID document.",
       "actor": "native resolver/dereferencer input or output",
-      "applicable_evidence": "Fresh observable input/result contract only; internal variable assignment, all-valid-representations and global conformity need additional proof.",
+      "applicable_evidence": "Typed same Resolve result/document role, service-absent nonempty path or accepted relativeRef-query empty-handler fallback, and same selected URI-list output plus same input HasFragment under empty relationship. Reviewed helper context and Go semantics are premises; thirteen independent ordinary actual calls preserve original documents and final outputs. Not adjusted URL, full query/media/URI grammar, handler execution, operational authority or physical tracing.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
-      "follow_up_condition": "Fresh observable input/result contract only; internal variable assignment, all-valid-representations and global conformity need additional proof.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "status": "observed-selected-branch",
+      "reason": "Typed same Resolve result/document role, service-absent nonempty path or accepted relativeRef-query empty-handler fallback, and same selected URI-list output plus same input HasFragment under empty relationship. Reviewed helper context and Go semantics are premises; thirteen independent ordinary actual calls preserve original documents and final outputs. Not adjusted URL, full query/media/URI grammar, handler execution, operational authority or physical tracing.",
+      "follow_up_condition": "Preserve the independently bound source roles and actual ordinary call receipts; broader grammar, adjusted URL and authority require separate evidence.",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/dispatch-source-roles"
+      ]
     },
     {
       "id": "res10-crd20261001#dereferencing-algorithm-resource.11",
@@ -3350,7 +3354,7 @@
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
       "generic_scope": "checked",
-      "text": "dereferencingMetadata: \u00ab[ ... ]\u00bb",
+      "text": "dereferencingMetadata: «[ ... ]»",
       "actor": "SAGE resolver/source or service dereferencer",
       "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
       "review_disposition": "runtime-candidate",
@@ -3391,7 +3395,7 @@
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
       "generic_scope": "checked",
-      "text": "contentMetadata: \u00ab[ resolved DID document metadata ]\u00bb",
+      "text": "contentMetadata: «[ resolved DID document metadata ]»",
       "actor": "SAGE resolver/source or service dereferencer",
       "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
       "review_disposition": "runtime-candidate",
@@ -3451,7 +3455,7 @@
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
       "generic_scope": "checked",
-      "text": "dereferencingMetadata: \u00ab[ ... ]\u00bb",
+      "text": "dereferencingMetadata: «[ ... ]»",
       "actor": "SAGE resolver/source or service dereferencer",
       "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
       "review_disposition": "runtime-candidate",
@@ -3471,7 +3475,7 @@
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
       "generic_scope": "checked",
-      "text": "content: \u00ab selected service endpoint URLs \u00bb",
+      "text": "content: « selected service endpoint URLs »",
       "actor": "SAGE resolver/source or service dereferencer",
       "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
       "review_disposition": "runtime-candidate",
@@ -3492,7 +3496,7 @@
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
       "generic_scope": "checked",
-      "text": "contentMetadata: \u00ab[ \"contentType\" \u2192 \"text/uri-list\", ... ]\u00bb",
+      "text": "contentMetadata: «[ \"contentType\" → \"text/uri-list\", ... ]»",
       "actor": "SAGE resolver/source or service dereferencer",
       "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
       "review_disposition": "runtime-candidate",
@@ -3572,7 +3576,7 @@
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
       "generic_scope": "checked",
-      "text": "contentMetadata: \u00ab[ ]\u00bb",
+      "text": "contentMetadata: «[ ]»",
       "actor": "SAGE resolver/source or service dereferencer",
       "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
       "review_disposition": "runtime-candidate",
@@ -3594,13 +3598,15 @@
       "generic_scope": "checked",
       "text": "Otherwise, if the input DID URL contains a DID path and/or DID query:",
       "actor": "SAGE resolver/source or service dereferencer",
-      "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
+      "applicable_evidence": "Typed same Resolve result/document role, service-absent nonempty path or accepted relativeRef-query empty-handler fallback, and same selected URI-list output plus same input HasFragment under empty relationship. Reviewed helper context and Go semantics are premises; thirteen independent ordinary actual calls preserve original documents and final outputs. Not adjusted URL, full query/media/URI grammar, handler execution, operational authority or physical tracing.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The named conditional, alias, loop or intermediate value is not exposed by the selected public operation. Existing externally observed results do not prove this internal algorithm step; a passive attributed internal witness or an approved functional-equivalence interpretation is required.",
-      "follow_up_condition": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "status": "observed-selected-branch",
+      "reason": "Typed same Resolve result/document role, service-absent nonempty path or accepted relativeRef-query empty-handler fallback, and same selected URI-list output plus same input HasFragment under empty relationship. Reviewed helper context and Go semantics are premises; thirteen independent ordinary actual calls preserve original documents and final outputs. Not adjusted URL, full query/media/URI grammar, handler execution, operational authority or physical tracing.",
+      "follow_up_condition": "Preserve the independently bound source roles and actual ordinary call receipts; broader grammar, adjusted URL and authority require separate evidence.",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/dispatch-source-roles"
+      ]
     },
     {
       "id": "res10-crd20261001#dereferencing-algorithm-resource.45",
@@ -3773,7 +3779,7 @@
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
       "generic_scope": "checked",
-      "text": "contentMetadata: \u00ab[ ]\u00bb",
+      "text": "contentMetadata: «[ ]»",
       "actor": "SAGE resolver/source or service dereferencer",
       "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
       "review_disposition": "runtime-candidate",
@@ -5046,7 +5052,7 @@
       "baseline_verdict": "NOT_RUN",
       "route": "native-result",
       "generic_scope": "checked",
-      "text": "didDocumentMetadata: \u00ab[ \"contentType\" \u2192 output DID document media type, ... ]\u00bb",
+      "text": "didDocumentMetadata: «[ \"contentType\" → output DID document media type, ... ]»",
       "actor": "resolution metadata interpretation",
       "applicable_evidence": "This clause places contentType in didDocumentMetadata, unlike the resolutionMetadata binding contract. Do not move or add a subject field to force PASS.",
       "review_disposition": "normative-conflict",
