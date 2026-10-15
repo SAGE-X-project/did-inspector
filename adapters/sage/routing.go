@@ -95,7 +95,7 @@ func (*Subject) InspectRouting(ctx context.Context, q sageresolution.RoutingRequ
 		return out, e
 	}
 	p := producer.New()
-	r, e := resolver.New(registry, consumer.New(), p)
+	r, e := resolver.New(registry, observedConsumer{consumer.New(), &out.Consumption}, p)
 	if e != nil {
 		return out, e
 	}

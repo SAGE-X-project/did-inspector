@@ -1,0 +1,903 @@
+[
+  {
+    "name": "absent",
+    "document": {
+      "id": "did:example:123",
+      "verificationMethod": [
+        {
+          "id": "#sign",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "Ed25519",
+            "x": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+          },
+          "extra": {
+            "id": "#method-extra",
+            "nested": [
+              {
+                "id": "#method-nested",
+                "label": "#keep-label"
+              }
+            ]
+          }
+        },
+        {
+          "id": "did:example:123#agree",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "X25519",
+            "x": "CQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        }
+      ],
+      "authentication": [
+        "#sign",
+        {
+          "id": "#embedded",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "Ed25519",
+            "x": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+          },
+          "extra": {
+            "id": "#embedded-extra"
+          }
+        }
+      ],
+      "assertionMethod": [
+        "#sign"
+      ],
+      "keyAgreement": [
+        "#agree"
+      ],
+      "capabilityInvocation": [
+        "#sign"
+      ],
+      "capabilityDelegation": [
+        "#sign"
+      ],
+      "service": [
+        {
+          "id": "#one",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/base/",
+          "extra": {
+            "id": "#service-extra",
+            "nested": {
+              "id": "#service-nested"
+            }
+          }
+        },
+        {
+          "id": "did:example:123#two",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/two"
+        }
+      ],
+      "extension": {
+        "id": "#root",
+        "nested": [
+          {
+            "id": "/relative?scope=one#piece"
+          },
+          {
+            "id": 7,
+            "label": "#keep"
+          },
+          [
+            "#literal",
+            {
+              "id": "did:example:123#absolute"
+            }
+          ]
+        ]
+      },
+      "label": "#keep"
+    },
+    "request": {
+      "function": "resolve",
+      "input": "did:example:123",
+      "accept": "application/did"
+    },
+    "expected": {
+      "id": "did:example:123",
+      "verificationMethod": [
+        {
+          "id": "#sign",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "Ed25519",
+            "x": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+          },
+          "extra": {
+            "id": "#method-extra",
+            "nested": [
+              {
+                "id": "#method-nested",
+                "label": "#keep-label"
+              }
+            ]
+          }
+        },
+        {
+          "id": "did:example:123#agree",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "X25519",
+            "x": "CQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        }
+      ],
+      "authentication": [
+        "#sign",
+        {
+          "id": "#embedded",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "Ed25519",
+            "x": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+          },
+          "extra": {
+            "id": "#embedded-extra"
+          }
+        }
+      ],
+      "assertionMethod": [
+        "#sign"
+      ],
+      "keyAgreement": [
+        "#agree"
+      ],
+      "capabilityInvocation": [
+        "#sign"
+      ],
+      "capabilityDelegation": [
+        "#sign"
+      ],
+      "service": [
+        {
+          "id": "#one",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/base/",
+          "extra": {
+            "id": "#service-extra",
+            "nested": {
+              "id": "#service-nested"
+            }
+          }
+        },
+        {
+          "id": "did:example:123#two",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/two"
+        }
+      ],
+      "extension": {
+        "id": "#root",
+        "nested": [
+          {
+            "id": "/relative?scope=one#piece"
+          },
+          {
+            "id": 7,
+            "label": "#keep"
+          },
+          [
+            "#literal",
+            {
+              "id": "did:example:123#absolute"
+            }
+          ]
+        ]
+      },
+      "label": "#keep"
+    },
+    "extension_paths": []
+  },
+  {
+    "name": "disabled",
+    "document": {
+      "id": "did:example:123",
+      "verificationMethod": [
+        {
+          "id": "#sign",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "Ed25519",
+            "x": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+          },
+          "extra": {
+            "id": "#method-extra",
+            "nested": [
+              {
+                "id": "#method-nested",
+                "label": "#keep-label"
+              }
+            ]
+          }
+        },
+        {
+          "id": "did:example:123#agree",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "X25519",
+            "x": "CQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        }
+      ],
+      "authentication": [
+        "#sign",
+        {
+          "id": "#embedded",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "Ed25519",
+            "x": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+          },
+          "extra": {
+            "id": "#embedded-extra"
+          }
+        }
+      ],
+      "assertionMethod": [
+        "#sign"
+      ],
+      "keyAgreement": [
+        "#agree"
+      ],
+      "capabilityInvocation": [
+        "#sign"
+      ],
+      "capabilityDelegation": [
+        "#sign"
+      ],
+      "service": [
+        {
+          "id": "#one",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/base/",
+          "extra": {
+            "id": "#service-extra",
+            "nested": {
+              "id": "#service-nested"
+            }
+          }
+        },
+        {
+          "id": "did:example:123#two",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/two"
+        }
+      ],
+      "extension": {
+        "id": "#root",
+        "nested": [
+          {
+            "id": "/relative?scope=one#piece"
+          },
+          {
+            "id": 7,
+            "label": "#keep"
+          },
+          [
+            "#literal",
+            {
+              "id": "did:example:123#absolute"
+            }
+          ]
+        ]
+      },
+      "label": "#keep"
+    },
+    "request": {
+      "function": "resolve",
+      "input": "did:example:123",
+      "accept": "application/did",
+      "options": {
+        "expandRelativeUrls": false
+      }
+    },
+    "expected": {
+      "id": "did:example:123",
+      "verificationMethod": [
+        {
+          "id": "#sign",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "Ed25519",
+            "x": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+          },
+          "extra": {
+            "id": "#method-extra",
+            "nested": [
+              {
+                "id": "#method-nested",
+                "label": "#keep-label"
+              }
+            ]
+          }
+        },
+        {
+          "id": "did:example:123#agree",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "X25519",
+            "x": "CQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        }
+      ],
+      "authentication": [
+        "#sign",
+        {
+          "id": "#embedded",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "Ed25519",
+            "x": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+          },
+          "extra": {
+            "id": "#embedded-extra"
+          }
+        }
+      ],
+      "assertionMethod": [
+        "#sign"
+      ],
+      "keyAgreement": [
+        "#agree"
+      ],
+      "capabilityInvocation": [
+        "#sign"
+      ],
+      "capabilityDelegation": [
+        "#sign"
+      ],
+      "service": [
+        {
+          "id": "#one",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/base/",
+          "extra": {
+            "id": "#service-extra",
+            "nested": {
+              "id": "#service-nested"
+            }
+          }
+        },
+        {
+          "id": "did:example:123#two",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/two"
+        }
+      ],
+      "extension": {
+        "id": "#root",
+        "nested": [
+          {
+            "id": "/relative?scope=one#piece"
+          },
+          {
+            "id": 7,
+            "label": "#keep"
+          },
+          [
+            "#literal",
+            {
+              "id": "did:example:123#absolute"
+            }
+          ]
+        ]
+      },
+      "label": "#keep"
+    },
+    "extension_paths": []
+  },
+  {
+    "name": "nested-extras",
+    "document": {
+      "id": "did:example:123",
+      "verificationMethod": [
+        {
+          "id": "#sign",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "Ed25519",
+            "x": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+          },
+          "extra": {
+            "id": "#method-extra",
+            "nested": [
+              {
+                "id": "#method-nested",
+                "label": "#keep-label"
+              }
+            ]
+          }
+        },
+        {
+          "id": "did:example:123#agree",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "X25519",
+            "x": "CQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        }
+      ],
+      "authentication": [
+        "#sign",
+        {
+          "id": "#embedded",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "Ed25519",
+            "x": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+          },
+          "extra": {
+            "id": "#embedded-extra"
+          }
+        }
+      ],
+      "assertionMethod": [
+        "#sign"
+      ],
+      "keyAgreement": [
+        "#agree"
+      ],
+      "capabilityInvocation": [
+        "#sign"
+      ],
+      "capabilityDelegation": [
+        "#sign"
+      ],
+      "service": [
+        {
+          "id": "#one",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/base/",
+          "extra": {
+            "id": "#service-extra",
+            "nested": {
+              "id": "#service-nested"
+            }
+          }
+        },
+        {
+          "id": "did:example:123#two",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/two"
+        }
+      ],
+      "extension": {
+        "id": "#root",
+        "nested": [
+          {
+            "id": "/relative?scope=one#piece"
+          },
+          {
+            "id": 7,
+            "label": "#keep"
+          },
+          [
+            "#literal",
+            {
+              "id": "did:example:123#absolute"
+            }
+          ]
+        ]
+      },
+      "label": "#keep"
+    },
+    "request": {
+      "function": "resolve",
+      "input": "did:example:123",
+      "accept": "application/did",
+      "options": {
+        "expandRelativeUrls": true
+      }
+    },
+    "expected": {
+      "id": "did:example:123",
+      "verificationMethod": [
+        {
+          "id": "did:example:123#sign",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "Ed25519",
+            "x": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+          },
+          "extra": {
+            "id": "did:example:123#method-extra",
+            "nested": [
+              {
+                "id": "did:example:123#method-nested",
+                "label": "#keep-label"
+              }
+            ]
+          }
+        },
+        {
+          "id": "did:example:123#agree",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "X25519",
+            "x": "CQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        }
+      ],
+      "authentication": [
+        "did:example:123#sign",
+        {
+          "id": "did:example:123#embedded",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "Ed25519",
+            "x": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+          },
+          "extra": {
+            "id": "did:example:123#embedded-extra"
+          }
+        }
+      ],
+      "assertionMethod": [
+        "did:example:123#sign"
+      ],
+      "keyAgreement": [
+        "did:example:123#agree"
+      ],
+      "capabilityInvocation": [
+        "did:example:123#sign"
+      ],
+      "capabilityDelegation": [
+        "did:example:123#sign"
+      ],
+      "service": [
+        {
+          "id": "did:example:123#one",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/base/",
+          "extra": {
+            "id": "did:example:123#service-extra",
+            "nested": {
+              "id": "did:example:123#service-nested"
+            }
+          }
+        },
+        {
+          "id": "did:example:123#two",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/two"
+        }
+      ],
+      "extension": {
+        "id": "did:example:123#root",
+        "nested": [
+          {
+            "id": "did:example:123/relative?scope=one#piece"
+          },
+          {
+            "id": 7,
+            "label": "#keep"
+          },
+          [
+            "#literal",
+            {
+              "id": "did:example:123#absolute"
+            }
+          ]
+        ]
+      },
+      "label": "#keep"
+    },
+    "extension_paths": [
+      [
+        "verificationMethod",
+        "0",
+        "extra",
+        "id"
+      ],
+      [
+        "verificationMethod",
+        "0",
+        "extra",
+        "nested",
+        "0",
+        "id"
+      ],
+      [
+        "authentication",
+        "1",
+        "extra",
+        "id"
+      ],
+      [
+        "service",
+        "0",
+        "extra",
+        "id"
+      ],
+      [
+        "service",
+        "0",
+        "extra",
+        "nested",
+        "id"
+      ]
+    ]
+  },
+  {
+    "name": "root-relocated",
+    "document": {
+      "id": "did:example:123",
+      "verificationMethod": [
+        {
+          "id": "#sign",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "Ed25519",
+            "x": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+          }
+        },
+        {
+          "id": "did:example:123#agree",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "X25519",
+            "x": "CQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        }
+      ],
+      "authentication": [
+        "#sign",
+        {
+          "id": "#embedded",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "Ed25519",
+            "x": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+          }
+        }
+      ],
+      "assertionMethod": [
+        "#sign"
+      ],
+      "keyAgreement": [
+        "#agree"
+      ],
+      "capabilityInvocation": [
+        "#sign"
+      ],
+      "capabilityDelegation": [
+        "#sign"
+      ],
+      "service": [
+        {
+          "id": "#one",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/base/"
+        },
+        {
+          "id": "did:example:123#two",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/two"
+        }
+      ],
+      "extension": {
+        "id": "#root",
+        "nested": [
+          {
+            "id": "/relative?scope=one#piece"
+          },
+          {
+            "id": 7,
+            "label": "#keep"
+          },
+          [
+            "#literal",
+            {
+              "id": "did:example:123#absolute"
+            }
+          ]
+        ]
+      },
+      "label": "#keep",
+      "methodExtra": {
+        "id": "#method-extra",
+        "nested": [
+          {
+            "id": "#method-nested",
+            "label": "#keep-label"
+          }
+        ]
+      },
+      "embeddedExtra": {
+        "id": "#embedded-extra"
+      },
+      "serviceExtra": {
+        "id": "#service-extra",
+        "nested": {
+          "id": "#service-nested"
+        }
+      }
+    },
+    "request": {
+      "function": "resolve",
+      "input": "did:example:123",
+      "accept": "application/did",
+      "options": {
+        "expandRelativeUrls": true
+      }
+    },
+    "expected": {
+      "id": "did:example:123",
+      "verificationMethod": [
+        {
+          "id": "did:example:123#sign",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "Ed25519",
+            "x": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+          }
+        },
+        {
+          "id": "did:example:123#agree",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "X25519",
+            "x": "CQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        }
+      ],
+      "authentication": [
+        "did:example:123#sign",
+        {
+          "id": "did:example:123#embedded",
+          "type": "JsonWebKey",
+          "controller": "did:example:123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "Ed25519",
+            "x": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+          }
+        }
+      ],
+      "assertionMethod": [
+        "did:example:123#sign"
+      ],
+      "keyAgreement": [
+        "did:example:123#agree"
+      ],
+      "capabilityInvocation": [
+        "did:example:123#sign"
+      ],
+      "capabilityDelegation": [
+        "did:example:123#sign"
+      ],
+      "service": [
+        {
+          "id": "did:example:123#one",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/base/"
+        },
+        {
+          "id": "did:example:123#two",
+          "type": "Messaging",
+          "serviceEndpoint": "https://agent.example/two"
+        }
+      ],
+      "extension": {
+        "id": "did:example:123#root",
+        "nested": [
+          {
+            "id": "did:example:123/relative?scope=one#piece"
+          },
+          {
+            "id": 7,
+            "label": "#keep"
+          },
+          [
+            "#literal",
+            {
+              "id": "did:example:123#absolute"
+            }
+          ]
+        ]
+      },
+      "label": "#keep",
+      "methodExtra": {
+        "id": "did:example:123#method-extra",
+        "nested": [
+          {
+            "id": "did:example:123#method-nested",
+            "label": "#keep-label"
+          }
+        ]
+      },
+      "embeddedExtra": {
+        "id": "did:example:123#embedded-extra"
+      },
+      "serviceExtra": {
+        "id": "did:example:123#service-extra",
+        "nested": {
+          "id": "did:example:123#service-nested"
+        }
+      }
+    },
+    "extension_paths": []
+  },
+  {
+    "name": "empty-collections",
+    "document": {
+      "id": "did:example:123",
+      "verificationMethod": [],
+      "service": [],
+      "extension": {
+        "empty": [],
+        "map": {}
+      }
+    },
+    "request": {
+      "function": "resolve",
+      "input": "did:example:123",
+      "accept": "application/did",
+      "options": {
+        "expandRelativeUrls": true
+      }
+    },
+    "expected": {
+      "id": "did:example:123",
+      "verificationMethod": [],
+      "service": [],
+      "extension": {
+        "empty": [],
+        "map": {}
+      }
+    },
+    "extension_paths": []
+  }
+]

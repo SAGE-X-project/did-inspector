@@ -120,6 +120,7 @@ func Profile(name string) (core.Profile, error) {
 	appendServiceSourceCase(&p)
 	appendSelectionCase(&p)
 	appendDispatchCase(&p)
+	appendExpansionSourceCase(&p)
 	appendFragmentSearchCases(&p)
 	appendResolverProofCases(&p, rows)
 	appendClientCases(&p, rows)
