@@ -122,6 +122,7 @@ func Profile(name string) (core.Profile, error) {
 	appendDispatchCase(&p)
 	appendExpansionSourceCase(&p)
 	appendURLRolesCase(&p)
+	appendItemExpansionCase(&p)
 	appendFragmentSearchCases(&p)
 	appendResolverProofCases(&p, rows)
 	appendClientCases(&p, rows)
