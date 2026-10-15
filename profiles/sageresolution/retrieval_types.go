@@ -21,6 +21,7 @@ type RetrievalCall struct {
 	Result  Result `json:"result"`
 }
 type RetrievalResult struct {
+	ParsedURL         *URLParts       `json:"parsed_url,omitempty"`
 	Clock             int64           `json:"clock"`
 	Operation         string          `json:"operation"`
 	Reference         string          `json:"reference"`
