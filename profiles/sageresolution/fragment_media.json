@@ -1,0 +1,30 @@
+{
+  "document": {
+    "id": "did:example:resources",
+    "verificationMethod": [
+      {
+        "id": "did:example:resources#sign",
+        "type": "JsonWebKey",
+        "controller": "did:example:resources",
+        "publicKeyJwk": {
+          "kty": "OKP",
+          "crv": "Ed25519",
+          "x": "Xv5E5dGwXbYxkLQ9QqHLs_MG1YydJ1VYNb-98ncA5c0"
+        }
+      }
+    ],
+    "authentication": [
+      "did:example:resources#sign"
+    ]
+  },
+  "method": {
+    "id": "did:example:resources#sign",
+    "type": "JsonWebKey",
+    "controller": "did:example:resources",
+    "publicKeyJwk": {
+      "kty": "OKP",
+      "crv": "Ed25519",
+      "x": "Xv5E5dGwXbYxkLQ9QqHLs_MG1YydJ1VYNb-98ncA5c0"
+    }
+  }
+}

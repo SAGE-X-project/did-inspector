@@ -8,6 +8,7 @@ import (
 // RoutingRequest configures the root library selected by SAGE with a literal
 // example driver. It is not a SAGE registry or a historical/authoritative method.
 type RoutingRequest struct {
+	PlainJSONFragment      bool               `json:"plain_json_fragment,omitempty"`
 	ObserveProduction      bool               `json:"observe_production,omitempty"`
 	ObserveResourceHandler bool               `json:"observe_resource_handler,omitempty"`
 	Document               ConsumptionRequest `json:"document"`

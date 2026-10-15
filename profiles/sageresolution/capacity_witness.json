@@ -1,0 +1,40 @@
+{
+  "frames": {
+    "BaseDecode": "1ce94f67b238a5c6f2f6df8fcec2585b951db775b6ead4ced54d67f6a4b91a16",
+    "BaseEncode": "d0020a76ea94b2c06fe099f2c4dae1f2081cc7f59e62695d7df376d2e791bbd1",
+    "DecodeMultibase": "0c9acc2a81baa595d8de20617331144143a10878b3d0bc7946217e44b3affdfc",
+    "EncodeMultibase": "c04ed85460fc4b557b49ce00c4b7ea04a6ce660faf983bbf87c49a5a81c0599b",
+    "alphabetFor": "ce91b874a684d3fdae288f027a15a20e684ad88816530b091c6a382656701216",
+    "ceilLog2": "b7ec406c529a80c636b1b7fab031e74f99df5c0ac1f23f2ec8b81ec19ba4812a",
+    "expansion": "f97bb2960d6bf82613554c9521fd11a1dd79f001f6a4dfa87b0a26023daf714e",
+    "floorLog2": "2a4c8a6139fc3e7b73d1a876b69dea5bd12c7e638bb5b47a3dafafdfefedc443"
+  },
+  "expressions": [
+    "n*ceilLog2(from)/floorLog2(to) + 1",
+    "expansion(len(data)-zeroes, 256, base)",
+    "digits := make([]int, size)",
+    "expansion(len(encoded)-zeroes, base, 256)",
+    "decoded := make([]int, size)"
+  ],
+  "steps": [
+    {
+      "kind": "BaseEncode-u64-capacity",
+      "expressions": [
+        "n*ceilLog2(from)/floorLog2(to) + 1",
+        "expansion(len(data)-zeroes, 256, base)",
+        "digits := make([]int, size)"
+      ],
+      "correct": true
+    },
+    {
+      "kind": "BaseDecode-u64-capacity",
+      "expressions": [
+        "n*ceilLog2(from)/floorLog2(to) + 1",
+        "expansion(len(encoded)-zeroes, base, 256)",
+        "decoded := make([]int, size)"
+      ],
+      "correct": true
+    }
+  ],
+  "unknown": []
+}

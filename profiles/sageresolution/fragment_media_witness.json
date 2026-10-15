@@ -1,0 +1,54 @@
+{
+  "roots": [
+    "github.com/sage-x-project/did-go/dereferencer.verificationMethod",
+    "github.com/sage-x-project/did-go/document.SelectMethod",
+    "github.com/sage-x-project/did-go/document.findMethod",
+    "github.com/sage-x-project/did-go/document.allMethods"
+  ],
+  "frames": {
+    "github.com/sage-x-project/did-go/dereferencer.verificationMethod": "e69b32c0492c81979a1d120ceef6cd3499d1d0d9b5c30936081badd5dacf8dc0",
+    "github.com/sage-x-project/did-go/document.SelectMethod": "59906978a8b52662b7e1aefb6ffca35d7dd592552c9feb3b9c1fc2ff7c19d412",
+    "github.com/sage-x-project/did-go/document.allMethods": "a96ce9cbd1ca07c117c18e7c4ff0fe19d6417de9ac7a7df6496c148630c88c7b",
+    "github.com/sage-x-project/did-go/document.findMethod": "2cfb3ebf602172ec2e4f9135b5e2d49968d0141d82980b9a5537f39195c6a865"
+  },
+  "roles": {
+    "candidate": "m",
+    "helper_document": "doc",
+    "helper_fragment": "frag",
+    "parsed_reference": "ref"
+  },
+  "steps": [
+    {
+      "kind": "same-document-full-fragment",
+      "expressions": [
+        "did.ParseURL(doc.ID().String() + \"#\" + frag)",
+        "document.SelectMethod(doc, ref, p)"
+      ],
+      "correct": true
+    },
+    {
+      "kind": "same-pre-authorization-candidate",
+      "expressions": [
+        "findMethod(d, ref)",
+        "return \u0026m, nil",
+        "return resolution.DereferenceResult{\n\tContentStream:         *m,\n\tDereferencingMetadata: resolution.DereferencingMetadata{ContentType: fragmentMediaType(docType)},\n}"
+      ],
+      "correct": true
+    }
+  ],
+  "unknown": [],
+  "call_paths": [
+    [
+      "github.com/sage-x-project/did-go/dereferencer.verificationMethod",
+      "github.com/sage-x-project/did-go/document.SelectMethod"
+    ],
+    [
+      "github.com/sage-x-project/did-go/document.SelectMethod",
+      "github.com/sage-x-project/did-go/document.findMethod"
+    ],
+    [
+      "github.com/sage-x-project/did-go/document.findMethod",
+      "github.com/sage-x-project/did-go/document.allMethods"
+    ]
+  ]
+}
