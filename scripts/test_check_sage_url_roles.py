@@ -22,7 +22,7 @@ def controls():
   q=f['request'];v={'operation':MODULE+'/relyingparty.RelyingParty.VerificationMethod','clock':1800000000,'reference':q['reference'],'purpose':q['purpose'],'parsed_url':f['parts'],'calls':[]}
   if f['expected_method'] is None:v.update(error='diagnostic only',method=None,problem=None)
   else:
-   doc={'id':f['record']['did'],'verificationMethod':[f['expected_method']],q['purpose']:[q['reference']]};v.update(method=encoded(f['expected_method']),problem=None);v['calls']=[{'input':f['parts']['primary'],'options':encoded({}),'result':{'has_content':True,'returned_id':f['record']['did'],'content_kind':'document','snapshot':encoded(doc)}}]
+   doc={'id':f['record']['did'],'verificationMethod':[f['expected_method']],q['purpose']:[q['reference']]};v.update(method=encoded(f['expected_method']),problem=None);v['calls']=[{'input':f['parts']['primary'],'options':encoded({}),'result':{'has_content':True,'returned_id':f['record']['did'],'content_kind':'document','snapshot':doc}}]
   e['retrieval'].append(v)
  obs=[{'statement':i,'verdict':v,'input':json.dumps(s['request']),'observed':json.dumps(e),'detail':'bounded independent URL roles','expected':'literal URL split'} for i,v in zip(IDS,['FAIL','PASS'])];raw['cases'].append({'case':CASE,'statements':IDS,'observations':obs})
  for i,v in zip(IDS,['FAIL','PASS']):next(x for x in report['statements'] if x['id']==i).update(verdict=v,cases=[CASE])
@@ -39,7 +39,7 @@ class URLRoleEvidenceTests(unittest.TestCase):
    with self.assertRaises((AssertionError,KeyError)):verify_url_roles(bad,p)
  def test_same_reference_and_diagnostic_independence(self):
   r,p=controls()
-  for mutate in [lambda e:e['retrieval'].pop(),lambda e:e['retrieval'][0]['parsed_url'].update(fragment='wrong'),lambda e:e['retrieval'][0]['parsed_url'].update(has_fragment=1),lambda e:e['retrieval'][0].update(reference='other'),lambda e:e['retrieval'][0]['calls'][0].update(input='other'),lambda e:e['retrieval'][0].update(method=encoded({})),lambda e:e['retrieval'][0]['calls'][0]['result'].update(snapshot=encoded({})),lambda e:e.update(retrieval_errors=['lost'])]:
+  for mutate in [lambda e:e['retrieval'].pop(),lambda e:e['retrieval'][0]['parsed_url'].update(fragment='wrong'),lambda e:e['retrieval'][0]['parsed_url'].update(has_fragment=1),lambda e:e['retrieval'][0].update(reference='other'),lambda e:e['retrieval'][0]['calls'][0].update(input='other'),lambda e:e['retrieval'][0].update(method=encoded({})),lambda e:e['retrieval'][0]['calls'][0]['result'].update(snapshot={}),lambda e:e['retrieval'][0]['calls'][0]['result'].update(snapshot=encoded({})),lambda e:e.update(retrieval_errors=['lost'])]:
    bad=copy.deepcopy(r);e=json.loads(bad['cases'][-1]['observations'][0]['observed']);mutate(e)
    for o in bad['cases'][-1]['observations']:o['observed']=json.dumps(e)
    with self.assertRaises((AssertionError,KeyError)):verify_url_roles(bad,p)

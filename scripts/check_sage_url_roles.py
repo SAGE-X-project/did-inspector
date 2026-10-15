@@ -59,7 +59,7 @@ def verify_url_roles(raw,report,repo=REPO):
   assert not v.get('error') and not v.get('problem') and not v.get('problem_serializer') and semantic_equal(decoded(v['method']),f['expected_method'],'unknown') and len(v['calls'])==1
   call=v['calls'][0];assert call['input']==f['parts']['primary'] and decoded(call['options'])=={}
   result=call['result'];assert result['has_content'] is True and result['returned_id']==f['record']['did'] and result['content_kind']=='document'
-  doc=decoded(result['snapshot']);assert doc['id']==f['record']['did'] and any(semantic_equal(m,f['expected_method'],'unknown') for m in doc['verificationMethod']) and q['reference'] in doc[q['purpose']]
+  doc=result['snapshot'];assert isinstance(doc,dict);assert doc['id']==f['record']['did'] and any(semantic_equal(m,f['expected_method'],'unknown') for m in doc['verificationMethod']) and q['reference'] in doc[q['purpose']]
  live={x['id']:x for x in report['statements']};verify_url_pending(raw,live,IDS)
  for ident in PENDING:assert live[ident]['verdict']=='NOT_RUN'
  return set(IDS)
