@@ -75,7 +75,7 @@
     "No operational source, registration, private key or deployment is supplied by this audit."
   ],
   "categories": {
-    "additional-data-or-feature": 10,
+    "additional-data-or-feature": 8,
     "document-or-applicability-review": 79,
     "additional-observer-operation": 11,
     "operational-or-authority-evidence": 4,
@@ -1406,24 +1406,6 @@
       "text_sha256": "131cee4e806e9bad0a273f66f29b019212a3a4409f8866a063d2711bc74693ad",
       "baseline_verdict": "NOT_RUN",
       "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#resolving-algorithm.27",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "38a929bbfacba1dd776390c7c43a1d9695eb582c7e606bfe690cef1648786bd8",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#resolving-algorithm.28",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "4ab6a8e74e2db3753d04225a0fb38c11905066c1038b6149cfe9a05e208a9c39",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
       "generic_scope": "checked"
     },
     {
@@ -6737,26 +6719,58 @@
       "case_prefix": "/dispatch-source-",
       "observed_in_scope": "sage-resolution",
       "reason": "Typed same Resolve result/document role, service-absent nonempty path or accepted relativeRef-query empty-handler fallback, and same selected URI-list output plus same input HasFragment under empty relationship. Reviewed helper context and Go semantics are premises; thirteen independent ordinary actual calls preserve original documents and final outputs. Not adjusted URL, full query/media/URI grammar, handler execution, operational authority or physical tracing."
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.27",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "38a929bbfacba1dd776390c7c43a1d9695eb582c7e606bfe690cef1648786bd8",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/expansion-source-roles"
+      ],
+      "case_prefix": "/expansion-source-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Typed actual option guard and independent complete-traversal predicate, with five ordinary actual calls and original consumer models. Explicit Method/Service Extra ids remain relative; identical relocated root maps expand. .26 output conformance and .29 per-item processing remain pending; repair deferred to stage eight."
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.28",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "4ab6a8e74e2db3753d04225a0fb38c11905066c1038b6149cfe9a05e208a9c39",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "FAIL",
+      "cases": [
+        "did-1.1/sage-resolution/expansion-source-roles"
+      ],
+      "case_prefix": "/expansion-source-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Typed actual option guard and independent complete-traversal predicate, with five ordinary actual calls and original consumer models. Explicit Method/Service Extra ids remain relative; identical relocated root maps expand. .26 output conformance and .29 per-item processing remain pending; repair deferred to stage eight."
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 362,
-    "FAIL": 10,
+    "PASS": 363,
+    "FAIL": 11,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 4,
     "ERROR": 0,
-    "NOT_RUN": 110
+    "NOT_RUN": 108
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 348,
-      "FAIL": 6,
+      "PASS": 349,
+      "FAIL": 7,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 80
+      "NOT_RUN": 78
     },
     "recommendation": {
       "statements": 50,
@@ -6768,5 +6782,5 @@
       "NOT_RUN": 30
     }
   },
-  "expected_live_cases": 361
+  "expected_live_cases": 362
 }

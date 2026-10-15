@@ -58,7 +58,7 @@ class PolicyEvidenceTests(unittest.TestCase):
             o["input"] = json.dumps(f)
         with self.assertRaises(AssertionError):
             checker.verify_policy(raw, self.report)
-        for ident in ["cid10#conformance.2", "cid10#fragment-resolution.4"]:
+        for ident in ["cid10#conformance.2", "cid10#fragment-resolution.4", "res10-crd20261001#resolving-algorithm.28"]:
             report = copy.deepcopy(self.report)
             next(s for s in report["statements"] if s["id"] == ident)["verdict"] = "PASS"
             with self.assertRaises(AssertionError):

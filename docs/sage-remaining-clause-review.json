@@ -23,10 +23,10 @@
     "runtime-candidate": 69
   },
   "execution_counts": {
-    "PASS": 130,
-    "FAIL": 4,
+    "PASS": 131,
+    "FAIL": 5,
     "NOT_APPLICABLE": 2,
-    "NOT_RUN": 110
+    "NOT_RUN": 108
   },
   "clauses": [
     {
@@ -4922,13 +4922,15 @@
       "generic_scope": "checked",
       "text": "If the input DID resolution options contain the expandRelativeUrls option with a value of true:",
       "actor": "SAGE resolver/source or service dereferencer",
-      "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
+      "applicable_evidence": "Separate 39-file resolver source capture, typed guard/helper roles, original consumer model and literal expected final URLs.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The named conditional, alias, loop or intermediate value is not exposed by the selected public operation. Existing externally observed results do not prove this internal algorithm step; a passive attributed internal witness or an approved functional-equivalence interpretation is required.",
-      "follow_up_condition": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "status": "observed-selected-branch",
+      "reason": "Pinned typed option guard and helper context with five ordinary actual calls; same-call consumer retains explicit method/service Extra maps. Those maps remain relative while identical relocated root maps expand. Source and runtime agree on a complete-traversal failure; output conformance and every-item predicates remain pending.",
+      "follow_up_condition": "Preserve expansion traversal failure for stage-eight core repair and rerun. Keep .26 and .29 unobserved until their complete independent premises are available.",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/expansion-source-roles"
+      ]
     },
     {
       "id": "res10-crd20261001#resolving-algorithm.28",
@@ -4940,13 +4942,15 @@
       "generic_scope": "checked",
       "text": "Iterate over all services, verification methods, verification relationships and any extension-defined properties in the output DID document.",
       "actor": "SAGE resolver/source or service dereferencer",
-      "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
+      "applicable_evidence": "Separate 39-file resolver source capture, typed guard/helper roles, original consumer model and literal expected final URLs.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The named conditional, alias, loop or intermediate value is not exposed by the selected public operation. Existing externally observed results do not prove this internal algorithm step; a passive attributed internal witness or an approved functional-equivalence interpretation is required.",
-      "follow_up_condition": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "status": "observed-selected-branch",
+      "reason": "Pinned typed option guard and helper context with five ordinary actual calls; same-call consumer retains explicit method/service Extra maps. Those maps remain relative while identical relocated root maps expand. Source and runtime agree on a complete-traversal failure; output conformance and every-item predicates remain pending.",
+      "follow_up_condition": "Preserve expansion traversal failure for stage-eight core repair and rerun. Keep .26 and .29 unobserved until their complete independent premises are available.",
+      "expected_live_verdict": "FAIL",
+      "cases": [
+        "did-1.1/sage-resolution/expansion-source-roles"
+      ]
     },
     {
       "id": "res10-crd20261001#resolving-algorithm.29",
