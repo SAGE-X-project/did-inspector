@@ -1,0 +1,951 @@
+[
+  {
+    "name": "plain-document",
+    "document": {
+      "id": "did:example:resources",
+      "service": [
+        {
+          "id": "did:example:resources#one",
+          "type": [
+            "Messaging",
+            "Shared"
+          ],
+          "serviceEndpoint": "https://one.example/base/"
+        },
+        {
+          "id": "did:example:resources#two",
+          "type": "Messaging",
+          "serviceEndpoint": [
+            "https://two.example/queue/",
+            "https://backup.example/base/"
+          ]
+        },
+        {
+          "id": "did:example:resources#map",
+          "type": "Messaging",
+          "serviceEndpoint": {
+            "uri": "https://map.example/",
+            "description": "public map endpoint"
+          }
+        },
+        {
+          "id": "did:example:resources#other",
+          "type": "Other",
+          "serviceEndpoint": "https://other.example/base/"
+        }
+      ],
+      "inspectionNote": {
+        "list": [
+          "first",
+          false,
+          {
+            "count": 2
+          }
+        ]
+      },
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ]
+    },
+    "request": {
+      "function": "dereference",
+      "input": "did:example:resources",
+      "accept": "application/did"
+    },
+    "parameters": {},
+    "expected_kind": "document",
+    "expected_content": {
+      "id": "did:example:resources",
+      "service": [
+        {
+          "id": "did:example:resources#one",
+          "type": [
+            "Messaging",
+            "Shared"
+          ],
+          "serviceEndpoint": "https://one.example/base/"
+        },
+        {
+          "id": "did:example:resources#two",
+          "type": "Messaging",
+          "serviceEndpoint": [
+            "https://two.example/queue/",
+            "https://backup.example/base/"
+          ]
+        },
+        {
+          "id": "did:example:resources#map",
+          "type": "Messaging",
+          "serviceEndpoint": {
+            "uri": "https://map.example/",
+            "description": "public map endpoint"
+          }
+        },
+        {
+          "id": "did:example:resources#other",
+          "type": "Other",
+          "serviceEndpoint": "https://other.example/base/"
+        }
+      ],
+      "inspectionNote": {
+        "list": [
+          "first",
+          false,
+          {
+            "count": 2
+          }
+        ]
+      },
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ]
+    },
+    "diagnostic_error": "",
+    "expected_media": "application/did"
+  },
+  {
+    "name": "document-fragment",
+    "document": {
+      "id": "did:example:resources",
+      "service": [
+        {
+          "id": "did:example:resources#one",
+          "type": [
+            "Messaging",
+            "Shared"
+          ],
+          "serviceEndpoint": "https://one.example/base/"
+        },
+        {
+          "id": "did:example:resources#two",
+          "type": "Messaging",
+          "serviceEndpoint": [
+            "https://two.example/queue/",
+            "https://backup.example/base/"
+          ]
+        },
+        {
+          "id": "did:example:resources#map",
+          "type": "Messaging",
+          "serviceEndpoint": {
+            "uri": "https://map.example/",
+            "description": "public map endpoint"
+          }
+        },
+        {
+          "id": "did:example:resources#other",
+          "type": "Other",
+          "serviceEndpoint": "https://other.example/base/"
+        }
+      ],
+      "inspectionNote": {
+        "list": [
+          "first",
+          false,
+          {
+            "count": 2
+          }
+        ]
+      },
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ]
+    },
+    "request": {
+      "function": "dereference",
+      "input": "did:example:resources#sign",
+      "accept": "application/did"
+    },
+    "parameters": {},
+    "expected_kind": "verification-method",
+    "expected_content": {
+      "id": "did:example:resources#sign",
+      "type": "Multikey",
+      "controller": "did:example:resources",
+      "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+    },
+    "diagnostic_error": "",
+    "expected_media": "application/ld+json"
+  },
+  {
+    "name": "path-fallback",
+    "document": {
+      "id": "did:example:resources",
+      "service": [
+        {
+          "id": "did:example:resources#one",
+          "type": [
+            "Messaging",
+            "Shared"
+          ],
+          "serviceEndpoint": "https://one.example/base/"
+        },
+        {
+          "id": "did:example:resources#two",
+          "type": "Messaging",
+          "serviceEndpoint": [
+            "https://two.example/queue/",
+            "https://backup.example/base/"
+          ]
+        },
+        {
+          "id": "did:example:resources#map",
+          "type": "Messaging",
+          "serviceEndpoint": {
+            "uri": "https://map.example/",
+            "description": "public map endpoint"
+          }
+        },
+        {
+          "id": "did:example:resources#other",
+          "type": "Other",
+          "serviceEndpoint": "https://other.example/base/"
+        }
+      ],
+      "inspectionNote": {
+        "list": [
+          "first",
+          false,
+          {
+            "count": 2
+          }
+        ]
+      },
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ]
+    },
+    "request": {
+      "function": "dereference",
+      "input": "did:example:resources/resource",
+      "accept": "application/did"
+    },
+    "parameters": {},
+    "expected_kind": "",
+    "expected_content": null,
+    "diagnostic_error": "https://www.w3.org/ns/did#NOT_FOUND",
+    "expected_media": "application/did"
+  },
+  {
+    "name": "query-fallback",
+    "document": {
+      "id": "did:example:resources",
+      "service": [
+        {
+          "id": "did:example:resources#one",
+          "type": [
+            "Messaging",
+            "Shared"
+          ],
+          "serviceEndpoint": "https://one.example/base/"
+        },
+        {
+          "id": "did:example:resources#two",
+          "type": "Messaging",
+          "serviceEndpoint": [
+            "https://two.example/queue/",
+            "https://backup.example/base/"
+          ]
+        },
+        {
+          "id": "did:example:resources#map",
+          "type": "Messaging",
+          "serviceEndpoint": {
+            "uri": "https://map.example/",
+            "description": "public map endpoint"
+          }
+        },
+        {
+          "id": "did:example:resources#other",
+          "type": "Other",
+          "serviceEndpoint": "https://other.example/base/"
+        }
+      ],
+      "inspectionNote": {
+        "list": [
+          "first",
+          false,
+          {
+            "count": 2
+          }
+        ]
+      },
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ]
+    },
+    "request": {
+      "function": "dereference",
+      "input": "did:example:resources?relativeRef=next",
+      "accept": "application/did"
+    },
+    "parameters": {
+      "relativeRef": "next"
+    },
+    "expected_kind": "",
+    "expected_content": null,
+    "diagnostic_error": "https://www.w3.org/ns/did#NOT_FOUND",
+    "expected_media": "application/did"
+  },
+  {
+    "name": "path-query-fallback",
+    "document": {
+      "id": "did:example:resources",
+      "service": [
+        {
+          "id": "did:example:resources#one",
+          "type": [
+            "Messaging",
+            "Shared"
+          ],
+          "serviceEndpoint": "https://one.example/base/"
+        },
+        {
+          "id": "did:example:resources#two",
+          "type": "Messaging",
+          "serviceEndpoint": [
+            "https://two.example/queue/",
+            "https://backup.example/base/"
+          ]
+        },
+        {
+          "id": "did:example:resources#map",
+          "type": "Messaging",
+          "serviceEndpoint": {
+            "uri": "https://map.example/",
+            "description": "public map endpoint"
+          }
+        },
+        {
+          "id": "did:example:resources#other",
+          "type": "Other",
+          "serviceEndpoint": "https://other.example/base/"
+        }
+      ],
+      "inspectionNote": {
+        "list": [
+          "first",
+          false,
+          {
+            "count": 2
+          }
+        ]
+      },
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ]
+    },
+    "request": {
+      "function": "dereference",
+      "input": "did:example:resources/resource?relativeRef=next",
+      "accept": "application/did"
+    },
+    "parameters": {
+      "relativeRef": "next"
+    },
+    "expected_kind": "",
+    "expected_content": null,
+    "diagnostic_error": "https://www.w3.org/ns/did#NOT_FOUND",
+    "expected_media": "application/did"
+  },
+  {
+    "name": "service-priority-path",
+    "document": {
+      "id": "did:example:resources",
+      "service": [
+        {
+          "id": "did:example:resources#one",
+          "type": [
+            "Messaging",
+            "Shared"
+          ],
+          "serviceEndpoint": "https://one.example/base/"
+        },
+        {
+          "id": "did:example:resources#two",
+          "type": "Messaging",
+          "serviceEndpoint": [
+            "https://two.example/queue/",
+            "https://backup.example/base/"
+          ]
+        },
+        {
+          "id": "did:example:resources#map",
+          "type": "Messaging",
+          "serviceEndpoint": {
+            "uri": "https://map.example/",
+            "description": "public map endpoint"
+          }
+        },
+        {
+          "id": "did:example:resources#other",
+          "type": "Other",
+          "serviceEndpoint": "https://other.example/base/"
+        }
+      ],
+      "inspectionNote": {
+        "list": [
+          "first",
+          false,
+          {
+            "count": 2
+          }
+        ]
+      },
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ]
+    },
+    "request": {
+      "function": "dereference",
+      "input": "did:example:resources/resource?service=did%3Aexample%3Aresources%23one",
+      "accept": "text/uri-list"
+    },
+    "parameters": {
+      "service": "did:example:resources#one"
+    },
+    "expected_kind": "uri-list",
+    "expected_content": [
+      "https://one.example/base/"
+    ],
+    "diagnostic_error": "",
+    "expected_media": "text/uri-list"
+  },
+  {
+    "name": "endpoint-fragment",
+    "document": {
+      "id": "did:example:resources",
+      "service": [
+        {
+          "id": "did:example:resources#one",
+          "type": [
+            "Messaging",
+            "Shared"
+          ],
+          "serviceEndpoint": "https://one.example/base/"
+        },
+        {
+          "id": "did:example:resources#two",
+          "type": "Messaging",
+          "serviceEndpoint": [
+            "https://two.example/queue/",
+            "https://backup.example/base/"
+          ]
+        },
+        {
+          "id": "did:example:resources#map",
+          "type": "Messaging",
+          "serviceEndpoint": {
+            "uri": "https://map.example/",
+            "description": "public map endpoint"
+          }
+        },
+        {
+          "id": "did:example:resources#other",
+          "type": "Other",
+          "serviceEndpoint": "https://other.example/base/"
+        }
+      ],
+      "inspectionNote": {
+        "list": [
+          "first",
+          false,
+          {
+            "count": 2
+          }
+        ]
+      },
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ]
+    },
+    "request": {
+      "function": "dereference",
+      "input": "did:example:resources?service=did%3Aexample%3Aresources%23one#topic",
+      "accept": "text/uri-list"
+    },
+    "parameters": {
+      "service": "did:example:resources#one"
+    },
+    "expected_kind": "uri-list",
+    "expected_content": [
+      "https://one.example/base/#topic"
+    ],
+    "diagnostic_error": "",
+    "expected_media": "text/uri-list"
+  },
+  {
+    "name": "endpoint-without-fragment",
+    "document": {
+      "id": "did:example:resources",
+      "service": [
+        {
+          "id": "did:example:resources#one",
+          "type": [
+            "Messaging",
+            "Shared"
+          ],
+          "serviceEndpoint": "https://one.example/base/"
+        },
+        {
+          "id": "did:example:resources#two",
+          "type": "Messaging",
+          "serviceEndpoint": [
+            "https://two.example/queue/",
+            "https://backup.example/base/"
+          ]
+        },
+        {
+          "id": "did:example:resources#map",
+          "type": "Messaging",
+          "serviceEndpoint": {
+            "uri": "https://map.example/",
+            "description": "public map endpoint"
+          }
+        },
+        {
+          "id": "did:example:resources#other",
+          "type": "Other",
+          "serviceEndpoint": "https://other.example/base/"
+        }
+      ],
+      "inspectionNote": {
+        "list": [
+          "first",
+          false,
+          {
+            "count": 2
+          }
+        ]
+      },
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ]
+    },
+    "request": {
+      "function": "dereference",
+      "input": "did:example:resources?service=did%3Aexample%3Aresources%23one",
+      "accept": "text/uri-list"
+    },
+    "parameters": {
+      "service": "did:example:resources#one"
+    },
+    "expected_kind": "uri-list",
+    "expected_content": [
+      "https://one.example/base/"
+    ],
+    "diagnostic_error": "",
+    "expected_media": "text/uri-list"
+  },
+  {
+    "name": "multiple-endpoint-fragment",
+    "document": {
+      "id": "did:example:resources",
+      "service": [
+        {
+          "id": "did:example:resources#one",
+          "type": [
+            "Messaging",
+            "Shared"
+          ],
+          "serviceEndpoint": "https://one.example/base/"
+        },
+        {
+          "id": "did:example:resources#two",
+          "type": "Messaging",
+          "serviceEndpoint": [
+            "https://two.example/queue/",
+            "https://backup.example/base/"
+          ]
+        },
+        {
+          "id": "did:example:resources#map",
+          "type": "Messaging",
+          "serviceEndpoint": {
+            "uri": "https://map.example/",
+            "description": "public map endpoint"
+          }
+        },
+        {
+          "id": "did:example:resources#other",
+          "type": "Other",
+          "serviceEndpoint": "https://other.example/base/"
+        }
+      ],
+      "inspectionNote": {
+        "list": [
+          "first",
+          false,
+          {
+            "count": 2
+          }
+        ]
+      },
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ]
+    },
+    "request": {
+      "function": "dereference",
+      "input": "did:example:resources?serviceType=Messaging#topic",
+      "accept": "text/uri-list"
+    },
+    "parameters": {
+      "serviceType": "Messaging"
+    },
+    "expected_kind": "uri-list",
+    "expected_content": [
+      "https://one.example/base/#topic",
+      "https://two.example/queue/#topic",
+      "https://backup.example/base/#topic"
+    ],
+    "diagnostic_error": "",
+    "expected_media": "text/uri-list"
+  },
+  {
+    "name": "endpoint-existing-fragment",
+    "document": {
+      "id": "did:example:resources",
+      "service": [
+        {
+          "id": "did:example:resources#one",
+          "type": [
+            "Messaging",
+            "Shared"
+          ],
+          "serviceEndpoint": "https://one.example/base/#existing"
+        },
+        {
+          "id": "did:example:resources#two",
+          "type": "Messaging",
+          "serviceEndpoint": [
+            "https://two.example/queue/",
+            "https://backup.example/base/"
+          ]
+        },
+        {
+          "id": "did:example:resources#map",
+          "type": "Messaging",
+          "serviceEndpoint": {
+            "uri": "https://map.example/",
+            "description": "public map endpoint"
+          }
+        },
+        {
+          "id": "did:example:resources#other",
+          "type": "Other",
+          "serviceEndpoint": "https://other.example/base/"
+        }
+      ],
+      "inspectionNote": {
+        "list": [
+          "first",
+          false,
+          {
+            "count": 2
+          }
+        ]
+      },
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ]
+    },
+    "request": {
+      "function": "dereference",
+      "input": "did:example:resources?service=did%3Aexample%3Aresources%23one#topic",
+      "accept": "text/uri-list"
+    },
+    "parameters": {
+      "service": "did:example:resources#one"
+    },
+    "expected_kind": "",
+    "expected_content": null,
+    "diagnostic_error": "https://www.w3.org/ns/did#INVALID_DID_URL",
+    "expected_media": "text/uri-list"
+  },
+  {
+    "name": "endpoint-empty-fragment",
+    "document": {
+      "id": "did:example:resources",
+      "service": [
+        {
+          "id": "did:example:resources#one",
+          "type": [
+            "Messaging",
+            "Shared"
+          ],
+          "serviceEndpoint": "https://one.example/base/"
+        },
+        {
+          "id": "did:example:resources#two",
+          "type": "Messaging",
+          "serviceEndpoint": [
+            "https://two.example/queue/",
+            "https://backup.example/base/"
+          ]
+        },
+        {
+          "id": "did:example:resources#map",
+          "type": "Messaging",
+          "serviceEndpoint": {
+            "uri": "https://map.example/",
+            "description": "public map endpoint"
+          }
+        },
+        {
+          "id": "did:example:resources#other",
+          "type": "Other",
+          "serviceEndpoint": "https://other.example/base/"
+        }
+      ],
+      "inspectionNote": {
+        "list": [
+          "first",
+          false,
+          {
+            "count": 2
+          }
+        ]
+      },
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ]
+    },
+    "request": {
+      "function": "dereference",
+      "input": "did:example:resources?service=did%3Aexample%3Aresources%23one#",
+      "accept": "text/uri-list"
+    },
+    "parameters": {
+      "service": "did:example:resources#one"
+    },
+    "expected_kind": "uri-list",
+    "expected_content": [
+      "https://one.example/base/#"
+    ],
+    "diagnostic_error": "",
+    "expected_media": "text/uri-list"
+  },
+  {
+    "name": "relationship-priority",
+    "document": {
+      "id": "did:example:resources",
+      "service": [
+        {
+          "id": "did:example:resources#one",
+          "type": [
+            "Messaging",
+            "Shared"
+          ],
+          "serviceEndpoint": "https://one.example/base/"
+        },
+        {
+          "id": "did:example:resources#two",
+          "type": "Messaging",
+          "serviceEndpoint": [
+            "https://two.example/queue/",
+            "https://backup.example/base/"
+          ]
+        },
+        {
+          "id": "did:example:resources#map",
+          "type": "Messaging",
+          "serviceEndpoint": {
+            "uri": "https://map.example/",
+            "description": "public map endpoint"
+          }
+        },
+        {
+          "id": "did:example:resources#other",
+          "type": "Other",
+          "serviceEndpoint": "https://other.example/base/"
+        }
+      ],
+      "inspectionNote": {
+        "list": [
+          "first",
+          false,
+          {
+            "count": 2
+          }
+        ]
+      },
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ]
+    },
+    "request": {
+      "function": "dereference",
+      "input": "did:example:resources?service=did%3Aexample%3Aresources%23one#topic",
+      "accept": "text/uri-list",
+      "relationship": "authentication"
+    },
+    "parameters": {
+      "service": "did:example:resources#one"
+    },
+    "expected_kind": "",
+    "expected_content": null,
+    "diagnostic_error": "https://w3id.org/security#INVALID_VERIFICATION_METHOD",
+    "expected_media": "text/uri-list"
+  },
+  {
+    "name": "selected-document",
+    "document": {
+      "id": "did:example:resources",
+      "service": [
+        {
+          "id": "did:example:resources#one",
+          "type": [
+            "Messaging",
+            "Shared"
+          ],
+          "serviceEndpoint": "https://one.example/base/"
+        },
+        {
+          "id": "did:example:resources#two",
+          "type": "Messaging",
+          "serviceEndpoint": [
+            "https://two.example/queue/",
+            "https://backup.example/base/"
+          ]
+        },
+        {
+          "id": "did:example:resources#map",
+          "type": "Messaging",
+          "serviceEndpoint": {
+            "uri": "https://map.example/",
+            "description": "public map endpoint"
+          }
+        },
+        {
+          "id": "did:example:resources#other",
+          "type": "Other",
+          "serviceEndpoint": "https://other.example/base/"
+        }
+      ],
+      "inspectionNote": {
+        "list": [
+          "first",
+          false,
+          {
+            "count": 2
+          }
+        ]
+      },
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ]
+    },
+    "request": {
+      "function": "dereference",
+      "input": "did:example:resources?service=did%3Aexample%3Aresources%23one",
+      "accept": "application/did"
+    },
+    "parameters": {
+      "service": "did:example:resources#one"
+    },
+    "expected_kind": "document",
+    "expected_content": {
+      "id": "did:example:resources",
+      "service": [
+        {
+          "id": "did:example:resources#one",
+          "type": [
+            "Messaging",
+            "Shared"
+          ],
+          "serviceEndpoint": "https://one.example/base/"
+        }
+      ],
+      "inspectionNote": {
+        "list": [
+          "first",
+          false,
+          {
+            "count": 2
+          }
+        ]
+      },
+      "verificationMethod": [
+        {
+          "id": "did:example:resources#sign",
+          "type": "Multikey",
+          "controller": "did:example:resources",
+          "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+        }
+      ]
+    },
+    "diagnostic_error": "",
+    "expected_media": "application/did"
+  }
+]

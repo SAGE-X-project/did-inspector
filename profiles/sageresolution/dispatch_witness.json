@@ -1,0 +1,89 @@
+{
+  "roots": [
+    "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).Dereference",
+    "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).resource",
+    "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).fragment"
+  ],
+  "frames": {
+    "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).Dereference": "41f7196515e562c914580e97144a7e8f0b81892ba0a7e893dade45792bdb41bc",
+    "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).documentResult": "354ddffaea056851e7b12cd37ddada193e4ea7964923b4af4eaacb37cefdaec1",
+    "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).fragment": "7bccfc382d74ff5cffcca7fa4fa11bf2bb62406553f9dd70eba219b8d13b9e5d",
+    "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).producible": "68425db8e704507db1c653fae869a2f43c72e7e4e8ff05433f4fe6646f0dc692",
+    "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).resource": "9cc7033496848d7c215853caa58a1da7f956726f54ce58bb2fc399037d815b00",
+    "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).services": "b9343ff98b5b92a2f1a16ef844e82792afa113857dffd6a46a63a7cfd18fa542",
+    "github.com/sage-x-project/did-go/dereferencer.endpointURLs": "f27b6e987c6289d4e1b4a5a0b5ef9810933e2d8f4f727d51d34816a19f08203e",
+    "github.com/sage-x-project/did-go/dereferencer.inheritFragment": "d1333c9503a41f9f8bd93fb41b6d157cdde1c505695668b94b7e495bdda362b9",
+    "github.com/sage-x-project/did-go/dereferencer.isDIDMediaType": "a909bdd59b0fb59ac6a668bda6e6af07c51dee7a25a6b36ada2e80d5cdfc59ef",
+    "github.com/sage-x-project/did-go/dereferencer.onlyResolutionParameters": "080f98940f5047b81e396485f6392f7cd932a7abff730b4e498b8635efcb79bd",
+    "github.com/sage-x-project/did-go/dereferencer.resolutionOptions": "db9f8745ed1b2d891adbfcc821312c9f53ad4858f1c652178b3418ae7fe3ad1f",
+    "github.com/sage-x-project/did-go/dereferencer.uriList": "b84a23a6322269fd470b710943587bea65e70af76c3878cd3023b6f4e1ff00a7",
+    "github.com/sage-x-project/did-go/did.(github.com/sage-x-project/did-go/did.DIDParameters).Get": "60cf606cd240b1f971f713cbf9456e177f3c3ac67be44ce589450bd1442eacbe",
+    "github.com/sage-x-project/did-go/did.(github.com/sage-x-project/did-go/did.DIDParameters).Names": "e19a2441a38f00cc58a93651f009bf569791b5ceb87ef8c6eb2ca5029ba76adb",
+    "github.com/sage-x-project/did-go/did.(github.com/sage-x-project/did-go/did.DIDURL).DID": "9131b5c7b6ff9191f8cd134349cbbb78d7c5566cbbe2ba82c087dad91fc43526",
+    "github.com/sage-x-project/did-go/did.(github.com/sage-x-project/did-go/did.DIDURL).Fragment": "63e5a6f6546ae166dc8504a5a6b09c3ae88e7e022c35b3461a66da2d64925e12",
+    "github.com/sage-x-project/did-go/did.(github.com/sage-x-project/did-go/did.DIDURL).HasFragment": "52308467379ec12e0ac83ba14948f4370eaeb072df360d0de42e191d4e507d1e",
+    "github.com/sage-x-project/did-go/did.(github.com/sage-x-project/did-go/did.DIDURL).Parameters": "8d247285d68d8ecfad3a7488e0bcc24aa7dab3c8b2efbb205e7e86f177cd041f",
+    "github.com/sage-x-project/did-go/did.(github.com/sage-x-project/did-go/did.DIDURL).Path": "9dfe345475fb2668a6478b2169ffa07a96d2ab62b4e48f207ab25013797e84ee",
+    "github.com/sage-x-project/did-go/document.(github.com/sage-x-project/did-go/document.Map).Get": "61edea6f7e0002dbd921e1fc4f0c0b45361fc1219fdcf25243b1b5a8ee2ad4d9",
+    "github.com/sage-x-project/did-go/representation.CoreMediaTypes": "1c55ffea48762ecf2047b5896a72e7b70520940e740300a5ba1062b08d524f07"
+  },
+  "roles": {
+    "endpoint_content": "content []string",
+    "resolved_result": "res github.com/sage-x-project/did-go/resolution.Result",
+    "resource_input": "res github.com/sage-x-project/did-go/resolution.Result",
+    "resource_output": "out github.com/sage-x-project/did-go/resolution.DereferenceResult"
+  },
+  "steps": [
+    {
+      "kind": "resolved-document-flow",
+      "expressions": [
+        "res := d.resolver.Resolve(ctx, u.DID(), resolutionOptions(params, opts))",
+        "res"
+      ],
+      "correct": true
+    },
+    {
+      "kind": "path-query-fallback",
+      "expressions": [
+        "u.Path() == \"\" && onlyResolutionParameters(params)"
+      ],
+      "correct": true
+    },
+    {
+      "kind": "endpoint-fragment-branch",
+      "expressions": [
+        "out.ContentStream.(type)",
+        "[]string",
+        "u.HasFragment()"
+      ],
+      "correct": true
+    }
+  ],
+  "unknown": [],
+  "call_paths": [
+    [
+      "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).Dereference",
+      "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).resource"
+    ],
+    [
+      "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).resource",
+      "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).services"
+    ],
+    [
+      "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).services",
+      "github.com/sage-x-project/did-go/dereferencer.endpointURLs"
+    ],
+    [
+      "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).services",
+      "github.com/sage-x-project/did-go/dereferencer.uriList"
+    ],
+    [
+      "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).Dereference",
+      "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).fragment"
+    ],
+    [
+      "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).fragment",
+      "github.com/sage-x-project/did-go/dereferencer.inheritFragment"
+    ]
+  ]
+}
