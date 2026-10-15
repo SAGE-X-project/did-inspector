@@ -2,7 +2,7 @@
 
 All 246 clauses unobserved at `1efc9f0` are reviewed individually in the [machine-readable audit](sage-remaining-clause-review.json). The earlier [353-clause review](sage-resolution-batch-review.json) and all 416 historical ledger entries remain intact. Review coverage does not establish execution coverage or standards conformance.
 
-This grouped implementation connects 123 distinct selected clauses across 63 cases, including twenty-eight fixed-source codec obligations and five separately judged fragment obligations. Of the 246 anchor clauses, 136 now have execution verdicts and 110 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
+This grouped implementation connects 125 distinct selected clauses across 64 cases, including twenty-eight fixed-source codec obligations and five separately judged fragment obligations. Of the 246 anchor clauses, 138 now have execution verdicts and 108 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
 
 | Review disposition | Clauses |
 |---|---:|
@@ -181,3 +181,14 @@ Resource clause .10 binds the actual nominal Resolve call, its successful nonnil
 Thirteen fresh ordinary literal calls cover the plain and selected document, document fragment, path/query/both fallbacks, service priority, single/multiple endpoints, absent and empty fragment, existing-fragment diagnostic and relationship-priority diagnostic. Original resolved maps and metadata are retained separately from reduced document/resource outputs. Arbitrary unknown queries are rejected earlier by the resolver and are not fallback evidence. No endpoint is fetched and altered source controls are parse/type-check data only, never executed.
 
 The proof excludes adjusted URL (resource .11 stays pending), complete query/version or URI/media grammar, actual custom handler invocation, operational authority and physical runtime tracing. Diagnostic errors add no new normative obligation. Current resolution is 361 cases, 362 PASS, ten FAIL, four NOT_APPLICABLE and 110 NOT_RUN. All original416 ids remain: 306 observed (293 PASS, ten FAIL, three NOT_APPLICABLE) and110 pending. The anchor246 has136 execution verdicts (130 PASS, four FAIL, two NOT_APPLICABLE) and110 pending: internal17, document actor51, choices12, registration15, operational/history10, interpretation4 and complete tuple1. Existing stage-eight repairs and deferred registration retain the approved order.
+
+
+## Relative URL expansion guard and extension traversal
+
+Two internal predicates are judged separately. `resolving-algorithm.27` passes the actual typed `expandRelativeUrls` guard. `resolving-algorithm.28` fails complete collection traversal: the same actual consumer preserves five relative `id` values in top-level method, embedded method and service extension maps, but the resolver leaves them relative. Moving identical maps to the document root expands them. Five ordinary literal documents cover absent, false and true options, relocated maps and valid empty collections; no external endpoint is fetched.
+
+A separate nine-package, 39-file cache/ZIP capture binds the pinned resolver, its actual consumer-local document and helper chain. The inspector recomputes typed roles and guard semantics; 315 reviewed function contexts are premises, not a substitute for the independent operand and runtime checks. Bare `Extra` reads or unreviewed equivalent guards cannot manufacture PASS. Altered source controls are parsed/type-checked only and never executed. Pre-expansion consumption and post-expansion model/wire values remain distinct; the producer context is checked separately. This is not full RFC3986, representation conformance (.26), every-item processing (.29), JSON-LD, operational authority or physical tracing.
+
+Current resolution: 362 cases, 363 PASS, eleven FAIL, four NOT_APPLICABLE, 108 NOT_RUN, zero ERROR. Original 416 ledger: 308 observed (294 PASS, eleven FAIL, three NOT_APPLICABLE) plus 108 pending. The 246 anchor has 138 execution verdicts (131 PASS, five FAIL, two NOT_APPLICABLE) plus 108 pending. Remaining classification: internal15, document actor51, choices12, registration15, operational/history10, interpretation4 and complete tuple1.
+
+The new complete-expansion traversal failure is an additional stage-eight repair cause, separate from the earlier fragment-search omission: eleven failed clauses now map to eight repair causes. Earlier ten findings/seven causes, pins, original ledger ids, frozen text, Core1.0/projection results and old 38-file source captures are preserved. Core/spec changes remain deferred. Missing compiler source makes all 47 source-bound clauses ERROR; the other 317 PASS and earlier ten FAIL remain independently observable.
