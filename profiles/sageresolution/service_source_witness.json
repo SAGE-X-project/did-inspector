@@ -1,0 +1,70 @@
+{
+  "roots": [
+    "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).resource",
+    "github.com/sage-x-project/did-go/dereferencer.endpointURLs"
+  ],
+  "frames": {
+    "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).resource": "0a30656787b33a5814baa408dd3819fb7a727bc1f89ce8c5f19936eae95e43f3",
+    "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).services": "b9343ff98b5b92a2f1a16ef844e82792afa113857dffd6a46a63a7cfd18fa542",
+    "github.com/sage-x-project/did-go/dereferencer.endpointURLs": "8fd7b2f437634ce0498533644ac33ef8501e194eb1c2fe273e0c12e3d816d1d7",
+    "github.com/sage-x-project/did-go/did.(github.com/sage-x-project/did-go/did.DIDParameters).Get": "60cf606cd240b1f971f713cbf9456e177f3c3ac67be44ce589450bd1442eacbe",
+    "github.com/sage-x-project/did-go/did.(github.com/sage-x-project/did-go/did.DIDURL).Parameters": "8d247285d68d8ecfad3a7488e0bcc24aa7dab3c8b2efbb205e7e86f177cd041f"
+  },
+  "roles": {
+    "base": "base *net/url.URL",
+    "endpoint": "u string",
+    "endpoint_urls": "urls []string",
+    "first_presence": "hasService bool",
+    "reference": "ref *net/url.URL",
+    "relative_ref_present": "ok bool",
+    "second_presence": "hasType bool",
+    "selected": "selected []github.com/sage-x-project/did-go/vm.Service",
+    "selected_service": "s github.com/sage-x-project/did-go/vm.Service",
+    "service_endpoint": "e github.com/sage-x-project/did-go/vm.Endpoint"
+  },
+  "steps": [
+    {
+      "kind": "service-parameter-branch",
+      "expressions": [
+        "hasService || hasType"
+      ],
+      "correct": true
+    },
+    {
+      "kind": "relative-reference-branch",
+      "expressions": [
+        "!ok"
+      ],
+      "correct": true
+    },
+    {
+      "kind": "selected-endpoint-base",
+      "expressions": [
+        "u"
+      ],
+      "correct": true
+    },
+    {
+      "kind": "relative-reference-value",
+      "expressions": [
+        "params.RelativeRef"
+      ],
+      "correct": true
+    }
+  ],
+  "unknown": [],
+  "call_paths": [
+    [
+      "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).Dereference",
+      "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).resource"
+    ],
+    [
+      "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).resource",
+      "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).services"
+    ],
+    [
+      "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).services",
+      "github.com/sage-x-project/did-go/dereferencer.endpointURLs"
+    ]
+  ]
+}

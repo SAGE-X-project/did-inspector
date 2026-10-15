@@ -23,10 +23,10 @@
     "runtime-candidate": 69
   },
   "execution_counts": {
-    "PASS": 119,
+    "PASS": 123,
     "FAIL": 4,
     "NOT_APPLICABLE": 2,
-    "NOT_RUN": 121
+    "NOT_RUN": 117
   },
   "clauses": [
     {
@@ -3030,11 +3030,13 @@
       "actor": "SAGE resolver/source or service dereferencer",
       "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The named conditional, alias, loop or intermediate value is not exposed by the selected public operation. Existing externally observed results do not prove this internal algorithm step; a passive attributed internal witness or an approved functional-equivalence interpretation is required.",
+      "status": "observed-selected-branch",
+      "reason": "Selected URI-list/string-endpoint service and relativeRef presence branches and typed endpoint/base/reference source roles, corroborated by seven fresh ordinary library calls including empty relativeRef presence. Whole service matching, media/URL semantics, authority and physical runtime trace remain separate.",
       "follow_up_condition": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/service-source-roles"
+      ]
     },
     {
       "id": "res10-crd20261001#dereferencing-algorithm-resource.17",
@@ -3109,11 +3111,13 @@
       "actor": "SAGE resolver/source or service dereferencer",
       "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The named conditional, alias, loop or intermediate value is not exposed by the selected public operation. Existing externally observed results do not prove this internal algorithm step; a passive attributed internal witness or an approved functional-equivalence interpretation is required.",
+      "status": "observed-selected-branch",
+      "reason": "Selected URI-list/string-endpoint service and relativeRef presence branches and typed endpoint/base/reference source roles, corroborated by seven fresh ordinary library calls including empty relativeRef presence. Whole service matching, media/URL semantics, authority and physical runtime trace remain separate.",
       "follow_up_condition": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/service-source-roles"
+      ]
     },
     {
       "id": "res10-crd20261001#dereferencing-algorithm-resource.21",
@@ -3225,11 +3229,13 @@
       "actor": "SAGE resolver/source or service dereferencer",
       "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The named conditional, alias, loop or intermediate value is not exposed by the selected public operation. Existing externally observed results do not prove this internal algorithm step; a passive attributed internal witness or an approved functional-equivalence interpretation is required.",
+      "status": "observed-selected-branch",
+      "reason": "Selected URI-list/string-endpoint service and relativeRef presence branches and typed endpoint/base/reference source roles, corroborated by seven fresh ordinary library calls including empty relativeRef presence. Whole service matching, media/URL semantics, authority and physical runtime trace remain separate.",
       "follow_up_condition": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/service-source-roles"
+      ]
     },
     {
       "id": "res10-crd20261001#dereferencing-algorithm-resource.27",
@@ -3243,11 +3249,13 @@
       "actor": "SAGE resolver/source or service dereferencer",
       "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The named conditional, alias, loop or intermediate value is not exposed by the selected public operation. Existing externally observed results do not prove this internal algorithm step; a passive attributed internal witness or an approved functional-equivalence interpretation is required.",
+      "status": "observed-selected-branch",
+      "reason": "Selected URI-list/string-endpoint service and relativeRef presence branches and typed endpoint/base/reference source roles, corroborated by seven fresh ordinary library calls including empty relativeRef presence. Whole service matching, media/URL semantics, authority and physical runtime trace remain separate.",
       "follow_up_condition": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/service-source-roles"
+      ]
     },
     {
       "id": "res10-crd20261001#dereferencing-algorithm-resource.28",

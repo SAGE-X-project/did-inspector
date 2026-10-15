@@ -24,8 +24,8 @@ recommendation-level statements. Requirement-level extraction also includes
 permissions, definitions and algorithm steps; it does not mean every row is a
 standalone MUST with an independently observable violation.
 
-The current report has 349 cases, 303 requirement and fourteen recommendation passes,
-five requirement failures, four recommendation failures, four inapplicable statements and 156 unobserved statements. Ten fresh native
+The current report has 359 cases, 341 requirement and fourteen recommendation passes,
+six requirement failures, four recommendation failures, four inapplicable statements and 117 unobserved statements. Ten fresh native
 result cases add 13 requirement passes and one conditional NOT_APPLICABLE.
 Twenty-four direct metadata serialization cases add four requirement passes.
 Three native error/state cases and ten owned TLS response cases add 22
@@ -53,7 +53,7 @@ strings, adding consumption.1 on these selected values. Root/map insertion order
 is not required. All numeric ranges, forced double properties without a fraction,
 other property contexts and full JSON-LD processing remain unestablished.
 The earlier routing table below describes the 246-clause anchor, not the baseline 416.
-The [current full review](sage-remaining-clause-review.md) records all anchor clauses individually and identifies the 156 still unobserved.
+The [current full review](sage-remaining-clause-review.md) records all anchor clauses individually and identifies the 117 still unobserved.
 
 | Primary next evidence route | Statements | Meaning |
 |---|---:|---|
@@ -367,4 +367,8 @@ Nine fresh cases archive eighteen actual root dereferencer calls with a literal 
 
 Missing-fragment and unfiltered-document controls are diagnostic and cannot create extra MAY/OPTIONAL obligations. Optional refusal is NOT_SUPPORTED; missing or misattributed call evidence is ERROR. The existing required accept-forwarding failure, internal algorithm NOT_RUN entries and all original clause identities are preserved. This is selected library capability evidence, not arbitrary resource format support, all parameters, historical resolution, full JSON-LD processing or SAGE operational authority.
 
-Current DID1.1 resolution: 349 cases, 317 PASS, nine FAIL, four NOT_APPLICABLE and 156 NOT_RUN. Original baseline: 260 observed (248 PASS, three NOT_APPLICABLE, nine FAIL) and 156 pending. Of the 246 anchor clauses, 90 have execution verdicts and 156 remain NOT_RUN.
+At the preceding resource-choice checkpoint DID1.1 resolution had 349 cases, 317 PASS, nine FAIL, four NOT_APPLICABLE and 156 NOT_RUN. Original baseline: 260 observed (248 PASS, three NOT_APPLICABLE, nine FAIL) and 156 pending. Of the 246 anchor clauses, 90 have execution verdicts and 156 remain NOT_RUN.
+
+### Selected service routing roles
+
+Four additional typed source-role clauses are now observed, corroborated by seven fresh ordinary URI-list/service calls. See [the scope and preserved limits](sage-remaining-clause-review.md#selected-service-routing-source-roles). Current DID1.1 resolution is 359 cases, 355 PASS, ten FAIL, four NOT_APPLICABLE and 117 NOT_RUN. Core1.0 and separate projection are unchanged; the failing conformance gate and planned core fixes remain. All 416 historical ids and baseline bytes are preserved.
