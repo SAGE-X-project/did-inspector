@@ -75,9 +75,9 @@
     "No operational source, registration, private key or deployment is supplied by this audit."
   ],
   "categories": {
-    "additional-data-or-feature": 8,
+    "additional-data-or-feature": 7,
     "document-or-applicability-review": 79,
-    "additional-observer-operation": 10,
+    "additional-observer-operation": 8,
     "operational-or-authority-evidence": 4,
     "existing-observation": 5
   },
@@ -418,28 +418,6 @@
       "text_sha256": "895d15079030d6c46c7447e50762f288d3a40fb8700c36ab50a506631cfc4030",
       "baseline_verdict": "NOT_RUN",
       "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#multihash.2",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "ba20d0d4888625f8af2a62f6562d37b3fbefc0ca49955c97a49e9fcb283456d7",
-      "baseline_verdict": "NOT_RUN",
-      "route": "codec-internals",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#multihash.3",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "6e7a6fd69d7288ac4af2b62963aaab0bccd14d9e29c350e146d70843a728b81a",
-      "baseline_verdict": "NOT_RUN",
-      "route": "codec-internals",
       "generic_scope": "not-checkable"
     },
     {
@@ -1388,15 +1366,6 @@
       "text_sha256": "131cee4e806e9bad0a273f66f29b019212a3a4409f8866a063d2711bc74693ad",
       "baseline_verdict": "NOT_RUN",
       "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#resolving-algorithm.29",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "781fe482384d7477f9a8f3fe56a1237b11d9d644e5896aabed9eeba6ba9bb36d",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
       "generic_scope": "checked"
     },
     {
@@ -6765,26 +6734,78 @@
       "case_prefix": "/url-source-",
       "observed_in_scope": "sage-resolution",
       "reason": "Separate typed primary-resource handler URL and DID parser plus same-reference RP integration. An explicit passive unhandled observer receives the original fragment-bearing URL; final NOT_FOUND is diagnostic only. Parser literals and positive same-ref RP calls establish selected did:sage extraction; downstream parser diagnostics do not judge extraction. Source helper frames/Go semantics are premises; media-fragment .3 remains pending; core repair is deferred."
+    },
+    {
+      "id": "cid10#multihash.2",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "ba20d0d4888625f8af2a62f6562d37b3fbefc0ca49955c97a49e9fcb283456d7",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/multihash-component-operations"
+      ],
+      "case_prefix": "/multihash-component-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Inspector-owned direct internal component probe of the original pinned multihash functions, with four literal code/length pairs and independent expected/declared/actual length rejection controls; not SAGE production support. Observer local module identity is distinct from unreplaced subject pins."
+    },
+    {
+      "id": "cid10#multihash.3",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "6e7a6fd69d7288ac4af2b62963aaab0bccd14d9e29c350e146d70843a728b81a",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/multihash-component-operations"
+      ],
+      "case_prefix": "/multihash-component-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Inspector-owned direct internal component probe of the original pinned multihash functions, with four literal code/length pairs and independent expected/declared/actual length rejection controls; not SAGE production support. Observer local module identity is distinct from unreplaced subject pins."
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.29",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "781fe482384d7477f9a8f3fe56a1237b11d9d644e5896aabed9eeba6ba9bb36d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "FAIL",
+      "cases": [
+        "did-1.1/sage-resolution/item-expansion-conditions"
+      ],
+      "case_prefix": "/item-expansion-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Independently qualifying five preserved relative-id object candidates are missed by the existing expansion traversal; same repair cause as .28."
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 364,
-    "FAIL": 12,
+    "PASS": 366,
+    "FAIL": 13,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 4,
     "ERROR": 0,
-    "NOT_RUN": 106
+    "NOT_RUN": 103
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 350,
-      "FAIL": 8,
+      "PASS": 352,
+      "FAIL": 9,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 76
+      "NOT_RUN": 73
     },
     "recommendation": {
       "statements": 50,
@@ -6796,5 +6817,5 @@
       "NOT_RUN": 30
     }
   },
-  "expected_live_cases": 363
+  "expected_live_cases": 365
 }

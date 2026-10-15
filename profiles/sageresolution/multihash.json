@@ -1,0 +1,358 @@
+[
+  {
+    "name": "encode-sha2-256",
+    "statement": "cid10#multihash.2",
+    "request": {
+      "operation": "encode",
+      "code": 18,
+      "digest": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8=",
+      "encoded": null
+    },
+    "expected_encoded": "EiAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHw=="
+  },
+  {
+    "name": "decode-sha2-256",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "EiAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHw=="
+    },
+    "expected_code": 18,
+    "expected_digest": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8="
+  },
+  {
+    "name": "decode-sha2-256-declared-actual-short",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "Eh8AAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0e"
+    },
+    "reject": true
+  },
+  {
+    "name": "decode-sha2-256-declared-actual-long",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "EiEAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyA="
+    },
+    "reject": true
+  },
+  {
+    "name": "decode-sha2-256-declared-short",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "Eh8AAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHw=="
+    },
+    "reject": true
+  },
+  {
+    "name": "decode-sha2-256-actual-short",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "EiAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0e"
+    },
+    "reject": true
+  },
+  {
+    "name": "decode-sha2-256-actual-long",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "EiAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHzA="
+    },
+    "reject": true
+  },
+  {
+    "name": "encode-sha2-384",
+    "statement": "cid10#multihash.2",
+    "request": {
+      "operation": "encode",
+      "code": 32,
+      "digest": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4v",
+      "encoded": null
+    },
+    "expected_encoded": "IDAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8="
+  },
+  {
+    "name": "decode-sha2-384",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "IDAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8="
+    },
+    "expected_code": 32,
+    "expected_digest": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4v"
+  },
+  {
+    "name": "decode-sha2-384-declared-actual-short",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "IC8AAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLg=="
+    },
+    "reject": true
+  },
+  {
+    "name": "decode-sha2-384-declared-actual-long",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "IDEAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8w"
+    },
+    "reject": true
+  },
+  {
+    "name": "decode-sha2-384-declared-short",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "IC8AAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8="
+    },
+    "reject": true
+  },
+  {
+    "name": "decode-sha2-384-actual-short",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "IDAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLg=="
+    },
+    "reject": true
+  },
+  {
+    "name": "decode-sha2-384-actual-long",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "IDAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8w"
+    },
+    "reject": true
+  },
+  {
+    "name": "encode-sha3-256",
+    "statement": "cid10#multihash.2",
+    "request": {
+      "operation": "encode",
+      "code": 22,
+      "digest": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8=",
+      "encoded": null
+    },
+    "expected_encoded": "FiAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHw=="
+  },
+  {
+    "name": "decode-sha3-256",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "FiAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHw=="
+    },
+    "expected_code": 22,
+    "expected_digest": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8="
+  },
+  {
+    "name": "decode-sha3-256-declared-actual-short",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "Fh8AAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0e"
+    },
+    "reject": true
+  },
+  {
+    "name": "decode-sha3-256-declared-actual-long",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "FiEAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyA="
+    },
+    "reject": true
+  },
+  {
+    "name": "decode-sha3-256-declared-short",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "Fh8AAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHw=="
+    },
+    "reject": true
+  },
+  {
+    "name": "decode-sha3-256-actual-short",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "FiAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0e"
+    },
+    "reject": true
+  },
+  {
+    "name": "decode-sha3-256-actual-long",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "FiAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHzA="
+    },
+    "reject": true
+  },
+  {
+    "name": "encode-sha3-384",
+    "statement": "cid10#multihash.2",
+    "request": {
+      "operation": "encode",
+      "code": 21,
+      "digest": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4v",
+      "encoded": null
+    },
+    "expected_encoded": "FTAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8="
+  },
+  {
+    "name": "decode-sha3-384",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "FTAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8="
+    },
+    "expected_code": 21,
+    "expected_digest": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4v"
+  },
+  {
+    "name": "decode-sha3-384-declared-actual-short",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "FS8AAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLg=="
+    },
+    "reject": true
+  },
+  {
+    "name": "decode-sha3-384-declared-actual-long",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "FTEAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8w"
+    },
+    "reject": true
+  },
+  {
+    "name": "decode-sha3-384-declared-short",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "FS8AAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8="
+    },
+    "reject": true
+  },
+  {
+    "name": "decode-sha3-384-actual-short",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "FTAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLg=="
+    },
+    "reject": true
+  },
+  {
+    "name": "decode-sha3-384-actual-long",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "FTAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8w"
+    },
+    "reject": true
+  },
+  {
+    "name": "diagnostic-unknown-encode",
+    "statement": "cid10#multihash.2",
+    "request": {
+      "operation": "encode",
+      "code": 19,
+      "digest": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8=",
+      "encoded": null
+    },
+    "diagnostic": true
+  },
+  {
+    "name": "diagnostic-short-encode",
+    "statement": "cid10#multihash.2",
+    "request": {
+      "operation": "encode",
+      "code": 18,
+      "digest": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHg==",
+      "encoded": null
+    },
+    "diagnostic": true
+  },
+  {
+    "name": "diagnostic-unknown-decode",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": "EyAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHw=="
+    },
+    "diagnostic": true
+  },
+  {
+    "name": "diagnostic-empty-decode",
+    "statement": "cid10#multihash.3",
+    "request": {
+      "operation": "decode",
+      "code": 0,
+      "digest": null,
+      "encoded": ""
+    },
+    "diagnostic": true
+  }
+]
