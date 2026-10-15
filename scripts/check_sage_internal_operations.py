@@ -50,7 +50,7 @@ def verify_internal_operations(raw,report,repo=REPO):
   else:counts['decode']+=1;assert type(v['code']) is int and v['code']==f['expected_code'] and data(v['digest'])==data(f['expected_digest'])
  assert counts=={'encode':4,'decode':4,'reject':20,'diagnostic':4} and independent_lengths==8
  for ident in HASH_IDS:assert live[ident]['verdict']=='PASS' and live[ident]['cases']==[HASH_CASE]
- for ident in ['res10-crd20261001#resolving-algorithm.26','res10-crd20261001#dereferencing-algorithm-fragment.3']:assert live[ident]['verdict']=='NOT_RUN'
+ verify_item_pending(raw,live,['res10-crd20261001#resolving-algorithm.26','res10-crd20261001#dereferencing-algorithm-fragment.3'])
  return {ITEM_ID,*HASH_IDS}
 def main():
  p=argparse.ArgumentParser();p.add_argument('--reports',type=Path,required=True);a=p.parse_args();verify_internal_operations(json.loads((a.reports/'resolution-did-1.1-raw.json').read_text()),json.loads((a.reports/'resolution-did-1.1.json').read_text()));print('Verified five qualifying object ids, preserved traversal finding and 32 pinned direct component calls with eight independent expected-length controls')

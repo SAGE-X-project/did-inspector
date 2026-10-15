@@ -79,7 +79,7 @@
     "document-or-applicability-review": 79,
     "additional-observer-operation": 8,
     "operational-or-authority-evidence": 4,
-    "existing-observation": 5
+    "existing-observation": 4
   },
   "routes": {
     "metadata-boundary": {
@@ -1356,17 +1356,6 @@
       "baseline_verdict": "NOT_RUN",
       "route": "permission-definition",
       "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#resolving-algorithm.26",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "131cee4e806e9bad0a273f66f29b019212a3a4409f8866a063d2711bc74693ad",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
     },
     {
       "id": "res10-crd20261001#resolving-algorithm.32",
@@ -6786,26 +6775,44 @@
       "case_prefix": "/item-expansion-",
       "observed_in_scope": "sage-resolution",
       "reason": "Independently qualifying five preserved relative-id object candidates are missed by the existing expansion traversal; same repair cause as .28."
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.26",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "131cee4e806e9bad0a273f66f29b019212a3a4409f8866a063d2711bc74693ad",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/returned-minimal-representation"
+      ],
+      "case_prefix": "/returned-minimal-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Complete selected id-only Core1.0 JSON class on the actual same-call Resolve return, with separate input-consumer V1.1 and final producer V1.0 receipts. No replacement representation or broader document claim."
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 366,
+    "PASS": 367,
     "FAIL": 13,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 4,
     "ERROR": 0,
-    "NOT_RUN": 103
+    "NOT_RUN": 102
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 352,
+      "PASS": 353,
       "FAIL": 9,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 73
+      "NOT_RUN": 72
     },
     "recommendation": {
       "statements": 50,
@@ -6817,5 +6824,5 @@
       "NOT_RUN": 30
     }
   },
-  "expected_live_cases": 365
+  "expected_live_cases": 366
 }

@@ -10,6 +10,7 @@ import (
 	"github.com/sage-x-project/did-go/document"
 	"github.com/sage-x-project/did-go/method"
 	"github.com/sage-x-project/did-go/producer"
+	"github.com/sage-x-project/did-go/representation"
 	"github.com/sage-x-project/did-go/resolution"
 	"github.com/sage-x-project/did-go/resolver"
 	"github.com/sage-x-project/did-inspector/profiles/sageresolution"
@@ -87,7 +88,7 @@ func (r routingResolver) Resolve(ctx context.Context, id did.DID, o resolution.R
 }
 func (*Subject) InspectRouting(ctx context.Context, q sageresolution.RoutingRequest) (sageresolution.RoutingResult, error) {
 	out := sageresolution.RoutingResult{Role: "root resolver/dereferencer library with literal example driver; not SAGE Source", Request: q, ResolveInputs: []string{}, ResolveOptions: [][]byte{}, DriverOptions: [][]byte{}}
-	if (q.ObserveResourceHandler && q.Request.Function != "dereference") || q.Document.MediaType != "application/did" || (q.Request.Function != "resolve" && q.Request.Function != "dereference") {
+	if (q.ObserveProduction && q.Request.Function != "resolve") || (q.ObserveResourceHandler && q.Request.Function != "dereference") || q.Document.MediaType != "application/did" || (q.Request.Function != "resolve" && q.Request.Function != "dereference") {
 		return out, errors.New("requires literal application/did and an explicit library routing operation")
 	}
 	registry, e := method.NewRegistry(literalRoutingMethod{body: q.Document.Data, calls: &out.DriverOptions, inputs: &out.DriverInputs, results: &out.DriverResults})
@@ -95,7 +96,11 @@ func (*Subject) InspectRouting(ctx context.Context, q sageresolution.RoutingRequ
 		return out, e
 	}
 	p := producer.New()
-	r, e := resolver.New(registry, observedConsumer{consumer.New(), &out.Consumption}, p)
+	var selectedProducer representation.Producer = p
+	if q.ObserveProduction {
+		selectedProducer = observedProducer{p, &out.Production}
+	}
+	r, e := resolver.New(registry, observedConsumer{consumer.New(), &out.Consumption}, selectedProducer)
 	if e != nil {
 		return out, e
 	}

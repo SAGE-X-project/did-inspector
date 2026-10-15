@@ -23,10 +23,10 @@
     "runtime-candidate": 69
   },
   "execution_counts": {
-    "PASS": 134,
+    "PASS": 135,
     "FAIL": 7,
     "NOT_APPLICABLE": 2,
-    "NOT_RUN": 103
+    "NOT_RUN": 102
   },
   "clauses": [
     {
@@ -3362,7 +3362,7 @@
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
       "generic_scope": "checked",
-      "text": "dereferencingMetadata: «[ ... ]»",
+      "text": "dereferencingMetadata: \u00ab[ ... ]\u00bb",
       "actor": "SAGE resolver/source or service dereferencer",
       "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
       "review_disposition": "runtime-candidate",
@@ -3403,7 +3403,7 @@
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
       "generic_scope": "checked",
-      "text": "contentMetadata: «[ resolved DID document metadata ]»",
+      "text": "contentMetadata: \u00ab[ resolved DID document metadata ]\u00bb",
       "actor": "SAGE resolver/source or service dereferencer",
       "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
       "review_disposition": "runtime-candidate",
@@ -3463,7 +3463,7 @@
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
       "generic_scope": "checked",
-      "text": "dereferencingMetadata: «[ ... ]»",
+      "text": "dereferencingMetadata: \u00ab[ ... ]\u00bb",
       "actor": "SAGE resolver/source or service dereferencer",
       "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
       "review_disposition": "runtime-candidate",
@@ -3483,7 +3483,7 @@
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
       "generic_scope": "checked",
-      "text": "content: « selected service endpoint URLs »",
+      "text": "content: \u00ab selected service endpoint URLs \u00bb",
       "actor": "SAGE resolver/source or service dereferencer",
       "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
       "review_disposition": "runtime-candidate",
@@ -3504,7 +3504,7 @@
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
       "generic_scope": "checked",
-      "text": "contentMetadata: «[ \"contentType\" → \"text/uri-list\", ... ]»",
+      "text": "contentMetadata: \u00ab[ \"contentType\" \u2192 \"text/uri-list\", ... ]\u00bb",
       "actor": "SAGE resolver/source or service dereferencer",
       "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
       "review_disposition": "runtime-candidate",
@@ -3584,7 +3584,7 @@
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
       "generic_scope": "checked",
-      "text": "contentMetadata: «[ ]»",
+      "text": "contentMetadata: \u00ab[ ]\u00bb",
       "actor": "SAGE resolver/source or service dereferencer",
       "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
       "review_disposition": "runtime-candidate",
@@ -3787,7 +3787,7 @@
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
       "generic_scope": "checked",
-      "text": "contentMetadata: «[ ]»",
+      "text": "contentMetadata: \u00ab[ ]\u00bb",
       "actor": "SAGE resolver/source or service dereferencer",
       "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
       "review_disposition": "runtime-candidate",
@@ -4914,11 +4914,13 @@
       "actor": "native resolver/dereferencer input or output",
       "applicable_evidence": "Fresh observable input/result contract only; internal variable assignment, all-valid-representations and global conformity need additional proof.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The selected actual document branch still needs complete applicable representation validation; identity and a successful serializer alone cannot establish the composite representation requirement.",
+      "status": "observed-selected-branch",
+      "reason": "Fresh actual Resolve output: independently complete id-only Core1.0 JSON class. Same-call consumer V1.1 and producer V1.0 witnesses retain byte/model/media continuity. Other document classes and metadata tuple placement remain separate.",
       "follow_up_condition": "Fresh observable input/result contract only; internal variable assignment, all-valid-representations and global conformity need additional proof.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/returned-minimal-representation"
+      ]
     },
     {
       "id": "res10-crd20261001#resolving-algorithm.27",
@@ -5066,7 +5068,7 @@
       "baseline_verdict": "NOT_RUN",
       "route": "native-result",
       "generic_scope": "checked",
-      "text": "didDocumentMetadata: «[ \"contentType\" → output DID document media type, ... ]»",
+      "text": "didDocumentMetadata: \u00ab[ \"contentType\" \u2192 output DID document media type, ... ]\u00bb",
       "actor": "resolution metadata interpretation",
       "applicable_evidence": "This clause places contentType in didDocumentMetadata, unlike the resolutionMetadata binding contract. Do not move or add a subject field to force PASS.",
       "review_disposition": "normative-conflict",
