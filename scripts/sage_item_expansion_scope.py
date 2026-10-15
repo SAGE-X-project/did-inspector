@@ -1,10 +1,13 @@
 """Advance the old pending guard only with the exact independently judged item case."""
 import json
+from sage_returned_representation_scope import REPRESENTATION_ID,verify_representation_pending
 ITEM_CASE='did-1.1/sage-resolution/item-expansion-conditions'
 ITEM_ID='res10-crd20261001#resolving-algorithm.29'
 def verify_item_pending(raw,live,ids):
  cases=[c for c in raw['cases'] if c['case']==ITEM_CASE]
  for ident in ids:
+  if ident==REPRESENTATION_ID:
+   verify_representation_pending(raw,live);continue
   if ident!=ITEM_ID or not cases:
    assert live[ident]['verdict']=='NOT_RUN';continue
   assert len(cases)==1 and cases[0]['statements']==[ITEM_ID]

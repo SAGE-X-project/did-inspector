@@ -5,7 +5,7 @@ report from CI run [38353322386](https://github.com/SAGE-X-project/did-inspector
 The machine-readable [inventory](sage-resolution-gaps.json) preserves all 416 historical
 statement ids, normative levels and keywords, exact text digests, evidence paths,
 and a next evidence route for each statement. Pending routes are planning evidence, not verdicts or implementation defects.
-Schema 2 keeps 103 pending entries and 313 entries observed since the baseline;
+Schema 2 keeps 102 pending entries and 314 entries observed since the baseline;
 it never assigns new observations to the historical inspector revision.
 
 The baseline inspector revision is `aefdcf9228ec8dcf85fd4aaf08b6e0511af11c36`.
@@ -24,8 +24,8 @@ recommendation-level statements. Requirement-level extraction also includes
 permissions, definitions and algorithm steps; it does not mean every row is a
 standalone MUST with an independently observable violation.
 
-The current report has 365 cases, 352 requirement and fourteen recommendation passes,
-nine requirement failures, four recommendation failures, four inapplicable statements and 103 unobserved statements. Ten fresh native
+The current report has 366 cases, 353 requirement and fourteen recommendation passes,
+nine requirement failures, four recommendation failures, four inapplicable statements and 102 unobserved statements. Ten fresh native
 result cases add 13 requirement passes and one conditional NOT_APPLICABLE.
 Twenty-four direct metadata serialization cases add four requirement passes.
 Three native error/state cases and ten owned TLS response cases add 22
@@ -53,7 +53,7 @@ strings, adding consumption.1 on these selected values. Root/map insertion order
 is not required. All numeric ranges, forced double properties without a fraction,
 other property contexts and full JSON-LD processing remain unestablished.
 The earlier routing table below describes the 246-clause anchor, not the baseline 416.
-The [current full review](sage-remaining-clause-review.md) records all anchor clauses individually and identifies the 103 still unobserved.
+The [current full review](sage-remaining-clause-review.md) records all anchor clauses individually and identifies the 102 still unobserved.
 
 | Primary next evidence route | Statements | Meaning |
 |---|---:|---|
@@ -417,3 +417,12 @@ Thirty-two actual calls contain four encode successes, four decode successes, tw
 Current resolution: 365 cases, 366 PASS, thirteen FAIL, four NOT_APPLICABLE, 103 NOT_RUN, zero ERROR. Required436:352 PASS/nine FAIL/two NA/73 NOT_RUN; recommended50:14 PASS/four FAIL/two NA/30 NOT_RUN. Original416 ledger:313 observed (297 PASS/thirteen FAIL/three NA)+103 pending. Anchor246:143 execution verdicts (134 PASS/seven FAIL/two NA)+103 pending. Remaining: internal10, document actor51, choices12, registration15, operational/history10, interpretation4, complete tuple1. Existing310 observed rows and other243 anchor rows, baseline ids/text/hashes, earlier findings and Core1.0/projection results are preserved.
 
 Thirteen failed clauses map to the same nine repair causes; .29 is added under the existing expansion traversal cause. Core/spec/contract repair, real registry bindings and registration remain in the approved later order. Missing standard-library source yields50 ERROR,319 PASS and the existing ten failures independent of that proof; the three source-bound expansion/URL findings become ERROR. The direct compiled multihash component calls remain independently observable in that condition.
+
+
+## Actual returned minimal Core 1.0 representation
+
+Resolving algorithm .26 is now checked on two actual root Resolve calls with compact and whitespace-varied id-only input. The literal driver returns application/did, consumed as V1.1; an explicit application/did+json Accept causes the same call to produce V1.0 JSON. Passive producer capture is opt-in for these calls only. Its original input maps, options, output bytes and media are linked to the final Resolve Raw and contentType. A separately converted document never substitutes for the actual return.
+
+The independent oracle enumerates the complete selected minimal class: strict JSON object, one string id with DID syntax and the expected same-call identity, no representation-specific entries or optional properties. Missing/misattributed captures are ERROR. An attributed malformed JSON/root/id is FAIL. Other valid additional-member classes, duplicate-member ambiguity or other representations are unsupported, not normative failures. This does not establish full SAGE documents, JSON-LD/RDF, every output class, the pending metadata tuple placement, registry authority or verbatim compiled bytes. The root source module, nine cache files and their full pinned ZIP/h1 are separately bound without changing any pin.
+
+Current resolution:366 cases,367 PASS,13 FAIL,4 NOT_APPLICABLE,102 NOT_RUN,zero ERROR. Required436:353 PASS/9 FAIL/2 NA/72 NOT_RUN; recommended50:14 PASS/4 FAIL/2 NA/30 NOT_RUN. Original416 ledger:314 observed(298 PASS/13 FAIL/3 NA)+102 pending. Anchor246:144 execution(135 PASS/7 FAIL/2 NA)+102 pending. Earlier313 observed rows and other245 anchor rows retain content and order. Remaining: internal9,document actor51,choices12,registration15,operational/history10,interpretation4,complete tuple1. Thirteen failed clauses still map to nine repair causes; repairs remain in the approved later order. Fragment .3, JSON-LD/RDF and original normative conflicts remain unobserved. Missing standard-library source still yields50 ERROR and10 FAIL, with320 PASS including this external output check.
