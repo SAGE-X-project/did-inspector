@@ -780,3 +780,7 @@ The source observer requires an installed Go 1.26.8 toolchain including its stan
 ### Selected service routing roles
 
 Four additional typed source-role clauses are now observed, corroborated by seven fresh ordinary URI-list/service calls. See [the scope and preserved limits](sage-remaining-clause-review.md#selected-service-routing-source-roles). Current DID1.1 resolution is 359 cases, 355 PASS, ten FAIL, four NOT_APPLICABLE and 117 NOT_RUN. Core1.0 and separate projection are unchanged; the failing conformance gate and planned core fixes remain. All 416 historical ids and baseline bytes are preserved.
+
+### Selected service list and media branches
+
+Four more source-role clauses are observed through twelve ordinary public literal calls and separately preserved original resolved documents/metadata. See [the bounded scope](sage-remaining-clause-review.md#selected-service-list-and-exact-media-branches). Current resolution is 360 cases, 359 PASS, ten FAIL, four NOT_APPLICABLE and 113 NOT_RUN. Existing findings remain for the approved core repair work; the original416 ids, baseline, subject pins and separate Core1.0/projection results are preserved.
