@@ -5,7 +5,7 @@ report from CI run [38353322386](https://github.com/SAGE-X-project/did-inspector
 The machine-readable [inventory](sage-resolution-gaps.json) preserves all 416 historical
 statement ids, normative levels and keywords, exact text digests, evidence paths,
 and a next evidence route for each statement. Pending routes are planning evidence, not verdicts or implementation defects.
-Schema 2 keeps 113 pending entries and 303 entries observed since the baseline;
+Schema 2 keeps 110 pending entries and 306 entries observed since the baseline;
 it never assigns new observations to the historical inspector revision.
 
 The baseline inspector revision is `aefdcf9228ec8dcf85fd4aaf08b6e0511af11c36`.
@@ -24,8 +24,8 @@ recommendation-level statements. Requirement-level extraction also includes
 permissions, definitions and algorithm steps; it does not mean every row is a
 standalone MUST with an independently observable violation.
 
-The current report has 360 cases, 345 requirement and fourteen recommendation passes,
-six requirement failures, four recommendation failures, four inapplicable statements and 113 unobserved statements. Ten fresh native
+The current report has 361 cases, 348 requirement and fourteen recommendation passes,
+six requirement failures, four recommendation failures, four inapplicable statements and 110 unobserved statements. Ten fresh native
 result cases add 13 requirement passes and one conditional NOT_APPLICABLE.
 Twenty-four direct metadata serialization cases add four requirement passes.
 Three native error/state cases and ten owned TLS response cases add 22
@@ -53,7 +53,7 @@ strings, adding consumption.1 on these selected values. Root/map insertion order
 is not required. All numeric ranges, forced double properties without a fraction,
 other property contexts and full JSON-LD processing remain unestablished.
 The earlier routing table below describes the 246-clause anchor, not the baseline 416.
-The [current full review](sage-remaining-clause-review.md) records all anchor clauses individually and identifies the 113 still unobserved.
+The [current full review](sage-remaining-clause-review.md) records all anchor clauses individually and identifies the 110 still unobserved.
 
 | Primary next evidence route | Statements | Meaning |
 |---|---:|---|
@@ -376,3 +376,7 @@ Four additional typed source-role clauses are now observed, corroborated by seve
 ### Selected service list and media branches
 
 Four more source-role clauses are observed through twelve ordinary public literal calls and separately preserved original resolved documents/metadata. See [the bounded scope](sage-remaining-clause-review.md#selected-service-list-and-exact-media-branches). Current resolution is 360 cases, 359 PASS, ten FAIL, four NOT_APPLICABLE and 113 NOT_RUN. Existing findings remain for the approved core repair work; the original416 ids, baseline, subject pins and separate Core1.0/projection results are preserved.
+
+### Resolved document and dispatch conditions
+
+Three further internal clauses are observed through thirteen ordinary actual calls and separately bound typed source roles. See [the limited scope and remaining prerequisites](sage-remaining-clause-review.md#selected-resolved-document-and-dispatch-conditions). Current resolution is 361 cases, 362 PASS, ten FAIL, four NOT_APPLICABLE and110 NOT_RUN. Original416 ids, baseline bytes, existing findings, pins and separate Core1.0/projection results remain unchanged. Resource .11 adjusted URL is still pending; arbitrary rejected queries do not establish fallback behavior.

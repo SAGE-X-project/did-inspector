@@ -784,3 +784,7 @@ Four additional typed source-role clauses are now observed, corroborated by seve
 ### Selected service list and media branches
 
 Four more source-role clauses are observed through twelve ordinary public literal calls and separately preserved original resolved documents/metadata. See [the bounded scope](sage-remaining-clause-review.md#selected-service-list-and-exact-media-branches). Current resolution is 360 cases, 359 PASS, ten FAIL, four NOT_APPLICABLE and 113 NOT_RUN. Existing findings remain for the approved core repair work; the original416 ids, baseline, subject pins and separate Core1.0/projection results are preserved.
+
+### Resolved document and dispatch conditions
+
+Three further internal clauses are observed through thirteen ordinary actual calls and separately bound typed source roles. See [the limited scope and remaining prerequisites](sage-remaining-clause-review.md#selected-resolved-document-and-dispatch-conditions). Current resolution is 361 cases, 362 PASS, ten FAIL, four NOT_APPLICABLE and110 NOT_RUN. Original416 ids, baseline bytes, existing findings, pins and separate Core1.0/projection results remain unchanged. Resource .11 adjusted URL is still pending; arbitrary rejected queries do not establish fallback behavior.
