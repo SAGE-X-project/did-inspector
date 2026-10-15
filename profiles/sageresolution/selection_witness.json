@@ -1,0 +1,80 @@
+{
+  "roots": [
+    "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).services",
+    "github.com/sage-x-project/did-go/dereferencer.endpointURLs"
+  ],
+  "frames": {
+    "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).documentResult": "354ddffaea056851e7b12cd37ddada193e4ea7964923b4af4eaacb37cefdaec1",
+    "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).services": "66e755b2e92a9916d9387806083a0cc7885cd26683714dc40186a48361f4daf5",
+    "github.com/sage-x-project/did-go/dereferencer.absoluteRef": "c74ad447e185d8e0c4b7c0f3ad4b0a538d1f2cc014ea1a0722a589653eef5d71",
+    "github.com/sage-x-project/did-go/dereferencer.endpointURLs": "7bb8976bccaf55d85a10dce679405d1121e5a5494ce1f72888031187795401fd",
+    "github.com/sage-x-project/did-go/dereferencer.isDIDMediaType": "a909bdd59b0fb59ac6a668bda6e6af07c51dee7a25a6b36ada2e80d5cdfc59ef",
+    "github.com/sage-x-project/did-go/dereferencer.serviceIDMatches": "a44f539b2c210a28e214869c44064fb67ca7c60a229e8cbbdbc88327ecfab4f6",
+    "github.com/sage-x-project/did-go/dereferencer.uriList": "b84a23a6322269fd470b710943587bea65e70af76c3878cd3023b6f4e1ff00a7",
+    "github.com/sage-x-project/did-go/dereferencer.withServices": "d1bc82e89ff4e0472bb4e59e59d9eadd7fa303b2ddfdf60f35262bc38e4d671a",
+    "github.com/sage-x-project/did-go/did.(github.com/sage-x-project/did-go/did.DIDParameters).Get": "60cf606cd240b1f971f713cbf9456e177f3c3ac67be44ce589450bd1442eacbe",
+    "github.com/sage-x-project/did-go/did.(github.com/sage-x-project/did-go/did.DIDURL).Parameters": "8d247285d68d8ecfad3a7488e0bcc24aa7dab3c8b2efbb205e7e86f177cd041f",
+    "github.com/sage-x-project/did-go/document.(*github.com/sage-x-project/did-go/document.Document).Services": "d4f1b0d31675d26c31302eadb5756099922aebb061e47a63ed537c15832f3a67",
+    "github.com/sage-x-project/did-go/document.(github.com/sage-x-project/did-go/document.Map).Get": "61edea6f7e0002dbd921e1fc4f0c0b45361fc1219fdcf25243b1b5a8ee2ad4d9",
+    "github.com/sage-x-project/did-go/representation.CoreMediaTypes": "1c55ffea48762ecf2047b5896a72e7b70520940e740300a5ba1062b08d524f07",
+    "github.com/sage-x-project/did-go/resolution.(github.com/sage-x-project/did-go/resolution.MediaRange).Matches": "7e0265b54732058d75f8af23cec5c86a36967486eb407a0fb622cdb2a7229e78",
+    "github.com/sage-x-project/did-go/resolution.(github.com/sage-x-project/did-go/resolution.MediaRange).specificity": "1389826f616c8ba3c914eabc36b059d7f84554d786fe1a0c100068078fa2f788",
+    "github.com/sage-x-project/did-go/resolution.Negotiate": "9b5e0b1dd3347f707d4d81692cdcf7e585cf52bca846e71172ee6321f8887d88",
+    "github.com/sage-x-project/did-go/resolution.ParseAccept": "e04acc5734a9d6edf93a85e4847a4707b3635fa69d831c42cd8d60cfbedd5555",
+    "github.com/sage-x-project/did-go/resolution.weight": "fea6e0fbf478e7edaf42b8347ed95d0a2a79d8cd282718d0111da574f6ec8532"
+  },
+  "roles": {
+    "document_media_offers": "application/did | application/did+ld+json | application/did+json | text/uri-list",
+    "endpoint_selected": "selected []github.com/sage-x-project/did-go/vm.Service",
+    "media_kind": "kind string",
+    "resolved_document": "doc *github.com/sage-x-project/did-go/document.Document",
+    "selected_services": "selected []github.com/sage-x-project/did-go/vm.Service",
+    "service_item": "s github.com/sage-x-project/did-go/vm.Service"
+  },
+  "steps": [
+    {
+      "kind": "selected-service-list",
+      "expressions": [
+        "doc.Services()",
+        "selected = append(selected, s)"
+      ],
+      "correct": true
+    },
+    {
+      "kind": "each-selected-service",
+      "expressions": [
+        "selected"
+      ],
+      "correct": true
+    },
+    {
+      "kind": "document-media-branch",
+      "expressions": [
+        "isDIDMediaType(kind)"
+      ],
+      "correct": true
+    },
+    {
+      "kind": "uri-list-media-branch",
+      "expressions": [
+        "return uriList(urls)"
+      ],
+      "correct": true
+    }
+  ],
+  "unknown": [],
+  "call_paths": [
+    [
+      "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).services",
+      "github.com/sage-x-project/did-go/dereferencer.endpointURLs"
+    ],
+    [
+      "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).services",
+      "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).documentResult"
+    ],
+    [
+      "github.com/sage-x-project/did-go/dereferencer.(*github.com/sage-x-project/did-go/dereferencer.Dereferencer).services",
+      "github.com/sage-x-project/did-go/dereferencer.uriList"
+    ]
+  ]
+}
