@@ -18,13 +18,19 @@ import (
 
 type literalRoutingMethod struct {
 	body    []byte
+	media   string
 	calls   *[][]byte
 	inputs  *[]string
 	results *[][]byte
 }
 
-func (literalRoutingMethod) Name() string       { return "example" }
-func (literalRoutingMethod) Produces() []string { return []string{"application/did"} }
+func (literalRoutingMethod) Name() string { return "example" }
+func (m literalRoutingMethod) Produces() []string {
+	if m.media != "" {
+		return []string{m.media}
+	}
+	return []string{"application/did"}
+}
 func (literalRoutingMethod) Create(context.Context, *document.Document, method.CreateOptions) (*method.CreateResult, error) {
 	return nil, method.ErrNotSupported
 }
@@ -40,7 +46,11 @@ func (m literalRoutingMethod) Read(_ context.Context, id did.DID, o method.ReadO
 		return nil, e
 	}
 	*m.calls = append(*m.calls, b)
-	result := &method.ReadResult{Data: append([]byte(nil), m.body...), ContentType: "application/did"}
+	media := "application/did"
+	if m.media != "" {
+		media = m.media
+	}
+	result := &method.ReadResult{Data: append([]byte(nil), m.body...), ContentType: media}
 	if m.inputs != nil {
 		*m.inputs = append(*m.inputs, id.String())
 	}
@@ -88,10 +98,10 @@ func (r routingResolver) Resolve(ctx context.Context, id did.DID, o resolution.R
 }
 func (*Subject) InspectRouting(ctx context.Context, q sageresolution.RoutingRequest) (sageresolution.RoutingResult, error) {
 	out := sageresolution.RoutingResult{Role: "root resolver/dereferencer library with literal example driver; not SAGE Source", Request: q, ResolveInputs: []string{}, ResolveOptions: [][]byte{}, DriverOptions: [][]byte{}}
-	if (q.ObserveProduction && q.Request.Function != "resolve") || (q.ObserveResourceHandler && q.Request.Function != "dereference") || q.Document.MediaType != "application/did" || (q.Request.Function != "resolve" && q.Request.Function != "dereference") {
+	if (q.ObserveProduction && q.Request.Function != "resolve") || (q.ObserveResourceHandler && q.Request.Function != "dereference") || ((!q.PlainJSONFragment && q.Document.MediaType != "application/did") || (q.PlainJSONFragment && (q.Document.MediaType != "application/did+json" || q.Request.Function != "dereference" || q.ObserveProduction || q.ObserveResourceHandler))) || (q.Request.Function != "resolve" && q.Request.Function != "dereference") {
 		return out, errors.New("requires literal application/did and an explicit library routing operation")
 	}
-	registry, e := method.NewRegistry(literalRoutingMethod{body: q.Document.Data, calls: &out.DriverOptions, inputs: &out.DriverInputs, results: &out.DriverResults})
+	registry, e := method.NewRegistry(literalRoutingMethod{body: q.Document.Data, media: q.Document.MediaType, calls: &out.DriverOptions, inputs: &out.DriverInputs, results: &out.DriverResults})
 	if e != nil {
 		return out, e
 	}

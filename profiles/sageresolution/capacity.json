@@ -1,0 +1,200 @@
+[
+  {
+    "name": "encode-empty",
+    "request": {
+      "operation": "encode",
+      "header": 117,
+      "data": "",
+      "encoded": ""
+    },
+    "expected_encoded": "u",
+    "expected_data": ""
+  },
+  {
+    "name": "decode-empty",
+    "request": {
+      "operation": "decode",
+      "header": 117,
+      "data": null,
+      "encoded": "u"
+    },
+    "expected_encoded": "u",
+    "expected_data": ""
+  },
+  {
+    "name": "encode-zero",
+    "request": {
+      "operation": "encode",
+      "header": 117,
+      "data": "AA==",
+      "encoded": ""
+    },
+    "expected_encoded": "uA",
+    "expected_data": "AA=="
+  },
+  {
+    "name": "decode-zero",
+    "request": {
+      "operation": "decode",
+      "header": 117,
+      "data": null,
+      "encoded": "uA"
+    },
+    "expected_encoded": "uA",
+    "expected_data": "AA=="
+  },
+  {
+    "name": "encode-zeros",
+    "request": {
+      "operation": "encode",
+      "header": 117,
+      "data": "AAAAAAA=",
+      "encoded": ""
+    },
+    "expected_encoded": "uAAAAA",
+    "expected_data": "AAAAAAA="
+  },
+  {
+    "name": "decode-zeros",
+    "request": {
+      "operation": "decode",
+      "header": 117,
+      "data": null,
+      "encoded": "uAAAAA"
+    },
+    "expected_encoded": "uAAAAA",
+    "expected_data": "AAAAAAA="
+  },
+  {
+    "name": "encode-one",
+    "request": {
+      "operation": "encode",
+      "header": 117,
+      "data": "AQ==",
+      "encoded": ""
+    },
+    "expected_encoded": "uB",
+    "expected_data": "AQ=="
+  },
+  {
+    "name": "decode-one",
+    "request": {
+      "operation": "decode",
+      "header": 117,
+      "data": null,
+      "encoded": "uB"
+    },
+    "expected_encoded": "uB",
+    "expected_data": "AQ=="
+  },
+  {
+    "name": "encode-ff",
+    "request": {
+      "operation": "encode",
+      "header": 117,
+      "data": "/w==",
+      "encoded": ""
+    },
+    "expected_encoded": "uD_",
+    "expected_data": "/w=="
+  },
+  {
+    "name": "decode-ff",
+    "request": {
+      "operation": "decode",
+      "header": 117,
+      "data": null,
+      "encoded": "uD_"
+    },
+    "expected_encoded": "uD_",
+    "expected_data": "/w=="
+  },
+  {
+    "name": "encode-three",
+    "request": {
+      "operation": "encode",
+      "header": 117,
+      "data": "AQID",
+      "encoded": ""
+    },
+    "expected_encoded": "uQID",
+    "expected_data": "AQID"
+  },
+  {
+    "name": "decode-three",
+    "request": {
+      "operation": "decode",
+      "header": 117,
+      "data": null,
+      "encoded": "uQID"
+    },
+    "expected_encoded": "uQID",
+    "expected_data": "AQID"
+  },
+  {
+    "name": "encode-zero-prefix",
+    "request": {
+      "operation": "encode",
+      "header": 117,
+      "data": "AAD/",
+      "encoded": ""
+    },
+    "expected_encoded": "uAAD_",
+    "expected_data": "AAD/"
+  },
+  {
+    "name": "decode-zero-prefix",
+    "request": {
+      "operation": "decode",
+      "header": 117,
+      "data": null,
+      "encoded": "uAAD_"
+    },
+    "expected_encoded": "uAAD_",
+    "expected_data": "AAD/"
+  },
+  {
+    "name": "encode-public-32",
+    "request": {
+      "operation": "encode",
+      "header": 117,
+      "data": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8=",
+      "encoded": ""
+    },
+    "expected_encoded": "uABAgMEBQYHCAkKCwwNDg8QERITFBUWFxgZGhscHR4f",
+    "expected_data": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8="
+  },
+  {
+    "name": "decode-public-32",
+    "request": {
+      "operation": "decode",
+      "header": 117,
+      "data": null,
+      "encoded": "uABAgMEBQYHCAkKCwwNDg8QERITFBUWFxgZGhscHR4f"
+    },
+    "expected_encoded": "uABAgMEBQYHCAkKCwwNDg8QERITFBUWFxgZGhscHR4f",
+    "expected_data": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8="
+  },
+  {
+    "name": "encode-nonzero-32",
+    "request": {
+      "operation": "encode",
+      "header": 117,
+      "data": "AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyA=",
+      "encoded": ""
+    },
+    "expected_encoded": "uECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8g",
+    "expected_data": "AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyA="
+  },
+  {
+    "name": "decode-nonzero-32",
+    "request": {
+      "operation": "decode",
+      "header": 117,
+      "data": null,
+      "encoded": "uECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8g"
+    },
+    "expected_encoded": "uECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8g",
+    "expected_data": "AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyA="
+  }
+]

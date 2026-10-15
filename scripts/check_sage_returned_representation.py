@@ -1,4 +1,5 @@
 """Verify the actual Core1.0 minimal representation returned by the same Resolve call."""
+from sage_internal_boundary_scope import MEDIA_ID,verify_internal_pending
 import argparse,hashlib,io,json,base64,zipfile
 from pathlib import Path
 from check_sage_internal_operations import verify_internal_operations
@@ -17,7 +18,7 @@ def verify_returned_representation(raw,report,repo=REPO):
  assert 'h1:'+base64.b64encode(hashlib.sha256(lines.encode()).digest()).decode()==SUM
  selected={n[len(prefix):]:b for n,b in files.items() if n[len(prefix):].rsplit('/',1)[0] in PACKAGES and n.endswith('.go') and not n.endswith('_test.go')}
  assert len(selected)==9 and set(selected)==set(s['files']) and all(data(s['files'][n])==b for n,b in selected.items())
- assert live['res10-crd20261001#dereferencing-algorithm-fragment.3']['verdict']=='NOT_RUN'
+ verify_internal_pending(raw,live,MEDIA_ID)
  return {REPRESENTATION_ID}
 def main():
  p=argparse.ArgumentParser();p.add_argument('--reports',type=Path,required=True);a=p.parse_args();verify_returned_representation(json.loads((a.reports/'resolution-did-1.1-raw.json').read_text()),json.loads((a.reports/'resolution-did-1.1.json').read_text()));print('Verified two same-call returned Core1.0 minimal representations, distinct input/output versions, nine cache files and complete id-only class')

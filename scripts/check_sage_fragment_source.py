@@ -5,6 +5,7 @@ The Go observer resolves typed source symbols. This checker verifies bytes,
 reviewed witness and omissions; it does not independently parse Go or attest
 that cache bytes are verbatim compiled binary bytes.
 """
+from sage_internal_boundary_scope import verify_internal_pending
 import argparse
 import base64
 import hashlib
@@ -81,7 +82,7 @@ def verify_fragment_source(raw,report,repo=REPO):
         assert o['verdict']==live[o['statement']]['verdict']=='PASS' and o['detail'] and o['expected']
         assert CASE in live[o['statement']]['cases']
     for ident in ['cid10#base-encode.4','cid10#base-decode.5']:
-        assert live[ident]['verdict']=='NOT_RUN'
+        verify_internal_pending(raw,live,ident)
     for ident,prefix,wanted in [('cid10#fragment-resolution.1','/fragment-initial-','PASS'),('cid10#fragment-resolution.4','/fragment-search-','FAIL')]:
         linked=[c['case'] for c in raw['cases'] if prefix in c['case']]
         assert live[ident]['verdict']==(wanted if linked else 'NOT_RUN')

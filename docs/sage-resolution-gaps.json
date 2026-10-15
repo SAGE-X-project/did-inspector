@@ -77,9 +77,9 @@
   "categories": {
     "additional-data-or-feature": 7,
     "document-or-applicability-review": 79,
-    "additional-observer-operation": 8,
+    "additional-observer-operation": 5,
     "operational-or-authority-evidence": 4,
-    "existing-observation": 4
+    "existing-observation": 3
   },
   "routes": {
     "metadata-boundary": {
@@ -311,28 +311,10 @@
       "generic_scope": "not-checkable"
     },
     {
-      "id": "cid10#base-decode.5",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "4088c3a82cb56e7cdbdcf9049c02e84abde0b621c4907fd17b86197ce7a666be",
-      "baseline_verdict": "NOT_RUN",
-      "route": "codec-internals",
-      "generic_scope": "not-checkable"
-    },
-    {
       "id": "cid10#base-encode.13",
       "level": "requirement",
       "keywords": [],
       "text_sha256": "b6d51ec52faabd81267e46eeea10889fb628ea605a0321b8fbeea91456cef351",
-      "baseline_verdict": "NOT_RUN",
-      "route": "codec-internals",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#base-encode.4",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "673a6164e0be01e3eb96cf81445a4f45f3de307151e320fa63e26e086495fe00",
       "baseline_verdict": "NOT_RUN",
       "route": "codec-internals",
       "generic_scope": "not-checkable"
@@ -352,17 +334,6 @@
       "text_sha256": "b3b26e340a7f7fa13bfc9c045f6bd0aec0b608a313d3bfc7b34cccf55f7536dd",
       "baseline_verdict": "NOT_RUN",
       "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#context-injection.1",
-      "level": "requirement",
-      "keywords": [
-        "MUST"
-      ],
-      "text_sha256": "03db0b1bd9539dfcf5d26b769402008b0ec485703aa1c23726c53d4375f42157",
-      "baseline_verdict": "NOT_RUN",
-      "route": "jsonld-processing",
       "generic_scope": "not-checkable"
     },
     {
@@ -1027,15 +998,6 @@
       "baseline_verdict": "NOT_RUN",
       "route": "permission-definition",
       "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-fragment.3",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "99a7518503a20ba5b04ffad6a7553ee1344f389b114afc11e29b7b52bb1092ed",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
     },
     {
       "id": "res10-crd20261001#dereferencing-algorithm-resource.45",
@@ -6793,26 +6755,92 @@
       "case_prefix": "/returned-minimal-",
       "observed_in_scope": "sage-resolution",
       "reason": "Complete selected id-only Core1.0 JSON class on the actual same-call Resolve return, with separate input-consumer V1.1 and final producer V1.0 receipts. No replacement representation or broader document claim."
+    },
+    {
+      "id": "cid10#base-encode.4",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "673a6164e0be01e3eb96cf81445a4f45f3de307151e320fa63e26e086495fe00",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/capacity-u64-component"
+      ],
+      "case_prefix": "/capacity-u64-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Original u/64 component, exact power-of-two log ratio and bounded typed allocation proof; not public Multikey z or full codec equivalence."
+    },
+    {
+      "id": "cid10#base-decode.5",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "4088c3a82cb56e7cdbdcf9049c02e84abde0b621c4907fd17b86197ce7a666be",
+      "baseline_verdict": "NOT_RUN",
+      "route": "codec-internals",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/capacity-u64-component"
+      ],
+      "case_prefix": "/capacity-u64-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Original u/64 component inverse ratio and bounded typed allocation proof; not public Multikey z or conflicting copy placement."
+    },
+    {
+      "id": "cid10#context-injection.1",
+      "level": "requirement",
+      "keywords": [
+        "MUST"
+      ],
+      "text_sha256": "03db0b1bd9539dfcf5d26b769402008b0ec485703aa1c23726c53d4375f42157",
+      "baseline_verdict": "NOT_RUN",
+      "route": "jsonld-processing",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/context-injection-no-context"
+      ],
+      "case_prefix": "/context-injection-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Actual no-context typed producer call and same-call final declaration injection; independent full context bytes have the CID publication digest. Other triggers and full JSON-LD/RDF remain separate."
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.3",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "99a7518503a20ba5b04ffad6a7553ee1344f389b114afc11e29b7b52bb1092ed",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/fragment-plain-json-media"
+      ],
+      "case_prefix": "/fragment-plain-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Actual plain-JSON Core1.0 media branch, unique absolute method identifier and same pre-authorization candidate. No JSON-LD media or operational authority claim."
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 367,
+    "PASS": 371,
     "FAIL": 13,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 4,
     "ERROR": 0,
-    "NOT_RUN": 102
+    "NOT_RUN": 98
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 353,
+      "PASS": 357,
       "FAIL": 9,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 72
+      "NOT_RUN": 68
     },
     "recommendation": {
       "statements": 50,
@@ -6824,5 +6852,5 @@
       "NOT_RUN": 30
     }
   },
-  "expected_live_cases": 366
+  "expected_live_cases": 369
 }

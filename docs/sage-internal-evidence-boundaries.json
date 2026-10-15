@@ -1,0 +1,145 @@
+{
+  "schema": "sage-internal-evidence-boundaries/1",
+  "anchor_inspector_revision": "9aa262da96c121e0be026cf34826b5431e8a2143",
+  "reviewed": 9,
+  "new_observed": 4,
+  "retained_not_run": 5,
+  "policy": [
+    "Review completion is not execution completion or full conformance.",
+    "Existing work order, preserved findings and later core/contract repairs are unchanged.",
+    "No invented NA/NS for missing JSON-LD/RDF processing.",
+    "Source controls are parsed/type-checked as data, never executed; runtime uses small public literals and original pinned modules."
+  ],
+  "clauses": [
+    {
+      "id": "cid10#base-decode.16",
+      "level": "requirement",
+      "text": "Starting at an offset equal to the number of zeroes in finalBytes plus 1, copy all bytes in decodedBytes, up to decodedSize, starting at offset decodedOffset to finalBytes.",
+      "text_sha256": "fef486d3c68716a02f750a52cc63811d6dcfbb6920fe2f55813449c33acfd31d",
+      "actor": "selected codec algorithm or alternative implementation",
+      "status": "reviewed-awaiting-evidence",
+      "expected_live_verdict": "NOT_RUN",
+      "cases": [],
+      "basis": "Frozen destination offset is zeroes+1; Example19 and original append begin at zeroes.",
+      "remaining_reason": "normative-text-conflict",
+      "completion_boundary": "Authoritative interpretation or separately approved complete alternative-output contract; prefix/length proof is insufficient.",
+      "observed_actor": "not yet established for the complete normative precondition"
+    },
+    {
+      "id": "cid10#base-decode.5",
+      "level": "requirement",
+      "text": "Set decodedBytes to an empty byte array that is the size of the final base-converted value. Calculate the size of decodedBytes by dividing log(sourceBase) by log(256) and then multiplying by the length of sourceEncoding minus the leading zeroes. Add 1 to the value of size.",
+      "text_sha256": "4088c3a82cb56e7cdbdcf9049c02e84abde0b621c4907fd17b86197ce7a666be",
+      "actor": "selected codec algorithm or alternative implementation",
+      "status": "observed-selected-branch",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/capacity-u64-component"
+      ],
+      "basis": "Original u/64 component inverse ratio and bounded typed allocation proof; not public Multikey z or conflicting copy placement.",
+      "completion_boundary": "Only the explicitly selected actor, branch and fixed publication; all other scope remains separate.",
+      "observed_actor": "Inspector-owned direct original u/64 component and independent fixed-source type analysis"
+    },
+    {
+      "id": "cid10#base-encode.13",
+      "level": "requirement",
+      "text": "Set the baseEncodingPosition to size minus length. While the baseEncodingPosition does not equal size and the baseValue[baseEncodingPosition] does not equal 0, increment baseEncodingPosition. This step skips the leading zeros in the base-encoded result.",
+      "text_sha256": "b6d51ec52faabd81267e46eeea10889fb628ea605a0321b8fbeea91456cef351",
+      "actor": "selected codec algorithm or alternative implementation",
+      "status": "reviewed-awaiting-evidence",
+      "expected_live_verdict": "NOT_RUN",
+      "cases": [],
+      "basis": "Frozen prose tests nonzero while its stated zero-skipping goal, Example18 and original selected source test zero.",
+      "remaining_reason": "normative-text-conflict",
+      "completion_boundary": "Authoritative interpretation or separately approved complete alternative-output contract; do not rewrite frozen prose.",
+      "observed_actor": "not yet established for the complete normative precondition"
+    },
+    {
+      "id": "cid10#base-encode.4",
+      "level": "requirement",
+      "text": "Set baseValue to an empty byte array that is the size of the final base-expanded value. Calculate the final size of baseValue by dividing log(256) by log(targetBase) and then multiplying the length of bytes minus the leading zeroes. Add 1 to the value of size.",
+      "text_sha256": "673a6164e0be01e3eb96cf81445a4f45f3de307151e320fa63e26e086495fe00",
+      "actor": "selected codec algorithm or alternative implementation",
+      "status": "observed-selected-branch",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/capacity-u64-component"
+      ],
+      "basis": "Original u/64 component, exact power-of-two log ratio and bounded typed allocation proof; not public Multikey z or full codec equivalence.",
+      "completion_boundary": "Only the explicitly selected actor, branch and fixed publication; all other scope remains separate.",
+      "observed_actor": "Inspector-owned direct original u/64 component and independent fixed-source type analysis"
+    },
+    {
+      "id": "cid10#context-injection.1",
+      "level": "requirement",
+      "text": "When an application is processing a controlled identifier document, if an @context property is not provided in the document or the terms used in the document are not mapped by existing values in the @context property, implementations MUST inject or append an @context property with a value of https://www.w3.org/ns/cid/v1 or one or more contexts with at least the same declarations, such as the Decentralized Identifier v1.1 context (https://www.w3.org/ns/did/v1).",
+      "text_sha256": "03db0b1bd9539dfcf5d26b769402008b0ec485703aa1c23726c53d4375f42157",
+      "actor": "selected JSON-LD consumer or processor",
+      "status": "observed-selected-branch",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/context-injection-no-context"
+      ],
+      "basis": "Actual no-context typed producer call and same-call final declaration injection; independent full context bytes have the CID publication digest. Other triggers and full JSON-LD/RDF remain separate.",
+      "completion_boundary": "Only the explicitly selected actor, branch and fixed publication; all other scope remains separate.",
+      "observed_actor": "selected original typed producer library"
+    },
+    {
+      "id": "cid10#json-ld-context.1",
+      "level": "requirement",
+      "text": "Implementations that perform JSON-LD processing MUST treat the following JSON-LD context URL as already resolved, where the resolved document matches the corresponding hash value below:",
+      "text_sha256": "721d1e47bcb6aea93b5248df3f033717aa0841ea206d31f96dc77074252e79dc",
+      "actor": "selected JSON-LD consumer or processor",
+      "status": "reviewed-awaiting-evidence",
+      "expected_live_verdict": "NOT_RUN",
+      "cases": [],
+      "basis": "Original local CID URL is unknown to term lookup. Same DID context digest does not establish actual CID URL routing in a JSON-LD processor.",
+      "remaining_reason": "processing-applicability-unresolved",
+      "completion_boundary": "Establish applicable standard JSON-LD processing actor and capture original CID URL-to-pinned-bytes lookup without replacing its loader.",
+      "observed_actor": "not yet established for the complete normative precondition"
+    },
+    {
+      "id": "cid10#vocabulary.1",
+      "level": "requirement",
+      "text": "Implementations that use RDF processing and rely on this specification MUST use these URLs.",
+      "text_sha256": "252e6b2470248d09a4b7c13324304432e7c7df1cc6ac301294edcd68ca5ee2a6",
+      "actor": "selected JSON-LD consumer or processor",
+      "status": "reviewed-awaiting-evidence",
+      "expected_live_verdict": "NOT_RUN",
+      "cases": [],
+      "basis": "Name lookup and JSON output are not RDF processing or actual predicate URI use.",
+      "remaining_reason": "processing-applicability-unresolved",
+      "completion_boundary": "Closed selected processing applicability or actual RDF dataset and fixed security term URI oracle; absent engine alone is not blanket NA.",
+      "observed_actor": "not yet established for the complete normative precondition"
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.1",
+      "level": "requirement",
+      "text": "For JSON-LD processing to occur, a @context property MUST be specified according to the rules specified in the JSON-LD 1.1 specification.",
+      "text_sha256": "27539a73288d81eb6ac839a55ea1bdbaa7ee1fa7ccd75d47faf44414fbee267d",
+      "actor": "selected JSON-LD consumer or processor",
+      "status": "reviewed-awaiting-evidence",
+      "expected_live_verdict": "NOT_RUN",
+      "cases": [],
+      "basis": "Container grammar and term-name lookup do not implement the full JSON-LD 1.1 context processing rules.",
+      "remaining_reason": "processing-applicability-unresolved",
+      "completion_boundary": "Establish standard processing entry/mode and independent JSON-LD context semantics; do not copy shape or injection PASS.",
+      "observed_actor": "not yet established for the complete normative precondition"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.3",
+      "level": "requirement",
+      "text": "Let verificationMethod be the result of dereferencing the DID fragment from the output DID document according to the rules of the media type of the DID document.",
+      "text_sha256": "99a7518503a20ba5b04ffad6a7553ee1344f389b114afc11e29b7b52bb1092ed",
+      "actor": "native resolver/dereferencer input or output",
+      "status": "observed-selected-branch",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/fragment-plain-json-media"
+      ],
+      "basis": "Actual plain-JSON Core1.0 media branch, unique absolute method identifier and same pre-authorization candidate. No JSON-LD media or operational authority claim.",
+      "completion_boundary": "Only the explicitly selected actor, branch and fixed publication; all other scope remains separate.",
+      "observed_actor": "selected original plain-JSON root dereferencer library"
+    }
+  ]
+}
