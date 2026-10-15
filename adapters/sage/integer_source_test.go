@@ -23,7 +23,7 @@ func sourceTest(t *testing.T) (*Subject, sageresolution.IntegerSourceRequest) {
 	}
 	q := sageresolution.IntegerSourceRequest{Module: sageresolution.IntegerSourceModule, Version: sageresolution.IntegerSourceVersion, Packages: []string{"vm", "did", "internal/multiformats"}, Diagnostics: []sageresolution.CodecRequest{{Name: "Ed25519", Key: make([]byte, 32), Encoded: "z0"}}}
 	s := &Subject{sourceObserver: &sourceObserver{build: func() (*debug.BuildInfo, bool) {
-		return &debug.BuildInfo{GoVersion: "go1.26.8", Deps: []*debug.Module{{Path: q.Module, Version: q.Version, Sum: sum}}}, true
+		return &debug.BuildInfo{GoVersion: "go1.26.8", Deps: []*debug.Module{{Path: q.Module, Version: q.Version, Sum: sum}, {Path: sageresolution.ComponentObserverModule, Version: "v0.0.0", Replace: &debug.Module{Path: "../sageprobe"}}}}, true
 	}, environment: func(context.Context) (sourceEnvironment, error) {
 		return sourceEnvironment{Cache: "/fixture", Compiler: "go1.26.8"}, nil
 	}, read: func(name string) ([]byte, error) {
