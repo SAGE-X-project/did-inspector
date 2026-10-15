@@ -440,7 +440,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 func expectedResolutionGate(r report.Report) bool {
 	expected := map[string]bool{}
 	if r.Profile == "did-1.1" {
-		for _, id := range []string{"cid10#verification-methods.9", "cid10#verification-methods.11", "cid10#conformance.2", "did11-cr20260305#production-and-consumption.18", "res10-crd20261001#dereferencing-algorithm-resource.5", "cid10#fragment-resolution.4", "res10-crd20261001#resolving-algorithm.28", "res10-crd20261001#dereferencing-algorithm-resource.11", "res10-crd20261001#resolving-algorithm.29", "cid10#base-encode.4", "cid10#base-decode.5", "res10-crd20261001#dereferencing-algorithm-fragment.3"} {
+		for _, id := range []string{"cid10#verification-methods.9", "cid10#verification-methods.11", "cid10#conformance.2", "did11-cr20260305#production-and-consumption.18", "res10-crd20261001#dereferencing-algorithm-resource.5", "cid10#fragment-resolution.4", "res10-crd20261001#resolving-algorithm.28", "res10-crd20261001#dereferencing-algorithm-resource.11", "res10-crd20261001#resolving-algorithm.29"} {
 			expected[id] = true
 		}
 	}

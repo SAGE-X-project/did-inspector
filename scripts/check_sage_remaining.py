@@ -50,7 +50,7 @@ def verify_review(report, repo=REPO):
         else:
             assert r["status"] == "observed-selected-branch" and r["cases"]
     assert collections.Counter(r["review_disposition"] for r in rows) == audit["review_counts"]
-    assert collections.Counter(r["expected_live_verdict"] for r in rows) == audit["execution_counts"] == {"PASS": 135, "FAIL": 7, "NOT_APPLICABLE": 2, "NOT_RUN": 102}
+    assert collections.Counter(r["expected_live_verdict"] for r in rows) == audit["execution_counts"] == {"PASS": 139, "FAIL": 7, "NOT_APPLICABLE": 2, "NOT_RUN": 98}
     return {r["id"] for r in rows if r["status"] == "observed-selected-branch" and any("/remaining-" in c for c in r["cases"])}
 
 
@@ -248,8 +248,8 @@ def verify_transports(name, q, v, repo):
 
 def verify_remaining(raw, report, repo=REPO):
     assert raw["profile"] == report["profile"] == "did-1.1" and raw["subject"] == report["subject"]
-    assert len(raw["cases"])==len(report["cases"])==366
-    assert {c["case"] for c in raw["cases"]}=={c["id"] for c in report["cases"]} and len({c["case"] for c in raw["cases"]})==366
+    assert len(raw["cases"])==len(report["cases"])==369
+    assert {c["case"] for c in raw["cases"]}=={c["id"] for c in report["cases"]} and len({c["case"] for c in raw["cases"]})==369
     expected_ids = verify_review(report, repo)
     selected = [c for c in raw["cases"] if "/remaining-" in c["case"]]
     assert len(selected) == 51 and len({c["case"] for c in selected}) == 51
@@ -316,7 +316,7 @@ def main():
     p.add_argument("--report", type=Path, required=True)
     a = p.parse_args()
     checked = verify_remaining(json.loads(a.raw.read_text()), json.loads(a.report.read_text()))
-    print(f"Verified all 246 anchored reviews, {len(checked)} fresh selected-branch verdicts, and 102 explicitly unobserved clauses")
+    print(f"Verified all 246 anchored reviews, {len(checked)} fresh selected-branch verdicts, and 98 explicitly unobserved clauses")
 
 
 if __name__ == "__main__":
