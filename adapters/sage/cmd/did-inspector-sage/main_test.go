@@ -281,7 +281,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		t.Fatal(err)
 	}
 	r, err := report.Decode(data)
-	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 364 {
+	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 366 {
 		raw, _ := os.ReadFile(path + ".raw")
 		var x struct {
 			Cases []struct {
@@ -318,7 +318,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		t.Fatal(err)
 	}
 	missingReport, err := report.Decode(missingData)
-	if err != nil || missingReport.Totals.Error != 49 || missingReport.Totals.Pass != 317 || missingReport.Totals.Fail != 10 {
+	if err != nil || missingReport.Totals.Error != 50 || missingReport.Totals.Pass != 319 || missingReport.Totals.Fail != 10 {
 		t.Fatal("missing source accepted", err, missingReport.Totals)
 	}
 	missingErrors := map[string]bool{}
@@ -327,10 +327,10 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 			missingErrors[row.ID] = true
 		}
 	}
-	if len(missingErrors) != 49 {
+	if len(missingErrors) != 50 {
 		t.Fatal("wrong source error count", missingErrors)
 	}
-	for _, id := range []string{"cid10#base-encode.1", "cid10#base-decode.1", "cid10#base-encode.8", "cid10#base-encode.9", "cid10#base-encode.10", "cid10#base-decode.9", "cid10#base-decode.10", "cid10#base-decode.11", "cid10#base-encode.6", "cid10#base-encode.11", "cid10#base-decode.2", "cid10#base-decode.7", "cid10#base-decode.12", "cid10#base-decode.13", "cid10#base-encode.5", "cid10#base-encode.12", "cid10#base-decode.6", "cid10#base-encode.2", "cid10#base-encode.3", "cid10#base-decode.3", "cid10#base-decode.4", "cid10#base-encode.7", "cid10#base-decode.8", "cid10#base-encode.14", "cid10#base-encode.15", "cid10#base-encode.16", "cid10#base-decode.14", "cid10#base-decode.15", "cid10#fragment-resolution.2", "cid10#fragment-resolution.3", "cid10#fragment-resolution.5", "cid10#fragment-resolution.1", "res10-crd20261001#dereferencing-algorithm-fragment.1", "res10-crd20261001#dereferencing-algorithm-fragment.2", "res10-crd20261001#dereferencing-algorithm-resource.16", "res10-crd20261001#dereferencing-algorithm-resource.20", "res10-crd20261001#dereferencing-algorithm-resource.26", "res10-crd20261001#dereferencing-algorithm-resource.27", "res10-crd20261001#dereferencing-algorithm-resource.17", "res10-crd20261001#dereferencing-algorithm-resource.21", "res10-crd20261001#dereferencing-algorithm-resource.29", "res10-crd20261001#dereferencing-algorithm-resource.35", "res10-crd20261001#dereferencing-algorithm-resource.10", "res10-crd20261001#dereferencing-algorithm-resource.44", "res10-crd20261001#dereferencing-algorithm-fragment.7", "res10-crd20261001#resolving-algorithm.27", "res10-crd20261001#resolving-algorithm.28", "res10-crd20261001#dereferencing-algorithm-resource.11", "cid10#retrieve-verification-method.3"} {
+	for _, id := range []string{"cid10#base-encode.1", "cid10#base-decode.1", "cid10#base-encode.8", "cid10#base-encode.9", "cid10#base-encode.10", "cid10#base-decode.9", "cid10#base-decode.10", "cid10#base-decode.11", "cid10#base-encode.6", "cid10#base-encode.11", "cid10#base-decode.2", "cid10#base-decode.7", "cid10#base-decode.12", "cid10#base-decode.13", "cid10#base-encode.5", "cid10#base-encode.12", "cid10#base-decode.6", "cid10#base-encode.2", "cid10#base-encode.3", "cid10#base-decode.3", "cid10#base-decode.4", "cid10#base-encode.7", "cid10#base-decode.8", "cid10#base-encode.14", "cid10#base-encode.15", "cid10#base-encode.16", "cid10#base-decode.14", "cid10#base-decode.15", "cid10#fragment-resolution.2", "cid10#fragment-resolution.3", "cid10#fragment-resolution.5", "cid10#fragment-resolution.1", "res10-crd20261001#dereferencing-algorithm-fragment.1", "res10-crd20261001#dereferencing-algorithm-fragment.2", "res10-crd20261001#dereferencing-algorithm-resource.16", "res10-crd20261001#dereferencing-algorithm-resource.20", "res10-crd20261001#dereferencing-algorithm-resource.26", "res10-crd20261001#dereferencing-algorithm-resource.27", "res10-crd20261001#dereferencing-algorithm-resource.17", "res10-crd20261001#dereferencing-algorithm-resource.21", "res10-crd20261001#dereferencing-algorithm-resource.29", "res10-crd20261001#dereferencing-algorithm-resource.35", "res10-crd20261001#dereferencing-algorithm-resource.10", "res10-crd20261001#dereferencing-algorithm-resource.44", "res10-crd20261001#dereferencing-algorithm-fragment.7", "res10-crd20261001#resolving-algorithm.27", "res10-crd20261001#resolving-algorithm.28", "res10-crd20261001#dereferencing-algorithm-resource.11", "cid10#retrieve-verification-method.3", "res10-crd20261001#resolving-algorithm.29"} {
 		if !missingErrors[id] {
 			t.Fatal("source errors assigned to wrong clauses", missingErrors)
 		}
@@ -360,12 +360,12 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		want, cases := 33, 16
 		if profile == "did-1.1" {
-			want, cases = 364, 363
+			want, cases = 366, 365
 		}
-		if profile == "did-1.1" && (r.Totals.NotApplicable != 4 || r.Totals.NotRun != 106) {
+		if profile == "did-1.1" && (r.Totals.NotApplicable != 4 || r.Totals.NotRun != 103) {
 			t.Fatal("native URL conditional evidence", r.Totals)
 		}
-		if profile == "did-1.1" && (r.Totals.Fail != 12 || r.TotalsByLevel.Recommendation.Fail != 4 || r.TotalsByLevel.Requirement.Fail != 8) {
+		if profile == "did-1.1" && (r.Totals.Fail != 13 || r.TotalsByLevel.Recommendation.Fail != 4 || r.TotalsByLevel.Requirement.Fail != 9) {
 			t.Fatal("native alg recommendation failure not preserved", r.Totals)
 		}
 		if r.Totals.Pass != want || !expectedResolutionGate(r) || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Subject.Revision != "2ef282b40ccfe243c6cf3b1c05594e02171126cc" {
@@ -381,7 +381,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		for _, c := range raw.Cases {
 			for _, o := range c.Observations {
-				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") || strings.Contains(c.Case, "/remaining-") || strings.Contains(c.Case, "/choice-") || strings.Contains(c.Case, "/representation-options-") || strings.Contains(c.Case, "/resource-choice-") || strings.Contains(c.Case, "/integer-source-") || strings.Contains(c.Case, "/fragment-source-") || strings.Contains(c.Case, "/fragment-initial-") || strings.Contains(c.Case, "/fragment-search-") || strings.Contains(c.Case, "/fragment-relationship-") || strings.Contains(c.Case, "/service-source-") || strings.Contains(c.Case, "/selection-source-") || strings.Contains(c.Case, "/dispatch-source-") || strings.Contains(c.Case, "/expansion-source-") || strings.Contains(c.Case, "/url-source-") {
+				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") || strings.Contains(c.Case, "/remaining-") || strings.Contains(c.Case, "/choice-") || strings.Contains(c.Case, "/representation-options-") || strings.Contains(c.Case, "/resource-choice-") || strings.Contains(c.Case, "/integer-source-") || strings.Contains(c.Case, "/fragment-source-") || strings.Contains(c.Case, "/fragment-initial-") || strings.Contains(c.Case, "/fragment-search-") || strings.Contains(c.Case, "/fragment-relationship-") || strings.Contains(c.Case, "/service-source-") || strings.Contains(c.Case, "/selection-source-") || strings.Contains(c.Case, "/dispatch-source-") || strings.Contains(c.Case, "/expansion-source-") || strings.Contains(c.Case, "/url-source-") || strings.Contains(c.Case, "/item-expansion-") || strings.Contains(c.Case, "/multihash-component-") {
 					if o.Input == "" || o.Observed == "" {
 						t.Fatal("lost policy evidence")
 					}
@@ -404,7 +404,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 				} else if !strings.Contains(o.Input, `"record"`) {
 					t.Fatal("lost input evidence")
 				}
-				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") || strings.Contains(c.Case, "/remaining-") || strings.Contains(c.Case, "/choice-") || strings.Contains(c.Case, "/representation-options-") || strings.Contains(c.Case, "/resource-choice-") || strings.Contains(c.Case, "/integer-source-") || strings.Contains(c.Case, "/fragment-source-") || strings.Contains(c.Case, "/fragment-initial-") || strings.Contains(c.Case, "/fragment-search-") || strings.Contains(c.Case, "/fragment-relationship-") || strings.Contains(c.Case, "/service-source-") || strings.Contains(c.Case, "/selection-source-") || strings.Contains(c.Case, "/dispatch-source-") || strings.Contains(c.Case, "/expansion-source-") || strings.Contains(c.Case, "/url-source-") {
+				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") || strings.Contains(c.Case, "/remaining-") || strings.Contains(c.Case, "/choice-") || strings.Contains(c.Case, "/representation-options-") || strings.Contains(c.Case, "/resource-choice-") || strings.Contains(c.Case, "/integer-source-") || strings.Contains(c.Case, "/fragment-source-") || strings.Contains(c.Case, "/fragment-initial-") || strings.Contains(c.Case, "/fragment-search-") || strings.Contains(c.Case, "/fragment-relationship-") || strings.Contains(c.Case, "/service-source-") || strings.Contains(c.Case, "/selection-source-") || strings.Contains(c.Case, "/dispatch-source-") || strings.Contains(c.Case, "/expansion-source-") || strings.Contains(c.Case, "/url-source-") || strings.Contains(c.Case, "/item-expansion-") || strings.Contains(c.Case, "/multihash-component-") {
 					if o.Input == "" || o.Observed == "" {
 						t.Fatal("lost policy evidence")
 					}
@@ -440,7 +440,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 func expectedResolutionGate(r report.Report) bool {
 	expected := map[string]bool{}
 	if r.Profile == "did-1.1" {
-		for _, id := range []string{"cid10#verification-methods.9", "cid10#verification-methods.11", "cid10#conformance.2", "did11-cr20260305#production-and-consumption.18", "res10-crd20261001#dereferencing-algorithm-resource.5", "cid10#fragment-resolution.4", "res10-crd20261001#resolving-algorithm.28", "res10-crd20261001#dereferencing-algorithm-resource.11"} {
+		for _, id := range []string{"cid10#verification-methods.9", "cid10#verification-methods.11", "cid10#conformance.2", "did11-cr20260305#production-and-consumption.18", "res10-crd20261001#dereferencing-algorithm-resource.5", "cid10#fragment-resolution.4", "res10-crd20261001#resolving-algorithm.28", "res10-crd20261001#dereferencing-algorithm-resource.11", "res10-crd20261001#resolving-algorithm.29"} {
 			expected[id] = true
 		}
 	}

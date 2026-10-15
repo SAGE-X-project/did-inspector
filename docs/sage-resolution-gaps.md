@@ -5,7 +5,7 @@ report from CI run [38353322386](https://github.com/SAGE-X-project/did-inspector
 The machine-readable [inventory](sage-resolution-gaps.json) preserves all 416 historical
 statement ids, normative levels and keywords, exact text digests, evidence paths,
 and a next evidence route for each statement. Pending routes are planning evidence, not verdicts or implementation defects.
-Schema 2 keeps 106 pending entries and 310 entries observed since the baseline;
+Schema 2 keeps 103 pending entries and 313 entries observed since the baseline;
 it never assigns new observations to the historical inspector revision.
 
 The baseline inspector revision is `aefdcf9228ec8dcf85fd4aaf08b6e0511af11c36`.
@@ -24,8 +24,8 @@ recommendation-level statements. Requirement-level extraction also includes
 permissions, definitions and algorithm steps; it does not mean every row is a
 standalone MUST with an independently observable violation.
 
-The current report has 363 cases, 350 requirement and fourteen recommendation passes,
-eight requirement failures, four recommendation failures, four inapplicable statements and 106 unobserved statements. Ten fresh native
+The current report has 365 cases, 352 requirement and fourteen recommendation passes,
+nine requirement failures, four recommendation failures, four inapplicable statements and 103 unobserved statements. Ten fresh native
 result cases add 13 requirement passes and one conditional NOT_APPLICABLE.
 Twenty-four direct metadata serialization cases add four requirement passes.
 Three native error/state cases and ten owned TLS response cases add 22
@@ -53,7 +53,7 @@ strings, adding consumption.1 on these selected values. Root/map insertion order
 is not required. All numeric ranges, forced double properties without a fraction,
 other property contexts and full JSON-LD processing remain unestablished.
 The earlier routing table below describes the 246-clause anchor, not the baseline 416.
-The [current full review](sage-remaining-clause-review.md) records all anchor clauses individually and identifies the 106 still unobserved.
+The [current full review](sage-remaining-clause-review.md) records all anchor clauses individually and identifies the 103 still unobserved.
 
 | Primary next evidence route | Statements | Meaning |
 |---|---:|---|
@@ -404,3 +404,16 @@ A separate 39-file, nine-package source capture includes relyingparty and preser
 Current resolution: 363 cases, 364 PASS, twelve FAIL, four NOT_APPLICABLE, 106 NOT_RUN, zero ERROR. Original 416 ledger: 310 observed (295 PASS, twelve FAIL, three NOT_APPLICABLE) plus 106 pending. The 246 anchor has 140 execution verdicts (132 PASS, six FAIL, two NOT_APPLICABLE) plus 106 pending. Remaining classification: internal13, document actor51, choices12, registration15, operational/history10, interpretation4 and complete tuple1.
 
 The new primary-resource URL separation failure is an additional stage-eight repair cause, separate from fragment search and relative URL expansion. Twelve failed clauses now map to nine repair causes. Earlier eleven findings/eight causes, pins, frozen text, old ledger row content/order and Core1.0/projection results remain preserved. Missing compiler source yields exactly49 ERROR while317 PASS and the ten failures independent of source remain observable; the two source-bound failures also become ERROR. Core/spec/contract changes and registration remain in the approved later order.
+
+
+## Qualifying expansion items and direct multihash component operations
+
+Resolving .29 now has its own five literal object/id/relative-fragment conditions and unchanged actual outputs, under the same preserved consumer/resolver and closed-helper premises. It fails for the existing method/service extension traversal omission. The old .28 verdict is not copied: each candidate is independently qualified and compared. Root-relocated, disabled and empty controls remain present. The additional failed clause shares repair cause eight; it does not create a new repair cause. Full representation .26 and media-fragment .3 remain unobserved.
+
+CID multihash .2/.3 pass for the original pinned internal component, directly invoked through the Inspector-owned `adapters/sageprobe` module. Its import path `github.com/sage-x-project/did-go/inspectorprobe` permits ordinary Go internal-package imports; the local replacement applies only to Inspector observer code. Root did-go and advanced/sage pins remain unchanged and unreplaced. Runtime BuildInfo records this observer separately from the subject's module/ZIP/cache/compiler premises. CI preserves its module descriptor and source hashes. This is neither a SAGE production caller nor an assertion of verbatim compiled subject bytes.
+
+Thirty-two actual calls contain four encode successes, four decode successes, twenty independent length rejections and four diagnostic inputs. Eight rejection inputs keep declared and actual lengths equal while differing from the algorithm's expected length. A decoder checking only declared versus actual length therefore cannot pass. Unknown codes and invalid encode inputs are diagnostics, not additional implementation obligations. Partial values returned alongside rejection errors are retained; diagnostic outcomes do not judge the clauses. Encode/decode API or capture errors are attributed separately.
+
+Current resolution: 365 cases, 366 PASS, thirteen FAIL, four NOT_APPLICABLE, 103 NOT_RUN, zero ERROR. Required436:352 PASS/nine FAIL/two NA/73 NOT_RUN; recommended50:14 PASS/four FAIL/two NA/30 NOT_RUN. Original416 ledger:313 observed (297 PASS/thirteen FAIL/three NA)+103 pending. Anchor246:143 execution verdicts (134 PASS/seven FAIL/two NA)+103 pending. Remaining: internal10, document actor51, choices12, registration15, operational/history10, interpretation4, complete tuple1. Existing310 observed rows and other243 anchor rows, baseline ids/text/hashes, earlier findings and Core1.0/projection results are preserved.
+
+Thirteen failed clauses map to the same nine repair causes; .29 is added under the existing expansion traversal cause. Core/spec/contract repair, real registry bindings and registration remain in the approved later order. Missing standard-library source yields50 ERROR,319 PASS and the existing ten failures independent of that proof; the three source-bound expansion/URL findings become ERROR. The direct compiled multihash component calls remain independently observable in that condition.

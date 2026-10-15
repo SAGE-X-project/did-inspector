@@ -23,10 +23,10 @@
     "runtime-candidate": 69
   },
   "execution_counts": {
-    "PASS": 132,
-    "FAIL": 6,
+    "PASS": 134,
+    "FAIL": 7,
     "NOT_APPLICABLE": 2,
-    "NOT_RUN": 106
+    "NOT_RUN": 103
   },
   "clauses": [
     {
@@ -1321,13 +1321,15 @@
       "generic_scope": "not-checkable",
       "text": "To encode to a Multihash value, an implementation MUST concatenate the associated Multihash header (encoded as a varint), the cryptographic digest length in bytes (encoded as a varint), and the cryptographic digest value, in that order.",
       "actor": "actual subject multihash encoder/decoder",
-      "applicable_evidence": "Need an attributable subject operation and independent header-varint, digest-length and digest-byte controls. Selected vm Multikey encode/decode is not a multihash operation; unrelated codec outputs cannot prove this contract. Reassess a public API observer before changing the subject implementation.",
+      "applicable_evidence": "Actual component calls, unreplaced subject BuildInfo/cache/ZIP identity, separate Inspector-owned observer BuildInfo and literal byte or length-control outcomes.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
-      "follow_up_condition": "Need an attributable subject operation and independent header-varint, digest-length and digest-byte controls. Selected vm Multikey encode/decode is not a multihash operation; unrelated codec outputs cannot prove this contract. Reassess a public API observer before changing the subject implementation.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "status": "observed-selected-branch",
+      "reason": "Direct original pinned internal multiformats component calls, with independent literal bytes and code/expected/declared/actual length controls. This Inspector-owned local observer is not a SAGE production caller.",
+      "follow_up_condition": "Keep the component actor separate from operational SAGE binding, every varint or hash algorithm and physical compiled-byte attestation.",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/multihash-component-operations"
+      ]
     },
     {
       "id": "cid10#multihash.3",
@@ -1341,13 +1343,15 @@
       "generic_scope": "not-checkable",
       "text": "To decode a Multihash value, an implementation MUST 1) remove the prepended Multihash header value, which identifies the type of cryptographic hashing algorithm, 2) remove the cryptographic digest length in bytes, and 3) extract the raw cryptographic digest value which MUST match the expected output length associated with the Multihash header as well as the output length provided in the Multihash value itself.",
       "actor": "actual subject multihash encoder/decoder",
-      "applicable_evidence": "Need an attributable subject operation and independent header-varint, digest-length and digest-byte controls. Selected vm Multikey encode/decode is not a multihash operation; unrelated codec outputs cannot prove this contract. Reassess a public API observer before changing the subject implementation.",
+      "applicable_evidence": "Actual component calls, unreplaced subject BuildInfo/cache/ZIP identity, separate Inspector-owned observer BuildInfo and literal byte or length-control outcomes.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
-      "follow_up_condition": "Need an attributable subject operation and independent header-varint, digest-length and digest-byte controls. Selected vm Multikey encode/decode is not a multihash operation; unrelated codec outputs cannot prove this contract. Reassess a public API observer before changing the subject implementation.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "status": "observed-selected-branch",
+      "reason": "Direct original pinned internal multiformats component calls, with independent literal bytes and code/expected/declared/actual length controls. This Inspector-owned local observer is not a SAGE production caller.",
+      "follow_up_condition": "Keep the component actor separate from operational SAGE binding, every varint or hash algorithm and physical compiled-byte attestation.",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/multihash-component-operations"
+      ]
     },
     {
       "id": "cid10#processing-errors.1",
@@ -4966,13 +4970,15 @@
       "generic_scope": "checked",
       "text": "For each item, if the item is an object and the value of the id property is a relative DID URL, or if a verification relationship is a relative DID URL:",
       "actor": "SAGE resolver/source or service dereferencer",
-      "applicable_evidence": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
+      "applicable_evidence": "Same-call original model, reviewed source/closed-helper premises and five explicit qualifying objects; root-relocated and nonqualifying controls.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The named conditional, alias, loop or intermediate value is not exposed by the selected public operation. Existing externally observed results do not prove this internal algorithm step; a passive attributed internal witness or an approved functional-equivalence interpretation is required.",
-      "follow_up_condition": "Actual applicable history, canonical provenance, service/query selection or proxy feature is needed. Fixed current records and restricted SAGE URLs cannot supply it; inspect exact condition before stage-eight implementation.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "status": "observed-selected-branch",
+      "reason": "Five separately qualified object/id/relative-fragment candidates remain unchanged in the same preserved consumer/resolver output; .29 fails independently and shares the .28 traversal repair cause.",
+      "follow_up_condition": "Preserve this additional clause finding under the existing stage-eight traversal cause; rerun after repair. Full representation .26 stays pending.",
+      "expected_live_verdict": "FAIL",
+      "cases": [
+        "did-1.1/sage-resolution/item-expansion-conditions"
+      ]
     },
     {
       "id": "res10-crd20261001#resolving-algorithm.30",

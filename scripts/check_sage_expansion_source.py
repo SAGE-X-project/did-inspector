@@ -1,4 +1,5 @@
 """Verify bounded resolver expansion roles and same-call original models."""
+from sage_item_expansion_scope import verify_item_pending
 import argparse,base64,copy,hashlib,io,json,zipfile
 from pathlib import Path
 from check_sage_contracts import semantic_equal
@@ -66,7 +67,7 @@ def verify_expansion_source(raw,report,repo=REPO):
  assert len(missing)==5 and all(name=='nested-extras' for name,path in missing)
  live={x['id']:x for x in report['statements']}
  for ident,verdict in zip(IDS,['PASS','FAIL']):assert live[ident]['verdict']==verdict and live[ident]['cases']==[CASE]
- for ident in PENDING:assert live[ident]['verdict']=='NOT_RUN'
+ verify_item_pending(raw,live,PENDING)
  return set(IDS)
 def main():
  p=argparse.ArgumentParser();p.add_argument('--reports',type=Path,required=True);a=p.parse_args();ids=verify_expansion_source(json.loads((a.reports/'resolution-did-1.1-raw.json').read_text()),json.loads((a.reports/'resolution-did-1.1.json').read_text()));print('Verified',len(ids),'expansion predicates, 39 source files and five actual calls; complete extension traversal FAIL preserved')

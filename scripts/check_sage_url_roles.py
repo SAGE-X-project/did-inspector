@@ -1,4 +1,5 @@
 """Verify primary-resource URL and DID parser/typed RP integration evidence."""
+from sage_item_expansion_scope import verify_item_pending
 import argparse,base64,hashlib,io,json,zipfile
 from pathlib import Path
 from check_sage_contracts import semantic_equal
@@ -61,7 +62,7 @@ def verify_url_roles(raw,report,repo=REPO):
   result=call['result'];assert result['has_content'] is True and result['returned_id']==f['record']['did'] and result['content_kind']=='document'
   doc=result['snapshot'];assert isinstance(doc,dict);assert doc['id']==f['record']['did'] and any(semantic_equal(m,f['expected_method'],'unknown') for m in doc['verificationMethod']) and q['reference'] in doc[q['purpose']]
  live={x['id']:x for x in report['statements']};verify_url_pending(raw,live,IDS)
- for ident in PENDING:assert live[ident]['verdict']=='NOT_RUN'
+ verify_item_pending(raw,live,PENDING)
  return set(IDS)
 def main():
  p=argparse.ArgumentParser();p.add_argument('--reports',type=Path,required=True);a=p.parse_args();ids=verify_url_roles(json.loads((a.reports/'resolution-did-1.1-raw.json').read_text()),json.loads((a.reports/'resolution-did-1.1.json').read_text()));print('Verified',len(ids),'independent URL predicates, 39 source files, seven handler and seven parser/RP calls; URL separation FAIL preserved')
