@@ -50,6 +50,7 @@ class FragmentArtifactTests(unittest.TestCase):
             lambda e:e['source'].update(sum='other'),
             lambda e:e['source'].update(files={}),
             lambda e:e['audit']['frames'].update({'other':'unknown'}),
+            lambda e:e['audit']['steps'][0].update(correct=1),
             lambda e:e['runtime'][0][0].update(role='other'),
             lambda e:e['runtime'][0][0]['result'].update(raw=encoded({})),
             lambda e:e['runtime'][0][1]['result'].update(has_content=True),

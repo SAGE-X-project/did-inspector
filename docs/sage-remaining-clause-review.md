@@ -2,7 +2,7 @@
 
 All 246 clauses unobserved at `1efc9f0` are reviewed individually in the [machine-readable audit](sage-remaining-clause-review.json). The earlier [353-clause review](sage-resolution-batch-review.json) and all 416 historical ledger entries remain intact. Review coverage does not establish execution coverage or standards conformance.
 
-This grouped implementation adds 108 selected-branch observations across 53 cases, including twenty-eight fixed-source codec obligations and three separate fragment identifier/return obligations. Of the 246 anchor clauses, 121 now have execution verdicts and 125 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
+This grouped implementation connects 110 distinct selected clauses across 59 cases, including twenty-eight fixed-source codec obligations and five separately judged fragment obligations. Of the 246 anchor clauses, 123 now have execution verdicts and 123 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
 
 | Review disposition | Clauses |
 |---|---:|
@@ -24,6 +24,8 @@ A proof-shaped map is a structural input, not a valid cryptographic proof. Ephem
 ## Preserved findings
 
 The four existing mandatory date/input findings remain. A fifth requirement failure records omitted `accept=text/uri-list` in the actual nested Resolve call despite the all-options forwarding rule. Recommendations now also record absent producer `kid` and downstream serialization dropping an explicitly supplied `deactivated: false`. The original missing `alg` and undefined JSON-LD term recommendation failures remain. Absent actual `kid` makes its thumbprint and hint-id comparisons inapplicable for these produced methods; it does not excuse the separate recommendation to use `kid`.
+
+A sixth requirement finding records missed preserved nested maps in verification-method/service extras and service endpoint maps. All nine prior findings remain; the recursive-search finding adds one clause and one repair cause.
 
 These are inspection findings, not core fixes. The conformance gate remains FAIL, and successful CI means the inspector retained and correctly detected the expected failures.
 
@@ -137,3 +139,13 @@ The document ID is a nested accessor expression, not an invented local variable.
 Initial null and every-map recursion remain NOT_RUN. Size allocation steps remain pending: conservative base58 bounds differ from the reference formula, but alternatives with identical outputs are allowed. Exact base64 component ratios alone do not establish the current Multikey actor, complete alternative equivalence or overflow freedom. These reviewed items remain in their original internal category and are not silently completed or discarded.
 
 Current resolution: 351 cases, 348 PASS, nine preserved FAIL, four NOT_APPLICABLE and 125 NOT_RUN. Original 416 ledger: 291 observed (279 PASS, three NOT_APPLICABLE, nine FAIL) plus 125 pending. The 246 anchor has 121 execution verdicts and 125 pending. Remaining classification: internal/equivalence32, document actor51, choices12, registration15, operational/history10, existing interpretation4 and complete tuple1. Existing target pins, frozen statement bytes and stage-eight fixes are unchanged.
+
+## Fragment initial state and recursive map coverage
+
+The separate initial-source case inspects `cid10#fragment-resolution.1` through the actual search function's unnamed `(any, bool)` results and typed caller result/input/matcher roles. The Go language rule that function-entry results receive their zero values is an explicit trust premise ([Return statements](https://go.dev/ref/spec#Return_statements)). The reviewed pure identifier preparation and immutable normal typed-document branch permit an absent-fragment initial-phase projection. This is not a literal `documentFragment` declaration, final-null inference, physical execution trace or claim that the complete alternative algorithm has equivalent outputs. The initial phase can pass while a separate search phase fails.
+
+Five normal public literal fixtures inspect `cid10#fragment-resolution.4`. A passive capture records the actual nested resolver's complete data model before the same dereference call uses it; the delegate result/document is returned unchanged. An independent every-map oracle requires a unique matching map. Each fixture runs a matching request, the same map relocated into an extension as a positive control, and an absent-id control. Four containers preserve the target but produce NOT_FOUND/null: verification-method extras, embedded-method extras, service extras and a service endpoint map. The extension-list fixture succeeds. Arbitrary wrong payloads without an independently attributed miss remain evidence errors. The player's NOT_FOUND code is a causal diagnostic prerequisite, not a new CID-required error code.
+
+The selected component uses CID fragment semantics on its normal `application/did` typed-document branch; this does not establish `application/cid` ingress, other media semantics, every valid input or operational SAGE authority. All prior nine findings remain. Recursive traversal is one additional required-clause finding and a seventh repair cause to address only in the existing later core-repair work. No core, dependency pin, frozen standard or contract changed. Inputs are benign document maps and published public key material, with no offensive reproduction or modified subject execution.
+
+Current resolution checkpoint: 357 cases, 349 PASS, ten FAIL, four NOT_APPLICABLE and 123 NOT_RUN. Original 416 ledger: 293 observed (280 PASS, ten FAIL, three NOT_APPLICABLE) and 123 pending. The 246 anchor has 123 execution verdicts (117 PASS, four FAIL, two NOT_APPLICABLE) and 123 pending. Thirty internal clauses remain, including both size items and frozen codec-text conflicts.

@@ -23,10 +23,10 @@
     "runtime-candidate": 69
   },
   "execution_counts": {
-    "PASS": 116,
-    "FAIL": 3,
+    "PASS": 117,
+    "FAIL": 4,
     "NOT_APPLICABLE": 2,
-    "NOT_RUN": 125
+    "NOT_RUN": 123
   },
   "clauses": [
     {
@@ -1097,11 +1097,13 @@
       "actor": "selected relying party and SAGE dereferencer",
       "applicable_evidence": "Fresh positive and negative calls, unchanged actual problem objects, reference and purpose observations. Output cannot prove every internal assignment or full authority.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
-      "follow_up_condition": "Fresh positive and negative calls, unchanged actual problem objects, reference and purpose observations. Output cannot prove every internal assignment or full authority.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "status": "observed-selected-branch",
+      "reason": "Actual fixed-source unnamed (any,bool) search-entry results are zero-initialized under an explicit Go language-semantics premise, with typed callee/input/matcher/results/caller-to-content roles and unchanged source prerequisites. This is an independent initial-phase projection, not a literal documentFragment declaration, final-null inference or complete alternative-output equivalence.",
+      "follow_up_condition": "Require fresh canonical source h1/cache/compiler receipts, typed result roles and four corroborating public literal calls. Changes outside the reviewed initial-state projection remain evidence ERROR; every-map search is independently judged.",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/fragment-initial-source"
+      ]
     },
     {
       "id": "cid10#fragment-resolution.2",
@@ -1155,11 +1157,17 @@
       "actor": "selected relying party and SAGE dereferencer",
       "applicable_evidence": "Fresh positive and negative calls, unchanged actual problem objects, reference and purpose observations. Output cannot prove every internal assignment or full authority.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
-      "follow_up_condition": "Fresh positive and negative calls, unchanged actual problem objects, reference and purpose observations. Output cannot prove every internal assignment or full authority.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "status": "observed-selected-branch",
+      "reason": "Five ordinary public literal documents and fifteen fresh library calls bind the same-call pre-search typed model, unique matching map, relocated positive and absent-id controls. Four preserved maps nested in method/embedded-method/service extras or an endpoint map are missed; the extension-only control passes. One clause FAIL is aggregated without attributing arbitrary payload mismatches to an internal search step.",
+      "follow_up_condition": "Preserve all nine prior findings. Repair recursive traversal of preserved typed-object submaps in the existing core-repair follow-up, then rerun these actual normal-input controls; no offensive reproduction or core repair is included here.",
+      "expected_live_verdict": "FAIL",
+      "cases": [
+        "did-1.1/sage-resolution/fragment-search-extension-list",
+        "did-1.1/sage-resolution/fragment-search-method-extra",
+        "did-1.1/sage-resolution/fragment-search-embedded-extra",
+        "did-1.1/sage-resolution/fragment-search-service-extra",
+        "did-1.1/sage-resolution/fragment-search-endpoint-map"
+      ]
     },
     {
       "id": "cid10#fragment-resolution.5",
