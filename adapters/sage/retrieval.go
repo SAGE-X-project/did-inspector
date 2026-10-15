@@ -52,6 +52,10 @@ func (*Subject) InspectRetrieval(ctx context.Context, in sageprojection.Record, 
 			return out, e
 		}
 	}
+	if !q.Zero {
+		parts := urlParts(ref)
+		out.ParsedURL = &parts
+	}
 	out.Reference, out.Purpose = ref.String(), purpose.String()
 	rec, e := resolutionRecord(in)
 	if e != nil {

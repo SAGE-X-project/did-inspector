@@ -87,7 +87,7 @@ func (r routingResolver) Resolve(ctx context.Context, id did.DID, o resolution.R
 }
 func (*Subject) InspectRouting(ctx context.Context, q sageresolution.RoutingRequest) (sageresolution.RoutingResult, error) {
 	out := sageresolution.RoutingResult{Role: "root resolver/dereferencer library with literal example driver; not SAGE Source", Request: q, ResolveInputs: []string{}, ResolveOptions: [][]byte{}, DriverOptions: [][]byte{}}
-	if q.Document.MediaType != "application/did" || (q.Request.Function != "resolve" && q.Request.Function != "dereference") {
+	if (q.ObserveResourceHandler && q.Request.Function != "dereference") || q.Document.MediaType != "application/did" || (q.Request.Function != "resolve" && q.Request.Function != "dereference") {
 		return out, errors.New("requires literal application/did and an explicit library routing operation")
 	}
 	registry, e := method.NewRegistry(literalRoutingMethod{body: q.Document.Data, calls: &out.DriverOptions, inputs: &out.DriverInputs, results: &out.DriverResults})
@@ -134,7 +134,11 @@ func (*Subject) InspectRouting(ctx context.Context, q sageresolution.RoutingRequ
 	if e != nil {
 		return out, e
 	}
-	d, e := dereferencer.New(observed, p)
+	var handlerOptions []dereferencer.Option
+	if q.ObserveResourceHandler {
+		handlerOptions = append(handlerOptions, dereferencer.WithResourceHandler(observeResourceHandler(&out)))
+	}
+	d, e := dereferencer.New(observed, p, handlerOptions...)
 	if e != nil {
 		return out, e
 	}

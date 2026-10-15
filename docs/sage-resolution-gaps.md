@@ -5,7 +5,7 @@ report from CI run [38353322386](https://github.com/SAGE-X-project/did-inspector
 The machine-readable [inventory](sage-resolution-gaps.json) preserves all 416 historical
 statement ids, normative levels and keywords, exact text digests, evidence paths,
 and a next evidence route for each statement. Pending routes are planning evidence, not verdicts or implementation defects.
-Schema 2 keeps 108 pending entries and 308 entries observed since the baseline;
+Schema 2 keeps 106 pending entries and 310 entries observed since the baseline;
 it never assigns new observations to the historical inspector revision.
 
 The baseline inspector revision is `aefdcf9228ec8dcf85fd4aaf08b6e0511af11c36`.
@@ -24,8 +24,8 @@ recommendation-level statements. Requirement-level extraction also includes
 permissions, definitions and algorithm steps; it does not mean every row is a
 standalone MUST with an independently observable violation.
 
-The current report has 362 cases, 349 requirement and fourteen recommendation passes,
-seven requirement failures, four recommendation failures, four inapplicable statements and 108 unobserved statements. Ten fresh native
+The current report has 363 cases, 350 requirement and fourteen recommendation passes,
+eight requirement failures, four recommendation failures, four inapplicable statements and 106 unobserved statements. Ten fresh native
 result cases add 13 requirement passes and one conditional NOT_APPLICABLE.
 Twenty-four direct metadata serialization cases add four requirement passes.
 Three native error/state cases and ten owned TLS response cases add 22
@@ -53,7 +53,7 @@ strings, adding consumption.1 on these selected values. Root/map insertion order
 is not required. All numeric ranges, forced double properties without a fraction,
 other property contexts and full JSON-LD processing remain unestablished.
 The earlier routing table below describes the 246-clause anchor, not the baseline 416.
-The [current full review](sage-remaining-clause-review.md) records all anchor clauses individually and identifies the 108 still unobserved.
+The [current full review](sage-remaining-clause-review.md) records all anchor clauses individually and identifies the 106 still unobserved.
 
 | Primary next evidence route | Statements | Meaning |
 |---|---:|---|
@@ -391,3 +391,16 @@ A separate nine-package, 39-file cache/ZIP capture binds the pinned resolver, it
 Current resolution: 362 cases, 363 PASS, eleven FAIL, four NOT_APPLICABLE, 108 NOT_RUN, zero ERROR. Original 416 ledger: 308 observed (294 PASS, eleven FAIL, three NOT_APPLICABLE) plus 108 pending. The 246 anchor has 138 execution verdicts (131 PASS, five FAIL, two NOT_APPLICABLE) plus 108 pending. Remaining classification: internal15, document actor51, choices12, registration15, operational/history10, interpretation4 and complete tuple1.
 
 The new complete-expansion traversal failure is an additional stage-eight repair cause, separate from the earlier fragment-search omission: eleven failed clauses now map to eight repair causes. Earlier ten findings/seven causes, pins, original ledger ids, frozen text, Core1.0/projection results and old 38-file source captures are preserved. Core/spec changes remain deferred. Missing compiler source makes all 47 source-bound clauses ERROR; the other 317 PASS and earlier ten FAIL remain independently observable.
+
+
+## Primary-resource URL and relying-party fragment extraction
+
+Two URL predicates have separate evidence and verdicts. Resource .11 fails because an explicit passive ResourceHandler receives the original fragment-bearing URL after resolution, rather than the independently specified fragment-free primary URL. The observer records the same document/options and always returns unhandled; it does not provide a resource. The final NOT_FOUND is a diagnostic prerequisite, not the failure oracle. Seven ordinary routing calls include absent/present/empty/percent fragments, path/query combinations and a document branch that does not invoke the handler.
+
+CID retrieve .3 passes the selected DID parser plus typed relying-party integration. The actual parser result is captured without changing the reference passed to VerificationMethod. Typed parser fragment storage and the same reference through checkRef/SelectMethod/findMethod's Fragment accessor are bound independently. Seven public did:sage references include two positive method/relationship selections and five parser diagnostics. Empty, percent and query-related downstream refusal/output changes do not change this extraction predicate. A handler evidence error cannot erase a valid extraction verdict, and an RP evidence error cannot erase an independently established URL-separation failure.
+
+A separate 39-file, nine-package source capture includes relyingparty and preserves all earlier 38-file and resolver-expansion captures. The inspector recomputes two typed predicates under 337 reviewed function contexts and ten call edges. Known wrong extraction separator/offset or URL operand is judged independently; unsupported expressions and missing binding/context are evidence ERROR. Modified source controls are parsed/type-checked only and never executed. This is not all URL grammar, non-DID schemes, media-specific fragment semantics (.fragment.3), full representation/JSON-LD, authority or physical tracing.
+
+Current resolution: 363 cases, 364 PASS, twelve FAIL, four NOT_APPLICABLE, 106 NOT_RUN, zero ERROR. Original 416 ledger: 310 observed (295 PASS, twelve FAIL, three NOT_APPLICABLE) plus 106 pending. The 246 anchor has 140 execution verdicts (132 PASS, six FAIL, two NOT_APPLICABLE) plus 106 pending. Remaining classification: internal13, document actor51, choices12, registration15, operational/history10, interpretation4 and complete tuple1.
+
+The new primary-resource URL separation failure is an additional stage-eight repair cause, separate from fragment search and relative URL expansion. Twelve failed clauses now map to nine repair causes. Earlier eleven findings/eight causes, pins, frozen text, old ledger row content/order and Core1.0/projection results remain preserved. Missing compiler source yields exactly49 ERROR while317 PASS and the ten failures independent of source remain observable; the two source-bound failures also become ERROR. Core/spec/contract changes and registration remain in the approved later order.

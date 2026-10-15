@@ -1,0 +1,869 @@
+{
+  "handlers": [
+    {
+      "name": "path",
+      "document": {
+        "id": "did:example:resources",
+        "verificationMethod": [
+          {
+            "id": "did:example:resources#sign",
+            "type": "Multikey",
+            "controller": "did:example:resources",
+            "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+          }
+        ],
+        "authentication": [
+          "did:example:resources#sign",
+          {
+            "id": "did:example:resources#embedded",
+            "type": "Multikey",
+            "controller": "did:example:resources",
+            "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+          }
+        ],
+        "service": [
+          {
+            "id": "#one",
+            "type": "Messaging",
+            "serviceEndpoint": "https://agent.example/base/"
+          },
+          {
+            "id": "#two",
+            "type": "Other",
+            "serviceEndpoint": "https://agent.example/other/"
+          }
+        ],
+        "extension": {
+          "container": [
+            {
+              "child": {
+                "id": "did:example:resources#nested",
+                "values": [
+                  "first",
+                  {
+                    "count": 2
+                  },
+                  false
+                ]
+              }
+            },
+            {
+              "id": "#short",
+              "label": "nested relative fragment"
+            }
+          ]
+        }
+      },
+      "request": {
+        "function": "dereference",
+        "input": "did:example:resources/resource",
+        "accept": "application/did"
+      },
+      "parts": {
+        "input": "did:example:resources/resource",
+        "primary": "did:example:resources/resource",
+        "fragment": "",
+        "has_fragment": false,
+        "path": "/resource",
+        "query": "",
+        "has_query": false
+      },
+      "adjusted": {
+        "input": "did:example:resources/resource",
+        "primary": "did:example:resources/resource",
+        "fragment": "",
+        "has_fragment": false,
+        "path": "/resource",
+        "query": "",
+        "has_query": false
+      },
+      "handler_calls": 1,
+      "expected_kind": "",
+      "expected_content": null,
+      "diagnostic_error": "https://www.w3.org/ns/did#NOT_FOUND"
+    },
+    {
+      "name": "path-fragment",
+      "document": {
+        "id": "did:example:resources",
+        "verificationMethod": [
+          {
+            "id": "did:example:resources#sign",
+            "type": "Multikey",
+            "controller": "did:example:resources",
+            "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+          }
+        ],
+        "authentication": [
+          "did:example:resources#sign",
+          {
+            "id": "did:example:resources#embedded",
+            "type": "Multikey",
+            "controller": "did:example:resources",
+            "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+          }
+        ],
+        "service": [
+          {
+            "id": "#one",
+            "type": "Messaging",
+            "serviceEndpoint": "https://agent.example/base/"
+          },
+          {
+            "id": "#two",
+            "type": "Other",
+            "serviceEndpoint": "https://agent.example/other/"
+          }
+        ],
+        "extension": {
+          "container": [
+            {
+              "child": {
+                "id": "did:example:resources#nested",
+                "values": [
+                  "first",
+                  {
+                    "count": 2
+                  },
+                  false
+                ]
+              }
+            },
+            {
+              "id": "#short",
+              "label": "nested relative fragment"
+            }
+          ]
+        }
+      },
+      "request": {
+        "function": "dereference",
+        "input": "did:example:resources/resource#sign",
+        "accept": "application/did"
+      },
+      "parts": {
+        "input": "did:example:resources/resource#sign",
+        "primary": "did:example:resources/resource",
+        "fragment": "sign",
+        "has_fragment": true,
+        "path": "/resource",
+        "query": "",
+        "has_query": false
+      },
+      "adjusted": {
+        "input": "did:example:resources/resource",
+        "primary": "did:example:resources/resource",
+        "fragment": "",
+        "has_fragment": false,
+        "path": "/resource",
+        "query": "",
+        "has_query": false
+      },
+      "handler_calls": 1,
+      "expected_kind": "",
+      "expected_content": null,
+      "diagnostic_error": "https://www.w3.org/ns/did#NOT_FOUND"
+    },
+    {
+      "name": "empty-fragment",
+      "document": {
+        "id": "did:example:resources",
+        "verificationMethod": [
+          {
+            "id": "did:example:resources#sign",
+            "type": "Multikey",
+            "controller": "did:example:resources",
+            "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+          }
+        ],
+        "authentication": [
+          "did:example:resources#sign",
+          {
+            "id": "did:example:resources#embedded",
+            "type": "Multikey",
+            "controller": "did:example:resources",
+            "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+          }
+        ],
+        "service": [
+          {
+            "id": "#one",
+            "type": "Messaging",
+            "serviceEndpoint": "https://agent.example/base/"
+          },
+          {
+            "id": "#two",
+            "type": "Other",
+            "serviceEndpoint": "https://agent.example/other/"
+          }
+        ],
+        "extension": {
+          "container": [
+            {
+              "child": {
+                "id": "did:example:resources#nested",
+                "values": [
+                  "first",
+                  {
+                    "count": 2
+                  },
+                  false
+                ]
+              }
+            },
+            {
+              "id": "#short",
+              "label": "nested relative fragment"
+            }
+          ]
+        }
+      },
+      "request": {
+        "function": "dereference",
+        "input": "did:example:resources/resource#",
+        "accept": "application/did"
+      },
+      "parts": {
+        "input": "did:example:resources/resource#",
+        "primary": "did:example:resources/resource",
+        "fragment": "",
+        "has_fragment": true,
+        "path": "/resource",
+        "query": "",
+        "has_query": false
+      },
+      "adjusted": {
+        "input": "did:example:resources/resource",
+        "primary": "did:example:resources/resource",
+        "fragment": "",
+        "has_fragment": false,
+        "path": "/resource",
+        "query": "",
+        "has_query": false
+      },
+      "handler_calls": 1,
+      "expected_kind": "",
+      "expected_content": null,
+      "diagnostic_error": "https://www.w3.org/ns/did#NOT_FOUND"
+    },
+    {
+      "name": "query-fragment",
+      "document": {
+        "id": "did:example:resources",
+        "verificationMethod": [
+          {
+            "id": "did:example:resources#sign",
+            "type": "Multikey",
+            "controller": "did:example:resources",
+            "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+          }
+        ],
+        "authentication": [
+          "did:example:resources#sign",
+          {
+            "id": "did:example:resources#embedded",
+            "type": "Multikey",
+            "controller": "did:example:resources",
+            "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+          }
+        ],
+        "service": [
+          {
+            "id": "#one",
+            "type": "Messaging",
+            "serviceEndpoint": "https://agent.example/base/"
+          },
+          {
+            "id": "#two",
+            "type": "Other",
+            "serviceEndpoint": "https://agent.example/other/"
+          }
+        ],
+        "extension": {
+          "container": [
+            {
+              "child": {
+                "id": "did:example:resources#nested",
+                "values": [
+                  "first",
+                  {
+                    "count": 2
+                  },
+                  false
+                ]
+              }
+            },
+            {
+              "id": "#short",
+              "label": "nested relative fragment"
+            }
+          ]
+        }
+      },
+      "request": {
+        "function": "dereference",
+        "input": "did:example:resources?relativeRef=next#keep",
+        "accept": "application/did"
+      },
+      "parts": {
+        "input": "did:example:resources?relativeRef=next#keep",
+        "primary": "did:example:resources?relativeRef=next",
+        "fragment": "keep",
+        "has_fragment": true,
+        "path": "",
+        "query": "relativeRef=next",
+        "has_query": true
+      },
+      "adjusted": {
+        "input": "did:example:resources?relativeRef=next",
+        "primary": "did:example:resources?relativeRef=next",
+        "fragment": "",
+        "has_fragment": false,
+        "path": "",
+        "query": "relativeRef=next",
+        "has_query": true
+      },
+      "handler_calls": 1,
+      "expected_kind": "",
+      "expected_content": null,
+      "diagnostic_error": "https://www.w3.org/ns/did#NOT_FOUND"
+    },
+    {
+      "name": "path-query-fragment",
+      "document": {
+        "id": "did:example:resources",
+        "verificationMethod": [
+          {
+            "id": "did:example:resources#sign",
+            "type": "Multikey",
+            "controller": "did:example:resources",
+            "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+          }
+        ],
+        "authentication": [
+          "did:example:resources#sign",
+          {
+            "id": "did:example:resources#embedded",
+            "type": "Multikey",
+            "controller": "did:example:resources",
+            "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+          }
+        ],
+        "service": [
+          {
+            "id": "#one",
+            "type": "Messaging",
+            "serviceEndpoint": "https://agent.example/base/"
+          },
+          {
+            "id": "#two",
+            "type": "Other",
+            "serviceEndpoint": "https://agent.example/other/"
+          }
+        ],
+        "extension": {
+          "container": [
+            {
+              "child": {
+                "id": "did:example:resources#nested",
+                "values": [
+                  "first",
+                  {
+                    "count": 2
+                  },
+                  false
+                ]
+              }
+            },
+            {
+              "id": "#short",
+              "label": "nested relative fragment"
+            }
+          ]
+        }
+      },
+      "request": {
+        "function": "dereference",
+        "input": "did:example:resources/resource?relativeRef=next#part?piece",
+        "accept": "application/did"
+      },
+      "parts": {
+        "input": "did:example:resources/resource?relativeRef=next#part?piece",
+        "primary": "did:example:resources/resource?relativeRef=next",
+        "fragment": "part?piece",
+        "has_fragment": true,
+        "path": "/resource",
+        "query": "relativeRef=next",
+        "has_query": true
+      },
+      "adjusted": {
+        "input": "did:example:resources/resource?relativeRef=next",
+        "primary": "did:example:resources/resource?relativeRef=next",
+        "fragment": "",
+        "has_fragment": false,
+        "path": "/resource",
+        "query": "relativeRef=next",
+        "has_query": true
+      },
+      "handler_calls": 1,
+      "expected_kind": "",
+      "expected_content": null,
+      "diagnostic_error": "https://www.w3.org/ns/did#NOT_FOUND"
+    },
+    {
+      "name": "percent-fragment",
+      "document": {
+        "id": "did:example:resources",
+        "verificationMethod": [
+          {
+            "id": "did:example:resources#sign",
+            "type": "Multikey",
+            "controller": "did:example:resources",
+            "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+          }
+        ],
+        "authentication": [
+          "did:example:resources#sign",
+          {
+            "id": "did:example:resources#embedded",
+            "type": "Multikey",
+            "controller": "did:example:resources",
+            "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+          }
+        ],
+        "service": [
+          {
+            "id": "#one",
+            "type": "Messaging",
+            "serviceEndpoint": "https://agent.example/base/"
+          },
+          {
+            "id": "#two",
+            "type": "Other",
+            "serviceEndpoint": "https://agent.example/other/"
+          }
+        ],
+        "extension": {
+          "container": [
+            {
+              "child": {
+                "id": "did:example:resources#nested",
+                "values": [
+                  "first",
+                  {
+                    "count": 2
+                  },
+                  false
+                ]
+              }
+            },
+            {
+              "id": "#short",
+              "label": "nested relative fragment"
+            }
+          ]
+        }
+      },
+      "request": {
+        "function": "dereference",
+        "input": "did:example:resources/resource#part%2Fone",
+        "accept": "application/did"
+      },
+      "parts": {
+        "input": "did:example:resources/resource#part%2Fone",
+        "primary": "did:example:resources/resource",
+        "fragment": "part%2Fone",
+        "has_fragment": true,
+        "path": "/resource",
+        "query": "",
+        "has_query": false
+      },
+      "adjusted": {
+        "input": "did:example:resources/resource",
+        "primary": "did:example:resources/resource",
+        "fragment": "",
+        "has_fragment": false,
+        "path": "/resource",
+        "query": "",
+        "has_query": false
+      },
+      "handler_calls": 1,
+      "expected_kind": "",
+      "expected_content": null,
+      "diagnostic_error": "https://www.w3.org/ns/did#NOT_FOUND"
+    },
+    {
+      "name": "document-fragment",
+      "document": {
+        "id": "did:example:resources",
+        "verificationMethod": [
+          {
+            "id": "did:example:resources#sign",
+            "type": "Multikey",
+            "controller": "did:example:resources",
+            "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+          }
+        ],
+        "authentication": [
+          "did:example:resources#sign",
+          {
+            "id": "did:example:resources#embedded",
+            "type": "Multikey",
+            "controller": "did:example:resources",
+            "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+          }
+        ],
+        "service": [
+          {
+            "id": "#one",
+            "type": "Messaging",
+            "serviceEndpoint": "https://agent.example/base/"
+          },
+          {
+            "id": "#two",
+            "type": "Other",
+            "serviceEndpoint": "https://agent.example/other/"
+          }
+        ],
+        "extension": {
+          "container": [
+            {
+              "child": {
+                "id": "did:example:resources#nested",
+                "values": [
+                  "first",
+                  {
+                    "count": 2
+                  },
+                  false
+                ]
+              }
+            },
+            {
+              "id": "#short",
+              "label": "nested relative fragment"
+            }
+          ]
+        }
+      },
+      "request": {
+        "function": "dereference",
+        "input": "did:example:resources#sign",
+        "accept": "application/did"
+      },
+      "parts": {
+        "input": "did:example:resources#sign",
+        "primary": "did:example:resources",
+        "fragment": "sign",
+        "has_fragment": true,
+        "path": "",
+        "query": "",
+        "has_query": false
+      },
+      "adjusted": {
+        "input": "did:example:resources",
+        "primary": "did:example:resources",
+        "fragment": "",
+        "has_fragment": false,
+        "path": "",
+        "query": "",
+        "has_query": false
+      },
+      "handler_calls": 0,
+      "expected_kind": "verification-method",
+      "expected_content": {
+        "id": "did:example:resources#sign",
+        "type": "Multikey",
+        "controller": "did:example:resources",
+        "publicKeyMultibase": "z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw"
+      },
+      "diagnostic_error": ""
+    }
+  ],
+  "retrieval": [
+    {
+      "name": "sign",
+      "record": {
+        "did": "did:sage:web:registry.example:agent-1",
+        "state": "active",
+        "version": "7",
+        "keys": [
+          {
+            "name": "agree",
+            "algorithm": "x25519",
+            "material_hex": "0900000000000000000000000000000000000000000000000000000000000000",
+            "state": "accepted"
+          },
+          {
+            "name": "sign",
+            "algorithm": "ed25519",
+            "material_hex": "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a",
+            "state": "accepted"
+          }
+        ]
+      },
+      "request": {
+        "reference": "did:sage:web:registry.example:agent-1#sign",
+        "zero": false,
+        "purpose": "authentication"
+      },
+      "parts": {
+        "input": "did:sage:web:registry.example:agent-1#sign",
+        "primary": "did:sage:web:registry.example:agent-1",
+        "fragment": "sign",
+        "has_fragment": true,
+        "path": "",
+        "query": "",
+        "has_query": false
+      },
+      "calls": 1,
+      "expected_method": {
+        "id": "did:sage:web:registry.example:agent-1#sign",
+        "type": "JsonWebKey2020",
+        "controller": "did:sage:web:registry.example:agent-1",
+        "publicKeyJwk": {
+          "crv": "Ed25519",
+          "kty": "OKP",
+          "x": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+        }
+      }
+    },
+    {
+      "name": "agree",
+      "record": {
+        "did": "did:sage:web:registry.example:agent-1",
+        "state": "active",
+        "version": "7",
+        "keys": [
+          {
+            "name": "agree",
+            "algorithm": "x25519",
+            "material_hex": "0900000000000000000000000000000000000000000000000000000000000000",
+            "state": "accepted"
+          },
+          {
+            "name": "sign",
+            "algorithm": "ed25519",
+            "material_hex": "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a",
+            "state": "accepted"
+          }
+        ]
+      },
+      "request": {
+        "reference": "did:sage:web:registry.example:agent-1#agree",
+        "zero": false,
+        "purpose": "keyAgreement"
+      },
+      "parts": {
+        "input": "did:sage:web:registry.example:agent-1#agree",
+        "primary": "did:sage:web:registry.example:agent-1",
+        "fragment": "agree",
+        "has_fragment": true,
+        "path": "",
+        "query": "",
+        "has_query": false
+      },
+      "calls": 1,
+      "expected_method": {
+        "id": "did:sage:web:registry.example:agent-1#agree",
+        "type": "JsonWebKey2020",
+        "controller": "did:sage:web:registry.example:agent-1",
+        "publicKeyJwk": {
+          "crv": "X25519",
+          "kty": "OKP",
+          "x": "CQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      }
+    },
+    {
+      "name": "fragment-query",
+      "record": {
+        "did": "did:sage:web:registry.example:agent-1",
+        "state": "active",
+        "version": "7",
+        "keys": [
+          {
+            "name": "agree",
+            "algorithm": "x25519",
+            "material_hex": "0900000000000000000000000000000000000000000000000000000000000000",
+            "state": "accepted"
+          },
+          {
+            "name": "sign",
+            "algorithm": "ed25519",
+            "material_hex": "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a",
+            "state": "accepted"
+          }
+        ]
+      },
+      "request": {
+        "reference": "did:sage:web:registry.example:agent-1#sign?part/one",
+        "zero": false,
+        "purpose": "authentication"
+      },
+      "parts": {
+        "input": "did:sage:web:registry.example:agent-1#sign?part/one",
+        "primary": "did:sage:web:registry.example:agent-1",
+        "fragment": "sign?part/one",
+        "has_fragment": true,
+        "path": "",
+        "query": "",
+        "has_query": false
+      },
+      "calls": 1,
+      "expected_method": null
+    },
+    {
+      "name": "percent",
+      "record": {
+        "did": "did:sage:web:registry.example:agent-1",
+        "state": "active",
+        "version": "7",
+        "keys": [
+          {
+            "name": "agree",
+            "algorithm": "x25519",
+            "material_hex": "0900000000000000000000000000000000000000000000000000000000000000",
+            "state": "accepted"
+          },
+          {
+            "name": "sign",
+            "algorithm": "ed25519",
+            "material_hex": "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a",
+            "state": "accepted"
+          }
+        ]
+      },
+      "request": {
+        "reference": "did:sage:web:registry.example:agent-1#%73ign",
+        "zero": false,
+        "purpose": "authentication"
+      },
+      "parts": {
+        "input": "did:sage:web:registry.example:agent-1#%73ign",
+        "primary": "did:sage:web:registry.example:agent-1",
+        "fragment": "%73ign",
+        "has_fragment": true,
+        "path": "",
+        "query": "",
+        "has_query": false
+      },
+      "calls": 1,
+      "expected_method": null
+    },
+    {
+      "name": "empty",
+      "record": {
+        "did": "did:sage:web:registry.example:agent-1",
+        "state": "active",
+        "version": "7",
+        "keys": [
+          {
+            "name": "agree",
+            "algorithm": "x25519",
+            "material_hex": "0900000000000000000000000000000000000000000000000000000000000000",
+            "state": "accepted"
+          },
+          {
+            "name": "sign",
+            "algorithm": "ed25519",
+            "material_hex": "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a",
+            "state": "accepted"
+          }
+        ]
+      },
+      "request": {
+        "reference": "did:sage:web:registry.example:agent-1#",
+        "zero": false,
+        "purpose": "authentication"
+      },
+      "parts": {
+        "input": "did:sage:web:registry.example:agent-1#",
+        "primary": "did:sage:web:registry.example:agent-1",
+        "fragment": "",
+        "has_fragment": true,
+        "path": "",
+        "query": "",
+        "has_query": false
+      },
+      "calls": 0,
+      "expected_method": null
+    },
+    {
+      "name": "absent",
+      "record": {
+        "did": "did:sage:web:registry.example:agent-1",
+        "state": "active",
+        "version": "7",
+        "keys": [
+          {
+            "name": "agree",
+            "algorithm": "x25519",
+            "material_hex": "0900000000000000000000000000000000000000000000000000000000000000",
+            "state": "accepted"
+          },
+          {
+            "name": "sign",
+            "algorithm": "ed25519",
+            "material_hex": "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a",
+            "state": "accepted"
+          }
+        ]
+      },
+      "request": {
+        "reference": "did:sage:web:registry.example:agent-1",
+        "zero": false,
+        "purpose": "authentication"
+      },
+      "parts": {
+        "input": "did:sage:web:registry.example:agent-1",
+        "primary": "did:sage:web:registry.example:agent-1",
+        "fragment": "",
+        "has_fragment": false,
+        "path": "",
+        "query": "",
+        "has_query": false
+      },
+      "calls": 0,
+      "expected_method": null
+    },
+    {
+      "name": "primary-query",
+      "record": {
+        "did": "did:sage:web:registry.example:agent-1",
+        "state": "active",
+        "version": "7",
+        "keys": [
+          {
+            "name": "agree",
+            "algorithm": "x25519",
+            "material_hex": "0900000000000000000000000000000000000000000000000000000000000000",
+            "state": "accepted"
+          },
+          {
+            "name": "sign",
+            "algorithm": "ed25519",
+            "material_hex": "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a",
+            "state": "accepted"
+          }
+        ]
+      },
+      "request": {
+        "reference": "did:sage:web:registry.example:agent-1?relativeRef=one#sign",
+        "zero": false,
+        "purpose": "authentication"
+      },
+      "parts": {
+        "input": "did:sage:web:registry.example:agent-1?relativeRef=one#sign",
+        "primary": "did:sage:web:registry.example:agent-1?relativeRef=one",
+        "fragment": "sign",
+        "has_fragment": true,
+        "path": "",
+        "query": "relativeRef=one",
+        "has_query": true
+      },
+      "calls": 1,
+      "expected_method": null
+    }
+  ]
+}

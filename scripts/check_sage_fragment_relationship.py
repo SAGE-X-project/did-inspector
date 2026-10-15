@@ -1,4 +1,5 @@
 """Validate bounded typed relationship source roles and normal actual receipts."""
+from sage_url_role_scope import verify_url_pending
 import argparse,base64,json
 from pathlib import Path
 from check_sage_contracts import semantic_equal
@@ -37,7 +38,7 @@ def verify_relationship(raw,report,repo=REPO):
    assert semantic_equal(decoded(r['raw']),f['expected_content'],'method' if f['expected_kind']=='verification-method' else 'unknown')
  live={x['id']:x for x in report['statements']}
  for ident in IDS:assert live[ident]['verdict']=='PASS' and live[ident]['cases']==[CASE]
- for ident in ['cid10#retrieve-verification-method.3','res10-crd20261001#dereferencing-algorithm-fragment.3','res10-crd20261001#dereferencing-algorithm-resource.11']:assert live[ident]['verdict']=='NOT_RUN'
+ verify_url_pending(raw,live,['cid10#retrieve-verification-method.3','res10-crd20261001#dereferencing-algorithm-fragment.3','res10-crd20261001#dereferencing-algorithm-resource.11'])
  return set(IDS)
 def main():
  p=argparse.ArgumentParser();p.add_argument('--reports',type=Path,required=True);a=p.parse_args();ids=verify_relationship(json.loads((a.reports/'resolution-did-1.1-raw.json').read_text()),json.loads((a.reports/'resolution-did-1.1.json').read_text()));print('Verified',len(ids),'typed relationship roles and five ordinary actual calls')
