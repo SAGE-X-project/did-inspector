@@ -85,6 +85,9 @@ func TestNativeResolutionProfilesWithStaticSourceFixture(t *testing.T) {
 				if o.Verdict == core.Fail && c.Case == "did-1.1/sage-resolution/expansion-source-roles" && o.Statement == "res10-crd20261001#resolving-algorithm.28" {
 					allowed = true
 				}
+				if o.Verdict == core.Fail && c.Case == "did-1.1/sage-resolution/url-source-roles" && o.Statement == "res10-crd20261001#dereferencing-algorithm-resource.11" {
+					allowed = true
+				}
 				if !allowed {
 					t.Errorf("%s %s: %s %s", c.Case, o.Statement, o.Verdict, o.Observed)
 				}
@@ -220,7 +223,7 @@ func TestUnexpectedSourceIsAnOrdinaryErrorAndNotAbsence(t *testing.T) {
 func expectedResolutionGate(r report.Report) bool {
 	expected := map[string]bool{}
 	if r.Profile == "did-1.1" {
-		for _, id := range []string{"cid10#verification-methods.9", "cid10#verification-methods.11", "cid10#conformance.2", "did11-cr20260305#production-and-consumption.18", "res10-crd20261001#dereferencing-algorithm-resource.5", "cid10#fragment-resolution.4", "res10-crd20261001#resolving-algorithm.28"} {
+		for _, id := range []string{"cid10#verification-methods.9", "cid10#verification-methods.11", "cid10#conformance.2", "did11-cr20260305#production-and-consumption.18", "res10-crd20261001#dereferencing-algorithm-resource.5", "cid10#fragment-resolution.4", "res10-crd20261001#resolving-algorithm.28", "res10-crd20261001#dereferencing-algorithm-resource.11"} {
 			expected[id] = true
 		}
 	}

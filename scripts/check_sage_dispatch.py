@@ -1,4 +1,5 @@
 """Verify same resolved-document and bounded dispatch roles from fresh receipts."""
+from sage_url_role_scope import verify_url_pending
 import argparse,json
 from pathlib import Path
 from check_sage_contracts import semantic_equal
@@ -48,7 +49,7 @@ def verify_dispatch(raw,report,repo=REPO):
    else:assert result['content_metadata']=={'contentType':'text/uri-list'}
  live={x['id']:x for x in report['statements']}
  for ident in IDS:assert live[ident]['verdict']=='PASS' and live[ident]['cases']==[CASE]
- for ident in PENDING:assert live[ident]['verdict']=='NOT_RUN'
+ verify_url_pending(raw,live,PENDING)
  return set(IDS)
 def main():
  p=argparse.ArgumentParser();p.add_argument('--reports',type=Path,required=True);a=p.parse_args();ids=verify_dispatch(json.loads((a.reports/'resolution-did-1.1-raw.json').read_text()),json.loads((a.reports/'resolution-did-1.1.json').read_text()));print('Verified',len(ids),'dispatch roles and thirteen ordinary actual calls with original models')

@@ -23,10 +23,10 @@
     "runtime-candidate": 69
   },
   "execution_counts": {
-    "PASS": 131,
-    "FAIL": 5,
+    "PASS": 132,
+    "FAIL": 6,
     "NOT_APPLICABLE": 2,
-    "NOT_RUN": 108
+    "NOT_RUN": 106
   },
   "clauses": [
     {
@@ -1382,13 +1382,15 @@
       "generic_scope": "checked",
       "text": "Let vmFragment be the result of parsing vmIdentifier according to the rules of the URL scheme and extracting the secondary resource identifier (the fragment identifier).",
       "actor": "selected relying party and SAGE dereferencer",
-      "applicable_evidence": "Fresh positive and negative calls, unchanged actual problem objects, reference and purpose observations. Output cannot prove every internal assignment or full authority.",
+      "applicable_evidence": "Separate 39-file source capture including relyingparty, typed URL operands/storage, original same-call resolver/handler inputs and actual parser-to-RP receipts.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
-      "follow_up_condition": "Fresh positive and negative calls, unchanged actual problem objects, reference and purpose observations. Output cannot prove every internal assignment or full authority.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "status": "observed-selected-branch",
+      "reason": "Pinned typed primary-resource URL and DID parser/typed RP integration with independent literal URL expectations. Explicit passive resource handler receives the original fragment-bearing URL: separation FAIL. Actual parser fragment is preserved and the same typed reference reaches RP/checkRef/SelectMethod/findMethod: selected DID extraction PASS. Downstream refusal/output diagnostics do not judge extraction.",
+      "follow_up_condition": "Preserve URL-separation failure as an additional stage-eight core repair; rerun after repair. Keep media-fragment .3, complete URI/media semantics, authority and unsupported schemes separate.",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/url-source-roles"
+      ]
     },
     {
       "id": "cid10#services.10",
@@ -3014,13 +3016,15 @@
       "generic_scope": "checked",
       "text": "If present, separate the DID fragment from the input DID URL and continue with the adjusted input DID URL.",
       "actor": "native resolver/dereferencer input or output",
-      "applicable_evidence": "Fresh observable input/result contract only; internal variable assignment, all-valid-representations and global conformity need additional proof.",
+      "applicable_evidence": "Separate 39-file source capture including relyingparty, typed URL operands/storage, original same-call resolver/handler inputs and actual parser-to-RP receipts.",
       "review_disposition": "needs-internal-observer",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
-      "follow_up_condition": "Fresh observable input/result contract only; internal variable assignment, all-valid-representations and global conformity need additional proof.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "status": "observed-selected-branch",
+      "reason": "Pinned typed primary-resource URL and DID parser/typed RP integration with independent literal URL expectations. Explicit passive resource handler receives the original fragment-bearing URL: separation FAIL. Actual parser fragment is preserved and the same typed reference reaches RP/checkRef/SelectMethod/findMethod: selected DID extraction PASS. Downstream refusal/output diagnostics do not judge extraction.",
+      "follow_up_condition": "Preserve URL-separation failure as an additional stage-eight core repair; rerun after repair. Keep media-fragment .3, complete URI/media semantics, authority and unsupported schemes separate.",
+      "expected_live_verdict": "FAIL",
+      "cases": [
+        "did-1.1/sage-resolution/url-source-roles"
+      ]
     },
     {
       "id": "res10-crd20261001#dereferencing-algorithm-resource.16",

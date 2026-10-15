@@ -1,4 +1,5 @@
 """Verify selected service source roles and fresh URI-list receipts, not all RFC3986."""
+from sage_url_role_scope import verify_url_pending
 import argparse,base64,json
 from pathlib import Path
 from check_sage_contracts import semantic_equal
@@ -42,7 +43,7 @@ def verify_service(raw,report,repo=REPO):
    else:assert result['content_metadata']=={'contentType':'text/uri-list'}
  live={x['id']:x for x in report['statements']}
  for ident in IDS:assert live[ident]['verdict']=='PASS' and live[ident]['cases']==[CASE]
- for ident in PENDING:assert live[ident]['verdict']=='NOT_RUN'
+ verify_url_pending(raw,live,PENDING)
  previous=live['res10-crd20261001#dereferencing-algorithm-resource.28'];assert previous['verdict']=='PASS' and previous['cases']==['did-1.1/sage-resolution/remaining-routing-relative-endpoint']
  return set(IDS)
 def main():

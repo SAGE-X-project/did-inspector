@@ -77,9 +77,9 @@
   "categories": {
     "additional-data-or-feature": 8,
     "document-or-applicability-review": 79,
-    "additional-observer-operation": 11,
+    "additional-observer-operation": 10,
     "operational-or-authority-evidence": 4,
-    "existing-observation": 6
+    "existing-observation": 5
   },
   "routes": {
     "metadata-boundary": {
@@ -441,15 +441,6 @@
       "baseline_verdict": "NOT_RUN",
       "route": "codec-internals",
       "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#retrieve-verification-method.3",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "8371a92b2f57b9974699f6705b79000a80055e22bddaeb8530cd329dbb973c32",
-      "baseline_verdict": "NOT_RUN",
-      "route": "method-retrieval",
-      "generic_scope": "checked"
     },
     {
       "id": "cid10#services.10",
@@ -1064,15 +1055,6 @@
       "level": "requirement",
       "keywords": [],
       "text_sha256": "99a7518503a20ba5b04ffad6a7553ee1344f389b114afc11e29b7b52bb1092ed",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.11",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "fa044cf32d0535d65d2f1f4bd5f49b5b2cd72fdd48e5db52e07711eaa3e7a95b",
       "baseline_verdict": "NOT_RUN",
       "route": "native-result",
       "generic_scope": "checked"
@@ -6751,26 +6733,58 @@
       "case_prefix": "/expansion-source-",
       "observed_in_scope": "sage-resolution",
       "reason": "Typed actual option guard and independent complete-traversal predicate, with five ordinary actual calls and original consumer models. Explicit Method/Service Extra ids remain relative; identical relocated root maps expand. .26 output conformance and .29 per-item processing remain pending; repair deferred to stage eight."
+    },
+    {
+      "id": "cid10#retrieve-verification-method.3",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "8371a92b2f57b9974699f6705b79000a80055e22bddaeb8530cd329dbb973c32",
+      "baseline_verdict": "NOT_RUN",
+      "route": "method-retrieval",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/url-source-roles"
+      ],
+      "case_prefix": "/url-source-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Separate typed primary-resource handler URL and DID parser plus same-reference RP integration. An explicit passive unhandled observer receives the original fragment-bearing URL; final NOT_FOUND is diagnostic only. Parser literals and positive same-ref RP calls establish selected did:sage extraction; downstream parser diagnostics do not judge extraction. Source helper frames/Go semantics are premises; media-fragment .3 remains pending; core repair is deferred."
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.11",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "fa044cf32d0535d65d2f1f4bd5f49b5b2cd72fdd48e5db52e07711eaa3e7a95b",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "FAIL",
+      "cases": [
+        "did-1.1/sage-resolution/url-source-roles"
+      ],
+      "case_prefix": "/url-source-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Separate typed primary-resource handler URL and DID parser plus same-reference RP integration. An explicit passive unhandled observer receives the original fragment-bearing URL; final NOT_FOUND is diagnostic only. Parser literals and positive same-ref RP calls establish selected did:sage extraction; downstream parser diagnostics do not judge extraction. Source helper frames/Go semantics are premises; media-fragment .3 remains pending; core repair is deferred."
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 363,
-    "FAIL": 11,
+    "PASS": 364,
+    "FAIL": 12,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 4,
     "ERROR": 0,
-    "NOT_RUN": 108
+    "NOT_RUN": 106
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 349,
-      "FAIL": 7,
+      "PASS": 350,
+      "FAIL": 8,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 78
+      "NOT_RUN": 76
     },
     "recommendation": {
       "statements": 50,
@@ -6782,5 +6796,5 @@
       "NOT_RUN": 30
     }
   },
-  "expected_live_cases": 362
+  "expected_live_cases": 363
 }

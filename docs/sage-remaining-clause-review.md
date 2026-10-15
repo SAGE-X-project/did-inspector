@@ -2,7 +2,7 @@
 
 All 246 clauses unobserved at `1efc9f0` are reviewed individually in the [machine-readable audit](sage-remaining-clause-review.json). The earlier [353-clause review](sage-resolution-batch-review.json) and all 416 historical ledger entries remain intact. Review coverage does not establish execution coverage or standards conformance.
 
-This grouped implementation connects 125 distinct selected clauses across 64 cases, including twenty-eight fixed-source codec obligations and five separately judged fragment obligations. Of the 246 anchor clauses, 138 now have execution verdicts and 108 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
+This grouped implementation connects 127 distinct selected clauses across 65 cases, including twenty-eight fixed-source codec obligations and five separately judged fragment obligations. Of the 246 anchor clauses, 140 now have execution verdicts and 106 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
 
 | Review disposition | Clauses |
 |---|---:|
@@ -192,3 +192,16 @@ A separate nine-package, 39-file cache/ZIP capture binds the pinned resolver, it
 Current resolution: 362 cases, 363 PASS, eleven FAIL, four NOT_APPLICABLE, 108 NOT_RUN, zero ERROR. Original 416 ledger: 308 observed (294 PASS, eleven FAIL, three NOT_APPLICABLE) plus 108 pending. The 246 anchor has 138 execution verdicts (131 PASS, five FAIL, two NOT_APPLICABLE) plus 108 pending. Remaining classification: internal15, document actor51, choices12, registration15, operational/history10, interpretation4 and complete tuple1.
 
 The new complete-expansion traversal failure is an additional stage-eight repair cause, separate from the earlier fragment-search omission: eleven failed clauses now map to eight repair causes. Earlier ten findings/seven causes, pins, original ledger ids, frozen text, Core1.0/projection results and old 38-file source captures are preserved. Core/spec changes remain deferred. Missing compiler source makes all 47 source-bound clauses ERROR; the other 317 PASS and earlier ten FAIL remain independently observable.
+
+
+## Primary-resource URL and relying-party fragment extraction
+
+Two URL predicates have separate evidence and verdicts. Resource .11 fails because an explicit passive ResourceHandler receives the original fragment-bearing URL after resolution, rather than the independently specified fragment-free primary URL. The observer records the same document/options and always returns unhandled; it does not provide a resource. The final NOT_FOUND is a diagnostic prerequisite, not the failure oracle. Seven ordinary routing calls include absent/present/empty/percent fragments, path/query combinations and a document branch that does not invoke the handler.
+
+CID retrieve .3 passes the selected DID parser plus typed relying-party integration. The actual parser result is captured without changing the reference passed to VerificationMethod. Typed parser fragment storage and the same reference through checkRef/SelectMethod/findMethod's Fragment accessor are bound independently. Seven public did:sage references include two positive method/relationship selections and five parser diagnostics. Empty, percent and query-related downstream refusal/output changes do not change this extraction predicate. A handler evidence error cannot erase a valid extraction verdict, and an RP evidence error cannot erase an independently established URL-separation failure.
+
+A separate 39-file, nine-package source capture includes relyingparty and preserves all earlier 38-file and resolver-expansion captures. The inspector recomputes two typed predicates under 337 reviewed function contexts and ten call edges. Known wrong extraction separator/offset or URL operand is judged independently; unsupported expressions and missing binding/context are evidence ERROR. Modified source controls are parsed/type-checked only and never executed. This is not all URL grammar, non-DID schemes, media-specific fragment semantics (.fragment.3), full representation/JSON-LD, authority or physical tracing.
+
+Current resolution: 363 cases, 364 PASS, twelve FAIL, four NOT_APPLICABLE, 106 NOT_RUN, zero ERROR. Original 416 ledger: 310 observed (295 PASS, twelve FAIL, three NOT_APPLICABLE) plus 106 pending. The 246 anchor has 140 execution verdicts (132 PASS, six FAIL, two NOT_APPLICABLE) plus 106 pending. Remaining classification: internal13, document actor51, choices12, registration15, operational/history10, interpretation4 and complete tuple1.
+
+The new primary-resource URL separation failure is an additional stage-eight repair cause, separate from fragment search and relative URL expansion. Twelve failed clauses now map to nine repair causes. Earlier eleven findings/eight causes, pins, frozen text, old ledger row content/order and Core1.0/projection results remain preserved. Missing compiler source yields exactly49 ERROR while317 PASS and the ten failures independent of source remain observable; the two source-bound failures also become ERROR. Core/spec/contract changes and registration remain in the approved later order.
