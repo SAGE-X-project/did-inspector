@@ -79,7 +79,7 @@
     "document-or-applicability-review": 79,
     "additional-observer-operation": 11,
     "operational-or-authority-evidence": 4,
-    "existing-observation": 9
+    "existing-observation": 7
   },
   "routes": {
     "metadata-boundary": {
@@ -1058,24 +1058,6 @@
       "baseline_verdict": "NOT_RUN",
       "route": "permission-definition",
       "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-fragment.1",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "f98965a4e57c368a97a5e2b91186f7ae54908f4815f057ff9d7f9368e60bfdbc",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-fragment.2",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "6a12ce6ffd9f065069fb7298d754d4e2c8c4a93855f52858a1b10c4d11aa835d",
-      "baseline_verdict": "NOT_RUN",
-      "route": "native-result",
-      "generic_scope": "checked"
     },
     {
       "id": "res10-crd20261001#dereferencing-algorithm-fragment.3",
@@ -6646,26 +6628,58 @@
         "did-1.1/sage-resolution/fragment-search-endpoint-map"
       ],
       "expected_live_verdict": "FAIL"
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.1",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "f98965a4e57c368a97a5e2b91186f7ae54908f4815f057ff9d7f9368e60bfdbc",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/fragment-relationship-source"
+      ],
+      "case_prefix": "/fragment-relationship-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Selected resolved-document/nonempty-option source roles corroborated by fresh ordinary relationship controls; broader retrieval/media/empty-option semantics remain separate."
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-fragment.2",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "6a12ce6ffd9f065069fb7298d754d4e2c8c4a93855f52858a1b10c4d11aa835d",
+      "baseline_verdict": "NOT_RUN",
+      "route": "native-result",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/fragment-relationship-source"
+      ],
+      "case_prefix": "/fragment-relationship-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Selected resolved-document/nonempty-option source roles corroborated by fresh ordinary relationship controls; broader retrieval/media/empty-option semantics remain separate."
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 349,
+    "PASS": 351,
     "FAIL": 10,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 4,
     "ERROR": 0,
-    "NOT_RUN": 123
+    "NOT_RUN": 121
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 335,
+      "PASS": 337,
       "FAIL": 6,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 93
+      "NOT_RUN": 91
     },
     "recommendation": {
       "statements": 50,
@@ -6677,5 +6691,5 @@
       "NOT_RUN": 30
     }
   },
-  "expected_live_cases": 357
+  "expected_live_cases": 358
 }

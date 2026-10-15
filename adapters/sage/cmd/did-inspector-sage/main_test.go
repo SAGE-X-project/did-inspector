@@ -281,7 +281,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		t.Fatal(err)
 	}
 	r, err := report.Decode(data)
-	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 349 {
+	if err != nil || r.Subject.Name != "did-go/advanced/sage-resolution" || r.Totals.Pass != 351 {
 		raw, _ := os.ReadFile(path + ".raw")
 		var x struct {
 			Cases []struct {
@@ -318,7 +318,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		t.Fatal(err)
 	}
 	missingReport, err := report.Decode(missingData)
-	if err != nil || missingReport.Totals.Error != 32 || missingReport.Totals.Pass != 317 {
+	if err != nil || missingReport.Totals.Error != 34 || missingReport.Totals.Pass != 317 {
 		t.Fatal("missing source accepted", err, missingReport.Totals)
 	}
 	missingErrors := map[string]bool{}
@@ -327,10 +327,10 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 			missingErrors[row.ID] = true
 		}
 	}
-	if len(missingErrors) != 32 {
+	if len(missingErrors) != 34 {
 		t.Fatal("wrong source error count", missingErrors)
 	}
-	for _, id := range []string{"cid10#base-encode.1", "cid10#base-decode.1", "cid10#base-encode.8", "cid10#base-encode.9", "cid10#base-encode.10", "cid10#base-decode.9", "cid10#base-decode.10", "cid10#base-decode.11", "cid10#base-encode.6", "cid10#base-encode.11", "cid10#base-decode.2", "cid10#base-decode.7", "cid10#base-decode.12", "cid10#base-decode.13", "cid10#base-encode.5", "cid10#base-encode.12", "cid10#base-decode.6", "cid10#base-encode.2", "cid10#base-encode.3", "cid10#base-decode.3", "cid10#base-decode.4", "cid10#base-encode.7", "cid10#base-decode.8", "cid10#base-encode.14", "cid10#base-encode.15", "cid10#base-encode.16", "cid10#base-decode.14", "cid10#base-decode.15", "cid10#fragment-resolution.2", "cid10#fragment-resolution.3", "cid10#fragment-resolution.5", "cid10#fragment-resolution.1"} {
+	for _, id := range []string{"cid10#base-encode.1", "cid10#base-decode.1", "cid10#base-encode.8", "cid10#base-encode.9", "cid10#base-encode.10", "cid10#base-decode.9", "cid10#base-decode.10", "cid10#base-decode.11", "cid10#base-encode.6", "cid10#base-encode.11", "cid10#base-decode.2", "cid10#base-decode.7", "cid10#base-decode.12", "cid10#base-decode.13", "cid10#base-encode.5", "cid10#base-encode.12", "cid10#base-decode.6", "cid10#base-encode.2", "cid10#base-encode.3", "cid10#base-decode.3", "cid10#base-decode.4", "cid10#base-encode.7", "cid10#base-decode.8", "cid10#base-encode.14", "cid10#base-encode.15", "cid10#base-encode.16", "cid10#base-decode.14", "cid10#base-decode.15", "cid10#fragment-resolution.2", "cid10#fragment-resolution.3", "cid10#fragment-resolution.5", "cid10#fragment-resolution.1", "res10-crd20261001#dereferencing-algorithm-fragment.1", "res10-crd20261001#dereferencing-algorithm-fragment.2"} {
 		if !missingErrors[id] {
 			t.Fatal("source errors assigned to wrong clauses", missingErrors)
 		}
@@ -360,9 +360,9 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		want, cases := 33, 16
 		if profile == "did-1.1" {
-			want, cases = 349, 357
+			want, cases = 351, 358
 		}
-		if profile == "did-1.1" && (r.Totals.NotApplicable != 4 || r.Totals.NotRun != 123) {
+		if profile == "did-1.1" && (r.Totals.NotApplicable != 4 || r.Totals.NotRun != 121) {
 			t.Fatal("native URL conditional evidence", r.Totals)
 		}
 		if profile == "did-1.1" && (r.Totals.Fail != 10 || r.TotalsByLevel.Recommendation.Fail != 4 || r.TotalsByLevel.Requirement.Fail != 6) {
@@ -381,7 +381,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		for _, c := range raw.Cases {
 			for _, o := range c.Observations {
-				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") || strings.Contains(c.Case, "/remaining-") || strings.Contains(c.Case, "/choice-") || strings.Contains(c.Case, "/representation-options-") || strings.Contains(c.Case, "/resource-choice-") || strings.Contains(c.Case, "/integer-source-") || strings.Contains(c.Case, "/fragment-source-") || strings.Contains(c.Case, "/fragment-initial-") || strings.Contains(c.Case, "/fragment-search-") {
+				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") || strings.Contains(c.Case, "/remaining-") || strings.Contains(c.Case, "/choice-") || strings.Contains(c.Case, "/representation-options-") || strings.Contains(c.Case, "/resource-choice-") || strings.Contains(c.Case, "/integer-source-") || strings.Contains(c.Case, "/fragment-source-") || strings.Contains(c.Case, "/fragment-initial-") || strings.Contains(c.Case, "/fragment-search-") || strings.Contains(c.Case, "/fragment-relationship-") {
 					if o.Input == "" || o.Observed == "" {
 						t.Fatal("lost policy evidence")
 					}
@@ -404,7 +404,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 				} else if !strings.Contains(o.Input, `"record"`) {
 					t.Fatal("lost input evidence")
 				}
-				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") || strings.Contains(c.Case, "/remaining-") || strings.Contains(c.Case, "/choice-") || strings.Contains(c.Case, "/representation-options-") || strings.Contains(c.Case, "/resource-choice-") || strings.Contains(c.Case, "/integer-source-") || strings.Contains(c.Case, "/fragment-source-") || strings.Contains(c.Case, "/fragment-initial-") || strings.Contains(c.Case, "/fragment-search-") {
+				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") || strings.Contains(c.Case, "/remaining-") || strings.Contains(c.Case, "/choice-") || strings.Contains(c.Case, "/representation-options-") || strings.Contains(c.Case, "/resource-choice-") || strings.Contains(c.Case, "/integer-source-") || strings.Contains(c.Case, "/fragment-source-") || strings.Contains(c.Case, "/fragment-initial-") || strings.Contains(c.Case, "/fragment-search-") || strings.Contains(c.Case, "/fragment-relationship-") {
 					if o.Input == "" || o.Observed == "" {
 						t.Fatal("lost policy evidence")
 					}
