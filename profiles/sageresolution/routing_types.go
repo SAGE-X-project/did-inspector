@@ -8,6 +8,7 @@ import (
 // RoutingRequest configures the root library selected by SAGE with a literal
 // example driver. It is not a SAGE registry or a historical/authoritative method.
 type RoutingRequest struct {
+	ObserveProduction      bool               `json:"observe_production,omitempty"`
 	ObserveResourceHandler bool               `json:"observe_resource_handler,omitempty"`
 	Document               ConsumptionRequest `json:"document"`
 	Request                Request            `json:"request"`
@@ -34,6 +35,7 @@ type ResourceHandlerCapture struct {
 	CaptureError string   `json:"capture_error,omitempty"`
 }
 type RoutingResult struct {
+	Production        []ProductionCapture      `json:"production,omitempty"`
 	ResourceHandler   []ResourceHandlerCapture `json:"resource_handler,omitempty"`
 	Consumption       []ConsumptionCapture     `json:"consumption,omitempty"`
 	Role              string                   `json:"role"`
