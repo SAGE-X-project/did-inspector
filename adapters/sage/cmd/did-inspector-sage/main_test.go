@@ -381,7 +381,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		for _, c := range raw.Cases {
 			for _, o := range c.Observations {
-				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") || strings.Contains(c.Case, "/remaining-") || strings.Contains(c.Case, "/choice-") || strings.Contains(c.Case, "/representation-options-") || strings.Contains(c.Case, "/resource-choice-") || strings.Contains(c.Case, "/integer-source-") || strings.Contains(c.Case, "/fragment-source-") || strings.Contains(c.Case, "/fragment-initial-") || strings.Contains(c.Case, "/fragment-search-") || strings.Contains(c.Case, "/fragment-relationship-") || strings.Contains(c.Case, "/service-source-") || strings.Contains(c.Case, "/selection-source-") {
+				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") || strings.Contains(c.Case, "/remaining-") || strings.Contains(c.Case, "/choice-") || strings.Contains(c.Case, "/representation-options-") || strings.Contains(c.Case, "/resource-choice-") || strings.Contains(c.Case, "/integer-source-") || strings.Contains(c.Case, "/fragment-source-") || strings.Contains(c.Case, "/fragment-initial-") || strings.Contains(c.Case, "/fragment-search-") || strings.Contains(c.Case, "/fragment-relationship-") || strings.Contains(c.Case, "/service-source-") || strings.Contains(c.Case, "/selection-source-") || strings.Contains(c.Case, "/dispatch-source-") {
 					if o.Input == "" || o.Observed == "" {
 						t.Fatal("lost policy evidence")
 					}
@@ -404,7 +404,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 				} else if !strings.Contains(o.Input, `"record"`) {
 					t.Fatal("lost input evidence")
 				}
-				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") || strings.Contains(c.Case, "/remaining-") || strings.Contains(c.Case, "/choice-") || strings.Contains(c.Case, "/representation-options-") || strings.Contains(c.Case, "/resource-choice-") || strings.Contains(c.Case, "/integer-source-") || strings.Contains(c.Case, "/fragment-source-") || strings.Contains(c.Case, "/fragment-initial-") || strings.Contains(c.Case, "/fragment-search-") || strings.Contains(c.Case, "/fragment-relationship-") || strings.Contains(c.Case, "/service-source-") || strings.Contains(c.Case, "/selection-source-") {
+				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") || strings.Contains(c.Case, "/remaining-") || strings.Contains(c.Case, "/choice-") || strings.Contains(c.Case, "/representation-options-") || strings.Contains(c.Case, "/resource-choice-") || strings.Contains(c.Case, "/integer-source-") || strings.Contains(c.Case, "/fragment-source-") || strings.Contains(c.Case, "/fragment-initial-") || strings.Contains(c.Case, "/fragment-search-") || strings.Contains(c.Case, "/fragment-relationship-") || strings.Contains(c.Case, "/service-source-") || strings.Contains(c.Case, "/selection-source-") || strings.Contains(c.Case, "/dispatch-source-") {
 					if o.Input == "" || o.Observed == "" {
 						t.Fatal("lost policy evidence")
 					}
