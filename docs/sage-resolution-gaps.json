@@ -75,7 +75,7 @@
     "No operational source, registration, private key or deployment is supplied by this audit."
   ],
   "categories": {
-    "additional-data-or-feature": 20,
+    "additional-data-or-feature": 16,
     "document-or-applicability-review": 79,
     "additional-observer-operation": 11,
     "operational-or-authority-evidence": 4,
@@ -1096,15 +1096,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.16",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "af8badeb6382dda997800d85c17c94af7ed67433ca10625da267d9538f41914f",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#dereferencing-algorithm-resource.17",
       "level": "requirement",
       "keywords": [],
@@ -1114,37 +1105,10 @@
       "generic_scope": "checked"
     },
     {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.20",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "14608422ee8a8cbf20409a2e653b3bb7a9168b8e79e3545b5ba637c4b33dbdf6",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
       "id": "res10-crd20261001#dereferencing-algorithm-resource.21",
       "level": "requirement",
       "keywords": [],
       "text_sha256": "411ef87e6953616f18685e1699eaf2fb572d870e7020c4a2ee72b9c97074cd74",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.26",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "dad7d57480b4b9bdf4c1b821c59f1f8af1a5b606dd4ac47f381a9e6713f2ca07",
-      "baseline_verdict": "NOT_RUN",
-      "route": "history-proof-service",
-      "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.27",
-      "level": "requirement",
-      "keywords": [],
-      "text_sha256": "7b4a1b6dfd2eafca13d6179562f2c89ca18336090b30a672c4bd3dcf1b3758f2",
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
       "generic_scope": "checked"
@@ -6660,26 +6624,90 @@
       "case_prefix": "/fragment-relationship-",
       "observed_in_scope": "sage-resolution",
       "reason": "Selected resolved-document/nonempty-option source roles corroborated by fresh ordinary relationship controls; broader retrieval/media/empty-option semantics remain separate."
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.16",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "af8badeb6382dda997800d85c17c94af7ed67433ca10625da267d9538f41914f",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/service-source-roles"
+      ],
+      "case_prefix": "/service-source-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Selected URI-list/string-endpoint service and relativeRef presence branches and typed endpoint/base/reference source roles, corroborated by seven fresh ordinary library calls including empty relativeRef presence. Whole service matching, media/URL semantics, authority and physical runtime trace remain separate."
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.20",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "14608422ee8a8cbf20409a2e653b3bb7a9168b8e79e3545b5ba637c4b33dbdf6",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/service-source-roles"
+      ],
+      "case_prefix": "/service-source-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Selected URI-list/string-endpoint service and relativeRef presence branches and typed endpoint/base/reference source roles, corroborated by seven fresh ordinary library calls including empty relativeRef presence. Whole service matching, media/URL semantics, authority and physical runtime trace remain separate."
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.26",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "dad7d57480b4b9bdf4c1b821c59f1f8af1a5b606dd4ac47f381a9e6713f2ca07",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/service-source-roles"
+      ],
+      "case_prefix": "/service-source-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Selected URI-list/string-endpoint service and relativeRef presence branches and typed endpoint/base/reference source roles, corroborated by seven fresh ordinary library calls including empty relativeRef presence. Whole service matching, media/URL semantics, authority and physical runtime trace remain separate."
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.27",
+      "level": "requirement",
+      "keywords": [],
+      "text_sha256": "7b4a1b6dfd2eafca13d6179562f2c89ca18336090b30a672c4bd3dcf1b3758f2",
+      "baseline_verdict": "NOT_RUN",
+      "route": "history-proof-service",
+      "generic_scope": "checked",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/service-source-roles"
+      ],
+      "case_prefix": "/service-source-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Selected URI-list/string-endpoint service and relativeRef presence branches and typed endpoint/base/reference source roles, corroborated by seven fresh ordinary library calls including empty relativeRef presence. Whole service matching, media/URL semantics, authority and physical runtime trace remain separate."
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 351,
+    "PASS": 355,
     "FAIL": 10,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 4,
     "ERROR": 0,
-    "NOT_RUN": 121
+    "NOT_RUN": 117
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 337,
+      "PASS": 341,
       "FAIL": 6,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 91
+      "NOT_RUN": 87
     },
     "recommendation": {
       "statements": 50,
@@ -6691,5 +6719,5 @@
       "NOT_RUN": 30
     }
   },
-  "expected_live_cases": 358
+  "expected_live_cases": 359
 }

@@ -2,7 +2,7 @@
 
 All 246 clauses unobserved at `1efc9f0` are reviewed individually in the [machine-readable audit](sage-remaining-clause-review.json). The earlier [353-clause review](sage-resolution-batch-review.json) and all 416 historical ledger entries remain intact. Review coverage does not establish execution coverage or standards conformance.
 
-This grouped implementation connects 112 distinct selected clauses across 60 cases, including twenty-eight fixed-source codec obligations and five separately judged fragment obligations. Of the 246 anchor clauses, 125 now have execution verdicts and 121 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
+This grouped implementation connects 116 distinct selected clauses across 61 cases, including twenty-eight fixed-source codec obligations and five separately judged fragment obligations. Of the 246 anchor clauses, 129 now have execution verdicts and 117 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
 
 | Review disposition | Clauses |
 |---|---:|
@@ -138,7 +138,7 @@ The document ID is a nested accessor expression, not an invented local variable.
 
 Initial null and every-map recursion remain NOT_RUN. Size allocation steps remain pending: conservative base58 bounds differ from the reference formula, but alternatives with identical outputs are allowed. Exact base64 component ratios alone do not establish the current Multikey actor, complete alternative equivalence or overflow freedom. These reviewed items remain in their original internal category and are not silently completed or discarded.
 
-Current resolution: 351 cases, 348 PASS, nine preserved FAIL, four NOT_APPLICABLE and 125 NOT_RUN. Original 416 ledger: 291 observed (279 PASS, three NOT_APPLICABLE, nine FAIL) plus 125 pending. The 246 anchor has 121 execution verdicts and 125 pending. Remaining classification: internal/equivalence32, document actor51, choices12, registration15, operational/history10, existing interpretation4 and complete tuple1. Existing target pins, frozen statement bytes and stage-eight fixes are unchanged.
+At the fragment-binding checkpoint: 351 cases, 348 PASS, nine preserved FAIL, four NOT_APPLICABLE and 125 NOT_RUN. Original 416 ledger: 291 observed (279 PASS, three NOT_APPLICABLE, nine FAIL) plus 125 pending. The 246 anchor has 121 execution verdicts and 125 pending. Remaining classification: internal/equivalence32, document actor51, choices12, registration15, operational/history10, existing interpretation4 and complete tuple1. Existing target pins, frozen statement bytes and stage-eight fixes are unchanged.
 
 ## Fragment initial state and recursive map coverage
 
@@ -148,10 +148,18 @@ Five normal public literal fixtures inspect `cid10#fragment-resolution.4`. A pas
 
 The selected component uses CID fragment semantics on its normal `application/did` typed-document branch; this does not establish `application/cid` ingress, other media semantics, every valid input or operational SAGE authority. All prior nine findings remain. Recursive traversal is one additional required-clause finding and a seventh repair cause to address only in the existing later core-repair work. No core, dependency pin, frozen standard or contract changed. Inputs are benign document maps and published public key material, with no offensive reproduction or modified subject execution.
 
-Current resolution checkpoint: 357 cases, 349 PASS, ten FAIL, four NOT_APPLICABLE and 123 NOT_RUN. Original 416 ledger: 293 observed (280 PASS, ten FAIL, three NOT_APPLICABLE) and 123 pending. The 246 anchor has 123 execution verdicts (117 PASS, four FAIL, two NOT_APPLICABLE) and 123 pending. Thirty internal clauses remain, including both size items and frozen codec-text conflicts.
+At the initial/search checkpoint: 357 cases, 349 PASS, ten FAIL, four NOT_APPLICABLE and 123 NOT_RUN. Original 416 ledger: 293 observed (280 PASS, ten FAIL, three NOT_APPLICABLE) and 123 pending. The 246 anchor has 123 execution verdicts (117 PASS, four FAIL, two NOT_APPLICABLE) and 123 pending. Thirty internal clauses remain, including both size items and frozen codec-text conflicts.
 
 ### Selected fragment relationship option roles
 
 A separate fixed-source case binds the resolved-document type branch and nonempty typed verificationRelationship guard, and the exact options field through its local value to the selection argument. Five ordinary actual calls cover referenced and embedded selection, a different valid relationship, no fragment and no relationship. Caller/helper context and five earlier fragment checks stay independently bound. Empty-option presence, complete parsing/retrieval, all media semantics and physical runtime tracing remain unestablished. No core repair or subject pin changes are made.
 
-The current report has 358 cases, 351 PASS, ten FAIL, four NOT_APPLICABLE and 121 NOT_RUN. The existing ten findings remain for the planned core repair step.
+At the relationship checkpoint the report had 358 cases, 351 PASS, ten FAIL, four NOT_APPLICABLE and 121 NOT_RUN. The existing ten findings remain for the planned core repair step.
+
+### Selected service routing source roles
+
+Four resource-algorithm clauses (.16, .20, .26 and .27) inspect the service/serviceType presence OR, relativeRef presence fallthrough, selected endpoint URL as parser/base receiver input, and the actual relativeRef value as parser/reference operand. The Go parser/type checker binds parameter objects, collection/append/range roles, caller arguments and call paths under unchanged independently reviewed helper frames and trusted Go URL parser semantics. An explicit empty relativeRef is present, even when its output equals the absent control. Equivalent order of the two presence keys is accepted. Unsupported structures or missing receipts are ERROR; the four supported role predicates are judged separately.
+
+Seven fresh normal calls use public DID documents and HTTPS string endpoints with no endpoint fetch. They cover service-only, type-only, both parameters, relative paths/query, explicit empty relativeRef, no service parameters, and an unmatched type. Their original resolved document, nested options, driver bytes and final output are independently retained. Source-control variants are parser/type-check data only and are never executed. URI-list and string-endpoint scope does not establish complete service matching, RFC3986 equivalence, document-media relativeRef handling, operational authority or a physical runtime trace. Existing accept-forwarding and other core findings remain unchanged.
+
+Current resolution: 359 cases, 355 PASS, ten FAIL, four NOT_APPLICABLE and 117 NOT_RUN. All original 416 ids remain: 299 observed (286 PASS, ten FAIL, three NOT_APPLICABLE) and 117 pending. The 246-clause anchor retains 129 execution verdicts and 117 pending: internal24, document actor51, choices12, registration15, operational/history10, interpretation4 and complete tuple1. Stage-eight fixes and deferred registration remain in their original order.
