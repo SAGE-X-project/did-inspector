@@ -1,0 +1,871 @@
+{
+  "format": "did-inspector-method-document-review/1",
+  "repository": "SAGE-X-project/sage-spec",
+  "revision": "06b50e177ccd22bce7d70fd80c2d7f822ae3fd3b",
+  "policy": "Independent semantic review of this exact document corpus; executable replay verifies identity and cited evidence, not general semantic analysis, runtime behavior, registration or deployment conformance. Unreviewed clauses remain NOT_RUN.",
+  "files": [
+    {
+      "path": "profiles/a2a-1.0-binding.md",
+      "bytes": 10657,
+      "sha256": "c4c7f263ea3e9ff122277976f0bebf4357c418956256c33fbbb28570b8a67b4d"
+    },
+    {
+      "path": "profiles/agent-mcp-security.md",
+      "bytes": 27559,
+      "sha256": "0538acbdcfc143d93fb7d99a2a2c09c068fc354388c4e37c7489204305b1913f"
+    },
+    {
+      "path": "profiles/non-http-mcp-security.md",
+      "bytes": 55490,
+      "sha256": "9c7851d095208c975792565266e481c120ef754ae8eb9529c62b53bf12a1d4fa"
+    },
+    {
+      "path": "spec/00-overview.md",
+      "bytes": 9574,
+      "sha256": "8655cddfa23979cb12432f83831e58ee2b6e240b5f1f92b84594d7084eaeb3f0"
+    },
+    {
+      "path": "spec/01-crypto.md",
+      "bytes": 5347,
+      "sha256": "35463137986ae692593cb12a3654085270f3337acea3aa3d7efcdde8cea78a0a"
+    },
+    {
+      "path": "spec/02-jcs.md",
+      "bytes": 3656,
+      "sha256": "4d4b202c8ddb5eb00c47a8e8056813a589834526e2174c023fb005a484eb3d94"
+    },
+    {
+      "path": "spec/03-rfc9421.md",
+      "bytes": 8765,
+      "sha256": "b28d567cbf3f7a6a256c73fd35696865b5c0ebdc814de57624b90df082d49407"
+    },
+    {
+      "path": "spec/04-hpke.md",
+      "bytes": 8635,
+      "sha256": "1420818451ce8363a16e391647dbaca8ec2f06efa56b6507027a4e17f399fdd6"
+    },
+    {
+      "path": "spec/05-session.md",
+      "bytes": 6999,
+      "sha256": "8a45b8bdd3b6bfc399a94c420b2161b8f16db5c6b29ed2e85584a6282b17cce5"
+    },
+    {
+      "path": "spec/06-did-sage.md",
+      "bytes": 6560,
+      "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+    },
+    {
+      "path": "spec/07-a2a.md",
+      "bytes": 4147,
+      "sha256": "5ded622fdaf67342d5c6b4327da0f5787bfe9df2dc58b233cdfb500ffc96b042"
+    },
+    {
+      "path": "spec/08-transport.md",
+      "bytes": 9152,
+      "sha256": "e11e8200d67ee913fcd1a47781c6d31a353556c9dfd4e4ce0a88dbe97e10bba6"
+    },
+    {
+      "path": "spec/09-registry.md",
+      "bytes": 20575,
+      "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+    },
+    {
+      "path": "spec/10-resolution.md",
+      "bytes": 16406,
+      "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+    },
+    {
+      "path": "spec/11-registries.md",
+      "bytes": 11316,
+      "sha256": "aaf8e68a1af957fd079ff56d89636b792930e8e0202b3d09a084164005589513"
+    },
+    {
+      "path": "charter.md",
+      "bytes": 19108,
+      "sha256": "0c22ccfe49011c09967ccab993135b663599e2f05da4040383f1f24542cef2cd"
+    }
+  ],
+  "rows": [
+    {
+      "id": "cid10#Multikey.24",
+      "text": "When defining values for use with publicKeyMultibase and secretKeyMultibase, specification authors MAY define additional header values for other key types in other specifications and MUST NOT define alternate encodings for key types already defined by this specification.",
+      "text_sha256": "310d1814b55b741a40ea501a908c01a81cd1f4ebbadb0a280107b0006a4f0d52",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "The selected projection explicitly does not emit Multikey. It does not define new Multikey header encodings. This does not assess every third-party extension specification.",
+      "follow_up": [
+        "spec/10-resolution.md \u00a76"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#extensibility.2",
+      "text": "Representations MAY define other extensibility mechanisms, including ones that do not require the use of the Decentralized Identifier Extensions repository.",
+      "text_sha256": "116f03ebba51a0e50896099112d174f0bc31523ab78895d66619488e5ff53063",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "No new representation-level extension mechanism is defined; SAGE metadata extensions and representation extensions must be distinguished.",
+      "follow_up": [
+        "spec/10-resolution.md \u00a7\u00a71,6,8"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#extensibility.3",
+      "text": "Such extension mechanisms SHOULD support lossless conversion into any other conformant representation.",
+      "text_sha256": "1e2e5134d3219f3b8cc32e7299425cad718db17d27c49a91003390d21ebfa30b",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "The two projections deliberately use different verification-method types and are not reserializations. Do not infer lossless conversion between arbitrary representations.",
+      "follow_up": [
+        "spec/10-resolution.md \u00a7\u00a71,6,8"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#extensibility.4",
+      "text": "Extension mechanisms for a representation SHOULD define a mapping of all properties and representation syntax into the DID document data model and its type system.",
+      "text_sha256": "8b77a7a7414b1c93b975e1f6e7357251a30df57058c4575c65fe9df8b6cc0deb",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "The record-to-document table maps selected SAGE properties, not every property of an arbitrary extended DID abstract data model.",
+      "follow_up": [
+        "spec/10-resolution.md \u00a7\u00a71,6,8"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#media-types.1",
+      "text": "Syntaxes used to express the data model in this specification SHOULD be identified by a media type, and conventions outlined in this section SHOULD be followed when defining or using media types with DID documents.",
+      "text_sha256": "05898a7a8263e228b88118f7280b503360c6af1eb0b2fb2a5bdc7b2db7a1a143",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "The existing application/did+json and application/did media types are named. An author-level media registration claim must be verified separately from successful serializer output.",
+      "follow_up": [
+        "spec/10-resolution.md \u00a7\u00a71,6,7"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#method-operations.1",
+      "text": "A DID method specification MUST define how authorization is performed to execute all operations, including any necessary cryptographic processes.",
+      "text_sha256": "d3baa658d5a6a9e66bc2cba1da4e71a5e0d7e3b49df895cb1d4eb81c2f7d0cd2",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "The abstract lifecycle requires authenticated controllers/scoped operators, PoP and expected versions. The concrete authenticated principal and transaction/administrative ABI are deployment bindings, not supplied by the abstract method alone.",
+      "follow_up": [
+        "spec/09-registry.md \u00a7\u00a73,4,6,8,9",
+        "spec/10-resolution.md \u00a72"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#method-operations.2",
+      "text": "A DID method specification MUST specify how a DID controller creates a DID and its associated DID document.",
+      "text_sha256": "82093e661152dc13b4dd2fb83c34e9a7b2dfff9a7228b73762653806b9193387",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "Creation reserves an unused client-selected identifier and binds controller/keys/services with proofs. Eip155 commit/reveal and web authenticated state are specified; concrete deployment evidence remains separate.",
+      "follow_up": [
+        "spec/09-registry.md \u00a7\u00a73,4,6,8",
+        "spec/10-resolution.md \u00a72"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#method-operations.3",
+      "text": "A DID method specification MUST specify how a DID resolver uses a DID to resolve a DID document, including how the DID resolver can verify the authenticity of the response.",
+      "text_sha256": "a75bab77172b71661b814b3f68dfc517ee2091c1fd7bed8902fba33da4a05a45",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "Fresh authorized source selection, authenticated web reads and finalized eip155 observations are specified. A resolution response alone is not blockchain evidence; actual Source/readiness is still deferred.",
+      "follow_up": [
+        "spec/09-registry.md \u00a7\u00a75,6,8",
+        "spec/10-resolution.md \u00a72"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#method-operations.4",
+      "text": "A DID method specification MUST specify what constitutes an update to a DID document and how a DID controller can update a DID document or state that updates are not possible.",
+      "text_sha256": "fc2e1a5f40f7a1c09fa245de8c39ee8af8a3ff3dff53a5b1f8694c9c9add0895",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "Mutations, expected prior version, services, operator scopes and durable history are defined. Concrete authenticated execution is binding-dependent.",
+      "follow_up": [
+        "spec/09-registry.md \u00a7\u00a73,9",
+        "spec/10-resolution.md \u00a72"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#method-operations.5",
+      "text": "The DID method specification MUST specify how a DID controller can deactivate a DID or state that deactivation is not possible.",
+      "text_sha256": "6fd07f422770f601b428954086c0b505203adaaf763e780d253f622ed0016ca1",
+      "status": "reviewed-document",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "Deactivation is a terminal transition from created or active, with a readable record; mutations require the authenticated controller or explicitly delegated operator and expected previous version. Concrete deployment authorization remains a distinct review scope. Chapter 09 section 9 defines scoped controller delegation and chapter 10 section 3 distinguishes readable inactive records from denied key use.",
+      "follow_up": [
+        "spec/09-registry.md \u00a73",
+        "spec/10-resolution.md \u00a72"
+      ],
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/09-registry.md",
+          "start_line": 1,
+          "end_line": 333,
+          "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        }
+      ]
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.1",
+      "text": "A DID method specification MUST define exactly one method-specific DID scheme that is identified by exactly one method name as specified by the method-name rule in 3.1 DID Syntax.",
+      "text_sha256": "69ee4c10a6543faf5679f4effcacce9954e2077e22f468bbca9972b9cf0bd038",
+      "status": "reviewed-document",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "Exactly one current did:sage method name is declared by the case-sensitive did-sage production; registry kinds are formats within that method, not additional DID method names.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a7\u00a71,2",
+        "spec/09-registry.md \u00a7\u00a73,6,8"
+      ],
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/09-registry.md",
+          "start_line": 1,
+          "end_line": 333,
+          "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+        }
+      ]
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.10",
+      "text": "A DID method specification MAY specify ABNF rules for DID paths that are more restrictive than the generic rules in Path.",
+      "text_sha256": "62663a6f13f857fcb22fbf0b30258d2a1776bd32134a36bc64445c560b7a3fe8",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "Method DID paths are explicitly forbidden rather than defining a path-dereferencing feature.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a7\u00a71,2",
+        "spec/09-registry.md \u00a7\u00a73,6,8"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.11",
+      "text": "A DID method specification MAY specify ABNF rules for DID queries that are more restrictive than the generic rules in this section.",
+      "text_sha256": "76f45fe8788c1671053b26a4826c45af1974e6b500d60b80597d2e7e0f992f94",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "Method DID queries are explicitly forbidden rather than defining query behavior.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a7\u00a71,2",
+        "spec/09-registry.md \u00a7\u00a73,6,8"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.12",
+      "text": "A DID method specification MAY specify ABNF rules for DID fragments that are more restrictive than the generic rules in this section.",
+      "text_sha256": "0e225ad03972ac82c20e5c3d681379b12e60e03d6008a1817f5ddcb1894404ac",
+      "status": "reviewed-document",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "The DID URL production restricts the fragment to key-id, with an explicit one-to-32 character ABNF. The MAY permits this selected restriction and does not require arbitrary fragment support.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a7\u00a71,2",
+        "spec/09-registry.md \u00a7\u00a73,6,8"
+      ],
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/09-registry.md",
+          "start_line": 1,
+          "end_line": 333,
+          "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+        }
+      ]
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.2",
+      "text": "The DID method specification MUST specify how to generate the method-specific-id component of a DID.",
+      "text_sha256": "b182adea95ba28bce23cd9c0318549bf1d677a2e5b9972f67c1c531de526d3b9",
+      "status": "reviewed-document",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "The client chooses an unused identifier before proofs; creation reserves it atomically. Chapter 06 defines its composition and chapter 09 sections 6 and 8 define the selected formats. Random generation is not a universal requirement of this clause.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a7\u00a71,2",
+        "spec/09-registry.md \u00a7\u00a73,6,8"
+      ],
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/09-registry.md",
+          "start_line": 1,
+          "end_line": 333,
+          "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+        }
+      ]
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.3",
+      "text": "The DID method specification MUST define sensitivity and normalization of the value of the method-specific-id.",
+      "text_sha256": "ee943162323f401ed6b24280c305496be31d274d24962892509f71e4ab65c73c",
+      "status": "reviewed-document",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "Equality after the specified normalization defines sensitivity: kind and chain address are lowercase, percent encoding and non-normal forms are rejected, and remaining identifier characters compare as strings without an extra normalization.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a7\u00a71,2",
+        "spec/09-registry.md \u00a7\u00a73,6,8"
+      ],
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/09-registry.md",
+          "start_line": 1,
+          "end_line": 333,
+          "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+        }
+      ]
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.4",
+      "text": "The method-specific-id value MUST be unique within a DID method.",
+      "text_sha256": "db03406ede87b4b30b3c414f89f05418fa4a85223e5d3f8c232472d2f478fc2f",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "Registry-scoped uniqueness and non-reassignment are required, but actual enforcement and the registry identity assumptions need binding evidence.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a7\u00a71,2",
+        "spec/09-registry.md \u00a7\u00a73,6,8"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.5",
+      "text": "Any DID generated by a DID method MUST be globally unique.",
+      "text_sha256": "ad848045d9746d2af6aff593a2c5fcd68de5e30082d0fb937363f7dd7ece6a88",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "Registry identity plus local uniqueness is the intended global construction. DNS/chain fork and registry identity assumptions cannot be proved by an output DID string.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a7\u00a71,2",
+        "spec/09-registry.md \u00a7\u00a73,6,8"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.7",
+      "text": "A DID method MAY define multiple method-specific-id formats.",
+      "text_sha256": "8e5c4a0da5940649de31ced9541cd6cb149f0226c9a57f04af08cd3f9bc418df",
+      "status": "reviewed-document",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "The same method selects multiple method-specific-id formats: eip155 and optional web. Solana is explicitly reserved and cannot establish support. This judges only the documentary format choice.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a7\u00a71,2",
+        "spec/09-registry.md \u00a7\u00a73,6,8"
+      ],
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/09-registry.md",
+          "start_line": 1,
+          "end_line": 333,
+          "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+        }
+      ]
+    },
+    {
+      "id": "did11-cr20260305#method-syntax.8",
+      "text": "The method-specific-id format MAY include colons.",
+      "text_sha256": "5ff207e3decb0cd070634b7c002db07b6ea6953f68b43d7ec56073ee11297aca",
+      "status": "reviewed-document",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "The method-specific-id contains the registry kind, locator and agent-id separated by colons, under the single sage method. This is an exercised documentary permission, not a requirement to accept every colon-containing string.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a7\u00a71,2",
+        "spec/09-registry.md \u00a7\u00a73,6,8"
+      ],
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/09-registry.md",
+          "start_line": 1,
+          "end_line": 333,
+          "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+        }
+      ]
+    },
+    {
+      "id": "did11-cr20260305#privacy-requirements.1",
+      "text": "The DID method specification's Privacy Considerations section MUST discuss any subsection of Section 5 of [RFC6973] that could apply in a method-specific manner.",
+      "text_sha256": "c47fae06127b02269a8764e0f1b721e9d0198741530182397ea15539708ae2ee",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "No Privacy Considerations section or RFC6973 subsection mapping was located in the 16 pinned chapters/profiles/charter files inspected. This is a documentary gap candidate, not a runtime implementation failure or a proof about uncaptured external bindings.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a76",
+        "spec/09-registry.md \u00a710",
+        "spec/10-resolution.md \u00a711"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.1",
+      "text": "A representation MUST define deterministic production and consumption rules for all data types specified in 4.",
+      "text_sha256": "f112032c07077934450569e8378e35100f6beed0044e73b912ce49c3985547a6",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "These are named projections of standard DID representations. Inheritance of all deterministic abstract-type production/consumption rules needs an explicit representation-author scope assessment; the SAGE projection table is narrower.",
+      "follow_up": [
+        "spec/10-resolution.md \u00a7\u00a71,4,6,7",
+        "spec/00-overview.md \u00a77"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.2",
+      "text": "A representation MUST be uniquely associated with an IANA-registered Media Type.",
+      "text_sha256": "1a84e0112b30a491a51166e2f71d813da606cdcf1e5066b18538170bd52c18c8",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "The method names existing DID media types, not a new IANA representation assignment. Verify the actual association with the standard representation as documentary evidence.",
+      "follow_up": [
+        "spec/10-resolution.md \u00a7\u00a71,4,6,7",
+        "spec/00-overview.md \u00a77"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.3",
+      "text": "A representation MUST define fragment processing rules for its Media Type that are conformant with the fragment processing rules defined in Fragment.",
+      "text_sha256": "b71ddae72b33fb158e0a0d2d14a3cea5b1eda57e76276a5162966a21bd8c529b",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "Full canonical key URLs and exact-ID dereferencing are specified, but the generic media-type fragment-processing rules are not proven by this selected method restriction.",
+      "follow_up": [
+        "spec/10-resolution.md \u00a7\u00a71,4,6,7",
+        "spec/00-overview.md \u00a77"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.4",
+      "text": "A representation SHOULD use the lexical representation of data model data types.",
+      "text_sha256": "5a987d67caca593f66081a874414e395d5f61701e689f701d0c6b3354f4e9c14",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "Selected canonical JWK coordinates and record fields are specified. This does not define every abstract data-model type lexical mapping.",
+      "follow_up": [
+        "spec/10-resolution.md \u00a7\u00a71,4,6,7",
+        "spec/00-overview.md \u00a77"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.5",
+      "text": "A representation MAY choose to serialize the data model data types using a different lexical serializations as long as the consumption process back into the data model is lossless.",
+      "text_sha256": "572fd118865fb61d024ae9f0829f11210e7da96c61ecc9c95c130b182369ddc2",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "The document does not choose an alternative lexical serialization for all abstract data-model types. Absence of such a choice is not consumer input refusal.",
+      "follow_up": [
+        "spec/10-resolution.md \u00a7\u00a71,4,6,7",
+        "spec/00-overview.md \u00a77"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#production-and-consumption.6",
+      "text": "A representation MAY define representation-specific entries that are stored in a representation-specific entries map for use during the production and consumption process.",
+      "text_sha256": "d1ecd1c6f7d1c7db3ad35f471f2bc4789bd5a0d76edeace01977b879b11fdf31",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "DID1.1 projection has an explicit constant @context; the abstract representation-specific entries-map lifecycle is inherited rather than separately specified here.",
+      "follow_up": [
+        "spec/10-resolution.md \u00a7\u00a71,4,6,7",
+        "spec/00-overview.md \u00a77"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.1",
+      "text": "A DID method specifications MUST follow all guidelines and normative language provided in RFC3552: Writing Security Considerations Sections for the DID operations defined in the DID method specification.",
+      "text_sha256": "11f7f73261e868824223349fbfa751f03b96b8ea90249fedadd503f1bd19c791",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "RFC3552 is not explicitly mapped in the inspected files. Naming a Security section or using secure primitives does not discharge all RFC3552 guidance.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a76",
+        "spec/09-registry.md \u00a7\u00a73-6,8-10",
+        "spec/10-resolution.md \u00a7\u00a72,9,11",
+        "spec/01-crypto.md \u00a73"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.10",
+      "text": "If a protocol incorporates cryptographic protection mechanisms, the DID method specification MUST clearly indicate which portions of the data are protected and by what protections, and it SHOULD give an indication of the sorts of attacks to which the cryptographic protection is susceptible.",
+      "text_sha256": "1a67f55e75fc34dbb71da7f876c14cfae3111d559cce854d0569ebb111e19797",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "The length-delimited PoP challenge and KEM endorsement portions are specified, separately from mutation authorization and source authentication. A full protected/unprotected-data and susceptibility matrix remains an author review obligation.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a76",
+        "spec/09-registry.md \u00a7\u00a73-6,8-10",
+        "spec/10-resolution.md \u00a7\u00a72,9,11",
+        "spec/01-crypto.md \u00a73"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.11",
+      "text": "Data which is to be held secret (keying material, random seeds, and so on) SHOULD be clearly labeled.",
+      "text_sha256": "28be932b25a09473668cf1c7c0129b2b6cf6239d13d6a291954799b561dc0c17",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "CRYPTO-05 explicitly identifies private keys, shared secrets and expired traffic keys as non-public/non-logged material; public record key bytes and PoP signatures are distinguished.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a76",
+        "spec/09-registry.md \u00a7\u00a73-6,8-10",
+        "spec/10-resolution.md \u00a7\u00a72,9,11",
+        "spec/01-crypto.md \u00a73"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.12",
+      "text": "DID method specifications SHOULD explain and specify the implementation of signatures on DID documents, if applicable.",
+      "text_sha256": "70c566b00519925526d337b5a5d1546bcaae92d971f0f470c63a5cecb5eb9c29",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "The selected projection does not add a signature over the entire DID document; PoP over key registration and authenticated source reads are different mechanisms.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a76",
+        "spec/09-registry.md \u00a7\u00a73-6,8-10",
+        "spec/10-resolution.md \u00a7\u00a72,9,11",
+        "spec/01-crypto.md \u00a73"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.13",
+      "text": "Where DID methods use peer-to-peer computing resources, such as with all known DLTs, the expected burdens of those resources SHOULD be discussed in relation to denial of service.",
+      "text_sha256": "a5ea305e7140d57e7d4f1a9dcc59feb8643852f289c6da66502d0c8a0a36e248",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "Eip155 requires measured costs/latency in its deployment binding, but an expected peer resource-burden/denial-of-service discussion was not located in the selected method text.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a76",
+        "spec/09-registry.md \u00a7\u00a73-6,8-10",
+        "spec/10-resolution.md \u00a7\u00a72,9,11",
+        "spec/01-crypto.md \u00a73"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.14",
+      "text": "DID methods that introduce new authentication service types, as described in 5.4 Services, SHOULD consider the security requirements of the supported authentication protocol.",
+      "text_sha256": "3758e875eb6dd4be6bfa66240f7e9bdfd6e162a1d9e94232e8ae65d86a223400",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "Service endpoints are discovery metadata, not authorization grants. A particular new authentication service type and its associated protocol must be identified before applying this recommendation.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a76",
+        "spec/09-registry.md \u00a7\u00a73-6,8-10",
+        "spec/10-resolution.md \u00a7\u00a72,9,11",
+        "spec/01-crypto.md \u00a73"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.2",
+      "text": "The Security Considerations section MUST document the following forms of attack for the DID operations defined in the DID method specification: eavesdropping, replay, message insertion, deletion, modification, denial of service, amplification, and man-in-the-middle.",
+      "text_sha256": "d74dd966541d564febca74e1064fadaaa744cad40a5785ba72ab4fff88480ba6",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "The method-specific security tables discuss substitution, replay and stale records. A complete method-operation mapping of eavesdropping, insertion, deletion, modification, denial of service, amplification and MITM was not located; review inherited transport sections before a final documentary verdict.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a76",
+        "spec/09-registry.md \u00a7\u00a73-6,8-10",
+        "spec/10-resolution.md \u00a7\u00a72,9,11",
+        "spec/01-crypto.md \u00a73"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.3",
+      "text": "Other known forms of attack SHOULD also be documented.",
+      "text_sha256": "3fdc4a05f3f4eaa9c6167fa96b642b5f647c86419d818f6832e86cd6c5ec78b7",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "SSRF/endpoint fetch, identifier confusion, malicious trusted sources, signature-key compromise and stale/rollback risks are discussed; completeness of other known attacks needs semantic review.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a76",
+        "spec/09-registry.md \u00a7\u00a73-6,8-10",
+        "spec/10-resolution.md \u00a7\u00a72,9,11",
+        "spec/01-crypto.md \u00a73"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.4",
+      "text": "The Security Considerations section MUST discuss residual risks, such as the risks from compromise in a related protocol, incorrect implementation, or cipher after threat mitigation was deployed.",
+      "text_sha256": "946c892fcfa2dbfb3359ac69edcb144639980a933a8b4bb6d441499f5e9e55fa",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "Malicious trusted registry/validator, compromised signing boundary, unspecified deployment trust and latency assumptions are explicitly outside or within limited boundaries.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a76",
+        "spec/09-registry.md \u00a7\u00a73-6,8-10",
+        "spec/10-resolution.md \u00a7\u00a72,9,11",
+        "spec/01-crypto.md \u00a73"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.5",
+      "text": "The Security Considerations section MUST provide integrity protection and update authentication for all operations required by Section 7.2 Method Operations.",
+      "text_sha256": "9b733ac26432e5bf9664609bcb09747dc0dd3340ebf598b3ffdc476d720cc220",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "Authenticated controller/operator mutations, expected versions, signing PoP and trusted read observations are required. Actual update authorization is deployment-defined.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a76",
+        "spec/09-registry.md \u00a7\u00a73-6,8-10",
+        "spec/10-resolution.md \u00a7\u00a72,9,11",
+        "spec/01-crypto.md \u00a73"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.6",
+      "text": "If authentication is involved, particularly user-host authentication, the security characteristics of the authentication method MUST be clearly documented.",
+      "text_sha256": "bed5cbf9fdd8820fc2add7c38bcf111997423fe35d6669cb1f38177b380884a8",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "Web uses authenticated TLS and authenticated controller/operator administration; eip155 requires an authenticated transaction binding. Concrete controller authentication is not supplied by the abstract contract.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a76",
+        "spec/09-registry.md \u00a7\u00a73-6,8-10",
+        "spec/10-resolution.md \u00a7\u00a72,9,11",
+        "spec/01-crypto.md \u00a73"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.7",
+      "text": "The Security Considerations section MUST discuss the policy mechanism by which DIDs are proven to be uniquely assigned.",
+      "text_sha256": "6d702a2a4e566ae601ad5b3081de0499d6708ccf9af9a72eeb46a8a6617e3ae3",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "Registry identity, atomic non-reassignable local reservation, commit/reveal and normalization are specified; actual policy enforcement still needs the deployed registry.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a76",
+        "spec/09-registry.md \u00a7\u00a73-6,8-10",
+        "spec/10-resolution.md \u00a7\u00a72,9,11",
+        "spec/01-crypto.md \u00a73"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.8",
+      "text": "Method-specific endpoint authentication MUST be discussed.",
+      "text_sha256": "863bc9ad6558c7eca027156c0469cc00d9e16ff66c5d3053229d319b08b290af",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "Configured HTTPS origin identity and allowlist, source identity/readiness, no redirects or peer-provided resolver selection are specified.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a76",
+        "spec/09-registry.md \u00a7\u00a73-6,8-10",
+        "spec/10-resolution.md \u00a7\u00a72,9,11",
+        "spec/01-crypto.md \u00a73"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "did11-cr20260305#security-requirements.9",
+      "text": "Where DID methods make use of DLTs with varying network topology, sometimes offered as light node or thin client implementations to reduce required computing resources, the security assumptions of the topology available to implementations of the DID method MUST be discussed.",
+      "text_sha256": "26aac44cdd2ed9341ed309d8cdec2cd9d07de670de9d78700470b909183e2b49",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "Self-validated nodes versus explicitly trusted resolvers and finalized block observations are distinguished. The assumptions of all intended thin/light-node topologies are not established by that distinction.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a76",
+        "spec/09-registry.md \u00a7\u00a73-6,8-10",
+        "spec/10-resolution.md \u00a7\u00a72,9,11",
+        "spec/01-crypto.md \u00a73"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.45",
+      "text": "The applicable DID method MAY specify how to dereference the DID path and/or DID query of the input DID URL.",
+      "text_sha256": "47be1ab5eb643fe3dc5abda17c517decfe6165f4ee0896a8e2bc2d0e5b22d27a",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "The method rejects DID paths and queries; this MAY does not mandate support.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a71",
+        "spec/10-resolution.md \u00a74"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.46",
+      "text": "An extension specification MAY specify how to dereference the DID path of the input DID URL.",
+      "text_sha256": "ef3a7426057ffec23550f0fe14ff0ee1909c1584d56a52ef363e9dbb5c744944",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "No selected extension specification defining DID-path dereferencing was identified in this method snapshot.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a71",
+        "spec/10-resolution.md \u00a74"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.47",
+      "text": "An extension specification MAY specify how to dereference the DID query of the input DID URL.",
+      "text_sha256": "ce2719c1839bf463fdd97e90785c9f2bc7419635177cd55b71da363f4a8356a9",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "No selected extension specification defining DID-query dereferencing was identified in this method snapshot.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a71",
+        "spec/10-resolution.md \u00a74"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.17",
+      "text": "A conforming DID method specification MUST guarantee that each equivalentId value is logically equivalent to the id property value.",
+      "text_sha256": "219feba40019f2480a03ffd37b2fd955c25e2ba21891fa0f08e5f0f031f44a38",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "equivalentId aliases are explicitly not emitted and do not affect authority. This author condition is separate from generic library acceptance of a literal metadata field.",
+      "follow_up": [
+        "spec/10-resolution.md \u00a7\u00a73,9"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.22",
+      "text": "A conforming DID method specification MUST guarantee that the canonicalId value is logically equivalent to the id property value.",
+      "text_sha256": "116fb5d219aa0e222dff57a354c2408b18956a2ad4822b45c20dedbc0c99bcdd",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "canonicalId aliases are explicitly not emitted and do not affect authority. This author condition is separate from generic library acceptance of a literal metadata field.",
+      "follow_up": [
+        "spec/10-resolution.md \u00a7\u00a73,9"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "res10-crd20261001#errors.6",
+      "text": "A specification that defines an error type not defined in this section MAY declare that it refines one of the error types defined in this section.",
+      "text_sha256": "7c7d832b97e5cde7df1c8feda757fbff5c084e7ff8f3496ced69367fdd864580",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "SAGE-local errors and DID-interface mappings with sageCode are defined. A mapping between interfaces is not automatically a refines declaration in a custom DID error object.",
+      "follow_up": [
+        "spec/10-resolution.md \u00a7\u00a75,10"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "res10-crd20261001#method-architectures.1",
+      "text": "DID methods MAY allow multiple ways of implementing their \"Resolve\" operation, and SHOULD offer guidance regarding at least one way to implement a verifiable resolution.",
+      "text_sha256": "e9485a18127e4f84a8fc6032532d372e103a63517ef10ecbb8fc7f5f28cd56a2",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "The method gives guidance for fresh verified records through self-validation or explicitly trusted authenticated resolvers; TLS alone is explicitly not blockchain proof.",
+      "follow_up": [
+        "spec/09-registry.md \u00a7\u00a74-6,8",
+        "spec/10-resolution.md \u00a7\u00a72,3,9"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "res10-crd20261001#method-architectures.2",
+      "text": "If a DID method uses such proofs, it MUST specify in its DID method specification how they are used for verification of the correctness of the result of a \"Resolve\" operation.",
+      "text_sha256": "73e288ef4f386634774de96f20e19fbf350cc5be79557921fa3c186723554af9",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "The selected method relies on authenticated observations and key-registration PoP, not a specified portable proof of completeness/freshness of every Resolve result. If such proofs are selected, their verification specification is still needed.",
+      "follow_up": [
+        "spec/09-registry.md \u00a7\u00a74-6,8",
+        "spec/10-resolution.md \u00a7\u00a72,3,9"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "res10-crd20261001#method-architectures.3",
+      "text": "A DID method MAY also include such proofs in the DID document itself, or in a proof property of the DID document metadata.",
+      "text_sha256": "2945c5c577e7bf8646421340c94e56c40bbe54b4f4dd1daed25f3191d9cb74d9",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "The selected DID document/metadata shape does not include a portable Resolve proof. Structural proof literals in library tests do not select such a method mechanism.",
+      "follow_up": [
+        "spec/09-registry.md \u00a7\u00a74-6,8",
+        "spec/10-resolution.md \u00a7\u00a72,3,9"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "res10-crd20261001#vdr-forks.1",
+      "text": "Therefore, the specification of a DID method that uses a distributed system as a VDR SHOULD specify a means by which the VDR they are using can be disambiguated from such forks.",
+      "text_sha256": "74cf2546e1e2f76440a15d6d761a7b2849bbf631808057cb71f50e37447e5b74",
+      "status": "pending",
+      "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
+      "review_basis": "Chain/network/source identity and finalized-block readiness are required. A fork with the same chain ID, address and code still needs an explicit disambiguation rule; do not assume those fields alone resolve the recommendation.",
+      "follow_up": [
+        "spec/06-did-sage.md \u00a72",
+        "spec/09-registry.md \u00a7\u00a75,6"
+      ],
+      "evidence": []
+    }
+  ]
+}
