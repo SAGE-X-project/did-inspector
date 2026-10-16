@@ -76,7 +76,7 @@
   ],
   "categories": {
     "additional-data-or-feature": 7,
-    "document-or-applicability-review": 76,
+    "document-or-applicability-review": 73,
     "additional-observer-operation": 5,
     "operational-or-authority-evidence": 4,
     "existing-observation": 3
@@ -367,28 +367,6 @@
       "text_sha256": "721d1e47bcb6aea93b5248df3f033717aa0841ea206d31f96dc77074252e79dc",
       "baseline_verdict": "NOT_RUN",
       "route": "jsonld-processing",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#multibase-0.1",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "b42ff346f8eb6de7bc5b47460f6027597afbc364965c4267a16fc7344ecf96ed",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "cid10#multihash.1",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "895d15079030d6c46c7447e50762f288d3a40fb8700c36ab50a506631cfc4030",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
       "generic_scope": "not-checkable"
     },
     {
@@ -1030,17 +1008,6 @@
       "text_sha256": "ce2719c1839bf463fdd97e90785c9f2bc7419635177cd55b71da363f4a8356a9",
       "baseline_verdict": "NOT_RUN",
       "route": "specification",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#dereferencing-algorithm-resource.48",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "1ea379343bad237935c316fcfef5ac2bba9b31f32ae3c0a16ccf6ad31cc162a0",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
       "generic_scope": "not-checkable"
     },
     {
@@ -6842,26 +6809,74 @@
       "case_prefix": "/residual-",
       "observed_in_scope": "sage-resolution",
       "reason": "Actual downstream Client adds its own contentType metadata when the controlled upstream omits it, through actual DID 1.1 context consumption. Explicit contentType control is retained; upstream metadata preservation is separately failing and is not repaired or asserted here."
+    },
+    {
+      "id": "cid10#multibase-0.1",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "b42ff346f8eb6de7bc5b47460f6027597afbc364965c4267a16fc7344ecf96ed",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "NOT_SUPPORTED",
+      "case_prefix": "/extension-",
+      "cases": [
+        "did-1.1/sage-resolution/extension-codecs"
+      ]
+    },
+    {
+      "id": "cid10#multihash.1",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "895d15079030d6c46c7447e50762f288d3a40fb8700c36ab50a506631cfc4030",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "NOT_SUPPORTED",
+      "case_prefix": "/extension-",
+      "cases": [
+        "did-1.1/sage-resolution/extension-codecs"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.48",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "1ea379343bad237935c316fcfef5ac2bba9b31f32ae3c0a16ccf6ad31cc162a0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "case_prefix": "/extension-",
+      "cases": [
+        "did-1.1/sage-resolution/extension-application-handler"
+      ]
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 374,
+    "PASS": 375,
     "FAIL": 13,
-    "NOT_SUPPORTED": 0,
+    "NOT_SUPPORTED": 2,
     "NOT_APPLICABLE": 4,
     "ERROR": 0,
-    "NOT_RUN": 95
+    "NOT_RUN": 92
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 360,
+      "PASS": 361,
       "FAIL": 9,
-      "NOT_SUPPORTED": 0,
+      "NOT_SUPPORTED": 2,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 65
+      "NOT_RUN": 62
     },
     "recommendation": {
       "statements": 50,
@@ -6873,5 +6888,5 @@
       "NOT_RUN": 30
     }
   },
-  "expected_live_cases": 371
+  "expected_live_cases": 373
 }

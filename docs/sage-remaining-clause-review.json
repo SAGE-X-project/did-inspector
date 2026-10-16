@@ -23,10 +23,11 @@
     "runtime-candidate": 69
   },
   "execution_counts": {
-    "PASS": 142,
+    "PASS": 143,
     "FAIL": 7,
+    "NOT_SUPPORTED": 2,
     "NOT_APPLICABLE": 2,
-    "NOT_RUN": 95
+    "NOT_RUN": 92
   },
   "clauses": [
     {
@@ -1229,11 +1230,13 @@
       "actor": "permission, definition or stated input/output actor",
       "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
       "review_disposition": "construction-or-permission",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "No actual original component observation for a selected encoding beyond both normative z and u.",
+      "status": "observed-selected-branch",
+      "reason": "Six actual original component calls retain z/u normal controls and explicit encode/decode refusal of the independently selected f/base16 fixture. NOT_SUPPORTED is restricted to this selected additional encoding, not every extension or a mandatory conformance failure.",
       "follow_up_condition": "Select an independently defined additional encoding with valid public literals and z/u controls, then observe the unmodified original component. Adapter refusal or existing u64 support cannot close this permission.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "NOT_SUPPORTED",
+      "cases": [
+        "did-1.1/sage-resolution/extension-codecs"
+      ]
     },
     {
       "id": "cid10#multibase-0.3",
@@ -1309,11 +1312,13 @@
       "actor": "permission, definition or stated input/output actor",
       "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
       "review_disposition": "construction-or-permission",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "No actual original component observation for a selected additional hash encoding.",
+      "status": "observed-selected-branch",
+      "reason": "Ten actual original component calls retain all four CID codes and explicit encode/decode refusal of the independently selected 0x13/64-octet fixture. Opaque digest bytes test encoding, not hash computation or cryptographic security.",
       "follow_up_condition": "Select an independent additional code and digest length, capture original component encoding/decoding and rejection diagnostics with normative-code controls. Do not infer support from wrapper guards or claim hash computation.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "NOT_SUPPORTED",
+      "cases": [
+        "did-1.1/sage-resolution/extension-codecs"
+      ]
     },
     {
       "id": "cid10#multihash.2",
@@ -3698,11 +3703,13 @@
       "actor": "permission, definition or stated input/output actor",
       "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
       "review_disposition": "construction-or-permission",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "No selected application-specific client handler is exercised by this batch.",
+      "status": "observed-selected-branch",
+      "reason": "Four actual original dereferencer calls bind a controlled application callback input/return and final resource, with unhandled, absent configuration and no-path controls. This is the explicit extension-point capability, not SAGE method path support, authority or arbitrary application correctness.",
       "follow_up_condition": "Bind actual original dispatcher calls, URL/options, resolved document, explicit controlled application callback and final resource with absent/false controls. A fixture callback is not SAGE method path support.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/extension-application-handler"
+      ]
     },
     {
       "id": "res10-crd20261001#dereferencing-algorithm-resource.49",

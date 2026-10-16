@@ -445,3 +445,7 @@ Current resolution:369 cases,371 PASS,13 FAIL,4 NOT_APPLICABLE,98 NOT_RUN,zero E
 ## Residual evidence contracts
 
 See [the 22-clause evidence review](sage-residual-evidence-review.md) for the three fresh selected downstream observations and nineteen retained boundaries. The current totals and preserved repair order are recorded there. Earlier dated checkpoints remain historical.
+
+## Selected additional encodings and application dispatch
+
+Current resolution: 373 cases, 375 PASS, thirteen FAIL, two NOT_SUPPORTED, four NOT_APPLICABLE, 92 NOT_RUN, zero ERROR. The selected f/base16 and 0x13/64-octet encoding permissions are NOT_SUPPORTED only for their actual explicit original refusal; an explicitly supplied application callback dispatch is one bounded PASS. See [the evidence contract](sage-extension-observations.md). Historical 416: 324 observed (306 PASS, thirteen FAIL, two NOT_SUPPORTED, three NOT_APPLICABLE) plus 92 pending. Anchor 246: 154 execution verdicts (143 PASS, seven FAIL, two NOT_SUPPORTED, two NOT_APPLICABLE) plus 92 pending. Remaining: method author51, registration15, authority/history10, optional6, internal5, interpretation4, tuple1. The separate author report remains 23 PASS, nineteen NOT_APPLICABLE, seven FAIL, two NOT_RUN. Thirteen runtime failures/nine repair causes and seven documentary findings remain deferred to the approved repair stage. No core/specification/contract pins or sources were changed.

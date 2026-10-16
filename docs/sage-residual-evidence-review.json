@@ -3,8 +3,8 @@
   "profile": "did-1.1",
   "baseline_inspector_revision": "8f2a8a1eef8778e42268becfa709445fb83827ae",
   "reviewed": 22,
-  "observed": 3,
-  "pending": 19,
+  "observed": 6,
+  "pending": 16,
   "groups": {
     "optional": 12,
     "interpretation": 4,
@@ -99,10 +99,12 @@
       "text_sha256": "b42ff346f8eb6de7bc5b47460f6027597afbc364965c4267a16fc7344ecf96ed",
       "group": "optional",
       "actor": "permission, definition or stated input/output actor",
-      "expected_live_verdict": "NOT_RUN",
-      "reason": "No actual original component observation for a selected encoding beyond both normative z and u.",
+      "expected_live_verdict": "NOT_SUPPORTED",
+      "reason": "Six actual original component calls retain z/u normal controls and explicit encode/decode refusal of the independently selected f/base16 fixture. NOT_SUPPORTED is restricted to this selected additional encoding, not every extension or a mandatory conformance failure.",
       "completion_condition": "Select an independently defined additional encoding with valid public literals and z/u controls, then observe the unmodified original component. Adapter refusal or existing u64 support cannot close this permission.",
-      "cases": [],
+      "cases": [
+        "did-1.1/sage-resolution/extension-codecs"
+      ],
       "depends_on": []
     },
     {
@@ -112,10 +114,12 @@
       "text_sha256": "895d15079030d6c46c7447e50762f288d3a40fb8700c36ab50a506631cfc4030",
       "group": "optional",
       "actor": "permission, definition or stated input/output actor",
-      "expected_live_verdict": "NOT_RUN",
-      "reason": "No actual original component observation for a selected additional hash encoding.",
+      "expected_live_verdict": "NOT_SUPPORTED",
+      "reason": "Ten actual original component calls retain all four CID codes and explicit encode/decode refusal of the independently selected 0x13/64-octet fixture. Opaque digest bytes test encoding, not hash computation or cryptographic security.",
       "completion_condition": "Select an independent additional code and digest length, capture original component encoding/decoding and rejection diagnostics with normative-code controls. Do not infer support from wrapper guards or claim hash computation.",
-      "cases": [],
+      "cases": [
+        "did-1.1/sage-resolution/extension-codecs"
+      ],
       "depends_on": []
     },
     {
@@ -190,10 +194,12 @@
       "text_sha256": "1ea379343bad237935c316fcfef5ac2bba9b31f32ae3c0a16ccf6ad31cc162a0",
       "group": "optional",
       "actor": "permission, definition or stated input/output actor",
-      "expected_live_verdict": "NOT_RUN",
-      "reason": "No selected application-specific client handler is exercised by this batch.",
+      "expected_live_verdict": "PASS",
+      "reason": "Four actual original dereferencer calls bind a controlled application callback input/return and final resource, with unhandled, absent configuration and no-path controls. This is the explicit extension-point capability, not SAGE method path support, authority or arbitrary application correctness.",
       "completion_condition": "Bind actual original dispatcher calls, URL/options, resolved document, explicit controlled application callback and final resource with absent/false controls. A fixture callback is not SAGE method path support.",
-      "cases": [],
+      "cases": [
+        "did-1.1/sage-resolution/extension-application-handler"
+      ],
       "depends_on": []
     },
     {
