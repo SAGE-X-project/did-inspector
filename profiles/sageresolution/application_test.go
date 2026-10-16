@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"github.com/sage-x-project/did-inspector/core"
+	"os"
 	"testing"
 )
 
@@ -89,5 +90,34 @@ func TestApplicationDispatch(t *testing.T) {
 				t.Fatal(o)
 			}
 		}
+	}
+}
+
+func TestApplicationArchivedRuntimeControl(t *testing.T) {
+	// Frozen first-CI receipt is regression data, never fresh runtime proof.
+	raw, err := os.ReadFile("application_runtime_control.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var values []RoutingResult
+	if err = json.Unmarshal(raw, &values); err != nil {
+		t.Fatal(err)
+	}
+	if got := judgeApplication(values, "archived-unit"); got[0].Verdict != core.Pass {
+		t.Fatal(got)
+	}
+	for _, raw := range []string{" null ", "null"} {
+		if !applicationNull([]byte(raw)) {
+			t.Fatal(raw)
+		}
+	}
+	for _, raw := range []string{"{}", "[]", "false", "0", "nul", "null true"} {
+		if applicationNull([]byte(raw)) {
+			t.Fatal(raw)
+		}
+	}
+	values[1].ApplicationHandler[0].Returned.Raw = []byte(`{}`)
+	if judgeApplication(values, "archived-unit")[0].Verdict != core.Error {
+		t.Fatal("false callback result shape")
 	}
 }

@@ -28,7 +28,7 @@ def application():
     for i,q in enumerate(qs):
         v={'request':q,'operation':c.MODULE+'/dereferencer.Dereferencer.Dereference','role':'root resolver/dereferencer library with literal example driver; not SAGE Source','resolve_inputs':[c.DID],'driver_inputs':[c.DID],'options':encoded({}),'resolve_options':[encoded({})],'driver_options':[encoded({'VersionID':'','VersionTime':None,'MediaType':'','NoCache':False})],'driver_results':[encoded({'ContentType':'application/did','Data':q['document']['data'],'Metadata':{}})],'consumption':[{'operation':c.MODULE+'/consumer.Consumer.Consume','input':q['document']['data'],'media_type':'application/did','require':'unknown','expected':'unknown','strict':False,'version':'1.1','json_ld':True,'model':encoded(c.MODEL),'entries':encoded(c.ENTRIES)}],'data_model':encoded(c.MODEL),'resolved_data_model':encoded(c.MODEL),'entries':encoded(c.ENTRIES),'resolved_entries':encoded(c.ENTRIES),'resolved_metadata':encoded({'contentType':'application/did'})}
         result={'has_content':False,'raw':encoded(None),'metadata':{'error':{'type':'https://www.w3.org/ns/did#NOT_FOUND'}},'content_metadata':{}}
-        resource={'has_content':True,'raw':encoded(c.RESOURCE),'snapshot':encoded(c.RESOURCE),'content_kind':'map','returned_id':c.URL,'metadata':{'contentType':'application/json'},'content_metadata':{'versionId':'application-1'}}
+        resource={'has_content':True,'raw':encoded(c.RESOURCE),'snapshot':copy.deepcopy(c.RESOURCE),'content_kind':'map','returned_id':c.URL,'metadata':{'contentType':'application/json'},'content_metadata':{'versionId':'application-1'}}
         if i<2:v['application_handler']=[{'input':{'operation':c.MODULE+'/dereferencer.ResourceHandler','role':'explicit controlled application callback; not SAGE method support','url':{'input':c.URL,'primary':c.URL,'path':'/public-resource','query':'','fragment':'','has_fragment':False,'has_query':False},'options':encoded({}),'model':encoded(c.MODEL),'entries':encoded(c.ENTRIES),'metadata':encoded({'contentType':'application/did'})},'handled':i==0,'returned':copy.deepcopy(resource) if i==0 else {'has_content':False,'raw':encoded(None),'metadata':{},'content_metadata':{}}}]
         if i==0:result=resource
         elif i==3:result={'has_content':True,'content_kind':'document','returned_id':c.DID,'metadata':{'contentType':'application/did'}}
@@ -56,7 +56,7 @@ class ExtensionTests(unittest.TestCase):
             with self.assertRaises(AssertionError):c.verify_codecs(e)
 
     def test_application_corruption(self):
-        changes=[lambda v:v.update(role='SAGE method'),lambda v:v.update(operation='other'),lambda v:v.update(capture_error='lost'),lambda v:v.update(resolve_inputs=[]),lambda v:v.update(driver_inputs=[]),lambda v:v.update(driver_options=[encoded({'VersionID':'','VersionTime':None,'MediaType':'','NoCache':0})]),lambda v:v.update(driver_results=[encoded({'ContentType':'other','Data':encoded(c.DOC),'Metadata':{}})]),lambda v:v.update(production=[{}]),lambda v:v.update(options=encoded({'accept':'other'})),lambda v:v['consumption'][0].update(strict=0),lambda v:v['consumption'][0].update(json_ld=1),lambda v:v['consumption'][0].update(error='refused'),lambda v:v['consumption'][0].update(model=encoded({})),lambda v:v.update(resolved_metadata=encoded({})),lambda v:v.update(application_handler=[]),lambda v:v['application_handler'][0]['input'].update(role='other'),lambda v:v['application_handler'][0]['input'].update(url={}),lambda v:v['application_handler'][0].update(handled=1),lambda v:v['application_handler'][0]['returned'].update(raw=encoded({})),lambda v:v['result'].update(has_content=1),lambda v:v['result'].update(snapshot=encoded({})),lambda v:v['result'].update(content_metadata={}),lambda v:v['result'].update(native={"unexpected":True})]
+        changes=[lambda v:v.update(role='SAGE method'),lambda v:v.update(operation='other'),lambda v:v.update(capture_error='lost'),lambda v:v.update(resolve_inputs=[]),lambda v:v.update(driver_inputs=[]),lambda v:v.update(driver_options=[encoded({'VersionID':'','VersionTime':None,'MediaType':'','NoCache':0})]),lambda v:v.update(driver_results=[encoded({'ContentType':'other','Data':encoded(c.DOC),'Metadata':{}})]),lambda v:v.update(production=[{}]),lambda v:v.update(options=encoded({'accept':'other'})),lambda v:v['consumption'][0].update(strict=0),lambda v:v['consumption'][0].update(json_ld=1),lambda v:v['consumption'][0].update(error='refused'),lambda v:v['consumption'][0].update(model=encoded({})),lambda v:v.update(resolved_metadata=encoded({})),lambda v:v.update(application_handler=[]),lambda v:v['application_handler'][0]['input'].update(role='other'),lambda v:v['application_handler'][0]['input'].update(url={}),lambda v:v['application_handler'][0].update(handled=1),lambda v:v['application_handler'][0]['returned'].update(raw=encoded({})),lambda v:v['result'].update(has_content=1),lambda v:v['result'].update(snapshot={}),lambda v:v['result'].update(content_metadata={}),lambda v:v['result'].update(native={"unexpected":True})]
         for change in changes:
             qs,vs=application();change(vs[0])
             with self.assertRaises((AssertionError,KeyError)):c.verify_application(qs,vs)
@@ -67,6 +67,13 @@ class ExtensionTests(unittest.TestCase):
         with self.assertRaises(AssertionError):c.verify_application(qs,vs)
         qs,vs=application();vs.pop()
         with self.assertRaises(AssertionError):c.verify_application(qs,vs)
+
+    def test_archived_original_result_shape(self):
+        # First actual CI receipt, reused only as frozen regression unit data.
+        vs=json.loads((c.REPO/'profiles/sageresolution/application_runtime_control.json').read_text())
+        c.verify_application([v['request'] for v in vs],vs)
+        vs[0]['result']['snapshot']=encoded(c.RESOURCE)
+        with self.assertRaises(AssertionError):c.verify_application([v['request'] for v in vs],vs)
 
     def test_typed_application_flags(self):
         for key in ['plain_json_fragment','observe_production','observe_resource_handler']:

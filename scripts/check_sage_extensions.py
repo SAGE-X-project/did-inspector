@@ -95,7 +95,8 @@ def verify_application(qs,vs):
             assert h['handled'] is (i==0)
             if i==0:
                 for r in [h['returned'],result]:
-                    assert r['has_content'] is True and r['content_kind']=='map' and r['returned_id']==URL and parsed(r['raw'])==parsed(r['snapshot'])==RESOURCE and r['metadata']=={'contentType':'application/json'} and r['content_metadata']=={'versionId':'application-1'} and not r.get('native') and not r.get('exchange')
+                    same(r['snapshot'],RESOURCE)
+                    assert r['has_content'] is True and r['content_kind']=='map' and r['returned_id']==URL and parsed(r['raw'])==RESOURCE and r['metadata']=={'contentType':'application/json'} and r['content_metadata']=={'versionId':'application-1'} and not r.get('native') and not r.get('exchange')
             else:
                 r=h['returned'];assert r['has_content'] is False and parsed(r['raw']) is None and r['metadata']==r['content_metadata']=={}
         if 0<i<3:assert result['has_content'] is False and parsed(result['raw']) is None and result['metadata']['error']['type']=='https://www.w3.org/ns/did#NOT_FOUND'

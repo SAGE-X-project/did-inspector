@@ -14,6 +14,11 @@ const applicationModel = `{"id":"did:example:resources"}`
 const applicationEntries = `{"@context":"https://www.w3.org/ns/did/v1.1"}`
 const applicationResource = `{"id":"did:example:resources/public-resource","label":"public application resource"}`
 
+// applicationNull accepts a JSON null value, which is not a document object.
+func applicationNull(raw []byte) bool {
+	value, err := core.ParseJSON(raw)
+	return err == nil && value.Kind == core.KindNull
+}
 func applicationRequests() []RoutingRequest {
 	out := []RoutingRequest{}
 	for i, mode := range []string{"handled", "unhandled", "", "handled"} {
@@ -81,7 +86,7 @@ func judgeApplication(values []RoutingResult, input string) []core.Observation {
 						return obs
 					}
 				}
-			} else if h.Returned.HasContent || !optionJSONEqual(h.Returned.Raw, `null`) || !optionJSONEqual(h.Returned.Metadata, `{}`) || !optionJSONEqual(h.Returned.ContentMetadata, `{}`) {
+			} else if h.Returned.HasContent || !applicationNull(h.Returned.Raw) || !optionJSONEqual(h.Returned.Metadata, `{}`) || !optionJSONEqual(h.Returned.ContentMetadata, `{}`) {
 				return obs
 			}
 		}
@@ -92,7 +97,7 @@ func judgeApplication(values []RoutingResult, input string) []core.Observation {
 		// outcomes are not used as a normative FAIL of this optional feature.
 		if i < 3 {
 			errorValue, ok := md.Get("error")
-			if !ok || errorValue.Kind != core.KindObject || v.Result.HasContent || !optionJSONEqual(v.Result.Raw, `null`) {
+			if !ok || errorValue.Kind != core.KindObject || v.Result.HasContent || !applicationNull(v.Result.Raw) {
 				return obs
 			}
 			typ, ok := errorValue.Get("type")
