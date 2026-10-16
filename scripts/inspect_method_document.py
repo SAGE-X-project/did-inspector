@@ -18,15 +18,22 @@ REPOSITORY = "SAGE-X-project/sage-spec"
 REVIEWED = {"did11-cr20260305#" + s for s in (
     "method-syntax.1", "method-syntax.2", "method-syntax.3", "method-syntax.7",
     "method-syntax.8", "method-syntax.10", "method-syntax.11", "method-syntax.12",
-    "method-operations.2", "method-operations.4", "method-operations.5", "media-types.1")}
+    "method-operations.2", "method-operations.4", "method-operations.5", "media-types.1",
+    "security-requirements.3", "security-requirements.4", "security-requirements.7",
+    "security-requirements.8", "security-requirements.9", "security-requirements.11")}
 # These cases review absent author activities, not implementation capabilities.
 NOT_APPLICABLE = {"cid10#Multikey.24"} | {"did11-cr20260305#" + s for s in (
     "extensibility.2", "extensibility.3", "extensibility.4",
     "production-and-consumption.1", "production-and-consumption.2",
     "production-and-consumption.3", "production-and-consumption.4",
-    "production-and-consumption.5", "production-and-consumption.6")}
+    "production-and-consumption.5", "production-and-consumption.6",
+    "security-requirements.12", "security-requirements.14")}
+FAILURES = {"did11-cr20260305#" + s for s in (
+    "security-requirements.1", "security-requirements.2",
+    "security-requirements.13", "privacy-requirements.1")}
 DEFERRED = {"did11-cr20260305#" + s for s in (
-    "method-operations.1", "method-operations.3", "method-syntax.4", "method-syntax.5")}
+    "method-operations.1", "method-operations.3", "method-syntax.4", "method-syntax.5",
+    "security-requirements.5", "security-requirements.6", "security-requirements.10")}
 
 
 class EvidenceError(ValueError):
@@ -58,7 +65,7 @@ def load_catalog(root=ROOT):
     if len(paths) != 16 or len(set(paths)) != 16:
         raise EvidenceError("source manifest drift")
     reviewed = set()
-    not_applicable = set()
+    reviewed_non_pass = set()
     for row in c["rows"]:
         original = originals[row["id"]]
         if row["text"] != original["text"] or row["text_sha256"] != digest(original["text"].encode()):
@@ -77,17 +84,19 @@ def load_catalog(root=ROOT):
                 raise EvidenceError("unresolved review boundary missing or changed")
         elif "pending_review" in row:
             raise EvidenceError("unreviewed pending assessment")
+        expected_verdict = ("FAIL" if row["id"] in FAILURES else
+                    "NOT_APPLICABLE" if row["id"] in NOT_APPLICABLE else None)
         if "review_verdict" in row:
-            if (row["id"] not in NOT_APPLICABLE or row["status"] != "reviewed-document" or
-                    row["review_verdict"] != "NOT_APPLICABLE"):
-                raise EvidenceError("unreviewed applicability judgment")
-            not_applicable.add(row["id"])
+            if (expected_verdict is None or row["status"] != "reviewed-document" or
+                    row["review_verdict"] != expected_verdict):
+                raise EvidenceError("unreviewed explicit judgment")
+            reviewed_non_pass.add(row["id"])
         if row["status"] == "reviewed-document":
-            if row["id"] not in NOT_APPLICABLE:
+            if row["id"] not in NOT_APPLICABLE | FAILURES:
                 reviewed.add(row["id"])
             if not row["evidence"]:
                 raise EvidenceError("review evidence missing")
-    if reviewed != REVIEWED or not_applicable != NOT_APPLICABLE:
+    if reviewed != REVIEWED or reviewed_non_pass != NOT_APPLICABLE | FAILURES:
         raise EvidenceError("unreviewed judgment added or removed")
     return c
 
@@ -158,7 +167,7 @@ def inspect(catalog, capture_data, observer):
         issue = str(error)
     rows = []
     for source in catalog["rows"]:
-        selected = source["id"] in REVIEWED | NOT_APPLICABLE
+        selected = source["id"] in REVIEWED | NOT_APPLICABLE | FAILURES
         verdict = ("ERROR" if issue else source.get("review_verdict", "PASS")) if selected else "NOT_RUN"
         rows.append({"id": source["id"], "level": source["level"], "text_sha256": source["text_sha256"],
                      "verdict": verdict, "scope": source["scope"],
@@ -172,8 +181,9 @@ def inspect(catalog, capture_data, observer):
             "actor": "SAGE method specification author", "repository": REPOSITORY,
             "revision": REVISION, "policy": catalog["policy"], "totals": totals,
             "statements": rows, "runtime_results_merged": False,
-            "review_progress": {"judged": len(REVIEWED | NOT_APPLICABLE), "reviewed_pending": len(DEFERRED),
-                                "unreviewed": len(rows) - len(REVIEWED | NOT_APPLICABLE) - len(DEFERRED)}}
+            "documentary_gate": "ERROR" if totals["ERROR"] else "FAIL" if totals["FAIL"] else "PASS",
+            "review_progress": {"judged": len(REVIEWED | NOT_APPLICABLE | FAILURES), "reviewed_pending": len(DEFERRED),
+                                "unreviewed": len(rows) - len(REVIEWED | NOT_APPLICABLE | FAILURES) - len(DEFERRED)}}
 
 
 def main(argv=None):
@@ -198,7 +208,7 @@ def main(argv=None):
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(json.dumps(value, indent=2, ensure_ascii=True) + "\n")
     print(json.dumps(result["totals"], sort_keys=True))
-    return int(result["totals"]["ERROR"] != 0)
+    return int(result["totals"]["ERROR"] != 0 or result["totals"]["FAIL"] != 0)
 
 
 if __name__ == "__main__":
