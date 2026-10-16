@@ -17,7 +17,10 @@ REVISION = "06b50e177ccd22bce7d70fd80c2d7f822ae3fd3b"
 REPOSITORY = "SAGE-X-project/sage-spec"
 REVIEWED = {"did11-cr20260305#" + s for s in (
     "method-syntax.1", "method-syntax.2", "method-syntax.3", "method-syntax.7",
-    "method-syntax.8", "method-syntax.12", "method-operations.5")}
+    "method-syntax.8", "method-syntax.10", "method-syntax.11", "method-syntax.12", "method-operations.5")}
+DEFERRED = {"did11-cr20260305#" + s for s in (
+    "method-operations.1", "method-operations.2", "method-operations.3",
+    "method-operations.4", "method-syntax.4", "method-syntax.5")}
 
 
 class EvidenceError(ValueError):
@@ -56,6 +59,17 @@ def load_catalog(root=ROOT):
         row["level"] = original["level"]
         if row["status"] not in ("reviewed-document", "pending") or not row["review_basis"] or not row["scope"]:
             raise EvidenceError("review contract missing")
+        pending = row.get("pending_review")
+        if row["id"] in DEFERRED:
+            if (row["status"] != "pending" or not isinstance(pending, dict) or
+                    set(pending) != {"verdict", "required_actor", "reason", "completion_evidence"} or
+                    pending["verdict"] != "NOT_RUN" or
+                    any(not isinstance(pending[k], str) or not pending[k].strip() for k in ("required_actor", "reason")) or
+                    not isinstance(pending["completion_evidence"], list) or not pending["completion_evidence"] or
+                    any(not isinstance(x, str) or not x.strip() for x in pending["completion_evidence"])):
+                raise EvidenceError("unresolved review boundary missing or changed")
+        elif "pending_review" in row:
+            raise EvidenceError("unreviewed pending assessment")
         if row["status"] == "reviewed-document":
             reviewed.add(row["id"])
             if not row["evidence"]:
@@ -138,11 +152,15 @@ def inspect(catalog, capture_data, observer):
                      "detail": issue if selected and issue else source["review_basis"],
                      "evidence": source["evidence"] if selected else [],
                      "follow_up": source["follow_up"]})
+        if "pending_review" in source:
+            rows[-1]["pending_review"] = source["pending_review"]
     totals = {k: sum(row["verdict"] == k for row in rows) for k in ("PASS", "FAIL", "ERROR", "NOT_RUN")}
     return {"format": "did-inspector-method-document-report/1", "inspector_revision": observer,
             "actor": "SAGE method specification author", "repository": REPOSITORY,
             "revision": REVISION, "policy": catalog["policy"], "totals": totals,
-            "statements": rows, "runtime_results_merged": False}
+            "statements": rows, "runtime_results_merged": False,
+            "review_progress": {"judged": len(REVIEWED), "reviewed_pending": len(DEFERRED),
+                                "unreviewed": len(rows) - len(REVIEWED) - len(DEFERRED)}}
 
 
 def main(argv=None):

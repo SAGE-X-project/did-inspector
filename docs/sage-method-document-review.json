@@ -152,12 +152,41 @@
       "text_sha256": "d3baa658d5a6a9e66bc2cba1da4e71a5e0d7e3b49df895cb1d4eb81c2f7d0cd2",
       "status": "pending",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "The abstract lifecycle requires authenticated controllers/scoped operators, PoP and expected versions. The concrete authenticated principal and transaction/administrative ABI are deployment bindings, not supplied by the abstract method alone.",
+      "review_basis": "The abstract controller/operator, PoP and expected-version rules are present, but authentication of the deployment principal and administrative command encoding are explicitly delegated to bindings. The entire method authorization obligation is not discharged by those abstract rules alone.",
       "follow_up": [
         "spec/09-registry.md \u00a7\u00a73,4,6,8,9",
         "spec/10-resolution.md \u00a72"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/09-registry.md",
+          "start_line": 1,
+          "end_line": 333,
+          "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        }
+      ],
+      "pending_review": {
+        "verdict": "NOT_RUN",
+        "required_actor": "method specification author with a complete selected profile/binding document",
+        "reason": "The abstract controller/operator, PoP and expected-version rules are present, but authentication of the deployment principal and administrative command encoding are explicitly delegated to bindings. The entire method authorization obligation is not discharged by those abstract rules alone.",
+        "completion_evidence": [
+          "Identify and freeze the applicable complete profile/binding document corpus.",
+          "Review how every operation authenticates its principal, binds credentials to registry/DID/operation and performs its required cryptographic checks; distinguish PoP from mutation authorization.",
+          "Documentary closure does not require a successful live deployment; execution conformance remains a separate actor."
+        ]
+      }
     },
     {
       "id": "did11-cr20260305#method-operations.2",
@@ -165,12 +194,41 @@
       "text_sha256": "82093e661152dc13b4dd2fb83c34e9a7b2dfff9a7228b73762653806b9193387",
       "status": "pending",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "Creation reserves an unused client-selected identifier and binds controller/keys/services with proofs. Eip155 commit/reveal and web authenticated state are specified; concrete deployment evidence remains separate.",
+      "review_basis": "The client-selected identifier, atomic reservation, record/projection and eip155 commitment/reveal are specified. The selected method as a whole still delegates the authenticated create command to deployment bindings, so this review does not claim the complete controller creation procedure.",
       "follow_up": [
         "spec/09-registry.md \u00a7\u00a73,4,6,8",
         "spec/10-resolution.md \u00a72"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/09-registry.md",
+          "start_line": 1,
+          "end_line": 333,
+          "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        }
+      ],
+      "pending_review": {
+        "verdict": "NOT_RUN",
+        "required_actor": "method specification author with a complete selected profile/binding document",
+        "reason": "The client-selected identifier, atomic reservation, record/projection and eip155 commitment/reveal are specified. The selected method as a whole still delegates the authenticated create command to deployment bindings, so this review does not claim the complete controller creation procedure.",
+        "completion_evidence": [
+          "Review the complete selected creation binding together with identifier reservation, proof fields, initial state and associated document projection.",
+          "Bind that documentary procedure to the named profile and authenticated controller without inventing an ABI or administrative endpoint.",
+          "Keep documentary sufficiency separate from runtime registration evidence."
+        ]
+      }
     },
     {
       "id": "did11-cr20260305#method-operations.3",
@@ -178,12 +236,41 @@
       "text_sha256": "a75bab77172b71661b814b3f68dfc517ee2091c1fd7bed8902fba33da4a05a45",
       "status": "pending",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "Fresh authorized source selection, authenticated web reads and finalized eip155 observations are specified. A resolution response alone is not blockchain evidence; actual Source/readiness is still deferred.",
+      "review_basis": "Resolution validation, authoritative observation, TLS web-origin rules and finalized eip155 reads are specified. A whole-method claim still needs the selected source/readiness/authenticity binding; a successful fixture or unauthenticated RPC assertion cannot supply it.",
       "follow_up": [
         "spec/09-registry.md \u00a7\u00a75,6,8",
         "spec/10-resolution.md \u00a72"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/09-registry.md",
+          "start_line": 1,
+          "end_line": 333,
+          "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        }
+      ],
+      "pending_review": {
+        "verdict": "NOT_RUN",
+        "required_actor": "method specification author with a complete selected profile/binding document",
+        "reason": "Resolution validation, authoritative observation, TLS web-origin rules and finalized eip155 reads are specified. A whole-method claim still needs the selected source/readiness/authenticity binding; a successful fixture or unauthenticated RPC assertion cannot supply it.",
+        "completion_evidence": [
+          "Review the complete selected authoritative-source/readiness binding and how the resolver verifies response authenticity.",
+          "Check the mapping from the exact DID/profile to the source, trusted node or origin, finality and failure handling.",
+          "Close the author obligation from complete documentary evidence, without substituting a live response for the specification."
+        ]
+      }
     },
     {
       "id": "did11-cr20260305#method-operations.4",
@@ -191,12 +278,41 @@
       "text_sha256": "fc2e1a5f40f7a1c09fa245de8c39ee8af8a3ff3dff53a5b1f8694c9c9add0895",
       "status": "pending",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "Mutations, expected prior version, services, operator scopes and durable history are defined. Concrete authenticated execution is binding-dependent.",
+      "review_basis": "Key/service mutations, operator scopes, expected versions and atomic history are defined. The whole controller update procedure still delegates its authenticated command encoding and execution binding. These abstract rules cannot alone complete the full method author obligation.",
       "follow_up": [
         "spec/09-registry.md \u00a7\u00a73,9",
         "spec/10-resolution.md \u00a72"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/09-registry.md",
+          "start_line": 1,
+          "end_line": 333,
+          "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        }
+      ],
+      "pending_review": {
+        "verdict": "NOT_RUN",
+        "required_actor": "method specification author with a complete selected profile/binding document",
+        "reason": "Key/service mutations, operator scopes, expected versions and atomic history are defined. The whole controller update procedure still delegates its authenticated command encoding and execution binding. These abstract rules cannot alone complete the full method author obligation.",
+        "completion_evidence": [
+          "Review a complete selected update binding, operation-to-document changes, controller/operator authentication, version checks and immutable fields.",
+          "Include the documented history/atomicity and rejection rules without inventing a transaction or administrative format.",
+          "Keep runtime update authorization and deployed history verification in the approved later work."
+        ]
+      }
     },
     {
       "id": "did11-cr20260305#method-operations.5",
@@ -260,27 +376,41 @@
       "id": "did11-cr20260305#method-syntax.10",
       "text": "A DID method specification MAY specify ABNF rules for DID paths that are more restrictive than the generic rules in Path.",
       "text_sha256": "62663a6f13f857fcb22fbf0b30258d2a1776bd32134a36bc64445c560b7a3fe8",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "Method DID paths are explicitly forbidden rather than defining a path-dereferencing feature.",
+      "review_basis": "The closed DID-URL ABNF in chapter 06 includes no path production, and the surrounding normative text explicitly rejects paths. This records the permitted choice of a more restrictive DID path grammar only, not runtime rejection or application-specific dereferencing.",
       "follow_up": [
         "spec/06-did-sage.md \u00a7\u00a71,2",
         "spec/09-registry.md \u00a7\u00a73,6,8"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        }
+      ]
     },
     {
       "id": "did11-cr20260305#method-syntax.11",
       "text": "A DID method specification MAY specify ABNF rules for DID queries that are more restrictive than the generic rules in this section.",
       "text_sha256": "76f45fe8788c1671053b26a4826c45af1974e6b500d60b80597d2e7e0f992f94",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "Method DID queries are explicitly forbidden rather than defining query behavior.",
+      "review_basis": "The closed DID-URL ABNF in chapter 06 includes no query production, and the surrounding normative text explicitly rejects queries. This records the permitted choice of a more restrictive DID query grammar only, not runtime rejection or support for standard optional DID parameters.",
       "follow_up": [
         "spec/06-did-sage.md \u00a7\u00a71,2",
         "spec/09-registry.md \u00a7\u00a73,6,8"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        }
+      ]
     },
     {
       "id": "did11-cr20260305#method-syntax.12",
@@ -366,12 +496,41 @@
       "text_sha256": "db03406ede87b4b30b3c414f89f05418fa4a85223e5d3f8c232472d2f478fc2f",
       "status": "pending",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "Registry-scoped uniqueness and non-reassignment are required, but actual enforcement and the registry identity assumptions need binding evidence.",
+      "review_basis": "This MUST constrains actual method-specific-id uniqueness, rather than merely requiring a sentence in the method document. Registry uniqueness and non-reassignment declarations do not independently prove the generated identifiers are unique.",
       "follow_up": [
         "spec/06-did-sage.md \u00a7\u00a71,2",
         "spec/09-registry.md \u00a7\u00a73,6,8"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/09-registry.md",
+          "start_line": 1,
+          "end_line": 333,
+          "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        }
+      ],
+      "pending_review": {
+        "verdict": "NOT_RUN",
+        "required_actor": "issuer of generated DIDs under the selected registry profile",
+        "reason": "This MUST constrains actual method-specific-id uniqueness, rather than merely requiring a sentence in the method document. Registry uniqueness and non-reassignment declarations do not independently prove the generated identifiers are unique.",
+        "completion_evidence": [
+          "Establish the applicable registry identity, identifier allocation and non-reassignment assumptions.",
+          "Provide an independent uniqueness argument and appropriately attributed enforcement evidence for the generated identifiers.",
+          "Do not turn a declared guarantee or a few distinct fixture strings into global uniqueness evidence."
+        ]
+      }
     },
     {
       "id": "did11-cr20260305#method-syntax.5",
@@ -379,12 +538,41 @@
       "text_sha256": "ad848045d9746d2af6aff593a2c5fcd68de5e30082d0fb937363f7dd7ece6a88",
       "status": "pending",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "Registry identity plus local uniqueness is the intended global construction. DNS/chain fork and registry identity assumptions cannot be proved by an output DID string.",
+      "review_basis": "This MUST constrains globally unique generated DIDs. The intended registry-plus-local-ID construction depends on registry identity and DNS/chain/fork assumptions; the document declaration and sample strings alone do not establish the property.",
       "follow_up": [
         "spec/06-did-sage.md \u00a7\u00a71,2",
         "spec/09-registry.md \u00a7\u00a73,6,8"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/09-registry.md",
+          "start_line": 1,
+          "end_line": 333,
+          "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        }
+      ],
+      "pending_review": {
+        "verdict": "NOT_RUN",
+        "required_actor": "issuer of generated DIDs under the selected registry profile",
+        "reason": "This MUST constrains globally unique generated DIDs. The intended registry-plus-local-ID construction depends on registry identity and DNS/chain/fork assumptions; the document declaration and sample strings alone do not establish the property.",
+        "completion_evidence": [
+          "Identify and justify the registry namespace and selected network/fork/DNS assumptions.",
+          "Connect the construction and local uniqueness/non-reassignment guarantees to independently attributed issuer evidence.",
+          "Keep unspecified operational trust and fork bindings unresolved, rather than choosing a deployment or treating a fixture as authority."
+        ]
+      }
     },
     {
       "id": "did11-cr20260305#method-syntax.7",
