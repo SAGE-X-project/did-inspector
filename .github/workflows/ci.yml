@@ -714,15 +714,16 @@ jobs:
           actual = json.loads((root / 'report.json').read_text())
           raw = json.loads((root / 'raw.json').read_text())
           assert actual == inspector.inspect(inspector.load_catalog(), raw, os.environ['GITHUB_SHA'])
-          assert actual['totals'] == {'PASS': 18, 'FAIL': 4, 'ERROR': 0, 'NOT_APPLICABLE': 12, 'NOT_RUN': 17}
+          assert actual['totals'] == {'PASS': 20, 'FAIL': 5, 'ERROR': 0, 'NOT_APPLICABLE': 19, 'NOT_RUN': 7}
           assert actual['runtime_results_merged'] is False
           assert actual['documentary_gate'] == 'FAIL'
           failures = {row['id']: row['level'] for row in actual['statements'] if row['verdict'] == 'FAIL'}
           assert failures == {'did11-cr20260305#security-requirements.1': 'requirement',
               'did11-cr20260305#security-requirements.2': 'requirement',
               'did11-cr20260305#security-requirements.13': 'recommendation',
-              'did11-cr20260305#privacy-requirements.1': 'requirement'}
-          assert actual['review_progress'] == {'judged': 34, 'reviewed_pending': 7, 'unreviewed': 10}
+              'did11-cr20260305#privacy-requirements.1': 'requirement',
+              'res10-crd20261001#vdr-forks.1': 'recommendation'}
+          assert actual['review_progress'] == {'judged': 44, 'reviewed_pending': 7, 'unreviewed': 0}
           PYTHON
           cp docs/sage-method-document-review.json "$RUNNER_TEMP/method-reports/review.json"
           cp "$RUNNER_TEMP/method-coverage.log" "$RUNNER_TEMP/method-reports/coverage.log"
