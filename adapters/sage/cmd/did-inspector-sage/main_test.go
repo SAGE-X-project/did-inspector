@@ -318,7 +318,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		t.Fatal(err)
 	}
 	missingReport, err := report.Decode(missingData)
-	if err != nil || missingReport.Totals.Error != 53 || missingReport.Totals.Pass != 321 || missingReport.Totals.Fail != 10 {
+	if err != nil || missingReport.Totals.Error != 53 || missingReport.Totals.Pass != 324 || missingReport.Totals.Fail != 10 {
 		t.Fatal("missing source accepted", err, missingReport.Totals)
 	}
 	missingErrors := map[string]bool{}
