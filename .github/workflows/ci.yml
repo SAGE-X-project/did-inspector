@@ -672,3 +672,53 @@ jobs:
             ${{ runner.temp }}/sage-observer-binary.sha256
             ${{ runner.temp }}/sage-observer-compiler.txt
           if-no-files-found: error
+
+  method-document:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: SAGE-X-project/sage-spec
+          ref: 06b50e177ccd22bce7d70fd80c2d7f822ae3fd3b
+          path: .method-document-subject
+          persist-credentials: false
+      - name: Test documentary evidence boundaries
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -o pipefail
+          python3 -m trace --count --missing --summary --coverdir "$RUNNER_TEMP/method-coverage" --module unittest discover -s scripts -p test_inspect_method_document.py | tee "$RUNNER_TEMP/method-coverage.log"
+          python3 - <<'PYTHON'
+          import os, re
+          from pathlib import Path
+          log = (Path(os.environ['RUNNER_TEMP']) / 'method-coverage.log').read_text()
+          coverage = re.findall(r'^\s*\d+\s+(\d+)%\s+inspect_method_document\s+', log, re.M)
+          assert len(coverage) == 1 and int(coverage[0]) >= 90, coverage
+          PYTHON
+      - name: Inspect the pinned method document separately
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python3 scripts/inspect_method_document.py --repository .method-document-subject --out "$RUNNER_TEMP/method-reports/report.json" --raw-out "$RUNNER_TEMP/method-reports/raw.json" --inspector-revision "$GITHUB_SHA"
+          python3 - <<'PYTHON'
+          import json, os, sys
+          from pathlib import Path
+          sys.path.insert(0, 'scripts')
+          import inspect_method_document as inspector
+          root = Path(os.environ['RUNNER_TEMP']) / 'method-reports'
+          actual = json.loads((root / 'report.json').read_text())
+          raw = json.loads((root / 'raw.json').read_text())
+          assert actual == inspector.inspect(inspector.load_catalog(), raw, os.environ['GITHUB_SHA'])
+          assert actual['totals'] == {'PASS': 7, 'FAIL': 0, 'ERROR': 0, 'NOT_RUN': 44}
+          assert actual['runtime_results_merged'] is False
+          PYTHON
+          cp docs/sage-method-document-review.json "$RUNNER_TEMP/method-reports/review.json"
+          cp "$RUNNER_TEMP/method-coverage.log" "$RUNNER_TEMP/method-reports/coverage.log"
+      - name: Preserve documentary evidence separately
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: method-document-reports
+          path: ${{ runner.temp }}/method-reports
+          if-no-files-found: error
