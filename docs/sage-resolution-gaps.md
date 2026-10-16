@@ -5,7 +5,7 @@ report from CI run [38353322386](https://github.com/SAGE-X-project/did-inspector
 The machine-readable [inventory](sage-resolution-gaps.json) preserves all 416 historical
 statement ids, normative levels and keywords, exact text digests, evidence paths,
 and a next evidence route for each statement. Pending routes are planning evidence, not verdicts or implementation defects.
-Schema 2 keeps 98 pending entries and 318 entries observed since the baseline;
+Schema 2 keeps 95 pending entries and 321 entries observed since the baseline;
 it never assigns new observations to the historical inspector revision.
 
 The baseline inspector revision is `aefdcf9228ec8dcf85fd4aaf08b6e0511af11c36`.
@@ -24,8 +24,8 @@ recommendation-level statements. Requirement-level extraction also includes
 permissions, definitions and algorithm steps; it does not mean every row is a
 standalone MUST with an independently observable violation.
 
-The current report has 369 cases, 357 requirement and fourteen recommendation passes,
-nine requirement failures, four recommendation failures, four inapplicable statements and 98 unobserved statements. Ten fresh native
+The current report has 371 cases, 360 requirement and fourteen recommendation passes,
+nine requirement failures, four recommendation failures, four inapplicable statements and 95 unobserved statements. Ten fresh native
 result cases add 13 requirement passes and one conditional NOT_APPLICABLE.
 Twenty-four direct metadata serialization cases add four requirement passes.
 Three native error/state cases and ten owned TLS response cases add 22
@@ -53,7 +53,7 @@ strings, adding consumption.1 on these selected values. Root/map insertion order
 is not required. All numeric ranges, forced double properties without a fraction,
 other property contexts and full JSON-LD processing remain unestablished.
 The earlier routing table below describes the 246-clause anchor, not the baseline 416.
-The [current full review](sage-remaining-clause-review.md) records all anchor clauses individually and identifies the 98 still unobserved.
+The [current full review](sage-remaining-clause-review.md) records all anchor clauses individually and identifies the 95 still unobserved.
 
 | Primary next evidence route | Statements | Meaning |
 |---|---:|---|
@@ -441,3 +441,7 @@ Plain-JSON fragment input is explicitly opt-in, actually read/consumed as applic
 Five internal rows remain NOT_RUN with concrete closure conditions: encode.13 and decode.16 retain frozen prose/example conflicts; CID already-resolved-context and RDF-vocabulary clauses plus DID JSON-LD processing precondition still need an applicable standard processing actor and independent semantic evidence. Missing functionality is not blanket NA/NS and unrelated helper success cannot supply PASS. These items are retained in the original order; no core, contract, subject pin or frozen specification repair is included.
 
 Current resolution:369 cases,371 PASS,13 FAIL,4 NOT_APPLICABLE,98 NOT_RUN,zero ERROR. Required436:357 PASS/9 FAIL/2 NA/68 NOT_RUN; recommended50:14 PASS/4 FAIL/2 NA/30 NOT_RUN. Original416 ledger:318 observed(302 PASS/13 FAIL/3 NA)+98 pending. Anchor246:148 execution(139 PASS/7 FAIL/2 NA)+98 pending. Earlier314 observed rows and other242 anchor rows retain content/order; all original ids/text/hashes/baseline and thirteen findings/nine repair causes are preserved. Remaining: internal5,document actor51,choices12,registration15,operational/history10,interpretation4,complete tuple1.
+
+## Residual evidence contracts
+
+See [the 22-clause evidence review](sage-residual-evidence-review.md) for the three fresh selected downstream observations and nineteen retained boundaries. The current totals and preserved repair order are recorded there. Earlier dated checkpoints remain historical.

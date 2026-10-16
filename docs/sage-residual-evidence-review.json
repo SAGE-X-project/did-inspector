@@ -1,0 +1,312 @@
+{
+  "schema": "sage-residual-evidence-review/1",
+  "profile": "did-1.1",
+  "baseline_inspector_revision": "8f2a8a1eef8778e42268becfa709445fb83827ae",
+  "reviewed": 22,
+  "observed": 3,
+  "pending": 19,
+  "groups": {
+    "optional": 12,
+    "interpretation": 4,
+    "internal": 5,
+    "tuple": 1
+  },
+  "clauses": [
+    {
+      "id": "cid10#Multikey.20",
+      "level": "requirement",
+      "text": "The encoding of an BLS12-381 secret key in the G2 group MUST start with the two-byte prefix 0x8030 (the varint expression of 0x130a), followed by the 96-byte compressed public key data.",
+      "text_sha256": "90cf37c185afb0445cadedca6c044b67523e514a5ce6aa8868658f9abd0532d2",
+      "group": "interpretation",
+      "actor": "CID BLS G2 secret codec",
+      "expected_live_verdict": "NOT_RUN",
+      "reason": "Frozen BLS secret G2 row conflicts on varint prefix and public/secret payload description.",
+      "completion_condition": "Resolve the exact frozen publication interpretation before selecting a codec oracle; retain 0x8030 prose versus independent 0x130a varint 0x8a26 and payload ambiguity. No inferred repair in the inspector.",
+      "cases": [],
+      "depends_on": []
+    },
+    {
+      "id": "cid10#Multikey.21",
+      "level": "requirement",
+      "text": "The resulting 98-byte value MUST then be encoded using the base-58-btc alphabet, according to Section 2.4 Multibase, and then prepended with the base-58-btc Multibase header (z).",
+      "text_sha256": "43e1009716854a4062761704f44d5afb4ee5aa4934379731b51a01106844c84b",
+      "group": "interpretation",
+      "actor": "CID BLS G2 secret codec",
+      "expected_live_verdict": "NOT_RUN",
+      "reason": "Final base58 length depends on the unresolved preceding G2 row.",
+      "completion_condition": "Resolve Multikey.20 and independently establish the selected complete payload/prefix/length oracle before judging the resulting encoding.",
+      "cases": [],
+      "depends_on": [
+        "cid10#Multikey.20"
+      ]
+    },
+    {
+      "id": "cid10#base-decode.16",
+      "level": "requirement",
+      "text": "Starting at an offset equal to the number of zeroes in finalBytes plus 1, copy all bytes in decodedBytes, up to decodedSize, starting at offset decodedOffset to finalBytes.",
+      "text_sha256": "fef486d3c68716a02f750a52cc63811d6dcfbb6920fe2f55813449c33acfd31d",
+      "group": "internal",
+      "actor": "selected codec algorithm or alternative implementation",
+      "expected_live_verdict": "NOT_RUN",
+      "reason": "Frozen destination offset zeroes+1 differs from Example 19 and original append placement.",
+      "completion_condition": "Obtain authoritative interpretation or a separately approved complete equivalent-output contract; final size and prefix checks do not establish copy placement.",
+      "cases": [],
+      "depends_on": []
+    },
+    {
+      "id": "cid10#base-encode.13",
+      "level": "requirement",
+      "text": "Set the baseEncodingPosition to size minus length. While the baseEncodingPosition does not equal size and the baseValue[baseEncodingPosition] does not equal 0, increment baseEncodingPosition. This step skips the leading zeros in the base-encoded result.",
+      "text_sha256": "b6d51ec52faabd81267e46eeea10889fb628ea605a0321b8fbeea91456cef351",
+      "group": "internal",
+      "actor": "selected codec algorithm or alternative implementation",
+      "expected_live_verdict": "NOT_RUN",
+      "reason": "Frozen nonzero loop differs from zero-skipping intent, Example 18 and original source.",
+      "completion_condition": "Obtain authoritative interpretation or a separately approved complete equivalent-output contract over the selected domain; isolated source branches, prefix and length observations are insufficient.",
+      "cases": [],
+      "depends_on": []
+    },
+    {
+      "id": "cid10#conformance.1",
+      "level": "requirement",
+      "text": "The key words MAY, MUST, MUST NOT, OPTIONAL, RECOMMENDED, REQUIRED, and SHOULD in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.",
+      "text_sha256": "b3b26e340a7f7fa13bfc9c045f6bd0aec0b608a313d3bfc7b34cccf55f7536dd",
+      "group": "optional",
+      "actor": "permission, definition or stated input/output actor",
+      "expected_live_verdict": "NOT_RUN",
+      "reason": "Normative keyword interpretation definition, not a runtime operation.",
+      "completion_condition": "Keep frozen uppercase BCP14 interpretation and inspect actual obligations separately; no subject PASS from catalog validation.",
+      "cases": [],
+      "depends_on": []
+    },
+    {
+      "id": "cid10#json-ld-context.1",
+      "level": "requirement",
+      "text": "Implementations that perform JSON-LD processing MUST treat the following JSON-LD context URL as already resolved, where the resolved document matches the corresponding hash value below:",
+      "text_sha256": "721d1e47bcb6aea93b5248df3f033717aa0841ea206d31f96dc77074252e79dc",
+      "group": "internal",
+      "actor": "selected JSON-LD consumer or processor",
+      "expected_live_verdict": "NOT_RUN",
+      "reason": "Limited term lookup and matching DID context hashes do not establish CID context routing during JSON-LD processing.",
+      "completion_condition": "Identify an applicable actual JSON-LD processor and original loader with independently pinned CID context bytes, lookup routing and no-fetch evidence. Do not replace its loader to assert subject support.",
+      "cases": [],
+      "depends_on": []
+    },
+    {
+      "id": "cid10#multibase-0.1",
+      "level": "requirement",
+      "text": "Other Multibase encoding values MAY be used, but interoperability is not guaranteed between implementations using such values.",
+      "text_sha256": "b42ff346f8eb6de7bc5b47460f6027597afbc364965c4267a16fc7344ecf96ed",
+      "group": "optional",
+      "actor": "permission, definition or stated input/output actor",
+      "expected_live_verdict": "NOT_RUN",
+      "reason": "No actual original component observation for a selected encoding beyond both normative z and u.",
+      "completion_condition": "Select an independently defined additional encoding with valid public literals and z/u controls, then observe the unmodified original component. Adapter refusal or existing u64 support cannot close this permission.",
+      "cases": [],
+      "depends_on": []
+    },
+    {
+      "id": "cid10#multihash.1",
+      "level": "requirement",
+      "text": "Other Multihash encoding values MAY be used, but interoperability is not guaranteed between implementations.",
+      "text_sha256": "895d15079030d6c46c7447e50762f288d3a40fb8700c36ab50a506631cfc4030",
+      "group": "optional",
+      "actor": "permission, definition or stated input/output actor",
+      "expected_live_verdict": "NOT_RUN",
+      "reason": "No actual original component observation for a selected additional hash encoding.",
+      "completion_condition": "Select an independent additional code and digest length, capture original component encoding/decoding and rejection diagnostics with normative-code controls. Do not infer support from wrapper guards or claim hash computation.",
+      "cases": [],
+      "depends_on": []
+    },
+    {
+      "id": "cid10#services.5",
+      "level": "requirement",
+      "text": "The id property is OPTIONAL.",
+      "text_sha256": "5bc70ff9dd34c8bdf976b9786aaf29869a9ee2b5349ebe8dd91fe3a65dd016e5",
+      "group": "interpretation",
+      "actor": "pinned specification interpretation",
+      "expected_live_verdict": "NOT_RUN",
+      "reason": "Frozen service id OPTIONAL conflicts with the same publication service property contract.",
+      "completion_condition": "Resolve the exact frozen publication interpretation. Diagnostic acceptance of id absence cannot choose a normative rule or replace it with Core 1.0.",
+      "cases": [],
+      "depends_on": []
+    },
+    {
+      "id": "cid10#vocabulary.1",
+      "level": "requirement",
+      "text": "Implementations that use RDF processing and rely on this specification MUST use these URLs.",
+      "text_sha256": "252e6b2470248d09a4b7c13324304432e7c7df1cc6ac301294edcd68ca5ee2a6",
+      "group": "internal",
+      "actor": "selected JSON-LD consumer or processor",
+      "expected_live_verdict": "NOT_RUN",
+      "reason": "JSON names and term lookup do not establish RDF predicate IRIs.",
+      "completion_condition": "Establish processing applicability or observe the actual selected RDF dataset with independently fixed security vocabulary IRIs; engine absence alone is not blanket NA.",
+      "cases": [],
+      "depends_on": []
+    },
+    {
+      "id": "did11-cr20260305#conformance.1",
+      "level": "requirement",
+      "text": "The key words MAY, MUST, MUST NOT, RECOMMENDED, SHOULD, and SHOULD NOT in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.",
+      "text_sha256": "27e6aa7aa6404a7795f2d777b7f825fb4c659d3921e2b8a81c0b7c363632a57f",
+      "group": "optional",
+      "actor": "permission, definition or stated input/output actor",
+      "expected_live_verdict": "NOT_RUN",
+      "reason": "Normative keyword interpretation definition, not a runtime operation.",
+      "completion_condition": "Keep frozen uppercase BCP14 interpretation and inspect actual obligations separately; no subject PASS from catalog validation.",
+      "cases": [],
+      "depends_on": []
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.1",
+      "level": "requirement",
+      "text": "For JSON-LD processing to occur, a @context property MUST be specified according to the rules specified in the JSON-LD 1.1 specification.",
+      "text_sha256": "27539a73288d81eb6ac839a55ea1bdbaa7ee1fa7ccd75d47faf44414fbee267d",
+      "group": "internal",
+      "actor": "selected JSON-LD consumer or processor",
+      "expected_live_verdict": "NOT_RUN",
+      "reason": "Context shape, term grammar and local injection do not establish JSON-LD 1.1 processing rules.",
+      "completion_condition": "Identify actual processing mode/entry point and an independently complete selected context-class oracle with safe positive/negative observations; preserve this pending boundary until then.",
+      "cases": [],
+      "depends_on": []
+    },
+    {
+      "id": "res10-crd20261001#conformance.1",
+      "level": "requirement",
+      "text": "The key words MAY, MUST, MUST NOT, NOT REQUIRED, OPTIONAL, RECOMMENDED, REQUIRED, and SHOULD in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.",
+      "text_sha256": "5fedc41b7cabe2777b5de7bcf09dca752530d267c9f6c53d831152b77dfd1092",
+      "group": "optional",
+      "actor": "permission, definition or stated input/output actor",
+      "expected_live_verdict": "NOT_RUN",
+      "reason": "Normative keyword interpretation definition, not a runtime operation.",
+      "completion_condition": "Keep frozen uppercase BCP14 interpretation and inspect actual obligations separately; no subject PASS from catalog validation.",
+      "cases": [],
+      "depends_on": []
+    },
+    {
+      "id": "res10-crd20261001#dereferencing-algorithm-resource.48",
+      "level": "requirement",
+      "text": "The client MAY be able to dereference the input DID URL in an application-specific way.",
+      "text_sha256": "1ea379343bad237935c316fcfef5ac2bba9b31f32ae3c0a16ccf6ad31cc162a0",
+      "group": "optional",
+      "actor": "permission, definition or stated input/output actor",
+      "expected_live_verdict": "NOT_RUN",
+      "reason": "No selected application-specific client handler is exercised by this batch.",
+      "completion_condition": "Bind actual original dispatcher calls, URL/options, resolved document, explicit controlled application callback and final resource with absent/false controls. A fixture callback is not SAGE method path support.",
+      "cases": [],
+      "depends_on": []
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.12",
+      "level": "requirement",
+      "text": "DID document metadata MAY include a nextVersionId property if the resolved document version is not the latest version of the document.",
+      "text_sha256": "4aaef2745bd24cc8a723a945ea80006fb26c136ff80ac3a85a5258f3ac879e09",
+      "group": "optional",
+      "actor": "actual downstream universal Client",
+      "expected_live_verdict": "PASS",
+      "reason": "Actual downstream Client preserves nextVersionId for a controlled older version 7 with declared latest version 8. Latest and older-without-next-field controls are diagnostic. No method authority or actual Update operation is established.",
+      "completion_condition": "Retain actual downstream call attribution and controlled upstream condition; do not generalize this selected capability to registry history, authority or complete proxy preservation.",
+      "cases": [
+        "did-1.1/sage-resolution/residual-history-metadata"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.18",
+      "level": "requirement",
+      "text": "equivalentId is a much stronger form of equivalence than alsoKnownAs because the equivalence MUST be guaranteed by the governing DID method.",
+      "text_sha256": "e806a4d7a5faa2d89c85f18cf98732c1aa70fed59e76ec0781499821810c2abb",
+      "group": "optional",
+      "actor": "permission, definition or stated input/output actor",
+      "expected_live_verdict": "NOT_RUN",
+      "reason": "Alias shape or fixture equality does not establish a governing method guarantee.",
+      "completion_condition": "Require the selected method equivalence contract and independent authority, identity, document and lifecycle evidence. Documentary alias nonselection cannot become runtime guarantee PASS.",
+      "cases": [],
+      "depends_on": []
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.8",
+      "level": "requirement",
+      "text": "DID document metadata MAY include a nextUpdate property if the resolved document version is not the latest version of the document.",
+      "text_sha256": "65fd83160e68d160d67aee2c64910aaa83c5cd7f006883affd9d9103ad317ce0",
+      "group": "optional",
+      "actor": "actual downstream universal Client",
+      "expected_live_verdict": "PASS",
+      "reason": "Actual downstream Client preserves nextUpdate for a controlled older version 7 with declared latest version 8. Latest and older-without-next-field controls are diagnostic. No actual registry history or Update operation is established.",
+      "completion_condition": "Retain actual downstream call attribution and controlled upstream condition; do not generalize this selected capability to registry history, authority or complete proxy preservation.",
+      "cases": [
+        "did-1.1/sage-resolution/residual-history-metadata"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "res10-crd20261001#metadata-structure.5",
+      "level": "requirement",
+      "text": "Implementations MAY serialize the metadata structure to other data formats.",
+      "text_sha256": "d55be414c3d990548c86fa008e8f1410a13638d083ca8f58c6258f1fbd8c6a85",
+      "group": "optional",
+      "actor": "permission, definition or stated input/output actor",
+      "expected_live_verdict": "NOT_RUN",
+      "reason": "No actual alternate metadata serialization entry point is selected.",
+      "completion_condition": "Identify an actual original alternate-format serializer and independent format contract with normal inputs and refusal diagnostics. Inspector-generated XML/CBOR is not subject evidence.",
+      "cases": [],
+      "depends_on": []
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures-proxied.3",
+      "level": "requirement",
+      "text": "In this process, the \"downstream\" resolver MAY add its own DID resolution metadata, including any metadata about the proxied resolution process itself.",
+      "text_sha256": "8848121e9c9dcb5ec0cc65b34f33de45d5fe7a95acf2175492f97110f712a9f2",
+      "group": "optional",
+      "actor": "actual downstream universal Client",
+      "expected_live_verdict": "PASS",
+      "reason": "Actual downstream Client adds its own contentType metadata when the controlled upstream omits it, through actual DID 1.1 context consumption. Explicit contentType control is retained; upstream metadata preservation is separately failing and is not repaired or asserted here.",
+      "completion_condition": "Retain actual downstream call attribution and controlled upstream condition; do not generalize this selected capability to registry history, authority or complete proxy preservation.",
+      "cases": [
+        "did-1.1/sage-resolution/residual-proxy-metadata"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.32",
+      "level": "requirement",
+      "text": "Return the following result:",
+      "text_sha256": "b024db7f38da8010b14d318dcb5097c000915a735895d0025e53f222cef1bc1e",
+      "group": "tuple",
+      "actor": "native resolver/dereferencer input or output",
+      "expected_live_verdict": "NOT_RUN",
+      "reason": "Complete tuple contract depends on unresolved contentType placement.",
+      "completion_condition": "Resolve resolving-algorithm.35, then bind the complete actual document/resolution-metadata/document-metadata tuple to an independent oracle and field-specific controls. Member PASS cannot close the tuple.",
+      "cases": [],
+      "depends_on": [
+        "res10-crd20261001#resolving-algorithm.35"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.35",
+      "level": "requirement",
+      "text": "didDocumentMetadata: \u00ab[ \"contentType\" \u2192 output DID document media type, ... ]\u00bb",
+      "text_sha256": "1d289368688312969b235b0a30272de657a9c53b6403802d2471ce717a8c4a92",
+      "group": "interpretation",
+      "actor": "resolution metadata interpretation",
+      "expected_live_verdict": "NOT_RUN",
+      "reason": "Frozen algorithm places contentType in document metadata, unlike the general resolution metadata contract.",
+      "completion_condition": "Resolve the selected publication placement contract. Capture both original metadata maps without moving or injecting fields to manufacture PASS.",
+      "cases": [],
+      "depends_on": []
+    },
+    {
+      "id": "res10-crd20261001#versioning.1",
+      "level": "requirement",
+      "text": "DID document metadata MAY contain a versionId property that changes with each Update operation that is performed on a DID document.",
+      "text_sha256": "a5608f88893a836a4dedf0eecd33d485a448808a50bc325c64f7e67df363f150",
+      "group": "optional",
+      "actor": "permission, definition or stated input/output actor",
+      "expected_live_verdict": "NOT_RUN",
+      "reason": "Controlled version 7/8 replies are not actual document Update operations.",
+      "completion_condition": "Observe actual authorized Updates and independently bind their document metadata version changes, history and authority. Do not copy downstream metadata preservation PASS.",
+      "cases": [],
+      "depends_on": []
+    }
+  ]
+}

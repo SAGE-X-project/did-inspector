@@ -76,7 +76,7 @@
   ],
   "categories": {
     "additional-data-or-feature": 7,
-    "document-or-applicability-review": 79,
+    "document-or-applicability-review": 76,
     "additional-observer-operation": 5,
     "operational-or-authority-evidence": 4,
     "existing-observation": 3
@@ -1066,17 +1066,6 @@
       "generic_scope": "checked"
     },
     {
-      "id": "res10-crd20261001#did-document-metadata.12",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "4aaef2745bd24cc8a723a945ea80006fb26c136ff80ac3a85a5258f3ac879e09",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
-      "generic_scope": "not-checkable"
-    },
-    {
       "id": "res10-crd20261001#did-document-metadata.16",
       "level": "requirement",
       "keywords": [
@@ -1152,17 +1141,6 @@
       "baseline_verdict": "NOT_RUN",
       "route": "history-proof-service",
       "generic_scope": "checked"
-    },
-    {
-      "id": "res10-crd20261001#did-document-metadata.8",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "65fd83160e68d160d67aee2c64910aaa83c5cd7f006883affd9d9103ad317ce0",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
-      "generic_scope": "not-checkable"
     },
     {
       "id": "res10-crd20261001#did-parameters.4",
@@ -1306,17 +1284,6 @@
       "text_sha256": "2945c5c577e7bf8646421340c94e56c40bbe54b4f4dd1daed25f3191d9cb74d9",
       "baseline_verdict": "NOT_RUN",
       "route": "specification",
-      "generic_scope": "not-checkable"
-    },
-    {
-      "id": "res10-crd20261001#resolver-architectures-proxied.3",
-      "level": "requirement",
-      "keywords": [
-        "MAY"
-      ],
-      "text_sha256": "8848121e9c9dcb5ec0cc65b34f33de45d5fe7a95acf2175492f97110f712a9f2",
-      "baseline_verdict": "NOT_RUN",
-      "route": "permission-definition",
       "generic_scope": "not-checkable"
     },
     {
@@ -6821,26 +6788,80 @@
       "case_prefix": "/fragment-plain-",
       "observed_in_scope": "sage-resolution",
       "reason": "Actual plain-JSON Core1.0 media branch, unique absolute method identifier and same pre-authorization candidate. No JSON-LD media or operational authority claim."
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.12",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "4aaef2745bd24cc8a723a945ea80006fb26c136ff80ac3a85a5258f3ac879e09",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/residual-history-metadata"
+      ],
+      "case_prefix": "/residual-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Actual downstream Client preserves nextVersionId for a controlled older version 7 with declared latest version 8. Latest and older-without-next-field controls are diagnostic. No method authority or actual Update operation is established."
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.8",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "65fd83160e68d160d67aee2c64910aaa83c5cd7f006883affd9d9103ad317ce0",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/residual-history-metadata"
+      ],
+      "case_prefix": "/residual-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Actual downstream Client preserves nextUpdate for a controlled older version 7 with declared latest version 8. Latest and older-without-next-field controls are diagnostic. No actual registry history or Update operation is established."
+    },
+    {
+      "id": "res10-crd20261001#resolver-architectures-proxied.3",
+      "level": "requirement",
+      "keywords": [
+        "MAY"
+      ],
+      "text_sha256": "8848121e9c9dcb5ec0cc65b34f33de45d5fe7a95acf2175492f97110f712a9f2",
+      "baseline_verdict": "NOT_RUN",
+      "route": "permission-definition",
+      "generic_scope": "not-checkable",
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/residual-proxy-metadata"
+      ],
+      "case_prefix": "/residual-",
+      "observed_in_scope": "sage-resolution",
+      "reason": "Actual downstream Client adds its own contentType metadata when the controlled upstream omits it, through actual DID 1.1 context consumption. Explicit contentType control is retained; upstream metadata preservation is separately failing and is not repaired or asserted here."
     }
   ],
   "expected_live_totals": {
     "statements": 486,
-    "PASS": 371,
+    "PASS": 374,
     "FAIL": 13,
     "NOT_SUPPORTED": 0,
     "NOT_APPLICABLE": 4,
     "ERROR": 0,
-    "NOT_RUN": 98
+    "NOT_RUN": 95
   },
   "expected_live_totals_by_level": {
     "requirement": {
       "statements": 436,
-      "PASS": 357,
+      "PASS": 360,
       "FAIL": 9,
       "NOT_SUPPORTED": 0,
       "NOT_APPLICABLE": 2,
       "ERROR": 0,
-      "NOT_RUN": 68
+      "NOT_RUN": 65
     },
     "recommendation": {
       "statements": 50,
@@ -6852,5 +6873,5 @@
       "NOT_RUN": 30
     }
   },
-  "expected_live_cases": 369
+  "expected_live_cases": 371
 }

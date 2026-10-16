@@ -2,7 +2,7 @@
 
 All 246 clauses unobserved at `1efc9f0` are reviewed individually in the [machine-readable audit](sage-remaining-clause-review.json). The earlier [353-clause review](sage-resolution-batch-review.json) and all 416 historical ledger entries remain intact. Review coverage does not establish execution coverage or standards conformance.
 
-This grouped implementation connects 130 distinct selected clauses across 67 cases, including twenty-eight fixed-source codec obligations and five separately judged fragment obligations. Of the 246 anchor clauses, 148 now have execution verdicts and 98 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
+This grouped implementation connects 130 distinct selected clauses across 67 cases, including twenty-eight fixed-source codec obligations and five separately judged fragment obligations. Of the 246 anchor clauses, 151 now have execution verdicts and 95 remain NOT_RUN with individual actors, applicable evidence, reasons and follow-up conditions.
 
 | Review disposition | Clauses |
 |---|---:|
@@ -242,3 +242,7 @@ Plain-JSON fragment input is explicitly opt-in, actually read/consumed as applic
 Five internal rows remain NOT_RUN with concrete closure conditions: encode.13 and decode.16 retain frozen prose/example conflicts; CID already-resolved-context and RDF-vocabulary clauses plus DID JSON-LD processing precondition still need an applicable standard processing actor and independent semantic evidence. Missing functionality is not blanket NA/NS and unrelated helper success cannot supply PASS. These items are retained in the original order; no core, contract, subject pin or frozen specification repair is included.
 
 Current resolution:369 cases,371 PASS,13 FAIL,4 NOT_APPLICABLE,98 NOT_RUN,zero ERROR. Required436:357 PASS/9 FAIL/2 NA/68 NOT_RUN; recommended50:14 PASS/4 FAIL/2 NA/30 NOT_RUN. Original416 ledger:318 observed(302 PASS/13 FAIL/3 NA)+98 pending. Anchor246:148 execution(139 PASS/7 FAIL/2 NA)+98 pending. Earlier314 observed rows and other242 anchor rows retain content/order; all original ids/text/hashes/baseline and thirteen findings/nine repair causes are preserved. Remaining: internal5,document actor51,choices12,registration15,operational/history10,interpretation4,complete tuple1.
+
+## Residual evidence contracts
+
+[Twenty-two related clauses](sage-residual-evidence-review.md) now have explicit per-clause completion contracts. Three are observed through actual selected downstream Client branches. Nineteen retain NOT_RUN; neither definitions nor unresolved publication conflicts are fabricated execution passes. Existing actor and repair order is unchanged.
