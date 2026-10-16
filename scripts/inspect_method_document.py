@@ -20,17 +20,27 @@ REVIEWED = {"did11-cr20260305#" + s for s in (
     "method-syntax.8", "method-syntax.10", "method-syntax.11", "method-syntax.12",
     "method-operations.2", "method-operations.4", "method-operations.5", "media-types.1",
     "security-requirements.3", "security-requirements.4", "security-requirements.7",
-    "security-requirements.8", "security-requirements.9", "security-requirements.11")}
+    "security-requirements.8", "security-requirements.9", "security-requirements.11")} | {"res10-crd20261001#" + s for s in (
+    "method-architectures.1",
+    "method-architectures.2",)}
 # These cases review absent author activities, not implementation capabilities.
 NOT_APPLICABLE = {"cid10#Multikey.24"} | {"did11-cr20260305#" + s for s in (
     "extensibility.2", "extensibility.3", "extensibility.4",
     "production-and-consumption.1", "production-and-consumption.2",
     "production-and-consumption.3", "production-and-consumption.4",
     "production-and-consumption.5", "production-and-consumption.6",
-    "security-requirements.12", "security-requirements.14")}
+    "security-requirements.12", "security-requirements.14")} | {"res10-crd20261001#" + s for s in (
+    "dereferencing-algorithm-resource.45",
+    "dereferencing-algorithm-resource.46",
+    "dereferencing-algorithm-resource.47",
+    "did-document-metadata.17",
+    "did-document-metadata.22",
+    "errors.6",
+    "method-architectures.3",)}
 FAILURES = {"did11-cr20260305#" + s for s in (
     "security-requirements.1", "security-requirements.2",
-    "security-requirements.13", "privacy-requirements.1")}
+    "security-requirements.13", "privacy-requirements.1")} | {"res10-crd20261001#" + s for s in (
+    "vdr-forks.1",)}
 DEFERRED = {"did11-cr20260305#" + s for s in (
     "method-operations.1", "method-operations.3", "method-syntax.4", "method-syntax.5",
     "security-requirements.5", "security-requirements.6", "security-requirements.10")}

@@ -1956,128 +1956,458 @@
       "id": "res10-crd20261001#dereferencing-algorithm-resource.45",
       "text": "The applicable DID method MAY specify how to dereference the DID path and/or DID query of the input DID URL.",
       "text_sha256": "47be1ab5eb643fe3dc5abda17c517decfe6165f4ee0896a8e2bc2d0e5b22d27a",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "The method rejects DID paths and queries; this MAY does not mandate support.",
+      "review_basis": "The method explicitly rejects DID paths and queries in its closed grammar; it selects key fragments only. It does not exercise this MAY to define method-specific path/query dereferencing. The absent author activity is NOT_APPLICABLE, not a PASS for implementing or rejecting arbitrary DID URLs, not NOT_SUPPORTED for a runtime adapter, and not an exemption from the generic dereferencing algorithm. The earlier method-syntax .10/.11 judgments concern the different MAY to restrict syntax.",
       "follow_up": [
         "spec/06-did-sage.md \u00a71",
         "spec/10-resolution.md \u00a74"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/09-registry.md",
+          "start_line": 1,
+          "end_line": 333,
+          "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        },
+        {
+          "path": "profiles/a2a-1.0-binding.md",
+          "start_line": 1,
+          "end_line": 187,
+          "sha256": "c4c7f263ea3e9ff122277976f0bebf4357c418956256c33fbbb28570b8a67b4d"
+        }
+      ],
+      "review_verdict": "NOT_APPLICABLE"
     },
     {
       "id": "res10-crd20261001#dereferencing-algorithm-resource.46",
       "text": "An extension specification MAY specify how to dereference the DID path of the input DID URL.",
       "text_sha256": "ef3a7426057ffec23550f0fe14ff0ee1909c1584d56a52ef363e9dbb5c744944",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "No selected extension specification defining DID-path dereferencing was identified in this method snapshot.",
+      "review_basis": "No selected SAGE extension specifies DID-path dereferencing. The method rejects paths; its key fragments, A2A discovery vocabulary and application execution bindings do not define a path-dereferencing extension. This optional author activity is NOT_APPLICABLE, not a PASS for absent functionality or a requirement to implement every extension.",
       "follow_up": [
         "spec/06-did-sage.md \u00a71",
         "spec/10-resolution.md \u00a74"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/09-registry.md",
+          "start_line": 1,
+          "end_line": 333,
+          "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        },
+        {
+          "path": "profiles/a2a-1.0-binding.md",
+          "start_line": 1,
+          "end_line": 187,
+          "sha256": "c4c7f263ea3e9ff122277976f0bebf4357c418956256c33fbbb28570b8a67b4d"
+        }
+      ],
+      "review_verdict": "NOT_APPLICABLE"
     },
     {
       "id": "res10-crd20261001#dereferencing-algorithm-resource.47",
       "text": "An extension specification MAY specify how to dereference the DID query of the input DID URL.",
       "text_sha256": "ce2719c1839bf463fdd97e90785c9f2bc7419635177cd55b71da363f4a8356a9",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "No selected extension specification defining DID-query dereferencing was identified in this method snapshot.",
+      "review_basis": "No selected SAGE extension specifies DID-query dereferencing. The method rejects queries; application transport parameters and A2A or service metadata do not select this extension activity. This optional author activity is NOT_APPLICABLE and cannot certify generic query resolution or runtime input refusal.",
       "follow_up": [
         "spec/06-did-sage.md \u00a71",
         "spec/10-resolution.md \u00a74"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/09-registry.md",
+          "start_line": 1,
+          "end_line": 333,
+          "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        },
+        {
+          "path": "profiles/a2a-1.0-binding.md",
+          "start_line": 1,
+          "end_line": 187,
+          "sha256": "c4c7f263ea3e9ff122277976f0bebf4357c418956256c33fbbb28570b8a67b4d"
+        }
+      ],
+      "review_verdict": "NOT_APPLICABLE"
     },
     {
       "id": "res10-crd20261001#did-document-metadata.17",
       "text": "A conforming DID method specification MUST guarantee that each equivalentId value is logically equivalent to the id property value.",
       "text_sha256": "219feba40019f2480a03ffd37b2fd955c25e2ba21891fa0f08e5f0f031f44a38",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "equivalentId aliases are explicitly not emitted and do not affect authority. This author condition is separate from generic library acceptance of a literal metadata field.",
+      "review_basis": "The method explicitly emits no equivalentId values and treats received aliases as having no authority effect. Its one canonical identifier grammar is not an equivalentId assertion. The logical-equivalence guarantee is conditional on using that optional metadata; the absent alias-author activity is NOT_APPLICABLE. This does not attest equivalence of any literal alias accepted by a generic library, nor prove actual identifier uniqueness or cross-method linkage.",
       "follow_up": [
         "spec/10-resolution.md \u00a7\u00a73,9"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/09-registry.md",
+          "start_line": 1,
+          "end_line": 333,
+          "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        },
+        {
+          "path": "profiles/a2a-1.0-binding.md",
+          "start_line": 1,
+          "end_line": 187,
+          "sha256": "c4c7f263ea3e9ff122277976f0bebf4357c418956256c33fbbb28570b8a67b4d"
+        }
+      ],
+      "review_verdict": "NOT_APPLICABLE"
     },
     {
       "id": "res10-crd20261001#did-document-metadata.22",
       "text": "A conforming DID method specification MUST guarantee that the canonicalId value is logically equivalent to the id property value.",
       "text_sha256": "116fb5d219aa0e222dff57a354c2408b18956a2ad4822b45c20dedbc0c99bcdd",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "canonicalId aliases are explicitly not emitted and do not affect authority. This author condition is separate from generic library acceptance of a literal metadata field.",
+      "review_basis": "The method explicitly emits no canonicalId value and gives received alias members no authority effect. A normal-form document id is not the optional canonicalId metadata property. Its absent alias-author activity is NOT_APPLICABLE; arbitrary canonicalId values, cross-method linkage and generated-identifier uniqueness are not thereby certified.",
       "follow_up": [
         "spec/10-resolution.md \u00a7\u00a73,9"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/09-registry.md",
+          "start_line": 1,
+          "end_line": 333,
+          "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        },
+        {
+          "path": "profiles/a2a-1.0-binding.md",
+          "start_line": 1,
+          "end_line": 187,
+          "sha256": "c4c7f263ea3e9ff122277976f0bebf4357c418956256c33fbbb28570b8a67b4d"
+        }
+      ],
+      "review_verdict": "NOT_APPLICABLE"
     },
     {
       "id": "res10-crd20261001#errors.6",
       "text": "A specification that defines an error type not defined in this section MAY declare that it refines one of the error types defined in this section.",
       "text_sha256": "7c7d832b97e5cde7df1c8feda757fbff5c084e7ff8f3496ced69367fdd864580",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "SAGE-local errors and DID-interface mappings with sageCode are defined. A mapping between interfaces is not automatically a refines declaration in a custom DID error object.",
+      "review_basis": "SAGE defines its own RFC 9457 problem types and maps them to standard DID Resolution error URLs with a sageCode extension at the DID interface. It does not select the optional declaration that a newly defined DID error type refines a standard DID error. Mapping two interfaces is not automatically that declaration. This unexercised MAY is NOT_APPLICABLE, not a generic error-mapping or HTTP conformance PASS.",
       "follow_up": [
         "spec/10-resolution.md \u00a7\u00a75,10"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/09-registry.md",
+          "start_line": 1,
+          "end_line": 333,
+          "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        },
+        {
+          "path": "profiles/a2a-1.0-binding.md",
+          "start_line": 1,
+          "end_line": 187,
+          "sha256": "c4c7f263ea3e9ff122277976f0bebf4357c418956256c33fbbb28570b8a67b4d"
+        }
+      ],
+      "review_verdict": "NOT_APPLICABLE"
     },
     {
       "id": "res10-crd20261001#method-architectures.1",
       "text": "DID methods MAY allow multiple ways of implementing their \"Resolve\" operation, and SHOULD offer guidance regarding at least one way to implement a verifiable resolution.",
       "text_sha256": "e9485a18127e4f84a8fc6032532d372e103a63517ef10ecbb8fc7f5f28cd56a2",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "The method gives guidance for fresh verified records through self-validation or explicitly trusted authenticated resolvers; TLS alone is explicitly not blockchain proof.",
+      "review_basis": "The method offers guidance for verifiable resolution using a self-validated node or an explicitly trusted authenticated resolver: configured source identity, chain/network and readiness policy, a fresh consistent finalized observation, rollback rejection, record validation and deterministic projection. The frozen Resolution section 8.1 itself recognizes trusted local access or a trusted remote server over a secure channel; it does not require every method to invent a light client or portable proof. This is a bounded documentary PASS for the stated MAY/SHOULD guidance, not actual deployment, complete source binding, consensus safety or permission to trust an arbitrary TLS endpoint. Existing method-operations .1/.3 and security .5/.6/.10 remain unresolved. The guidance occurs in the frozen publication's informative implementation-details note; its historical recommendation level is retained and is not promoted to a new conformance MUST.",
       "follow_up": [
         "spec/09-registry.md \u00a7\u00a74-6,8",
         "spec/10-resolution.md \u00a7\u00a72,3,9"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/01-crypto.md",
+          "start_line": 1,
+          "end_line": 86,
+          "sha256": "35463137986ae692593cb12a3654085270f3337acea3aa3d7efcdde8cea78a0a"
+        },
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/09-registry.md",
+          "start_line": 1,
+          "end_line": 333,
+          "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        }
+      ]
     },
     {
       "id": "res10-crd20261001#method-architectures.2",
       "text": "If a DID method uses such proofs, it MUST specify in its DID method specification how they are used for verification of the correctness of the result of a \"Resolve\" operation.",
       "text_sha256": "73e288ef4f386634774de96f20e19fbf350cc5be79557921fa3c186723554af9",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "The selected method relies on authenticated observations and key-registration PoP, not a specified portable proof of completeness/freshness of every Resolve result. If such proofs are selected, their verification specification is still needed.",
+      "review_basis": "The selected method uses signing-key PoP and KEM endorsements during Resolve validation. Registry section 4 specifies the exact domain-separated challenge fields, signature algorithm, signer relationship, signing-key-first order and registry/resolver verification; crypto chapter 01 fixes the suites, and resolution section 2 checks those proofs before projecting the record. This explains how the selected proofs contribute to validating the result and satisfies the conditional documentary MUST. The clause does not require a proof of the entire result or a portable proof scheme. PoP does not authorize mutations, prove controller authority, current state, freshness or completeness; KEM endorsement does not prove possession of the KEM private key. Those properties still depend on separately configured authoritative observation and unresolved source/credential contracts. This is not a runtime cryptographic-validity PASS or proof-placement judgment.",
       "follow_up": [
         "spec/09-registry.md \u00a7\u00a74-6,8",
         "spec/10-resolution.md \u00a7\u00a72,3,9"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/01-crypto.md",
+          "start_line": 1,
+          "end_line": 86,
+          "sha256": "35463137986ae692593cb12a3654085270f3337acea3aa3d7efcdde8cea78a0a"
+        },
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/09-registry.md",
+          "start_line": 1,
+          "end_line": 333,
+          "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        }
+      ]
     },
     {
       "id": "res10-crd20261001#method-architectures.3",
       "text": "A DID method MAY also include such proofs in the DID document itself, or in a proof property of the DID document metadata.",
       "text_sha256": "2945c5c577e7bf8646421340c94e56c40bbe54b4f4dd1daed25f3191d9cb74d9",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "The selected DID document/metadata shape does not include a portable Resolve proof. Structural proof literals in library tests do not select such a method mechanism.",
+      "review_basis": "The selected DID projections and metadata do not include a method-specific Resolve-result proof, either in the document or a proof property. Registration key PoP and KEM endorsements are checked before projection but are not embedded as such result proofs; Cards and message signatures protect different objects. This optional proof-placement author activity is NOT_APPLICABLE. It neither denies the separate proof-use discussion in .2 nor mandates portable proofs or their placement.",
       "follow_up": [
         "spec/09-registry.md \u00a7\u00a74-6,8",
         "spec/10-resolution.md \u00a7\u00a72,3,9"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/09-registry.md",
+          "start_line": 1,
+          "end_line": 333,
+          "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        },
+        {
+          "path": "profiles/a2a-1.0-binding.md",
+          "start_line": 1,
+          "end_line": 187,
+          "sha256": "c4c7f263ea3e9ff122277976f0bebf4357c418956256c33fbbb28570b8a67b4d"
+        }
+      ],
+      "review_verdict": "NOT_APPLICABLE"
     },
     {
       "id": "res10-crd20261001#vdr-forks.1",
       "text": "Therefore, the specification of a DID method that uses a distributed system as a VDR SHOULD specify a means by which the VDR they are using can be disambiguated from such forks.",
       "text_sha256": "74cf2546e1e2f76440a15d6d761a7b2849bbf631808057cb71f50e37447e5b74",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "Chain/network/source identity and finalized-block readiness are required. A fork with the same chain ID, address and code still needs an explicit disambiguation rule; do not assume those fields alone resolve the recommendation.",
+      "review_basis": "The eip155 method selects a distributed VDR but does not specify a method-level means of distinguishing or rejecting competing forks that retain the same chain ID, registry address and deployed code. Registry identity assertions, configuring a future network/readiness binding, a returned finalized-block hash and monotonic version checks do not explain which branch is authoritative in that case or justify omitting the recommendation. This is a recommendation-level documentary FAIL, not a required runtime defect or a live fork result. It does not require a particular genesis/checkpoint format, deployed node, operational authority or successful transaction. The missing branch-disambiguation semantics and any repair retain the approved later specification/core review order.",
       "follow_up": [
         "spec/06-did-sage.md \u00a72",
         "spec/09-registry.md \u00a7\u00a75,6"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "profiles/a2a-1.0-binding.md",
+          "start_line": 1,
+          "end_line": 187,
+          "sha256": "c4c7f263ea3e9ff122277976f0bebf4357c418956256c33fbbb28570b8a67b4d"
+        },
+        {
+          "path": "profiles/agent-mcp-security.md",
+          "start_line": 1,
+          "end_line": 392,
+          "sha256": "0538acbdcfc143d93fb7d99a2a2c09c068fc354388c4e37c7489204305b1913f"
+        },
+        {
+          "path": "profiles/non-http-mcp-security.md",
+          "start_line": 1,
+          "end_line": 835,
+          "sha256": "9c7851d095208c975792565266e481c120ef754ae8eb9529c62b53bf12a1d4fa"
+        },
+        {
+          "path": "spec/00-overview.md",
+          "start_line": 1,
+          "end_line": 161,
+          "sha256": "8655cddfa23979cb12432f83831e58ee2b6e240b5f1f92b84594d7084eaeb3f0"
+        },
+        {
+          "path": "spec/01-crypto.md",
+          "start_line": 1,
+          "end_line": 86,
+          "sha256": "35463137986ae692593cb12a3654085270f3337acea3aa3d7efcdde8cea78a0a"
+        },
+        {
+          "path": "spec/02-jcs.md",
+          "start_line": 1,
+          "end_line": 66,
+          "sha256": "4d4b202c8ddb5eb00c47a8e8056813a589834526e2174c023fb005a484eb3d94"
+        },
+        {
+          "path": "spec/03-rfc9421.md",
+          "start_line": 1,
+          "end_line": 155,
+          "sha256": "b28d567cbf3f7a6a256c73fd35696865b5c0ebdc814de57624b90df082d49407"
+        },
+        {
+          "path": "spec/04-hpke.md",
+          "start_line": 1,
+          "end_line": 152,
+          "sha256": "1420818451ce8363a16e391647dbaca8ec2f06efa56b6507027a4e17f399fdd6"
+        },
+        {
+          "path": "spec/05-session.md",
+          "start_line": 1,
+          "end_line": 132,
+          "sha256": "8a45b8bdd3b6bfc399a94c420b2161b8f16db5c6b29ed2e85584a6282b17cce5"
+        },
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/07-a2a.md",
+          "start_line": 1,
+          "end_line": 77,
+          "sha256": "5ded622fdaf67342d5c6b4327da0f5787bfe9df2dc58b233cdfb500ffc96b042"
+        },
+        {
+          "path": "spec/08-transport.md",
+          "start_line": 1,
+          "end_line": 154,
+          "sha256": "e11e8200d67ee913fcd1a47781c6d31a353556c9dfd4e4ce0a88dbe97e10bba6"
+        },
+        {
+          "path": "spec/09-registry.md",
+          "start_line": 1,
+          "end_line": 333,
+          "sha256": "e8572cc037fd0fc84e678be436cc47854c5fd700aacbc141937d79ee03ea6017"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        },
+        {
+          "path": "spec/11-registries.md",
+          "start_line": 1,
+          "end_line": 202,
+          "sha256": "aaf8e68a1af957fd079ff56d89636b792930e8e0202b3d09a084164005589513"
+        },
+        {
+          "path": "charter.md",
+          "start_line": 1,
+          "end_line": 237,
+          "sha256": "0c22ccfe49011c09967ccab993135b663599e2f05da4040383f1f24542cef2cd"
+        }
+      ],
+      "review_verdict": "FAIL"
     }
   ]
 }
