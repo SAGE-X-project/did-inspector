@@ -191,3 +191,13 @@ Completion condition: Observe actual authorized Updates and independently bind t
 The historical 416-clause ledger retains every original identity. Expected runtime: 371 cases, 374 PASS, 13 FAIL, four NOT_APPLICABLE, 95 NOT_RUN and zero ERROR. Requirements: 360 PASS, nine FAIL, two NOT_APPLICABLE, 65 NOT_RUN; recommendations: fourteen PASS, four FAIL, two NOT_APPLICABLE, thirty NOT_RUN. Anchor 246: 151 execution verdicts (142 PASS, seven FAIL, two NOT_APPLICABLE), 95 pending. Remaining runtime evidence is method-document 51, registration 15, authority/history ten, optional nine, internal five, interpretation four and complete tuple one.
 
 The separately scoped author-document report remains 23 PASS, nineteen NOT_APPLICABLE, seven FAIL and two NOT_RUN; it does not execute or close the runtime method-document 51. Thirteen runtime failures still map to nine repair causes deferred to the approved core-repair stage. The seven documentary findings remain separate. Source/module/specification pins and prior internal-boundary contracts are unchanged.
+
+## Selected extension follow-up
+
+The following original-runtime observations supersede only these three earlier NOT_RUN rows. The 22-clause review now has six observed and sixteen pending clauses.
+
+- `cid10#multibase-0.1`: NOT_SUPPORTED. Six actual original component calls retain z/u normal controls and explicit encode/decode refusal of the independently selected f/base16 fixture. NOT_SUPPORTED is restricted to this selected additional encoding, not every extension or a mandatory conformance failure.
+- `cid10#multihash.1`: NOT_SUPPORTED. Ten actual original component calls retain all four CID codes and explicit encode/decode refusal of the independently selected 0x13/64-octet fixture. Opaque digest bytes test encoding, not hash computation or cryptographic security.
+- `res10-crd20261001#dereferencing-algorithm-resource.48`: PASS. Four actual original dereferencer calls bind a controlled application callback input/return and final resource, with unhandled, absent configuration and no-path controls. This is the explicit extension-point capability, not SAGE method path support, authority or arbitrary application correctness.
+
+See [extension observation contract](sage-extension-observations.md) for immutable supplemental definitions, exact selected fixtures and actual-call boundaries. The original three Client observations remain unchanged.

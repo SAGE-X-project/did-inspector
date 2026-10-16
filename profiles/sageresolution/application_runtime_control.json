@@ -1,0 +1,327 @@
+[
+  {
+    "application_handler": [
+      {
+        "input": {
+          "operation": "github.com/sage-x-project/did-go/dereferencer.ResourceHandler",
+          "role": "explicit controlled application callback; not SAGE method support",
+          "url": {
+            "input": "did:example:resources/public-resource",
+            "primary": "did:example:resources/public-resource",
+            "fragment": "",
+            "has_fragment": false,
+            "path": "/public-resource",
+            "query": "",
+            "has_query": false
+          },
+          "options": "e30=",
+          "model": "eyJpZCI6ImRpZDpleGFtcGxlOnJlc291cmNlcyJ9",
+          "entries": "eyJAY29udGV4dCI6Imh0dHBzOi8vd3d3LnczLm9yZy9ucy9kaWQvdjEuMSJ9",
+          "metadata": "eyJjb250ZW50VHlwZSI6ImFwcGxpY2F0aW9uL2RpZCJ9"
+        },
+        "handled": true,
+        "returned": {
+          "metadata": {
+            "contentType": "application/json"
+          },
+          "content_metadata": {
+            "versionId": "application-1"
+          },
+          "has_content": true,
+          "returned_id": "did:example:resources/public-resource",
+          "content_kind": "map",
+          "snapshot": {
+            "id": "did:example:resources/public-resource",
+            "label": "public application resource"
+          },
+          "raw": "eyJpZCI6ImRpZDpleGFtcGxlOnJlc291cmNlcy9wdWJsaWMtcmVzb3VyY2UiLCJsYWJlbCI6InB1YmxpYyBhcHBsaWNhdGlvbiByZXNvdXJjZSJ9"
+        }
+      }
+    ],
+    "consumption": [
+      {
+        "operation": "github.com/sage-x-project/did-go/consumer.Consumer.Consume",
+        "input": "eyJAY29udGV4dCI6Imh0dHBzOi8vd3d3LnczLm9yZy9ucy9kaWQvdjEuMSIsImlkIjoiZGlkOmV4YW1wbGU6cmVzb3VyY2VzIn0=",
+        "media_type": "application/did",
+        "require": "unknown",
+        "expected": "unknown",
+        "strict": false,
+        "version": "1.1",
+        "json_ld": true,
+        "dropped_terms": null,
+        "model": "eyJpZCI6ImRpZDpleGFtcGxlOnJlc291cmNlcyJ9",
+        "entries": "eyJAY29udGV4dCI6Imh0dHBzOi8vd3d3LnczLm9yZy9ucy9kaWQvdjEuMSJ9"
+      }
+    ],
+    "role": "root resolver/dereferencer library with literal example driver; not SAGE Source",
+    "request": {
+      "application_handler": "handled",
+      "document": {
+        "data": "eyJAY29udGV4dCI6Imh0dHBzOi8vd3d3LnczLm9yZy9ucy9kaWQvdjEuMSIsImlkIjoiZGlkOmV4YW1wbGU6cmVzb3VyY2VzIn0=",
+        "media_type": "application/did"
+      },
+      "request": {
+        "function": "dereference",
+        "input": "did:example:resources/public-resource"
+      }
+    },
+    "operation": "github.com/sage-x-project/did-go/dereferencer.Dereferencer.Dereference",
+    "options": "e30=",
+    "resolve_inputs": [
+      "did:example:resources"
+    ],
+    "resolve_options": [
+      "e30="
+    ],
+    "driver_inputs": [
+      "did:example:resources"
+    ],
+    "driver_results": [
+      "eyJEYXRhIjoiZXlKQVkyOXVkR1Y0ZENJNkltaDBkSEJ6T2k4dmQzZDNMbmN6TG05eVp5OXVjeTlrYVdRdmRqRXVNU0lzSW1sa0lqb2laR2xrT21WNFlXMXdiR1U2Y21WemIzVnlZMlZ6SW4wPSIsIkNvbnRlbnRUeXBlIjoiYXBwbGljYXRpb24vZGlkIiwiTWV0YWRhdGEiOnt9fQ=="
+    ],
+    "driver_options": [
+      "eyJWZXJzaW9uSUQiOiIiLCJWZXJzaW9uVGltZSI6bnVsbCwiTWVkaWFUeXBlIjoiIiwiTm9DYWNoZSI6ZmFsc2V9"
+    ],
+    "data_model": "eyJpZCI6ImRpZDpleGFtcGxlOnJlc291cmNlcyJ9",
+    "entries": "eyJAY29udGV4dCI6Imh0dHBzOi8vd3d3LnczLm9yZy9ucy9kaWQvdjEuMSJ9",
+    "result": {
+      "metadata": {
+        "contentType": "application/json"
+      },
+      "content_metadata": {
+        "versionId": "application-1"
+      },
+      "has_content": true,
+      "returned_id": "did:example:resources/public-resource",
+      "content_kind": "map",
+      "snapshot": {
+        "id": "did:example:resources/public-resource",
+        "label": "public application resource"
+      },
+      "raw": "eyJpZCI6ImRpZDpleGFtcGxlOnJlc291cmNlcy9wdWJsaWMtcmVzb3VyY2UiLCJsYWJlbCI6InB1YmxpYyBhcHBsaWNhdGlvbiByZXNvdXJjZSJ9"
+    },
+    "resolved_data_model": "eyJpZCI6ImRpZDpleGFtcGxlOnJlc291cmNlcyJ9",
+    "resolved_entries": "eyJAY29udGV4dCI6Imh0dHBzOi8vd3d3LnczLm9yZy9ucy9kaWQvdjEuMSJ9",
+    "resolved_metadata": "eyJjb250ZW50VHlwZSI6ImFwcGxpY2F0aW9uL2RpZCJ9"
+  },
+  {
+    "application_handler": [
+      {
+        "input": {
+          "operation": "github.com/sage-x-project/did-go/dereferencer.ResourceHandler",
+          "role": "explicit controlled application callback; not SAGE method support",
+          "url": {
+            "input": "did:example:resources/public-resource",
+            "primary": "did:example:resources/public-resource",
+            "fragment": "",
+            "has_fragment": false,
+            "path": "/public-resource",
+            "query": "",
+            "has_query": false
+          },
+          "options": "e30=",
+          "model": "eyJpZCI6ImRpZDpleGFtcGxlOnJlc291cmNlcyJ9",
+          "entries": "eyJAY29udGV4dCI6Imh0dHBzOi8vd3d3LnczLm9yZy9ucy9kaWQvdjEuMSJ9",
+          "metadata": "eyJjb250ZW50VHlwZSI6ImFwcGxpY2F0aW9uL2RpZCJ9"
+        },
+        "handled": false,
+        "returned": {
+          "metadata": {},
+          "content_metadata": {},
+          "has_content": false,
+          "raw": "bnVsbA=="
+        }
+      }
+    ],
+    "consumption": [
+      {
+        "operation": "github.com/sage-x-project/did-go/consumer.Consumer.Consume",
+        "input": "eyJAY29udGV4dCI6Imh0dHBzOi8vd3d3LnczLm9yZy9ucy9kaWQvdjEuMSIsImlkIjoiZGlkOmV4YW1wbGU6cmVzb3VyY2VzIn0=",
+        "media_type": "application/did",
+        "require": "unknown",
+        "expected": "unknown",
+        "strict": false,
+        "version": "1.1",
+        "json_ld": true,
+        "dropped_terms": null,
+        "model": "eyJpZCI6ImRpZDpleGFtcGxlOnJlc291cmNlcyJ9",
+        "entries": "eyJAY29udGV4dCI6Imh0dHBzOi8vd3d3LnczLm9yZy9ucy9kaWQvdjEuMSJ9"
+      }
+    ],
+    "role": "root resolver/dereferencer library with literal example driver; not SAGE Source",
+    "request": {
+      "application_handler": "unhandled",
+      "document": {
+        "data": "eyJAY29udGV4dCI6Imh0dHBzOi8vd3d3LnczLm9yZy9ucy9kaWQvdjEuMSIsImlkIjoiZGlkOmV4YW1wbGU6cmVzb3VyY2VzIn0=",
+        "media_type": "application/did"
+      },
+      "request": {
+        "function": "dereference",
+        "input": "did:example:resources/public-resource"
+      }
+    },
+    "operation": "github.com/sage-x-project/did-go/dereferencer.Dereferencer.Dereference",
+    "options": "e30=",
+    "resolve_inputs": [
+      "did:example:resources"
+    ],
+    "resolve_options": [
+      "e30="
+    ],
+    "driver_inputs": [
+      "did:example:resources"
+    ],
+    "driver_results": [
+      "eyJEYXRhIjoiZXlKQVkyOXVkR1Y0ZENJNkltaDBkSEJ6T2k4dmQzZDNMbmN6TG05eVp5OXVjeTlrYVdRdmRqRXVNU0lzSW1sa0lqb2laR2xrT21WNFlXMXdiR1U2Y21WemIzVnlZMlZ6SW4wPSIsIkNvbnRlbnRUeXBlIjoiYXBwbGljYXRpb24vZGlkIiwiTWV0YWRhdGEiOnt9fQ=="
+    ],
+    "driver_options": [
+      "eyJWZXJzaW9uSUQiOiIiLCJWZXJzaW9uVGltZSI6bnVsbCwiTWVkaWFUeXBlIjoiIiwiTm9DYWNoZSI6ZmFsc2V9"
+    ],
+    "data_model": "eyJpZCI6ImRpZDpleGFtcGxlOnJlc291cmNlcyJ9",
+    "entries": "eyJAY29udGV4dCI6Imh0dHBzOi8vd3d3LnczLm9yZy9ucy9kaWQvdjEuMSJ9",
+    "result": {
+      "metadata": {
+        "error": {
+          "type": "https://www.w3.org/ns/did#NOT_FOUND",
+          "title": "Not found",
+          "status": 404,
+          "detail": "no dereferencing is defined for the path or query of did:example:resources/public-resource"
+        }
+      },
+      "content_metadata": {},
+      "has_content": false,
+      "raw": "bnVsbA=="
+    },
+    "resolved_data_model": "eyJpZCI6ImRpZDpleGFtcGxlOnJlc291cmNlcyJ9",
+    "resolved_entries": "eyJAY29udGV4dCI6Imh0dHBzOi8vd3d3LnczLm9yZy9ucy9kaWQvdjEuMSJ9",
+    "resolved_metadata": "eyJjb250ZW50VHlwZSI6ImFwcGxpY2F0aW9uL2RpZCJ9"
+  },
+  {
+    "consumption": [
+      {
+        "operation": "github.com/sage-x-project/did-go/consumer.Consumer.Consume",
+        "input": "eyJAY29udGV4dCI6Imh0dHBzOi8vd3d3LnczLm9yZy9ucy9kaWQvdjEuMSIsImlkIjoiZGlkOmV4YW1wbGU6cmVzb3VyY2VzIn0=",
+        "media_type": "application/did",
+        "require": "unknown",
+        "expected": "unknown",
+        "strict": false,
+        "version": "1.1",
+        "json_ld": true,
+        "dropped_terms": null,
+        "model": "eyJpZCI6ImRpZDpleGFtcGxlOnJlc291cmNlcyJ9",
+        "entries": "eyJAY29udGV4dCI6Imh0dHBzOi8vd3d3LnczLm9yZy9ucy9kaWQvdjEuMSJ9"
+      }
+    ],
+    "role": "root resolver/dereferencer library with literal example driver; not SAGE Source",
+    "request": {
+      "document": {
+        "data": "eyJAY29udGV4dCI6Imh0dHBzOi8vd3d3LnczLm9yZy9ucy9kaWQvdjEuMSIsImlkIjoiZGlkOmV4YW1wbGU6cmVzb3VyY2VzIn0=",
+        "media_type": "application/did"
+      },
+      "request": {
+        "function": "dereference",
+        "input": "did:example:resources/public-resource"
+      }
+    },
+    "operation": "github.com/sage-x-project/did-go/dereferencer.Dereferencer.Dereference",
+    "options": "e30=",
+    "resolve_inputs": [
+      "did:example:resources"
+    ],
+    "resolve_options": [
+      "e30="
+    ],
+    "driver_inputs": [
+      "did:example:resources"
+    ],
+    "driver_results": [
+      "eyJEYXRhIjoiZXlKQVkyOXVkR1Y0ZENJNkltaDBkSEJ6T2k4dmQzZDNMbmN6TG05eVp5OXVjeTlrYVdRdmRqRXVNU0lzSW1sa0lqb2laR2xrT21WNFlXMXdiR1U2Y21WemIzVnlZMlZ6SW4wPSIsIkNvbnRlbnRUeXBlIjoiYXBwbGljYXRpb24vZGlkIiwiTWV0YWRhdGEiOnt9fQ=="
+    ],
+    "driver_options": [
+      "eyJWZXJzaW9uSUQiOiIiLCJWZXJzaW9uVGltZSI6bnVsbCwiTWVkaWFUeXBlIjoiIiwiTm9DYWNoZSI6ZmFsc2V9"
+    ],
+    "data_model": "eyJpZCI6ImRpZDpleGFtcGxlOnJlc291cmNlcyJ9",
+    "entries": "eyJAY29udGV4dCI6Imh0dHBzOi8vd3d3LnczLm9yZy9ucy9kaWQvdjEuMSJ9",
+    "result": {
+      "metadata": {
+        "error": {
+          "type": "https://www.w3.org/ns/did#NOT_FOUND",
+          "title": "Not found",
+          "status": 404,
+          "detail": "no dereferencing is defined for the path or query of did:example:resources/public-resource"
+        }
+      },
+      "content_metadata": {},
+      "has_content": false,
+      "raw": "bnVsbA=="
+    },
+    "resolved_data_model": "eyJpZCI6ImRpZDpleGFtcGxlOnJlc291cmNlcyJ9",
+    "resolved_entries": "eyJAY29udGV4dCI6Imh0dHBzOi8vd3d3LnczLm9yZy9ucy9kaWQvdjEuMSJ9",
+    "resolved_metadata": "eyJjb250ZW50VHlwZSI6ImFwcGxpY2F0aW9uL2RpZCJ9"
+  },
+  {
+    "consumption": [
+      {
+        "operation": "github.com/sage-x-project/did-go/consumer.Consumer.Consume",
+        "input": "eyJAY29udGV4dCI6Imh0dHBzOi8vd3d3LnczLm9yZy9ucy9kaWQvdjEuMSIsImlkIjoiZGlkOmV4YW1wbGU6cmVzb3VyY2VzIn0=",
+        "media_type": "application/did",
+        "require": "unknown",
+        "expected": "unknown",
+        "strict": false,
+        "version": "1.1",
+        "json_ld": true,
+        "dropped_terms": null,
+        "model": "eyJpZCI6ImRpZDpleGFtcGxlOnJlc291cmNlcyJ9",
+        "entries": "eyJAY29udGV4dCI6Imh0dHBzOi8vd3d3LnczLm9yZy9ucy9kaWQvdjEuMSJ9"
+      }
+    ],
+    "role": "root resolver/dereferencer library with literal example driver; not SAGE Source",
+    "request": {
+      "application_handler": "handled",
+      "document": {
+        "data": "eyJAY29udGV4dCI6Imh0dHBzOi8vd3d3LnczLm9yZy9ucy9kaWQvdjEuMSIsImlkIjoiZGlkOmV4YW1wbGU6cmVzb3VyY2VzIn0=",
+        "media_type": "application/did"
+      },
+      "request": {
+        "function": "dereference",
+        "input": "did:example:resources"
+      }
+    },
+    "operation": "github.com/sage-x-project/did-go/dereferencer.Dereferencer.Dereference",
+    "options": "e30=",
+    "resolve_inputs": [
+      "did:example:resources"
+    ],
+    "resolve_options": [
+      "e30="
+    ],
+    "driver_inputs": [
+      "did:example:resources"
+    ],
+    "driver_results": [
+      "eyJEYXRhIjoiZXlKQVkyOXVkR1Y0ZENJNkltaDBkSEJ6T2k4dmQzZDNMbmN6TG05eVp5OXVjeTlrYVdRdmRqRXVNU0lzSW1sa0lqb2laR2xrT21WNFlXMXdiR1U2Y21WemIzVnlZMlZ6SW4wPSIsIkNvbnRlbnRUeXBlIjoiYXBwbGljYXRpb24vZGlkIiwiTWV0YWRhdGEiOnt9fQ=="
+    ],
+    "driver_options": [
+      "eyJWZXJzaW9uSUQiOiIiLCJWZXJzaW9uVGltZSI6bnVsbCwiTWVkaWFUeXBlIjoiIiwiTm9DYWNoZSI6ZmFsc2V9"
+    ],
+    "data_model": "eyJpZCI6ImRpZDpleGFtcGxlOnJlc291cmNlcyJ9",
+    "entries": "eyJAY29udGV4dCI6Imh0dHBzOi8vd3d3LnczLm9yZy9ucy9kaWQvdjEuMSJ9",
+    "result": {
+      "metadata": {
+        "contentType": "application/did"
+      },
+      "content_metadata": {},
+      "has_content": true,
+      "returned_id": "did:example:resources",
+      "content_kind": "document",
+      "snapshot": {
+        "@context": "https://www.w3.org/ns/did/v1.1",
+        "id": "did:example:resources"
+      },
+      "raw": "eyJAY29udGV4dCI6Imh0dHBzOi8vd3d3LnczLm9yZy9ucy9kaWQvdjEuMSIsImlkIjoiZGlkOmV4YW1wbGU6cmVzb3VyY2VzIn0="
+    },
+    "resolved_data_model": "eyJpZCI6ImRpZDpleGFtcGxlOnJlc291cmNlcyJ9",
+    "resolved_entries": "eyJAY29udGV4dCI6Imh0dHBzOi8vd3d3LnczLm9yZy9ucy9kaWQvdjEuMSJ9",
+    "resolved_metadata": "eyJjb250ZW50VHlwZSI6ImFwcGxpY2F0aW9uL2RpZCJ9"
+  }
+]

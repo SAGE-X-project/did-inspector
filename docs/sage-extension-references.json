@@ -1,0 +1,63 @@
+{
+  "multibase": {
+    "repository": "multiformats/multibase",
+    "commit": "72573756adb8514d1741b692fe14ebea7f1c01da",
+    "path": "multibase.csv",
+    "blob": "d7a3bcbdd458b123f19a492b555cff4296410692",
+    "sha256": "3954556dc4c3945f4bae17089a72ed94f1ece1934ecbf2426265694edfa76a05",
+    "url": "https://github.com/multiformats/multibase/blob/72573756adb8514d1741b692fe14ebea7f1c01da/multibase.csv",
+    "rows": [
+      {
+        "Unicode": "U+0066",
+        "character": "f",
+        "encoding": "base16",
+        "description": "Hexadecimal (lowercase)",
+        "status": "final"
+      },
+      {
+        "Unicode": "U+007a",
+        "character": "z",
+        "encoding": "base58btc",
+        "description": "Base58 Bitcoin",
+        "status": "final"
+      },
+      {
+        "Unicode": "U+0075",
+        "character": "u",
+        "encoding": "base64url",
+        "description": "RFC4648 no padding",
+        "status": "final"
+      }
+    ]
+  },
+  "multicodec": {
+    "repository": "multiformats/multicodec",
+    "commit": "8d9e9b3b3d376ee86179fc6c866f6e56f74fa167",
+    "path": "table.csv",
+    "blob": "27ade1e0c62166fc0a1cc542d53d7946f0320ad7",
+    "sha256": "4076b8593831d04f9724ecdc76996de9ecaf6cdd018d2a067d2deecac8a9b196",
+    "url": "https://github.com/multiformats/multicodec/blob/8d9e9b3b3d376ee86179fc6c866f6e56f74fa167/table.csv",
+    "rows": [
+      {
+        "name": "sha2-256",
+        "tag": "multihash",
+        "code": "0x12",
+        "status": "permanent",
+        "description": ""
+      },
+      {
+        "name": "sha2-512",
+        "tag": "multihash",
+        "code": "0x13",
+        "status": "permanent",
+        "description": ""
+      }
+    ]
+  },
+  "length_definition": {
+    "url": "https://www.rfc-editor.org/rfc/rfc6234.html#section-8.1",
+    "section": "8.1",
+    "constant": "SHA512HashSize",
+    "octets": 64
+  }
+}

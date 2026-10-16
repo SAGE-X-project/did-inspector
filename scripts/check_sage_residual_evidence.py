@@ -15,6 +15,8 @@ DOCUMENT = {"@context": CONTEXT, "id": DID}
 HISTORY = ["res10-crd20261001#did-document-metadata.8", "res10-crd20261001#did-document-metadata.12"]
 PROXY = "res10-crd20261001#resolver-architectures-proxied.3"
 SELECTED = set(HISTORY + [PROXY])
+FOLLOW_UP = {'cid10#multibase-0.1', 'cid10#multihash.1', 'res10-crd20261001#dereferencing-algorithm-resource.48'}
+UNSUPPORTED = {'cid10#multibase-0.1', 'cid10#multihash.1'}
 GROUPS = {"optional": 12, "interpretation": 4, "internal": 5, "tuple": 1}
 
 
@@ -42,20 +44,20 @@ def verify_catalog(report, repo=REPO):
     statements = {}
     for publication in ["cid10", "did11-cr20260305", "res10-crd20261001"]:
         statements.update({r["id"]: r for r in json.loads((repo / "statements" / (publication + ".json")).read_text())["statements"]})
-    selected = {r["id"]: r for r in anchor["clauses"] if r["review_disposition"] in ["construction-or-permission", "normative-conflict", "needs-internal-observer", "needs-complete-contract"] and (r["expected_live_verdict"] == "NOT_RUN" or r["id"] in SELECTED)}
+    selected = {r["id"]: r for r in anchor["clauses"] if r["review_disposition"] in ["construction-or-permission", "normative-conflict", "needs-internal-observer", "needs-complete-contract"] and (r["expected_live_verdict"] == "NOT_RUN" or r["id"] in SELECTED | FOLLOW_UP)}
     assert review["schema"] == "sage-residual-evidence-review/1" and review["profile"] == "did-1.1"
     assert review["baseline_inspector_revision"] == "8f2a8a1eef8778e42268becfa709445fb83827ae"
     rows = review["clauses"]
     assert len(rows) == len({r["id"] for r in rows}) == review["reviewed"] == 22
     assert {r["id"] for r in rows} == set(selected)
     assert collections.Counter(r["group"] for r in rows) == review["groups"] == GROUPS
-    assert review["observed"] == 3 and review["pending"] == 19
+    assert review["observed"] == 6 and review["pending"] == 16
     for row in rows:
         old, original = selected[row["id"]], statements[row["id"]]
         assert row["text"] == original["text"] and row["level"] == original["level"]
         assert row["text_sha256"] == hashlib.sha256(original["text"].encode()).hexdigest()
         assert row["actor"] and row["reason"] and row["completion_condition"]
-        verdict = "PASS" if row["id"] in SELECTED else "NOT_RUN"
+        verdict = "NOT_SUPPORTED" if row["id"] in UNSUPPORTED else "PASS" if row["id"] in SELECTED | FOLLOW_UP else "NOT_RUN"
         assert row["expected_live_verdict"] == old["expected_live_verdict"] == live[row["id"]]["verdict"] == verdict
         assert row["cases"] == old["cases"]
         if verdict == "NOT_RUN":
@@ -126,7 +128,7 @@ def main():
     args = parser.parse_args()
     raw = json.loads((args.reports / "resolution-did-1.1-raw.json").read_text())
     report = json.loads((args.reports / "resolution-did-1.1.json").read_text())
-    print("Verified", len(verify_residual(raw, report)), "selected downstream observations and nineteen retained evidence boundaries")
+    print("Verified", len(verify_residual(raw, report)), "selected downstream observations and sixteen retained evidence boundaries")
 
 
 if __name__ == "__main__":
