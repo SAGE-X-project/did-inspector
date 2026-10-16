@@ -7,11 +7,13 @@ resolution/projection reports or historical runtime pending ledgers.
 
 The historical 51-clause documentary inventory preserves the exact W3C
 text, text digest, level and follow-up references. Independent semantic
-review has 34 judged entries: eighteen PASS, twelve NOT_APPLICABLE and four
-FAIL. Seven entries have reviewed but unresolved prerequisites, and ten
-have not yet received a semantic review case. The report therefore has
-seventeen NOT_RUN. Its `review_progress` separates these states. The four
-FAIL are documentary gaps, not the runtime actor's thirteen failures.
+review has 44 judged entries: twenty PASS, nineteen NOT_APPLICABLE and five
+FAIL. All 51 entries have received semantic review, but seven retain
+unresolved prerequisites and therefore NOT_RUN. Its `review_progress`
+separates judged entries from reviewed prerequisites and reports zero
+unreviewed entries. The five FAIL are documentary gaps, separate from the
+runtime actor's thirteen failures. Semantic review coverage is not whole
+method conformance or completion of all prerequisite evidence.
 
 The original eleven PASS cover method-syntax .1/.2/.3/.7/.8/.10/.11/.12
 and method-operations .2/.4/.5. Their evidence and judgments are unchanged.
@@ -102,10 +104,10 @@ from a label in SAGE prose. The existing runtime actor remains separate.
 The applicability cases use the same full sixteen-file corpus and cited
 ranges as positive judgments. The fixed reviewed ID set and explicit
 `review_verdict` reject unreviewed applicability claims. Missing, modified or
-malformed evidence turns all 34 judged cases, including all applicability
+malformed evidence turns all 44 judged cases, including all applicability
 judgments, into ERROR: it cannot produce NOT_APPLICABLE without its reviewed corpus.
 
-The next fifteen cases review DID 1.1 security-requirements .1 through .14
+The security review covers fifteen cases for DID 1.1 security-requirements .1 through .14
 and privacy-requirements .1 against the complete fixed author corpus.
 They use the actual [RFC 3552](https://www.rfc-editor.org/rfc/rfc3552.txt)
 sections 4.6 and 5 and [RFC 6973](https://www.rfc-editor.org/rfc/rfc6973.txt)
@@ -122,7 +124,7 @@ requirements. The RFCs are not inserted into SAGE's sixteen subject blobs.
 | Security .12/.14 | NOT_APPLICABLE to absent document-signature and new DID authentication-service-type definitions. PoP, Card/message signatures and an A2A discovery service are not those activities. |
 | Security .5/.6/.10 | NOT_RUN with individual actor, reason and completion evidence: remaining principal/credential, whole-method read-authenticity and protected-data bindings are not closed. No deployment, ABI or operational authority is invented. |
 
-Four reviewed documentary failures remain visible:
+Four security and privacy documentary failures remain visible:
 
 | Clause | Level | Missing discussion |
 |---|---|---|
@@ -139,12 +141,36 @@ include those three and the four earlier unresolved entries. Reviewing
 fifteen clauses does not mean all fifteen passed or all gaps were repaired.
 Specification repairs retain their approved later order.
 
+The final ten previously unreviewed entries concern resolution author roles.
+Their independent review adds two bounded PASS, seven NOT_APPLICABLE and one
+recommendation-level FAIL. It preserves the other 41 rows, including all
+seven unresolved prerequisites and four earlier documentary failures.
+
+| Clauses | Documentary judgment |
+|---|---|
+| Resolution resource .45/.46/.47 | NOT_APPLICABLE: SAGE rejects paths and queries and selects no method or extension mechanism for dereferencing them. This is a different MAY from the earlier permitted syntax restrictions. Absent functionality is not a runtime PASS or NOT_SUPPORTED. |
+| Document metadata .17/.22 | NOT_APPLICABLE: no `equivalentId` or `canonicalId` is emitted or given authority. Normalizing the document `id` does not select optional alias metadata. No literal alias equivalence, global uniqueness or cross-method linkage is certified. |
+| Errors .6 | NOT_APPLICABLE: SAGE error mapping and `sageCode` do not declare that a new DID error type `refines` a standard error. The optional declaration is not selected. |
+| Method architectures .1 | PASS within the frozen informative implementation-details note and its recorded recommendation level, for documented self-validation or an explicitly trusted authenticated resolver, fresh consistent observations and record projection. The frozen publication recognizes trusted secure-channel access as verifiable guidance; it does not mandate a new light-client topology or deployment. |
+| Method architectures .2 | PASS for specifying how selected signing-key PoP and KEM endorsements are verified before projection: exact challenge, suites, signer relationships and verification order. The text does not require a portable or whole-result proof. PoP alone proves no mutation authority, current state, freshness or completeness; KEM endorsement proves no KEM private-key possession. Separate source and credential prerequisites remain unresolved. |
+| Method architectures .3 | NOT_APPLICABLE: neither projection nor metadata selects placement of a Resolve-result proof. The proof-use judgment in .2 does not imply embedding those proofs in the public document. |
+| VDR forks .1 | Recommendation-level FAIL: chain ID, registry address, deployed code, future network/readiness configuration, returned block hash and version monotonicity do not specify how competing forks sharing those identifiers are distinguished or rejected. No particular genesis/checkpoint format, deployment or operational trust decision is imposed. |
+
+The new fork finding is a fifth documentary gap. Its specification repair
+retains the approved later review order and does not add a runtime failure
+or change the existing thirteen failures and nine core repair causes.
+All ten entries have now been reviewed; seven other author prerequisites
+remain NOT_RUN with their existing individual completion evidence. Optional
+non-selection and reviewed prerequisites must not be exchanged to improve
+the totals. The full sixteen-file capture remains necessary for every new
+PASS, applicability judgment and failure, including the fork discussion.
+
 `documentary_gate` is FAIL for this reviewed corpus. The CLI exits 1 for a
 normative FAIL or evidence ERROR, and 0 only when neither is reported. Its
 PASS gate alone would not establish unobserved clauses or whole conformance.
-Unavailable evidence yields 34 ERROR and 17 NOT_RUN, with no normative FAIL
+Unavailable evidence yields 44 ERROR and 7 NOT_RUN, with no normative FAIL
 or applicability conclusion. CI expects exit 1 and independently requires
-the exact four FAIL (three requirements, one recommendation), zero ERROR,
+the exact five FAIL (three requirements, two recommendations), zero ERROR,
 complete source/replay identity and separate runtime results. A green CI
 means the inspector reported those known gaps correctly; it does not mean
 the method document conforms or that known failures were suppressed.
@@ -154,7 +180,7 @@ arbitrary prose. The inspector's review JSON supplies independent reasoning
 and full cited chapter ranges, not subject-authored verdicts. The executable
 checks all sixteen Git blobs against their byte lengths and SHA-256 values,
 every cited range, and the independently frozen W3C publication and clause
-identity. Only that exact reviewed corpus can reproduce these 34 author
+identity. Only that exact reviewed corpus can reproduce these 44 author
 judgments. Different, missing, extra, malformed or modified evidence yields
 ERROR, not a normative FAIL. It cannot confer PASS on an unreviewed revision.
 It must not be presented as a general-purpose documentation conformance
@@ -180,5 +206,5 @@ revision, exercises unit and real Git runtime checks and publishes
 The current runtime resolution remains 369 cases, 371 PASS, 13 FAIL,
 4 NOT_APPLICABLE and 98 NOT_RUN. Its thirteen failures and nine repair causes
 remain in the approved later core/contract repair work. Five internal
-clauses, ten unreviewed author entries, seven author prerequisites, the four
-documentary repairs, operational bindings and deferred registration are not silently completed by this tool.
+clauses, seven author prerequisites, five documentary repairs, operational
+bindings and deferred registration remain incomplete.
