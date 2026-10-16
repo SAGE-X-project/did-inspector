@@ -57,7 +57,7 @@ func judgeResidual(kind string, values []ClientResult, input string) []core.Obse
 	}
 	for i, v := range values {
 		u, e := url.Parse(v.Endpoint)
-		if e != nil || u.Scheme != "https" || net.ParseIP(u.Hostname()) == nil || !net.ParseIP(u.Hostname()).IsLoopback() || u.Port() == "" || u.Path != "/1.0/identifiers/" || u.RawQuery != "" || u.Fragment != "" || u.User != nil {
+		if e != nil || u.Scheme != "https" || net.ParseIP(u.Hostname()) == nil || !net.ParseIP(u.Hostname()).IsLoopback() || u.Port() == "" || u.Path != "/1.0/identifiers/" || u.RawQuery != "" || u.ForceQuery || u.Fragment != "" || u.User != nil {
 			return obs
 		}
 		if !reflect.DeepEqual(v.Request, qs[i]) || v.Operation != "github.com/sage-x-project/did-go/resolution/universal.Client.resolve" || v.ServerRole != "controlled client response fixture; not SAGE server output" || !v.ServerTLS || v.ServerCalls != 1 || len(v.Wire) != 1 || len(v.Native) != 0 || len(v.Consumer) != 1 {

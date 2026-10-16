@@ -360,9 +360,9 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		want, cases := 33, 16
 		if profile == "did-1.1" {
-			want, cases = 371, 369
+			want, cases = 374, 371
 		}
-		if profile == "did-1.1" && (r.Totals.NotApplicable != 4 || r.Totals.NotRun != 98) {
+		if profile == "did-1.1" && (r.Totals.NotApplicable != 4 || r.Totals.NotRun != 95) {
 			t.Fatal("native URL conditional evidence", r.Totals)
 		}
 		if profile == "did-1.1" && (r.Totals.Fail != 13 || r.TotalsByLevel.Recommendation.Fail != 4 || r.TotalsByLevel.Requirement.Fail != 9) {
@@ -381,7 +381,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 		}
 		for _, c := range raw.Cases {
 			for _, o := range c.Observations {
-				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") || strings.Contains(c.Case, "/remaining-") || strings.Contains(c.Case, "/choice-") || strings.Contains(c.Case, "/representation-options-") || strings.Contains(c.Case, "/resource-choice-") || strings.Contains(c.Case, "/integer-source-") || strings.Contains(c.Case, "/fragment-source-") || strings.Contains(c.Case, "/fragment-initial-") || strings.Contains(c.Case, "/fragment-search-") || strings.Contains(c.Case, "/fragment-relationship-") || strings.Contains(c.Case, "/service-source-") || strings.Contains(c.Case, "/selection-source-") || strings.Contains(c.Case, "/dispatch-source-") || strings.Contains(c.Case, "/expansion-source-") || strings.Contains(c.Case, "/url-source-") || strings.Contains(c.Case, "/item-expansion-") || strings.Contains(c.Case, "/multihash-component-") || strings.Contains(c.Case, "/returned-minimal-") || strings.Contains(c.Case, "/capacity-u64-") || strings.Contains(c.Case, "/context-injection-") || strings.Contains(c.Case, "/fragment-plain-") {
+				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") || strings.Contains(c.Case, "/remaining-") || strings.Contains(c.Case, "/choice-") || strings.Contains(c.Case, "/representation-options-") || strings.Contains(c.Case, "/resource-choice-") || strings.Contains(c.Case, "/integer-source-") || strings.Contains(c.Case, "/fragment-source-") || strings.Contains(c.Case, "/fragment-initial-") || strings.Contains(c.Case, "/fragment-search-") || strings.Contains(c.Case, "/fragment-relationship-") || strings.Contains(c.Case, "/service-source-") || strings.Contains(c.Case, "/selection-source-") || strings.Contains(c.Case, "/dispatch-source-") || strings.Contains(c.Case, "/expansion-source-") || strings.Contains(c.Case, "/url-source-") || strings.Contains(c.Case, "/item-expansion-") || strings.Contains(c.Case, "/multihash-component-") || strings.Contains(c.Case, "/returned-minimal-") || strings.Contains(c.Case, "/capacity-u64-") || strings.Contains(c.Case, "/context-injection-") || strings.Contains(c.Case, "/fragment-plain-") || strings.Contains(c.Case, "/residual-") {
 					if o.Input == "" || o.Observed == "" {
 						t.Fatal("lost policy evidence")
 					}
@@ -404,7 +404,7 @@ func TestResolutionScopeAndNativeCLI(t *testing.T) {
 				} else if !strings.Contains(o.Input, `"record"`) {
 					t.Fatal("lost input evidence")
 				}
-				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") || strings.Contains(c.Case, "/remaining-") || strings.Contains(c.Case, "/choice-") || strings.Contains(c.Case, "/representation-options-") || strings.Contains(c.Case, "/resource-choice-") || strings.Contains(c.Case, "/integer-source-") || strings.Contains(c.Case, "/fragment-source-") || strings.Contains(c.Case, "/fragment-initial-") || strings.Contains(c.Case, "/fragment-search-") || strings.Contains(c.Case, "/fragment-relationship-") || strings.Contains(c.Case, "/service-source-") || strings.Contains(c.Case, "/selection-source-") || strings.Contains(c.Case, "/dispatch-source-") || strings.Contains(c.Case, "/expansion-source-") || strings.Contains(c.Case, "/url-source-") || strings.Contains(c.Case, "/item-expansion-") || strings.Contains(c.Case, "/multihash-component-") || strings.Contains(c.Case, "/returned-minimal-") || strings.Contains(c.Case, "/capacity-u64-") || strings.Contains(c.Case, "/context-injection-") || strings.Contains(c.Case, "/fragment-plain-") {
+				if strings.Contains(c.Case, "/key-policy-") || strings.Contains(c.Case, "/optional-") || strings.Contains(c.Case, "/remaining-") || strings.Contains(c.Case, "/choice-") || strings.Contains(c.Case, "/representation-options-") || strings.Contains(c.Case, "/resource-choice-") || strings.Contains(c.Case, "/integer-source-") || strings.Contains(c.Case, "/fragment-source-") || strings.Contains(c.Case, "/fragment-initial-") || strings.Contains(c.Case, "/fragment-search-") || strings.Contains(c.Case, "/fragment-relationship-") || strings.Contains(c.Case, "/service-source-") || strings.Contains(c.Case, "/selection-source-") || strings.Contains(c.Case, "/dispatch-source-") || strings.Contains(c.Case, "/expansion-source-") || strings.Contains(c.Case, "/url-source-") || strings.Contains(c.Case, "/item-expansion-") || strings.Contains(c.Case, "/multihash-component-") || strings.Contains(c.Case, "/returned-minimal-") || strings.Contains(c.Case, "/capacity-u64-") || strings.Contains(c.Case, "/context-injection-") || strings.Contains(c.Case, "/fragment-plain-") || strings.Contains(c.Case, "/residual-") {
 					if o.Input == "" || o.Observed == "" {
 						t.Fatal("lost policy evidence")
 					}
