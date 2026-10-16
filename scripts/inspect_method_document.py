@@ -18,7 +18,13 @@ REPOSITORY = "SAGE-X-project/sage-spec"
 REVIEWED = {"did11-cr20260305#" + s for s in (
     "method-syntax.1", "method-syntax.2", "method-syntax.3", "method-syntax.7",
     "method-syntax.8", "method-syntax.10", "method-syntax.11", "method-syntax.12",
-    "method-operations.2", "method-operations.4", "method-operations.5")}
+    "method-operations.2", "method-operations.4", "method-operations.5", "media-types.1")}
+# These cases review absent author activities, not implementation capabilities.
+NOT_APPLICABLE = {"cid10#Multikey.24"} | {"did11-cr20260305#" + s for s in (
+    "extensibility.2", "extensibility.3", "extensibility.4",
+    "production-and-consumption.1", "production-and-consumption.2",
+    "production-and-consumption.3", "production-and-consumption.4",
+    "production-and-consumption.5", "production-and-consumption.6")}
 DEFERRED = {"did11-cr20260305#" + s for s in (
     "method-operations.1", "method-operations.3", "method-syntax.4", "method-syntax.5")}
 
@@ -52,6 +58,7 @@ def load_catalog(root=ROOT):
     if len(paths) != 16 or len(set(paths)) != 16:
         raise EvidenceError("source manifest drift")
     reviewed = set()
+    not_applicable = set()
     for row in c["rows"]:
         original = originals[row["id"]]
         if row["text"] != original["text"] or row["text_sha256"] != digest(original["text"].encode()):
@@ -70,11 +77,17 @@ def load_catalog(root=ROOT):
                 raise EvidenceError("unresolved review boundary missing or changed")
         elif "pending_review" in row:
             raise EvidenceError("unreviewed pending assessment")
+        if "review_verdict" in row:
+            if (row["id"] not in NOT_APPLICABLE or row["status"] != "reviewed-document" or
+                    row["review_verdict"] != "NOT_APPLICABLE"):
+                raise EvidenceError("unreviewed applicability judgment")
+            not_applicable.add(row["id"])
         if row["status"] == "reviewed-document":
-            reviewed.add(row["id"])
+            if row["id"] not in NOT_APPLICABLE:
+                reviewed.add(row["id"])
             if not row["evidence"]:
                 raise EvidenceError("review evidence missing")
-    if reviewed != REVIEWED:
+    if reviewed != REVIEWED or not_applicable != NOT_APPLICABLE:
         raise EvidenceError("unreviewed judgment added or removed")
     return c
 
@@ -145,8 +158,8 @@ def inspect(catalog, capture_data, observer):
         issue = str(error)
     rows = []
     for source in catalog["rows"]:
-        selected = source["id"] in REVIEWED
-        verdict = ("ERROR" if issue else "PASS") if selected else "NOT_RUN"
+        selected = source["id"] in REVIEWED | NOT_APPLICABLE
+        verdict = ("ERROR" if issue else source.get("review_verdict", "PASS")) if selected else "NOT_RUN"
         rows.append({"id": source["id"], "level": source["level"], "text_sha256": source["text_sha256"],
                      "verdict": verdict, "scope": source["scope"],
                      "detail": issue if selected and issue else source["review_basis"],
@@ -154,13 +167,13 @@ def inspect(catalog, capture_data, observer):
                      "follow_up": source["follow_up"]})
         if "pending_review" in source:
             rows[-1]["pending_review"] = source["pending_review"]
-    totals = {k: sum(row["verdict"] == k for row in rows) for k in ("PASS", "FAIL", "ERROR", "NOT_RUN")}
+    totals = {k: sum(row["verdict"] == k for row in rows) for k in ("PASS", "FAIL", "ERROR", "NOT_APPLICABLE", "NOT_RUN")}
     return {"format": "did-inspector-method-document-report/1", "inspector_revision": observer,
             "actor": "SAGE method specification author", "repository": REPOSITORY,
             "revision": REVISION, "policy": catalog["policy"], "totals": totals,
             "statements": rows, "runtime_results_merged": False,
-            "review_progress": {"judged": len(REVIEWED), "reviewed_pending": len(DEFERRED),
-                                "unreviewed": len(rows) - len(REVIEWED) - len(DEFERRED)}}
+            "review_progress": {"judged": len(REVIEWED | NOT_APPLICABLE), "reviewed_pending": len(DEFERRED),
+                                "unreviewed": len(rows) - len(REVIEWED | NOT_APPLICABLE) - len(DEFERRED)}}
 
 
 def main(argv=None):
