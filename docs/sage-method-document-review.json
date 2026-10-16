@@ -90,61 +90,172 @@
       "id": "cid10#Multikey.24",
       "text": "When defining values for use with publicKeyMultibase and secretKeyMultibase, specification authors MAY define additional header values for other key types in other specifications and MUST NOT define alternate encodings for key types already defined by this specification.",
       "text_sha256": "310d1814b55b741a40ea501a908c01a81cd1f4ebbadb0a280107b0006a4f0d52",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "The selected projection explicitly does not emit Multikey. It does not define new Multikey header encodings. This does not assess every third-party extension specification.",
+      "review_basis": "The condition is authoring publicKeyMultibase or secretKeyMultibase header values. The reviewed SAGE corpus defines neither; chapter 10 explicitly excludes emitting Multikey and specifies JWK projection instead. NOT_APPLICABLE is limited to this absent header-definition activity. It does not approve a new header, another key encoding, third-party extensions or runtime key handling.",
       "follow_up": [
         "spec/10-resolution.md \u00a76"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        },
+        {
+          "path": "spec/11-registries.md",
+          "start_line": 1,
+          "end_line": 202,
+          "sha256": "aaf8e68a1af957fd079ff56d89636b792930e8e0202b3d09a084164005589513"
+        },
+        {
+          "path": "profiles/a2a-1.0-binding.md",
+          "start_line": 1,
+          "end_line": 187,
+          "sha256": "c4c7f263ea3e9ff122277976f0bebf4357c418956256c33fbbb28570b8a67b4d"
+        }
+      ],
+      "review_verdict": "NOT_APPLICABLE"
     },
     {
       "id": "did11-cr20260305#extensibility.2",
       "text": "Representations MAY define other extensibility mechanisms, including ones that do not require the use of the Decentralized Identifier Extensions repository.",
       "text_sha256": "116f03ebba51a0e50896099112d174f0bc31523ab78895d66619488e5ff53063",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "No new representation-level extension mechanism is defined; SAGE metadata extensions and representation extensions must be distinguished.",
+      "review_basis": "The permission concerns a representation author choosing another extensibility mechanism. SAGE defines record-to-document projections using the named standard representations, not a new representation or representation-level extensibility mechanism. Resolution metadata under sage and A2A AgentExtension are separate objects, not such mechanisms. The unexercised permission is NOT_APPLICABLE, not PASS for implementing or refusing extensions.",
       "follow_up": [
         "spec/10-resolution.md \u00a7\u00a71,6,8"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        },
+        {
+          "path": "spec/11-registries.md",
+          "start_line": 1,
+          "end_line": 202,
+          "sha256": "aaf8e68a1af957fd079ff56d89636b792930e8e0202b3d09a084164005589513"
+        },
+        {
+          "path": "profiles/a2a-1.0-binding.md",
+          "start_line": 1,
+          "end_line": 187,
+          "sha256": "c4c7f263ea3e9ff122277976f0bebf4357c418956256c33fbbb28570b8a67b4d"
+        }
+      ],
+      "review_verdict": "NOT_APPLICABLE"
     },
     {
       "id": "did11-cr20260305#extensibility.3",
       "text": "Such extension mechanisms SHOULD support lossless conversion into any other conformant representation.",
       "text_sha256": "1e2e5134d3219f3b8cc32e7299425cad718db17d27c49a91003390d21ebfa30b",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "The two projections deliberately use different verification-method types and are not reserializations. Do not infer lossless conversion between arbitrary representations.",
+      "review_basis": "Such extension mechanisms refers to the additional representation-level mechanisms in extensibility.2. None is defined by this SAGE author corpus. The conditional author recommendation is NOT_APPLICABLE for that reason only. The two record projections deliberately differ in verification-method type and are not lossless reserializations; no arbitrary representation-conversion or standard implementation conformity is certified.",
       "follow_up": [
         "spec/10-resolution.md \u00a7\u00a71,6,8"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        },
+        {
+          "path": "spec/11-registries.md",
+          "start_line": 1,
+          "end_line": 202,
+          "sha256": "aaf8e68a1af957fd079ff56d89636b792930e8e0202b3d09a084164005589513"
+        },
+        {
+          "path": "profiles/a2a-1.0-binding.md",
+          "start_line": 1,
+          "end_line": 187,
+          "sha256": "c4c7f263ea3e9ff122277976f0bebf4357c418956256c33fbbb28570b8a67b4d"
+        }
+      ],
+      "review_verdict": "NOT_APPLICABLE"
     },
     {
       "id": "did11-cr20260305#extensibility.4",
       "text": "Extension mechanisms for a representation SHOULD define a mapping of all properties and representation syntax into the DID document data model and its type system.",
       "text_sha256": "8b77a7a7414b1c93b975e1f6e7357251a30df57058c4575c65fe9df8b6cc0deb",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "The record-to-document table maps selected SAGE properties, not every property of an arbitrary extended DID abstract data model.",
+      "review_basis": "This recommendation addresses the author of a representation-level extension mechanism. SAGE defines none in this corpus. Its record projection table, resolution metadata and A2A extension do not define one. NOT_APPLICABLE does not establish a complete abstract-data-model mapping or certify third-party mechanisms.",
       "follow_up": [
         "spec/10-resolution.md \u00a7\u00a71,6,8"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        },
+        {
+          "path": "spec/11-registries.md",
+          "start_line": 1,
+          "end_line": 202,
+          "sha256": "aaf8e68a1af957fd079ff56d89636b792930e8e0202b3d09a084164005589513"
+        },
+        {
+          "path": "profiles/a2a-1.0-binding.md",
+          "start_line": 1,
+          "end_line": 187,
+          "sha256": "c4c7f263ea3e9ff122277976f0bebf4357c418956256c33fbbb28570b8a67b4d"
+        }
+      ],
+      "review_verdict": "NOT_APPLICABLE"
     },
     {
       "id": "did11-cr20260305#media-types.1",
       "text": "Syntaxes used to express the data model in this specification SHOULD be identified by a media type, and conventions outlined in this section SHOULD be followed when defining or using media types with DID documents.",
       "text_sha256": "05898a7a8263e228b88118f7280b503360c6af1eb0b2fb2a5bdc7b2db7a1a143",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "The existing application/did+json and application/did media types are named. An author-level media registration claim must be verified separately from successful serializer output.",
+      "review_basis": "For the DID 1.1 projection reviewed under this DID 1.1 clause, DIDP-01 explicitly uses application/did, the exact standard context and JsonWebKey; DIDP-02 and RESOLVE-03 keep the requested document projection and contentType distinct from the application/json resolution envelope. This is a documentary judgment of the selected standard media identification and its document/envelope convention only. It does not certify legacy application/did+json registration or aliasing, all media-type conventions, actual HTTP negotiation, representation-author obligations or producer/consumer conformance.",
       "follow_up": [
         "spec/10-resolution.md \u00a7\u00a71,6,7"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        }
+      ]
     },
     {
       "id": "did11-cr20260305#method-operations.1",
@@ -624,79 +735,235 @@
       "id": "did11-cr20260305#production-and-consumption.1",
       "text": "A representation MUST define deterministic production and consumption rules for all data types specified in 4.",
       "text_sha256": "f112032c07077934450569e8378e35100f6beed0044e73b912ce49c3985547a6",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "These are named projections of standard DID representations. Inheritance of all deterministic abstract-type production/consumption rules needs an explicit representation-author scope assessment; the SAGE projection table is narrower.",
+      "review_basis": "This clause assigns deterministic rules for every abstract type to the representation specification. SAGE authors record projections into existing DID representations, not a new representation. The new-representation-author activity is absent, so this SAGE author case is NOT_APPLICABLE. Deterministic rules in the adopted W3C representation and actual producer/consumer adherence remain separately assessable; the narrower SAGE projection table is not treated as a complete type mapping.",
       "follow_up": [
         "spec/10-resolution.md \u00a7\u00a71,4,6,7",
         "spec/00-overview.md \u00a77"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        },
+        {
+          "path": "spec/11-registries.md",
+          "start_line": 1,
+          "end_line": 202,
+          "sha256": "aaf8e68a1af957fd079ff56d89636b792930e8e0202b3d09a084164005589513"
+        },
+        {
+          "path": "profiles/a2a-1.0-binding.md",
+          "start_line": 1,
+          "end_line": 187,
+          "sha256": "c4c7f263ea3e9ff122277976f0bebf4357c418956256c33fbbb28570b8a67b4d"
+        }
+      ],
+      "review_verdict": "NOT_APPLICABLE"
     },
     {
       "id": "did11-cr20260305#production-and-consumption.2",
       "text": "A representation MUST be uniquely associated with an IANA-registered Media Type.",
       "text_sha256": "1a84e0112b30a491a51166e2f71d813da606cdcf1e5066b18538170bd52c18c8",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "The method names existing DID media types, not a new IANA representation assignment. Verify the actual association with the standard representation as documentary evidence.",
+      "review_basis": "The association obligation belongs to a representation definition. This corpus defines SAGE projections and media selection, not a new representation or new media registration. This SAGE new-representation-author case is NOT_APPLICABLE. It does not verify registration by naming a type, approve application/did+json as an IANA registration or alias, or transfer any media-registry question into PASS. The adopted representation and concrete media usage require their own evidence.",
       "follow_up": [
         "spec/10-resolution.md \u00a7\u00a71,4,6,7",
         "spec/00-overview.md \u00a77"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        },
+        {
+          "path": "spec/11-registries.md",
+          "start_line": 1,
+          "end_line": 202,
+          "sha256": "aaf8e68a1af957fd079ff56d89636b792930e8e0202b3d09a084164005589513"
+        },
+        {
+          "path": "profiles/a2a-1.0-binding.md",
+          "start_line": 1,
+          "end_line": 187,
+          "sha256": "c4c7f263ea3e9ff122277976f0bebf4357c418956256c33fbbb28570b8a67b4d"
+        }
+      ],
+      "review_verdict": "NOT_APPLICABLE"
     },
     {
       "id": "did11-cr20260305#production-and-consumption.3",
       "text": "A representation MUST define fragment processing rules for its Media Type that are conformant with the fragment processing rules defined in Fragment.",
       "text_sha256": "b71ddae72b33fb158e0a0d2d14a3cea5b1eda57e76276a5162966a21bd8c529b",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "Full canonical key URLs and exact-ID dereferencing are specified, but the generic media-type fragment-processing rules are not proven by this selected method restriction.",
+      "review_basis": "The representation definition must supply generic media-type fragment rules. SAGE does not define a new representation; its canonical key URL and exact-ID method restriction are not replacement media-type fragment rules. This SAGE new-representation-author activity is NOT_APPLICABLE. The adopted W3C rules and actual generic fragment processing remain independently assessable.",
       "follow_up": [
         "spec/10-resolution.md \u00a7\u00a71,4,6,7",
         "spec/00-overview.md \u00a77"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        },
+        {
+          "path": "spec/11-registries.md",
+          "start_line": 1,
+          "end_line": 202,
+          "sha256": "aaf8e68a1af957fd079ff56d89636b792930e8e0202b3d09a084164005589513"
+        },
+        {
+          "path": "profiles/a2a-1.0-binding.md",
+          "start_line": 1,
+          "end_line": 187,
+          "sha256": "c4c7f263ea3e9ff122277976f0bebf4357c418956256c33fbbb28570b8a67b4d"
+        }
+      ],
+      "review_verdict": "NOT_APPLICABLE"
     },
     {
       "id": "did11-cr20260305#production-and-consumption.4",
       "text": "A representation SHOULD use the lexical representation of data model data types.",
       "text_sha256": "5a987d67caca593f66081a874414e395d5f61701e689f701d0c6b3354f4e9c14",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "Selected canonical JWK coordinates and record fields are specified. This does not define every abstract data-model type lexical mapping.",
+      "review_basis": "This is a representation-author lexical-mapping recommendation. SAGE selects standard representations and constrains its record projections without defining a new abstract-type serialization. This new-representation-author activity is NOT_APPLICABLE. JWK coordinate encodings, protocol JCS and selected record fields do not prove a complete lexical mapping or actual serializer conformity.",
       "follow_up": [
         "spec/10-resolution.md \u00a7\u00a71,4,6,7",
         "spec/00-overview.md \u00a77"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        },
+        {
+          "path": "spec/11-registries.md",
+          "start_line": 1,
+          "end_line": 202,
+          "sha256": "aaf8e68a1af957fd079ff56d89636b792930e8e0202b3d09a084164005589513"
+        },
+        {
+          "path": "profiles/a2a-1.0-binding.md",
+          "start_line": 1,
+          "end_line": 187,
+          "sha256": "c4c7f263ea3e9ff122277976f0bebf4357c418956256c33fbbb28570b8a67b4d"
+        }
+      ],
+      "review_verdict": "NOT_APPLICABLE"
     },
     {
       "id": "did11-cr20260305#production-and-consumption.5",
       "text": "A representation MAY choose to serialize the data model data types using a different lexical serializations as long as the consumption process back into the data model is lossless.",
       "text_sha256": "572fd118865fb61d024ae9f0829f11210e7da96c61ecc9c95c130b182369ddc2",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "The document does not choose an alternative lexical serialization for all abstract data-model types. Absence of such a choice is not consumer input refusal.",
+      "review_basis": "SAGE chooses no alternate representation-level lexical serialization. The conditional permission and its lossless-consumption condition are NOT_APPLICABLE to this absent author activity. This is not PASS for lossless conversion, input refusal or optional feature implementation; the adopted standard representation remains separately assessable.",
       "follow_up": [
         "spec/10-resolution.md \u00a7\u00a71,4,6,7",
         "spec/00-overview.md \u00a77"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        },
+        {
+          "path": "spec/11-registries.md",
+          "start_line": 1,
+          "end_line": 202,
+          "sha256": "aaf8e68a1af957fd079ff56d89636b792930e8e0202b3d09a084164005589513"
+        },
+        {
+          "path": "profiles/a2a-1.0-binding.md",
+          "start_line": 1,
+          "end_line": 187,
+          "sha256": "c4c7f263ea3e9ff122277976f0bebf4357c418956256c33fbbb28570b8a67b4d"
+        }
+      ],
+      "review_verdict": "NOT_APPLICABLE"
     },
     {
       "id": "did11-cr20260305#production-and-consumption.6",
       "text": "A representation MAY define representation-specific entries that are stored in a representation-specific entries map for use during the production and consumption process.",
       "text_sha256": "d1ecd1c6f7d1c7db3ad35f471f2bc4789bd5a0d76edeace01977b879b11fdf31",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "DID1.1 projection has an explicit constant @context; the abstract representation-specific entries-map lifecycle is inherited rather than separately specified here.",
+      "review_basis": "SAGE defines no new representation-specific entries beyond the existing standard context choice; DIDP-01 fixes the standard DID 1.1 context string. This optional new-representation-author activity is NOT_APPLICABLE, not PASS for an abstract entries-map lifecycle. Actual producer/consumer handling and the adopted W3C representation-author rules remain separate cases.",
       "follow_up": [
         "spec/10-resolution.md \u00a7\u00a71,4,6,7",
         "spec/00-overview.md \u00a77"
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "spec/06-did-sage.md",
+          "start_line": 1,
+          "end_line": 129,
+          "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/10-resolution.md",
+          "start_line": 1,
+          "end_line": 283,
+          "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        },
+        {
+          "path": "spec/11-registries.md",
+          "start_line": 1,
+          "end_line": 202,
+          "sha256": "aaf8e68a1af957fd079ff56d89636b792930e8e0202b3d09a084164005589513"
+        },
+        {
+          "path": "profiles/a2a-1.0-binding.md",
+          "start_line": 1,
+          "end_line": 187,
+          "sha256": "c4c7f263ea3e9ff122277976f0bebf4357c418956256c33fbbb28570b8a67b4d"
+        }
+      ],
+      "review_verdict": "NOT_APPLICABLE"
     },
     {
       "id": "did11-cr20260305#security-requirements.1",

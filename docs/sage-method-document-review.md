@@ -7,11 +7,14 @@ resolution/projection reports or historical runtime pending ledgers.
 
 The historical 51-clause documentary inventory preserves the exact W3C
 text, text digest, level and follow-up references. Independent semantic
-review has eleven judged entries: method-syntax .1/.2/.3/.7/.8/.10/.11/.12
-and method-operations .2/.4/.5. Four more entries have reviewed but unresolved
-prerequisites, and 36 have not yet received a semantic review case. The
-report therefore has eleven PASS and 40 NOT_RUN, not fifteen PASS. Its
-`review_progress` records these three different states.
+review has 22 judged entries: twelve PASS and ten NOT_APPLICABLE. Four
+entries have reviewed but unresolved prerequisites, and 25 have not yet
+received a semantic review case. The report therefore has 29 NOT_RUN.
+Its `review_progress` distinguishes judged, reviewed-pending and unreviewed
+entries; judged includes both PASS and evidence-backed NOT_APPLICABLE.
+
+The original eleven PASS cover method-syntax .1/.2/.3/.7/.8/.10/.11/.12
+and method-operations .2/.4/.5. Their evidence and judgments are unchanged.
 
 The baseline inventory also contains the actual generated-DID uniqueness
 obligations (method-syntax .4/.5). These are retained under their original
@@ -65,12 +68,49 @@ They do not become PASS, FAIL, NOT_SUPPORTED or NOT_APPLICABLE because this
 review found incomplete evidence. Concrete core/contract/spec changes and
 operational verification retain their approved later order.
 
+The additional representation review distinguishes using a standard from
+authoring a new representation. SAGE defines record projections using
+existing DID JSON representations. It defines no new representation-level
+extension mechanism, Multikey header or alternative lexical serialization.
+Resolution metadata under `sage` and the A2A `AgentExtension` live in separate
+objects; they do not make this author a new DID representation author.
+
+| Clauses | Author case and bounded judgment |
+|---|---|
+| DID 1.1 media-types .1 | PASS for explicitly identifying the DID 1.1 projection with `application/did` and separating that document from the resolution envelope. |
+| CID Multikey .24 | NOT_APPLICABLE: SAGE defines no Multibase key header values; its projection explicitly excludes Multikey. |
+| DID 1.1 extensibility .2/.3/.4 | NOT_APPLICABLE: the additional representation-level mechanism is not defined, so its optional choice, lossless conversion and type-mapping recommendations have no selected author activity here. |
+| DID 1.1 production-and-consumption .1/.2/.3/.4/.5/.6 | NOT_APPLICABLE to SAGE authoring a new representation. It adopts existing representations and their standard context entry, without defining new type/lexical rules, generic media fragment rules or representation entries. |
+
+These ten applicability judgments do not discharge the original W3C
+representation author's obligations or excuse any implementation from the
+adopted rules. Deterministic type mappings, unique IANA association, fragment
+processing, lexical rules and entries-map handling remain independently
+assessable for the adopted representation and its producer/consumer. Two
+projections that change verification-method type are not evidence of lossless
+reserialization. Absence of an optional author choice is not a PASS for
+implementing that feature or refusing its input.
+
+The media-types .1 PASS is a DID 1.1 documentary media-identification judgment.
+It does not certify every media convention, negotiation, serializer behavior,
+or the IANA registration or alias status of the legacy Core 1.0
+`application/did+json` name. In particular, the .2 author applicability result
+must never be read as registration approval. Registration and the standard
+representation's obligations need their own evidence, rather than inference
+from a label in SAGE prose. The existing runtime actor remains separate.
+
+The applicability cases use the same full sixteen-file corpus and cited
+ranges as positive judgments. The fixed reviewed ID set and explicit
+`review_verdict` reject unreviewed applicability claims. Missing, modified or
+malformed evidence turns all 22 judged cases, including the ten conditional
+ones, into ERROR: it cannot produce NOT_APPLICABLE without its reviewed corpus.
+
 This is **reviewed-document replay**, not automatic semantic analysis of
 arbitrary prose. The inspector's review JSON supplies independent reasoning
 and full cited chapter ranges, not subject-authored verdicts. The executable
 checks all sixteen Git blobs against their byte lengths and SHA-256 values,
 every cited range, and the independently frozen W3C publication and clause
-identity. Only that exact reviewed corpus can reproduce these eleven author
+identity. Only that exact reviewed corpus can reproduce these 22 author
 judgments. Different, missing, extra, malformed or modified evidence yields
 ERROR, not a normative FAIL. It cannot confer PASS on an unreviewed revision.
 It must not be presented as a general-purpose documentation conformance
@@ -96,5 +136,5 @@ revision, exercises unit and real Git runtime checks and publishes
 The current runtime resolution remains 369 cases, 371 PASS, 13 FAIL,
 4 NOT_APPLICABLE and 98 NOT_RUN. Its thirteen failures and nine repair causes
 remain in the approved later core/contract repair work. Five internal
-clauses, security/privacy/topology/representation author review, operational
+clauses, 25 unreviewed author entries, four author prerequisites, operational
 bindings and deferred registration are not silently completed by this tool.

@@ -711,9 +711,9 @@ jobs:
           actual = json.loads((root / 'report.json').read_text())
           raw = json.loads((root / 'raw.json').read_text())
           assert actual == inspector.inspect(inspector.load_catalog(), raw, os.environ['GITHUB_SHA'])
-          assert actual['totals'] == {'PASS': 11, 'FAIL': 0, 'ERROR': 0, 'NOT_RUN': 40}
+          assert actual['totals'] == {'PASS': 12, 'FAIL': 0, 'ERROR': 0, 'NOT_APPLICABLE': 10, 'NOT_RUN': 29}
           assert actual['runtime_results_merged'] is False
-          assert actual['review_progress'] == {'judged': 11, 'reviewed_pending': 4, 'unreviewed': 36}
+          assert actual['review_progress'] == {'judged': 22, 'reviewed_pending': 4, 'unreviewed': 25}
           PYTHON
           cp docs/sage-method-document-review.json "$RUNNER_TEMP/method-reports/review.json"
           cp "$RUNNER_TEMP/method-coverage.log" "$RUNNER_TEMP/method-reports/coverage.log"
