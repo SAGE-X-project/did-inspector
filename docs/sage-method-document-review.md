@@ -7,11 +7,11 @@ resolution/projection reports or historical runtime pending ledgers.
 
 The historical 51-clause documentary inventory preserves the exact W3C
 text, text digest, level and follow-up references. Independent semantic
-review has 22 judged entries: twelve PASS and ten NOT_APPLICABLE. Four
-entries have reviewed but unresolved prerequisites, and 25 have not yet
-received a semantic review case. The report therefore has 29 NOT_RUN.
-Its `review_progress` distinguishes judged, reviewed-pending and unreviewed
-entries; judged includes both PASS and evidence-backed NOT_APPLICABLE.
+review has 34 judged entries: eighteen PASS, twelve NOT_APPLICABLE and four
+FAIL. Seven entries have reviewed but unresolved prerequisites, and ten
+have not yet received a semantic review case. The report therefore has
+seventeen NOT_RUN. Its `review_progress` separates these states. The four
+FAIL are documentary gaps, not the runtime actor's thirteen failures.
 
 The original eleven PASS cover method-syntax .1/.2/.3/.7/.8/.10/.11/.12
 and method-operations .2/.4/.5. Their evidence and judgments are unchanged.
@@ -102,15 +102,59 @@ from a label in SAGE prose. The existing runtime actor remains separate.
 The applicability cases use the same full sixteen-file corpus and cited
 ranges as positive judgments. The fixed reviewed ID set and explicit
 `review_verdict` reject unreviewed applicability claims. Missing, modified or
-malformed evidence turns all 22 judged cases, including the ten conditional
-ones, into ERROR: it cannot produce NOT_APPLICABLE without its reviewed corpus.
+malformed evidence turns all 34 judged cases, including all applicability
+judgments, into ERROR: it cannot produce NOT_APPLICABLE without its reviewed corpus.
+
+The next fifteen cases review DID 1.1 security-requirements .1 through .14
+and privacy-requirements .1 against the complete fixed author corpus.
+They use the actual [RFC 3552](https://www.rfc-editor.org/rfc/rfc3552.txt)
+sections 4.6 and 5 and [RFC 6973](https://www.rfc-editor.org/rfc/rfc6973.txt)
+section 5 as independent review sources. SAGE need not use those reference
+names, a particular section title or a review matrix to satisfy substantive
+requirements. The RFCs are not inserted into SAGE's sixteen subject blobs.
+
+| Clauses | Documentary judgment |
+|---|---|
+| Security .3/.4 | PASS for the additional attacks and residual trust/compromise risks actually discussed. This does not prove that mitigations work. |
+| Security .7 | PASS for discussing registry identity, atomic reservation, non-reassignment and commitment policy. Actual issuer uniqueness in method-syntax .4/.5 remains unresolved. |
+| Security .8/.9 | PASS for the endpoint-authentication discussion and the selected self-validated-node or explicitly trusted-resolver modes, including finality/readiness and excluded malicious trusted sources. Arbitrary light-client modes and actual source bindings are not certified. |
+| Security .11 | PASS for identifying private/ephemeral keys and shared/expired traffic secrets as confined material excluded from logs. |
+| Security .12/.14 | NOT_APPLICABLE to absent document-signature and new DID authentication-service-type definitions. PoP, Card/message signatures and an A2A discovery service are not those activities. |
+| Security .5/.6/.10 | NOT_RUN with individual actor, reason and completion evidence: remaining principal/credential, whole-method read-authenticity and protected-data bindings are not closed. No deployment, ABI or operational authority is invented. |
+
+Four reviewed documentary failures remain visible:
+
+| Clause | Level | Missing discussion |
+|---|---|---|
+| Security .1 | Requirement | Method-specific residual DoS susceptibility and why avoidance is unreasonable or out of scope, required by RFC 3552 itself. This is not failure for omitting a citation or promotion of .13's SHOULD. |
+| Security .2 | Requirement | Amplification exposure or inapplicability for DID operations. Generic messaging replay checks and size bounds do not supply it. |
+| Security .13 | Recommendation | Expected DLT peer computation, storage/history and read/transaction burdens in relation to DoS, or a justified departure. This is not a demand for completed benchmarks. |
+| Privacy .1 | Requirement | Applicable method-specific RFC 6973 risks of persistent/public DIDs, controller/key/service records, retained history and resolver observations. Encryption and secret handling do not replace privacy analysis. |
+
+The mixed MUST/SHOULD in security .10 is not failed merely for an absent
+susceptibility matrix. The three unresolved cases align with existing
+method-operations .1/.3; their complete selected binding semantics can close
+an author case without a successful deployment. The seven prerequisites
+include those three and the four earlier unresolved entries. Reviewing
+fifteen clauses does not mean all fifteen passed or all gaps were repaired.
+Specification repairs retain their approved later order.
+
+`documentary_gate` is FAIL for this reviewed corpus. The CLI exits 1 for a
+normative FAIL or evidence ERROR, and 0 only when neither is reported. Its
+PASS gate alone would not establish unobserved clauses or whole conformance.
+Unavailable evidence yields 34 ERROR and 17 NOT_RUN, with no normative FAIL
+or applicability conclusion. CI expects exit 1 and independently requires
+the exact four FAIL (three requirements, one recommendation), zero ERROR,
+complete source/replay identity and separate runtime results. A green CI
+means the inspector reported those known gaps correctly; it does not mean
+the method document conforms or that known failures were suppressed.
 
 This is **reviewed-document replay**, not automatic semantic analysis of
 arbitrary prose. The inspector's review JSON supplies independent reasoning
 and full cited chapter ranges, not subject-authored verdicts. The executable
 checks all sixteen Git blobs against their byte lengths and SHA-256 values,
 every cited range, and the independently frozen W3C publication and clause
-identity. Only that exact reviewed corpus can reproduce these 22 author
+identity. Only that exact reviewed corpus can reproduce these 34 author
 judgments. Different, missing, extra, malformed or modified evidence yields
 ERROR, not a normative FAIL. It cannot confer PASS on an unreviewed revision.
 It must not be presented as a general-purpose documentation conformance
@@ -136,5 +180,5 @@ revision, exercises unit and real Git runtime checks and publishes
 The current runtime resolution remains 369 cases, 371 PASS, 13 FAIL,
 4 NOT_APPLICABLE and 98 NOT_RUN. Its thirteen failures and nine repair causes
 remain in the approved later core/contract repair work. Five internal
-clauses, 25 unreviewed author entries, four author prerequisites, operational
-bindings and deferred registration are not silently completed by this tool.
+clauses, ten unreviewed author entries, seven author prerequisites, the four
+documentary repairs, operational bindings and deferred registration are not silently completed by this tool.

@@ -701,19 +701,28 @@ jobs:
         env:
           PYTHONDONTWRITEBYTECODE: '1'
         run: |
-          python3 scripts/inspect_method_document.py --repository .method-document-subject --out "$RUNNER_TEMP/method-reports/report.json" --raw-out "$RUNNER_TEMP/method-reports/raw.json" --inspector-revision "$GITHUB_SHA"
           python3 - <<'PYTHON'
-          import json, os, sys
+          import json, os, subprocess, sys
           from pathlib import Path
           sys.path.insert(0, 'scripts')
           import inspect_method_document as inspector
           root = Path(os.environ['RUNNER_TEMP']) / 'method-reports'
+          result = subprocess.run([sys.executable, 'scripts/inspect_method_document.py',
+              '--repository', '.method-document-subject', '--out', str(root / 'report.json'),
+              '--raw-out', str(root / 'raw.json'), '--inspector-revision', os.environ['GITHUB_SHA']])
+          assert result.returncode == 1, result.returncode
           actual = json.loads((root / 'report.json').read_text())
           raw = json.loads((root / 'raw.json').read_text())
           assert actual == inspector.inspect(inspector.load_catalog(), raw, os.environ['GITHUB_SHA'])
-          assert actual['totals'] == {'PASS': 12, 'FAIL': 0, 'ERROR': 0, 'NOT_APPLICABLE': 10, 'NOT_RUN': 29}
+          assert actual['totals'] == {'PASS': 18, 'FAIL': 4, 'ERROR': 0, 'NOT_APPLICABLE': 12, 'NOT_RUN': 17}
           assert actual['runtime_results_merged'] is False
-          assert actual['review_progress'] == {'judged': 22, 'reviewed_pending': 4, 'unreviewed': 25}
+          assert actual['documentary_gate'] == 'FAIL'
+          failures = {row['id']: row['level'] for row in actual['statements'] if row['verdict'] == 'FAIL'}
+          assert failures == {'did11-cr20260305#security-requirements.1': 'requirement',
+              'did11-cr20260305#security-requirements.2': 'requirement',
+              'did11-cr20260305#security-requirements.13': 'recommendation',
+              'did11-cr20260305#privacy-requirements.1': 'requirement'}
+          assert actual['review_progress'] == {'judged': 34, 'reviewed_pending': 7, 'unreviewed': 10}
           PYTHON
           cp docs/sage-method-document-review.json "$RUNNER_TEMP/method-reports/review.json"
           cp "$RUNNER_TEMP/method-coverage.log" "$RUNNER_TEMP/method-reports/coverage.log"
