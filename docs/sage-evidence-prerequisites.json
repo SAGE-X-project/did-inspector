@@ -1,0 +1,406 @@
+{
+  "schema": "sage-evidence-prerequisites/1",
+  "profile": "did-1.1",
+  "baseline_inspector_revision": "a422e5ac4ee0ecbece20cfea29f6b4d8d2928da4",
+  "scope": "Reviewed fixed source ZIP and prior-call premises only; not source-cache or binary attestation, API absence proof, full processing conformance, or a new runtime verdict.",
+  "source": {
+    "module": "github.com/sage-x-project/did-go",
+    "version": "v0.0.0-20261012015322-ed54c505eafe",
+    "sum": "h1:phZzJEVaBYD9ylcNhmODNZ4mSp3N4j/4HwILUmFWnrE="
+  },
+  "source_zip_files": [
+    {
+      "path": "jsonld/context.go",
+      "sha256": "d0359e889404663b750dee8be5ad962eeb893af0d36f568c3727547900f90ac2"
+    },
+    {
+      "path": "jsonld/terms.go",
+      "sha256": "7e6a0c8ec99d1c071cad502aa3dfe82b3121b6e7d8af9d45544430fd1d6174ec"
+    },
+    {
+      "path": "consumer/consumer.go",
+      "sha256": "77fa72fd81aaad6453f3bc3cdaffaea742d4aa6052a1cbc5a8592a014981ceed"
+    },
+    {
+      "path": "consumer/read.go",
+      "sha256": "b49f38b71e0b05fb23e6547092ff6f5eb8bc33ea10c2ff9ab803b085232dc63c"
+    },
+    {
+      "path": "producer/producer.go",
+      "sha256": "c1573cfcdd489c63ed6a4a49fdec8317a67502cf612d14e817e836e6036894fe"
+    },
+    {
+      "path": "producer/write.go",
+      "sha256": "a48ab3ec7d8966e49e16be3d97afdb28755f2494a8770572b00e481518d5d52c"
+    },
+    {
+      "path": "representation/detect.go",
+      "sha256": "c86c2bfa013b0912d40f54d03f41cca006e1098a1af29ac2a9257b442a4930b8"
+    },
+    {
+      "path": "representation/mediatype.go",
+      "sha256": "54614c89dda66aa44c6083de3b848ddcfe9ae1e58df4ad33cc06cacf953531d6"
+    },
+    {
+      "path": "representation/representation.go",
+      "sha256": "e785e4d6a4e646a741e4c916365136015a15b04874d2cff591c4f2707dd7cca1"
+    },
+    {
+      "path": "document/metadata.go",
+      "sha256": "58e5a6fff150cbba0ea9678bccb7e769d6cdf4bca3eeaa2a6ae777686add773c"
+    },
+    {
+      "path": "resolution/metadata.go",
+      "sha256": "91880e2674c66032b9e09cbf940b72dcd169c48e503a32f15d823db3db79be61"
+    }
+  ],
+  "prior_observations": [
+    {
+      "case": "did-1.1/sage-resolution/library-context-cache",
+      "statements": [
+        "did11-cr20260305#remote-resource-integrity.1"
+      ],
+      "verdicts": {
+        "did11-cr20260305#remote-resource-integrity.1": "PASS"
+      },
+      "input_sha256": "852e56373948a7fcfa043f77d789450fbbb60f1d2ae7e949848e14cc039693da",
+      "observed_sha256": "72dfbe41b9a55a13d2892ee2bbd811e62bcd76f016d3e9242468312688d6ad78"
+    },
+    {
+      "case": "did-1.1/sage-resolution/library-context-consumer-unknown",
+      "statements": [
+        "did11-cr20260305#json-ld-processors.8"
+      ],
+      "verdicts": {
+        "did11-cr20260305#json-ld-processors.8": "PASS"
+      },
+      "input_sha256": "0879c3fd2d35ae777abb1c26f3428957a7b473ccbc5a01c77c7eff54f4ecd213",
+      "observed_sha256": "6b2acc7352603fe57f4b78f60d61d4c121480ca2192e0446f0870fb335f3eebf"
+    },
+    {
+      "case": "did-1.1/sage-resolution/library-context-producer-unknown",
+      "statements": [
+        "did11-cr20260305#json-ld-processors.6"
+      ],
+      "verdicts": {
+        "did11-cr20260305#json-ld-processors.6": "FAIL"
+      },
+      "input_sha256": "06d445d2c2cd531531ca0f8990a761df092a18fba1d84afb51007c7c2ee81ca3",
+      "observed_sha256": "10920e7a91da386a9326eddb2f02bebc782a1d59b336f7dc58534e19fd45851e"
+    },
+    {
+      "case": "did-1.1/sage-resolution/representation-options-consumer-false",
+      "statements": [
+        "did11-cr20260305#production-and-consumption.14"
+      ],
+      "verdicts": {
+        "did11-cr20260305#production-and-consumption.14": "PASS"
+      },
+      "input_sha256": "3d453d8f5de04af2bcd253952317d94273bb445703647eb6aeb100d46756e720",
+      "observed_sha256": "df3a4c4ac315978e926fdf463dcaa113dc76f0847dc36d7c23f21713666db747"
+    },
+    {
+      "case": "did-1.1/sage-resolution/representation-options-consumer-true",
+      "statements": [
+        "did11-cr20260305#production-and-consumption.14"
+      ],
+      "verdicts": {
+        "did11-cr20260305#production-and-consumption.14": "PASS"
+      },
+      "input_sha256": "7dc2bad273f4928eeba5037d76f3e8c45b3a8414f22b9f024634184383a8a796",
+      "observed_sha256": "572ffcdbad47114b62cf21d52ee164914ce66003f53cd131ab5e54f9e17add18"
+    },
+    {
+      "case": "did-1.1/sage-resolution/native-metadata-active-record-0-resolution",
+      "statements": [
+        "res10-crd20261001#metadata-structure.1",
+        "res10-crd20261001#metadata-structure.2",
+        "res10-crd20261001#metadata-structure.3",
+        "res10-crd20261001#metadata-structure.4"
+      ],
+      "verdicts": {
+        "res10-crd20261001#metadata-structure.1": "PASS",
+        "res10-crd20261001#metadata-structure.2": "PASS",
+        "res10-crd20261001#metadata-structure.3": "PASS",
+        "res10-crd20261001#metadata-structure.4": "PASS"
+      },
+      "input_sha256": "89b495343f385f9ba4587d0074d5905f8451c46c1c7457c74d711225b5ecc79b",
+      "observed_sha256": "4ef1a8fff4a50cb8d872997ee7a2cd3cc0819c550c0694ba0f7b49d2d0d36877"
+    }
+  ],
+  "groups": {
+    "reader-interpretation": 3,
+    "processing-applicability": 3,
+    "selected-serializer": 1,
+    "authority-lifecycle": 2,
+    "dependent-tuple": 1,
+    "normative-interpretation": 6
+  },
+  "clauses": [
+    {
+      "id": "cid10#Multikey.20",
+      "text_sha256": "90cf37c185afb0445cadedca6c044b67523e514a5ce6aa8868658f9abd0532d2",
+      "level": "requirement",
+      "contract_group": "normative-interpretation",
+      "runtime_verdict": "NOT_RUN",
+      "runtime_cases": [],
+      "reason": "Frozen BLS secret G2 row conflicts on varint prefix and public/secret payload description.",
+      "completion_condition": "Resolve the exact frozen publication interpretation before selecting a codec oracle; retain 0x8030 prose versus independent 0x130a varint 0x8a26 and payload ambiguity. No inferred repair in the inspector.",
+      "depends_on": [],
+      "source_zip_references": [],
+      "prior_observation_references": []
+    },
+    {
+      "id": "cid10#Multikey.21",
+      "text_sha256": "43e1009716854a4062761704f44d5afb4ee5aa4934379731b51a01106844c84b",
+      "level": "requirement",
+      "contract_group": "normative-interpretation",
+      "runtime_verdict": "NOT_RUN",
+      "runtime_cases": [],
+      "reason": "Final base58 length depends on the unresolved preceding G2 row.",
+      "completion_condition": "Resolve Multikey.20 and independently establish the selected complete payload/prefix/length oracle before judging the resulting encoding.",
+      "depends_on": [
+        "cid10#Multikey.20"
+      ],
+      "source_zip_references": [],
+      "prior_observation_references": []
+    },
+    {
+      "id": "cid10#base-decode.16",
+      "text_sha256": "fef486d3c68716a02f750a52cc63811d6dcfbb6920fe2f55813449c33acfd31d",
+      "level": "requirement",
+      "contract_group": "normative-interpretation",
+      "runtime_verdict": "NOT_RUN",
+      "runtime_cases": [],
+      "reason": "Frozen destination offset zeroes+1 differs from Example 19 and original append placement.",
+      "completion_condition": "Obtain authoritative interpretation or a separately approved complete equivalent-output contract; final size and prefix checks do not establish copy placement.",
+      "depends_on": [],
+      "source_zip_references": [],
+      "prior_observation_references": []
+    },
+    {
+      "id": "cid10#base-encode.13",
+      "text_sha256": "b6d51ec52faabd81267e46eeea10889fb628ea605a0321b8fbeea91456cef351",
+      "level": "requirement",
+      "contract_group": "normative-interpretation",
+      "runtime_verdict": "NOT_RUN",
+      "runtime_cases": [],
+      "reason": "Frozen nonzero loop differs from zero-skipping intent, Example 18 and original source.",
+      "completion_condition": "Obtain authoritative interpretation or a separately approved complete equivalent-output contract over the selected domain; isolated source branches, prefix and length observations are insufficient.",
+      "depends_on": [],
+      "source_zip_references": [],
+      "prior_observation_references": []
+    },
+    {
+      "id": "cid10#conformance.1",
+      "text_sha256": "b3b26e340a7f7fa13bfc9c045f6bd0aec0b608a313d3bfc7b34cccf55f7536dd",
+      "level": "requirement",
+      "contract_group": "reader-interpretation",
+      "runtime_verdict": "NOT_RUN",
+      "runtime_cases": [],
+      "reason": "Normative keyword interpretation definition, not a runtime operation.",
+      "completion_condition": "Keep frozen uppercase BCP14 interpretation and inspect actual obligations separately; no subject PASS from catalog validation.",
+      "depends_on": [],
+      "source_zip_references": [],
+      "prior_observation_references": []
+    },
+    {
+      "id": "cid10#json-ld-context.1",
+      "text_sha256": "721d1e47bcb6aea93b5248df3f033717aa0841ea206d31f96dc77074252e79dc",
+      "level": "requirement",
+      "contract_group": "processing-applicability",
+      "runtime_verdict": "NOT_RUN",
+      "runtime_cases": [],
+      "reason": "Limited term lookup and matching DID context hashes do not establish CID context routing during JSON-LD processing.",
+      "completion_condition": "Identify an applicable actual JSON-LD processor and original loader with independently pinned CID context bytes, lookup routing and no-fetch evidence. Do not replace its loader to assert subject support.",
+      "depends_on": [],
+      "source_zip_references": [
+        "jsonld/context.go",
+        "jsonld/terms.go",
+        "consumer/consumer.go",
+        "consumer/read.go",
+        "producer/producer.go",
+        "producer/write.go",
+        "representation/detect.go",
+        "representation/mediatype.go",
+        "representation/representation.go"
+      ],
+      "prior_observation_references": [
+        "did-1.1/sage-resolution/library-context-cache",
+        "did-1.1/sage-resolution/library-context-consumer-unknown",
+        "did-1.1/sage-resolution/library-context-producer-unknown",
+        "did-1.1/sage-resolution/representation-options-consumer-false",
+        "did-1.1/sage-resolution/representation-options-consumer-true"
+      ]
+    },
+    {
+      "id": "cid10#services.5",
+      "text_sha256": "5bc70ff9dd34c8bdf976b9786aaf29869a9ee2b5349ebe8dd91fe3a65dd016e5",
+      "level": "requirement",
+      "contract_group": "normative-interpretation",
+      "runtime_verdict": "NOT_RUN",
+      "runtime_cases": [],
+      "reason": "Frozen service id OPTIONAL conflicts with the same publication service property contract.",
+      "completion_condition": "Resolve the exact frozen publication interpretation. Diagnostic acceptance of id absence cannot choose a normative rule or replace it with Core 1.0.",
+      "depends_on": [],
+      "source_zip_references": [],
+      "prior_observation_references": []
+    },
+    {
+      "id": "cid10#vocabulary.1",
+      "text_sha256": "252e6b2470248d09a4b7c13324304432e7c7df1cc6ac301294edcd68ca5ee2a6",
+      "level": "requirement",
+      "contract_group": "processing-applicability",
+      "runtime_verdict": "NOT_RUN",
+      "runtime_cases": [],
+      "reason": "JSON names and term lookup do not establish RDF predicate IRIs.",
+      "completion_condition": "Establish processing applicability or observe the actual selected RDF dataset with independently fixed security vocabulary IRIs; engine absence alone is not blanket NA.",
+      "depends_on": [],
+      "source_zip_references": [
+        "jsonld/context.go",
+        "jsonld/terms.go",
+        "consumer/consumer.go",
+        "consumer/read.go",
+        "producer/producer.go",
+        "producer/write.go",
+        "representation/detect.go",
+        "representation/mediatype.go",
+        "representation/representation.go"
+      ],
+      "prior_observation_references": [
+        "did-1.1/sage-resolution/library-context-cache",
+        "did-1.1/sage-resolution/library-context-consumer-unknown",
+        "did-1.1/sage-resolution/library-context-producer-unknown",
+        "did-1.1/sage-resolution/representation-options-consumer-false",
+        "did-1.1/sage-resolution/representation-options-consumer-true"
+      ]
+    },
+    {
+      "id": "did11-cr20260305#conformance.1",
+      "text_sha256": "27e6aa7aa6404a7795f2d777b7f825fb4c659d3921e2b8a81c0b7c363632a57f",
+      "level": "requirement",
+      "contract_group": "reader-interpretation",
+      "runtime_verdict": "NOT_RUN",
+      "runtime_cases": [],
+      "reason": "Normative keyword interpretation definition, not a runtime operation.",
+      "completion_condition": "Keep frozen uppercase BCP14 interpretation and inspect actual obligations separately; no subject PASS from catalog validation.",
+      "depends_on": [],
+      "source_zip_references": [],
+      "prior_observation_references": []
+    },
+    {
+      "id": "did11-cr20260305#json-ld-processors.1",
+      "text_sha256": "27539a73288d81eb6ac839a55ea1bdbaa7ee1fa7ccd75d47faf44414fbee267d",
+      "level": "requirement",
+      "contract_group": "processing-applicability",
+      "runtime_verdict": "NOT_RUN",
+      "runtime_cases": [],
+      "reason": "Context shape, term grammar and local injection do not establish JSON-LD 1.1 processing rules.",
+      "completion_condition": "Identify actual processing mode/entry point and an independently complete selected context-class oracle with safe positive/negative observations; preserve this pending boundary until then.",
+      "depends_on": [],
+      "source_zip_references": [
+        "jsonld/context.go",
+        "jsonld/terms.go",
+        "consumer/consumer.go",
+        "consumer/read.go",
+        "producer/producer.go",
+        "producer/write.go",
+        "representation/detect.go",
+        "representation/mediatype.go",
+        "representation/representation.go"
+      ],
+      "prior_observation_references": [
+        "did-1.1/sage-resolution/library-context-cache",
+        "did-1.1/sage-resolution/library-context-consumer-unknown",
+        "did-1.1/sage-resolution/library-context-producer-unknown",
+        "did-1.1/sage-resolution/representation-options-consumer-false",
+        "did-1.1/sage-resolution/representation-options-consumer-true"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#conformance.1",
+      "text_sha256": "5fedc41b7cabe2777b5de7bcf09dca752530d267c9f6c53d831152b77dfd1092",
+      "level": "requirement",
+      "contract_group": "reader-interpretation",
+      "runtime_verdict": "NOT_RUN",
+      "runtime_cases": [],
+      "reason": "Normative keyword interpretation definition, not a runtime operation.",
+      "completion_condition": "Keep frozen uppercase BCP14 interpretation and inspect actual obligations separately; no subject PASS from catalog validation.",
+      "depends_on": [],
+      "source_zip_references": [],
+      "prior_observation_references": []
+    },
+    {
+      "id": "res10-crd20261001#did-document-metadata.18",
+      "text_sha256": "e806a4d7a5faa2d89c85f18cf98732c1aa70fed59e76ec0781499821810c2abb",
+      "level": "requirement",
+      "contract_group": "authority-lifecycle",
+      "runtime_verdict": "NOT_RUN",
+      "runtime_cases": [],
+      "reason": "Alias shape or fixture equality does not establish a governing method guarantee.",
+      "completion_condition": "Require the selected method equivalence contract and independent authority, identity, document and lifecycle evidence. Documentary alias nonselection cannot become runtime guarantee PASS.",
+      "depends_on": [],
+      "source_zip_references": [],
+      "prior_observation_references": []
+    },
+    {
+      "id": "res10-crd20261001#metadata-structure.5",
+      "text_sha256": "d55be414c3d990548c86fa008e8f1410a13638d083ca8f58c6258f1fbd8c6a85",
+      "level": "requirement",
+      "contract_group": "selected-serializer",
+      "runtime_verdict": "NOT_RUN",
+      "runtime_cases": [],
+      "reason": "No actual alternate metadata serialization entry point is selected.",
+      "completion_condition": "Identify an actual original alternate-format serializer and independent format contract with normal inputs and refusal diagnostics. Inspector-generated XML/CBOR is not subject evidence.",
+      "depends_on": [],
+      "source_zip_references": [
+        "document/metadata.go",
+        "resolution/metadata.go"
+      ],
+      "prior_observation_references": [
+        "did-1.1/sage-resolution/native-metadata-active-record-0-resolution"
+      ]
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.32",
+      "text_sha256": "b024db7f38da8010b14d318dcb5097c000915a735895d0025e53f222cef1bc1e",
+      "level": "requirement",
+      "contract_group": "dependent-tuple",
+      "runtime_verdict": "NOT_RUN",
+      "runtime_cases": [],
+      "reason": "Complete tuple contract depends on unresolved contentType placement.",
+      "completion_condition": "Resolve resolving-algorithm.35, then bind the complete actual document/resolution-metadata/document-metadata tuple to an independent oracle and field-specific controls. Member PASS cannot close the tuple.",
+      "depends_on": [
+        "res10-crd20261001#resolving-algorithm.35"
+      ],
+      "source_zip_references": [],
+      "prior_observation_references": []
+    },
+    {
+      "id": "res10-crd20261001#resolving-algorithm.35",
+      "text_sha256": "1d289368688312969b235b0a30272de657a9c53b6403802d2471ce717a8c4a92",
+      "level": "requirement",
+      "contract_group": "normative-interpretation",
+      "runtime_verdict": "NOT_RUN",
+      "runtime_cases": [],
+      "reason": "Frozen algorithm places contentType in document metadata, unlike the general resolution metadata contract.",
+      "completion_condition": "Resolve the selected publication placement contract. Capture both original metadata maps without moving or injecting fields to manufacture PASS.",
+      "depends_on": [],
+      "source_zip_references": [],
+      "prior_observation_references": []
+    },
+    {
+      "id": "res10-crd20261001#versioning.1",
+      "text_sha256": "a5608f88893a836a4dedf0eecd33d485a448808a50bc325c64f7e67df363f150",
+      "level": "requirement",
+      "contract_group": "authority-lifecycle",
+      "runtime_verdict": "NOT_RUN",
+      "runtime_cases": [],
+      "reason": "Controlled version 7/8 replies are not actual document Update operations.",
+      "completion_condition": "Observe actual authorized Updates and independently bind their document metadata version changes, history and authority. Do not copy downstream metadata preservation PASS.",
+      "depends_on": [],
+      "source_zip_references": [],
+      "prior_observation_references": []
+    }
+  ]
+}

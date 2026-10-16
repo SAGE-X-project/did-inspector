@@ -674,9 +674,13 @@ jobs:
           python3 ../../scripts/check_sage_internal_boundaries.py --reports "$RUNNER_TEMP/sage-reports"
           python3 ../../scripts/check_sage_residual_evidence.py --reports "$RUNNER_TEMP/sage-reports"
           python3 ../../scripts/check_sage_extensions.py --reports "$RUNNER_TEMP/sage-reports"
+          python3 ../../scripts/inspect_sage_prerequisites.py --reports "$RUNNER_TEMP/sage-reports" --out "$RUNNER_TEMP/sage-reports/prerequisites.json"
+          python3 ../../scripts/inspect_sage_prerequisites.py --reports "$RUNNER_TEMP/sage-reports" --out "$RUNNER_TEMP/sage-reports/prerequisites.json" --verify
           SAGE_BATCH_REPORT_DIR="$RUNNER_TEMP/sage-reports" python3 -m unittest discover -s ../../scripts -p 'test_*.py'
           SAGE_BATCH_REPORT_DIR="$RUNNER_TEMP/sage-reports" python3 -m trace --count --missing --summary --coverdir "$RUNNER_TEMP/extension-coverage" --module unittest discover -s ../../scripts -p test_check_sage_extensions.py > "$RUNNER_TEMP/extension-coverage.log"
           awk '$3 == "check_sage_extensions" {found=1; v=$2; sub(/%$/, "", v); if(v+0<90) exit 1} END {if(!found) exit 1}' "$RUNNER_TEMP/extension-coverage.log"
+          SAGE_BATCH_REPORT_DIR="$RUNNER_TEMP/sage-reports" python3 -m trace --count --missing --summary --coverdir "$RUNNER_TEMP/prerequisite-coverage" --module unittest discover -s ../../scripts -p test_inspect_sage_prerequisites.py > "$RUNNER_TEMP/prerequisite-coverage.log"
+          awk '$3 == "inspect_sage_prerequisites" {found=1; v=$2; sub(/%$/, "", v); if(v+0<90) exit 1} END {if(!found) exit 1}' "$RUNNER_TEMP/prerequisite-coverage.log"
       - name: Preserve independent profile and raw observation artifacts
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
@@ -685,6 +689,7 @@ jobs:
           path: |
             ${{ runner.temp }}/sage-reports/
             ${{ runner.temp }}/extension-coverage.log
+            ${{ runner.temp }}/prerequisite-coverage.log
             ${{ runner.temp }}/sage-adapter-cover.out
             ${{ runner.temp }}/sage-subject-modules.json
             ${{ runner.temp }}/sage-url-observer-modules.json
