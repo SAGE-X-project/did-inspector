@@ -20,7 +20,8 @@ REVIEWED = {"did11-cr20260305#" + s for s in (
     "method-syntax.8", "method-syntax.10", "method-syntax.11", "method-syntax.12",
     "method-operations.2", "method-operations.4", "method-operations.5", "media-types.1",
     "security-requirements.3", "security-requirements.4", "security-requirements.7",
-    "security-requirements.8", "security-requirements.9", "security-requirements.11")} | {"res10-crd20261001#" + s for s in (
+    "security-requirements.8", "security-requirements.9", "security-requirements.11",
+    "method-operations.1", "method-operations.3", "security-requirements.10")} | {"res10-crd20261001#" + s for s in (
     "method-architectures.1",
     "method-architectures.2",)}
 # These cases review absent author activities, not implementation capabilities.
@@ -39,11 +40,22 @@ NOT_APPLICABLE = {"cid10#Multikey.24"} | {"did11-cr20260305#" + s for s in (
     "method-architectures.3",)}
 FAILURES = {"did11-cr20260305#" + s for s in (
     "security-requirements.1", "security-requirements.2",
-    "security-requirements.13", "privacy-requirements.1")} | {"res10-crd20261001#" + s for s in (
+    "security-requirements.13", "privacy-requirements.1",
+    "security-requirements.5", "security-requirements.6")} | {"res10-crd20261001#" + s for s in (
     "vdr-forks.1",)}
 DEFERRED = {"did11-cr20260305#" + s for s in (
-    "method-operations.1", "method-operations.3", "method-syntax.4", "method-syntax.5",
-    "security-requirements.5", "security-requirements.6", "security-requirements.10")}
+    "method-syntax.4", "method-syntax.5")}
+
+# Independently reviewed completion contracts; changes require a fresh semantic review.
+COMPLETION_DIGESTS = {
+    "did11-cr20260305#method-operations.1": "0a783a17781c23948e724ba1469a3d85db6406d963d441ce2fa76b7edb6536f2",
+    "did11-cr20260305#method-operations.3": "e7d5f681069e865cc7af87e99a04dee58d2769136b6059943282d1209998bb4a",
+    "did11-cr20260305#method-syntax.4": "63c7d4e1256c0935d54fbb8a9f3a5e9b677b846fa7ec327ba9a3ca094ca9af78",
+    "did11-cr20260305#method-syntax.5": "4fb4efa8d5fa4b8948fe1190e92712bbf4314ab0d9034575172901108d0ae354",
+    "did11-cr20260305#security-requirements.10": "afa117a0b883d9894af71c8b43a8ee711d36ca25c9f57b1cd5ee8fb99598bcc3",
+    "did11-cr20260305#security-requirements.5": "23a91b67ddd94736ff63818e22d9728684ae6c90dfcc9ebb5367f2f108138eaa",
+    "did11-cr20260305#security-requirements.6": "f0a2aeb31ab5966e3065a1261b9b000a79e71bd2dc243a83b61a7f49a5672ad7"
+}
 
 
 class EvidenceError(ValueError):
@@ -83,6 +95,12 @@ def load_catalog(root=ROOT):
         row["level"] = original["level"]
         if row["status"] not in ("reviewed-document", "pending") or not row["review_basis"] or not row["scope"]:
             raise EvidenceError("review contract missing")
+        completion = row.get("completion_review")
+        if row["id"] in COMPLETION_DIGESTS:
+            if digest(json.dumps(completion, sort_keys=True, separators=(",", ":")).encode()) != COMPLETION_DIGESTS[row["id"]]:
+                raise EvidenceError("unreviewed completion contract")
+        elif "completion_review" in row:
+            raise EvidenceError("unreviewed completion contract added")
         pending = row.get("pending_review")
         if row["id"] in DEFERRED:
             if (row["status"] != "pending" or not isinstance(pending, dict) or
@@ -184,6 +202,10 @@ def inspect(catalog, capture_data, observer):
                      "detail": issue if selected and issue else source["review_basis"],
                      "evidence": source["evidence"] if selected else [],
                      "follow_up": source["follow_up"]})
+        if "completion_review" in source:
+            rows[-1]["completion_check"] = {
+                "evidence_status": "ERROR" if issue else "VERIFIED",
+                "assessment": None if issue else source["completion_review"]}
         if "pending_review" in source:
             rows[-1]["pending_review"] = source["pending_review"]
     totals = {k: sum(row["verdict"] == k for row in rows) for k in ("PASS", "FAIL", "ERROR", "NOT_APPLICABLE", "NOT_RUN")}
@@ -192,6 +214,9 @@ def inspect(catalog, capture_data, observer):
             "revision": REVISION, "policy": catalog["policy"], "totals": totals,
             "statements": rows, "runtime_results_merged": False,
             "documentary_gate": "ERROR" if totals["ERROR"] else "FAIL" if totals["FAIL"] else "PASS",
+            "completion_progress": {"reviewed": len(COMPLETION_DIGESTS),
+                                    "verified": 0 if issue else len(COMPLETION_DIGESTS),
+                                    "errors": len(COMPLETION_DIGESTS) if issue else 0},
             "review_progress": {"judged": len(REVIEWED | NOT_APPLICABLE | FAILURES), "reviewed_pending": len(DEFERRED),
                                 "unreviewed": len(rows) - len(REVIEWED | NOT_APPLICABLE | FAILURES) - len(DEFERRED)}}
 

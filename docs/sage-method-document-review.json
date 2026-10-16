@@ -261,9 +261,9 @@
       "id": "did11-cr20260305#method-operations.1",
       "text": "A DID method specification MUST define how authorization is performed to execute all operations, including any necessary cryptographic processes.",
       "text_sha256": "d3baa658d5a6a9e66bc2cba1da4e71a5e0d7e3b49df895cb1d4eb81c2f7d0cd2",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "Controller/operator scopes, expected versions, proof checks and atomic authorization decisions are defined. However, the authenticated meaning of the controller identifier and its binding to credentials for every management operation are delegated to selected bindings. Proof of possession explicitly does not authorize mutation. The reviewed corpus does not close that all-operations principal/credential mapping and its necessary cryptographic processes. This is a remaining semantic contract, not a generic W3C demand for an ABI or successful deployment.",
+      "review_basis": "Chapter 09 sections 3 and 9 define authorization from the authenticated actor: exact immutable controller or the exact registry/DID/operator/scope grant, lifecycle eligibility, expected version and one atomic decision. Creation uses an authenticated account-scoped commitment/reveal; PoP alone cannot authorize a mutation. Frozen DID 1.1 section 7.2 expressly permits out-of-band authority instead of document authentication keys. This closes the abstract authorization predicate, not the deployment authentication mechanism, command integrity, custody or live enforcement. Those distinct security .5/.6 gaps remain visible.",
       "follow_up": [
         "spec/09-registry.md \u00a7\u00a73,4,6,8,9",
         "spec/10-resolution.md \u00a72"
@@ -288,14 +288,28 @@
           "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
         }
       ],
-      "pending_review": {
-        "verdict": "NOT_RUN",
-        "required_actor": "method specification author with a complete selected profile/binding document",
-        "reason": "Controller/operator scopes, expected versions, proof checks and atomic authorization decisions are defined. However, the authenticated meaning of the controller identifier and its binding to credentials for every management operation are delegated to selected bindings. Proof of possession explicitly does not authorize mutation. The reviewed corpus does not close that all-operations principal/credential mapping and its necessary cryptographic processes. This is a remaining semantic contract, not a generic W3C demand for an ABI or successful deployment.",
-        "completion_evidence": [
-          "Identify and freeze documentary evidence for the selected authorization binding, without assuming any particular API, ABI or transaction format.",
-          "Review authentication and credential-to-controller/operator binding for every operation, including the operation/registry/DID binding and required cryptographic processes; distinguish PoP from mutation authorization.",
-          "Close the all-operations semantic contract from documentary evidence; live execution remains a separate actor."
+      "completion_review": {
+        "group": "authorization",
+        "outcome": "PASS",
+        "conditions": [
+          {
+            "id": "authority-predicate",
+            "status": "SUPPORTED",
+            "basis": "Exact controller or exact scoped grant is checked at one serialization point.",
+            "completion": "The abstract authorization predicate is documented; actual authenticated-principal binding remains a deployment and security .6 concern."
+          },
+          {
+            "id": "operation-association",
+            "status": "SUPPORTED",
+            "basis": "Registry, DID, operation, expected version and eligibility are explicit command inputs.",
+            "completion": "All abstract operation roles are covered; this is not evidence that a credential integrity-protects every input."
+          },
+          {
+            "id": "cryptographic-role",
+            "status": "SUPPORTED",
+            "basis": "PoP and claim commitment are specified and PoP cannot supply mutation authorization.",
+            "completion": "Out-of-band authority is permitted by frozen DID 1.1 section 7.2; no DID-key management signer or ABI is required."
+          }
         ]
       }
     },
@@ -335,9 +349,9 @@
       "id": "did11-cr20260305#method-operations.3",
       "text": "A DID method specification MUST specify how a DID resolver uses a DID to resolve a DID document, including how the DID resolver can verify the authenticity of the response.",
       "text_sha256": "a75bab77172b71661b814b3f68dfc517ee2091c1fd7bed8902fba33da4a05a45",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "Chapter 10 defines DID-to-registry selection, validation and projection; chapter 09 defines authenticated TLS-origin web reads and finalized eip155 observations. The remaining whole-method semantic contract is how the selected trusted source is authenticated and establishes its chain/network identity, readiness and response authenticity, including eip155. The web branch alone and a source-name metadata string do not discharge that whole-method duty. A specific ABI or successful live response is not an additional W3C author requirement.",
+      "review_basis": "Chapters 06, 09 sections 4-6/8 and 10 section 2 specify parsing the DID, selecting its registry, obtaining one authorized fresh observation, verifying record/ID/proofs/version/state, and projecting the document. The resolver either validates registry evidence itself or explicitly trusts an authenticated resolver identity and observation policy; web additionally binds an allowlisted TLS origin and exact fresh response. Failures deny resolution. This satisfies the abstract method response-authenticity description without inventing a deployment identity, ABI, light client or portable whole-result proof. Actual source authentication, fork disambiguation, readiness and execution remain separate; the known fork recommendation failure is not repaired.",
       "follow_up": [
         "spec/09-registry.md \u00a7\u00a75,6,8",
         "spec/10-resolution.md \u00a72"
@@ -362,14 +376,28 @@
           "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
         }
       ],
-      "pending_review": {
-        "verdict": "NOT_RUN",
-        "required_actor": "method specification author with a complete selected profile/binding document",
-        "reason": "Chapter 10 defines DID-to-registry selection, validation and projection; chapter 09 defines authenticated TLS-origin web reads and finalized eip155 observations. The remaining whole-method semantic contract is how the selected trusted source is authenticated and establishes its chain/network identity, readiness and response authenticity, including eip155. The web branch alone and a source-name metadata string do not discharge that whole-method duty. A specific ABI or successful live response is not an additional W3C author requirement.",
-        "completion_evidence": [
-          "Review the selected source/readiness and response-authentication documentary binding across the supported method profiles, including eip155.",
-          "Connect the exact DID/profile to authenticated source identity, chain/network binding, finality/readiness and failure handling; distinguish a configured source label from authenticated evidence.",
-          "Close this author obligation from sufficient documentary evidence without requiring a particular ABI or substituting a live response for the specification."
+      "completion_review": {
+        "group": "response-authenticity",
+        "outcome": "PASS",
+        "conditions": [
+          {
+            "id": "resolution-procedure",
+            "status": "SUPPORTED",
+            "basis": "DID selects its registry, a single fresh record is checked, then projected.",
+            "completion": "The abstract DID-to-document procedure and fail-closed response checks are documented."
+          },
+          {
+            "id": "authenticated-source-policy",
+            "status": "SUPPORTED",
+            "basis": "Self-validation or explicit trust in authenticated source identity is required; arbitrary resolver TLS is not blockchain proof.",
+            "completion": "The documented trust choice closes this author explanation, not a particular endpoint or network deployment."
+          },
+          {
+            "id": "read-limitations",
+            "status": "SUPPORTED",
+            "basis": "Version rollback/readiness failures deny resolution; the web origin and freshness rules are explicit.",
+            "completion": "Actual fork distinction and deployment enforcement need separate evidence and do not inherit this PASS."
+          }
         ]
       }
     },
@@ -621,6 +649,24 @@
           "Provide an independent uniqueness argument and appropriately attributed enforcement evidence for the generated identifiers.",
           "Do not turn a declared guarantee or a few distinct fixture strings into global uniqueness evidence."
         ]
+      },
+      "completion_review": {
+        "group": "identifier-uniqueness",
+        "outcome": "NOT_RUN",
+        "conditions": [
+          {
+            "id": "allocation-policy",
+            "status": "SUPPORTED",
+            "basis": "Canonical registry/local identifier construction, atomic reservation and permanent non-reassignment are specified.",
+            "completion": "The policy discussion is sufficient as policy, not evidence of actual issued identifiers."
+          },
+          {
+            "id": "issuer-enforcement",
+            "status": "NOT_OBSERVED",
+            "basis": "No independently attributed issuer allocation/enforcement observation is supplied by this corpus.",
+            "completion": "Provide scoped issuer evidence and an independent uniqueness argument including concurrent allocation and non-reassignment; a few fixture strings do not prove global uniqueness."
+          }
+        ]
       }
     },
     {
@@ -662,6 +708,30 @@
           "Identify and justify the registry namespace and selected network/fork/DNS assumptions.",
           "Connect the construction and local uniqueness/non-reassignment guarantees to independently attributed issuer evidence.",
           "Keep unspecified operational trust and fork bindings unresolved, rather than choosing a deployment or treating a fixture as authority."
+        ]
+      },
+      "completion_review": {
+        "group": "identifier-uniqueness",
+        "outcome": "NOT_RUN",
+        "conditions": [
+          {
+            "id": "namespace-construction",
+            "status": "SUPPORTED",
+            "basis": "The intended namespace is registry identity plus local identifier.",
+            "completion": "The construction is described; a declared registry identity alone is not global issuer evidence."
+          },
+          {
+            "id": "namespace-assumptions",
+            "status": "NOT_OBSERVED",
+            "basis": "Actual registry-instance identity, fork and DNS lifecycle assumptions have no independent issuer evidence here.",
+            "completion": "Justify the applicable chain/fork/DNS namespace and non-reassignment assumptions without inventing an operational authority."
+          },
+          {
+            "id": "global-issuer-property",
+            "status": "NOT_OBSERVED",
+            "basis": "No attributed argument connects actual issuance to global uniqueness.",
+            "completion": "Connect namespace and local allocation guarantees to independently attributed issuer evidence; do not treat a declaration as proof."
+          }
         ]
       }
     },
@@ -1180,9 +1250,9 @@
       "id": "did11-cr20260305#security-requirements.10",
       "text": "If a protocol incorporates cryptographic protection mechanisms, the DID method specification MUST clearly indicate which portions of the data are protected and by what protections, and it SHOULD give an indication of the sorts of attacks to which the cryptographic protection is susceptible.",
       "text_sha256": "1a67f55e75fc34dbb71da7f876c14cfae3111d559cce854d0569ebb111e19797",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "The PoP challenge, account-scoped commitment, web TLS and messaging protected fields are described. The complete protected/unprotected data boundary across the remaining management credential/source contracts is unresolved, consistently with method-operations.1/.3. This mixed MUST/SHOULD clause is not failed merely for an absent attack-susceptibility matrix or because a recommendation has not been proven.",
+      "review_basis": "PASS for the independently documented scope of the cryptographic mechanisms actually selected: exact PoP challenge fields and its non-authorization limit; whole claim commitment including account/registry scoping; TLS protection of the web-origin response and its malicious-origin limit; exact HTTP covered components, handshake/transcript, encrypted-envelope authenticated data and execution-intent signing inputs. The cited primitive, messaging and integration chapters distinguish public metadata, signatures, secret material, replay and compromise boundaries. The MUST concerns indicating protected portions and protections; it does not require every management credential to be a new cryptographic protocol. Its attack-susceptibility SHOULD is not promoted to an extra MUST. This judgment neither certifies cryptographic execution nor resolves the distinct administrative integrity/authentication gaps in security .5/.6.",
       "follow_up": [
         "spec/06-did-sage.md \u00a76",
         "spec/09-registry.md \u00a7\u00a73-6,8-10",
@@ -1191,10 +1261,28 @@
       ],
       "evidence": [
         {
-          "path": "charter.md",
+          "path": "profiles/a2a-1.0-binding.md",
           "start_line": 1,
-          "end_line": 237,
-          "sha256": "0c22ccfe49011c09967ccab993135b663599e2f05da4040383f1f24542cef2cd"
+          "end_line": 187,
+          "sha256": "c4c7f263ea3e9ff122277976f0bebf4357c418956256c33fbbb28570b8a67b4d"
+        },
+        {
+          "path": "profiles/agent-mcp-security.md",
+          "start_line": 1,
+          "end_line": 392,
+          "sha256": "0538acbdcfc143d93fb7d99a2a2c09c068fc354388c4e37c7489204305b1913f"
+        },
+        {
+          "path": "profiles/non-http-mcp-security.md",
+          "start_line": 1,
+          "end_line": 835,
+          "sha256": "9c7851d095208c975792565266e481c120ef754ae8eb9529c62b53bf12a1d4fa"
+        },
+        {
+          "path": "spec/00-overview.md",
+          "start_line": 1,
+          "end_line": 161,
+          "sha256": "8655cddfa23979cb12432f83831e58ee2b6e240b5f1f92b84594d7084eaeb3f0"
         },
         {
           "path": "spec/01-crypto.md",
@@ -1203,10 +1291,46 @@
           "sha256": "35463137986ae692593cb12a3654085270f3337acea3aa3d7efcdde8cea78a0a"
         },
         {
+          "path": "spec/02-jcs.md",
+          "start_line": 1,
+          "end_line": 66,
+          "sha256": "4d4b202c8ddb5eb00c47a8e8056813a589834526e2174c023fb005a484eb3d94"
+        },
+        {
+          "path": "spec/03-rfc9421.md",
+          "start_line": 1,
+          "end_line": 155,
+          "sha256": "b28d567cbf3f7a6a256c73fd35696865b5c0ebdc814de57624b90df082d49407"
+        },
+        {
+          "path": "spec/04-hpke.md",
+          "start_line": 1,
+          "end_line": 152,
+          "sha256": "1420818451ce8363a16e391647dbaca8ec2f06efa56b6507027a4e17f399fdd6"
+        },
+        {
+          "path": "spec/05-session.md",
+          "start_line": 1,
+          "end_line": 132,
+          "sha256": "8a45b8bdd3b6bfc399a94c420b2161b8f16db5c6b29ed2e85584a6282b17cce5"
+        },
+        {
           "path": "spec/06-did-sage.md",
           "start_line": 1,
           "end_line": 129,
           "sha256": "fa7e180a37971ec382968d826857a3c4735f2a5f476c939d7aaf48349cea5691"
+        },
+        {
+          "path": "spec/07-a2a.md",
+          "start_line": 1,
+          "end_line": 77,
+          "sha256": "5ded622fdaf67342d5c6b4327da0f5787bfe9df2dc58b233cdfb500ffc96b042"
+        },
+        {
+          "path": "spec/08-transport.md",
+          "start_line": 1,
+          "end_line": 154,
+          "sha256": "e11e8200d67ee913fcd1a47781c6d31a353556c9dfd4e4ce0a88dbe97e10bba6"
         },
         {
           "path": "spec/09-registry.md",
@@ -1219,16 +1343,42 @@
           "start_line": 1,
           "end_line": 283,
           "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
+        },
+        {
+          "path": "spec/11-registries.md",
+          "start_line": 1,
+          "end_line": 202,
+          "sha256": "aaf8e68a1af957fd079ff56d89636b792930e8e0202b3d09a084164005589513"
+        },
+        {
+          "path": "charter.md",
+          "start_line": 1,
+          "end_line": 237,
+          "sha256": "0c22ccfe49011c09967ccab993135b663599e2f05da4040383f1f24542cef2cd"
         }
       ],
-      "pending_review": {
-        "verdict": "NOT_RUN",
-        "required_actor": "method specification author with complete operation protection and source bindings",
-        "reason": "The PoP challenge, account-scoped commitment, web TLS and messaging protected fields are described. The complete protected/unprotected data boundary across the remaining management credential/source contracts is unresolved, consistently with method-operations.1/.3. This mixed MUST/SHOULD clause is not failed merely for an absent attack-susceptibility matrix or because a recommendation has not been proven.",
-        "completion_evidence": [
-          "Map protected and unprotected portions of each required method operation to its actual selected cryptographic or authenticated-channel binding.",
-          "Specify principal/source association, termination/trust boundaries and the remaining susceptibility discussion; distinguish public record projections from signed PoP.",
-          "Resolve the actual binding semantics before a whole-method judgment, without inventing an operational authority or demanding successful deployment."
+      "completion_review": {
+        "group": "response-authenticity",
+        "outcome": "PASS",
+        "conditions": [
+          {
+            "id": "registration-inputs",
+            "status": "SUPPORTED",
+            "basis": "PoP signs exact registry/DID/name/algorithm/key bytes; the claim commitment includes the complete claim and account/registry scope.",
+            "completion": "The signed/hash-protected fields and their limits are explicit; PoP is not current state or command authorization."
+          },
+          {
+            "id": "channel-and-message-inputs",
+            "status": "SUPPORTED",
+            "basis": "TLS origin protection, HTTP covered fields, handshake/transcript, envelope AAD and execution-intent inputs are specified.",
+            "completion": "Only the selected mechanisms and their documented protected/unprotected portions are judged; no whole-result proof is inferred."
+          },
+          {
+            "id": "susceptibility-boundary",
+            "status": "SUPPORTED",
+            "basis": "Primitive, integration and messaging chapters discuss replay, substituted origins, protected-client compromise and public metadata limits.",
+            "completion": "The clause retains its mixed MUST/SHOULD semantics; this does not discharge security .5/.6, all other attack analysis or runtime cryptographic validity."
+          }
         ]
       }
     },
@@ -1706,9 +1856,9 @@
       "id": "did11-cr20260305#security-requirements.5",
       "text": "The Security Considerations section MUST provide integrity protection and update authentication for all operations required by Section 7.2 Method Operations.",
       "text_sha256": "9b733ac26432e5bf9664609bcb09747dc0dd3340ebf598b3ffdc476d720cc220",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "Abstract lifecycle authorization, atomic version/history rules, PoP and source-observation requirements are present. The corpus still leaves the authenticated principal/credential-to-controller/operator association and whole-method authoritative-read authenticity contract to selected bindings. PoP alone is expressly not mutation authorization. Those known semantic prerequisites prevent closing integrity/update authentication for every operation; they are not a demand for a deployed ABI or a measured transaction.",
+      "review_basis": "Documentary FAIL for the required all-operations integrity and update-authentication contract. Chapter 09 defines authorization decisions, versions, atomic histories, PoP and a trusted credential prerequisite, but leaves the authenticated command binding to deployment documents. It does not specify how that authentication protects the complete administrative registry/DID/operation/expected-version/arguments association against modification and replay. Authenticating an actor and checking a version are not by themselves command integrity. Web public-read TLS, signing-key PoP and the eip155 creation commitment do not close every management operation. No successful deployment, particular API/ABI, new signature suite or all-commands encryption requirement is imposed. A complete selected authenticated-command integrity contract would enable a fresh author review; repair retains the approved later specification/core order.",
       "follow_up": [
         "spec/06-did-sage.md \u00a76",
         "spec/09-registry.md \u00a7\u00a73-6,8-10",
@@ -1747,14 +1897,29 @@
           "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
         }
       ],
-      "pending_review": {
-        "verdict": "NOT_RUN",
-        "required_actor": "method specification author with the selected administration and authoritative-read binding",
-        "reason": "Abstract lifecycle authorization, atomic version/history rules, PoP and source-observation requirements are present. The corpus still leaves the authenticated principal/credential-to-controller/operator association and whole-method authoritative-read authenticity contract to selected bindings. PoP alone is expressly not mutation authorization. Those known semantic prerequisites prevent closing integrity/update authentication for every operation; they are not a demand for a deployed ABI or a measured transaction.",
-        "completion_evidence": [
-          "Review the complete selected principal/credential binding for create and every eligible mutation, including exact controller/operator/registry/DID/operation association.",
-          "Review integrity, replay/version and authenticated source-response handling across all required operations without treating PoP as authorization.",
-          "Keep this aligned with unresolved method-operations.1/.3; documentary closure needs complete semantics, not a successful live deployment."
+      "review_verdict": "FAIL",
+      "completion_review": {
+        "group": "authorization",
+        "outcome": "FAIL",
+        "conditions": [
+          {
+            "id": "state-integrity-rules",
+            "status": "SUPPORTED",
+            "basis": "Exact expected version, durable atomic state/history/grants and rollback rejection are documented.",
+            "completion": "These state rules remain positive evidence but do not establish authenticated command integrity."
+          },
+          {
+            "id": "command-integrity-binding",
+            "status": "MISSING_DOCUMENTATION",
+            "basis": "The trusted credential binding does not specify protection of the complete command association and arguments for every operation.",
+            "completion": "Document a selected integrity/update-authentication contract covering registry/DID/operation/version/arguments, replay and failure handling across create and eligible mutations; no particular encoding or live execution is required."
+          },
+          {
+            "id": "proof-not-authorization",
+            "status": "SUPPORTED",
+            "basis": "PoP is explicitly distinct from authorized mutation; public-read TLS and the creation commitment have narrower scope.",
+            "completion": "Do not substitute these narrower mechanisms for all-command integrity."
+          }
         ]
       }
     },
@@ -1762,9 +1927,9 @@
       "id": "did11-cr20260305#security-requirements.6",
       "text": "If authentication is involved, particularly user-host authentication, the security characteristics of the authentication method MUST be clearly documented.",
       "text_sha256": "bed5cbf9fdd8820fc2add7c38bcf111997423fe35d6669cb1f38177b380884a8",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "TLS-origin trust and abstract authenticated-controller/scoped-operator checks are stated. The security characteristics and assumptions of the management credential and its authenticated-principal mapping are not closed for all selected profiles. Saying authenticate the actor or use an authenticated transaction does not by itself specify that credential binding. No password, signer or trust root is chosen by this review.",
+      "review_basis": "Documentary FAIL: management authentication is selected, but its method and security characteristics are delegated to a future credential binding. Chapters 09 sections 1/6/8/9 do not clearly document credential-to-principal association, authentication assumptions and compromise/replay boundaries for that management method. The abstract controller/grant authorization predicate and public-read TLS explanation do not fill this authentication-specific omission. This is a known corpus gap, not merely an unexecuted deployment. No password, trust root, custody choice or particular administrative API is invented. The selected authentication method and its security characteristics must be documented and independently reviewed in the approved later work.",
       "follow_up": [
         "spec/06-did-sage.md \u00a76",
         "spec/09-registry.md \u00a7\u00a73-6,8-10",
@@ -1803,14 +1968,23 @@
           "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
         }
       ],
-      "pending_review": {
-        "verdict": "NOT_RUN",
-        "required_actor": "method specification author with the selected controller/operator authentication binding",
-        "reason": "TLS-origin trust and abstract authenticated-controller/scoped-operator checks are stated. The security characteristics and assumptions of the management credential and its authenticated-principal mapping are not closed for all selected profiles. Saying authenticate the actor or use an authenticated transaction does not by itself specify that credential binding. No password, signer or trust root is chosen by this review.",
-        "completion_evidence": [
-          "Identify the complete selected administration credential/principal binding and its authentication method.",
-          "Discuss its security assumptions, compromise/replay boundaries and association with the immutable controller or exact operator grant.",
-          "Close the author contract from documentary evidence without adding a particular API/ABI or deployment as a W3C requirement."
+      "review_verdict": "FAIL",
+      "completion_review": {
+        "group": "authorization",
+        "outcome": "FAIL",
+        "conditions": [
+          {
+            "id": "authentication-selected",
+            "status": "SUPPORTED",
+            "basis": "Management commands require an authenticated controller/operator from trusted credentials, not asserted body fields.",
+            "completion": "Authentication is selected, so its conditional documentation obligation applies."
+          },
+          {
+            "id": "authentication-characteristics",
+            "status": "MISSING_DOCUMENTATION",
+            "basis": "The actual management credential/principal mechanism and its security characteristics are left to deployment binding.",
+            "completion": "Describe the selected authentication method, principal association, trust/termination/custody assumptions, compromise and replay boundaries; independently review it without choosing operational secrets or demanding deployment."
+          }
         ]
       }
     },
