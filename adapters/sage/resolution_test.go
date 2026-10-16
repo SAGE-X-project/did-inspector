@@ -91,6 +91,9 @@ func TestNativeResolutionProfilesWithStaticSourceFixture(t *testing.T) {
 				if o.Verdict == core.Fail && c.Case == "did-1.1/sage-resolution/item-expansion-conditions" && o.Statement == "res10-crd20261001#resolving-algorithm.29" {
 					allowed = true
 				}
+				if o.Verdict == core.NotSupported && c.Case == "did-1.1/sage-resolution/extension-codecs" && (o.Statement == "cid10#multibase-0.1" || o.Statement == "cid10#multihash.1") {
+					allowed = true
+				}
 				if !allowed {
 					t.Errorf("%s %s: %s %s", c.Case, o.Statement, o.Verdict, o.Observed)
 				}

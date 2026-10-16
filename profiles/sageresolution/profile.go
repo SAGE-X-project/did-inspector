@@ -131,6 +131,8 @@ func Profile(name string) (core.Profile, error) {
 	appendFragmentSearchCases(&p)
 	appendResolverProofCases(&p, rows)
 	appendResidualCases(&p, rows)
+	appendExtensionCodecCase(&p)
+	appendApplicationCase(&p)
 	appendClientCases(&p, rows)
 	appendRetrievalCases(&p, rows)
 	appendLibraryDocumentCases(&p)

@@ -116,6 +116,10 @@ func (*Subject) InspectRouting(ctx context.Context, q sageresolution.RoutingRequ
 	}
 	observed := routingResolver{r, &out}
 	ro, do := nativeOptions(q.Request)
+	handlerOptions, e := applicationHandlerOptions(q, &out)
+	if e != nil {
+		return out, e
+	}
 	if q.Request.Function == "resolve" {
 		out.Operation = "github.com/sage-x-project/did-go/resolver.DefaultResolver.Resolve"
 		out.Options, e = json.Marshal(ro)
@@ -149,7 +153,6 @@ func (*Subject) InspectRouting(ctx context.Context, q sageresolution.RoutingRequ
 	if e != nil {
 		return out, e
 	}
-	var handlerOptions []dereferencer.Option
 	if q.ObserveResourceHandler {
 		handlerOptions = append(handlerOptions, dereferencer.WithResourceHandler(observeResourceHandler(&out)))
 	}
