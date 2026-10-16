@@ -23,10 +23,10 @@
     "runtime-candidate": 69
   },
   "execution_counts": {
-    "PASS": 139,
+    "PASS": 142,
     "FAIL": 7,
     "NOT_APPLICABLE": 2,
-    "NOT_RUN": 98
+    "NOT_RUN": 95
   },
   "clauses": [
     {
@@ -199,8 +199,8 @@
       "applicable_evidence": "Multikey.20 says prefix 0x8030 and varint(0x130a), but independent varint is 0x8a26. Its 96-byte compressed public data wording also needs interpretation. .21 depends on that row. Do not normalize silently or claim key validity.",
       "review_disposition": "normative-conflict",
       "status": "reviewed-awaiting-evidence",
-      "reason": "The pinned normative text contains a recorded conflict or ambiguity. Retain its exact digest and resolve the standards interpretation before designing a pass/fail oracle.",
-      "follow_up_condition": "Multikey.20 says prefix 0x8030 and varint(0x130a), but independent varint is 0x8a26. Its 96-byte compressed public data wording also needs interpretation. .21 depends on that row. Do not normalize silently or claim key validity.",
+      "reason": "Frozen BLS secret G2 row conflicts on varint prefix and public/secret payload description.",
+      "follow_up_condition": "Resolve the exact frozen publication interpretation before selecting a codec oracle; retain 0x8030 prose versus independent 0x130a varint 0x8a26 and payload ambiguity. No inferred repair in the inspector.",
       "expected_live_verdict": "NOT_RUN",
       "cases": []
     },
@@ -219,8 +219,8 @@
       "applicable_evidence": "Multikey.20 says prefix 0x8030 and varint(0x130a), but independent varint is 0x8a26. Its 96-byte compressed public data wording also needs interpretation. .21 depends on that row. Do not normalize silently or claim key validity.",
       "review_disposition": "normative-conflict",
       "status": "reviewed-awaiting-evidence",
-      "reason": "The pinned normative text contains a recorded conflict or ambiguity. Retain its exact digest and resolve the standards interpretation before designing a pass/fail oracle.",
-      "follow_up_condition": "Multikey.20 says prefix 0x8030 and varint(0x130a), but independent varint is 0x8a26. Its 96-byte compressed public data wording also needs interpretation. .21 depends on that row. Do not normalize silently or claim key validity.",
+      "reason": "Final base58 length depends on the unresolved preceding G2 row.",
+      "follow_up_condition": "Resolve Multikey.20 and independently establish the selected complete payload/prefix/length oracle before judging the resulting encoding.",
       "expected_live_verdict": "NOT_RUN",
       "cases": []
     },
@@ -474,8 +474,8 @@
       "applicable_evidence": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
       "review_disposition": "needs-internal-observer",
       "status": "reviewed-awaiting-evidence",
-      "reason": "Frozen prose starts the destination at zeroes plus one, while Example 19 and the selected actual append path start at zeroes. Keep the exact original text/hash and NOT_RUN until standards interpretation reconciles the conflict; final size/prefix evidence does not settle copy placement.",
-      "follow_up_condition": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
+      "reason": "Frozen destination offset zeroes+1 differs from Example 19 and original append placement.",
+      "follow_up_condition": "Obtain authoritative interpretation or a separately approved complete equivalent-output contract; final size and prefix checks do not establish copy placement.",
       "expected_live_verdict": "NOT_RUN",
       "cases": []
     },
@@ -734,8 +734,8 @@
       "applicable_evidence": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
       "review_disposition": "needs-internal-observer",
       "status": "reviewed-awaiting-evidence",
-      "reason": "Frozen prose says the buffer cell does not equal zero, while its stated zero-skipping purpose, Example 18 and selected fixed source use equality to zero. Keep the exact original text/hash and NOT_RUN until standards interpretation reconciles the conflict; adjacent suffix evidence does not settle this clause.",
-      "follow_up_condition": "Encoding-output equivalence can prove an external contract, not every one of 32 arithmetic steps. Need trace or justified alternative algorithm applicability.",
+      "reason": "Frozen nonzero loop differs from zero-skipping intent, Example 18 and original source.",
+      "follow_up_condition": "Obtain authoritative interpretation or a separately approved complete equivalent-output contract over the selected domain; isolated source branches, prefix and length observations are insufficient.",
       "expected_live_verdict": "NOT_RUN",
       "cases": []
     },
@@ -980,8 +980,8 @@
       "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
       "review_disposition": "construction-or-permission",
       "status": "reviewed-awaiting-evidence",
-      "reason": "A definition, permission or conditional construction is not an unconditional implementation obligation. Establish the claimed feature/actor and exercise its applicable branch before an execution verdict.",
-      "follow_up_condition": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
+      "reason": "Normative keyword interpretation definition, not a runtime operation.",
+      "follow_up_condition": "Keep frozen uppercase BCP14 interpretation and inspect actual obligations separately; no subject PASS from catalog validation.",
       "expected_live_verdict": "NOT_RUN",
       "cases": []
     },
@@ -1210,8 +1210,8 @@
       "applicable_evidence": "Observe term retention/removal and default-context behavior with literal inputs; remote resolution, RDF semantics and offline trust require separate instrumentation.",
       "review_disposition": "needs-internal-observer",
       "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
-      "follow_up_condition": "Observe term retention/removal and default-context behavior with literal inputs; remote resolution, RDF semantics and offline trust require separate instrumentation.",
+      "reason": "Limited term lookup and matching DID context hashes do not establish CID context routing during JSON-LD processing.",
+      "follow_up_condition": "Identify an applicable actual JSON-LD processor and original loader with independently pinned CID context bytes, lookup routing and no-fetch evidence. Do not replace its loader to assert subject support.",
       "expected_live_verdict": "NOT_RUN",
       "cases": []
     },
@@ -1230,8 +1230,8 @@
       "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
       "review_disposition": "construction-or-permission",
       "status": "reviewed-awaiting-evidence",
-      "reason": "A definition, permission or conditional construction is not an unconditional implementation obligation. Establish the claimed feature/actor and exercise its applicable branch before an execution verdict.",
-      "follow_up_condition": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
+      "reason": "No actual original component observation for a selected encoding beyond both normative z and u.",
+      "follow_up_condition": "Select an independently defined additional encoding with valid public literals and z/u controls, then observe the unmodified original component. Adapter refusal or existing u64 support cannot close this permission.",
       "expected_live_verdict": "NOT_RUN",
       "cases": []
     },
@@ -1310,8 +1310,8 @@
       "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
       "review_disposition": "construction-or-permission",
       "status": "reviewed-awaiting-evidence",
-      "reason": "A definition, permission or conditional construction is not an unconditional implementation obligation. Establish the claimed feature/actor and exercise its applicable branch before an execution verdict.",
-      "follow_up_condition": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
+      "reason": "No actual original component observation for a selected additional hash encoding.",
+      "follow_up_condition": "Select an independent additional code and digest length, capture original component encoding/decoding and rejection diagnostics with normative-code controls. Do not infer support from wrapper guards or claim hash computation.",
       "expected_live_verdict": "NOT_RUN",
       "cases": []
     },
@@ -1459,8 +1459,8 @@
       "applicable_evidence": "Retain both clauses and interpretation uncertainty. Do not silently replace pinned text or mark optional absence as failure.",
       "review_disposition": "normative-conflict",
       "status": "reviewed-awaiting-evidence",
-      "reason": "The pinned normative text contains a recorded conflict or ambiguity. Retain its exact digest and resolve the standards interpretation before designing a pass/fail oracle.",
-      "follow_up_condition": "Retain both clauses and interpretation uncertainty. Do not silently replace pinned text or mark optional absence as failure.",
+      "reason": "Frozen service id OPTIONAL conflicts with the same publication service property contract.",
+      "follow_up_condition": "Resolve the exact frozen publication interpretation. Diagnostic acceptance of id absence cannot choose a normative rule or replace it with Core 1.0.",
       "expected_live_verdict": "NOT_RUN",
       "cases": []
     },
@@ -1630,8 +1630,8 @@
       "applicable_evidence": "Observe term retention/removal and default-context behavior with literal inputs; remote resolution, RDF semantics and offline trust require separate instrumentation.",
       "review_disposition": "needs-internal-observer",
       "status": "reviewed-awaiting-evidence",
-      "reason": "The selected public API does not expose the named intermediate state or internal control-flow witness. Add a passive attributed observer or test the actual production entry point; do not copy a generic library verdict.",
-      "follow_up_condition": "Observe term retention/removal and default-context behavior with literal inputs; remote resolution, RDF semantics and offline trust require separate instrumentation.",
+      "reason": "JSON names and term lookup do not establish RDF predicate IRIs.",
+      "follow_up_condition": "Establish processing applicability or observe the actual selected RDF dataset with independently fixed security vocabulary IRIs; engine absence alone is not blanket NA.",
       "expected_live_verdict": "NOT_RUN",
       "cases": []
     },
@@ -1655,8 +1655,8 @@
       "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
       "review_disposition": "construction-or-permission",
       "status": "reviewed-awaiting-evidence",
-      "reason": "A definition, permission or conditional construction is not an unconditional implementation obligation. Establish the claimed feature/actor and exercise its applicable branch before an execution verdict.",
-      "follow_up_condition": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
+      "reason": "Normative keyword interpretation definition, not a runtime operation.",
+      "follow_up_condition": "Keep frozen uppercase BCP14 interpretation and inspect actual obligations separately; no subject PASS from catalog validation.",
       "expected_live_verdict": "NOT_RUN",
       "cases": []
     },
@@ -1755,8 +1755,8 @@
       "applicable_evidence": "Observe term retention/removal and default-context behavior with literal inputs; remote resolution, RDF semantics and offline trust require separate instrumentation.",
       "review_disposition": "needs-internal-observer",
       "status": "reviewed-awaiting-evidence",
-      "reason": "The selected package checks a limited context container grammar and performs no JSON-LD expansion/compaction or remote retrieval. That limited parser does not discharge the full JSON-LD 1.1 processing precondition.",
-      "follow_up_condition": "Observe term retention/removal and default-context behavior with literal inputs; remote resolution, RDF semantics and offline trust require separate instrumentation.",
+      "reason": "Context shape, term grammar and local injection do not establish JSON-LD 1.1 processing rules.",
+      "follow_up_condition": "Identify actual processing mode/entry point and an independently complete selected context-class oracle with safe positive/negative observations; preserve this pending boundary until then.",
       "expected_live_verdict": "NOT_RUN",
       "cases": []
     },
@@ -2830,8 +2830,8 @@
       "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
       "review_disposition": "construction-or-permission",
       "status": "reviewed-awaiting-evidence",
-      "reason": "A definition, permission or conditional construction is not an unconditional implementation obligation. Establish the claimed feature/actor and exercise its applicable branch before an execution verdict.",
-      "follow_up_condition": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
+      "reason": "Normative keyword interpretation definition, not a runtime operation.",
+      "follow_up_condition": "Keep frozen uppercase BCP14 interpretation and inspect actual obligations separately; no subject PASS from catalog validation.",
       "expected_live_verdict": "NOT_RUN",
       "cases": []
     },
@@ -3699,8 +3699,8 @@
       "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
       "review_disposition": "construction-or-permission",
       "status": "reviewed-awaiting-evidence",
-      "reason": "A definition, permission or conditional construction is not an unconditional implementation obligation. Establish the claimed feature/actor and exercise its applicable branch before an execution verdict.",
-      "follow_up_condition": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
+      "reason": "No selected application-specific client handler is exercised by this batch.",
+      "follow_up_condition": "Bind actual original dispatcher calls, URL/options, resolved document, explicit controlled application callback and final resource with absent/false controls. A fixture callback is not SAGE method path support.",
       "expected_live_verdict": "NOT_RUN",
       "cases": []
     },
@@ -3888,11 +3888,13 @@
       "actor": "permission, definition or stated input/output actor",
       "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
       "review_disposition": "construction-or-permission",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "A definition, permission or conditional construction is not an unconditional implementation obligation. Establish the claimed feature/actor and exercise its applicable branch before an execution verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Actual downstream Client preserves nextVersionId for a controlled older version 7 with declared latest version 8. Latest and older-without-next-field controls are diagnostic. No method authority or actual Update operation is established.",
       "follow_up_condition": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/residual-history-metadata"
+      ]
     },
     {
       "id": "res10-crd20261001#did-document-metadata.13",
@@ -4015,8 +4017,8 @@
       "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
       "review_disposition": "construction-or-permission",
       "status": "reviewed-awaiting-evidence",
-      "reason": "A definition, permission or conditional construction is not an unconditional implementation obligation. Establish the claimed feature/actor and exercise its applicable branch before an execution verdict.",
-      "follow_up_condition": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
+      "reason": "Alias shape or fixture equality does not establish a governing method guarantee.",
+      "follow_up_condition": "Require the selected method equivalence contract and independent authority, identity, document and lifecycle evidence. Documentary alias nonselection cannot become runtime guarantee PASS.",
       "expected_live_verdict": "NOT_RUN",
       "cases": []
     },
@@ -4246,11 +4248,13 @@
       "actor": "permission, definition or stated input/output actor",
       "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
       "review_disposition": "construction-or-permission",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "A definition, permission or conditional construction is not an unconditional implementation obligation. Establish the claimed feature/actor and exercise its applicable branch before an execution verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Actual downstream Client preserves nextUpdate for a controlled older version 7 with declared latest version 8. Latest and older-without-next-field controls are diagnostic. No actual registry history or Update operation is established.",
       "follow_up_condition": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/residual-history-metadata"
+      ]
     },
     {
       "id": "res10-crd20261001#did-document-metadata.9",
@@ -4691,8 +4695,8 @@
       "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
       "review_disposition": "construction-or-permission",
       "status": "reviewed-awaiting-evidence",
-      "reason": "A definition, permission or conditional construction is not an unconditional implementation obligation. Establish the claimed feature/actor and exercise its applicable branch before an execution verdict.",
-      "follow_up_condition": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
+      "reason": "No actual alternate metadata serialization entry point is selected.",
+      "follow_up_condition": "Identify an actual original alternate-format serializer and independent format contract with normal inputs and refusal diagnostics. Inspector-generated XML/CBOR is not subject evidence.",
       "expected_live_verdict": "NOT_RUN",
       "cases": []
     },
@@ -4816,11 +4820,13 @@
       "actor": "permission, definition or stated input/output actor",
       "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
       "review_disposition": "construction-or-permission",
-      "status": "reviewed-awaiting-evidence",
-      "reason": "A definition, permission or conditional construction is not an unconditional implementation obligation. Establish the claimed feature/actor and exercise its applicable branch before an execution verdict.",
+      "status": "observed-selected-branch",
+      "reason": "Actual downstream Client adds its own contentType metadata when the controlled upstream omits it, through actual DID 1.1 context consumption. Explicit contentType control is retained; upstream metadata preservation is separately failing and is not repaired or asserted here.",
       "follow_up_condition": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
-      "expected_live_verdict": "NOT_RUN",
-      "cases": []
+      "expected_live_verdict": "PASS",
+      "cases": [
+        "did-1.1/sage-resolution/residual-proxy-metadata"
+      ]
     },
     {
       "id": "res10-crd20261001#resolver-architectures.1",
@@ -5043,8 +5049,8 @@
       "applicable_evidence": "Fresh observable input/result contract only; internal variable assignment, all-valid-representations and global conformity need additional proof.",
       "review_disposition": "needs-complete-contract",
       "status": "reviewed-awaiting-evidence",
-      "reason": "The whole result tuple includes the unresolved pinned contentType placement conflict. Observing its individual output members does not discharge the complete tuple contract.",
-      "follow_up_condition": "Fresh observable input/result contract only; internal variable assignment, all-valid-representations and global conformity need additional proof.",
+      "reason": "Complete tuple contract depends on unresolved contentType placement.",
+      "follow_up_condition": "Resolve resolving-algorithm.35, then bind the complete actual document/resolution-metadata/document-metadata tuple to an independent oracle and field-specific controls. Member PASS cannot close the tuple.",
       "expected_live_verdict": "NOT_RUN",
       "cases": []
     },
@@ -5081,8 +5087,8 @@
       "applicable_evidence": "This clause places contentType in didDocumentMetadata, unlike the resolutionMetadata binding contract. Do not move or add a subject field to force PASS.",
       "review_disposition": "normative-conflict",
       "status": "reviewed-awaiting-evidence",
-      "reason": "The pinned normative text contains a recorded conflict or ambiguity. Retain its exact digest and resolve the standards interpretation before designing a pass/fail oracle.",
-      "follow_up_condition": "This clause places contentType in didDocumentMetadata, unlike the resolutionMetadata binding contract. Do not move or add a subject field to force PASS.",
+      "reason": "Frozen algorithm places contentType in document metadata, unlike the general resolution metadata contract.",
+      "follow_up_condition": "Resolve the selected publication placement contract. Capture both original metadata maps without moving or injecting fields to manufacture PASS.",
       "expected_live_verdict": "NOT_RUN",
       "cases": []
     },
@@ -5143,8 +5149,8 @@
       "applicable_evidence": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
       "review_disposition": "construction-or-permission",
       "status": "reviewed-awaiting-evidence",
-      "reason": "A definition, permission or conditional construction is not an unconditional implementation obligation. Establish the claimed feature/actor and exercise its applicable branch before an execution verdict.",
-      "follow_up_condition": "Read full conditional text and actor. MAY/OPTIONAL is not automatic PASS; mandatory type and input/output contracts need separate actual observations.",
+      "reason": "Controlled version 7/8 replies are not actual document Update operations.",
+      "follow_up_condition": "Observe actual authorized Updates and independently bind their document metadata version changes, history and authority. Do not copy downstream metadata preservation PASS.",
       "expected_live_verdict": "NOT_RUN",
       "cases": []
     }
