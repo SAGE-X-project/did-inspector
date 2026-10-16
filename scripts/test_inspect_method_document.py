@@ -33,7 +33,7 @@ class MethodDocumentTests(unittest.TestCase):
     def test_inventory_and_report_separation(self):
         self.assertEqual(len(self.catalog["rows"]), 51)
         result = m.inspect(self.catalog, self.raw, "observer")
-        self.assertEqual(result["totals"], {"PASS": 9, "FAIL": 0, "ERROR": 0, "NOT_RUN": 42})
+        self.assertEqual(result["totals"], {"PASS": 11, "FAIL": 0, "ERROR": 0, "NOT_RUN": 40})
         self.assertFalse(result["runtime_results_merged"])
         self.assertEqual(result["revision"], m.REVISION)
         self.assertEqual(result["inspector_revision"], "observer")
@@ -50,7 +50,7 @@ class MethodDocumentTests(unittest.TestCase):
         for value in variants:
             with self.subTest(value=str(value)[:100]):
                 result = m.inspect(self.catalog, value, "observer")
-                self.assertEqual(result["totals"], {"PASS": 0, "FAIL": 0, "ERROR": 9, "NOT_RUN": 42})
+                self.assertEqual(result["totals"], {"PASS": 0, "FAIL": 0, "ERROR": 11, "NOT_RUN": 40})
 
     def test_full_corpus_integrity(self):
         variants = []
@@ -62,19 +62,19 @@ class MethodDocumentTests(unittest.TestCase):
         value = copy.deepcopy(self.raw);value["files"][0]["content_base64"] = "!!";variants.append(value)
         for value in variants:
             with self.subTest(value=str(value)[:80]):
-                self.assertEqual(m.inspect(self.catalog, value, "observer")["totals"]["ERROR"], 9)
+                self.assertEqual(m.inspect(self.catalog, value, "observer")["totals"]["ERROR"], 11)
         # Same byte length still needs the full SHA, not just a size check.
         value = copy.deepcopy(self.raw)
         data = base64.b64decode(value["files"][0]["content_base64"])
         value["files"][0]["content_base64"] = base64.b64encode(b"x" * len(data)).decode()
-        self.assertEqual(m.inspect(self.catalog, value, "observer")["totals"]["ERROR"], 9)
+        self.assertEqual(m.inspect(self.catalog, value, "observer")["totals"]["ERROR"], 11)
 
     def test_excerpt_boundaries(self):
         for change in ({"start_line": 0}, {"end_line": 3}, {"start_line": True},
                        {"end_line": "2"}, {"sha256": "0" * 64}, {"start_line": 2, "end_line": 1}):
             c = copy.deepcopy(self.catalog)
             next(r for r in c["rows"] if r["evidence"])["evidence"][0].update(change)
-            self.assertEqual(m.inspect(c, self.raw, "observer")["totals"]["ERROR"], 9)
+            self.assertEqual(m.inspect(c, self.raw, "observer")["totals"]["ERROR"], 11)
 
     def test_catalog_drift_refused(self):
         original_read = Path.read_text
@@ -103,7 +103,7 @@ class MethodDocumentTests(unittest.TestCase):
 
     def test_reviewed_pending_boundaries(self):
         result = m.inspect(self.catalog, self.raw, "observer")
-        self.assertEqual(result["review_progress"], {"judged": 9, "reviewed_pending": 6, "unreviewed": 36})
+        self.assertEqual(result["review_progress"], {"judged": 11, "reviewed_pending": 4, "unreviewed": 36})
         pending = [r for r in result["statements"] if "pending_review" in r]
         self.assertEqual({r["id"] for r in pending}, m.DEFERRED)
         for row in pending:
@@ -113,9 +113,10 @@ class MethodDocumentTests(unittest.TestCase):
         # Missing current capture cannot turn a reviewed prerequisite into PASS,
         # NOT_APPLICABLE or a normative failure.
         absent = m.inspect(self.catalog, {}, "observer")
-        self.assertEqual(absent["totals"], {"PASS": 0, "FAIL": 0, "ERROR": 9, "NOT_RUN": 42})
+        self.assertEqual(absent["totals"], {"PASS": 0, "FAIL": 0, "ERROR": 11, "NOT_RUN": 40})
         self.assertTrue(all(r["verdict"] == "NOT_RUN" for r in absent["statements"] if r["id"] in m.DEFERRED))
-        permitted = {"did11-cr20260305#method-syntax.10", "did11-cr20260305#method-syntax.11"}
+        permitted = {"did11-cr20260305#method-syntax.10", "did11-cr20260305#method-syntax.11",
+                     "did11-cr20260305#method-operations.2", "did11-cr20260305#method-operations.4"}
         self.assertTrue(permitted <= {r["id"] for r in result["statements"] if r["verdict"] == "PASS"})
 
     def test_unresolved_contract_drift_refused(self):
@@ -166,11 +167,11 @@ class MethodDocumentTests(unittest.TestCase):
             args = ["--repository", str(repo), "--out", str(out), "--raw-out", str(raw), "--inspector-revision", "observer"]
             with patch.object(m, "load_catalog", return_value=self.catalog), patch.object(m, "capture", return_value=self.raw), contextlib.redirect_stdout(io.StringIO()):
                 self.assertEqual(m.main(args), 0)
-            self.assertEqual(json.loads(out.read_text())["totals"]["PASS"], 9)
+            self.assertEqual(json.loads(out.read_text())["totals"]["PASS"], 11)
             self.assertEqual(json.loads(raw.read_text()), self.raw)
             with patch.object(m, "load_catalog", return_value=self.catalog), patch.object(m, "capture", side_effect=m.EvidenceError("unavailable")), contextlib.redirect_stdout(io.StringIO()):
                 self.assertEqual(m.main(args), 1)
-            self.assertEqual(json.loads(out.read_text())["totals"]["ERROR"], 9)
+            self.assertEqual(json.loads(out.read_text())["totals"]["ERROR"], 11)
             self.assertEqual(json.loads(raw.read_text()), {"capture_error": "unavailable"})
             bad = [*args];bad[bad.index("--out") + 1] = str(raw)
             with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):m.main(bad)

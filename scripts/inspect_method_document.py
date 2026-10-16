@@ -17,10 +17,10 @@ REVISION = "06b50e177ccd22bce7d70fd80c2d7f822ae3fd3b"
 REPOSITORY = "SAGE-X-project/sage-spec"
 REVIEWED = {"did11-cr20260305#" + s for s in (
     "method-syntax.1", "method-syntax.2", "method-syntax.3", "method-syntax.7",
-    "method-syntax.8", "method-syntax.10", "method-syntax.11", "method-syntax.12", "method-operations.5")}
+    "method-syntax.8", "method-syntax.10", "method-syntax.11", "method-syntax.12",
+    "method-operations.2", "method-operations.4", "method-operations.5")}
 DEFERRED = {"did11-cr20260305#" + s for s in (
-    "method-operations.1", "method-operations.2", "method-operations.3",
-    "method-operations.4", "method-syntax.4", "method-syntax.5")}
+    "method-operations.1", "method-operations.3", "method-syntax.4", "method-syntax.5")}
 
 
 class EvidenceError(ValueError):

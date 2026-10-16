@@ -152,7 +152,7 @@
       "text_sha256": "d3baa658d5a6a9e66bc2cba1da4e71a5e0d7e3b49df895cb1d4eb81c2f7d0cd2",
       "status": "pending",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "The abstract controller/operator, PoP and expected-version rules are present, but authentication of the deployment principal and administrative command encoding are explicitly delegated to bindings. The entire method authorization obligation is not discharged by those abstract rules alone.",
+      "review_basis": "Controller/operator scopes, expected versions, proof checks and atomic authorization decisions are defined. However, the authenticated meaning of the controller identifier and its binding to credentials for every management operation are delegated to selected bindings. Proof of possession explicitly does not authorize mutation. The reviewed corpus does not close that all-operations principal/credential mapping and its necessary cryptographic processes. This is a remaining semantic contract, not a generic W3C demand for an ABI or successful deployment.",
       "follow_up": [
         "spec/09-registry.md \u00a7\u00a73,4,6,8,9",
         "spec/10-resolution.md \u00a72"
@@ -180,11 +180,11 @@
       "pending_review": {
         "verdict": "NOT_RUN",
         "required_actor": "method specification author with a complete selected profile/binding document",
-        "reason": "The abstract controller/operator, PoP and expected-version rules are present, but authentication of the deployment principal and administrative command encoding are explicitly delegated to bindings. The entire method authorization obligation is not discharged by those abstract rules alone.",
+        "reason": "Controller/operator scopes, expected versions, proof checks and atomic authorization decisions are defined. However, the authenticated meaning of the controller identifier and its binding to credentials for every management operation are delegated to selected bindings. Proof of possession explicitly does not authorize mutation. The reviewed corpus does not close that all-operations principal/credential mapping and its necessary cryptographic processes. This is a remaining semantic contract, not a generic W3C demand for an ABI or successful deployment.",
         "completion_evidence": [
-          "Identify and freeze the applicable complete profile/binding document corpus.",
-          "Review how every operation authenticates its principal, binds credentials to registry/DID/operation and performs its required cryptographic checks; distinguish PoP from mutation authorization.",
-          "Documentary closure does not require a successful live deployment; execution conformance remains a separate actor."
+          "Identify and freeze documentary evidence for the selected authorization binding, without assuming any particular API, ABI or transaction format.",
+          "Review authentication and credential-to-controller/operator binding for every operation, including the operation/registry/DID binding and required cryptographic processes; distinguish PoP from mutation authorization.",
+          "Close the all-operations semantic contract from documentary evidence; live execution remains a separate actor."
         ]
       }
     },
@@ -192,9 +192,9 @@
       "id": "did11-cr20260305#method-operations.2",
       "text": "A DID method specification MUST specify how a DID controller creates a DID and its associated DID document.",
       "text_sha256": "82093e661152dc13b4dd2fb83c34e9a7b2dfff9a7228b73762653806b9193387",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "The client-selected identifier, atomic reservation, record/projection and eip155 commitment/reveal are specified. The selected method as a whole still delegates the authenticated create command to deployment bindings, so this review does not claim the complete controller creation procedure.",
+      "review_basis": "The controller chooses the canonical identifier before constructing registry/DID/key-bound proofs. Chapter 09 sections 1, 3 and 4 define the bounded initial record, unused identifier reservation, proof validation, authenticated creation and atomic version-1 created state. The eip155 profile adds account-bound commitment/reveal and separate activation; the web profile defines the trusted origin and authenticated administration. Chapter 10 sections 1, 2 and 6 specify the associated document projection, including the empty verificationMethod array and omitted relationship members for created records. This discharges the abstract creation procedure on the same documentary criterion as deactivation; concrete deployment authorization and execution remain distinct scopes.",
       "follow_up": [
         "spec/09-registry.md \u00a7\u00a73,4,6,8",
         "spec/10-resolution.md \u00a72"
@@ -218,17 +218,7 @@
           "end_line": 283,
           "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
         }
-      ],
-      "pending_review": {
-        "verdict": "NOT_RUN",
-        "required_actor": "method specification author with a complete selected profile/binding document",
-        "reason": "The client-selected identifier, atomic reservation, record/projection and eip155 commitment/reveal are specified. The selected method as a whole still delegates the authenticated create command to deployment bindings, so this review does not claim the complete controller creation procedure.",
-        "completion_evidence": [
-          "Review the complete selected creation binding together with identifier reservation, proof fields, initial state and associated document projection.",
-          "Bind that documentary procedure to the named profile and authenticated controller without inventing an ABI or administrative endpoint.",
-          "Keep documentary sufficiency separate from runtime registration evidence."
-        ]
-      }
+      ]
     },
     {
       "id": "did11-cr20260305#method-operations.3",
@@ -236,7 +226,7 @@
       "text_sha256": "a75bab77172b71661b814b3f68dfc517ee2091c1fd7bed8902fba33da4a05a45",
       "status": "pending",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "Resolution validation, authoritative observation, TLS web-origin rules and finalized eip155 reads are specified. A whole-method claim still needs the selected source/readiness/authenticity binding; a successful fixture or unauthenticated RPC assertion cannot supply it.",
+      "review_basis": "Chapter 10 defines DID-to-registry selection, validation and projection; chapter 09 defines authenticated TLS-origin web reads and finalized eip155 observations. The remaining whole-method semantic contract is how the selected trusted source is authenticated and establishes its chain/network identity, readiness and response authenticity, including eip155. The web branch alone and a source-name metadata string do not discharge that whole-method duty. A specific ABI or successful live response is not an additional W3C author requirement.",
       "follow_up": [
         "spec/09-registry.md \u00a7\u00a75,6,8",
         "spec/10-resolution.md \u00a72"
@@ -264,11 +254,11 @@
       "pending_review": {
         "verdict": "NOT_RUN",
         "required_actor": "method specification author with a complete selected profile/binding document",
-        "reason": "Resolution validation, authoritative observation, TLS web-origin rules and finalized eip155 reads are specified. A whole-method claim still needs the selected source/readiness/authenticity binding; a successful fixture or unauthenticated RPC assertion cannot supply it.",
+        "reason": "Chapter 10 defines DID-to-registry selection, validation and projection; chapter 09 defines authenticated TLS-origin web reads and finalized eip155 observations. The remaining whole-method semantic contract is how the selected trusted source is authenticated and establishes its chain/network identity, readiness and response authenticity, including eip155. The web branch alone and a source-name metadata string do not discharge that whole-method duty. A specific ABI or successful live response is not an additional W3C author requirement.",
         "completion_evidence": [
-          "Review the complete selected authoritative-source/readiness binding and how the resolver verifies response authenticity.",
-          "Check the mapping from the exact DID/profile to the source, trusted node or origin, finality and failure handling.",
-          "Close the author obligation from complete documentary evidence, without substituting a live response for the specification."
+          "Review the selected source/readiness and response-authentication documentary binding across the supported method profiles, including eip155.",
+          "Connect the exact DID/profile to authenticated source identity, chain/network binding, finality/readiness and failure handling; distinguish a configured source label from authenticated evidence.",
+          "Close this author obligation from sufficient documentary evidence without requiring a particular ABI or substituting a live response for the specification."
         ]
       }
     },
@@ -276,9 +266,9 @@
       "id": "did11-cr20260305#method-operations.4",
       "text": "A DID method specification MUST specify what constitutes an update to a DID document and how a DID controller can update a DID document or state that updates are not possible.",
       "text_sha256": "fc2e1a5f40f7a1c09fa245de8c39ee8af8a3ff3dff53a5b1f8694c9c9add0895",
-      "status": "pending",
+      "status": "reviewed-document",
       "scope": "SAGE method/representation specification author only; never a runtime implementation verdict",
-      "review_basis": "Key/service mutations, operator scopes, expected versions and atomic history are defined. The whole controller update procedure still delegates its authenticated command encoding and execution binding. These abstract rules cannot alone complete the full method author obligation.",
+      "review_basis": "Chapter 09 sections 1, 3 and 9 define updates: immutable key additions, retained revocations, replacement of services, lifecycle changes and scoped grant mutations with their exact public-record effects. The controller or an eligible scoped operator uses the current expected version; authorization, transition validation, history, grants and the next record commit atomically or nothing changes. Controller transfer, key-material replacement, identifier reassignment and operator redelegation are excluded. Chapter 10 sections 1, 2, 3 and 6 map the resulting record to its document and metadata. This discharges the abstract update procedure on the same documentary criterion as deactivation; it does not certify every operation's authenticated-principal binding or a deployed update.",
       "follow_up": [
         "spec/09-registry.md \u00a7\u00a73,9",
         "spec/10-resolution.md \u00a72"
@@ -302,17 +292,7 @@
           "end_line": 283,
           "sha256": "78fdf5fc998b92b0ce262a2509b1595458ff8a083cc4e8570c50efcd2e7270bd"
         }
-      ],
-      "pending_review": {
-        "verdict": "NOT_RUN",
-        "required_actor": "method specification author with a complete selected profile/binding document",
-        "reason": "Key/service mutations, operator scopes, expected versions and atomic history are defined. The whole controller update procedure still delegates its authenticated command encoding and execution binding. These abstract rules cannot alone complete the full method author obligation.",
-        "completion_evidence": [
-          "Review a complete selected update binding, operation-to-document changes, controller/operator authentication, version checks and immutable fields.",
-          "Include the documented history/atomicity and rejection rules without inventing a transaction or administrative format.",
-          "Keep runtime update authorization and deployed history verification in the approved later work."
-        ]
-      }
+      ]
     },
     {
       "id": "did11-cr20260305#method-operations.5",

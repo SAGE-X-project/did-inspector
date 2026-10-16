@@ -7,10 +7,10 @@ resolution/projection reports or historical runtime pending ledgers.
 
 The historical 51-clause documentary inventory preserves the exact W3C
 text, text digest, level and follow-up references. Independent semantic
-review has nine judged entries: method-syntax .1/.2/.3/.7/.8/.10/.11/.12
-and method-operations .5. Six more entries have reviewed but unresolved
+review has eleven judged entries: method-syntax .1/.2/.3/.7/.8/.10/.11/.12
+and method-operations .2/.4/.5. Four more entries have reviewed but unresolved
 prerequisites, and 36 have not yet received a semantic review case. The
-report therefore has nine PASS and 42 NOT_RUN, not fifteen PASS. Its
+report therefore has eleven PASS and 40 NOT_RUN, not fifteen PASS. Its
 `review_progress` records these three different states.
 
 The baseline inventory also contains the actual generated-DID uniqueness
@@ -35,21 +35,32 @@ restrictions in the closed chapter 06 DID-URL grammar. They establish a
 permitted documentary choice, not runtime path/query rejection or optional
 DID parameter support.
 
-The other six entries retain NOT_RUN with individual `pending_review`
+The additional creation and update judgments use the same abstract
+method-document criterion as the earlier deactivation judgment. Creation
+connects controller-selected identifiers, proof fields and atomic initial
+records to the associated projections, with account-bound commitment/reveal
+for eip155 and authenticated web administration. Updates identify allowed
+mutations, immutable fields, scoped controller/operator authority, expected
+versions, atomic history and the resulting document changes. W3C does not
+require a concrete API or ABI for these procedures. These judgments do not
+certify a deployment, transfer all-operations authorization or response
+identity checks into PASS, or change the existing deactivation judgment.
+
+The other four entries retain NOT_RUN with individual `pending_review`
 records naming their required actor, reason and completion evidence:
 
-- Method operations .1-.4 have abstract authorization, creation, resolution
-  and update rules, but their complete selected profile/binding documents
-  still need review. Authentication of a principal, command encoding and
-  authoritative-source selection cannot be supplied by an invented ABI or
-  endpoint. A complete documentary review can close author obligations;
-  successful deployment execution is not an extra W3C author requirement.
+- Method operations .1/.3 retain semantic gaps in the reviewed corpus:
+  all-operations authenticated principal/credential binding and whole-method
+  response-authenticity/source-readiness binding, including eip155. Abstract
+  authorization checks and a complete TLS-origin web branch do not close
+  those particular remaining contracts. No concrete ABI or successful
+  deployment is an extra W3C author requirement.
 - Method syntax .4/.5 constrain generated identifier uniqueness. They need
   an independently justified construction and applicable issuer/registry
   evidence, including namespace, non-reassignment and fork/DNS assumptions.
   A few distinct fixture strings or a textual guarantee are insufficient.
 
-Reviewing these six prerequisites is not observing the required property.
+Reviewing these four prerequisites is not observing the required property.
 They do not become PASS, FAIL, NOT_SUPPORTED or NOT_APPLICABLE because this
 review found incomplete evidence. Concrete core/contract/spec changes and
 operational verification retain their approved later order.
@@ -59,7 +70,7 @@ arbitrary prose. The inspector's review JSON supplies independent reasoning
 and full cited chapter ranges, not subject-authored verdicts. The executable
 checks all sixteen Git blobs against their byte lengths and SHA-256 values,
 every cited range, and the independently frozen W3C publication and clause
-identity. Only that exact reviewed corpus can reproduce these nine author
+identity. Only that exact reviewed corpus can reproduce these eleven author
 judgments. Different, missing, extra, malformed or modified evidence yields
 ERROR, not a normative FAIL. It cannot confer PASS on an unreviewed revision.
 It must not be presented as a general-purpose documentation conformance
