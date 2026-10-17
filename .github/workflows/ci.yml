@@ -839,3 +839,79 @@ jobs:
             ${{ runner.temp }}/date-tree.txt
             ${{ runner.temp }}/date-python-coverage.log
             ${{ runner.temp }}/date-source.sha256
+
+  dereferencing-options:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GOTOOLCHAIN: local
+      GOWORK: 'off'
+      INSPECTOR_REVISION: ${{ github.event.pull_request.head.sha || github.sha }}
+    defaults:
+      run:
+        working-directory: adapters/sagerouting
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e
+        with:
+          go-version: '1.26.8'
+          cache-dependency-path: adapters/sagerouting/go.sum
+      - name: Verify the repaired dereferencing module
+        run: |
+          go mod download
+          go mod verify
+          test -z "$(gofmt -l .)"
+          go list -m -json github.com/sage-x-project/did-go > "$RUNNER_TEMP/routing-module.json"
+          go vet -mod=readonly ./...
+          go run github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.13.2 run ./...
+      - name: Test the separate observer
+        run: |
+          go test -mod=readonly -race -coverpkg=./... -coverprofile="$RUNNER_TEMP/routing-cover.out" ./...
+          go tool cover -func="$RUNNER_TEMP/routing-cover.out" > "$RUNNER_TEMP/routing-coverage.log"
+          awk '/^total:/ {value=$NF; sub(/%$/, "", value); found=1; if (value+0 < 90) bad=1} END {if (!found || bad) exit 1}' "$RUNNER_TEMP/routing-coverage.log"
+      - name: Inspect the actual repaired dereferencing module
+        run: |
+          go build -mod=readonly -trimpath -o "$RUNNER_TEMP/did-inspector-sagerouting" ./cmd/did-inspector-sagerouting
+          sha256sum "$RUNNER_TEMP/did-inspector-sagerouting" > "$RUNNER_TEMP/routing-binary-before.sha256"
+          go version -m "$RUNNER_TEMP/did-inspector-sagerouting" > "$RUNNER_TEMP/routing-build.txt"
+          "$RUNNER_TEMP/did-inspector-sagerouting" > "$RUNNER_TEMP/routing-repair.json"
+          sha256sum "$RUNNER_TEMP/did-inspector-sagerouting" > "$RUNNER_TEMP/routing-binary-after.sha256"
+          cmp "$RUNNER_TEMP/routing-binary-before.sha256" "$RUNNER_TEMP/routing-binary-after.sha256"
+          go version > "$RUNNER_TEMP/routing-compiler.txt"
+          git rev-parse HEAD > "$RUNNER_TEMP/routing-revision.txt"
+          git rev-parse 'HEAD^{tree}' > "$RUNNER_TEMP/routing-tree.txt"
+      - name: Verify independent literal inputs and outputs
+        working-directory: .
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -o pipefail
+          python3 -m trace --count --missing --summary --coverdir "$RUNNER_TEMP/routing-python-coverage" --module unittest discover -s scripts -p test_verify_sage_routing_repair.py | tee "$RUNNER_TEMP/routing-python-coverage.log"
+          python3 - <<'PYTHON'
+          import os, re
+          from pathlib import Path
+          text = (Path(os.environ['RUNNER_TEMP']) / 'routing-python-coverage.log').read_text()
+          values = re.findall(r'^\s*\d+\s+(\d+)%\s+verify_sage_routing_repair\s+', text, re.M)
+          assert len(values) == 1 and int(values[0]) >= 90, values
+          PYTHON
+          python3 scripts/verify_sage_routing_repair.py --evidence "$RUNNER_TEMP/routing-repair.json" --observer "$INSPECTOR_REVISION" --out "$RUNNER_TEMP/routing-verified.json"
+          sha256sum adapters/sagerouting/go.mod adapters/sagerouting/go.sum adapters/sagerouting/*.go adapters/sagerouting/control-document.json adapters/sagerouting/cmd/did-inspector-sagerouting/*.go adapters/sage/routing.go docs/sage-routing-repair.json docs/sage-routing-repair.md scripts/verify_sage_routing_repair.py scripts/test_verify_sage_routing_repair.py scripts/testdata/sage-routing-repair-inputs.json .github/workflows/ci.yml > "$RUNNER_TEMP/routing-source.sha256"
+      - name: Preserve the separate routing evidence
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: dereferencing-options
+          if-no-files-found: error
+          path: |
+            ${{ runner.temp }}/routing-module.json
+            ${{ runner.temp }}/routing-cover.out
+            ${{ runner.temp }}/routing-coverage.log
+            ${{ runner.temp }}/routing-binary-before.sha256
+            ${{ runner.temp }}/routing-binary-after.sha256
+            ${{ runner.temp }}/routing-build.txt
+            ${{ runner.temp }}/routing-repair.json
+            ${{ runner.temp }}/routing-verified.json
+            ${{ runner.temp }}/routing-compiler.txt
+            ${{ runner.temp }}/routing-revision.txt
+            ${{ runner.temp }}/routing-tree.txt
+            ${{ runner.temp }}/routing-python-coverage.log
+            ${{ runner.temp }}/routing-source.sha256
