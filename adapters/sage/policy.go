@@ -32,6 +32,13 @@ func (d policyDocumentFixture) Dereference(_ context.Context, _ did.DIDURL, _ re
 // to the selected relying party via an explicit fixture dereferencer. It does
 // not claim SAGE Source support or mutate a document to bypass validation.
 func (*Subject) InspectPolicy(ctx context.Context, q sageresolution.PolicyRequest) (sageresolution.PolicyResult, error) {
+	return ObservePolicy(ctx, q)
+}
+
+// ObservePolicy captures literal library calls without judging them. A caller
+// using this observer directly must identify its actual subject independently;
+// this function does not confer the pinned SAGE Subject identity.
+func ObservePolicy(ctx context.Context, q sageresolution.PolicyRequest) (sageresolution.PolicyResult, error) {
 	out := sageresolution.PolicyResult{Role: "literal library fixture; not SAGE registry Source", Retrieval: sageresolution.RetrievalResult{Calls: []sageresolution.RetrievalCall{}}, ClockValues: []string{}}
 	if q.Document.MediaType != "application/did" || (q.Mode != "consume" && q.Mode != "retrieve") {
 		return out, errors.New("requires an explicit library consumption or retrieval input")
