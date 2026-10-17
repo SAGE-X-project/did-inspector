@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "scope": "selected-consumer-timestamp-syntax",
+  "runtime_results_merged": false,
+  "original_inspector_revision": "76e1e3d1a1f4b6d88d876a66988892e57a1854ae",
+  "original_root_revision": "ed54c505eafe1c9d3d2decd862d6a9f7fcd2cd23",
+  "subject": {
+    "name": "did-go/key-timestamp-consumer",
+    "version": "v0.0.0-20261017064709-bff3bf77a78d",
+    "revision": "bff3bf77a78defacbc8bb45533a0456e9135c433",
+    "sum": "h1:Ks8DbF2NLyDNH0K8BgzfjLpferYL236UvLFVZkAvAoY="
+  },
+  "cases": {
+    "expires": {
+      "case": "did-1.1/sage-resolution/key-policy-format-expires",
+      "input_sha256": "730419682102d6bf1a1c1832a5c9fe91c4de3ca73e6674cf9cbd9c343ea5c417",
+      "statements": [
+        "cid10#verification-methods.9",
+        "cid10#conformance.2",
+        "did11-cr20260305#production-and-consumption.18"
+      ]
+    },
+    "revoked": {
+      "case": "did-1.1/sage-resolution/key-policy-format-revoked",
+      "input_sha256": "c007fe37aa782bc6ab89a185389957d3ae58ca536c78519f460099b4d42a4989",
+      "statements": [
+        "cid10#verification-methods.11",
+        "cid10#conformance.2",
+        "did11-cr20260305#production-and-consumption.18"
+      ]
+    }
+  }
+}
