@@ -1,0 +1,9 @@
+# Separate recursive fragment inspection
+
+This observer identifies the published root did-go module by exact version, checksum and unmodified build identity. It reuses the five original fragment-search cases and their unchanged public literal documents. Each case performs three actual native calls: the original location, the same target relocated into a root extension, and an absent identifier. The independent every-map oracle and its expected values are unchanged.
+
+Five passing cases establish one selected statement, cid10#fragment-resolution.4, for this subject and observer: 1 PASS and 485 NOT_RUN. Fifteen native calls are not fifteen distinct specification statements and are not TLS or registry observations. Historical subjects, old pins, reports, normative source bytes and case verdict logic remain unchanged. The old four failing container cases are retained as historical evidence.
+
+A separate Python checker rechecks the frozen publication and fixture hashes, canonical 486-statement inventory, case inputs, complete call-boundary captures, driver and consumer inputs, the same immutable nested resolver document, selected output, relocation and absent controls, and report attribution. It writes exclusively to a new output. Its authored unit fixtures test checker acceptance and rejection; they are not runtime evidence. CI compiles and executes the actual pinned module and retains raw output, verified output, source/tree/compiler identity, build information, binary hashes, and Go/Python coverage.
+
+This selected observer covers the unchanged ordinary public maps. Core unit and owned loopback TLS tests separately cover large numbers and the new native JSON-map fallback. This observer does not certify the client's separate numeric conversion, inspect private method material, adopt this version in SAGE consumers, establish operational authority or resolve unrelated expansion, URL, alg/kid/JSON-LD and SAGE DIDP findings.
