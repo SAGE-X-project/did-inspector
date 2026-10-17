@@ -97,6 +97,12 @@ func (r routingResolver) Resolve(ctx context.Context, id did.DID, o resolution.R
 	return result
 }
 func (*Subject) InspectRouting(ctx context.Context, q sageresolution.RoutingRequest) (sageresolution.RoutingResult, error) {
+	return ObserveRouting(ctx, q)
+}
+
+// ObserveRouting records actual root library calls with explicit resolver
+// constructor options. It conveys neither a verdict nor SAGE subject identity.
+func ObserveRouting(ctx context.Context, q sageresolution.RoutingRequest, options ...resolver.Option) (sageresolution.RoutingResult, error) {
 	out := sageresolution.RoutingResult{Role: "root resolver/dereferencer library with literal example driver; not SAGE Source", Request: q, ResolveInputs: []string{}, ResolveOptions: [][]byte{}, DriverOptions: [][]byte{}}
 	if (q.ObserveProduction && q.Request.Function != "resolve") || (q.ObserveResourceHandler && q.Request.Function != "dereference") || ((!q.PlainJSONFragment && q.Document.MediaType != "application/did") || (q.PlainJSONFragment && (q.Document.MediaType != "application/did+json" || q.Request.Function != "dereference" || q.ObserveProduction || q.ObserveResourceHandler))) || (q.Request.Function != "resolve" && q.Request.Function != "dereference") {
 		return out, errors.New("requires literal application/did and an explicit library routing operation")
@@ -110,7 +116,7 @@ func (*Subject) InspectRouting(ctx context.Context, q sageresolution.RoutingRequ
 	if q.ObserveProduction {
 		selectedProducer = observedProducer{p, &out.Production}
 	}
-	r, e := resolver.New(registry, observedConsumer{consumer.New(), &out.Consumption}, selectedProducer)
+	r, e := resolver.New(registry, observedConsumer{consumer.New(), &out.Consumption}, selectedProducer, options...)
 	if e != nil {
 		return out, e
 	}

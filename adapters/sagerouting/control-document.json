@@ -1,0 +1,44 @@
+{
+  "id": "did:example:123",
+  "service": [
+    {
+      "id": "#one",
+      "type": "Messaging",
+      "serviceEndpoint": "https://agent.example/base/"
+    },
+    {
+      "id": "#two",
+      "type": "Messaging",
+      "serviceEndpoint": [
+        "https://agent.example/two",
+        "https://agent.example/alt"
+      ]
+    },
+    {
+      "id": "#map",
+      "type": "Messaging",
+      "serviceEndpoint": {
+        "origins": [
+          "https://agent.example/public"
+        ]
+      }
+    },
+    {
+      "id": "#other",
+      "type": "Other",
+      "serviceEndpoint": "https://agent.example/other"
+    }
+  ],
+  "verificationMethod": [
+    {
+      "id": "did:example:123#sign",
+      "type": "JsonWebKey",
+      "controller": "did:example:123",
+      "publicKeyJwk": {
+        "kty": "OKP",
+        "crv": "Ed25519",
+        "x": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+      }
+    }
+  ]
+}

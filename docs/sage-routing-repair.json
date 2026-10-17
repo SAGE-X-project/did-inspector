@@ -1,0 +1,143 @@
+{
+  "schema": 1,
+  "scope": "selected-dereferencing-options-and-service-results",
+  "runtime_results_merged": false,
+  "original_inspector_revision": "094b74f5003fb7bc3dd4bb4a1793370d946cda66",
+  "original_root_revision": "ed54c505eafe1c9d3d2decd862d6a9f7fcd2cd23",
+  "subject": {
+    "name": "did-go/dereferencing-options",
+    "version": "v0.0.0-20261017081155-ee7d5fb003cf",
+    "revision": "ee7d5fb003cf2d2ca4417f587547e40539cd9f2c",
+    "sum": "h1:MjxUITQFUEiI7noGN/Vyxsh4yLDemMeggZ/COQeHOWs="
+  },
+  "fixture_sha256": "576307ef63c3cc5aa784f070b21b30fd12f09911752bdce0765635898a3baaea",
+  "control_document_sha256": "75ddc54ded3f30b223be112057421d4025404739646b74edd09f916833ed3873",
+  "specs": [
+    {
+      "key": "did11-cr20260305",
+      "url": "https://www.w3.org/TR/2026/CR-did-1.1-20260305/",
+      "source": "sources/did-core-1.1-cr-20260305.html",
+      "sha256": "4a48022defe07d37d2decc3ec9027a932dc883b2ad164a5aeaf9256e530bd979"
+    },
+    {
+      "key": "cid10",
+      "url": "https://www.w3.org/TR/2025/REC-cid-1.0-20250515/",
+      "source": "sources/controlled-identifiers-1.0-20250515.html",
+      "sha256": "c5e9befba602b53de46669cf98067123d1901357a425f8bff621796b2ac4ac4a"
+    },
+    {
+      "key": "res10-crd20261001",
+      "url": "https://www.w3.org/TR/2026/CRD-did-resolution-1.0-20261001/",
+      "source": "sources/did-resolution-1.0-crd-20261001.html",
+      "sha256": "2b194843d37f5b7f01a4f5464f64d672dc4be43dafe5f2f49114c6070819586e"
+    }
+  ],
+  "cases": {
+    "service-id": {
+      "case": "did-1.1/sage-resolution/remaining-routing-service-id",
+      "input_sha256": "68f5dcca228015b19cb2b5b699ad2e989c2b1d70defde027a2f2a8adf49bd770",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-resource.18",
+        "res10-crd20261001#dereferencing-algorithm-resource.30",
+        "res10-crd20261001#dereferencing-algorithm-resource.31",
+        "res10-crd20261001#dereferencing-algorithm-resource.32",
+        "res10-crd20261001#dereferencing-algorithm-resource.33",
+        "res10-crd20261001#dereferencing-algorithm-resource.34"
+      ]
+    },
+    "service-type": {
+      "case": "did-1.1/sage-resolution/remaining-routing-service-type",
+      "input_sha256": "b8db2c0443fdf8bd447be073240d88cd06eeef7595f11148f3744285a902fa16",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-resource.19",
+        "res10-crd20261001#dereferencing-algorithm-resource.30",
+        "res10-crd20261001#dereferencing-algorithm-resource.33"
+      ]
+    },
+    "service-absolute": {
+      "case": "did-1.1/sage-resolution/remaining-routing-service-absolute",
+      "input_sha256": "b681f26592ce7b84dd3374321c3f483dd51b9afe31d0285e6af13518c568bc42",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-resource.18"
+      ]
+    },
+    "service-urls": {
+      "case": "did-1.1/sage-resolution/remaining-routing-service-urls",
+      "input_sha256": "fb95bc125af172b0115543dbfd6cfa30b2bc31f68ce8ad3257afe020f4be047a",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-resource.22",
+        "res10-crd20261001#dereferencing-algorithm-resource.23",
+        "res10-crd20261001#dereferencing-algorithm-resource.24",
+        "res10-crd20261001#dereferencing-algorithm-resource.36",
+        "res10-crd20261001#dereferencing-algorithm-resource.37",
+        "res10-crd20261001#dereferencing-algorithm-resource.38",
+        "res10-crd20261001#dereferencing-algorithm-resource.39"
+      ]
+    },
+    "relative-endpoint": {
+      "case": "did-1.1/sage-resolution/remaining-routing-relative-endpoint",
+      "input_sha256": "0febc6dfbe8236a823f45491e794caf720de00e43911101104f3daff24165088",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-resource.25",
+        "res10-crd20261001#dereferencing-algorithm-resource.28",
+        "res10-crd20261001#dereferencing-algorithm-resource.38"
+      ]
+    },
+    "inherited-fragment": {
+      "case": "did-1.1/sage-resolution/remaining-routing-inherited-fragment",
+      "input_sha256": "b7cd51538b4040ef0dda963273398b50b8439ddc3159f5a40d577885d016b263",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-fragment.9",
+        "res10-crd20261001#dereferencing-algorithm-fragment.10"
+      ]
+    },
+    "conflicting-fragment": {
+      "case": "did-1.1/sage-resolution/remaining-routing-conflicting-fragment",
+      "input_sha256": "a6768c0ec0b9cc400ffd073b548cc627c425cc25a5c2cfe4f189094ffe7600f8",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-fragment.8"
+      ]
+    },
+    "unhandled-path": {
+      "case": "did-1.1/sage-resolution/remaining-routing-unhandled-path",
+      "input_sha256": "a7284fa0300a2fc30bb4bf6e427856a8edc02efa6503ca404ab82e03b6c7b20e",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-resource.49",
+        "res10-crd20261001#dereferencing-algorithm-resource.50",
+        "res10-crd20261001#dereferencing-algorithm-resource.51",
+        "res10-crd20261001#dereferencing-algorithm-resource.52"
+      ]
+    },
+    "forward-document-options": {
+      "case": "did-1.1/sage-resolution/remaining-routing-forward-document-options",
+      "input_sha256": "22644c3bab6cdc54da21c7d0402b1bb258bf372121313dbb89e1de46b282f7b4",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-resource.5"
+      ]
+    },
+    "forward-uri-options": {
+      "case": "did-1.1/sage-resolution/remaining-routing-forward-uri-options",
+      "input_sha256": "bd1386e9eb476614f4e7249cc7b5c90ab25966035aacc73007e0fc525559f480",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-resource.5"
+      ]
+    },
+    "non-method-fragment": {
+      "case": "did-1.1/sage-resolution/remaining-routing-non-method-fragment",
+      "input_sha256": "10cb0f0f1b9d2550591f52543a3ae7020491321c6cea99d05044dc6dc28bbc8b",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-fragment.4"
+      ]
+    },
+    "unsupported-service-media": {
+      "case": "did-1.1/sage-resolution/remaining-routing-unsupported-service-media",
+      "input_sha256": "b560c012af2dff4887fc22c521378bf3812c2ad2fb915cb94f0abaec06e8fe71",
+      "statements": [
+        "res10-crd20261001#dereferencing-algorithm-resource.40",
+        "res10-crd20261001#dereferencing-algorithm-resource.41",
+        "res10-crd20261001#dereferencing-algorithm-resource.42",
+        "res10-crd20261001#dereferencing-algorithm-resource.43"
+      ]
+    }
+  }
+}
