@@ -1,0 +1,139 @@
+package sagefragments
+
+import (
+	"bytes"
+	"context"
+	"encoding/json"
+	"errors"
+	"io"
+	"runtime/debug"
+	"strings"
+	"testing"
+
+	"github.com/sage-x-project/did-inspector/core"
+	"github.com/sage-x-project/did-inspector/profiles/sageresolution"
+)
+
+func pinned() (*debug.BuildInfo, bool) {
+	return &debug.BuildInfo{Deps: []*debug.Module{{Path: ModulePath, Version: Version, Sum: Sum}}}, true
+}
+func TestIdentity(t *testing.T) {
+	subject, err := identify(pinned)
+	if err != nil || subject.Describe().Revision != Revision {
+		t.Fatalf("identity: %v", err)
+	}
+	for _, capability := range core.Capabilities() {
+		if subject.Supports("did-1.1", capability) {
+			t.Fatal("generic capability advertised")
+		}
+	}
+	for _, mode := range []string{"absent", "nil", "missing", "version", "sum", "replace", "duplicate"} {
+		_, err := identify(func() (*debug.BuildInfo, bool) {
+			b, _ := pinned()
+			switch mode {
+			case "absent":
+				return nil, false
+			case "nil":
+				return nil, true
+			case "missing":
+				b.Deps[0].Path = "other"
+			case "version":
+				b.Deps[0].Version = "wrong"
+			case "sum":
+				b.Deps[0].Sum = "wrong"
+			case "replace":
+				b.Deps[0].Replace = &debug.Module{Path: "local"}
+			case "duplicate":
+				b.Deps = append(b.Deps, b.Deps[0])
+			}
+			return b, true
+		})
+		if err == nil {
+			t.Fatalf("accepted identity %s", mode)
+		}
+	}
+	if _, err := subject.InspectRouting(context.Background(), sageresolution.RoutingRequest{}); err == nil {
+		t.Fatal("accepted retrieval")
+	}
+}
+func TestFragmentProfile(t *testing.T) {
+	var b bytes.Buffer
+	if err := inspect(&b, "consumer-test", pinned); err != nil {
+		t.Fatal(err)
+	}
+	var e Evidence
+	if err := json.Unmarshal(b.Bytes(), &e); err != nil {
+		t.Fatal(err)
+	}
+	if e.RuntimeResultsMerged || e.Report.Subject.Revision != Revision || len(e.Raw.Cases) != 5 {
+		t.Fatal("scope or identity")
+	}
+	for _, c := range e.Raw.Cases {
+		if len(c.Observations) != 1 {
+			t.Fatal("case observation count")
+		}
+		var actual []sageresolution.RoutingResult
+		if json.Unmarshal([]byte(c.Observations[0].Observed), &actual) != nil || len(actual) != 3 {
+			t.Fatal("actual routing calls")
+		}
+	}
+	got := e.Raw.StatementVerdicts()
+	expected := []string{"cid10#fragment-resolution.4"}
+	if len(got) != 1 {
+		t.Fatalf("statements: %v", got)
+	}
+	for _, id := range expected {
+		if got[id] != core.Pass {
+			t.Fatalf("%s: %s", id, got[id])
+		}
+	}
+	if e.Report.Totals.Pass != 1 || e.Report.Totals.NotRun != 485 {
+		t.Fatalf("totals: %+v", e.Report.Totals)
+	}
+	if err := inspect(io.Discard, "", pinned); err == nil {
+		t.Fatal("missing revision")
+	}
+}
+
+type failingWriter struct{}
+
+func (failingWriter) Write([]byte) (int, error) { return 0, errors.New("writer failed") }
+func TestReportFailures(t *testing.T) {
+	for _, load := range []func(string) (core.Profile, error){
+		func(string) (core.Profile, error) { return core.Profile{}, errors.New("load failed") },
+		func(string) (core.Profile, error) { return core.Profile{}, nil },
+		func(name string) (core.Profile, error) {
+			p, e := sageresolution.Profile(name)
+			p.SpecKeys = nil
+			return p, e
+		},
+	} {
+		if err := write(io.Discard, "test", &Subject{}, load); err == nil {
+			t.Fatal("invalid profile accepted")
+		}
+	}
+	if err := write(failingWriter{}, "test", &Subject{}, sageresolution.Profile); err == nil {
+		t.Fatal("writer error lost")
+	}
+}
+
+func TestInspectionRejectsMissingBuildIdentity(t *testing.T) {
+	if err := inspect(io.Discard, "test", func() (*debug.BuildInfo, bool) { return nil, false }); err == nil {
+		t.Fatal("missing build identity")
+	}
+}
+
+func TestProductionEntrypoint(t *testing.T) {
+	var out bytes.Buffer
+	err := Write(&out, "entrypoint-test")
+	if err != nil {
+		if !strings.Contains(err.Error(), "fragment") || out.Len() != 0 {
+			t.Fatalf("identity refusal: %v", err)
+		}
+	} else {
+		var receipt Evidence
+		if json.Unmarshal(out.Bytes(), &receipt) != nil || receipt.Report.Subject.Revision != Revision {
+			t.Fatal("invalid receipt")
+		}
+	}
+}

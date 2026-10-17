@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "scope": "selected-public-recursive-fragment-search",
+  "runtime_results_merged": false,
+  "subject": {
+    "name": "did-go/recursive-fragments",
+    "version": "v0.0.0-20261017145616-073dc7a77dd8",
+    "revision": "073dc7a77dd8d786822cddf7401abd8698d3453d",
+    "sum": "h1:FNmRm7/U6/Wa976t9yODH9FAqQ+V2xGFsrk1F8WHt1w="
+  },
+  "fixture_sha256": "39960952a3baa43b06e78c2179e56f55590440935c8a9b5553908ebfeeb0bfbf",
+  "case_inputs": {
+    "extension-list": "0fec89b02c007a30f89536005fa2a16e6fdcde31f268a27737dd2e35394c5dff",
+    "method-extra": "8d126e1a9b9cdd88bd167eed00c7e05b494eae163f604ec369e3172b6fc07380",
+    "embedded-extra": "865e43fe0aab9588ec03c7c48088981a40bc52f510f5206326031077aa5e540c",
+    "service-extra": "b5ac3fc554d60c024e79316778f261b673b86c88cda438cedb644e208c1eec03",
+    "endpoint-map": "6bfe35461593ee167d5084407b0f43bdc8d5ce5a98c6600c18b0e867ca9dfd63"
+  },
+  "specs": [
+    {
+      "key": "did11-cr20260305",
+      "url": "https://www.w3.org/TR/2026/CR-did-1.1-20260305/",
+      "source": "sources/did-core-1.1-cr-20260305.html",
+      "sha256": "4a48022defe07d37d2decc3ec9027a932dc883b2ad164a5aeaf9256e530bd979"
+    },
+    {
+      "key": "cid10",
+      "url": "https://www.w3.org/TR/2025/REC-cid-1.0-20250515/",
+      "source": "sources/controlled-identifiers-1.0-20250515.html",
+      "sha256": "c5e9befba602b53de46669cf98067123d1901357a425f8bff621796b2ac4ac4a"
+    },
+    {
+      "key": "res10-crd20261001",
+      "url": "https://www.w3.org/TR/2026/CRD-did-resolution-1.0-20261001/",
+      "source": "sources/did-resolution-1.0-crd-20261001.html",
+      "sha256": "2b194843d37f5b7f01a4f5464f64d672dc4be43dafe5f2f49114c6070819586e"
+    }
+  ],
+  "old_observer": "5b05a453f5a586f1e11baee5a3fc95dc139a1d08",
+  "old_case_failures": 4
+}
