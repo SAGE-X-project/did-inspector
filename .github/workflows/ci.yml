@@ -991,3 +991,79 @@ jobs:
             ${{ runner.temp }}/metadata-tree.txt
             ${{ runner.temp }}/metadata-python-coverage.log
             ${{ runner.temp }}/metadata-source.sha256
+
+  recursive-fragments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GOTOOLCHAIN: local
+      GOWORK: 'off'
+      INSPECTOR_REVISION: ${{ github.event.pull_request.head.sha || github.sha }}
+    defaults:
+      run:
+        working-directory: adapters/sagefragments
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e
+        with:
+          go-version: '1.26.8'
+          cache-dependency-path: adapters/sagefragments/go.sum
+      - name: Verify the repaired fragment module
+        run: |
+          go mod download
+          go mod verify
+          test -z "$(gofmt -l .)"
+          go list -m -json github.com/sage-x-project/did-go > "$RUNNER_TEMP/fragment-module.json"
+          go vet -mod=readonly ./...
+          go run github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.13.2 run ./...
+      - name: Test the separate observer
+        run: |
+          go test -mod=readonly -race -coverpkg=./... -coverprofile="$RUNNER_TEMP/fragment-cover.out" ./...
+          go tool cover -func="$RUNNER_TEMP/fragment-cover.out" > "$RUNNER_TEMP/fragment-coverage.log"
+          awk '/^total:/ {value=$NF; sub(/%$/, "", value); found=1; if (value+0 < 90) bad=1} END {if (!found || bad) exit 1}' "$RUNNER_TEMP/fragment-coverage.log"
+      - name: Inspect the actual repaired fragment module
+        run: |
+          go build -mod=readonly -trimpath -o "$RUNNER_TEMP/did-inspector-sagefragments" ./cmd/did-inspector-sagefragments
+          sha256sum "$RUNNER_TEMP/did-inspector-sagefragments" > "$RUNNER_TEMP/fragment-binary-before.sha256"
+          go version -m "$RUNNER_TEMP/did-inspector-sagefragments" > "$RUNNER_TEMP/fragment-build.txt"
+          "$RUNNER_TEMP/did-inspector-sagefragments" > "$RUNNER_TEMP/fragment-repair.json"
+          sha256sum "$RUNNER_TEMP/did-inspector-sagefragments" > "$RUNNER_TEMP/fragment-binary-after.sha256"
+          cmp "$RUNNER_TEMP/fragment-binary-before.sha256" "$RUNNER_TEMP/fragment-binary-after.sha256"
+          go version > "$RUNNER_TEMP/fragment-compiler.txt"
+          git rev-parse HEAD > "$RUNNER_TEMP/fragment-revision.txt"
+          git rev-parse 'HEAD^{tree}' > "$RUNNER_TEMP/fragment-tree.txt"
+      - name: Verify independent literal inputs and outputs
+        working-directory: .
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -o pipefail
+          python3 -m trace --count --missing --summary --coverdir "$RUNNER_TEMP/fragment-python-coverage" --module unittest discover -s scripts -p test_verify_sage_fragment_repair.py | tee "$RUNNER_TEMP/fragment-python-coverage.log"
+          python3 - <<'PYTHON'
+          import os, re
+          from pathlib import Path
+          text = (Path(os.environ['RUNNER_TEMP']) / 'fragment-python-coverage.log').read_text()
+          values = re.findall(r'^\s*\d+\s+(\d+)%\s+verify_sage_fragment_repair\s+', text, re.M)
+          assert len(values) == 1 and int(values[0]) >= 90, values
+          PYTHON
+          python3 scripts/verify_sage_fragment_repair.py --evidence "$RUNNER_TEMP/fragment-repair.json" --observer "$INSPECTOR_REVISION" --out "$RUNNER_TEMP/fragment-verified.json"
+          sha256sum adapters/sagefragments/go.mod adapters/sagefragments/go.sum adapters/sagefragments/*.go adapters/sagefragments/cmd/did-inspector-sagefragments/*.go adapters/sage/routing.go profiles/sageresolution/fragment_search.go profiles/sageresolution/fragment_search.json docs/sage-fragment-repair.json docs/sage-fragment-repair.md scripts/verify_sage_fragment_repair.py scripts/test_verify_sage_fragment_repair.py .github/workflows/ci.yml > "$RUNNER_TEMP/fragment-source.sha256"
+      - name: Preserve the separate fragment evidence
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: recursive-fragments
+          if-no-files-found: error
+          path: |
+            ${{ runner.temp }}/fragment-module.json
+            ${{ runner.temp }}/fragment-cover.out
+            ${{ runner.temp }}/fragment-coverage.log
+            ${{ runner.temp }}/fragment-binary-before.sha256
+            ${{ runner.temp }}/fragment-binary-after.sha256
+            ${{ runner.temp }}/fragment-build.txt
+            ${{ runner.temp }}/fragment-repair.json
+            ${{ runner.temp }}/fragment-verified.json
+            ${{ runner.temp }}/fragment-compiler.txt
+            ${{ runner.temp }}/fragment-revision.txt
+            ${{ runner.temp }}/fragment-tree.txt
+            ${{ runner.temp }}/fragment-python-coverage.log
+            ${{ runner.temp }}/fragment-source.sha256
