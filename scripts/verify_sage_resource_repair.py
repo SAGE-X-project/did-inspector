@@ -110,9 +110,9 @@ def routing(v, f, document):
     handlers = v.get('resource_handler', [])
     require(len(handlers) == f['handler_calls'], 'actual handler count')
     for h in handlers:
-        require(h['Operation'] == 'github.com/sage-x-project/did-go/dereferencer.ResourceHandler' and h['Role'] == 'literal passive resource handler; records actual values and returns unhandled' and h.get('capture_error', '') == '', 'passive handler boundary')
-        require(equal(h['URL'], f['adjusted']), 'literal fragment-free actual handler URL')
-        require(equal(decoded(h['Options']), options) and equal(decoded(h['Model']), f['document']) and equal(decoded(h['Entries']), {}) and equal(decoded(h['Metadata']), {'contentType': 'application/did'}), 'same-call handler document/options')
+        require(h['operation'] == 'github.com/sage-x-project/did-go/dereferencer.ResourceHandler' and h['role'] == 'literal passive resource handler; records actual values and returns unhandled' and h.get('capture_error', '') == '', 'passive handler boundary')
+        require(equal(h['url'], f['adjusted']), 'literal fragment-free actual handler URL')
+        require(equal(decoded(h['options']), options) and equal(decoded(h['model']), f['document']) and equal(decoded(h['entries']), {}) and equal(decoded(h['metadata']), {'contentType': 'application/did'}), 'same-call handler document/options')
     result = v['result']
     require(result.get('native') is None and result.get('exchange') is None and equal(result['content_metadata'], {}), 'native content attribution')
     raw = decoded(result['raw'])
