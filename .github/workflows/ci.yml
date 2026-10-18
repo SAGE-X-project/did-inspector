@@ -1067,3 +1067,108 @@ jobs:
             ${{ runner.temp }}/fragment-tree.txt
             ${{ runner.temp }}/fragment-python-coverage.log
             ${{ runner.temp }}/fragment-source.sha256
+
+  nested-expansion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GOTOOLCHAIN: local
+      GOWORK: 'off'
+      INSPECTOR_REVISION: ${{ github.event.pull_request.head.sha || github.sha }}
+    defaults:
+      run:
+        working-directory: adapters/sageexpansion
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e
+        with:
+          go-version: '1.26.8'
+          cache-dependency-path: adapters/sageexpansion/go.sum
+      - name: Verify the repaired expansion module
+        run: |
+          go mod download
+          go mod verify
+          test -z "$(gofmt -l .)"
+          go list -m -json github.com/sage-x-project/did-go > "$RUNNER_TEMP/expansion-module.json"
+          go vet -mod=readonly ./...
+          go run github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.13.2 run ./...
+      - name: Test the separate observer
+        run: |
+          export GOROOT="$(go env GOROOT)"
+          go test -mod=readonly -race -coverpkg=./... -coverprofile="$RUNNER_TEMP/expansion-cover.out" ./...
+          go tool cover -func="$RUNNER_TEMP/expansion-cover.out" > "$RUNNER_TEMP/expansion-coverage.log"
+          awk '/^total:/ {value=$NF; sub(/%$/, "", value); found=1; if (value+0 < 90) bad=1} END {if (!found || bad) exit 1}' "$RUNNER_TEMP/expansion-coverage.log"
+      - name: Verify independent profile function coverage
+        run: |
+          export GOROOT="$(go env GOROOT)"
+          (cd ../.. && go test -timeout=10m -race -run '^Test(RepairedExpansion|RepairSource)' -coverprofile="$RUNNER_TEMP/expansion-profile-unit.out" ./profiles/sageresolution)
+          go test -timeout=10m -mod=readonly -race -run '^Test(ExpansionProfile|RepairedRuntimeControl)$' -coverpkg=./...,github.com/sage-x-project/did-inspector/profiles/sageresolution -coverprofile="$RUNNER_TEMP/expansion-profile-runtime.out" .
+          python3 - <<'PYTHON'
+          import os
+          from pathlib import Path
+          root = Path(os.environ['RUNNER_TEMP'])
+          blocks = {}
+          for name in ['expansion-profile-unit.out', 'expansion-profile-runtime.out']:
+              lines = (root / name).read_text().splitlines()
+              assert lines[0] == 'mode: atomic'
+              for line in lines[1:]:
+                  location, statements, count = line.split()
+                  key = (location, statements)
+                  blocks[key] = max(blocks.get(key, 0), int(count))
+          (root / 'expansion-profile-merged.out').write_text('mode: atomic\n' + ''.join(f'{location} {statements} {count}\n' for (location, statements), count in sorted(blocks.items())))
+          PYTHON
+          go tool cover -func="$RUNNER_TEMP/expansion-profile-merged.out" > "$RUNNER_TEMP/expansion-profile-coverage.log"
+          awk '$1 ~ /\/sageresolution\/expansion_repair.go:/ {value=$NF; sub(/%$/, "", value); found++; if (value+0 < 90) {print "below 90%: " $0; bad=1}} END {if (found != 5 || bad) exit 1}' "$RUNNER_TEMP/expansion-profile-coverage.log"
+      - name: Inspect the actual repaired expansion module
+        run: |
+          export GOROOT="$(go env GOROOT)"
+          go build -mod=readonly -trimpath -o "$RUNNER_TEMP/did-inspector-sageexpansion" ./cmd/did-inspector-sageexpansion
+          sha256sum "$RUNNER_TEMP/did-inspector-sageexpansion" > "$RUNNER_TEMP/expansion-binary-before.sha256"
+          go version -m "$RUNNER_TEMP/did-inspector-sageexpansion" > "$RUNNER_TEMP/expansion-build.txt"
+          "$RUNNER_TEMP/did-inspector-sageexpansion" > "$RUNNER_TEMP/expansion-repair.json"
+          sha256sum "$RUNNER_TEMP/did-inspector-sageexpansion" > "$RUNNER_TEMP/expansion-binary-after.sha256"
+          cmp "$RUNNER_TEMP/expansion-binary-before.sha256" "$RUNNER_TEMP/expansion-binary-after.sha256"
+          go version > "$RUNNER_TEMP/expansion-compiler.txt"
+          git rev-parse HEAD > "$RUNNER_TEMP/expansion-revision.txt"
+          git rev-parse 'HEAD^{tree}' > "$RUNNER_TEMP/expansion-tree.txt"
+      - name: Verify independent literal inputs and outputs
+        working-directory: .
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -o pipefail
+          export EXPANSION_UNIT_ZIP="$(go env GOMODCACHE)/cache/download/github.com/sage-x-project/did-go/@v/v0.0.0-20261018060817-8d2c9e801fc1.zip"
+          python3 -m trace --count --missing --summary --coverdir "$RUNNER_TEMP/expansion-python-coverage" --module unittest discover -s scripts -p test_verify_sage_expansion_repair.py | tee "$RUNNER_TEMP/expansion-python-coverage.log"
+          python3 - <<'PYTHON'
+          import os, re
+          from pathlib import Path
+          text = (Path(os.environ['RUNNER_TEMP']) / 'expansion-python-coverage.log').read_text()
+          values = re.findall(r'^\s*\d+\s+(\d+)%\s+verify_sage_expansion_repair\s+', text, re.M)
+          assert len(values) == 1 and int(values[0]) >= 90, values
+          PYTHON
+          python3 scripts/verify_sage_expansion_repair.py --evidence "$RUNNER_TEMP/expansion-repair.json" --observer "$INSPECTOR_REVISION" --out "$RUNNER_TEMP/expansion-verified.json"
+          sha256sum adapters/sageexpansion/go.mod adapters/sageexpansion/go.sum adapters/sageexpansion/*.go adapters/sageexpansion/cmd/did-inspector-sageexpansion/*.go adapters/sage/routing.go profiles/sageresolution/expansion_repair.go profiles/sageresolution/expansion_repair_test.go profiles/sageresolution/expansion_repair.json profiles/sageresolution/expansion_source.go profiles/sageresolution/expansion_source.json profiles/sageresolution/item_expansion.go profiles/sageresolution/expansion_source_witness.json docs/sage-expansion-repair.md scripts/verify_sage_expansion_repair.py scripts/test_verify_sage_expansion_repair.py .github/workflows/ci.yml > "$RUNNER_TEMP/expansion-source.sha256"
+      - name: Preserve the separate expansion evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: nested-expansion
+          if-no-files-found: error
+          path: |
+            ${{ runner.temp }}/expansion-module.json
+            ${{ runner.temp }}/expansion-cover.out
+            ${{ runner.temp }}/expansion-coverage.log
+            ${{ runner.temp }}/expansion-binary-before.sha256
+            ${{ runner.temp }}/expansion-binary-after.sha256
+            ${{ runner.temp }}/expansion-build.txt
+            ${{ runner.temp }}/expansion-repair.json
+            ${{ runner.temp }}/expansion-verified.json
+            ${{ runner.temp }}/expansion-compiler.txt
+            ${{ runner.temp }}/expansion-revision.txt
+            ${{ runner.temp }}/expansion-tree.txt
+            ${{ runner.temp }}/expansion-python-coverage.log
+            ${{ runner.temp }}/expansion-source.sha256
+            ${{ runner.temp }}/expansion-profile-unit.out
+            ${{ runner.temp }}/expansion-profile-runtime.out
+            ${{ runner.temp }}/expansion-profile-merged.out
+            ${{ runner.temp }}/expansion-profile-coverage.log
