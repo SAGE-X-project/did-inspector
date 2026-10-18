@@ -37,7 +37,7 @@ func (*Subject) InspectIntegerSource(ctx context.Context, q sageresolution.Integ
 
 func captureSource(ctx context.Context, q sageresolution.IntegerSourceRequest, env func(context.Context) (sourceEnvironment, error), read func(string) ([]byte, error)) (sageresolution.IntegerSourceResult, error) {
 	out := sageresolution.IntegerSourceResult{Request: q, Module: ModulePath, Version: Version, Sum: Sum, Compiler: runtime.Version(), Operation: "debug.ReadBuildInfo + local go env + module cache/ZIP byte capture", Files: map[string][]byte{}, Diagnostics: []sageresolution.CodecResult{}}
-	packages := []string{"dereferencer", "relyingparty", "did", "document", "internal/multiformats", "representation", "resolution", "spec", "vm"}
+	packages := []string{"dereferencer", "relyingparty", "did", "document", "internal/multiformats", "internal/wire", "representation", "resolution", "spec", "vm"}
 	if q.Module != ModulePath || q.Version != Version || !reflect.DeepEqual(q.Packages, packages) || len(q.Diagnostics) != 0 {
 		return out, errors.New("requires fixed resource source request")
 	}

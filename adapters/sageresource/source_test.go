@@ -11,7 +11,7 @@ import (
 )
 
 func sourceRequest() sageresolution.IntegerSourceRequest {
-	return sageresolution.IntegerSourceRequest{Module: ModulePath, Version: Version, Packages: []string{"dereferencer", "relyingparty", "did", "document", "internal/multiformats", "representation", "resolution", "spec", "vm"}}
+	return sageresolution.IntegerSourceRequest{Module: ModulePath, Version: Version, Packages: []string{"dereferencer", "relyingparty", "did", "document", "internal/multiformats", "internal/wire", "representation", "resolution", "spec", "vm"}}
 }
 
 func TestCaptureSourceGuards(t *testing.T) {

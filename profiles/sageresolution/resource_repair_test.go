@@ -41,13 +41,24 @@ func TestRepairedResourceProfileBounds(t *testing.T) {
 	}
 }
 func TestResourceRepairSourceBounds(t *testing.T) {
-	old := urlRoleControls(t)
+	newSource := func() urlRoleEvidence {
+		e := urlRoleControls(t)
+		m := ResourceRepairManifest{Module: IntegerSourceModule, Version: IntegerSourceVersion}
+		e.Source.Request = resourceRepairSourceRequest(m)
+		files, _, err := sourcearith.ArchiveFiles(e.Source.Archive, IntegerSourceModule+"@"+IntegerSourceVersion)
+		if err != nil {
+			t.Fatal(err)
+		}
+		e.Source.Files = sourcearith.SourceFiles(files, e.Source.Request.Packages)
+		return e
+	}
+	old := newSource()
 	m := ResourceRepairManifest{Module: IntegerSourceModule, Version: IntegerSourceVersion, Sum: IntegerSourceSum, SourceFiles: map[string]string{}}
 	for n, b := range old.Source.Files {
 		m.SourceFiles[n] = fmt.Sprintf("%x", sha256.Sum256(b))
 	}
 	for _, mode := range []string{"identity", "archive", "count", "bytes", "review", "typed-guard"} {
-		e := urlRoleControls(t)
+		e := newSource()
 		local := m
 		local.SourceFiles = map[string]string{}
 		for n, h := range m.SourceFiles {

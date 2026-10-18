@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 IDS = ['res10-crd20261001#dereferencing-algorithm-resource.11']
 CASE = 'did-1.1/sage-resolution/repaired-primary-resource-url'
 SCOPE = 'Selected reviewed primary resource URL adjustment only; arbitrary handler media fragments, SAGE consumer adoption and operational authority are not established.'
-PACKAGES = ['dereferencer', 'relyingparty', 'did', 'document', 'internal/multiformats', 'representation', 'resolution', 'spec', 'vm']
+PACKAGES = ['dereferencer', 'relyingparty', 'did', 'document', 'internal/multiformats', 'internal/wire', 'representation', 'resolution', 'spec', 'vm']
 require, equal, decoded = common.require, common.equal, common.decoded
 
 

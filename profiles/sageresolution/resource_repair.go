@@ -42,6 +42,7 @@ func resourceRepairManifest() (ResourceRepairManifest, error) {
 }
 func resourceRepairSourceRequest(m ResourceRepairManifest) IntegerSourceRequest {
 	q := urlRoleRequest()
+	q.Packages = []string{"dereferencer", "relyingparty", "did", "document", "internal/multiformats", "internal/wire", "representation", "resolution", "spec", "vm"}
 	q.Module = m.Module
 	q.Version = m.Version
 	return q
@@ -56,7 +57,7 @@ func resourceRepairAudit(a sourcearith.ServiceAudit) error {
 		return fmt.Errorf("missing primary URL adjustment or changed extraction context")
 	}
 	// Other frames may reflect earlier independently reviewed repairs. Bind the
-	// twelve critical frames and all 39 complete source files, not a historical
+	// twelve critical frames and all 44 complete source files, not a historical
 	// total function count or a subject-supplied correctness assertion.
 	names := append([]string{}, w.Roots...)
 	names = append(names, IntegerSourceModule+"/did.("+IntegerSourceModule+"/did.DIDURL).WithoutFragment", IntegerSourceModule+"/dereferencer.(*"+IntegerSourceModule+"/dereferencer.Dereferencer).fragment")
@@ -85,7 +86,7 @@ func resourceRepairSource(ctx context.Context, v IntegerSourceResult, m Resource
 		return fail("unbound source archive")
 	}
 	selected := sourcearith.SourceFiles(files, v.Request.Packages)
-	if len(selected) != 39 || len(selected) != len(m.SourceFiles) || len(v.Files) != len(selected) {
+	if len(selected) != 44 || len(selected) != len(m.SourceFiles) || len(v.Files) != len(selected) {
 		return fail("incomplete reviewed source")
 	}
 	for name, b := range selected {
