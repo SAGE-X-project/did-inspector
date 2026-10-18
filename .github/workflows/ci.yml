@@ -51,7 +51,7 @@ jobs:
         run: |
           go tool cover -func="$RUNNER_TEMP/cover.out" | awk '
             /\/expansion_source\.go:/ { v=$NF; sub(/%$/, "", v); found++; if (v+0 < 90) { print "below 90%: " $0; bad=1 } }
-            END { if (found != 12 || bad) exit 1 }'
+            END { if (found != 14 || bad) exit 1 }'
       - name: URL inspection function coverage
         run: |
           go tool cover -func="$RUNNER_TEMP/cover.out" | awk '
