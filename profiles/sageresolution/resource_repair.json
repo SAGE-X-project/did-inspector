@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "runtime_results_merged": false,
+  "specs": [
+    {
+      "key": "did11-cr20260305",
+      "url": "https://www.w3.org/TR/2026/CR-did-1.1-20260305/",
+      "source": "sources/did-core-1.1-cr-20260305.html",
+      "sha256": "4a48022defe07d37d2decc3ec9027a932dc883b2ad164a5aeaf9256e530bd979"
+    },
+    {
+      "key": "cid10",
+      "url": "https://www.w3.org/TR/2025/REC-cid-1.0-20250515/",
+      "source": "sources/controlled-identifiers-1.0-20250515.html",
+      "sha256": "c5e9befba602b53de46669cf98067123d1901357a425f8bff621796b2ac4ac4a"
+    },
+    {
+      "key": "res10-crd20261001",
+      "url": "https://www.w3.org/TR/2026/CRD-did-resolution-1.0-20261001/",
+      "source": "sources/did-resolution-1.0-crd-20261001.html",
+      "sha256": "2b194843d37f5b7f01a4f5464f64d672dc4be43dafe5f2f49114c6070819586e"
+    }
+  ],
+  "module": "github.com/sage-x-project/did-go",
+  "scope": "selected-reviewed-primary-resource-url",
+  "version": "v0.0.0-20261018080828-3b7a79c1c326",
+  "revision": "3b7a79c1c326a648b283ac4ccf35c691fabf053c",
+  "sum": "h1:Am4pVUAnGnhje6WZgO19ltbRV1NDCfvmEzQAuwHInM8=",
+  "source_files": {
+    "dereferencer/dereferencer.go": "449707ce060461c830a41f563d12134f8dbab4f20aed833ae8ddf491ee26ef26",
+    "dereferencer/fragment.go": "f7056d030c185d8a2588bdaaf97a6e8aa92ebd38d0021255efedb2c9fae1e839",
+    "dereferencer/service.go": "6053db599fdf49dcbc346abc829dd2973fbdb5dd6c7de6743ee5a209b1d0db16",
+    "relyingparty/relyingparty.go": "f8c54419f10869cfe42d6742eec2fda1e1322a60e5f40e5bc79ea18339d58d04",
+    "did/did.go": "83896d7b84d777823b4a8aca1b01c50a68a0b07b5b0657df157bc477234577f5",
+    "did/params.go": "039b46fa3be999cb7589b0fc867066187331486f553cf2c5ff501c9984f281a4",
+    "did/relative.go": "017f3d017e9d1c84788bf577638627067a41fd21a729a7ff965fe108d0d1d512",
+    "did/url.go": "b35015538dfb3ba3ea4bc0fc13d790c5be2cdcae89fe2d388fe1b687bf36eb95",
+    "document/builder.go": "c9142e19f63e2b4b26648c08a1a30c01d0e922acac2d4765f1340f097f8d5c26",
+    "document/document.go": "a39e85ecd3efd05f1da851e0f5ab18b868c1cc39f1909c064694332358908a12",
+    "document/errors.go": "67f4a160c9afcf2ec9791b0d6af6c7fb30a6d155671bb64b1067f6bec65f0d72",
+    "document/metadata.go": "8f1227e3e05fb5c447e3f96f33c5e4d26c3c7f5867f926a9aa4c8eb4de871c72",
+    "document/select.go": "6cb232b0c1dd1ada9c6ad9ae89b6c895987c71d841ab3428128f11d03a5f8656",
+    "document/validate.go": "d33961cf220f13aabd6e1d06a1763921119ad200fe10fbfa058eee458b75ab00",
+    "document/value.go": "24745ada0f0dfcac101d2ea0f2c46de80f1e71e38c1c208a13f79914b7ac9086",
+    "internal/multiformats/base.go": "42e24ce29efbe606550c0d118081f35606c0c976c80a2b48a2f807084900708e",
+    "internal/multiformats/multibase.go": "2c6e4637ca9a4299a439d3cc6cd6eea760417e9b8f16c7fbd69e909480f7586b",
+    "internal/multiformats/varint.go": "f0c24d2d5a2f8e79567616fa911720217dbd341f84fbfa12160255744c5e2286",
+    "representation/detect.go": "c86c2bfa013b0912d40f54d03f41cca006e1098a1af29ac2a9257b442a4930b8",
+    "representation/mediatype.go": "54614c89dda66aa44c6083de3b848ddcfe9ae1e58df4ad33cc06cacf953531d6",
+    "representation/representation.go": "e785e4d6a4e646a741e4c916365136015a15b04874d2cff591c4f2707dd7cca1",
+    "resolution/accept.go": "892896d21e5435eb345d6dadccc4247bda14248192a85c9f89e7b5aa0ccb9e86",
+    "resolution/errors.go": "b3c5442937c073c5378a57d4c152f9bb03e8cc82de8efa55b3acdcb6885cc637",
+    "resolution/metadata.go": "91880e2674c66032b9e09cbf940b72dcd169c48e503a32f15d823db3db79be61",
+    "resolution/options.go": "18a64e819573819427cb41ad8141c60aac3c97a4a5372f90747a22f4c8f6a1b8",
+    "resolution/resolution.go": "dc1e99221680bb704112a0785b32b6e227ce91df19e9a7a4b7079f615e183c5d",
+    "spec/datetime.go": "de3f6c04f2022b5f924f7129107108433aa722c49b401a8c6c726f4b9ca04566",
+    "spec/keys.go": "681a98f50b4538d0b61dfa0f6b260332b729639cc86fb662b453c4d089f5497d",
+    "spec/profile.go": "0c7b8681413ad1607b15670c86de5f3918f41faae8c892a1101d0b376d8e3a31",
+    "spec/version.go": "21dd3c24ed6de6d498ba081ec6e34c161e3987b76ee409fae10d5890f1ef1edd",
+    "vm/errors.go": "72e7ed4cc5ba95a39cc4d963b06eb497d00fe4611d2b92f038e35810b9a1de78",
+    "vm/jwk.go": "795c89395bfc84fc540207e0a4b96b74a829486fb2d04d4cab9c653ad804b9c1",
+    "vm/method.go": "dd8f7a3a597de379e555cc8635edd63f88ff135eab3cc10d02ef4f78eff4b27e",
+    "vm/multikey.go": "cb4dfc36e57f9d0cc740afc75b104196218762017df6a01b09dbf20f9631f240",
+    "vm/purpose.go": "6745d4ab86ea0744661d49d2065c9c2c78f48a68374adaf5ff7b1827962c8fc6",
+    "vm/service.go": "bc1b8b39c0c40f2b1c36780a37128e1a83849cab4b1795c2ad39d5b788ac01d4",
+    "vm/shape.go": "b3e49eb8aef5bf14554ba429102181acaffc0ce44d47a646a8701523145aa4ce",
+    "vm/uri.go": "9e258bd545a8c75ee4fe9af540432733e5e7ad9aa78b147e1248a13c5e98dd2b",
+    "vm/value.go": "a7216a9ee9fcdbe01eec0bc8025d64d9647e1268a2a679f3e5d493d0eec3f083"
+  },
+  "fixture_sha256": "0eb2651988d8f7ee97c40c9806e225a752f7a5850c6c9b1f3e9b2afa6329243e",
+  "subject": {
+    "name": "did-go/primary-resource-url",
+    "version": "v0.0.0-20261018080828-3b7a79c1c326",
+    "revision": "3b7a79c1c326a648b283ac4ccf35c691fabf053c"
+  }
+}
