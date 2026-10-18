@@ -4,7 +4,6 @@ import copy
 import hashlib
 import io
 import json
-import os
 import sys
 import tempfile
 import unittest
@@ -22,7 +21,7 @@ def encoded(v):
 class ExpansionEvidenceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.archive = Path(os.environ['EXPANSION_UNIT_ZIP']).read_bytes()
+        cls.archive = (checker.ROOT / 'checks/sourcearith/testdata/did-go-expansion.zip').read_bytes()
 
     def setUp(self):
         self.m = json.loads((checker.ROOT / 'profiles/sageresolution/expansion_repair.json').read_text())
@@ -32,7 +31,7 @@ class ExpansionEvidenceTests(unittest.TestCase):
             files = {name: base64.b64encode(z.read(prefix + name)).decode() for name in self.m['source_files']}
         source = {'request': checker.request(self.m), 'module': self.m['module'], 'version': self.m['version'], 'sum': self.m['sum'], 'replaced': False, 'operation': 'debug.ReadBuildInfo + local go env + module cache/ZIP byte capture', 'compiler': 'go1.26.8', 'environment_compiler': 'go1.26.8', 'archive': base64.b64encode(self.archive).decode(), 'files': files, 'diagnostics': []}
         audit = json.loads((checker.ROOT / 'profiles/sageresolution/expansion_source_witness.json').read_text())
-        audit['roles'].update(method_extensions='true', service_extensions='true')
+        audit['roles'].update(method_extensions='true', service_extensions='true', copied_options='documentOptions github.com/sage-x-project/did-go/resolution.ResolutionOptions')
         audit['steps'][1]['correct'] = True
         audit['steps'][1]['expressions'] = ['typed Method.Extra read: true', 'typed Service.Extra read: true']
         pairs = [('expand', 'expandJSONMap'), ('expandMethod', 'expandJSONMap'), ('expandJSONMap', 'absoluteString'), ('expandJSONMap', 'expandJSONValue'), ('expandJSONValue', 'expandJSONMap'), ('expandJSONValue', 'expandJSONValue')]

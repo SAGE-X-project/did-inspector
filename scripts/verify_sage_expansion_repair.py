@@ -71,7 +71,7 @@ def source(v, m):
 def audit(v, m):
     a = v['audit']
     witness = json.loads((ROOT / 'profiles/sageresolution/expansion_source_witness.json').read_text())
-    roles = dict(witness['roles'], method_extensions='true', service_extensions='true')
+    roles = dict(witness['roles'], method_extensions='true', service_extensions='true', copied_options='documentOptions github.com/sage-x-project/did-go/resolution.ResolutionOptions')
     require(equal(a['roots'], witness['roots']) and equal(a['roles'], roles) and equal(a['call_paths'], witness['call_paths']) and equal(a['unknown'], []), 'typed closed context')
     require(len(a['steps']) == 2 and [s['kind'] for s in a['steps']] == ['expansion-enabled-condition', 'complete-extension-traversal'] and all(s['correct'] is True for s in a['steps']), 'typed guard/traversal')
     require(a['steps'][0]['expressions'] == ['opts.ExpandRelativeURLs'] and a['steps'][1]['expressions'] == ['typed Method.Extra read: true', 'typed Service.Extra read: true'], 'typed field evidence')

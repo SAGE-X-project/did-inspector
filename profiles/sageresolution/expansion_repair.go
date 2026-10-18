@@ -73,11 +73,11 @@ func repairSource(ctx context.Context, v IntegerSourceResult, m ExpansionRepairM
 	}
 	p := sourcearith.NewProgram(ctx, m.Module, v.Files)
 	if _, err := p.Import(m.Module + "/resolver"); err != nil {
-		return fail("source type check failed")
+		return fail("source type check failed: " + err.Error())
 	}
-	a := p.ExpansionAudit()
+	a := p.ExpansionAuditForCopiedOptions()
 	if len(a.Unknown) != 0 || len(a.Steps) != 2 || !a.Steps[0].Correct || !a.Steps[1].Correct || a.Roles["method_extensions"] != "true" || a.Roles["service_extensions"] != "true" {
-		return fail("unbound expansion guard or typed public fields")
+		return fail(fmt.Sprintf("unbound expansion guard or typed public fields: %v", a.Unknown))
 	}
 	// These edges supplement the reviewed complete file bindings. Reading Extra
 	// or observing an unrelated helper call alone is never sufficient.

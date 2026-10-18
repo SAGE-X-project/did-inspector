@@ -90,7 +90,11 @@ func TestExpansionProfile(t *testing.T) {
 	}
 	for _, id := range expected {
 		if got[id] != core.Pass {
-			t.Fatalf("%s: %s", id, got[id])
+			var detail struct {
+				Error string `json:"analysis_error"`
+			}
+			_ = json.Unmarshal([]byte(e.Raw.Cases[0].Observations[0].Observed), &detail)
+			t.Fatalf("%s: %s (%s)", id, got[id], detail.Error)
 		}
 	}
 	if e.Report.Totals.Pass != 2 || e.Report.Totals.NotRun != 484 {
