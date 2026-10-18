@@ -44,7 +44,13 @@ func expansionFrame(p *Program, f function) string {
 // Typed Extra-field reads are required for method/service extension coverage;
 // their absence in the reviewed closed helpers is corroborated by ordinary
 // same-call consumer and resolver receipts, never inferred from an output alone.
-func (p *Program) ExpansionAudit() ServiceAudit {
+func (p *Program) ExpansionAudit() ServiceAudit { return p.expansionAudit(false) }
+
+// ExpansionAuditForCopiedOptions accepts only the reviewed copied scalar-option
+// binding, preserving the historical direct-options audit unchanged.
+func (p *Program) ExpansionAuditForCopiedOptions() ServiceAudit { return p.expansionAudit(true) }
+
+func (p *Program) expansionAudit(copied bool) ServiceAudit {
 	output := p.module + "/resolver.(*" + p.module + "/resolver.DefaultResolver).output"
 	a := ServiceAudit{Roots: []string{output, p.module + "/resolver.expand"}, Frames: map[string]string{}, Roles: map[string]string{}, Steps: []StateStep{}, Unknown: []string{}, CallPaths: [][]string{}}
 	of := p.Find(output)
@@ -93,7 +99,19 @@ func (p *Program) ExpansionAudit() ServiceAudit {
 	}
 	call, ok := ret.Results[0].(*ast.CallExpr)
 	rsig := rf.Type().(*types.Signature)
-	if !ok || len(call.Args) != 3 || rsig.Params().Len() != 3 || selectionSymbol(entry.unit.info, call.Fun) != output || object(entry.unit.info, call.Args[2]) != rsig.Params().At(2) {
+	if !ok || len(call.Args) != 3 || rsig.Params().Len() != 3 || selectionSymbol(entry.unit.info, call.Fun) != output {
+		a.Unknown = append(a.Unknown, "unbound Resolve options")
+		return a
+	}
+
+	if copied {
+		local, bound := copiedExpansionOptions(entry, rsig, call.Args[2], p.module)
+		if !bound {
+			a.Unknown = append(a.Unknown, "unbound copied Resolve options")
+			return a
+		}
+		a.Roles["copied_options"] = local.Name() + " " + types.TypeString(local.Type(), nil)
+	} else if object(entry.unit.info, call.Args[2]) != rsig.Params().At(2) {
 		a.Unknown = append(a.Unknown, "unbound Resolve options")
 		return a
 	}
