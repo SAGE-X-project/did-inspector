@@ -70,7 +70,7 @@ jobs:
                        'docs/sage-method-document-review.md']:
               assert pathlib.Path(name).read_bytes() == subprocess.check_output(['git', 'show', previous + ':' + name])
           source = [
-              '.github/workflows/method-security-recheck.yml',
+              '.github/workflows/method-security-recheck.yml', '.github/workflows/ci.yml',
               'scripts/inspect_method_security_document.py',
               'scripts/test_inspect_method_security_document.py',
               'docs/sage-method-security-recheck.json',
