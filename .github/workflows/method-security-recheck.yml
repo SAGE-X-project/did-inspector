@@ -1,0 +1,106 @@
+name: Method security document recheck
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  documents:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      SAGE_METHOD_SECURITY_SPEC_ROOT: ${{ github.workspace }}/.method-security-spec
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: SAGE-X-project/sage-spec
+          ref: 6d611b19764cfae50936ab4c63dbe4e1f9f78487
+          path: .method-security-spec
+          persist-credentials: false
+      - name: Test fresh document evidence and error boundaries
+        run: |
+          python3 -m trace --count --missing --summary --coverdir "$RUNNER_TEMP/fresh-method-coverage" --module unittest discover -v -s scripts -p test_inspect_method_security_document.py > "$RUNNER_TEMP/fresh-method-coverage.log" 2> "$RUNNER_TEMP/fresh-method-unit.log"
+          cat "$RUNNER_TEMP/fresh-method-unit.log"
+          cat "$RUNNER_TEMP/fresh-method-coverage.log"
+          python3 - <<'PY'
+          import os, pathlib, re
+          text = (pathlib.Path(os.environ['RUNNER_TEMP']) / 'fresh-method-coverage.log').read_text()
+          values = re.findall(r'^\s*\d+\s+(\d+)%\s+inspect_method_security_document\s+', text, re.M)
+          assert len(values) == 1 and int(values[0]) >= 90, values
+          PY
+      - name: Replay the independently reviewed fresh corpus
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib, subprocess, sys
+          sys.path.insert(0, 'scripts')
+          import inspect_method_security_document as inspector
+          root = pathlib.Path(os.environ['RUNNER_TEMP']) / 'fresh-method-reports'
+          root.mkdir()
+          result = subprocess.run([
+              sys.executable, '-B', 'scripts/inspect_method_security_document.py',
+              '--repository', os.environ['SAGE_METHOD_SECURITY_SPEC_ROOT'],
+              '--out', str(root / 'report.json'), '--raw-out', str(root / 'raw.json'),
+              '--inspector-revision', os.environ['GITHUB_SHA']], capture_output=True, text=True)
+          (root / 'cli-stdout.log').write_text(result.stdout)
+          (root / 'cli-stderr.log').write_text(result.stderr)
+          assert result.returncode == 1, (result.returncode, result.stderr)
+          report = json.loads((root / 'report.json').read_text())
+          raw = json.loads((root / 'raw.json').read_text())
+          catalog = inspector.load_catalog()
+          inspector.verify_capture(raw, catalog)
+          assert report == inspector.inspect(catalog, raw, os.environ['GITHUB_SHA'])
+          assert report['totals'] == {'PASS': 26, 'FAIL': 4, 'ERROR': 0, 'NOT_APPLICABLE': 19, 'NOT_RUN': 2}
+          assert {r['id'] for r in report['statements'] if r['verdict'] == 'FAIL'} == {
+              'did11-cr20260305#security-requirements.1',
+              'did11-cr20260305#security-requirements.5',
+              'did11-cr20260305#security-requirements.6',
+              'res10-crd20261001#vdr-forks.1'}
+          assert report['revision'] == inspector.REVISION and report['documentary_gate'] == 'FAIL'
+          assert report['runtime_results_merged'] is False and report['protocol_runtime_executed'] is False
+          previous = '819430a7936b9e2b9dae8acfeedf02f4d41bb4e6'
+          for name in ['scripts/inspect_method_document.py', 'docs/sage-method-document-review.json',
+                       'docs/sage-method-document-review.md']:
+              assert pathlib.Path(name).read_bytes() == subprocess.check_output(['git', 'show', previous + ':' + name])
+          source = [
+              '.github/workflows/method-security-recheck.yml',
+              'scripts/inspect_method_security_document.py',
+              'scripts/test_inspect_method_security_document.py',
+              'docs/sage-method-security-recheck.json',
+              'docs/sage-method-security-recheck.md',
+              'docs/sage-method-security-author-review.md',
+              'scripts/inspect_method_document.py', 'docs/sage-method-document-review.json',
+          ]
+          receipt = {
+              'scope': 'fixed independent documentary review replay; no protocol execution',
+              'checkout': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
+              'tree': subprocess.check_output(['git', 'rev-parse', 'HEAD^{tree}'], text=True).strip(),
+              'spec_revision': inspector.REVISION,
+              'run_id': os.environ['GITHUB_RUN_ID'], 'run_attempt': os.environ['GITHUB_RUN_ATTEMPT'],
+              'source_sha256': {n: hashlib.sha256(pathlib.Path(n).read_bytes()).hexdigest() for n in source},
+              'output_sha256': {n: hashlib.sha256((root / n).read_bytes()).hexdigest()
+                                for n in ['report.json', 'raw.json', 'cli-stdout.log', 'cli-stderr.log']},
+              'unit_sha256': {n: hashlib.sha256((pathlib.Path(os.environ['RUNNER_TEMP']) / n).read_bytes()).hexdigest()
+                              for n in ['fresh-method-unit.log', 'fresh-method-coverage.log']},
+              'exit_code': result.returncode,
+              'totals': report['totals'], 'historical_sources_unchanged': True,
+          }
+          (root / 'receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')
+          PY
+      - name: Preserve the separate fresh documentary evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: fresh-method-security-reports
+          if-no-files-found: error
+          path: |
+            ${{ runner.temp }}/fresh-method-reports/
+            ${{ runner.temp }}/fresh-method-unit.log
+            ${{ runner.temp }}/fresh-method-coverage.log
